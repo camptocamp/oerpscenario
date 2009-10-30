@@ -7,14 +7,14 @@ Feature check migration
 
 
   Scenario: check_contacts
-    Given I am loged as admin user with password toto used
+    Given I am loged as admin user with password admin used
     And I made a search on object res.partner.contact 
     When I press search
     Then the result  should be > 0 
 
 
     Scenario: create_partner
-        Given I am loged as admin user with password toto used
+        Given I am loged as admin user with password admin used
         And I want to create a partner name automatedtest with default receivable account 
         Then I get a receivable account
         When I press create
@@ -23,7 +23,7 @@ Feature check migration
 
 
     Scenario: copy_partner
-      Given I am loged as admin user with password toto used
+      Given I am loged as admin user with password admin used
       And I want to create a partner named copyautomatedtest 
       When I press create
       Then I should get a partner id
@@ -32,7 +32,7 @@ Feature check migration
 
 
     Scenario: create_product
-        Given I am loged as admin user with password toto used
+        Given I am loged as admin user with password admin used
         And I want to create a prodcut named automatedtestprodcut
         Then I get a product category 
         When I press create
@@ -40,7 +40,7 @@ Feature check migration
         And  I should get property_expense_account and property_income_account proprety
         
     Scenario: copy_product
-        Given I am loged as admin user with password toto used
+        Given I am loged as admin user with password admin used
         And I want to create a prodcut to copy named automatedtestprodcutcopy
         Then I get a product category 
         When I press create
