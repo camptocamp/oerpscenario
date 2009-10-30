@@ -1,0 +1,21 @@
+ Scenario: login
+   Given I have entered user admin password toto on rpc port 8038 and database openerp_x for localhost host
+   When I press login
+   Then the result should not be false that means ok
+   
+   
+   
+   
+
+   Given /^I have entered user (\w+) password (\w+) on rpc port (\w+) and database (\w+) for (\w+) host$/ do |user, password, port, db, host|
+
+       @connector.setConnexion(user, password, host, port, db)
+   end
+
+   When /^I press login$/ do
+   end
+
+
+   Then /^the result should not be false that means ok$/ do 
+       res = @connector.login().should be_true
+   end

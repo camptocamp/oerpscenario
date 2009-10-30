@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>setConnexionfromConf (OERPRPCConnector)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/ERPConnector.rb, line 21</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setConnexionfromConf</span>(<span class="ruby-identifier">user</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">password</span>=<span class="ruby-keyword kw">false</span>)
+        <span class="ruby-identifier">my_config</span> = <span class="ruby-constant">ParseConfig</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'base.conf'</span>)
+        <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'port'</span>)
+        <span class="ruby-ivar">@user</span> =  <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'user'</span>)
+        <span class="ruby-ivar">@dbname</span> =  <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'database'</span>)
+        <span class="ruby-ivar">@pwd</span> =  <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'password'</span>) 
+        <span class="ruby-ivar">@host</span> =  <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'host'</span>)
+        <span class="ruby-ivar">@common_server</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@host</span>, <span class="ruby-value str">&quot;/xmlrpc/common&quot;</span>, <span class="ruby-ivar">@port</span>)
+        <span class="ruby-ivar">@object_server</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@host</span>, <span class="ruby-value str">&quot;/xmlrpc/object&quot;</span>, <span class="ruby-ivar">@port</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">:</span>
+            <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">user</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">:</span>
+            <span class="ruby-ivar">@pwd</span> = <span class="ruby-identifier">password</span>
+        <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

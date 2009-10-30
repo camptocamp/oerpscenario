@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>setConnexion (OERPDBConnector)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/ERPConnector.rb, line 124</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setConnexion</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">password</span>, <span class="ruby-identifier">host</span>, <span class="ruby-identifier">database</span>, <span class="ruby-identifier">dbport</span>, <span class="ruby-identifier">port</span>=<span class="ruby-value">5432</span> )
+        <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">port</span>
+        <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">user</span>
+        <span class="ruby-ivar">@dbname</span> = <span class="ruby-identifier">database</span>
+        <span class="ruby-ivar">@pwd</span> = <span class="ruby-identifier">password</span> 
+        <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">host</span>
+        <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">establish_connection</span>(<span class="ruby-identifier">:adapter</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'postgresql'</span>,
+        <span class="ruby-identifier">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@host</span>,
+        <span class="ruby-identifier">:username</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span>,
+        <span class="ruby-identifier">:database</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-ivar">@dbname</span>,
+        <span class="ruby-identifier">:password</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@pwd</span>,
+        <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-ivar">@port</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
