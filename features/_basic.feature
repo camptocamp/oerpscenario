@@ -15,7 +15,7 @@ Feature check migration
 
     Scenario: create_partner
         Given I am loged as admin user with password admin used
-        And I want to create a partner name automatedtest with default receivable account 
+        And I want to create a partner named automatedtest with default receivable account 
         Then I get a receivable account
         When I press create
         Then I should get a partner id
