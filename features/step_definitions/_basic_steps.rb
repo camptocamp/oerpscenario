@@ -62,8 +62,8 @@ end
 
 Then /^I should get a copied partner id$/ do
   pending
-  # res = @part.copy() #copy function ot found
-  # res.should be_true
+  res = @part.copy() #copy function ot found
+   res.should be_true
 end
 
 
