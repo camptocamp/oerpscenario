@@ -46,8 +46,10 @@ Then /^I should get a partner id$/ do
 end
 
 Then /^I should get account_payable and pricelist proprety$/ do
- @part.property_account_receivable.should be_true
- @part.property_account_payable.should be_true
+ part = ResPartner.find(@part.id, :fields => ["property_account_payable","property_account_receivable"])
+ part.property_account_payable.should be_true
+ part.property_account_receivable.should be_true
+
 end
 
 Given /^I want to create a partner named (\w+)$/ do |name|
@@ -80,8 +82,9 @@ Then /^I should get a product id$/ do
 end
 
 Then /^I should get property_expense_account and property_income_account proprety$/ do
-    @prod.property_account_income.should be_true
-    @prod.property_account_expense.should be_true
+    prod = ProductProduct.find(@prod.id, :fields => ["property_account_income","property_account_expense"])
+    prod.property_account_income.should be_true
+    prod.property_account_expense.should be_true
 end
 
 Given /^I want to create a prodcut to copy named automatedtestprodcutcopy$/ do
