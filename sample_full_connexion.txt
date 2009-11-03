@@ -9,7 +9,7 @@
 
    Given /^I have entered user (\w+) password (\w+) on rpc port (\w+) and database (\w+) for (\w+) host$/ do |user, password, port, db, host|
 
-       @connector.setConnexion(user, password, host, port, db)
+       @connector.setConnexionfromConf(user, password, host, port, db)
    end
 
    When /^I press login$/ do
@@ -17,5 +17,4 @@
 
 
    Then /^the result should not be false that means ok$/ do 
-       res = @connector.login().should be_true
    end

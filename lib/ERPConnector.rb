@@ -19,7 +19,7 @@ class ScenarioUtils
     end
     #read the base.conf file to set all the parameter to begin an xml rpc session with openerp
     #you can override any of the parameters
-    def setConnexionfromConf(user=false, password=false, database=false, host=false, port=false)
+    def setConnexionfromConf(user=false, password=false, database=false, host=false, port=false, quiet=true)
         my_config = ParseConfig.new('base.conf')
         @port = my_config.get_value('port')
         @user =  my_config.get_value('user')
@@ -41,7 +41,7 @@ class ScenarioUtils
         if port :
             @port = port
         end
-        Ooor.reload!({:url => "http://localhost:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd})
+        Ooor.reload!({:url => "http://localhost:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd, :logLevel=>Logger::ERROR})
     end   
 end
 

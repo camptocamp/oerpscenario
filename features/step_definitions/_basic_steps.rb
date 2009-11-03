@@ -12,7 +12,6 @@ end
 
 
 Given /^I am loged as (\w+) user with password (\w+) used$/ do |user, pass|
-  
   @utils.setConnexionfromConf(user=user, password=pass)
 end
 
