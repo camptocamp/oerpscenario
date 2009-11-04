@@ -41,7 +41,7 @@ class ScenarioUtils
         if port :
             @port = port
         end
-        Ooor.reload!({:url => "http://localhost:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd, :logLevel=>Logger::ERROR})
+        Ooor.reload!({:url => "http://localhost:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd, :log_level=>Logger::ERROR})
     end   
 end
 
