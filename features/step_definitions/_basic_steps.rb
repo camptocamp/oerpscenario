@@ -1,7 +1,7 @@
 #Author Nicolas Bessi 2009 
 #copyright Camptocamp SA
+@utils = ScenarioUtils.new
 Before do
-    @utils = ScenarioUtils.new
     @res = false
     @part = false
     @account_id = false
@@ -12,6 +12,7 @@ end
 
 
 Given /^I am loged as (\w+) user with password (\w+) used$/ do |user, pass|
+   
   @utils.setConnexionfromConf(user=user, password=pass)
 end
 
