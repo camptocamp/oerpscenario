@@ -32,6 +32,7 @@ end
 
 Given /^I want to create a prodcut named (.*)$/ do |name|
   @prod = ProductProduct.new(:name => "#{name}, #{rand.to_s[0..10]}")
+  @prod.should be_true
 end
 
 Then /^I get a product category$/ do

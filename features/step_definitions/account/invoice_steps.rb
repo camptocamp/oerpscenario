@@ -24,14 +24,10 @@ Given /^the company currency is set to (\w+)$/ do |currency|
   @company.currency_id = @cmpcurrency.id
   @company.save
 end
-# And the following currency settings are set:
-# |code|rate|name|
-# |EUR|1.000|01.01.2009|
-# |CHF|1.644|01.01.2009|
-# |CHF|1.500|09.09.2009|
+
+
 Given /^the following currency rate settings are:$/ do |currencies|
   # TODO : clean rate on currency before set them
-  # require "ruby-debug";debugger
   currencies.hashes.each do |c|
     c[:currency_id] = ResCurrency.find(:first, :domain=>[['code','=',c[:code]]]).id
     ResCurrencyRate.create(c)
@@ -39,11 +35,18 @@ Given /^the following currency rate settings are:$/ do |currencies|
 end
 
 
-# Given /^I have recorded on the 1 jan 2009 a supplier invoice \(in_invoice\) of 1000,0 CHF without tax called MySupplierInvoice$/
+
 Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) without tax called (\w+)$/ do |date,inv_type,amount,currency,name|
-  # require "ruby-debug";debugger
   # Take first supplier partner with at least one address
-  @partner=ResPartner.find(:first,:domain=>[['supplier','=',true],['address','>',1]])
+  res=ResPartner.find(:all,:domain=>[ ['supplier','=',true] ])
+  res.should be_true
+  res.each do |part|
+      if (part.address.length >0) :
+          @partner = part
+          break
+       end
+  end
+  @partner.should be_true
   date=Date.parse(str=date).to_s
   @invoice=AccountInvoice.new({
     :type => inv_type, 

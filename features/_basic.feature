@@ -13,10 +13,9 @@ Feature basic action
     When I press search
     Then the result  should be > 0 
 
-
-    Scenario: create_partner
-        Given I want to create a partner named automatedtest with default receivable account 
-        Then I get a receivable account
-        When I press create
-        Then I should get a partner id
-        And  I should get account_payable and pricelist proprety
+  Scenario: create_partner
+      Given I want to create a partner named automatedtest with default receivable account 
+      Then I get a receivable account
+      When I press create
+      Then I should get a partner id
+      And  I should get account_payable and pricelist proprety
