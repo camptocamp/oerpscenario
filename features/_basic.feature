@@ -1,6 +1,6 @@
-Feature check migration
-  In order to test my migration
-  As an administator
+Feature basic action
+  In order to do BDD
+  As a power user
   I want to see if the basics behaviors work
   
 
@@ -8,7 +8,7 @@ Feature check migration
   Background: login
     Given I am loged as admin user with password admin used
     
-  Scenario: check_contacts
+  Scenario: check_base_contact
     Given I made a search on object res.partner.contact 
     When I press search
     Then the result  should be > 0 
@@ -20,27 +20,3 @@ Feature check migration
         When I press create
         Then I should get a partner id
         And  I should get account_payable and pricelist proprety
-
-
-    Scenario: copy_partner
-      Given I want to create a partner named copyautomatedtest 
-      When I press create
-      Then I should get a partner id
-      And I copy the partner
-      Then I should get a copied partner id
-
-
-    Scenario: create_product
-        Given I want to create a prodcut named automatedtestprodcut
-        Then I get a product category 
-        When I press create
-        Then I should get a product id
-        And  I should get property_expense_account and property_income_account proprety
-        
-    Scenario: copy_product
-        Given I want to create a prodcut to copy named automatedtestprodcutcopy
-        Then I get a product category 
-        When I press create
-        Then I should get a product id
-        And I copy the product
-        Then I should get a product id

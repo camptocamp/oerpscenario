@@ -3,7 +3,6 @@
 require 'rubygems'
 require 'ooor'
 include Ooor
-#require 'active_record'
 require 'parseconfig'
 # This class map OpenERP XMLRPC actions
 
