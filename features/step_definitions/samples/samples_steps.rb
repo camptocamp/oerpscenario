@@ -1,6 +1,5 @@
 #Author Nicolas Bessi 2009 
 #copyright Camptocamp SA
-@utils = ScenarioUtils.new
 Before do
     @res = false
     @part = false

@@ -4,3 +4,4 @@ require 'lib/ERPConnector'
 require 'rubygems'
 require 'ooor'
 include Ooor
+$utils = ScenarioUtils.new

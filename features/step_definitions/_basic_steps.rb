@@ -1,7 +1,11 @@
 #Author Nicolas Bessi 2009 
 #copyright Camptocamp SA
-@utils = ScenarioUtils.new
+$utils = ScenarioUtils.new
 Before do
+    if not $utils :
+        $utils = ScenarioUtils.new
+        puts 'reset connection'
+    end
     @res = false
     @part = false
     @account_id = false
@@ -10,7 +14,15 @@ end
 
 
 Given /^I am loged as (\w+) user with password (\w+) used$/ do |user, pass|
-    @utils.setConnexionfromConf(user=user, password=pass)
+    begin
+        if $utils.ready? :
+            $utils.login(user,pass)
+        else 
+            $utils.setConnexionfromConf(user=user, password=pass)
+        end
+    rescue Exception => e
+        $utils.setConnexionfromConf(user=user, password=pass)
+    end
 end
 
 Given /^I made a search on object res\.partner\.contact$/ do    

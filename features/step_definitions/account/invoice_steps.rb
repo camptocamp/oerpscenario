@@ -1,7 +1,6 @@
 #Author Nicolas Bessi 2009 
 #copyright Camptocamp SA
 Before do
-    @utils = ScenarioUtils.new
     @partner = false
     @address = false
     @account = false

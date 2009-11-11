@@ -5,7 +5,6 @@ require 'ooor'
 include Ooor
 require 'parseconfig'
 # This class map OpenERP XMLRPC actions
-
 class ScenarioUtils
     
     def initialize
@@ -18,7 +17,7 @@ class ScenarioUtils
     end
     #read the base.conf file to set all the parameter to begin an xml rpc session with openerp
     #you can override any of the parameters
-    def setConnexionfromConf(user=false, password=false, database=false, host=false, port=false, quiet=true)
+    def setConnexionfromConf(user=false, password=false, database=false, host=false, port=false, log_level=Logger::ERROR)
         my_config = ParseConfig.new('base.conf')
         @port = my_config.get_value('port')
         @user =  my_config.get_value('user')
@@ -40,9 +39,19 @@ class ScenarioUtils
         if port :
             @port = port
         end
-        Ooor.reload!({:url => "http://#{@host}:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd, :log_level=>Logger::ERROR})
-    end   
+        Ooor.reload!({:url => "http://#{@host}:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd, :log_level=>log_level})
+    end 
+    
+    def ready?
+        return Ooor.loaded?
+    end
+    
+    def login(user,pass)
+        return Ooor.global_login(user, pass)
+    end
+      
 end
+
 
 ## just an idea of devloppement  to directely connect to database
 # class OERPDBConnector

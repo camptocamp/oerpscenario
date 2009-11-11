@@ -3,7 +3,8 @@ Feature check finance
   In order to test the invoicing process and modules
   As an administator
   I want to see if the basics behaviors work 
-  @billing @account @addons 
+  
+  @account @addons @billing 
   Background:
       Given I am loged as admin user with password admin used
       And the company currency is set to EUR 
