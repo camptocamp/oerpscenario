@@ -24,11 +24,14 @@ Feature check finance
   @billing @account @addons 
   Scenario: check_account_move_created_invoice
     Given I take the created invoice MySupplierInvoice
-    Then I should have an linked account move with 2 lines with a posted status
-    And the associated account move debit amount should be = 608.27 on the account choosen in the invoice line
-    And the amount currency should be 1000.0 CHF with a valid status
-    And the associated account move credit amount should be = 608.27 on the account of the partner account payable property
-    And the amount currency should be -1000.0 CHF with a valid status
+    Then I should have a linked account move with 2 lines and a posted status
+    And the associated debit account move line should use the account choosen in the invoice line and have the following values:
+    |debit|amount_currency|currency|status|
+    |608.27|1000.0|CHF|valid|
+    And the associated credit account move line should use the account of the partner account payable property and have the following values:
+    |credit|amount_currency|currency|status|
+    |608.27|-1000.0|CHF|valid|
+
 
   @billing @account @addons 
   Scenario: make_and_validate_payments_with_bank_statement

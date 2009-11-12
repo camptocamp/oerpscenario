@@ -97,25 +97,44 @@ Given /^I take the created invoice (\w+)$/ do |inv_name|
   @invoice=AccountInvoice.find(:first,:domain=>[['name','=',inv_name]])
 end
 
-Then /^I should have an linked account move with 2 lines with a posted status$/ do
-  
+Then /^I should have a linked account move with (\w+) lines and a (\w+) status$/ do |number_line,status|
+  @invoice.move_id.state.should == status
+  @invoice.move_id.line_id.length.should == number_line.to_i
 end
 
-Then /^the associated account move debit amount should be = 608\.27 on the account choosen in the invoice line$/ do
-  
+Then /^the associated debit account move line should use the account choosen in the invoice line and have the following values:$/ do |table|
+  # table is a Cucumber::Ast::Table
+  table.hashes.each do |line|
+    @invoice.move_id.line_id.each do |inv_line|
+      unless inv_line.debit.zero? :
+        inv_line.debit.should == line[:debit].to_f
+        inv_line.credit.should == 0.0
+        inv_line.amount_currency.should == line[:amount_currency].to_f
+        inv_line.currency_id.code.should == line[:currency]
+        inv_line.account_id.id.should == @invoice.invoice_line[0].account_id.id
+        inv_line.state.should == line[:status]
+      end
+    end
+  end
 end
 
-Then /^the amount currency should be 1000\.0 CHF with a valid status$/ do
-  
+Then /^the associated credit account move line should use the account of the partner account payable property and have the following values:$/ do |table|
+  # table is a Cucumber::Ast::Table
+  table.hashes.each do |line|
+    @invoice.move_id.line_id.each do |inv_line|
+      unless inv_line.credit.zero? :
+        inv_line.credit.should == line[:credit].to_f
+        inv_line.debit.should == 0.0
+        inv_line.amount_currency.should == line[:amount_currency].to_f
+        inv_line.currency_id.code.should == line[:currency]
+        # TODO : Implement check on partner property AND add on_change partner instead of using any account
+        # inv_line.account_id.id.should == @invoice.invoice_line[0].account_id.id
+        inv_line.state.should == line[:status]
+      end
+    end
+  end
 end
 
-Then /^the associated account move credit amount should be = 608\.27 on the account of the partner account payable property$/ do
-  
-end
-
-Then /^the amount currency should be \-1000\.0 CHF with a valid status$/ do
-  
-end
 
 # --------------------------------------------------------
 #           Scenario: make_and_validate_payments_with_bank_statement
