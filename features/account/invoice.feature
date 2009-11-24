@@ -13,7 +13,10 @@ Feature check finance
       |EUR|1.000|01-01-2009|
       |CHF|1.644|01-01-2009|
       |CHF|1.500|09-09-2009|
-
+      And a cash journal in USD exists
+      And a cash journal in CHF exists
+      And a cash journal in EUR exists
+      
   @billing @account @addons 
   Scenario: validate_created_invoice
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoice
@@ -32,17 +35,12 @@ Feature check finance
     |credit|amount_currency|currency|status|
     |608.27|-1000.0|CHF|valid|
 
-
-  @billing @account @addons 
-  Scenario: make_and_validate_payments_with_bank_statement
-    Given I take the created invoice MySupplierInvoice
-    And I make a new bank statement
-
-
   @billing @account @addons 
   Scenario: make_and_validate_payments_with_pay_invoice_wizard
     Given I take the created invoice MySupplierInvoice
     And I call the Pay invoice wizard
+    When I partially pay 200.0 CHF.- on the 10 jan 2009
+    Then I should see a residual amount of 800.0 CHF.-
 
     
     
