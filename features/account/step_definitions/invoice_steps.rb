@@ -65,7 +65,7 @@ Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) w
   #        date_invoice=False, payment_term=False, partner_bank_id=False):
   @invoice.on_change('onchange_partner_id',1,inv_type,@partner.id,date,false,false)
   
-  # Create a line = amount
+  # Create a line = amount for the created invoice
   @invoice.create
   line=AccountInvoiceLine.new(
     :account_id => AccountAccount.find(:first, :domain=>[['type','=','other']]).id,
@@ -78,10 +78,12 @@ Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) w
 end
 
 When /^I press the valiate button$/ do
-  AccountInvoice.rpc_exec_workflow('invoice_open',@invoice.id)
+  # Call the 'invoice_open' method from account.invoice openobject
+  @invoice.wkf_action('invoice_open')
 end
 
 Then /^I should see the invoice (\w+) (\w+)$/ do |name,state|
+  # Take the invoice
   @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name]])
   @invoice.state.should == state
 end
