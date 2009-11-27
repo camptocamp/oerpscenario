@@ -70,38 +70,11 @@ end
 # --------------------------------------------------------
 Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) without tax called (\w+)$/ do |date,inv_type,amount,currency,name|
   # Take first supplier partner with at least one address
-  res=ResPartner.find(:all,:domain=>[ ['supplier','=',true] ])
-  res.should be_true
-  res.each do |part|
-      if (part.address.length >0) :
-          @partner = part
-          break
-       end
-  end
+  @partner=ResPartner.browse_first_supplier()
   @partner.should be_true
-  date=Date.parse(str=date).to_s
-  @invoice=AccountInvoice.new({
-    :type => inv_type, 
-    :name => name,
-    :currency_id => ResCurrency.find(:first, :domain=>[['code','=',currency]]).id,
-    :partner_id => @partner.id,
-    :date_invoice => date,
-    :check_total => amount.to_f,
-  })
-  # call of def onchange_partner_id(self, cr, uid, ids, type, partner_id,
-  #        date_invoice=False, payment_term=False, partner_bank_id=False):
-  @invoice.on_change('onchange_partner_id',1,inv_type,@partner.id,date,false,false)
-  
-  # Create a line = amount for the created invoice
-  @invoice.create
-  line=AccountInvoiceLine.new(
-    :account_id => AccountAccount.find(:first, :domain=>[['type','=','other']]).id,
-    :quantity => 1,
-    :price_unit => amount.to_f,
-    :name => name+' line',
-    :invoice_id => @invoice.id
-  )
-  line.create
+  # Create an invoice with a line = amount
+  @invoice=AccountInvoice.create_cust_invoice_with_currency('my name',@partner,'CHF', date, amount.to_f)
+
 end
 
 When /^I press the valiate button$/ do
