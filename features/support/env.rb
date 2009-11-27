@@ -19,5 +19,5 @@ rescue Exception => e
 end
 
 # Add extra-functions
-require 'lib/ERPFunctionAdds/Partner'
-require 'lib/ERPFunctionAdds/Invoice'
+Dir["lib/Helpers/*.rb"].each {|file| require file }
+

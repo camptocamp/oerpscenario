@@ -4,7 +4,7 @@ require 'rubygems'
 require 'ooor'
 include Ooor
 require 'parseconfig'
-# This class map OpenERP XMLRPC actions
+# This class map OpenERP XMLRPC logins and common stuff
 class ScenarioUtils
     
     def initialize
@@ -51,30 +51,3 @@ class ScenarioUtils
     end
       
 end
-
-
-## just an idea of devloppement  to directely connect to database
-# class OERPDBConnector
-#     def initialize
-#         @port = port
-#         @user = user
-#         @dbname = database
-#         @pwd = password 
-#         @host = host  
-#     end
-# 
-#     def setConnexion(user, password, host, database, dbport, port=5432 )
-#         @port = port
-#         @user = user
-#         @dbname = database
-#         @pwd = password 
-#         @host = host
-#         ActiveRecord::Base.establish_connection(:adapter => 'postgresql',
-#         :host => @host,
-#         :username => @user,
-#         :database =>  @dbname,
-#         :password => @pwd,
-#         :port =>  @port)
-#     end
-# 
-# end

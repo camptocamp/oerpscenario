@@ -1,5 +1,7 @@
 #Author Nicolas Bessi 2009 
 #copyright Camptocamp SA
+@invoice = false
+
 Before do
     # Initiate vars used to stored object used trought the tests
     @partner = false
@@ -8,60 +10,8 @@ Before do
     @prod = false
     @currency = false
     @company = false
-    @invoice = false
     @wizard  = false
     @journal = false
-end
-
-
-# --------------------------------------------------------
-#           Background
-# --------------------------------------------------------
-
-# And the company currency is set to EUR 
-Given /^the company currency is set to (\w+)$/ do |currency| 
-  # TODO not the first, but the one of the user..
-  @company = ResCompany.find(:first)
-  @cmpcurrency = ResCurrency.find(:first, :domain=>[['code','=',currency]])
-  @company.currency_id = @cmpcurrency.id
-  @company.save
-end
-
-# Reset all named currencies to given rates
-Given /^the following currency rate settings are:$/ do |currencies|
-  # TODO : Optimize that, I make it not that good :(
-  # clean rate on currency before set them
-  currencies.hashes.each do |c|
-    rate_to_clean = ResCurrencyRate.find(:first, :domain=>[['currency_id','=',ResCurrency.find(:first, :domain=>[['code','=',c[:code]]]).id]])
-    rate_to_clean.destroy
-  end
-  currencies.hashes.each do |c|
-    c[:currency_id] = ResCurrency.find(:first, :domain=>[['code','=',c[:code]]]).id
-    ResCurrencyRate.create(c)
-  end
-end
-
-# Look for a journal in the asked currency, if doen't exist then create it
-Given /^a (\w+) journal in (\w+) exists$/ do |type,currency|
-  # Take the currency
-  currency_id = ResCurrency.find(:first, :domain=>[['code','=',currency]]).id
-  # Look for the asked journal
-  journal = AccountJournal.find(:first, :domain=>[['type','=',type],['currency','=',currency_id]])
-  if not journal:
-    journal = AccountJournal.new({
-      :type => type,
-      :name => type + ' ' + currency + ' Journal',
-      # Take the first found view
-      :view_id => AccountJournalView.find(:first).id,
-      # Take the first sequence with 'Account Journal' code
-      :sequence_id => IrSequence.find(:first, :domain =>[['code','=','Account Journal']]).id,
-      # Take the first cash account for both debit and credit
-      :default_debit_account_id => AccountAccount.find(:first, :domain => [['type','=',type]]).id,
-      :default_credit_account_id => AccountAccount.find(:first, :domain => [['type','=',type]]).id,
-      :currency => currency_id,
-    })
-    journal.create
-  end
 end
 
 
@@ -70,10 +20,10 @@ end
 # --------------------------------------------------------
 Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) without tax called (\w+)$/ do |date,inv_type,amount,currency,name|
   # Take first supplier partner with at least one address
-  @partner=ResPartner.browse_first_supplier()
+  @partner=ResPartner.get_valid_partner({:type=>'supplier'})
   @partner.should be_true
   # Create an invoice with a line = amount
-  @invoice=AccountInvoice.create_cust_invoice_with_currency('my name',@partner,'CHF', date, amount.to_f)
+  @invoice=AccountInvoice.create_invoice_with_currency(name, @partner, {:currency_code=>'CHF', :date=>date, :amount=>amount.to_f, :type=>'in_invoice'})
 
 end
 
