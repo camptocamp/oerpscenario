@@ -22,12 +22,6 @@ Feature check finance
     |credit|amount_currency|currency|status|
     |608.27|-1000.0|CHF|valid|
 
-  @billing @account @addons 
-  Scenario: make_and_validate_payments_with_pay_invoice_wizard
-    Given I take the created invoice MySupplierInvoice
-    And I call the Pay invoice wizard
-    When I partially pay 200.0 CHF.- on the 10 jan 2009
-    Then I should see a residual amount of 800.0 CHF.-
 
     
     
