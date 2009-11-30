@@ -1,3 +1,10 @@
+###############################################################################
+#
+#    OERPScenario, OpenERP Functional Tests
+#    Copyright 2009 Camptocamp SA
+#
+##############################################################################
+
 Feature basic action
   In order to do BDD
   As a power user

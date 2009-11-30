@@ -1,3 +1,10 @@
+###############################################################################
+#
+#    OERPScenario, OpenERP Functional Tests
+#    Copyright 2009 Camptocamp SA
+#
+##############################################################################
+
 @sample @testpartnersample
 Feature test partner
   In order to test my demo

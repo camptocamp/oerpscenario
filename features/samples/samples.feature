@@ -1,3 +1,10 @@
+###############################################################################
+#
+#    OERPScenario, OpenERP Functional Tests
+#    Copyright 2009 Camptocamp SA
+#
+##############################################################################
+
 @sample
 Feature check migration
   In order to test my migration

@@ -1,3 +1,10 @@
+###############################################################################
+#
+#    OERPScenario, OpenERP Functional Tests
+#    Copyright 2009 Camptocamp SA
+#
+##############################################################################
+
 @account @addons  
 Feature check finance
   In order to test the invoicing process and modules

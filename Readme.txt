@@ -1,14 +1,29 @@
-------------------------------------------------------
-|                     OERPScenario                   |
-------------------------------------------------------
-Authors : Nicolas Bessi & Joel Grand-Guillaume 2009 
-Copyright Camptocamp SA
-------------------------------------------------------
-------------------------------------------------------
+###############################################################################
+                                OERPScenario                   
+###############################################################################
+#
+#    OERPScenario, OpenERP Functional Tests
+#    Author Nicolas Bessi & Joel Grand-Guillaume 2009 
+#    Copyright Camptocamp SA
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
 
------------
+
 MORE INFOS 
------------
+##############################################################################
 
 Find infos about OERPScenario here : https://launchpad.net/oerpsenario
 
@@ -16,9 +31,9 @@ Find infos about Cucumber library here : http://cukes.info/
 
 Find infos about Ooor here : http://github.com/rvalyi/ooor
 
--------------------------------
+
 USING THE TESTS SUITES SCENARIO 
--------------------------------
+##############################################################################
 
 We use the test scenario using tags. You can find different types of tags, like:
  - @account     : This tag represent all tests scenario related to the account module of OpenERP
@@ -31,9 +46,9 @@ cucumber features --tag=@invoicing,@account
 
 Where "invoicing" and "account" are the desired tests scenario.
 
------------
+
 GUIDE LINES 
------------
+##############################################################################
 
 Be kind to follow the given instructions when writting tests scenario :) !
 

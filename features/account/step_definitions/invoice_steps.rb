@@ -1,7 +1,25 @@
-#Author Nicolas Bessi 2009 
-#copyright Camptocamp SA
-@invoice = false
+###############################################################################
+#
+#    OERPScenario, OpenERP Functional Tests
+#    Author Nicolas Bessi & Joel Grand-Guillaume 2009 
+#    Copyright Camptocamp SA
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
 
+@invoice = false
 Before do
     # Initiate vars used to stored object used trought the tests
     @partner = false
@@ -15,9 +33,11 @@ Before do
 end
 
 
-# --------------------------------------------------------
+##############################################################################
 #           Scenario: validate_created_invoice
-# --------------------------------------------------------
+##############################################################################
+
+##############################################################################
 Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) without tax called (\w+)$/ do |date,inv_type,amount,currency,name|
   # Take first supplier partner with at least one address
   @partner=ResPartner.get_valid_partner({:type=>'supplier'})
@@ -27,34 +47,41 @@ Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) w
 
 end
 
+##############################################################################
 When /^I press the valiate button$/ do
   # Call the 'invoice_open' method from account.invoice openobject
   @invoice.wkf_action('invoice_open')
 end
 
+##############################################################################
 Then /^I should see the invoice (\w+) (\w+)$/ do |name,state|
   # Take the invoice
   @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name],['state','=',state]])
   @invoice.state.should == state
 end
 
+##############################################################################
 Then /^the residual amount = (.*)$/ do |amount|
   @invoice.amount_total.should == amount.to_f
 end
 
-# --------------------------------------------------------
+##############################################################################
 #           Scenario: check_account_move_created_invoice
-# --------------------------------------------------------
+##############################################################################
+
+##############################################################################
 Given /^I take the created invoice (\w+)$/ do |inv_name|
   # Take the inv_name with open state
   @invoice=AccountInvoice.find(:first,:domain=>[['name','=',inv_name],['state','=','open']])
 end
 
+##############################################################################
 Then /^I should have a linked account move with (\w+) lines and a (\w+) status$/ do |number_line,status|
   @invoice.move_id.state.should == status
   @invoice.move_id.line_id.length.should == number_line.to_i
 end
 
+##############################################################################
 Then /^the associated debit account move line should use the account choosen in the invoice line and have the following values:$/ do |table|
   # table is a Cucumber::Ast::Table
   table.hashes.each do |line|
@@ -71,6 +98,7 @@ Then /^the associated debit account move line should use the account choosen in 
   end
 end
 
+##############################################################################
 Then /^the associated credit account move line should use the account of the partner account payable property and have the following values:$/ do |table|
   # table is a Cucumber::Ast::Table
   table.hashes.each do |line|
@@ -87,14 +115,4 @@ Then /^the associated credit account move line should use the account of the par
     end
   end
 end
-
-
-
-
-
-
-
-# --------------------------------------------------------
-#           Not Use anymore
-# --------------------------------------------------------
 

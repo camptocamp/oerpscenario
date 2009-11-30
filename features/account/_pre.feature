@@ -1,4 +1,11 @@
-@account @addons  @invoicing
+###############################################################################
+#
+#    OERPScenario, OpenERP Functional Tests
+#    Copyright 2009 Camptocamp SA
+#
+##############################################################################
+
+@account @addons @invoicing
 Feature ensure finance test
   In order to be sure that the data are set correctely to run finance set
   As an administator
