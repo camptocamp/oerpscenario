@@ -4,7 +4,11 @@
 Authors : Nicolas Bessi & Joel Grand-Guillaume 2009 
 Copyright Camptocamp SA
 ------------------------------------------------------
+------------------------------------------------------
 
+-----------
+MORE INFOS 
+-----------
 
 Find infos about OERPScenario here : https://launchpad.net/oerpsenario
 
@@ -12,10 +16,40 @@ Find infos about Cucumber library here : http://cukes.info/
 
 Find infos about Ooor here : http://github.com/rvalyi/ooor
 
+-------------------------------
+USING THE TESTS SUITES SCENARIO 
+-------------------------------
+
+We use the test scenario using tags. You can find different types of tags, like:
+ - @account     : This tag represent all tests scenario related to the account module of OpenERP
+ - @addons      : This tag represent all tests scenario related to the addons branch of OpenERP
+ - @invoicing   : This tag represent all tests scenario related to the invoicing process of OpenERP
+
+Launch the test suite with :
+
+cucumber features --tag=@invoicing,@account
+
+Where "invoicing" and "account" are the desired tests scenario.
+
+-----------
 GUIDE LINES 
 -----------
 
 Be kind to follow the given instructions when writting tests scenario :) !
+
+Write a new test scenario:
+--------------------------
+
+Tag:
+----
+
+The tag need to be set carefully because it's the way we use the test scenario suite. Add tage for:
+ - Branch name, like @addons, @extra-addons
+ - Module name, like @account, @stock
+ - Scenario name, like @invoicing
+
+A scenario represent a whole test case, using different module and features. Because all tests are already explained / descried through
+the Gherkin syntax, you don't really need to provide any docs on them.
 
 Folder structure and file name:
 -------------------------------

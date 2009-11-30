@@ -4,14 +4,14 @@ Feature check finance
   As an administator
   I want to see if the basics behaviors work 
       
-  @billing @account @addons 
+  @invoicing @account @addons 
   Scenario: validate_created_invoice
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoice
     When I press the valiate button
     Then I should see the invoice MySupplierInvoice open
     And the residual amount = 1000,0
   
-  @billing @account @addons 
+  @invoicing @account @addons 
   Scenario: check_account_move_created_invoice
     Given I take the created invoice MySupplierInvoice
     Then I should have a linked account move with 2 lines and a posted status

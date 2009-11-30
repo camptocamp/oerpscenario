@@ -4,7 +4,7 @@ Feature check pay invoice wizard
   As an administator
   I want to see if the basics behaviors work
   
-    @billing @account @addons 
+    @invoicing @account @addons 
     Scenario: make_and_validate_payments_with_pay_invoice_wizard
       Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoicePayWizard
       When I press the valiate button

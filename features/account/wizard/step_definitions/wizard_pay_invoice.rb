@@ -19,7 +19,6 @@ end
 # --------------------------------------------------------
 
 Given /^I call the Pay invoice wizard$/ do
-  # TODO Find a way to call wizard
   @wizard = @invoice.old_wizard_step('account.invoice.pay') #tip: you can inspect the wizard fields, arch and datas
   @wizard.should be_true
 end
@@ -41,15 +40,16 @@ When /^I partially pay (.*) (\w+)\.\- on the (.*)$/ do |amount,currency,date_p|
   step_dict['writeoff_acc_id'] = writeoff_acc_id
   step_dict['writeoff_journal_id'] = @journal.id
   step_dict['comment'] = 'OERPScenario test'
-  # require 'yaml'
-  # puts @wizard.to_yaml
-  # step_dict['period_id'] = AccountPeriod.find(:first, :domain => [['']])
-  # @wizard.reconcile(step_dict)
-  # @wizard.reconcile({"date" => date_p,"amount" => amount.to_f, "journal_id" => @journal.id, "writeoff_acc_id" => writeoff_acc_id,"writeoff_journal_id" => @journal.id, "comment" => 'OERPScenario test'})
-  # wizard.reconcile({:journal_id => 6, :name =>"from_rails"}) #if you want to pay all; will give you a reloaded invoice
-  # if you want a payment with a write off:
-  # wizard.writeoff_check({"amount" => 12, "journal_id" => 6, "name" =>'from_rails'}) #use the button name as the wizard method
-  # wizard.reconcile({required missing write off fields...}) #will give you a reloaded invoice because state is 'end'
+  require 'yaml'
+  puts @wizard.to_yaml
+  
+  # $ inv = AccountInvoice.find(4)
+  # $ wizard = inv.old_wizard_step('account.invoice.pay') #tip: you can inspect the wizard fields, arch and datas
+  # $ wizard.reconcile({:journal_id => 6, :name =>"from_rails"}) #if you want to pay all; will give you a reloaded invoice
+  # $ #or if you want a payment with a write off:
+  # $ wizard.writeoff_check({"amount" => 12, "journal_id" => 6, "name" =>'from_rails'}) #use the button name as the wizard method
+  # $ wizard.reconcile({required missing write off fields...}) #will give you a reloaded invoice because state is 'end'
+  # $ TODO test and document new osv_memory wizards API
   
   
 end

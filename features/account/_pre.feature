@@ -1,10 +1,10 @@
-@account @addons  @billing
+@account @addons  @invoicing
 Feature ensure finance test
   In order to be sure that the data are set correctely to run finance set
   As an administator
   I want to see if the basics settings are done
   
-  @account @addons @billing 
+  @account @addons @invoicing 
   Background:
       Given I am loged as admin user with password admin used
       And the company currency is set to EUR 
