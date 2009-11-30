@@ -13,6 +13,7 @@ Feature ensure finance test
       |EUR|1.000|01-01-2009|
       |CHF|1.644|01-01-2009|
       |CHF|1.500|09-09-2009|
+      |USD|1.3785|01-01-2009|
       And a cash journal in USD exists
       And a cash journal in CHF exists
       And a cash journal in EUR exists

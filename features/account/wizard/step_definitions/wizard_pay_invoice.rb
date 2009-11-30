@@ -1,4 +1,4 @@
-#Author Nicolas Bessi 2009 
+#Author Nicolas Bessi & Joel Grand-Guillaume 2009 
 #copyright Camptocamp SA
 @invoice = false
 
@@ -24,36 +24,38 @@ Given /^I call the Pay invoice wizard$/ do
 end
 
 
-When /^I partially pay (.*) (\w+)\.\- on the (.*)$/ do |amount,currency,date_p|
+And /^I partially pay (.*) (\w+)\.\- on the (.*)$/ do |amount,currency,date_p|
   date_p=Date.parse(str=date_p).to_s
   # Look for the right currency journal
   @journal = AccountJournal.find(:first, :domain=>[['currency','=',ResCurrency.find(:first, :domain=>[['code','=',currency]]).id]])
   @journal.should be_true
-  step_dict=@wizard.datas
-  step_dict["amount"] = amount.to_f
-  step_dict["journal_id"] = @journal.id
-  step_dict["name"] ='OERPScenario test'
-  step_dict["date"] = date_p
-  @wizard.writeoff_check(step_dict) #use the button name as the wizard method
-  # take the writeoff account
-  writeoff_acc_id = false
-  step_dict['writeoff_acc_id'] = writeoff_acc_id
-  step_dict['writeoff_journal_id'] = @journal.id
-  step_dict['comment'] = 'OERPScenario test'
-  require 'yaml'
-  puts @wizard.to_yaml
-  
-  # $ inv = AccountInvoice.find(4)
-  # $ wizard = inv.old_wizard_step('account.invoice.pay') #tip: you can inspect the wizard fields, arch and datas
-  # $ wizard.reconcile({:journal_id => 6, :name =>"from_rails"}) #if you want to pay all; will give you a reloaded invoice
-  # $ #or if you want a payment with a write off:
-  # $ wizard.writeoff_check({"amount" => 12, "journal_id" => 6, "name" =>'from_rails'}) #use the button name as the wizard method
-  # $ wizard.reconcile({required missing write off fields...}) #will give you a reloaded invoice because state is 'end'
-  # $ TODO test and document new osv_memory wizards API
-  
-  
+  # Set the wizard with given values
+  step_dict = @wizard.datas.merge({:amount=>amount.to_f, :journal_id=>@journal.id, :name=>'OERPScenario test', :date=>date_p})
+  @wizard.reconcile(step_dict)
 end
+
+Then /^I completely pay the residual amount in (\w+) on the (.*)$/ do |currency,date_p|
+  date_p=Date.parse(str=date_p).to_s
+  # Look for the right currency journal
+  @journal = AccountJournal.find(:first, :domain=>[['currency','=',ResCurrency.find(:first, :domain=>[['code','=',currency]]).id]])
+  @journal.should be_true
+  # Set the wizard with given values
+  step_dict = @wizard.datas.merge({:journal_id=>@journal.id, :name=>'OERPScenario test', :date=>date_p})
+  # Ask for writeoff check and update values
+  res=@wizard.writeoff_check(step_dict)
+  step_dict=res.datas.merge(step_dict)
+  # Ask for reconcile and get comment if write-off occure
+  res=@wizard.addendum(step_dict)
+  step_dict=res.datas.merge(step_dict)
+  # set the writeoff account = same account than the jouranl default debit one (doesn't really matters for this test)
+  step_dict = step_dict.merge({:writeoff_acc_id => @journal.default_debit_account_id.id, :writeoff_journal_id=>@journal.id})
+  # Finally reconile the invoice
+  @wizard.reconcile(step_dict)
+end
+
 
 Then /^I should see a residual amount of (.*) (\w+)\.\-$/ do |amount,currency|
   @invoice.residual.should == amount.to_f 
 end
+
+
