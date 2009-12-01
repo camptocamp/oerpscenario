@@ -32,6 +32,86 @@ Find infos about Cucumber library here : http://cukes.info/
 Find infos about Ooor here : http://github.com/rvalyi/ooor
 
 
+HOW AND WHY
+##############################################################################
+
+This project is based on cucumber http://cukes.info/ library. We use also the Ooor 
+mapper from RValyi that allows you to do the basic actions like: read, search, 
+write, execute, unlink, create, 
+
+We have choosen to use those library for those main reasons:
+
+-It's separated from OpenERP. We do not want to have a scenario tools integrated
+ with the ERP. In order to avoid ERP bug repercution in the system
+
+-It allows business specialists to write test without having any technical skills,
+ and allows the devloppers to semantikly implements the tests
+ 
+-It allow you to code new tests scenarios very quickly
+
+-It allows to internationalise tests (translation and so on)
+
+-The active record connector will allow us to do database validation 
+ and why not, one day, corrections on the fly.
+
+-It is modular, so you can create separate features and steps files that will
+ allow you to create customer specific tests.
+
+-It is fully integrated to rails, that means in a near futur, we'll be able to 
+ create a web site where users will input the server parameters and see results 
+ in live. (This is why we release it under GPLv3.0 AFFERO Licence)
+
+-Ruby and Ooor Rocks
+
+
+TRY IT : SETUP AND INSTALLATION !
+##############################################################################
+
+Install libraries
+------------------
+
+To install it, you need ruby and optionnaly Postgresql install depending
+which server you wanna use :
+
+sudo gem install cucumber
+sudo gem install activeresource
+sudo gem install rspec
+sudo gem install parseconfig
+sudo gem install ooor --source http://gemcutter.org
+
+Get the sources
+------------------
+
+bzr branch lp:oerpsenario
+
+Configure it
+------------------
+
+Change the parameter file "base.conf" according to your settings:
+
+port = 8069
+user = admin
+database = mydatabase
+password = toto
+host = localhost
+
+!!! Watch out !!! 
+
+In our samples (both base.conf and _basic.feature), the admin user has the password set to 'admin'. 
+You have here two things to differenciate:
+
+1. The password into the base.conf, for connexion purpose
+2. The password use by one of the scenario (_basic.feature) to run the test case
+
+For the second one, the textual description of the scenario is parsed by the cucumber library to
+give the right password to run the test. This means the test case try to login with a given password. 
+In order to change that, you need to edit the description of each concerned scenario 
+and change it according to your settings. Here an example:
+
+Background: login
+  Given I am loged as admin user with password MY_NEW_PASSWORD used
+
+
 USING THE TESTS SUITES SCENARIO 
 ##############################################################################
 
@@ -42,18 +122,24 @@ We use the test scenario using tags. You can find different types of tags, like:
 
 Launch the test suite with :
 
+cd oerpsenario
 cucumber features --tag=@invoicing,@account
 
-Where "invoicing" and "account" are the desired tests scenario.
+Where "invoicing" and "account" are the desired tests scenario. You can add also an output format
+like :
+
+cucumber features --tag=@invoicing,@account --format=html >/tmp/result.html&&open  /tmp/result.html
 
 
-GUIDE LINES 
+GUIDE LINES TO CONTRIBUTE
 ##############################################################################
 
 Be kind to follow the given instructions when writting tests scenario :) !
 
 Write a new test scenario:
 --------------------------
+
+TODO
 
 Tag:
 ----
