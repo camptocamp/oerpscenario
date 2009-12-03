@@ -140,8 +140,11 @@ When /^I press the set to draft button$/ do
 end
 ##############################################################################
 Given /^the entries on the invoice related journal can be cancelled$/ do
-  @invoice.journal_id.update_posted=true
-  @invoice.save
+  journal=AccountJournal.find(@invoice.journal_id.id)
+  journal.update_posted=true
+  journal.save
+  journal.update_posted.should be_true
+  @invoice=AccountInvoice.find(@invoice.id)
 end
 ##############################################################################
 

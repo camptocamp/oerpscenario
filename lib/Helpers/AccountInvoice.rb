@@ -78,8 +78,8 @@ AccountInvoice.class_eval do
         
         # Set amount and line if asked for
         toreturn.create
-        toreturn.type = o[:type]
-        toreturn.save
+        # toreturn.type = o[:type]
+        # toreturn.save
         if o[:amount] :
             if ['in_invoice', 'in_refund'].include? o[:type] :
                 toreturn.check_total = o[:amount]
