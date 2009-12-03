@@ -25,7 +25,9 @@ include Ooor
 
 
 # Add useful methode on partner handling
+##############################################################################
 ResPartner.class_eval do 
+    ##########################################################################
     # Return the first encountred supplier with at least one address
     # Input :
     #  - 

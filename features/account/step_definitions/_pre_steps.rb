@@ -32,8 +32,6 @@ end
 
 ##############################################################################
 Given /^the following currency rate settings are:$/ do |currencies|
-  # TODO : Optimize that, I make it not that good :(
-  # clean rate on currency before set them
   currencies.hashes.each do |c|
     rate_to_clean = ResCurrencyRate.find(:first, :domain=>[['currency_id','=',ResCurrency.find(:first, :domain=>[['code','=',c[:code]]]).id]])
     if rate_to_clean :

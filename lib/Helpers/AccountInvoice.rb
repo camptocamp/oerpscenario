@@ -24,17 +24,21 @@ include Ooor
 require 'pp'
 
 # Add useful methode on invoice handling
+##############################################################################
 AccountInvoice.class_eval do 
+    ##########################################################################
     # Create an invoice with given informations
     # Add a line if amount <> false, the account could be provided or not
     # Input :
     #  - name : Name of the invoice
     #  - partner : A valid ResPartner instance
-    #  - currency_code (Default : EUR) : An ISO code for currency
-    #  - date (Default : false) : A date in this text format : 1 jan 2009
-    #  - amount (Default : false) : An amount for the invoice => this will create a line 
-    #  - account (Default : false) : An valide AccountAccount
-    #  - type (Default : out_invoice) : the invoice type
+    #  - option {
+    #    currency_code (Default : EUR) : An ISO code for currency
+    #    date (Default : false) : A date in this text format : 1 jan 2009
+    #    amount (Default : false) : An amount for the invoice => this will create a line 
+    #    account (Default : false) : An valide AccountAccount
+    #    type (Default : out_invoice) : the invoice type
+    #  }
     # Return
     #  - The created AccountInvoice as a instance of the class¨
     # Usage Example:

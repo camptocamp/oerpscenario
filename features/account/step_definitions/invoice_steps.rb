@@ -43,8 +43,8 @@ Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) w
   @partner=ResPartner.get_valid_partner({:type=>'supplier'})
   @partner.should be_true
   # Create an invoice with a line = amount
-  @invoice=AccountInvoice.create_invoice_with_currency(name, @partner, {:currency_code=>'CHF', :date=>date, :amount=>amount.to_f, :type=>'in_invoice'})
-
+  @invoice=AccountInvoice.create_invoice_with_currency(name, @partner, {:currency_code=>currency, :date=>date, :amount=>amount.to_f, :type=>inv_type})
+  
 end
 
 ##############################################################################
@@ -56,7 +56,8 @@ end
 ##############################################################################
 Then /^I should see the invoice (\w+) (\w+)$/ do |name,state|
   # Take the invoice
-  @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name],['state','=',state]])
+  # @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name],['state','=',state]])
+  @invoice.should be_true
   @invoice.state.should == state
 end
 
@@ -73,6 +74,7 @@ end
 Given /^I take the created invoice (\w+)$/ do |inv_name|
   # Take the inv_name with open state
   @invoice=AccountInvoice.find(:first,:domain=>[['name','=',inv_name],['state','=','open']])
+  @invoice.should be_true
 end
 
 ##############################################################################
@@ -116,3 +118,33 @@ Then /^the associated credit account move line should use the account of the par
   end
 end
 
+
+##############################################################################
+#           Scenario: cancel_recreate_created_invoice
+##############################################################################
+
+##############################################################################
+When /^I press the cancel button$/ do
+  # Call the 'invoice_open' method from account.invoice openobject
+  @invoice.wkf_action('invoice_cancel')
+end
+##############################################################################
+Then /^no more link on an account move$/ do
+  @invoice.attributes['move_id'].should be_false
+end
+##############################################################################
+When /^I press the set to draft button$/ do
+  # Call the 'invoice_open' method from account.invoice openobject
+  @invoice.call('action_cancel_draft',[@invoice.id])
+  @invoice=AccountInvoice.find(@invoice.id)
+end
+##############################################################################
+Given /^the entries on the invoice related journal can be cancelled$/ do
+  @invoice.journal_id.update_posted=true
+  @invoice.save
+end
+##############################################################################
+
+Then /^the invoice should appear as paid invoice \(checkbox tic\)$/ do
+  @invoice.reconciled.should be_true
+end

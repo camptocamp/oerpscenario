@@ -18,7 +18,7 @@ Feature check finance
     Then I should see the invoice MySupplierInvoice open
     And the residual amount = 1000,0
   
-  @invoicing @account @addons 
+  @invoicing @account @addons
   Scenario: check_account_move_created_invoice
     Given I take the created invoice MySupplierInvoice
     Then I should have a linked account move with 2 lines and a posted status
@@ -29,6 +29,15 @@ Feature check finance
     |credit|amount_currency|currency|status|
     |608.27|-1000.0|CHF|valid|
 
-
+  @invoicing @account @addons @workflow
+  Scenario: cancel_recreate_created_invoice
+    Given I take the created invoice MySupplierInvoice
+    And the entries on the invoice related journal can be cancelled
+     
+    When I press the cancel button
+    Then I should see the invoice MySupplierInvoice cancel
+    And no more link on an account move
     
+    When I press the set to draft button
+    Then I should see the invoice MySupplierInvoice draft
     
