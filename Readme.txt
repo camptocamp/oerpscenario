@@ -79,6 +79,11 @@ sudo gem install rspec
 sudo gem install parseconfig
 sudo gem install ooor --source http://gemcutter.org
 
+On Ubuntu if ruby  and ruby gem are not installed do (Thanks to C. Almeida for the infos):
+- apt-get install libopenssl-ruby (not self evident)
+- add '/var/lib/gems/1.8/bin' to path 
+
+
 Get the sources
 ------------------
 
