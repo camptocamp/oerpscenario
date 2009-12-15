@@ -19,18 +19,18 @@
 #
 ##############################################################################
 
-@invoice = false
-Before do
-    # Initiate vars used to stored object used trought the tests
-    @partner = false
-    @address = false
-    @account = false
-    @prod = false
-    @currency = false
-    @company = false
-    @wizard  = false
-    @journal = false
-end
+# @invoice = false
+# Before do
+#     # Initiate vars used to stored object used trought the tests
+#     @partner = false
+#     @address = false
+#     @account = false
+#     @prod = false
+#     @currency = false
+#     @company = false
+#     @wizard  = false
+#     @journal = false
+# end
 
 
 ##############################################################################
@@ -51,6 +51,7 @@ end
 When /^I press the valiate button$/ do
   # Call the 'invoice_open' method from account.invoice openobject
   @invoice.wkf_action('invoice_open')
+  @invoice=AccountInvoice.find(@invoice.id)
 end
 
 ##############################################################################
@@ -63,7 +64,8 @@ end
 
 ##############################################################################
 Then /^the residual amount = (.*)$/ do |amount|
-  @invoice.amount_total.should == amount.to_f
+  @invoice=AccountInvoice.find(@invoice.id)
+  @invoice.residual.should == amount.to_f
 end
 
 ##############################################################################

@@ -62,6 +62,7 @@ AccountBankStatement.class_eval do
     
     # # For each invoices, add the right account.move.line and compute total
     invoices.each do |inv|
+      
       unless inv.class  == AccountInvoice :
         raise "!!! --- HELPER ERROR :import_invoice received a #{inv.class.to_s} instead of AccountInvoice" 
       end
@@ -76,6 +77,7 @@ AccountBankStatement.class_eval do
       #           invoice_move_line_ids.push move_line.id
       #         end
       #       end
+      
       inv.move_id.line_id.each do |move_line|
         if move_line.attributes['reconcile_id'] == false and move_line.account_id.reconcile == true
           invoice_move_line_ids.push move_line.id
