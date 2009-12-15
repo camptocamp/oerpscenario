@@ -19,20 +19,20 @@
 #
 ##############################################################################
 
-@invoice = false
-Before do
-    # Initiate vars used to stored object used trought the tests
-    @partner = false
-    @address = false
-    @account = false
-    @prod = false
-    @currency = false
-    @company = false
-    @wizard  = false
-    @journal = false
-    @statement = false
-end
-
+# # @invoice = false
+# Before do
+#     # Initiate vars used to stored object used trought the tests
+#     @partner = false
+#     @address = false
+#     @account = false
+#     @prod = false
+#     @currency = false
+#     @company = false
+#     @wizard  = false
+#     @journal = false
+#     @statement = false
+# end
+# 
 
 ##############################################################################
 #           Scenario: make_and_validate_payments_with_bank_statement
@@ -45,7 +45,8 @@ end
 
 ##############################################################################
 And /^import on the (.*) the invoice called (\w+)$/ do |date,name|
-  @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name]])
+  # @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name]])
+  @invoice.should be_true
   @statement.import_invoice([@invoice],{:date=>date})
 end
 
