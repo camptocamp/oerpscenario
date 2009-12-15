@@ -56,7 +56,7 @@ end
 ##############################################################################
 Then /^I should see the invoice (\w+) (\w+)$/ do |name,state|
   # Take the invoice
-  # @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name],['state','=',state]])
+  @invoice=AccountInvoice.find(@invoice.id)
   @invoice.should be_true
   @invoice.state.should == state
 end

@@ -37,7 +37,10 @@ end
 ##############################################################################
 #           Scenario: make_and_validate_payments_with_bank_statement
 ##############################################################################
-
+Given /^I create a new bank statement called (\w+) with a (\w+) account journal$/ do |statement_name,currency|
+  @statement=AccountBankStatement.create_statement_with_currency({:currency_code => currency,:name => statement_name})
+  @statement.should be_true
+end
 When /^I create a new bank statement with a (\w+) account journal$/ do |currency|
   @statement=AccountBankStatement.create_statement_with_currency({:currency_code => currency})
   @statement.should be_true
@@ -50,20 +53,55 @@ And /^import on the (.*) the invoice called (\w+)$/ do |date,name|
 end
 
 ##############################################################################
+And /^I import on the (.*), the following invoice : (.*)$/ do |date,invoices_name|
+    invoices=[]
+    invoices_name.split(',').each do |inv_name|
+        invoices.push AccountInvoice.find(:first,:domain=>[['name','=',inv_name]])
+    end
+    @statement.import_invoice(invoices,{:date=>date})
+end
+
+##############################################################################
+And /^confirm the statement $/ do
+  # @statement.wkf_action('button_confirm')
+  @statement.call('button_confirm',[@statement.id])
+end
+
+
+##############################################################################
 And /^confirm the statement and see it confirmed$/ do
   # @statement.wkf_action('button_confirm')
   @statement.call('button_confirm',[@statement.id])
   @statement=AccountBankStatement.find(@statement.id)
   @statement.state.should == 'confirm'
 end
+##############################################################################
+
+Given /^I take the bank statement called (\w+)$/ do |bankStatement_name|
+  @statement=AccountBankStatement.find(:first,:domain=>[['name','=',bankStatement_name]])
+  @statement.should be_true
+end
+
 
 ##############################################################################
-# Then /^I should see on the invoice (\w+) a residual amount of (.*)\.\-$/ do |name,amount|
-#   @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name]],:order_by=>'id desc')
-#   @invoice.should be_true
-#   require 'ruby-debug'
-#   debugger
-#   @invoice.residual.should == amount
-# end
+Then /^I should see an draft bank statement$/ do
+    @statement.state.should == 'draft'
+end
+
+##############################################################################
+When /^push the confirm button of the statement it should raise a warning because one invoice is already reconciled$/ do
+  @statement.call('button_confirm',[@statement.id])
+  begin
+      @statement.call('button_confirm',[@statement.id])
+  rescue
+      print "already reconciled entry\n" 
+  end
+end
+
+##############################################################################
+When /^no entries should be created by the bank statement$/ do
+  accountmovelines=AccountMoveLine.find(:all,:domain=>[['statement_id','=',@statement.id]])
+  accountmovelines.should == []
+end
 
 
