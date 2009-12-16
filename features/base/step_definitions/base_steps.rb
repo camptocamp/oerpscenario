@@ -30,8 +30,12 @@ end
 #           Scenario: validate_created_invoice
 ##############################################################################
 
-Given /^\/\^Sometimes the properties of company are not well formed$/ do
-  # Take first supplier partner with at least one address
-    @properties=IrProperty.find(:all,:domain=>[['value','like',' %']])
-    @properties.should == []
+Given /^\/\^I check the integrity of ir\.property named (\w+)$/ do |name_property|
+   @properties=IrProperty.find(:first,:domain=>[['name','=',name_property]])
 end
+
+Then /^\/\^I check the value of ir.property and it should not start with a space$/ do
+    test_result = @properties.value.starts_with? ' '
+    test_result.should be_false
+end
+
