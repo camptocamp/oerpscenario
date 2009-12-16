@@ -18,9 +18,20 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-port = 8069
-user = admin
-database = test_finance 
-password = admin
-host = openerp-dev.int.lsn
- 
+
+@properties = false
+Before do
+    # Initiate vars used to stored object used trought the tests
+    @irvalues = false
+end
+
+
+##############################################################################
+#           Scenario: validate_created_invoice
+##############################################################################
+
+Given /^\/\^Sometimes the properties of company are not well formed$/ do
+  # Take first supplier partner with at least one address
+    @properties=IrProperty.find(:all,:domain=>[['value','like',' %']])
+    @properties.should == []
+end
