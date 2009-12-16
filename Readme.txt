@@ -87,7 +87,11 @@ On Ubuntu if ruby  and ruby gem are not installed do (Thanks to C. Almeida for t
 Get the sources
 ------------------
 
+Trunk:
 bzr branch lp:oerpsenario
+
+For stable:
+bzr branch lp:oerpsenario/stable oerpsenario_stable
 
 Configure it
 ------------------
