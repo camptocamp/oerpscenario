@@ -14,7 +14,7 @@ Feature check pay invoice wizard
     @invoicing @account @addons @wizard @reconciliation
     Scenario: make_and_validate_payments_with_pay_invoice_wizard
       Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoicePayWizard
-      When I press the valiate button
+      When I press the validate button
       Then I should see the invoice MySupplierInvoicePayWizard open
 
       When I call the Pay invoice wizard

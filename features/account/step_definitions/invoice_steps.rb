@@ -48,7 +48,7 @@ Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) w
 end
 
 ##############################################################################
-When /^I press the valiate button$/ do
+When /^I press the validate button$/ do
   # Call the 'invoice_open' method from account.invoice openobject
   @invoice.wkf_action('invoice_open')
   @invoice=AccountInvoice.find(@invoice.id)

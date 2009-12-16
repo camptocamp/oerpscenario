@@ -14,7 +14,7 @@ Feature check finance
   @invoicing @account @addons @reconciliation
   Scenario: make_and_validate_payments_with_bank_statement
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoiceBankStatement
-    When I press the valiate button
+    When I press the validate button
     Then I should see the invoice MySupplierInvoiceBankStatement open
     And the residual amount = 1000,0
     
