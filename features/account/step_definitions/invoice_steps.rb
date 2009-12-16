@@ -51,7 +51,6 @@ end
 When /^I press the validate button$/ do
   # Call the 'invoice_open' method from account.invoice openobject
   @invoice.wkf_action('invoice_open')
-  @invoice=AccountInvoice.find(@invoice.id)
 end
 
 ##############################################################################
@@ -132,7 +131,7 @@ When /^I press the cancel button$/ do
 end
 ##############################################################################
 Then /^no more link on an account move$/ do
-  @invoice.attributes['move_id'].should be_false
+  @invoice.move_id.should be_false
 end
 ##############################################################################
 When /^I press the set to draft button$/ do
