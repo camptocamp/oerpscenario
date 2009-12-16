@@ -26,7 +26,7 @@ Feature check finance
     And the invoice should appear as paid invoice (checkbox tic)
   
   @invoicing @account @addons @reconciliation
-  Scenario: validate_allready_reconciled_statement
+  Scenario: validate_failure_rollback_on_statement
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MyFirstSupplierInvoiceBankStatement
     When I press the valiate button
     Then I should see the invoice MyFirstSupplierInvoiceBankStatement open
