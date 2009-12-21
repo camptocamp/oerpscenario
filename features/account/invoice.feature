@@ -40,4 +40,9 @@ Feature check finance
     
     When I press the set to draft button
     Then I should see the invoice MySupplierInvoice draft
+	
+	When I change the currency to EUR
+	And I press the validate button
+	Then I should see the invoice MySupplierInvoice open
+	And the residual amount = 1000,0
     

@@ -148,7 +148,13 @@ Given /^the entries on the invoice related journal can be cancelled$/ do
   @invoice=AccountInvoice.find(@invoice.id)
 end
 ##############################################################################
-
 Then /^the invoice should appear as paid invoice \(checkbox tic\)$/ do
   @invoice.reconciled.should be_true
+end
+##############################################################################
+When /^I change the currency to (\w+)$/ do |currency_code|
+  cur=ResCurrency.find(:first, :domain=>[['code','=',currency_code]])
+  @invoice.currency_id=cur.id
+  @invoice.save
+  @invoice.currency_id.code.should == currency_code
 end
