@@ -67,3 +67,10 @@ Given /^a (\w+) journal in (\w+) exists$/ do |type,currency|
     journal.create
   end
 end
+
+Given /^the demo data are loaded$/ do
+  IrModuleModule.load_demo_data_on_installed_modules()
+  m=IrModuleModule.find(:first,:domain=>[['name','=','base']])
+  m.should be_true
+  m.demo.should be_true
+end
