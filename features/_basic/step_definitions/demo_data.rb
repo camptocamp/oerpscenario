@@ -53,19 +53,8 @@ When /^ask to upgrade the (\w+) module$/ do |module_name|
 end
 ##############################################################################
 When /^run the update$/ do
-  # Call the wizard
-  @wizard = @modules[0].old_wizard_step('module.upgrade.simple')
-  # Set the wizard with given values
-  step_dict = @wizard.datas.merge({})
-  # step_dict=step_dict.merge({:journal_id=> [[[],[],journal_ids]]})
-  
-  res=@wizard.init(step_dict)
-  step_dict=res.datas.merge(step_dict)
-  res=@wizard.next(step_dict)
-  step_dict=res.datas.merge(step_dict)
-  res=@wizard.start(step_dict)
-  step_dict=res.datas.merge(step_dict)
-  res=@wizard.end(step_dict)
+  res = IrModuleModule.update_needed_modules()
+  res.should be_true
 end
 ##############################################################################
 Then /^I should see some demo data loaded$/ do
