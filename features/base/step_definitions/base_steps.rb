@@ -18,9 +18,24 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-port = 8069
-user = admin
-database = test_finance 
-password = admin
-host = openerp-dev.int.lsn
- 
+
+@properties = false
+Before do
+    # Initiate vars used to stored object used trought the tests
+    @irvalues = false
+end
+
+
+##############################################################################
+#           Scenario: validate_created_invoice
+##############################################################################
+
+Given /^I check the integrity of ir\.property named (\w+)$/ do |name_property|
+   @properties=IrProperty.find(:first,:domain=>[['name','=',name_property]])
+end
+
+Then /^I check the value of ir.property and it should not start with a space$/ do
+    test_result = @properties.value.starts_with? ' '
+    test_result.should be_false
+end
+
