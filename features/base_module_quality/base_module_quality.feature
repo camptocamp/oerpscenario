@@ -17,5 +17,6 @@ Feature run quality tests
     When I insall the base_module_quality
     And run the quality check on every installed module
     Then I should have a report on every module
-    And here is a summary :
+    And all module, except base, should have a final score greater than 70.0 percent
+    And here is a summary (Not implemented yet..)
     

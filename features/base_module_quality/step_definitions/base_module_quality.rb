@@ -52,11 +52,20 @@ Then /^I should have a report on every module$/ do
   @modules.count.should == @test_result.count
 end
 ##############################################################################
-And /^here is a summary :$/ do
+Then /^all module, except (\w+), should have a final score greater than (.*) percent$/ do |except_module,percent|
   @test_result.each do |test_case|
-    output= ModuleQualityCheck.get_formatted_results(test_case)
-    # Improve the output to appear into the test result...
-    # Don't find how to do it
-    print output
+    if not test_case.name == except_module:
+      test_case.final_score.to_f.should > percent.to_f/100
+    end
   end
 end
+##############################################################################
+And /^here is a summary \(Not implemented yet\.\.\)$/ do
+  @test_result.each do |test_case|
+    output= ModuleQualityCheck.get_formatted_results(test_case)
+    # TODO Improve the output to appear into the test result...
+    # Don't find how to do it
+    # print output
+  end
+end
+
