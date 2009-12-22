@@ -46,6 +46,7 @@ Feature check finance
     And I completely pay the residual amount in CHF on the 13 sep 2009
     Then I should see a residual amount of 0.0 CHF.-
     And I should see the invoice MySecondSupplierInvoiceBankStatement paid
+	And the invoice should appear as paid invoice (checkbox tic)
     
     Given I take the bank statement called MyBankStatement
     When push the confirm button of the statement it should raise a warning because one invoice is already reconciled
