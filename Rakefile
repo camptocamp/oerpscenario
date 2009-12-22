@@ -24,10 +24,19 @@ require "cucumber/rake/task"
 #   task.cucumber_opts = ["-t","@#{ENV["TAG"] || "all" }","features"]
 # end
 
+# Launch the @compile tag in order to check it
 Cucumber::Rake::Task.new(:compile) do |task|
   task.cucumber_opts = ["-t","@compile","features"]
 end
 
+# Launch the @demo tag, to install demo data on
+# installed module
 Cucumber::Rake::Task.new(:demo) do |task|
   task.cucumber_opts = ["-t","@demo","features"]
+end
+
+# Launch the @quality tag, run the base_module_quality
+# module tests on all installed module
+Cucumber::Rake::Task.new(:quality) do |task|
+  task.cucumber_opts = ["-t","@quality","features"]
 end

@@ -79,6 +79,10 @@ sudo gem install rspec
 sudo gem install parseconfig
 sudo gem install ooor --source http://gemcutter.org
 
+(Optional, if you want to use it)
+sudo gem install rake
+
+
 On Ubuntu if ruby  and ruby gem are not installed do (Thanks to C. Almeida for the infos):
 - apt-get install libopenssl-ruby (not self evident)
 - add '/var/lib/gems/1.8/bin' to path 
@@ -138,6 +142,15 @@ Where "invoicing" and "account" are the desired tests scenario. You can add also
 like :
 
 cucumber features --tag=@invoicing,@account --format=html >/tmp/result.html&&open  /tmp/result.html
+
+
+Optionnal rake command (require to install rake gem):
+
+rake compile     => To test the compilation of the tests suite
+rake demo        => To install demo data on installed module (same as : cucumber features --tag=@demo)
+rake quality     => To launch base_module_quality tests on all installed module
+
+Other will come...
 
 
 GUIDE LINES TO CONTRIBUTE
