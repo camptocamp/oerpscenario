@@ -59,9 +59,9 @@ Given /^a (\w+) journal in (\w+) exists$/ do |type,currency|
       :view_id => AccountJournalView.find(:first).id,
       # Take the first sequence with 'Account Journal' code
       :sequence_id => IrSequence.find(:first, :domain =>[['code','=','Account Journal']]).id,
-      # Take the first cash account for both debit and credit
-      :default_debit_account_id => AccountAccount.find(:first, :domain => [['type','=',type]]).id,
-      :default_credit_account_id => AccountAccount.find(:first, :domain => [['type','=',type]]).id,
+      # Take the first 'other' account for both debit and credit
+      :default_debit_account_id => AccountAccount.find(:first, :domain => [['type','=','other'],]).id,
+      :default_credit_account_id => AccountAccount.find(:first, :domain => [['type','=','other']]).id,
       :currency => currency_id,
     })
     journal.create

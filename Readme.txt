@@ -128,6 +128,8 @@ Background: login
 USING THE TESTS SUITES SCENARIO 
 ##############################################################################
 
+First, ensure you have installed at least the profile_accounting on your OpenERP instance to test.
+
 We use the test scenario using tags. You can find different types of tags, like:
  - @account     : This tag represent all tests scenario related to the account module of OpenERP
  - @addons      : This tag represent all tests scenario related to the addons branch of OpenERP
