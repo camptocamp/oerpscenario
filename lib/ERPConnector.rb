@@ -57,6 +57,7 @@ class ScenarioUtils
         if port :
             @port = port
         end
+        require 'pp'
         Ooor.reload!({:url => "http://#{@host}:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd, :log_level=>log_level})
     end 
     
@@ -67,5 +68,6 @@ class ScenarioUtils
     def login(user,pass)
         return Ooor.global_login(user, pass)
     end
+    
       
 end

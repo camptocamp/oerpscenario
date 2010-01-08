@@ -25,7 +25,7 @@ require 'pp'
 
 
 begin
-  
+      if Object.const_defined?'AccountInvoice':
   # Add useful methode on invoice handling
   ##############################################################################
   AccountInvoice.class_eval do 
@@ -110,7 +110,9 @@ begin
           return toreturn
       end
   end
-
+else 
+    puts "WARNING : Account Helpers can't be initialized -> account module isn't installed !!!"
+end
 rescue Exception => e
-  puts "WARNING : account module isn't installed !!!"
+  puts e.to_s
 end

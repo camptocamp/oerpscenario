@@ -166,5 +166,5 @@ begin
 
 
 rescue Exception => e
-  puts "WARNING : Module base isn't installed !!!"
+  puts e.to_s
 end
