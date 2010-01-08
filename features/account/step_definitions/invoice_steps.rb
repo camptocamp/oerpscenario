@@ -154,7 +154,7 @@ end
 ##############################################################################
 When /^I change the currency to (\w+)$/ do |currency_code|
   cur=ResCurrency.find(:first, :domain=>[['code','=',currency_code]])
-  @invoice.currency_id=cur.id
-  @invoice.save
+  @invoice.class.rpc_execute('write',@invoice.id,:currency_id => cur.id)
+  @invoice=AccountInvoice.find(@invoice.id)
   @invoice.currency_id.code.should == currency_code
 end
