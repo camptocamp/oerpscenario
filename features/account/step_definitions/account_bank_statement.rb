@@ -91,11 +91,11 @@ end
 
 ##############################################################################
 When /^push the confirm button of the statement it should raise a warning because one invoice is already reconciled$/ do
-  @statement.call('button_confirm',[@statement.id])
   begin
       @statement.call('button_confirm',[@statement.id])
-  rescue
-      print "already reconciled entry\n" 
+  rescue Exception => e
+    # Does nothing here, everything is normal if I get an error !
+    # The bank statement shouldn't be validated if an invoice is already reconciled !
   end
 end
 

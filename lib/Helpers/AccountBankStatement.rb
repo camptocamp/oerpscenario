@@ -65,7 +65,6 @@ begin
 
       # # For each invoices, add the right account.move.line and compute total
       invoices.each do |inv|
-
         unless inv.class  == AccountInvoice :
           raise "!!! --- HELPER ERROR :import_invoice received a #{inv.class.to_s} instead of AccountInvoice" 
         end
@@ -82,7 +81,7 @@ begin
         #       end
 
         inv.move_id.line_id.each do |move_line|
-          if move_line.attributes['reconcile_id'] == false and move_line.account_id.reconcile == true
+          if (not move_line.attributes['reconcile_id']) && move_line.account_id.reconcile
             invoice_move_line_ids.push move_line.id
             inv_total = inv_total + move_line.amount_currency
           end
