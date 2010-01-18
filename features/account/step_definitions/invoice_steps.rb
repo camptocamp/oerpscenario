@@ -44,7 +44,6 @@ Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) w
   @partner.should be_true
   # Create an invoice with a line = amount
   @invoice=AccountInvoice.create_invoice_with_currency(name, @partner, {:currency_code=>currency, :date=>date, :amount=>amount.to_f, :type=>inv_type})
-  
 end
 
 ##############################################################################
@@ -157,4 +156,51 @@ When /^I change the currency to (\w+)$/ do |currency_code|
   @invoice.class.rpc_execute('write',@invoice.id,:currency_id => cur.id)
   @invoice=AccountInvoice.find(@invoice.id)
   @invoice.currency_id.code.should == currency_code
+end
+
+##############################################################################
+#           Scenario: check_rounding_diff_multi_line_inv
+##############################################################################
+
+##############################################################################
+Given /^I add a line on the last created invoice of (.*)$/ do |amount|
+  # Take an account
+  account_id = AccountAccount.find(:first, :domain=>[['type','=','other']]).id
+  line=AccountInvoiceLine.new(
+    :account_id => account_id,
+    :quantity => 1,
+    :price_unit => amount,
+    :name => amount.to_s+' line',
+    :invoice_id => @invoice.id
+  )
+  line.create
+  @invoice=AccountInvoice.find(@invoice.id)
+end
+
+##############################################################################
+Then /^the total credit amount must be equal to the total debit amount$/ do
+  total_debit=0.0
+  total_credit=0.0
+  @invoice.move_id.line_id.each do |inv_line|
+    if inv_line.credit.zero? :
+      total_debit = total_debit + inv_line.debit
+    elsif inv_line.debit.zero? :
+      total_credit = total_credit + inv_line.credit      
+    end
+  end
+  total_credit.should == total_debit
+end
+
+##############################################################################
+And /^correct the total amount of the invoice according to changes$/ do
+  @invoice.check_total = @invoice.amount_total
+  @invoice.save
+  # company_currency_amount=ResCurrency.rpc_execute('compute',@invoice.company_id.currency_id.id,@invoice.currency_id.id,@invoice.amount_total,:context=>[:date=>@invoice.date_invoice])
+  
+end
+
+##############################################################################
+Then /^the total amount convert into company currency must be same amount than the credit line on the payable\/receivable account$/ do
+  # company_currency_amount=ResCurrency.rpc_execute('compute',@invoice.company_id.currency_id.id,@invoice.currency_id.id,@invoice.amount_total,:context=>[:date=>@invoice.date_invoice])
+
 end
