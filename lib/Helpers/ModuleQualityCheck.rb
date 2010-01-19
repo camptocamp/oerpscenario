@@ -36,6 +36,7 @@ begin
             #  - Nice string to print
             # Usage Example:
             # print ModuleQualityCheck.get_formatted_results(qualityinstance)
+            puts "Extending  #{self.class} #{self.name}"
             def self.get_formatted_results(qualityinstance)
                 result=true
                 title="\n"

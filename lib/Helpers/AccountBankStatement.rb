@@ -46,6 +46,7 @@ begin
           # TODO implement journals
           # TODO filter acc_move_line_ids to take the right one
           # TODO Remove self to use it from an instance of the class
+          puts "Extending  #{self.class} #{self.name}"
           def import_invoice(invoices, options={},*args)
             o = {:date => false, :journals => []}.merge(options)
             if o[:date] :

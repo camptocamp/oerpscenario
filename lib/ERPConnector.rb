@@ -57,7 +57,13 @@ class ScenarioUtils
         if port :
             @port = port
         end
-        @ooor=Ooor.new({:url => "http://#{@host}:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd, :log_level=>log_level})
+        puts 'Connnecting >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+        if @ooor :
+            self.login(@user, @pwd)
+        else
+             @ooor=Ooor.new({:url => "http://#{@host}:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd, :log_level=>log_level})
+             Dir["lib/Helpers/*.rb"].each {|file| require file }
+        end
     end 
     
     def ready?
@@ -69,7 +75,7 @@ class ScenarioUtils
     end
     
     def login(user,pass)
-        return @ooor.global_login(user, pass)
+        return  @ooor.global_login(user, pass)
     end
     
       

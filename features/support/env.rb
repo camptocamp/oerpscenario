@@ -23,21 +23,20 @@ require 'lib/ERPConnector'
 require 'rubygems'
 require 'ooor'
 
-# Create an make a first login to be able to adds extra-function
-$utils = ScenarioUtils.new
+# Create a login if not initialized in feathures
+unless $utils
+    $utils = ScenarioUtils.new
+end
 begin
-    if $utils.ready? :
-        $utils.login(user,pass)
-    else 
-        puts 'KKKKKKKKK'
+    unless $utils.ready? :
         $utils.setConnexionfromConf()
     end
 rescue Exception => e
-    puts 'IKKKKKKKKK'
-  
+    puts e.to_s
+    puts 'Force reconnect'
     $utils.setConnexionfromConf()
 end
 
-# Add extra-functions
-Dir["lib/Helpers/*.rb"].each {|file| require file }
+
+
 

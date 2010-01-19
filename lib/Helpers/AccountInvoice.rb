@@ -47,7 +47,10 @@ begin
       # part = ResPartner.find(:first)
       # puts part.id
       # inv = AccountInvoice.create_cust_invoice_with_currency('my name',part,{currency_code =>'CHF'})
+      puts "Extending  #{self.class} #{self.name}"
       def self.create_invoice_with_currency(name, partner, options={}, *args)
+          # require 'ruby-debug'
+          # debugger
           o = {:type=>'out_invoice', :currency_code=>'EUR', :date=>false, :amount=>false, :account=>false}.merge(options)
           toreturn = AccountInvoice.new()
           # Set name
