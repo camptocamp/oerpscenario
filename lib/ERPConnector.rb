@@ -20,7 +20,6 @@
 ##############################################################################
 require 'rubygems'
 require 'ooor'
-include Ooor
 require 'parseconfig'
 # This class map OpenERP XMLRPC logins and common stuff
 class ScenarioUtils
@@ -32,6 +31,7 @@ class ScenarioUtils
         @pwd = false
         @host = false
         @uid = false
+        @ooor = false
     end
     #read the base.conf file to set all the parameter to begin an xml rpc session with openerp
     #you can override any of the parameters
@@ -57,15 +57,19 @@ class ScenarioUtils
         if port :
             @port = port
         end
-        Ooor.reload!({:url => "http://#{@host}:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd, :log_level=>log_level})
+        @ooor=Ooor.new({:url => "http://#{@host}:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd, :log_level=>log_level})
     end 
     
     def ready?
-        return Ooor.loaded?
+        if not @ooor:
+          return false
+        else
+          return @ooor.all_loaded_models.size >0
+        end
     end
     
     def login(user,pass)
-        return Ooor.global_login(user, pass)
+        return @ooor.global_login(user, pass)
     end
     
       

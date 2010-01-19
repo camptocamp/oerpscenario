@@ -67,10 +67,6 @@ Then /^the residual amount = (.*)$/ do |amount|
 end
 
 ##############################################################################
-#           Scenario: check_account_move_created_invoice
-##############################################################################
-
-##############################################################################
 Given /^I take the created invoice (\w+)$/ do |inv_name|
   # Take the inv_name with open state
   @invoice=AccountInvoice.find(:first,:domain=>[['name','=',inv_name],['state','=','open']])

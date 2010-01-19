@@ -13,14 +13,10 @@ Feature check finance
       
   @invoicing @account @addons @rounding
   Scenario: validate_created_invoice
-    Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoice
+	Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoice
     When I press the validate button
     Then I should see the invoice MySupplierInvoice open
-    And the residual amount = 1000,0
-  
-  @invoicing @account @addons
-  Scenario: check_account_move_created_invoice
-    Given I take the created invoice MySupplierInvoice
+	And the residual amount = 1000,0
     Then I should have a linked account move with 2 lines and a posted status
     And the associated debit account move line should use the account choosen in the invoice line and have the following values:
     |debit|amount_currency|currency|status|

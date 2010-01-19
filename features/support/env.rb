@@ -22,17 +22,19 @@
 require 'lib/ERPConnector'
 require 'rubygems'
 require 'ooor'
-include Ooor
 
-# Create an make a first login to be able to adds etra-function
+# Create an make a first login to be able to adds extra-function
 $utils = ScenarioUtils.new
 begin
     if $utils.ready? :
         $utils.login(user,pass)
     else 
+        puts 'KKKKKKKKK'
         $utils.setConnexionfromConf()
     end
 rescue Exception => e
+    puts 'IKKKKKKKKK'
+  
     $utils.setConnexionfromConf()
 end
 

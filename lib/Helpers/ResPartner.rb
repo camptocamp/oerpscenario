@@ -21,7 +21,7 @@
 require 'pp'
 require 'rubygems'
 require 'ooor'
-include Ooor
+
 
 
 begin

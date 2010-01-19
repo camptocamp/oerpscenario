@@ -20,7 +20,6 @@
 ##############################################################################
 require 'rubygems'
 require 'ooor'
-include Ooor
 require 'pp'
 
 

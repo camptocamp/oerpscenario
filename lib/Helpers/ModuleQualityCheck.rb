@@ -21,7 +21,6 @@
 require 'pp'
 require 'rubygems'
 require 'ooor'
-include Ooor
 
 
 # Add useful methode on base module quality check module handling
