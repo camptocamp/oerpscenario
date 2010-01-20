@@ -38,7 +38,7 @@ Feature check finance
     And the residual amount = 1000,0
     
     Given I create a new bank statement called MyBankStatement with a CHF account journal
-    And I import on the  1 jan 2009, the following invoice : MyFirstSupplierInvoiceBankStatement,MySecondSupplierInvoiceBankStatement
+    And I import on the  1 jan 2009, the following invoice (order matters) : MySecondSupplierInvoiceBankStatement, MyFirstSupplierInvoiceBankStatement
     Then I should see an draft bank statement
     
     Given I take the created invoice MySecondSupplierInvoiceBankStatement
