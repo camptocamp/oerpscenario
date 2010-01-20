@@ -52,14 +52,28 @@ begin
           # require 'ruby-debug'
           # debugger
           o = {:type=>'out_invoice', :currency_code=>'EUR', :date=>false, :amount=>false, :account=>false}.merge(options)
+           if o[:date] :
+                date_invoice = Date.parse(str=o[:date]).to_s
+            else
+                date_invoice = Date.today.to_s
+            end
+          
           toreturn = AccountInvoice.new()
-          # Set name
-          toreturn.name = name
-          if o[:date] :
-              toreturn.date_invoice = Date.parse(str=o[:date]).to_s
+          
+          unless partner.class  == ResPartner :
+              raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a #{partner.class.to_s} instead of ResPartner" 
+          end 
+          # Set partner
+          if (partner.address.length >0) :
+              toreturn.partner_id = partner.id
           else
-              toreturn.date_invoice = Date.today.to_s
+              raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a partner : #{partner.name} without adresses"
           end
+          toreturn.on_change('onchange_partner_id', :partner_id ,1, 0[:type], partner.id, date_invoice, false, false)
+          
+          # Set name & date
+          toreturn.name = name
+          toreturn.date_invoice=date_invoice
 
           # Set type
           toreturn.type = o[:type]
@@ -70,17 +84,7 @@ begin
           else
               raise "!!! --- HELPER ERROR :#{o[:currency_code]} currency not found"
           end
-          unless partner.class  == ResPartner :
-              raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a #{partner.class.to_s} instead of ResPartner" 
-          end 
-          # Set partner
-          if (partner.address.length >0) :
-              toreturn.partner_id = partner.id
-          else
-              raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a partner : #{partner.name} without adresses"
-          end
-          toreturn.on_change('onchange_partner_id', :partner_id ,1, 0[:type], partner.id, toreturn.date_invoice, false, false)
-
+          
           # Set amount and line if asked for
           toreturn.create
           # toreturn.type = o[:type]

@@ -80,9 +80,9 @@ begin
               #           invoice_move_line_ids.push move_line.id
               #         end
               #       end
-
+              
               inv.move_id.line_id.each do |move_line|
-                if (not move_line.attributes['reconcile_id']) && move_line.account_id.reconcile
+                if (not move_line.reconcile_id) && move_line.account_id.reconcile
                   invoice_move_line_ids.push move_line.id
                   inv_total = inv_total + move_line.amount_currency
                 end
