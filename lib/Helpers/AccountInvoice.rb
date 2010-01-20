@@ -79,7 +79,7 @@ begin
           else
               raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a partner : #{partner.name} without adresses"
           end
-          toreturn.on_change('onchange_partner_id', 1, 0[:type], partner.id, toreturn.date_invoice, false, false)
+          toreturn.on_change('onchange_partner_id', :partner_id ,1, 0[:type], partner.id, toreturn.date_invoice, false, false)
 
           # Set amount and line if asked for
           toreturn.create
