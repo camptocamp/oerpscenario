@@ -43,7 +43,16 @@ Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) w
   @partner=ResPartner.get_valid_partner({:type=>'supplier'})
   @partner.should be_true
   # Create an invoice with a line = amount
-  @invoice=AccountInvoice.create_invoice_with_currency(name, @partner, {:currency_code=>currency, :date=>date, :amount=>amount.to_f, :type=>inv_type})
+  # and store it in a variable named : name
+  var_name = "@#{name}"
+  invoice=AccountInvoice.create_invoice_with_currency(name, @partner, {:currency_code=>currency, :date=>date, :amount=>amount.to_f, :type=>inv_type})
+  instance_variable_set(var_name, invoice)
+  # retrieve it with : instance_variable_get("@"+name)
+  instance_variable_get("@"+name).should be_true
+  
+  # For backward compatibility
+  @invoice=invoice
+  @invoice.should be_true
 end
 
 ##############################################################################
@@ -55,7 +64,9 @@ end
 ##############################################################################
 Then /^I should see the invoice (\w+) (\w+)$/ do |name,state|
   # Take the invoice
-  @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name],['state','=',state]])
+  @invoice=instance_variable_get("@"+name)
+  # Old schoold system :
+  # @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name],['state','=',state]])
   @invoice.should be_true
   @invoice.state.should == state
 end
@@ -69,7 +80,9 @@ end
 ##############################################################################
 Given /^I take the created invoice (\w+)$/ do |inv_name|
   # Take the inv_name with open state
-  @invoice=AccountInvoice.find(:first,:domain=>[['name','=',inv_name],['state','=','open']])
+  @invoice=instance_variable_get("@"+inv_name)
+  # Old schoold system :
+  # @invoice=AccountInvoice.find(:first,:domain=>[['name','=',inv_name],['state','=','open']])
   @invoice.should be_true
 end
 

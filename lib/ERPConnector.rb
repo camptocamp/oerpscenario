@@ -21,6 +21,7 @@
 require 'rubygems'
 require 'ooor'
 require 'parseconfig'
+
 # This class map OpenERP XMLRPC logins and common stuff
 class ScenarioUtils
     
