@@ -25,7 +25,7 @@ Feature check finance
     And the residual amount = 0,0
     And the invoice should appear as paid invoice (checkbox tic)
   
-  @invoicing @account @addons @reconciliation
+  @invoicing @account @addons @reconciliation @bankstatement
   Scenario: validate_failure_rollback_on_statement
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MyFirstSupplierInvoiceBankStatement
     When I press the validate button
@@ -38,14 +38,14 @@ Feature check finance
     And the residual amount = 1000,0
     
     Given I create a new bank statement called MyBankStatement with a CHF account journal
-    And I import on the  1 jan 2009, the following invoice (order matters) : MySecondSupplierInvoiceBankStatement, MyFirstSupplierInvoiceBankStatement
-    Then I should see an draft bank statement
+    And I import on the 1 jan 2009, the following invoice (order matters) : MySecondSupplierInvoiceBankStatement, MyFirstSupplierInvoiceBankStatement
+    Then I should see an draft bank statement with 2 lines
     
-    Given I take the created invoice MySecondSupplierInvoiceBankStatement
+    Given I take the created invoice MyFirstSupplierInvoiceBankStatement
     When I call the Pay invoice wizard
     And I completely pay the residual amount in CHF on the 13 sep 2009
     Then I should see a residual amount of 0.0 CHF.-
-    And I should see the invoice MySecondSupplierInvoiceBankStatement paid
+    And I should see the invoice MyFirstSupplierInvoiceBankStatement paid
 	And the invoice should appear as paid invoice (checkbox tic)
     
     Given I take the bank statement called MyBankStatement

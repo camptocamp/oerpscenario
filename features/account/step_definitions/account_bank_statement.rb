@@ -54,10 +54,11 @@ And /^import on the (.*) the invoice called (\w+)$/ do |date,name|
 end
 
 ##############################################################################
+# And /^I import on the (.*), the following invoice \(order matters\) : (\w+)$/
 And /^I import on the (.*), the following invoice \(order matters\) : (.*)$/ do |date,invoices_name|
     invoices=[]
     invoices_name.split(',').each do |inv_name|
-        invoices.push AccountInvoice.find(:first,:domain=>[['name','=',inv_name]])
+      invoices.push AccountInvoice.find(:first,:domain=>[['name','=',inv_name.strip]])
     end
     @statement.import_invoice(invoices,{:date=>date})
 end
@@ -85,8 +86,9 @@ end
 
 
 ##############################################################################
-Then /^I should see an draft bank statement$/ do
+Then /^I should see an draft bank statement with (\w+) lines$/ do |nb_line|
     @statement.state.should == 'draft'
+    @statement.line_ids.size.should == nb_line.to_i
 end
 
 ##############################################################################
