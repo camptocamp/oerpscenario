@@ -21,17 +21,6 @@
 #
 ##############################################################################
 
-
-MORE INFOS 
-##############################################################################
-
-Find code and infos about OERPScenario here : https://launchpad.net/oerpsenario
-
-Find infos about Cucumber library here : http://cukes.info/
-
-Find infos about Ooor here : http://github.com/rvalyi/ooor
-
-
 HOW AND WHY
 ##############################################################################
 
@@ -100,7 +89,7 @@ bzr branch lp:oerpsenario/stable oerpsenario_stable
 Configure it
 ------------------
 
-Change the parameter file "base.conf" according to your settings:
+Create the parameter file "base.conf" according to your settings (look at sample_base.conf):
 
 port = 8069
 user = admin
@@ -122,7 +111,7 @@ In order to change that, you need to edit the description of each concerned scen
 and change it according to your settings. Here an example:
 
 Background: login
-  Given I am loged as admin user with password MY_NEW_PASSWORD used
+  Given I am loged as USERNAME user with password MY_NEW_PASSWORD used
 
 
 USING THE TESTS SUITES SCENARIO 
@@ -153,6 +142,17 @@ rake demo        => To install demo data on installed module (same as : cucumber
 rake quality     => To launch base_module_quality tests on all installed module
 
 Other will come...
+
+
+
+MORE INFOS 
+##############################################################################
+
+Find code and infos about OERPScenario here : https://launchpad.net/oerpsenario
+
+Find infos about Cucumber library here : http://cukes.info/
+
+Find infos about Ooor here : http://github.com/rvalyi/ooor
 
 
 GUIDE LINES TO CONTRIBUTE

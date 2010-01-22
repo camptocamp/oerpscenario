@@ -36,8 +36,10 @@ end
 ##############################################################################
 Given /^I am loged as (\w+) user with password (\w+) used$/ do |user, pass|
     begin
-        unless $utils.ready? :
-            $utils.setConnexionfromConf(user=user, password=pass)
+        if $utils.ready? :
+            $utils.login(user, pass)
+        else
+            $utils.setConnexionfromConf(user=user, password=pass)            
         end
     rescue Exception => e
         puts e.to_s
