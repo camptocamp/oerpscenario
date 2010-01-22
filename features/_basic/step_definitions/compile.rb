@@ -1,7 +1,7 @@
 ###############################################################################
 #
 #    OERPScenario, OpenERP Functional Tests
-#    Author Nicolas Bessi & Joel Grand-Guillaume 2009 
+#    Author Joel Grand-Guillaume 2009 
 #    Copyright Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,8 +18,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-port = 8069
-user = admin
-database = accounting
-password = admin
-host = localhost
+
+Given /Build is OK/ do
+end

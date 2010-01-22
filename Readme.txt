@@ -73,11 +73,15 @@ Install libraries
 To install it, you need ruby and optionnaly Postgresql install depending
 which server you wanna use :
 
-sudo gem install cucumber
+sudo gem install cucumber (V. 0.5.1)
 sudo gem install activeresource
 sudo gem install rspec
 sudo gem install parseconfig
-sudo gem install ooor --source http://gemcutter.org
+sudo gem install ooor --source http://gemcutter.org (V. 1.2.3)
+
+(Optional, if you want to use it)
+sudo gem install rake
+
 
 On Ubuntu if ruby  and ruby gem are not installed do (Thanks to C. Almeida for the infos):
 - apt-get install libopenssl-ruby (not self evident)
@@ -124,6 +128,8 @@ Background: login
 USING THE TESTS SUITES SCENARIO 
 ##############################################################################
 
+First, ensure you have installed at least the profile_accounting on your OpenERP instance to test.
+
 We use the test scenario using tags. You can find different types of tags, like:
  - @account     : This tag represent all tests scenario related to the account module of OpenERP
  - @addons      : This tag represent all tests scenario related to the addons branch of OpenERP
@@ -138,6 +144,15 @@ Where "invoicing" and "account" are the desired tests scenario. You can add also
 like :
 
 cucumber features --tag=@invoicing,@account --format=html >/tmp/result.html&&open  /tmp/result.html
+
+
+Optionnal rake command (require to install rake gem):
+
+rake compile     => To test the compilation of the tests suite
+rake demo        => To install demo data on installed module (same as : cucumber features --tag=@demo)
+rake quality     => To launch base_module_quality tests on all installed module
+
+Other will come...
 
 
 GUIDE LINES TO CONTRIBUTE

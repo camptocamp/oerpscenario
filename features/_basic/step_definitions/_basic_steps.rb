@@ -18,7 +18,9 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-$utils = ScenarioUtils.new
+unless $utils
+    $utils = ScenarioUtils.new
+end
 Before do
     if not $utils :
         $utils = ScenarioUtils.new
@@ -34,12 +36,12 @@ end
 ##############################################################################
 Given /^I am loged as (\w+) user with password (\w+) used$/ do |user, pass|
     begin
-        if $utils.ready? :
-            $utils.login(user,pass)
-        else 
+        unless $utils.ready? :
             $utils.setConnexionfromConf(user=user, password=pass)
         end
     rescue Exception => e
+        puts e.to_s
+        puts 'Force reconnect'
         $utils.setConnexionfromConf(user=user, password=pass)
     end
 end

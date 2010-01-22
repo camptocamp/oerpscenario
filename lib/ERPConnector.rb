@@ -20,8 +20,8 @@
 ##############################################################################
 require 'rubygems'
 require 'ooor'
-include Ooor
 require 'parseconfig'
+
 # This class map OpenERP XMLRPC logins and common stuff
 class ScenarioUtils
     
@@ -32,7 +32,26 @@ class ScenarioUtils
         @pwd = false
         @host = false
         @uid = false
+        @ooor = false
+        # Genereic dict to store tested object
+        @memorizer = {}
     end
+    
+    # Define a memorizer to store object handled by the test
+    # Useful to store an invoice in a var which name = invoice name !
+    def set_var (name,value)
+      @memorizer[name]=value
+    end  
+    def get_var (name)
+      return @memorizer[name]
+    end
+    def clean_var (name)
+      @memorizer.delete(name)
+    end
+    def clean_all_var
+      @memorizer=[]
+    end
+    
     #read the base.conf file to set all the parameter to begin an xml rpc session with openerp
     #you can override any of the parameters
     def setConnexionfromConf(user=false, password=false, database=false, host=false, port=false, log_level=Logger::ERROR)
@@ -57,15 +76,26 @@ class ScenarioUtils
         if port :
             @port = port
         end
-        Ooor.reload!({:url => "http://#{@host}:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd, :log_level=>log_level})
+        puts 'Connnecting >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+        if @ooor :
+            self.login(@user, @pwd)
+        else
+             @ooor=Ooor.new({:url => "http://#{@host}:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd, :log_level=>log_level})
+             Dir["lib/Helpers/*.rb"].each {|file| require file }
+        end
     end 
     
     def ready?
-        return Ooor.loaded?
+        if not @ooor:
+          return false
+        else
+          return @ooor.all_loaded_models.size >0
+        end
     end
     
     def login(user,pass)
-        return Ooor.global_login(user, pass)
+        return  @ooor.global_login(user, pass)
     end
+    
       
 end

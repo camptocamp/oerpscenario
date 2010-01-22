@@ -1,8 +1,7 @@
 ###############################################################################
 #
 #    OERPScenario, OpenERP Functional Tests
-#    Author Nicolas Bessi 2009
-#    Contribs Joel Grand-Guillaume 2009 
+#    Author Joel Grand-Guillaume 2009 
 #    Copyright Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -19,24 +18,25 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-require 'lib/ERPConnector'
-require 'rubygems'
-require 'ooor'
+require "cucumber/rake/task"
 
-# Create a login if not initialized in feathures
-unless $utils
-    $utils = ScenarioUtils.new
-end
-begin
-    unless $utils.ready? :
-        $utils.setConnexionfromConf()
-    end
-rescue Exception => e
-    puts e.to_s
-    puts 'Force reconnect'
-    $utils.setConnexionfromConf()
+# Cucumber::Rake::Task.new(:run) do |task|
+#   task.cucumber_opts = ["-t","@#{ENV["TAG"] || "all" }","features"]
+# end
+
+# Launch the @compile tag in order to check it
+Cucumber::Rake::Task.new(:compile) do |task|
+  task.cucumber_opts = ["-t","@compile","features"]
 end
 
+# Launch the @demo tag, to install demo data on
+# installed module
+Cucumber::Rake::Task.new(:demo) do |task|
+  task.cucumber_opts = ["-t","@demo","features"]
+end
 
-
-
+# Launch the @quality tag, run the base_module_quality
+# module tests on all installed module
+Cucumber::Rake::Task.new(:quality) do |task|
+  task.cucumber_opts = ["-t","@quality","features"]
+end

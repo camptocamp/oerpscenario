@@ -43,21 +43,32 @@ Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) w
   @partner=ResPartner.get_valid_partner({:type=>'supplier'})
   @partner.should be_true
   # Create an invoice with a line = amount
-  @invoice=AccountInvoice.create_invoice_with_currency(name, @partner, {:currency_code=>currency, :date=>date, :amount=>amount.to_f, :type=>inv_type})
+  # and store it in a variable named : name
+  # var_name = "@#{name}"
+  invoice=AccountInvoice.create_invoice_with_currency(name, @partner, {:currency_code=>currency, :date=>date, :amount=>amount.to_f, :type=>inv_type})
+  $utils.set_var(name,invoice)
+  $utils.get_var(name.strip).should be_true
+  # instance_variable_set(var_name, invoice)
+  # retrieve it with : instance_variable_get("@"+name)
   
+  # For backward compatibility
+  @invoice=invoice
+  @invoice.should be_true
 end
 
 ##############################################################################
-When /^I press the valiate button$/ do
+When /^I press the validate button$/ do
   # Call the 'invoice_open' method from account.invoice openobject
   @invoice.wkf_action('invoice_open')
-  @invoice=AccountInvoice.find(@invoice.id)
 end
 
 ##############################################################################
 Then /^I should see the invoice (\w+) (\w+)$/ do |name,state|
   # Take the invoice
+  @invoice=$utils.get_var(name.strip)
   @invoice=AccountInvoice.find(@invoice.id)
+  # Old schoold system :
+  # @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name],['state','=',state]])
   @invoice.should be_true
   @invoice.state.should == state
 end
@@ -69,13 +80,12 @@ Then /^the residual amount = (.*)$/ do |amount|
 end
 
 ##############################################################################
-#           Scenario: check_account_move_created_invoice
-##############################################################################
-
-##############################################################################
 Given /^I take the created invoice (\w+)$/ do |inv_name|
   # Take the inv_name with open state
-  @invoice=AccountInvoice.find(:first,:domain=>[['name','=',inv_name],['state','=','open']])
+  @invoice=$utils.get_var(inv_name.strip)
+  @invoice=AccountInvoice.find(@invoice.id)
+  # Old schoold system :
+  # @invoice=AccountInvoice.find(:first,:domain=>[['name','=',inv_name],['state','=','open']])
   @invoice.should be_true
 end
 
@@ -132,7 +142,7 @@ When /^I press the cancel button$/ do
 end
 ##############################################################################
 Then /^no more link on an account move$/ do
-  @invoice.attributes['move_id'].should be_false
+  @invoice.move_id.should be_false
 end
 ##############################################################################
 When /^I press the set to draft button$/ do
@@ -149,7 +159,66 @@ Given /^the entries on the invoice related journal can be cancelled$/ do
   @invoice=AccountInvoice.find(@invoice.id)
 end
 ##############################################################################
-
 Then /^the invoice should appear as paid invoice \(checkbox tic\)$/ do
   @invoice.reconciled.should be_true
+end
+##############################################################################
+When /^I change the currency to (\w+)$/ do |currency_code|
+  cur=ResCurrency.find(:first, :domain=>[['code','=',currency_code]])
+  @invoice.class.rpc_execute('write',@invoice.id,:currency_id => cur.id)
+  @invoice=AccountInvoice.find(@invoice.id)
+  @invoice.currency_id.code.should == currency_code
+end
+
+##############################################################################
+#           Scenario: check_rounding_diff_multi_line_inv
+##############################################################################
+
+##############################################################################
+Given /^I add a line on the last created invoice of (.*)$/ do |amount|
+  # Take an account
+  account_id = AccountAccount.find(:first, :domain=>[['type','=','other']]).id
+  line=AccountInvoiceLine.new(
+    :account_id => account_id,
+    :quantity => 1,
+    :price_unit => amount,
+    :name => amount.to_s+' line',
+    :invoice_id => @invoice.id
+  )
+  line.create
+  @invoice=AccountInvoice.find(@invoice.id)
+end
+
+##############################################################################
+Then /^the total credit amount must be equal to the total debit amount$/ do
+  total_debit=0.0
+  total_credit=0.0
+  @invoice.move_id.line_id.each do |inv_line|
+    if inv_line.credit.zero? :
+      total_debit = total_debit + inv_line.debit
+    elsif inv_line.debit.zero? :
+      total_credit = total_credit + inv_line.credit      
+    end
+  end
+  total_credit.should == total_debit
+end
+
+##############################################################################
+And /^correct the total amount of the invoice according to changes$/ do
+  @invoice.check_total = @invoice.amount_total
+  @invoice.save
+
+end
+
+##############################################################################
+Then /^the total amount convert into company currency must be same amount than the credit line on the payable\/receivable account$/ do
+  company_currency_amount=ResCurrency.rpc_execute('compute',@invoice.company_id.currency_id.id,@invoice.currency_id.id,@invoice.amount_total,:context=>[:date=>@invoice.date_invoice])
+  company_currency_amount.should be_true
+  # Take the line to reconcile
+  @invoice.move_id.line_id.each do |inv_line|
+     if inv_line.debit = 0.0 and inv_line.account_id.reconcile:
+       amount = inv_line.credit
+    end   
+  end
+  company_currency_amount.should == amount
 end

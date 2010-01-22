@@ -1,8 +1,7 @@
 ###############################################################################
 #
 #    OERPScenario, OpenERP Functional Tests
-#    Author Nicolas Bessi 2009
-#    Contribs Joel Grand-Guillaume 2009 
+#    Author Nicolas Bessi & Joel Grand-Guillaume 2009 
 #    Copyright Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -19,24 +18,23 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-require 'lib/ERPConnector'
-require 'rubygems'
-require 'ooor'
 
-# Create a login if not initialized in feathures
-unless $utils
-    $utils = ScenarioUtils.new
-end
-begin
-    unless $utils.ready? :
-        $utils.setConnexionfromConf()
-    end
-rescue Exception => e
-    puts e.to_s
-    puts 'Force reconnect'
-    $utils.setConnexionfromConf()
+@properties = false
+Before do
+    # Initiate vars used to stored object used trought the tests
+    @irvalues = false
 end
 
 
-
+##############################################################################
+#           Scenario: validate_created_invoice
+##############################################################################
+Given /^I check the integrity of ir\.property named (\w+)$/ do |name_property|
+   @properties=IrProperty.find(:first,:domain=>[['name','=',name_property]])
+end
+##############################################################################
+Then /^I check the value of ir.property and it should not start with a space$/ do
+    test_result = @properties.value.starts_with? ' '
+    test_result.should be_false
+end
 

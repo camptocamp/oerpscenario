@@ -59,11 +59,19 @@ Given /^a (\w+) journal in (\w+) exists$/ do |type,currency|
       :view_id => AccountJournalView.find(:first).id,
       # Take the first sequence with 'Account Journal' code
       :sequence_id => IrSequence.find(:first, :domain =>[['code','=','Account Journal']]).id,
-      # Take the first cash account for both debit and credit
-      :default_debit_account_id => AccountAccount.find(:first, :domain => [['type','=',type]]).id,
-      :default_credit_account_id => AccountAccount.find(:first, :domain => [['type','=',type]]).id,
+      # Take the first 'other' account for both debit and credit
+      :default_debit_account_id => AccountAccount.find(:first, :domain => [['type','=','other'],]).id,
+      :default_credit_account_id => AccountAccount.find(:first, :domain => [['type','=','other']]).id,
       :currency => currency_id,
     })
     journal.create
   end
+end
+
+Given /^the demo data are loaded$/ do
+
+  IrModuleModule.load_demo_data_on_installed_modules()
+  m=IrModuleModule.find(:first,:domain=>[['name','=','base']])
+  m.should be_true
+  m.demo.should be_true
 end
