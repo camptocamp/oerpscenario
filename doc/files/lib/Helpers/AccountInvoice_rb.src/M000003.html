@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>create_invoice_with_currency (lib/Helpers/AccountInvoice.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/Helpers/AccountInvoice.rb, line 51</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">create_invoice_with_currency</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">partner</span>, <span class="ruby-identifier">options</span>={}, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+          <span class="ruby-comment cmt"># require 'ruby-debug'</span>
+          <span class="ruby-comment cmt"># debugger</span>
+          <span class="ruby-identifier">o</span> = {<span class="ruby-identifier">:type=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'out_invoice'</span>, <span class="ruby-identifier">:currency_code=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'EUR'</span>, <span class="ruby-identifier">:date=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:amount=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:account=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:date</span>] <span class="ruby-operator">:</span>
+                <span class="ruby-identifier">date_invoice</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>=<span class="ruby-identifier">o</span>[<span class="ruby-identifier">:date</span>]).<span class="ruby-identifier">to_s</span>
+            <span class="ruby-keyword kw">else</span>
+                <span class="ruby-identifier">date_invoice</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>.<span class="ruby-identifier">to_s</span>
+            <span class="ruby-keyword kw">end</span>
+          
+          <span class="ruby-identifier">toreturn</span> = <span class="ruby-constant">AccountInvoice</span>.<span class="ruby-identifier">new</span>()
+          
+          <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">partner</span>.<span class="ruby-identifier">class</span>  <span class="ruby-operator">==</span> <span class="ruby-constant">ResPartner</span> <span class="ruby-operator">:</span>
+              <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;!!! --- HELPER ERROR :create_cust_invoice_with_currency received a #{partner.class.to_s} instead of ResPartner&quot;</span> 
+          <span class="ruby-keyword kw">end</span> 
+          <span class="ruby-comment cmt"># Set partner</span>
+          <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">partner</span>.<span class="ruby-identifier">address</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span><span class="ruby-value">0</span>) <span class="ruby-operator">:</span>
+              <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">partner_id</span> = <span class="ruby-identifier">partner</span>.<span class="ruby-identifier">id</span>
+          <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;!!! --- HELPER ERROR :create_cust_invoice_with_currency received a partner : #{partner.name} without adresses&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">on_change</span>(<span class="ruby-value str">'onchange_partner_id'</span>, <span class="ruby-identifier">:partner_id</span> ,<span class="ruby-value">1</span>, <span class="ruby-value">0</span>[<span class="ruby-identifier">:type</span>], <span class="ruby-identifier">partner</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">date_invoice</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-keyword kw">false</span>)
+          
+          <span class="ruby-comment cmt"># Set name &amp; date</span>
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">date_invoice</span>=<span class="ruby-identifier">date_invoice</span>
+
+          <span class="ruby-comment cmt"># Set type</span>
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">type</span> = <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:type</span>]
+          <span class="ruby-identifier">curr</span> =  <span class="ruby-constant">ResCurrency</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:domain=</span><span class="ruby-operator">&gt;</span>[[<span class="ruby-value str">'code'</span>,<span class="ruby-value str">'='</span>,<span class="ruby-identifier">o</span>[<span class="ruby-identifier">:currency_code</span>]]])
+          <span class="ruby-comment cmt"># Set currency</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">curr</span> <span class="ruby-operator">:</span> 
+              <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">currency_id</span> = <span class="ruby-identifier">curr</span>.<span class="ruby-identifier">id</span>
+          <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;!!! --- HELPER ERROR :#{o[:currency_code]} currency not found&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+          
+          <span class="ruby-comment cmt"># Set amount and line if asked for</span>
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">create</span>
+          <span class="ruby-comment cmt"># toreturn.type = o[:type]</span>
+          <span class="ruby-comment cmt"># toreturn.save</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:amount</span>] <span class="ruby-operator">:</span>
+              <span class="ruby-keyword kw">if</span> [<span class="ruby-value str">'in_invoice'</span>, <span class="ruby-value str">'in_refund'</span>].<span class="ruby-identifier">include?</span> <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:type</span>] <span class="ruby-operator">:</span>
+                  <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">check_total</span> = <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:amount</span>]
+              <span class="ruby-keyword kw">end</span>
+              <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:account</span>] <span class="ruby-operator">:</span>
+                  <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">account</span>.<span class="ruby-identifier">class</span>  <span class="ruby-operator">==</span> <span class="ruby-constant">AccountAccount</span> <span class="ruby-operator">:</span>
+                      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;!!! --- HELPER ERROR :create_cust_invoice_with_currency received a #{o[:account].class.to_s} instead of AccountAccount&quot;</span> 
+                  <span class="ruby-keyword kw">end</span>
+                  <span class="ruby-identifier">account_id</span> = <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:account</span>].<span class="ruby-identifier">id</span>
+              <span class="ruby-keyword kw">else</span>
+                  <span class="ruby-identifier">account_id</span> = <span class="ruby-constant">AccountAccount</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:domain=</span><span class="ruby-operator">&gt;</span>[[<span class="ruby-value str">'type'</span>,<span class="ruby-value str">'='</span>,<span class="ruby-value str">'other'</span>]]).<span class="ruby-identifier">id</span>
+                  <span class="ruby-comment cmt"># Create a line = amount for the created invoice</span>
+                  <span class="ruby-identifier">line</span>=<span class="ruby-constant">AccountInvoiceLine</span>.<span class="ruby-identifier">new</span>(
+                  <span class="ruby-identifier">:account_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">account_id</span>,
+                  <span class="ruby-identifier">:quantity</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>,
+                  <span class="ruby-identifier">:price_unit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:amount</span>],
+                  <span class="ruby-identifier">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">name</span><span class="ruby-operator">+</span><span class="ruby-value str">' line'</span>,
+                  <span class="ruby-identifier">:invoice_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">id</span>
+                  )
+                  <span class="ruby-identifier">line</span>.<span class="ruby-identifier">create</span>
+
+              <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">save</span> 
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">toreturn</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
