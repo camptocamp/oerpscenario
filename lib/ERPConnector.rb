@@ -33,7 +33,25 @@ class ScenarioUtils
         @host = false
         @uid = false
         @ooor = false
+        # Genereic dict to store tested object
+        @memorizer = {}
     end
+    
+    # Define a memorizer to store object handled by the test
+    # Useful to store an invoice in a var which name = invoice name !
+    def set_var (name,value)
+      @memorizer[name]=value
+    end  
+    def get_var (name)
+      return @memorizer[name]
+    end
+    def clean_var (name)
+      @memorizer.delete(name)
+    end
+    def clean_all_var
+      @memorizer=[]
+    end
+    
     #read the base.conf file to set all the parameter to begin an xml rpc session with openerp
     #you can override any of the parameters
     def setConnexionfromConf(user=false, password=false, database=false, host=false, port=false, log_level=Logger::ERROR)

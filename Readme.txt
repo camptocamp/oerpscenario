@@ -73,11 +73,11 @@ Install libraries
 To install it, you need ruby and optionnaly Postgresql install depending
 which server you wanna use :
 
-sudo gem install cucumber
+sudo gem install cucumber (V. 0.5.1)
 sudo gem install activeresource
 sudo gem install rspec
 sudo gem install parseconfig
-sudo gem install ooor --source http://gemcutter.org
+sudo gem install ooor --source http://gemcutter.org (V. 1.2.3)
 
 (Optional, if you want to use it)
 sudo gem install rake
