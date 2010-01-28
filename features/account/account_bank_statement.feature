@@ -6,10 +6,10 @@
 ##############################################################################
 
 @account @addons
-Feature check finance
+Feature Test the Bank statement
   In order to test the invoicing process and modules
   As an administator
-  I want to see if the basics behaviors work 
+  I want to see if the basics bank statement  features work 
       
   @invoicing @account @addons @reconciliation
   Scenario: make_and_validate_payments_with_bank_statement

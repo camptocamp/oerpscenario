@@ -5,13 +5,12 @@
 #
 ##############################################################################
 
-@account @addons @invoicing
+@sale @addons
 Feature Initialize the settings
   In order ensure the right state for the tests suite
   I want to set some parameters and settings
   
-  @account @addons @invoicing 
-  # Background: account
+  @sale @addons
   Scenario: init_account_parameters
       Given I am loged as admin user with password admin used
       And the company currency is set to EUR 

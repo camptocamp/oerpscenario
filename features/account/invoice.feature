@@ -6,10 +6,10 @@
 ##############################################################################
 
 @account @addons  
-Feature check finance
+Feature Test the invoicing process
   In order to test the invoicing process and modules
   As an administator
-  I want to see if the basics behaviors work 
+  I want to see if the features work correctly 
       
   @invoicing @account @addons @rounding
   Scenario: validate_created_invoice

@@ -20,6 +20,11 @@
 ##############################################################################
 #                         BACKGROUND SETTINGS
 ##############################################################################
+# Here we centralize every steps used for initializing the OpenERP instance.
+# This means, every scenario written into _pre.features file of every folder
+# will have the parsing coded here !
+##############################################################################
+
 
 ##############################################################################
 Given /^the company currency is set to (\w+)$/ do |currency| 

@@ -184,11 +184,11 @@ doc/                                   => Auto-generated doc
 |                                 
 features/                              => Tests Scenarios folders
 |                                 
--- _basic                              => Basic features and scenario, like login etc..
+-- _basic                              => Basic features and the _pre_steps for every _pre.features
 |
 -- account/                            => One folder per module, give the folder the same name than in OpenERP
 |
------- _pre.feature                    => Background definition, in order to run the folder's tests scenarios according to given settings
+------ _pre.feature                    => Initialization definition, in order to run the folder's tests scenarios according to given settings
 |
 ------ invoice.feature                 => Tests scenario using Gherkin syntax concerning invoice.py file into OpenERP, give the same filename
 ...

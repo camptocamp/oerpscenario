@@ -6,10 +6,10 @@
 ##############################################################################
 
 @sale @addons  
-Feature check sales
+Feature Test Sales
   In order to test the sale process and modules
   As an administator
-  I want to see if the basics behaviors work 
+  I want to see if the sales features and workflow work well 
       
   @sale @addons
   Scenario: confirm_basic_sale_order

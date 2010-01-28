@@ -6,10 +6,10 @@
 ##############################################################################
 
 @account @addons  
-Feature check pay invoice wizard
+Feature Test the pay invoice wizard
   In order to test the pay invoice wizard
   As an administator
-  I want to see if the basics behaviors work
+  I want to see if the wizard take care of a complex case
   
     @invoicing @account @addons @wizard @reconciliation
     Scenario: make_and_validate_payments_with_pay_invoice_wizard
