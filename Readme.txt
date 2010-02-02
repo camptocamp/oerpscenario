@@ -81,10 +81,10 @@ Get the sources
 ------------------
 
 Trunk:
-bzr branch lp:oerpsenario
+bzr branch lp:oerpscenario
 
 For stable:
-bzr branch lp:oerpsenario/stable oerpsenario_stable
+bzr branch lp:oerpscenario/stable oerpscenario_stable
 
 Configure it
 ------------------
@@ -126,7 +126,7 @@ We use the test scenario using tags. You can find different types of tags, like:
 
 Launch the test suite with :
 
-cd oerpsenario
+cd oerpscenario
 cucumber features --tag=@invoicing,@account
 
 Where "invoicing" and "account" are the desired tests scenario. You can add also an output format
@@ -148,7 +148,7 @@ Other will come...
 MORE INFOS 
 ##############################################################################
 
-Find code and infos about OERPScenario here : https://launchpad.net/oerpsenario
+Find code and infos about OERPScenario here : https://launchpad.net/oerpscenario
 
 Find infos about Cucumber library here : http://cukes.info/
 
