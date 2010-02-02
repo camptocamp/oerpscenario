@@ -56,26 +56,30 @@ We have choosen to use those library for those main reasons:
 TRY IT : SETUP AND INSTALLATION !
 ##############################################################################
 
-Install libraries
-------------------
+Install libraries and dependencies 
+----------------------------------
 
-To install it, you need ruby and optionnaly Postgresql install depending
-which server you wanna use :
+- Ruby & Rubygems
+- Cucumber (V. 0.5.1)
+- Rspec
+- Parseconfig
+- Ooor (V. 1.2.3)
+- Rake (optional)
 
-sudo gem install cucumber (V. 0.5.1)
+Commands On Ubuntu 9.10
+-----------------------
+sudo apt-get install ruby irb ri rdoc rubygems
+sudo gem install cucumber -v0.5.1
 sudo gem install activeresource
 sudo gem install rspec
 sudo gem install parseconfig
-sudo gem install ooor --source http://gemcutter.org (V. 1.2.3)
-
-(Optional, if you want to use it)
+sudo gem install ooor --source http://gemcutter.org -v1.2.3
+sudo apt-get install libopenssl-ruby
 sudo gem install rake
 
+Finally add '/var/lib/gems/1.8/bin' to your PATH (Thanks to C. Almeida for the infos):
 
-On Ubuntu if ruby  and ruby gem are not installed do (Thanks to C. Almeida for the infos):
-- apt-get install libopenssl-ruby (not self evident)
-- add '/var/lib/gems/1.8/bin' to path 
-
+export PATH=$PATH:/var/lib/gems/1.8/bin
 
 Get the sources
 ------------------
@@ -89,7 +93,8 @@ bzr branch lp:oerpscenario/stable oerpscenario_stable
 Configure it
 ------------------
 
-Create the parameter file "base.conf" according to your settings (look at sample_base.conf):
+Create the parameter file "base.conf" according to your settings in the oerpscenario_stable folder
+(look at sample_base.conf):
 
 port = 8069
 user = admin
@@ -103,7 +108,7 @@ In our samples (both base.conf and _basic.feature), the admin user has the passw
 You have here two things to differenciate:
 
 1. The password into the base.conf, for connexion purpose
-2. The password use by one of the scenario (_basic.feature) to run the test case
+2. The password use by one of the scenario (_basic.feature) to run the test case as a specific user
 
 For the second one, the textual description of the scenario is parsed by the cucumber library to
 give the right password to run the test. This means the test case try to login with a given password. 
@@ -113,6 +118,7 @@ and change it according to your settings. Here an example:
 Background: login
   Given I am loged as USERNAME user with password MY_NEW_PASSWORD used
 
+This will also allow you to change the logged user to test the security on object, workflows,...
 
 USING THE TESTS SUITES SCENARIO 
 ##############################################################################
@@ -134,6 +140,7 @@ like :
 
 cucumber features --tag=@invoicing,@account --format=html >/tmp/result.html&&open  /tmp/result.html
 
+Usually, we recommand to launch the test suite with the name of the module to be tested.
 
 Optionnal rake command (require to install rake gem):
 
