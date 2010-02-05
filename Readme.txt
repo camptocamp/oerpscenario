@@ -63,7 +63,7 @@ Install libraries and dependencies
 - Cucumber (V. 0.5.1)
 - Rspec
 - Parseconfig
-- Ooor (V. 1.2.3)
+- Ooor (V. 1.2.5+)
 - Rake (optional)
 
 Commands On Ubuntu 9.10
