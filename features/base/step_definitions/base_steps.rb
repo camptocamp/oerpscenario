@@ -34,7 +34,7 @@ Given /^I check the integrity of ir\.property named (\w+)$/ do |name_property|
 end
 ##############################################################################
 Then /^I check the value of ir.property and it should not start with a space$/ do
-    test_result = @properties.value.starts_with? ' '
+    test_result = @properties.value.start_with?(' ')
     test_result.should be_false
 end
 
