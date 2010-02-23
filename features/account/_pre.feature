@@ -26,3 +26,4 @@ Feature Initialize the settings
       And a cash journal in CHF exists
       And a cash journal in EUR exists
       And the demo data are loaded
+      And a supplier tax of 19.6% rate exists

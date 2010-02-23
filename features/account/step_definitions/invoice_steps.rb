@@ -175,14 +175,14 @@ end
 ##############################################################################
 
 ##############################################################################
-Given /^I add a line on the last created invoice of (.*)$/ do |amount|
+Given /^I add a line called (\w+) on the last created invoice of (.*)$/ do |line_name,amount|
   # Take an account
   account_id = AccountAccount.find(:first, :domain=>[['type','=','other']]).id
   line=AccountInvoiceLine.new(
     :account_id => account_id,
     :quantity => 1,
     :price_unit => amount,
-    :name => amount.to_s+' line',
+    :name => line_name,
     :invoice_id => @invoice.id
   )
   line.create
@@ -221,4 +221,30 @@ Then /^the total amount convert into company currency must be same amount than t
     end   
   end
   company_currency_amount.should == amount
+end
+
+##############################################################################
+#           Scenario: invoice_partial_payment_validate_cancel
+##############################################################################
+
+##############################################################################
+When /^I press the cancel button it should raise a warning because the invoice is partially reconciled$/ do
+  begin
+      # Call the 'invoice_open' method from account.invoice openobject
+      @invoice.wkf_action('invoice_cancel')
+      class InvoiceCancel < Exception
+      end
+      raise InvoiceCancel, 'Cancelling invoice should not work when partial payment is done !'
+  rescue InvoiceCancel => e
+    # Here we are in the case the invoice was cancelled
+    raise e
+  rescue Exception => e
+    # Does nothing here, everything is normal if I get an error !
+    # The bank statement shouldn't be validated if an invoice is already reconciled !
+  end
+end
+
+##############################################################################
+Then /^the payments lines should be kept$/ do
+  @invoice.payment_ids.size.should > 0
 end

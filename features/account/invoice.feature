@@ -45,8 +45,8 @@ Feature Test the invoicing process
   @addons @account @rounding
   Scenario: check_rounding_diff_multi_line_inv
     Given I have recorded on the 11 oct 2009 a supplier invoice (in_invoice) of 1144.0 CHF without tax called MySupplierInvoiceRounding
-    And I add a line on the last created invoice of 91.73
-    And I add a line on the last created invoice of 63.00
+    And I add a line called MyFirstLine on the last created invoice of 91.73
+    And I add a line called MySecondLine on the last created invoice of 63.00
     And correct the total amount of the invoice according to changes
     When I press the validate button
     Then I should see the invoice MySupplierInvoiceRounding open
@@ -54,6 +54,35 @@ Feature Test the invoicing process
 	# Here we check the rounding to see if sum(rounded lines) == total invoice amount * current currency rate
     And the total amount convert into company currency must be same amount than the credit line on the payable/receivable account
 
+  @invoicing @account @addons @bug524521
+  Scenario: invoice_partial_payment_validate_cancel
+    Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoicePartialCancel
+    When I press the validate button
+    Then I should see the invoice MySupplierInvoicePartialCancel open
+    And the residual amount = 1000,0
+
+    When I call the Pay invoice wizard
+    And I partially pay 200.0 CHF.- on the 10 jan 2009
+    Then I should see a residual amount of 800.0 CHF.-
+
+    When I press the cancel button it should raise a warning because the invoice is partially reconciled
+	And the payments lines should be kept
+    And I should see the invoice MySupplierInvoice open
+
+# Feature Test the rounding issues on the tax amount if the user manually change the value
+# 
+#   Scenario:compute_invoice_tax
+# 	Given I have recorded on the 11 oct 2009 a supplier invoice (in_invoice) of 1000.0 CHF without tax called MySupplierInvoiceTax
+#     And I add a line called MyTaxLine on the last created invoice of 12156 with a tax of 19.6% rate
+# 	When I compute the taxes
+# 	Then I should have a invoice tax line with base amount of -12156
+# 	And tax amount of -2382.58
+# 
+#   Scenario:modify_invoice_tax_amount
+# 	Given I take the created invoice MySupplierInvoiceTax
+# 	When I modify the tax amount to 2382.55
+# 	Then I should have a invoice tax line with base amount equal to -12156
+# 	And tax a amount of -2382.55
 
 
 
