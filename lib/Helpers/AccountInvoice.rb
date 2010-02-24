@@ -75,7 +75,7 @@ begin
           toreturn.name = name
           toreturn.date_invoice=date_invoice
 
-          # Set type
+          # Set type of invoice
           toreturn.type = o[:type]
           curr =  ResCurrency.find(:first, :domain=>[['code','=',o[:currency_code]]])
           # Set currency

@@ -65,8 +65,8 @@ Feature Test the invoicing process
     And I partially pay 200.0 CHF.- on the 10 jan 2009
     Then I should see a residual amount of 800.0 CHF.-
 
-    When I press the cancel button it should raise a warning because the invoice is partially reconciled
-	And the payments lines should be kept
+    When I press the cancel button it should raise a warning
+	And because the invoice is partially reconciled the payments lines should be kept
     And I should see the invoice MySupplierInvoice open
 
 # Feature Test the rounding issues on the tax amount if the user manually change the value

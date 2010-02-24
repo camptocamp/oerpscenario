@@ -228,23 +228,25 @@ end
 ##############################################################################
 
 ##############################################################################
-When /^I press the cancel button it should raise a warning because the invoice is partially reconciled$/ do
+When /^I press the cancel button it should raise a warning$/ do
+  class InvoiceCancel < Exception
+  end
   begin
       # Call the 'invoice_open' method from account.invoice openobject
       @invoice.wkf_action('invoice_cancel')
-      class InvoiceCancel < Exception
-      end
       raise InvoiceCancel, 'Cancelling invoice should not work when partial payment is done !'
   rescue InvoiceCancel => e
     # Here we are in the case the invoice was cancelled
     raise e
-  rescue Exception => e
-    # Does nothing here, everything is normal if I get an error !
+  rescue RuntimeError => e
+    # Does nothing here, everything is normal if I get this error !
     # The bank statement shouldn't be validated if an invoice is already reconciled !
+  rescue Exception => e
+    raise e
   end
 end
 
 ##############################################################################
-Then /^the payments lines should be kept$/ do
+Then /^because the invoice is partially reconciled the payments lines should be kept$/ do
   @invoice.payment_ids.size.should > 0
 end

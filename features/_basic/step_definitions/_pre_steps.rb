@@ -80,3 +80,15 @@ Given /^the demo data are loaded$/ do
   m.should be_true
   m.demo.should be_true
 end
+
+##############################################################################
+Given /^on all journal entries can be canceled$/ do
+  journals = AccountJournal.find(:all)
+  journals.each do |journal|
+    journal.update_posted = true
+    journal.save
+    journal.update_posted.should be_true
+  end
+end
+
+##############################################################################
