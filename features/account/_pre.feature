@@ -29,4 +29,4 @@ Feature Initialize the settings
 
       Given the demo data are loaded
 
-      # Given a tax called 'Buy 19.6%' with a tax code exists
+      Given a purchase tax called 'Buy 19.6%' with a rate of 0.196 exists

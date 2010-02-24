@@ -92,3 +92,24 @@ Given /^on all journal entries can be canceled$/ do
 end
 
 ##############################################################################
+Given /^a purchase tax called '(.*)' with a rate of (.*) exists$/ do |name,rate|
+  foundtax=AccountTax.find(:first,:domain=>[['name','=',name]])
+  if not foundtax:
+    # Set options for a purchase tax at 19.6%
+    o = {
+        :type=>'percent',
+        :amount=>rate,
+        :type_tax_use=>'purchase',
+        # # For refund
+        # :ref_base_sign=>-1.0,
+        # :ref_tax_sign=>-1.0,
+        # # For VAT declaration
+        # :base_sign=>1.0,
+        # :tax_sign=>1.0,
+    }
+    foundtax=AccountTax.create_tax_and_code(name,o)
+  end
+  foundtax.should be_true
+end
+
+
