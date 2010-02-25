@@ -5,7 +5,7 @@
 #
 ##############################################################################
 
-@account @addons @invoicing
+@account @addons @invoicing @init
 Feature Initialize the settings
   In order ensure the right state for the tests suite
   I want to set some parameters and settings
@@ -30,3 +30,4 @@ Feature Initialize the settings
       Given the demo data are loaded
 
       Given a purchase tax called 'Buy 19.6%' with a rate of 0.196 exists
+      And a sale tax called 'Sale 19.6%' with a rate of 0.196 exists

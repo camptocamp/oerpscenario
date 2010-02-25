@@ -71,20 +71,16 @@ Feature Test the invoicing process
 	And because the invoice is partially reconciled the payments lines should be kept
     And I should see the invoice MySupplierInvoice open
 
-# Feature Test the rounding issues on the tax amount if the user manually change the value
-# 
-#   Scenario:compute_invoice_tax
-# 	Given I have recorded on the 11 oct 2009 a supplier invoice (in_invoice) of 1000.0 CHF without tax called MySupplierInvoiceTax
-#     And I add a line called MyTaxLine on the last created invoice of 12156 with a tax of 19.6% rate
-# 	When I compute the taxes
-# 	Then I should have a invoice tax line with base amount of -12156
-# 	And tax amount of -2382.58
-# 
-#   Scenario:modify_invoice_tax_amount
-# 	Given I take the created invoice MySupplierInvoiceTax
-# 	When I modify the tax amount to 2382.55
-# 	Then I should have a invoice tax line with base amount equal to -12156
-# 	And tax a amount of -2382.55
+  @invoicing @account @addons @tax
+  Scenario:compute_invoice_tax
+	Given I have recorded on the 11 oct 2009 a supplier invoice (in_invoice) of 1000.0 CHF without tax called MySupplierInvoiceTax
+    And I add a line with tax called MyTaxLine on the last created invoice of 12156.0 with the tax called 'Buy 19.6%'
+	When I compute the taxes on invoice
+	Then I should have a invoice tax line with a base amount of 12156.0
+	And a tax amount of 2382.58
+	When I modify the tax amount to 2382.55
+	Then I should have a invoice tax line with a base amount of 12156.0
+	And a tax amount of 2382.55
 
 
 
