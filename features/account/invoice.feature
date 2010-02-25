@@ -43,6 +43,7 @@ Feature Test the invoicing process
 	And the residual amount = 1000,0
     
   @addons @account @rounding
+  @bug452854
   Scenario: check_rounding_diff_multi_line_inv
     Given I have recorded on the 11 oct 2009 a supplier invoice (in_invoice) of 1144.0 CHF without tax called MySupplierInvoiceRounding
     And I add a line called MyFirstLine on the last created invoice of 91.73
@@ -54,7 +55,8 @@ Feature Test the invoicing process
 	# Here we check the rounding to see if sum(rounded lines) == total invoice amount * current currency rate
     And the total amount convert into company currency must be same amount than the credit line on the payable/receivable account
 
-  @invoicing @account @addons @bug524521
+  @invoicing @account @addons
+  @bug524521
   Scenario: invoice_partial_payment_validate_cancel
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoicePartialCancel
     When I press the validate button

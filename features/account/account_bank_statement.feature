@@ -12,6 +12,7 @@ Feature Test the Bank statement
   I want to see if the basics bank statement  features work 
       
   @invoicing @account @addons @reconciliation
+  @bug491892
   Scenario: make_and_validate_payments_with_bank_statement
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoiceBankStatement2
     When I press the validate button
@@ -26,6 +27,7 @@ Feature Test the Bank statement
     And the invoice should appear as paid invoice (checkbox tic)
   
   @invoicing @account @addons @reconciliation @bankstatement
+  @bug485281
   Scenario: validate_failure_rollback_on_statement
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MyFirstSupplierInvoiceBankStatement
     When I press the validate button
