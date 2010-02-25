@@ -204,10 +204,9 @@ Then /^the total credit amount must be equal to the total debit amount$/ do
 end
 
 ##############################################################################
-And /^correct the total amount of the invoice according to changes$/ do
+And /^I correct the total amount of the invoice according to changes$/ do
   @invoice.check_total = @invoice.amount_total
   @invoice.save
-
 end
 
 ##############################################################################

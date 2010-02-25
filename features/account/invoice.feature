@@ -48,7 +48,7 @@ Feature Test the invoicing process
     Given I have recorded on the 11 oct 2009 a supplier invoice (in_invoice) of 1144.0 CHF without tax called MySupplierInvoiceRounding
     And I add a line called MyFirstLine on the last created invoice of 91.73
     And I add a line called MySecondLine on the last created invoice of 63.00
-    And correct the total amount of the invoice according to changes
+    And I correct the total amount of the invoice according to changes
     When I press the validate button
     Then I should see the invoice MySupplierInvoiceRounding open
     And the total credit amount must be equal to the total debit amount
@@ -78,10 +78,15 @@ Feature Test the invoicing process
 	When I compute the taxes on invoice
 	Then I should have a invoice tax line with a base amount of 12156.0
 	And a tax amount of 2382.58
+	
 	When I modify the tax amount to 2382.55
 	Then I should have a invoice tax line with a base amount of 12156.0
 	And a tax amount of 2382.55
-
+	
+	Given I correct the total amount of the invoice according to changes
+	When I press the validate button
+	Then I should see the invoice MySupplierInvoiceTax open
+	And I should have a linked account move with 4 lines and a posted status
 
 
 
