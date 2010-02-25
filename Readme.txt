@@ -63,17 +63,16 @@ Install libraries and dependencies
 - Cucumber (V. 0.5.1)
 - Rspec
 - Parseconfig
-- Ooor (V. 1.2.3)
+- Ooor (V. 1.2.5+)
 - Rake (optional)
 
 Commands On Ubuntu 9.10
 -----------------------
 sudo apt-get install ruby irb ri rdoc rubygems
 sudo gem install cucumber -v0.5.1
-sudo gem install activeresource
 sudo gem install rspec
 sudo gem install parseconfig
-sudo gem install ooor --source http://gemcutter.org -v1.2.3
+sudo gem install ooor --source http://gemcutter.org
 sudo apt-get install libopenssl-ruby
 sudo gem install rake
 
