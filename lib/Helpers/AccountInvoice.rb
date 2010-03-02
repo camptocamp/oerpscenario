@@ -110,9 +110,6 @@ begin
                     :invoice_id => toreturn.id
                   )
                   line.create
-                  # CHECK : This is may be a Ooor bug, we must set again this value
-                  line.price_unit = o[:amount].to_f
-                  line.save
               end
           end
           toreturn.save 
