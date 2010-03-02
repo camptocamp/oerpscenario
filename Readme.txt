@@ -63,7 +63,7 @@ Install libraries and dependencies
 - Cucumber (V. 0.5.1)
 - Rspec
 - Parseconfig
-- Ooor (V. 1.2.5+)
+- Ooor (V. 1.8.0+)
 - Rake (optional)
 
 Commands On Ubuntu 9.10
@@ -128,18 +128,20 @@ We use the test scenario using tags. You can find different types of tags, like:
  - @account     : This tag represent all tests scenario related to the account module of OpenERP
  - @addons      : This tag represent all tests scenario related to the addons branch of OpenERP
  - @invoicing   : This tag represent all tests scenario related to the invoicing process of OpenERP
+ - @bugNUMBER   : This tag test the tests cases related to a Launchpad bug number
 
 Launch the test suite with :
 
 cd oerpscenario
-cucumber features --tag=@invoicing,@account
+cucumber features --tag=@init --tag=@account
 
-Where "invoicing" and "account" are the desired tests scenario. You can add also an output format
+Where "init" and "account" are the desired tests scenario. You can add also an output format
 like :
 
-cucumber features --tag=@invoicing,@account --format=html >/tmp/result.html&&open  /tmp/result.html
+cucumber features --tag=@invoicing --tag=@account --format=html >/tmp/result.html&&open  /tmp/result.html
 
-Usually, we recommand to launch the test suite with the name of the module to be tested.
+Usually, we recommand to launch the test suite with the name of the module to be tested. Have a look
+here for more infos about tag usage : http://wiki.github.com/aslakhellesoy/cucumber/tags
 
 Optionnal rake command (require to install rake gem):
 

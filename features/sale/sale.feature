@@ -11,7 +11,6 @@ Feature Test Sales
   As an administator
   I want to see if the sales features and workflow work well 
       
-  @sale @addons
   Scenario: confirm_basic_sale_order
 	Given I have recorded on the 1 jan 2009 a sale order of 1000,0 CHF without tax called MySimpleSO
     When I press the confirm button

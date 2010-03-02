@@ -11,7 +11,7 @@ Feature Test the pay invoice wizard
   As an administator
   I want to see if the wizard take care of a complex case
   
-    @invoicing @account @addons @wizard @reconciliation 
+    @invoicing @wizard @reconciliation 
     @bug511104 @bug496889 @bug497078 
     Scenario: make_and_validate_payments_with_pay_invoice_wizard
       Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoicePayWizard
