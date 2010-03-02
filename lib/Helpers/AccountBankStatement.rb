@@ -91,8 +91,6 @@ begin
             # Save the start and end values
             self.balance_end_real=inv_total
             self.save
-            require 'ruby-debug'
-            debugger
             unless self.class  == AccountBankStatement :
               raise "!!! --- HELPER ERROR :import_invoice received a #{self.class.to_s} instead of AccountBankStatement" 
             end
