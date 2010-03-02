@@ -55,7 +55,6 @@
             <span class="ruby-comment cmt"># Save the start and end values</span>
             <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">balance_end_real</span>=<span class="ruby-identifier">inv_total</span>
             <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">save</span>
-
             <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>  <span class="ruby-operator">==</span> <span class="ruby-constant">AccountBankStatement</span> <span class="ruby-operator">:</span>
               <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;!!! --- HELPER ERROR :import_invoice received a #{self.class.to_s} instead of AccountBankStatement&quot;</span> 
             <span class="ruby-keyword kw">end</span>

@@ -10,9 +10,33 @@
   <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
 </head>
 <body class="standalone-code">
-  <pre><span class="ruby-comment cmt"># File lib/Helpers/IrModuleModule.rb, line 99</span>
-           <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">run_base_quality_test</span>(<span class="ruby-identifier">modules</span>)
-               <span class="ruby-identifier">puts</span> <span class="ruby-value str">'function no available'</span>
-           <span class="ruby-keyword kw">end</span></pre>
+  <pre><span class="ruby-comment cmt"># File lib/Helpers/IrModuleModule.rb, line 71</span>
+          <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">run_base_quality_test</span>(<span class="ruby-identifier">modules</span>)
+            <span class="ruby-comment cmt"># Take the id of already recorded tests result</span>
+            <span class="ruby-comment cmt"># because we are unable to retrieve their ids from wizard</span>
+            <span class="ruby-comment cmt"># cause it has only one step 'init'</span>
+            <span class="ruby-identifier">already_stored_test_ids</span>=[]
+            <span class="ruby-constant">ModuleQualityCheck</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">stored_result</span><span class="ruby-operator">|</span> 
+              <span class="ruby-identifier">already_stored_test_ids</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">stored_result</span>.<span class="ruby-identifier">id</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">modules</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+              <span class="ruby-comment cmt"># Call the wizard on module</span>
+              <span class="ruby-identifier">wizard</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">old_wizard_step</span>(<span class="ruby-value str">'create_quality_check_wiz'</span>)
+            <span class="ruby-keyword kw">end</span>
+
+            <span class="ruby-comment cmt"># Find all recorded tests, and substract old created ones</span>
+            <span class="ruby-identifier">all_stored_test_ids</span>=[]
+            <span class="ruby-constant">ModuleQualityCheck</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">stored_result</span><span class="ruby-operator">|</span> 
+              <span class="ruby-identifier">all_stored_test_ids</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">stored_result</span>.<span class="ruby-identifier">id</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">new_ids</span>=<span class="ruby-identifier">all_stored_test_ids</span><span class="ruby-operator">-</span><span class="ruby-identifier">already_stored_test_ids</span>
+            <span class="ruby-identifier">res</span>= <span class="ruby-constant">ModuleQualityCheck</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">new_ids</span>)
+
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">res</span> <span class="ruby-operator">:</span>
+              <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">res</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;!!! --- HELPER ERROR : run_base_quality_test was unable to upgrade needed modules..&quot;</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span></pre>
 </body>
 </html>

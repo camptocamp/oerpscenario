@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>create_tax_and_code (lib/Helpers/AccountTax.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/Helpers/AccountTax.rb, line 51</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">create_tax_and_code</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span>={}, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+          <span class="ruby-comment cmt"># require 'ruby-debug'</span>
+          <span class="ruby-comment cmt"># debugger</span>
+          <span class="ruby-comment cmt"># Set default values</span>
+          <span class="ruby-identifier">o</span> = {
+              <span class="ruby-identifier">:type=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'percent'</span>,
+              <span class="ruby-identifier">:amount=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">0</span><span class="ruby-value">.196</span>,
+              <span class="ruby-identifier">:type_tax_use=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'sale'</span>,
+              <span class="ruby-comment cmt"># For refund</span>
+              <span class="ruby-identifier">:ref_base_sign=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">-1.0</span>,
+              <span class="ruby-identifier">:ref_tax_sign=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">-1.0</span>,
+              <span class="ruby-comment cmt"># For VAT declaration</span>
+              <span class="ruby-identifier">:base_sign=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1.0</span>,
+              <span class="ruby-identifier">:tax_sign=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1.0</span>,
+           }.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+             
+          <span class="ruby-identifier">toreturn</span> = <span class="ruby-constant">AccountTax</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">o</span>)
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">type</span> = <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:type</span>]
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">amount</span> = <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:amount</span>]
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">type_tax_use</span> = <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:type_tax_use</span>]
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">ref_base_sign</span> = <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:ref_base_sign</span>]
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">ref_tax_sign</span> = <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:ref_tax_sign</span>]
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">base_sign</span> = <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:base_sign</span>]
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">tax_sign</span> = <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:tax_sign</span>]
+          
+          <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">create</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">toreturn</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -5,14 +5,14 @@
 
 <html>
 <head>
-  <title>clean_var (ScenarioUtils)</title>
+  <title>get_var (ScenarioUtils)</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
 </head>
 <body class="standalone-code">
-  <pre><span class="ruby-comment cmt"># File lib/ERPConnector.rb, line 48</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clean_var</span> (<span class="ruby-identifier">name</span>)
-      <span class="ruby-ivar">@memorizer</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">name</span>)
+  <pre><span class="ruby-comment cmt"># File lib/ERPConnector.rb, line 45</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_var</span> (<span class="ruby-identifier">name</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@memorizer</span>[<span class="ruby-identifier">name</span>]
     <span class="ruby-keyword kw">end</span></pre>
 </body>
 </html>
