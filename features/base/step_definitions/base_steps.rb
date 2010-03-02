@@ -19,15 +19,10 @@
 #
 ##############################################################################
 
-@properties = false
-Before do
-    # Initiate vars used to stored object used trought the tests
-    @irvalues = false
-end
-
-
 ##############################################################################
-#           Scenario: validate_created_invoice
+#           Scenario: validate_properties
+##############################################################################
+
 ##############################################################################
 Given /^I check the integrity of ir\.property named (\w+)$/ do |name_property|
    @properties=IrProperty.find(:first,:domain=>[['name','=',name_property]])
@@ -38,3 +33,45 @@ Then /^I check the value of ir.property and it should not start with a space$/ d
     test_result.should be_false
 end
 
+##############################################################################
+#           Scenario: check_base_contact
+##############################################################################
+
+##############################################################################
+Given /^I made a search on object res\.partner\.contact$/ do    
+    @res = ResPartnerContact.find(:all) # we find by id 1
+end
+
+##############################################################################
+When /^I press search$/ do
+end
+
+##############################################################################
+Then /^the result  should be > 0/ do
+    @res.should be_true
+end
+
+##############################################################################
+#           Scenario: create_partner
+##############################################################################
+
+##############################################################################
+Given /^I want to create a partner named (\w+) with default receivable account$/ do |name|
+    @part = ResPartner.new(:name => "#{name}, #{rand.to_s[0..10]}")
+end
+
+##############################################################################
+Then /^I get a receivable account$/ do
+    @account_id = AccountAccount.find(:first, :domain=>[['type', '=', 'receivable'],['active','=',1]])
+    @account_id.should be_true
+end
+
+##############################################################################
+When /^I press create$/ do
+end
+
+##############################################################################
+Then /^I should get a partner id$/ do
+    @part.property_account_receivable = @account_id.id
+    @part.save.should be_true
+end

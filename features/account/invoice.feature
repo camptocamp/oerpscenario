@@ -71,9 +71,10 @@ Feature Test the invoicing process
 	And because the invoice is partially reconciled the payments lines should be kept
     And I should see the invoice MySupplierInvoice open
 
-  @invoicing @account @addons @tax
+  @invoicing @account @addons @tax 
+  @bug524278
   Scenario:compute_invoice_tax
-	Given I have recorded on the 11 oct 2009 a supplier invoice (in_invoice) of 1000.0 CHF without tax called MySupplierInvoiceTax
+	Given I have recorded on the 10 sept 2009 a supplier invoice (in_invoice) of 1000.0 CHF without tax called MySupplierInvoiceTax
     And I add a line with tax called MyTaxLine on the last created invoice of 12156.0 with the tax called 'Buy 19.6%'
 	When I compute the taxes on invoice
 	Then I should have a invoice tax line with a base amount of 12156.0
@@ -82,6 +83,8 @@ Feature Test the invoicing process
 	When I modify the tax amount to 2382.55
 	Then I should have a invoice tax line with a base amount of 12156.0
 	And a tax amount of 2382.55
+	And a tax code amount of -1588.37
+	And a tax base amount of -8104.0
 	
 	Given I correct the total amount of the invoice according to changes
 	When I press the validate button

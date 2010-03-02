@@ -49,8 +49,6 @@ begin
       # inv = AccountInvoice.create_cust_invoice_with_currency('my name',part,{currency_code =>'CHF'})
       puts "Extending  #{self.class} #{self.name}"
       def self.create_invoice_with_currency(name, partner, options={}, *args)
-          # require 'ruby-debug'
-          # debugger
           o = {:type=>'out_invoice', :currency_code=>'EUR', :date=>false, :amount=>false, :account=>false}.merge(options)
            if o[:date] :
                 date_invoice = Date.parse(str=o[:date]).to_s
@@ -87,9 +85,11 @@ begin
           
           # Set amount and line if asked for
           toreturn.create
+
           # toreturn.type = o[:type]
           # toreturn.save
           if o[:amount] :
+              
               if ['in_invoice', 'in_refund'].include? o[:type] :
                   toreturn.check_total = o[:amount]
               end
@@ -99,17 +99,20 @@ begin
                   end
                   account_id = o[:account].id
               else
-                  account_id = AccountAccount.find(:first, :domain=>[['type','=','other']]).id
+                  # If no account, take on of type 'other' and a non-reconciliable account
+                  account_id = AccountAccount.find(:first, :domain=>[['type','=','other'],['reconcile','=',false]]).id
                   # Create a line = amount for the created invoice
                   line=AccountInvoiceLine.new(
-                  :account_id => account_id,
-                  :quantity => 1,
-                  :price_unit => o[:amount],
-                  :name => name+' line',
-                  :invoice_id => toreturn.id
+                    :account_id => account_id,
+                    :quantity => 1,
+                    :name => name+' line',
+                    :price_unit => o[:amount],
+                    :invoice_id => toreturn.id
                   )
                   line.create
-
+                  # CHECK : This is may be a Ooor bug, we must set again this value
+                  line.price_unit = o[:amount].to_f
+                  line.save
               end
           end
           toreturn.save 

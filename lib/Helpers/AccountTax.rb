@@ -31,21 +31,22 @@ begin
       ##########################################################################
       # Create a tax and tax code with given informations
       # Input :
-      #  - name : Name of the invoice
-      #  - partner : A valid ResPartner instance
+      #  - name : Name of the tax
       #  - option {
-      #    currency_code (Default : EUR) : An ISO code for currency
-      #    date (Default : false) : A date in this text format : 1 jan 2009
-      #    amount (Default : false) : An amount for the invoice => this will create a line 
-      #    account (Default : false) : An valide AccountAccount
-      #    type (Default : out_invoice) : the invoice type
+          # :type=>'percent',
+          # :amount=>0.196,
+          # :type_tax_use=>'sale',
+          # # For refund
+          # :ref_base_sign=>-1.0,
+          # :ref_tax_sign=>-1.0,
+          # # For VAT declaration
+          # :base_sign=>1.0,
+          # :tax_sign=>1.0,
       #  }
       # Return
-      #  - The created AccountInvoice as a instance of the class¨
+      #  - The created AccountTax as a instance of the class¨
       # Usage Example:
-      # part = ResPartner.find(:first)
-      # puts part.id
-      # inv = AccountInvoice.create_cust_invoice_with_currency('my name',part,{currency_code =>'CHF'})
+      # tax = AccountTax.create_tax_and_code('my name',{:type=>'percent',:amount=>rate,:type_tax_use=>'purchase',})
       puts "Extending  #{self.class} #{self.name}"
       def self.create_tax_and_code(name, options={}, *args)
           # require 'ruby-debug'

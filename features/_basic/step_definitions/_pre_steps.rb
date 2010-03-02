@@ -18,6 +18,9 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+
+
+##############################################################################
 #                         BACKGROUND SETTINGS
 ##############################################################################
 # Here we centralize every steps used for initializing the OpenERP instance.
@@ -101,11 +104,11 @@ Given /^a purchase tax called '(.*)' with a rate of (.*) exists$/ do |name,rate|
         :amount=>rate,
         :type_tax_use=>'purchase',
         # # For refund
-        # :ref_base_sign=>-1.0,
-        # :ref_tax_sign=>-1.0,
+        :ref_base_sign=>1.0,
+        :ref_tax_sign=>1.0,
         # # For VAT declaration
-        # :base_sign=>1.0,
-        # :tax_sign=>1.0,
+        :base_sign=>-1.0,
+        :tax_sign=>-1.0,
     }
     foundtax=AccountTax.create_tax_and_code(name,o)
   end
@@ -121,12 +124,12 @@ Given /^a sale tax called '(.*)' with a rate of (.*) exists$/ do |name,rate|
         :type=>'percent',
         :amount=>rate,
         :type_tax_use=>'sale',
-        # # For refund
-        # :ref_base_sign=>-1.0,
-        # :ref_tax_sign=>-1.0,
-        # # For VAT declaration
-        # :base_sign=>1.0,
-        # :tax_sign=>1.0,
+        # For refund
+        :ref_base_sign=>-1.0,
+        :ref_tax_sign=>-1.0,
+        # For VAT declaration
+        :base_sign=>1.0,
+        :tax_sign=>1.0,
     }
     foundtax=AccountTax.create_tax_and_code(name,o)
   end

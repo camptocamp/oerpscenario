@@ -289,10 +289,6 @@ Then /^a tax amount of (.*)$/ do |amount|
 end
 
 ##############################################################################
-#           Scenario: modify_invoice_tax_amount
-##############################################################################
-
-##############################################################################
 When /^I modify the tax amount to (.*)$/ do |amount|
   tax_lines=@invoice.tax_line
   tax_lines.each do |tax_l|
@@ -310,5 +306,14 @@ When /^I modify the tax amount to (.*)$/ do |amount|
   @invoice=AccountInvoice.find(@invoice.id)
 end
 
+##############################################################################
+Then /^a tax code amount of (.*)$/ do |amount|
+  @invoice.tax_line[0].tax_amount.should == amount.to_f
+end
+
+##############################################################################
+Then /^a tax base amount of (.*)$/ do |amount|
+  @invoice.tax_line[0].base_amount.should == amount.to_f
+end
 
 
