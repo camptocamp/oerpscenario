@@ -18,8 +18,16 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+
+
+##############################################################################
 #                         BACKGROUND SETTINGS
 ##############################################################################
+# Here we centralize every steps used for initializing the OpenERP instance.
+# This means, every scenario written into _pre.features file of every folder
+# will have the parsing coded here !
+##############################################################################
+
 
 ##############################################################################
 Given /^the company currency is set to (\w+)$/ do |currency| 
@@ -68,10 +76,62 @@ Given /^a (\w+) journal in (\w+) exists$/ do |type,currency|
   end
 end
 
+##############################################################################
 Given /^the demo data are loaded$/ do
-
   IrModuleModule.load_demo_data_on_installed_modules()
   m=IrModuleModule.find(:first,:domain=>[['name','=','base']])
   m.should be_true
   m.demo.should be_true
+end
+
+##############################################################################
+Given /^on all journal entries can be canceled$/ do
+  journals = AccountJournal.find(:all)
+  journals.each do |journal|
+    journal.update_posted = true
+    journal.save
+    journal.update_posted.should be_true
+  end
+end
+
+##############################################################################
+Given /^a purchase tax called '(.*)' with a rate of (.*) exists$/ do |name,rate|
+  foundtax=AccountTax.find(:first,:domain=>[['name','=',name]])
+  if not foundtax:
+    # Set options for a purchase tax at 19.6%
+    o = {
+        :type=>'percent',
+        :amount=>rate,
+        :type_tax_use=>'purchase',
+        # # For refund
+        :ref_base_sign=>1.0,
+        :ref_tax_sign=>1.0,
+        # # For VAT declaration
+        :base_sign=>-1.0,
+        :tax_sign=>-1.0,
+    }
+    foundtax=AccountTax.create_tax_and_code(name,o)
+  end
+  foundtax.should be_true
+end
+
+##############################################################################
+Given /^a sale tax called '(.*)' with a rate of (.*) exists$/ do |name,rate|
+  foundtax=AccountTax.find(:first,:domain=>[['name','=',name]])
+  if not foundtax:
+    # Set options for a purchase tax at 19.6%
+    o = {
+        :type=>'percent',
+        :amount=>rate,
+        :type_tax_use=>'sale',
+        # For refund
+        :ref_base_sign=>-1.0,
+        :ref_tax_sign=>-1.0,
+        # For VAT declaration
+        :base_sign=>1.0,
+        :tax_sign=>1.0,
+    }
+    foundtax=AccountTax.create_tax_and_code(name,o)
+  end
+  foundtax.should be_true
 end

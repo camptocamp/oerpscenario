@@ -6,12 +6,13 @@
 ##############################################################################
 
 @account @addons
-Feature check finance
+Feature Test the Bank statement
   In order to test the invoicing process and modules
   As an administator
-  I want to see if the basics behaviors work 
+  I want to see if the basics bank statement  features work 
       
-  @invoicing @account @addons @reconciliation
+  @invoicing @reconciliation
+  @bug491892
   Scenario: make_and_validate_payments_with_bank_statement
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoiceBankStatement2
     When I press the validate button
@@ -25,7 +26,8 @@ Feature check finance
     And the residual amount = 0,0
     And the invoice should appear as paid invoice (checkbox tic)
   
-  @invoicing @account @addons @reconciliation @bankstatement
+  @invoicing @reconciliation @bankstatement
+  @bug485281
   Scenario: validate_failure_rollback_on_statement
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MyFirstSupplierInvoiceBankStatement
     When I press the validate button

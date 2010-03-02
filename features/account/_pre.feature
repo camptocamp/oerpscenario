@@ -5,14 +5,12 @@
 #
 ##############################################################################
 
-@account @addons @invoicing
-Feature ensure finance test
-  In order to be sure that the data are set correctely to run finance set
-  As an administator
-  I want to see if the basics settings are done
+@account @addons @invoicing @init
+Feature Initialize the settings
+  In order ensure the right state for the tests suite
+  I want to set some parameters and settings
   
-  @account @addons @invoicing 
-  Background:
+  Scenario: init_account_parameters
       Given I am loged as admin user with password admin used
       And the company currency is set to EUR 
       And the following currency rate settings are:
@@ -22,7 +20,13 @@ Feature ensure finance test
       |CHF|1.500|09-09-2009|
       |CHF|0.6547|10-10-2009|
       |USD|1.3785|01-01-2009|
-      And a cash journal in USD exists
+
+      Given a cash journal in USD exists
       And a cash journal in CHF exists
       And a cash journal in EUR exists
-      And the demo data are loaded
+      And on all journal entries can be canceled
+
+      Given the demo data are loaded
+
+      Given a purchase tax called 'Buy 19.6%' with a rate of 0.196 exists
+      And a sale tax called 'Sale 19.6%' with a rate of 0.196 exists

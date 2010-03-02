@@ -98,6 +98,12 @@ end
 When /^push the confirm button of the statement it should raise a warning because one invoice is already reconciled$/ do
   begin
       @statement.call('button_confirm',[@statement.id])
+      class StatementConfirm < Exception
+      end
+      raise StatementConfirm, 'Confirming a bank statement should not work if one of the concerned invoice is already reconciled !'
+  rescue StatementConfirm => e
+    # Here we are in the case the statement was confirm
+    raise e
   rescue Exception => e
     # Does nothing here, everything is normal if I get an error !
     # The bank statement shouldn't be validated if an invoice is already reconciled !

@@ -175,14 +175,14 @@ end
 ##############################################################################
 
 ##############################################################################
-Given /^I add a line on the last created invoice of (.*)$/ do |amount|
+Given /^I add a line called (\w+) on the last created invoice of (.*)$/ do |line_name,amount|
   # Take an account
   account_id = AccountAccount.find(:first, :domain=>[['type','=','other']]).id
   line=AccountInvoiceLine.new(
     :account_id => account_id,
     :quantity => 1,
     :price_unit => amount,
-    :name => amount.to_s+' line',
+    :name => line_name,
     :invoice_id => @invoice.id
   )
   line.create
@@ -204,10 +204,9 @@ Then /^the total credit amount must be equal to the total debit amount$/ do
 end
 
 ##############################################################################
-And /^correct the total amount of the invoice according to changes$/ do
+And /^I correct the total amount of the invoice according to changes$/ do
   @invoice.check_total = @invoice.amount_total
   @invoice.save
-
 end
 
 ##############################################################################
@@ -223,3 +222,98 @@ Then /^the total amount convert into company currency must be same amount than t
   end
   company_currency_amount.should == amount
 end
+
+##############################################################################
+#           Scenario: invoice_partial_payment_validate_cancel
+##############################################################################
+
+##############################################################################
+When /^I press the cancel button it should raise a warning$/ do
+  class InvoiceCancel < Exception
+  end
+  begin
+      # Call the 'invoice_open' method from account.invoice openobject
+      @invoice.wkf_action('invoice_cancel')
+      raise InvoiceCancel, 'Cancelling invoice should not work when partial payment is done !'
+  rescue InvoiceCancel => e
+    # Here we are in the case the invoice was cancelled
+    raise e
+  rescue RuntimeError => e
+    # Does nothing here, everything is normal if I get this error !
+    # The bank statement shouldn't be validated if an invoice is already reconciled !
+  rescue Exception => e
+    raise e
+  end
+end
+
+##############################################################################
+Then /^because the invoice is partially reconciled the payments lines should be kept$/ do
+  @invoice.payment_ids.size.should > 0
+end
+
+##############################################################################
+#           Scenario: compute_invoice_tax
+##############################################################################
+Given /^I add a line with tax called (\w+) on the last created invoice of (.*) with the tax called '(.*)'$/ do |name,amount,taxname|
+  # Take an account
+  account_id = AccountAccount.find(:first, :domain=>[['type','=','other']]).id
+  line=AccountInvoiceLine.new(
+    :account_id => account_id,
+    :quantity => 1,
+    :price_unit => amount,
+    :name => name,
+    :invoice_id => @invoice.id
+  )
+  line.create
+  # Add the tax
+  tax_id=AccountTax.find(:first,:domain=>[['name','=',taxname]]).id
+  line.invoice_line_tax_id=[tax_id]
+  line.save
+  @invoice=AccountInvoice.find(@invoice.id)
+end
+
+##############################################################################
+When /^I compute the taxes on invoice$/ do
+  @invoice.call('button_reset_taxes',[@invoice.id])
+  @invoice=AccountInvoice.find(@invoice.id)
+end
+
+##############################################################################
+Then /^I should have a invoice tax line with a base amount of (.*)$/ do |amount|
+  @invoice.tax_line[0].base.should == amount.to_f
+end
+
+##############################################################################
+Then /^a tax amount of (.*)$/ do |amount|
+  @invoice.tax_line[0].amount.should == amount.to_f
+end
+
+##############################################################################
+When /^I modify the tax amount to (.*)$/ do |amount|
+  tax_lines=@invoice.tax_line
+  tax_lines.each do |tax_l|
+    tax_l.on_change(
+      'amount_change',
+      'amount',
+      amount.to_f,
+      amount.to_f,
+      @invoice.currency_id.id,
+      @invoice.company_id.id,
+      @invoice.date_invoice
+    )
+    tax_l.save
+  end
+  @invoice=AccountInvoice.find(@invoice.id)
+end
+
+##############################################################################
+Then /^a tax code amount of (.*)$/ do |amount|
+  @invoice.tax_line[0].tax_amount.should == amount.to_f
+end
+
+##############################################################################
+Then /^a tax base amount of (.*)$/ do |amount|
+  @invoice.tax_line[0].base_amount.should == amount.to_f
+end
+
+
