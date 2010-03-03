@@ -11,7 +11,6 @@ Feature Initialize the settings
   I want to set some parameters and settings
   
   Scenario: init_account_parameters
-      Given I am loged as admin user with password admin used
       And the company currency is set to EUR 
       And the following currency rate settings are:
       |code|rate|name|
