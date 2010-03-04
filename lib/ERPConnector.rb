@@ -22,6 +22,7 @@ require 'rubygems'
 require 'ooor'
 require 'parseconfig'
 require 'pp'
+require 'cucumber'
 
 # This class map OpenERP XMLRPC logins and common stuff
 class ScenarioUtils
@@ -52,7 +53,11 @@ class ScenarioUtils
     #read the base.conf file to set all the parameter to begin an xml rpc session with openerp
     #you can override any of the parameters
     def setConnexionfromConf(para={}, *args)
-        my_config = ParseConfig.new('base.conf')
+        conf_path = 'base.conf' 
+        if ENV['CONF']
+            conf_path = ENV['CONF']
+        end
+        my_config = ParseConfig.new(conf_path)
         @config[:port] = my_config.get_value('port')
         @config[:user] =  my_config.get_value('user')
         @config[:dbname] =  my_config.get_value('database')
