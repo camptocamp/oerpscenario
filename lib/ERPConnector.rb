@@ -21,20 +21,17 @@
 require 'rubygems'
 require 'ooor'
 require 'parseconfig'
+require 'pp'
 
 # This class map OpenERP XMLRPC logins and common stuff
 class ScenarioUtils
     
     def initialize
-        @port = false
-        @user = false
-        @dbname = false
-        @pwd = false
-        @host = false
         @uid = false
         @ooor = false
         # Genereic dict to store tested object
         @memorizer = {}
+        @config = {}
     end
     
     # Define a memorizer to store object handled by the test
@@ -54,33 +51,28 @@ class ScenarioUtils
     
     #read the base.conf file to set all the parameter to begin an xml rpc session with openerp
     #you can override any of the parameters
-    def setConnexionfromConf(user=false, password=false, database=false, host=false, port=false, log_level=Logger::ERROR)
+    def setConnexionfromConf(para={}, *args)
         my_config = ParseConfig.new('base.conf')
-        @port = my_config.get_value('port')
-        @user =  my_config.get_value('user')
-        @dbname =  my_config.get_value('database')
-        @pwd =  my_config.get_value('password') 
-        @host =  my_config.get_value('host')
-        if user :
-            @user = user
-        end
-        if password :
-            @pwd = password
-        end
-        if database :
-            @dbname = database
-        end
-        if host :
-            @host = host
-        end
-        if port :
-            @port = port
-        end
-        puts 'Connnecting >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+        @config[:port] = my_config.get_value('port')
+        @config[:user] =  my_config.get_value('user')
+        @config[:dbname] =  my_config.get_value('database')
+        @config[:pwd] =  my_config.get_value('password') 
+        @config[:host] =  my_config.get_value('host')
+        @config[:log_level] = Logger::ERROR
+        @config.merge(para)
+
         if @ooor :
-            self.login(@user, @pwd)
+            self.login(@config[:user], @config[:pwd])
         else
-             @ooor=Ooor.new({:url => "http://#{@host}:#{@port}/xmlrpc", :database => @dbname, :username => @user, :password => @pwd, :log_level=>log_level})
+             @ooor=Ooor.new(
+                            {
+                            :url => "http://#{ @config[:host]}:#{@config[:port]}/xmlrpc",
+                            :database => @config[:dbname], 
+                            :username =>  @config[:user], 
+                            :password => @config[:pwd], 
+                            :log_level=>  @config[:log_level]
+                            }
+                        )
              Dir["lib/Helpers/*.rb"].each {|file| require file }
         end
     end 
@@ -93,8 +85,13 @@ class ScenarioUtils
         end
     end
     
-    def login(user,pass)
-        return  @ooor.global_login(user, pass)
+    def login(para={}, *args)
+        my_config = ParseConfig.new('base.conf')
+        log_para = {}
+        log_para[:user]  = my_config.get_value('user')
+        log_para[:pwd] =  my_config.get_value('password') 
+        log_para.merge(para)
+        return  @ooor.global_login(log_para[:user], log_para[:pwd])
     end
     
       

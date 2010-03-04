@@ -14,7 +14,7 @@ Feature test partner
 
   @testpartnersample
   Background: login
-    Given I am loged as admin user with password admin used
+    I am loged as admin user with the password set in config used
   @testpartnersample  
   Scenario: check_partner
     Given I made a search on a partner named Mypartner 

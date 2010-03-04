@@ -14,7 +14,7 @@ Feature check migration
 
   @sample
   Background: login
-    Given I am loged as admin user with password admin used
+    I am loged as admin user with the password set in config used
   @sample  
   Scenario: check_contacts
     Given I made a search on object res.partner.contact 

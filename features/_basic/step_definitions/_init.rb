@@ -37,14 +37,29 @@ end
 Given /^I am loged as (\w+) user with password (\w+) used$/ do |user, pass|
     begin
         if $utils.ready? :
-            $utils.login(user, pass)
+            $utils.login(:user =>user,:pwd => pass)
         else
-            $utils.setConnexionfromConf(user=user, password=pass)            
+            $utils.setConnexionfromConf(:user=>user, :pwd=>pass)            
         end
     rescue Exception => e
         puts e.to_s
         puts 'Force reconnect'
-        $utils.setConnexionfromConf(user=user, password=pass)
+        $utils.setConnexionfromConf(:user=>user, :pwd => pass)
     end
 end
 
+
+
+Given /^I am loged as (\w+) user with the password set in config used$/ do |user, pass|
+    begin
+        if $utils.ready? :
+            $utils.login(user, pass)
+        else
+            $utils.setConnexionfromConf()            
+        end
+    rescue Exception => e
+        puts e.to_s
+        puts 'Force reconnect'
+        $utils.setConnexionfromConf()
+    end
+end

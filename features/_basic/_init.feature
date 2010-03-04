@@ -11,5 +11,5 @@ Feature basic initialization
   I want to initialize OERPScenario
 
   Background: login
-    Given I am loged as admin user with password admin used
+    I am loged as admin user with the password set in config used
     
