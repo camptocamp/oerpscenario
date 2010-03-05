@@ -5,8 +5,13 @@
 #
 ##############################################################################
 
-@sample @testpartnersample
-Feature test partner
+# Features Generic tags (none for all)
+##############################################################################
+
+# System
+@sample
+
+Feature Test partner 
   In order to test my demo
   As an administator
   I want to see if the partner named Mypartner exist and is Swiss

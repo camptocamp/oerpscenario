@@ -17,7 +17,6 @@
 # System
 @init
 
-
 Feature Initialize the settings for sale module
   In order ensure the right state for the tests suite
   I want to set some parameters and settings
