@@ -5,11 +5,23 @@
 #
 ##############################################################################
 
+# Features Generic tags (none for all)
+##############################################################################
+
 Feature basic initialization
   In order to do BDD
-  As a power user
-  I want to initialize OERPScenario
+  I want to log me into OpenERP server with the following user
+  And run the OERPScenario suite with him
 
+# You can change that with your settings, to run the test with a
+# different user. The example bellow is already
+# implemented in _init.rb
+#
+# Example :
+#
+# Given I am loged as administrator user with password 12345 used
+#
+# The Background will be run before every feature. 
   Background: login
     I am loged as admin user with the password set in config used
     

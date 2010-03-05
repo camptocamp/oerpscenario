@@ -5,13 +5,27 @@
 #
 ##############################################################################
 
-@account @addons @invoicing @init
-Feature Initialize the settings
-  In order ensure the right state for the tests suite
+# Features Generic tags (none for all)
+##############################################################################
+
+# Branch
+@addons
+
+# Module
+@account
+
+# Processes
+@invoicing
+ 
+# System
+@init
+
+Feature Initialize the settings for account module
+  In order ensure the right state before launching the tests suite
   I want to set some parameters and settings
   
-  Scenario: init_account_parameters
-      And the company currency is set to EUR 
+  Scenario: Initialize Account settings
+      Given the company currency is set to EUR 
       And the following currency rate settings are:
       |code|rate|name|
       |EUR|1.000|01-01-2009|

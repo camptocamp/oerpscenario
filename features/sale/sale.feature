@@ -5,6 +5,9 @@
 #
 ##############################################################################
 
+# Features Generic tags (none for all)
+##############################################################################
+
 @sale @addons  
 Feature Test Sales
   In order to test the sale process and modules
