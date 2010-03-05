@@ -39,20 +39,25 @@ begin
             puts "Extending  #{self.class} #{self.name}"
             def self.get_formatted_results(qualityinstance)
                 result=true
-                title="\n"
+                title="<pre>"+"\n"+"\n"
                 title+="Module : " + qualityinstance.name + " Scored : " + qualityinstance.final_score + "\n"
-                title+='-------------------------------------------------------'
+                title+="-------------------------------------------------------"
 
+                summary="\n"+"\n"
+                summary+="Module : " + qualityinstance.name + " Scored : " + qualityinstance.final_score + "\n"
+                
+                
+                
                 details="\n"
                 qualityinstance.check_detail_ids.each do |detail|
                     details+=detail.name + " (State: " + detail.state + ") Scored : " + detail.score.to_s + "\n"
                     details+="Ponderation: "+ detail.ponderation.to_s + "\n"
-                    details+="Note: "+ detail.note + "\n"
+                    details+="Note: "+ detail.note + "\n" 
                 end
-                result=title+details
+                result=title+details+"</pre>"
 
                 if result :
-                    return result
+                    return {:summary => summary, :result => result}
                 else
                     raise "!!! --- HELPER ERROR :get_formatted_results !"
                 end

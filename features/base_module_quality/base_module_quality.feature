@@ -18,5 +18,5 @@ Feature run quality tests
     And run the quality check on every installed module
     Then I should have a report on every module
     And all module, except base, should have a final score greater than 70.0 percent
-    And here is a summary (Not implemented yet..)
+    And above is a detailed summary of the results
     

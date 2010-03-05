@@ -25,7 +25,5 @@ Feature Initialize the settings
       And a cash journal in EUR exists
       And on all journal entries can be canceled
 
-      Given the demo data are loaded
-
       Given a purchase tax called 'Buy 19.6%' with a rate of 0.196 exists
       And a sale tax called 'Sale 19.6%' with a rate of 0.196 exists

@@ -40,3 +40,9 @@ end
 Cucumber::Rake::Task.new(:quality) do |task|
   task.cucumber_opts = ["-t","@quality","features"]
 end
+
+# Launch the @quality tag, run the base_module_quality
+# module tests on all installed module
+Cucumber::Rake::Task.new(:account) do |task|
+  task.cucumber_opts = ["-t","@init","-t","@account","features"]
+end

@@ -60,12 +60,17 @@ Then /^all module, except (\w+), should have a final score greater than (.*) per
   end
 end
 ##############################################################################
-And /^here is a summary \(Not implemented yet\.\.\)$/ do
+And /^above is a detailed summary of the results$/ do
+  summary=''
+  details=''
   @test_result.each do |test_case|
-    output= ModuleQualityCheck.get_formatted_results(test_case)
+    output = ModuleQualityCheck.get_formatted_results(test_case)
     # TODO Improve the output to appear into the test result...
     # Don't find how to do it
-    # print output
+    summary += output[:summary]
+    details += output[:result]
   end
+  STDOUT.puts "Summary of results: \n -------------------------------------------------------\n"+summary
+  STDOUT.puts details
 end
 
