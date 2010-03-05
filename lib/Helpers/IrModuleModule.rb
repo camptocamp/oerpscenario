@@ -28,6 +28,7 @@ begin
     # Add useful methode on ir.module,module handling
     ##############################################################################
     IrModuleModule.class_eval do
+      puts "Extending  #{self.class} #{self.name}"
       ##########################################################################
       # Run the upgrade wizard on all modules
       # Input :
@@ -36,7 +37,6 @@ begin
       #  - True
       # Usage Example:
       # res = IrModuleModule.update_needed_modules()
-      puts "Extending  #{self.class} #{self.name}"
       def self.update_needed_modules()
         # Call the wizard on whatever module
         wizard = IrModuleModule.find(:first).old_wizard_step('module.upgrade.simple')

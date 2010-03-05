@@ -28,6 +28,7 @@ begin
     # Add useful methode on partner handling
     ##############################################################################
     ResPartner.class_eval do 
+        puts "Extending  #{self.class} #{self.name}"
         ##########################################################################
         # Return the first encountred supplier with at least one address
         # Input :
@@ -36,7 +37,6 @@ begin
         #  - The found ResPartner as a instance of the class¨
         # Usage Example:
         # part = ResPartner.get_supplier({:name => 'toto', :type=>'supplier'})
-        puts "Extending  #{self.class} #{self.name}"
         def self.get_valid_partner(options={})
             o = {:name => false, :type=> false}.merge(options)
             name = o[:name]

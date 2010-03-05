@@ -28,6 +28,7 @@ begin
   # Add useful methode on invoice handling
   ##############################################################################
   AccountInvoice.class_eval do 
+      puts "Extending  #{self.class} #{self.name}"
       ##########################################################################
       # Create an invoice with given informations
       # Add a line if amount <> false, the account could be provided or not
@@ -47,7 +48,6 @@ begin
       # part = ResPartner.find(:first)
       # puts part.id
       # inv = AccountInvoice.create_cust_invoice_with_currency('my name',part,{currency_code =>'CHF'})
-      puts "Extending  #{self.class} #{self.name}"
       def self.create_invoice_with_currency(name, partner, options={}, *args)
           o = {:type=>'out_invoice', :currency_code=>'EUR', :date=>false, :amount=>false, :account=>false}.merge(options)
            if o[:date] :
