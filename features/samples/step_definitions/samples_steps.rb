@@ -18,70 +18,132 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-Before do
-    @res = false
-    @part = false
-    @account_id = false
-    @prod = false
+
+# ##############################################################################
+# Scenario: Sample Create a partner and test some basic stuffs
+# ##############################################################################
+Given /^I want to show you how to use OERPScenario$/ do
+  # Empty to pass (no need for an action)
 end
 
-##############################################################################
-Then /^I should get account_payable and pricelist proprety$/ do
- part = ResPartner.find(@part.id, :fields => ["property_account_payable","property_account_receivable"])
- part.property_account_payable.should be_true
- part.property_account_receivable.should be_true
+# ##############################################################################
+When /^I create a partner named (\w+)$/ do |name|
+  # Create a new partner using Ooor, and store it in a
+  # global var for the current feature
+  @partner = ResPartner.new(:name => name)
+  @partner.create
+  # Controle it has been a success
+  @partner.should be_true
+end
+
+# ##############################################################################
+Then /^I should be able to find it by his id$/ do
+  # Find the partner by id
+  result=ResPartner.find(@partner.id)
+  # Test we get something
+  result.should be_true
+  # Store it into @partner to have it for the next step
+  @partner=result
+end
+
+# ##############################################################################
+Then /^the name should be (\w+)$/ do |name|
+  # Test the name is correct
+  @partner.name.should == name
+end
+
+
+# ##############################################################################
+# Scenario: Sample using the memorizer
+# ##############################################################################
+Given /^I am still in the same features and not the same scenario$/ do
+  # Empty to pass (no need for an action)
+end
+
+# ##############################################################################
+When /^I call the @partner variable I should not retrieve the partner$/ do
+  # Check it contain nothing
+  @partner.should be_false
+end
+
+# ##############################################################################
+Given /^I take the first found partner to set @partner variable$/ do
+  @partner=ResPartner.find(:first)
+  @partner.should be_true
+end
+
+# ##############################################################################
+Given /^I store it into the memorizer as (\w+) in order to retrieve it in another scenario$/ do |var_name|
+  # Memorize the partner in order
+  # to retrieve it again when needed in another
+  # scenario or feature
+  $utils.set_var(var_name,@partner)
+end
+
+# ##############################################################################
+Given /^I call back the memorizer to retieve the (\w+) variable$/ do |var_name|
+  @Memorized_partner=$utils.get_var(var_name.strip).should be_true
+end
+
+# ##############################################################################
+Then /^I should have the same partner as contained into @partner variable$/ do
+  @Memorized_partner.id.should == @partner.id
+end
+
+# ##############################################################################
+# Scenario: Sample using ResPartner Helper
+# ##############################################################################
+Given /^I want to show you how to use the Helpers$/ do
 
 end
 
-##############################################################################
-Given /^I want to create a partner named (\w+)$/ do |name|
-     @part = ResPartner.new(:name => "#{name}, #{rand.to_s[0..10]}")
-     @part.create.should be_true
+# ##############################################################################
+When /^you need to look for a supplier partner with at least one contact$/ do
+
 end
 
-##############################################################################
-Then /^I copy the partner$/ do
+# ##############################################################################
+Then /^you can use one of the ResPartner helper called get_valid_partner$/ do
+  # Use the ResPartner Helper to get a partner of a certain type
+  # and with at least one address
+  @partner=ResPartner.get_valid_partner({:type=>'supplier'})
+  @partner.should be_true
 end
 
-##############################################################################
-Then /^I should get a copied partner id$/ do
-  pending
-  res = @part.copy() #copy function ot found
-   res.should be_true
+# ##############################################################################
+Then /^get the corresponding partner very easily$/ do
+  # Check it's a supplier
+  @partner.supplier.should be_true
+  # Check it has a contact
+  @partner.address.count.should > 0
 end
 
-##############################################################################
-Given /^I want to create a prodcut named (.*)$/ do |name|
-  @prod = ProductProduct.new(:name => "#{name}, #{rand.to_s[0..10]}")
-  @prod.should be_true
+
+
+
+# ##############################################################################
+# Scenario: Sample using object method like validate an invoice
+# ##############################################################################
+Given /^I have recorded a supplier invoice of (.*) (\w+) called (\w+) using Helpers$/ do |amount, currency, name|
+  # Take first supplier partner with at least one address
+  @partner=ResPartner.get_valid_partner({:type=>'supplier'})
+  @partner.should be_true
+  # Create an invoice with a line = amount
+  @invoice=AccountInvoice.create_invoice_with_currency(name, @partner, 
+    {:currency_code=>currency, :amount=>amount.to_f, :type=>'in_invoice'})
+  @invoice.should be_true
 end
 
-##############################################################################
-Then /^I get a product category$/ do
-  res  = ProductCategory.find(:first)
-  res.should be_true
-  @prod.categ_id = res.id
+# ##############################################################################
+When /^I validate the invoice using the validate button$/ do
+  # Call the 'invoice_open' method from account.invoice openobject
+  @invoice.wkf_action('invoice_open')
 end
 
-##############################################################################
-Then /^I should get a product id$/ do
-  @prod.create.should be_true
-end
-
-##############################################################################
-Then /^I should get property_expense_account and property_income_account proprety$/ do
-    prod = ProductProduct.find(@prod.id, :fields => ["property_account_income","property_account_expense"])
-    prod.property_account_income.should be_true
-    prod.property_account_expense.should be_true
-end
-
-##############################################################################
-Given /^I want to create a prodcut to copy named automatedtestprodcutcopy$/ do
-  pending
-end
-
-##############################################################################
-Then /^I copy the product$/ do
-  pending
+# ##############################################################################
+Then /^I should get the invoice (\w+)$/ do |state|
+  # Take the invoice and check the state
+  @invoice.should be_true
+  @invoice.state.should == state
 end
 
