@@ -5,14 +5,21 @@
 #
 ##############################################################################
 
-@quality 
-Feature run quality tests
+# Features Generic tags (none for all)
+##############################################################################
+
+# Module : commented because not always needed
+# Run it with tag @quality
+# @addons
+
+# System
+@quality
+ 
+Feature Run quality tests provided by the editor
   In order to run the quality tests provided by base_module_quality
-  As an administator
   I want to install the module and run the following tests
   
-  @quality
-  Scenario: install_and_run_base_module_quality
+  Scenario: Install base_module_quality and run the tests
     Given I want to run the quality tests provided by base_module_quality on installed module
     When I insall the base_module_quality
     And run the quality check on every installed module
