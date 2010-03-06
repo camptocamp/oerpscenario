@@ -48,8 +48,7 @@ Given /^I am loged as (\w+) user with password (\w+) used$/ do |user, pass|
     end
 end
 
-
-
+##############################################################################
 Given /^I am loged as (\w+) user with the password set in config used$/ do |user, pass|
     begin
         if $utils.ready? :

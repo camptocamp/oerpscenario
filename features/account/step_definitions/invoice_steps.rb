@@ -19,22 +19,8 @@
 #
 ##############################################################################
 
-# @invoice = false
-# Before do
-#     # Initiate vars used to stored object used trought the tests
-#     @partner = false
-#     @address = false
-#     @account = false
-#     @prod = false
-#     @currency = false
-#     @company = false
-#     @wizard  = false
-#     @journal = false
-# end
-
-
 ##############################################################################
-#           Scenario: validate_created_invoice
+#           Scenario: Validate the invoice creation and confirmation
 ##############################################################################
 
 ##############################################################################
@@ -132,7 +118,7 @@ end
 
 
 ##############################################################################
-#           Scenario: cancel_recreate_created_invoice
+#           Scenario: Cancel and reset the invoice to draft and finally confirm it again
 ##############################################################################
 
 ##############################################################################
@@ -171,7 +157,7 @@ When /^I change the currency to (\w+)$/ do |currency_code|
 end
 
 ##############################################################################
-#           Scenario: check_rounding_diff_multi_line_inv
+#           Scenario: Validate the rouding computation on an invoice with 3 lines
 ##############################################################################
 
 ##############################################################################
@@ -224,7 +210,7 @@ Then /^the total amount convert into company currency must be same amount than t
 end
 
 ##############################################################################
-#           Scenario: invoice_partial_payment_validate_cancel
+#           Scenario: Try to cancel an invoice with a partial reconciliation done
 ##############################################################################
 
 ##############################################################################
@@ -252,7 +238,7 @@ Then /^because the invoice is partially reconciled the payments lines should be 
 end
 
 ##############################################################################
-#           Scenario: compute_invoice_tax
+#           Scenario: Check the tax computation in foreign currency and change the tax amount
 ##############################################################################
 Given /^I add a line with tax called (\w+) on the last created invoice of (.*) with the tax called '(.*)'$/ do |name,amount,taxname|
   # Take an account

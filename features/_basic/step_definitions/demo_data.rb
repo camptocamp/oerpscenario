@@ -27,9 +27,8 @@ end
 
 
 ##############################################################################
-#           Scenario: install_demo_data
+#           Scenario: Install demo datas on installed modules
 ##############################################################################
-
 Given /^I want to load the demo data on all installed modules$/ do
   @modules=IrModuleModule.find(:all,:domain=>[['state','=','installed']])
   # @modules=IrModuleModule.find(:all,:state=>'installed')
@@ -62,8 +61,6 @@ Then /^I should see some demo data loaded$/ do
   partner.should be_true
   cat=ResPartnerCategory.find(:first,:name=>'OpenERP Partners')
   cat.should be_true
-  
-  
 end
 
 

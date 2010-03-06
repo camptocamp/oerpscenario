@@ -19,23 +19,8 @@
 #
 ##############################################################################
 
-# # @invoice = false
-# Before do
-#     # Initiate vars used to stored object used trought the tests
-#     @partner = false
-#     @address = false
-#     @account = false
-#     @prod = false
-#     @currency = false
-#     @company = false
-#     @wizard  = false
-#     @journal = false
-#     @statement = false
-# end
-# 
-
 ##############################################################################
-#           Scenario: make_and_validate_payments_with_bank_statement
+#           Scenario: Reconcile a confirmed invoice using a bank statement
 ##############################################################################
 Given /^I create a new bank statement called (\w+) with a (\w+) account journal$/ do |statement_name,currency|
   @statement=AccountBankStatement.create_statement_with_currency({:currency_code => currency,:name => statement_name})
@@ -55,7 +40,8 @@ And /^import on the (.*) the invoice called (\w+)$/ do |date,name|
 end
 
 ##############################################################################
-# And /^I import on the (.*), the following invoice \(order matters\) : (\w+)$/
+#           Scenario: Validate rollback entries when confirming a bank statement
+##############################################################################
 And /^I import on the (.*), the following invoice \(order matters\) : (.*)$/ do |date,invoices_name|
     invoices=[]
     invoices_name.split(',').each do |inv_name|
@@ -72,7 +58,6 @@ And /^confirm the statement $/ do
   @statement.call('button_confirm',[@statement.id])
 end
 
-
 ##############################################################################
 And /^confirm the statement and see it confirmed$/ do
   # @statement.wkf_action('button_confirm')
@@ -80,8 +65,8 @@ And /^confirm the statement and see it confirmed$/ do
   @statement=AccountBankStatement.find(@statement.id)
   @statement.state.should == 'confirm'
 end
-##############################################################################
 
+##############################################################################
 Given /^I take the bank statement called (\w+)$/ do |bankStatement_name|
   @statement=AccountBankStatement.find(:first,:domain=>[['name','=',bankStatement_name]])
   @statement.should be_true

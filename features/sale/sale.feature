@@ -8,8 +8,13 @@
 # Features Generic tags (none for all)
 ##############################################################################
 
-@sale @addons  
-Feature Test Sales
+# Branch
+@addons  
+
+# Module
+@sale
+
+Feature Test sales process
   In order to test the sale process and modules
   As an administator
   I want to see if the sales features and workflow work well 

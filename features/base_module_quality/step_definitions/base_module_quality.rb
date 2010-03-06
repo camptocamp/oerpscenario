@@ -21,13 +21,9 @@
 
 @modules = false
 @test_result = false
-# Before do
-#     # Initiate vars used to stored object used trought the tests
-# end
-
 
 ##############################################################################
-#           Scenario: install_and_run_base_module_quality
+#           Scenario: Install base_module_quality and run the tests
 ##############################################################################
 
 ##############################################################################
