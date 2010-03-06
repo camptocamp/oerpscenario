@@ -8,14 +8,8 @@
 # Features Generic tags (none for all)
 ##############################################################################
 
-# Branch
-@addons
-
-# Module
-@account
-
-# Processes
-@reconciliation @invoicing
+# Branch      # Module       # Processes
+@addons       @account       @reconciliation @invoicing
 
 Feature Test the Bank statement
   In order to test the invoicing process and modules

@@ -7,19 +7,15 @@
 
 # Features Generic tags (none for all)
 ##############################################################################
-
-# Branch
-@addons  
-
-# Module
-@sale
+# Branch      # Module       # Processes     # System
+@addons      @sale          @sales
 
 Feature Test sales process
   In order to test the sale process and modules
   As an administator
   I want to see if the sales features and workflow work well 
       
-  Scenario: confirm_basic_sale_order
+  Scenario: Validate a confirmed sale order
 	Given I have recorded on the 1 jan 2009 a sale order of 1000,0 CHF without tax called MySimpleSO
     When I press the confirm button
     Then I should see the sale order MySimpleSO open

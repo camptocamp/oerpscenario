@@ -8,17 +8,8 @@
 # Features Generic tags (none for all)
 ##############################################################################
 
-# Branch
-@addons
-
-# Module
-@account
-
-# Processes
-@invoicing
- 
-# System
-@init
+# Branch      # Module       # Processes     # System
+@addons       @account       @invoicing      @init
 
 Feature Initialize the settings for account module
   In order ensure the right state before launching the tests suite

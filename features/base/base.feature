@@ -8,11 +8,8 @@
 # Features Generic tags (none for all)
 ##############################################################################
 
-# Branch
-@addons
-
-# Module 
-@base
+# Branch      # Module       # Processes     # System
+@addons       @base
 
 Feature Control the base module
   In order to test the basic features of the base module

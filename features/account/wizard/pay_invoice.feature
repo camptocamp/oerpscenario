@@ -7,18 +7,8 @@
 
 # Features Generic tags (none for all)
 ##############################################################################
-
-# Branch
-@addons
-
-# Module
-@account
-
-# Processes
-@invoicing @reconciliation
-
-# System
-@wizard
+# Branch      # Module       # Processes                      # System
+@addons       @account       @invoicing @reconciliation       @wizard
 
 Feature Test the pay invoice wizard
   In order to test the pay invoice wizard

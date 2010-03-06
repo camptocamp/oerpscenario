@@ -7,15 +7,8 @@
 
 # Features Generic tags (none for all)
 ##############################################################################
-
-# Branch
-@addons
-
-# Module
-@sale  
-
-# System
-@init
+# Branch      # Module       # Processes     # System
+@addons       @sale          @sales          @init
 
 Feature Initialize the settings for sale module
   In order ensure the right state for the tests suite

@@ -7,14 +7,8 @@
 
 # Features Generic tags (none for all)
 ##############################################################################
-# Branch
-@addons 
-
-# Modules
-@account 
-
-# Processes
-@invoicing
+# Branch      # Module       # Processes
+@addons       @account       @invoicing
 
 Feature Test the invoicing process
   In order to test the invoicing process and modules
@@ -57,8 +51,7 @@ Feature Test the invoicing process
 
   # Scenario specific tags
   ##############################################################################
-  @rounding
-  @bug452854
+  @rounding @bug452854
   Scenario: Validate the rouding computation on an invoice with 3 lines
     Given I have recorded on the 11 oct 2009 a supplier invoice (in_invoice) of 1144.0 CHF without tax called MySupplierInvoiceRounding
     And I add a line called MyFirstLine on the last created invoice of 91.73
@@ -72,8 +65,7 @@ Feature Test the invoicing process
 
   # Scenario specific tags
   ##############################################################################
-  @reconciliation
-  @bug524521
+  @reconciliation @bug524521
   Scenario: Try to cancel an invoice with a partial reconciliation done
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoicePartialCancel
     When I press the validate button
@@ -90,8 +82,7 @@ Feature Test the invoicing process
 
   # Scenario specific tags
   ##############################################################################
-  @tax 
-  @bug524278
+  @tax @bug524278
   Scenario: Check the tax computation in foreign currency and change the tax amount
 	Given I have recorded on the 10 sept 2009 a supplier invoice (in_invoice) of 1000.0 CHF without tax called MySupplierInvoiceTax
     And I add a line with tax called MyTaxLine on the last created invoice of 12156.0 with the tax called 'Buy 19.6%'
