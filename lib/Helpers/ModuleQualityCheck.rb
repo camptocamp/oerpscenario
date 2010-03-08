@@ -39,12 +39,15 @@ begin
             # print ModuleQualityCheck.get_formatted_results(qualityinstance)
             def self.get_formatted_results(qualityinstance)
                 result=true
-                title="<pre>"+"\n"+"\n"
+                title=""
+                summary=""
+                # title="<pre>"+"\n"+"\n"
                 title+="Module : " + qualityinstance.name + " Scored : " + qualityinstance.final_score + "\n"
                 title+="-------------------------------------------------------"
 
-                summary="\n"+"\n"
-                summary+="Module : " + qualityinstance.name + " Scored : " + qualityinstance.final_score + "\n"
+                # summary="\n"+"\n"
+                summary+= qualityinstance.final_score + " Scored for : " + qualityinstance.name  +  "\n"
+                # summary+=qualityinstance.name + " Scored : " + qualityinstance.final_score + "\n"
                 
                 
                 
@@ -54,7 +57,8 @@ begin
                     details+="Ponderation: "+ detail.ponderation.to_s + "\n"
                     details+="Note: "+ detail.note + "\n" 
                 end
-                result=title+details+"</pre>"
+                result=title+details
+                # result=title+details+"</pre>"
 
                 if result :
                     return {:summary => summary, :result => result}

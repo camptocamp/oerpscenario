@@ -33,7 +33,7 @@ Given /^I want to run the quality tests provided by base_module_quality on insta
 end
 ##############################################################################
 When /^I install the base_module_quality$/ do
-  res = IrModuleModule.install_modules(@modules)
+  res = IrModuleModule.install_modules([@modules[0]])
   res.should be_true
 end
 ##############################################################################
@@ -61,12 +61,10 @@ And /^above is a detailed summary of the results$/ do
   details=''
   @test_result.each do |test_case|
     output = ModuleQualityCheck.get_formatted_results(test_case)
-    # TODO Improve the output to appear into the test result...
-    # Don't find how to do it
     summary += output[:summary]
     details += output[:result]
   end
-  STDOUT.puts "Summary of results: \n -------------------------------------------------------\n"+summary
-  STDOUT.puts details
+  announce("Summary of results: \n-------------------------------------------------------\n"+summary)
+  announce("Details of results: \n-------------------------------------------------------\n"+details)
 end
 
