@@ -34,7 +34,7 @@ Before do
 end
 
 ##############################################################################
-Given /^I am loged as (\w+) user with password (\w+) used$/ do |user, pass|
+Given /^I am logged as (\w+) user with password (\w+) used$/ do |user, pass|
     begin
         if $utils.ready? :
             $utils.login(:user =>user,:pwd => pass)
@@ -49,7 +49,7 @@ Given /^I am loged as (\w+) user with password (\w+) used$/ do |user, pass|
 end
 
 ##############################################################################
-Given /^I am loged as (\w+) user with the password set in config used$/ do |user, pass|
+Given /^I am logged as (\w+) user with the password set in config used$/ do |user, pass|
     begin
         if $utils.ready? :
             $utils.login(user, pass)

@@ -19,9 +19,9 @@ Feature basic initialization
 #
 # Example :
 #
-# Given I am loged as administrator user with password 12345 used
+# Given I am logged as administrator user with password 12345 used
 #
 # The Background will be run before every feature. 
   Background: login
-    I am loged as admin user with the password set in config used
+    I am logged as admin user with the password set in config used
     

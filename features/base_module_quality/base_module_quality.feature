@@ -21,7 +21,7 @@ Feature Run quality tests provided by the editor
   
   Scenario: Install base_module_quality and run the tests
     Given I want to run the quality tests provided by base_module_quality on installed module
-    When I insall the base_module_quality
+    When I install the base_module_quality
     And run the quality check on every installed module
     Then I should have a report on every module
     And all module, except base, should have a final score greater than 70.0 percent

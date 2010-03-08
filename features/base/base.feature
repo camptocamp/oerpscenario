@@ -38,4 +38,3 @@ Feature Control the base module
     Then I get a receivable account
     When I press create
     Then I should get a partner id
-    And  I should get account_payable and pricelist proprety

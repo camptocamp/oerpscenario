@@ -32,7 +32,7 @@ Given /^I want to run the quality tests provided by base_module_quality on insta
   @modules.should be_true
 end
 ##############################################################################
-When /^I insall the base_module_quality$/ do
+When /^I install the base_module_quality$/ do
   res = IrModuleModule.install_modules(@modules)
   res.should be_true
 end
