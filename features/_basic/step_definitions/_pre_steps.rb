@@ -135,3 +135,22 @@ Given /^a sale tax called '(.*)' with a rate of (.*) exists$/ do |name,rate|
   end
   foundtax.should be_true
 end
+
+##############################################################################
+Given /^a valid (\w+) pricelist in (\w+) exists$/ do |type,currency|
+  # Take the currency
+  currency_id = ResCurrency.find(:first, :domain=>[['code','=',currency]]).id
+  # Look for the asked pricelist
+  pricelist = ProductPricelist.find(:first, :domain=>[['type','=',type],['currency_id','=',currency_id]])
+  if not pricelist:
+    # A valid pricelist of the right type should exist to run this step
+    pricelist = ProductPricelist.find(:first, :domain=>[['type','=',type]])
+    pricelist.should be_true
+    
+    copied_pricelist = pricelist.copy
+    copied_pricelist.currency_id=currency_id
+    copied_pricelist.name = 'OERPScenario '+type+' in '+currency
+    copied_pricelist.save
+  end
+  
+end

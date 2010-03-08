@@ -25,17 +25,20 @@
 ##############################################################################
 
 ##############################################################################
-Given /^I have recorded on the (.*) a sale order of (.*) (.*) without tax called (\w+)$/ do |date,amount,curency_code,name|
+Given /^I have recorded on the (.*) a sale order of (.*) (.*) without tax called (\w+)$/ do |date,amount,curerncy_code,name|
   # Take first stockable product
   @product=ProductProduct.find(:first,:domain=>[['type','=','product']])
   @product.should be_true
   # Take first supplier partner with at least one address
   @partner=ResPartner.get_valid_partner({:type=>'supplier'})
   @partner.should be_true
+  currency_id = ResCurrency.find(:first, :domain=>[['code','=',curerncy_code]]).id
+  currency_id.should be_true
   # Create an so with found product and given amount
   so = SaleOrder.new
   #auto-complete the address and other data based on the partner
-  so.on_change('onchange_partner_id', :partner_id,1, @partner.id) 
+  so.on_change('onchange_partner_id', :partner_id,1, @partner.id)
+  so.pricelist_id=ProductPricelist.find(:first,:domain=>[['currency_id','=',currency_id]]).id
   so.order_line = [SaleOrderLine.new(:name => 'OERPScenario line', :product_id => @product.id, :price_unit => amount.to_f, :product_uom => 1)]
   so.save
   # Set it in the memorizer
@@ -63,6 +66,7 @@ Then /^the total amount = (.*)$/ do |amount|
   @saleorder.amount_total.should == amount.to_f
 end
 
+
 ##############################################################################
 #  Scenario: Validate exception when cancelling a related invoice
 ##############################################################################
@@ -73,7 +77,8 @@ Given /^change the shipping policy to 'Shipping & Manual Invoice'$/ do
 end
 
 ##############################################################################
-Then /^I should see the sale order MyCanceledInvoiceSO manual in progress$/ do
+Then /^I should see the sale order (\w+) manual in progress$/ do |name|
+  @saleorder=$utils.get_var(name.strip)
   @saleorder.state.should == 'manual'
 end
 
@@ -83,7 +88,8 @@ When /^I press the create invoice button from SO$/ do
 end
 
 ##############################################################################
-Then /^I should see the sale order MyCanceledInvoiceSO in progress$/ do
+Then /^I should see the sale order (\w+) in progress$/ do |name|
+  @saleorder=$utils.get_var(name.strip)
   @saleorder.state.should == 'progress'
 end
 
