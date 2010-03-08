@@ -67,7 +67,7 @@ class ScenarioUtils
         @config.merge(para)
 
         if @ooor :
-            self.login(@config[:user], @config[:pwd])
+            self.login({:user=>@config[:user], :pwd=>@config[:pwd]})
         else
              @ooor=Ooor.new(
                             {

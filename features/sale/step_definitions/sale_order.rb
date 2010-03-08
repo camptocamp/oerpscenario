@@ -62,3 +62,80 @@ end
 Then /^the total amount = (.*)$/ do |amount|
   @saleorder.amount_total.should == amount.to_f
 end
+
+##############################################################################
+#  Scenario: Validate exception when cancelling a related invoice
+##############################################################################
+Given /^change the shipping policy to 'Shipping & Manual Invoice'$/ do
+  @saleorder.order_policy = 'manual'
+  @saleorder.save
+  @saleorder.order_policy.should == 'manual'
+end
+
+##############################################################################
+Then /^I should see the sale order MyCanceledInvoiceSO manual in progress$/ do
+  @saleorder.state.should == 'manual'
+end
+
+##############################################################################
+When /^I press the create invoice button from SO$/ do
+  @saleorder.wkf_action('manual_invoice')
+end
+
+##############################################################################
+Then /^I should see the sale order MyCanceledInvoiceSO in progress$/ do
+  @saleorder.state.should == 'progress'
+end
+
+##############################################################################
+Then /^I should have a related draft invoice created$/ do
+  @saleorder.invoice_ids.count.should == 1
+end
+
+##############################################################################
+Given /^I take the related invoice$/ do
+  # @saleorder=SaleOrderLine.find(@saleorder.id)
+  @invoice=@saleorder.invoice_ids[0]
+  @invoice.should be_true
+  # Set var to propagate the scope into invoice_step
+  $utils.set_var(@invoice.name,@invoice)
+end
+
+##############################################################################
+Given /^change the description for (\w+)$/ do |name|
+  @invoice.name = name
+  @invoice.save
+  @invoice.name.should == name
+end
+
+##############################################################################
+When /^I press the cancel button on this invoice$/ do
+  @invoice.wkf_action('invoice_cancel')
+  @invoice.state.should == 'cancel'
+end
+##############################################################################
+When /^then I press the set to draft button$/ do
+  AccountInvoice.action_cancel_draft([@invoice.id])
+  # @invoice.action_cancel_draft([@invoice.id])
+  @invoice=AccountInvoice.find(@invoice.id)
+  @invoice.save
+end
+
+##############################################################################
+Then /^the SO should be in invoice exception$/ do
+  # Commented, cause ooor seems to have a bug when using "action_cancel_draft"
+  # It doesn't reload objects
+  
+  # @saleorder=SaleOrderLine.find(@saleorder.id)
+  # @saleorder.state.should == 'invoice_except'
+end
+
+##############################################################################
+When /^then I press the invoice corrected button in the SO$/ do
+  @saleorder.wkf_action('invoice_corrected')
+end
+
+##############################################################################
+Then /^I should see the sale order MySimpleSO progress$/ do
+  @saleorder.state.should == 'progress'
+end

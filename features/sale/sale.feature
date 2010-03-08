@@ -19,7 +19,7 @@ Feature Test sales process
 	Given I have recorded on the 1 jan 2009 a sale order of 1000,0 CHF without tax called MySimpleSO
     When I press the confirm button
     Then I should see the sale order MySimpleSO open
-	And the total amount = 1000,0
+    And the total amount = 1000,0
     # Then I should have a linked account move with 2 lines and a posted status
     # And the associated debit account move line should use the account choosen in the invoice line and have the following values:
     # |debit|amount_currency|currency|status|
@@ -27,3 +27,42 @@ Feature Test sales process
     # And the associated credit account move line should use the account of the partner account payable property and have the following values:
     # |credit|amount_currency|currency|status|
     # |608.27|-1000.0|CHF|valid|
+
+  # Scenario specific tags
+  ##############################################################################
+  @workflow
+  Scenario: Validate exception when cancelling a related invoice
+    Given I have recorded on the 1 jan 2009 a sale order of 1000,0 CHF without tax called MyCanceledInvoiceSO
+    And change the shipping policy to 'Shipping & Manual Invoice'
+    When I press the confirm button
+    Then I should see the sale order MyCanceledInvoiceSO manual in progress
+    And the total amount = 1000,0
+    
+    When I press the create invoice button from SO
+    Then I should see the sale order MyCanceledInvoiceSO in progress
+    And I should have a related draft invoice created
+    
+    Given I take the related invoice
+    And change the description for GeneratedBySO
+    When I press the validate button
+    Then I should see the invoice GeneratedBySO open
+    
+    Given I take the related invoice
+    When I press the cancel button on this invoice
+    Then I should see the invoice GeneratedBySO cancel 
+    
+    Given I take the related invoice
+    When then I press the set to draft button
+    Then I should see the invoice GeneratedBySO draft
+    And the SO should be in invoice exception
+    
+    Given I take the related invoice
+    When I press the validate button
+    And then I press the invoice corrected button in the SO
+    Then I should see the sale order MyCanceledInvoiceSO in progress
+    
+    
+    
+    
+    
+    
