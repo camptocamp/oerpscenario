@@ -59,8 +59,8 @@ TRY IT : SETUP AND INSTALLATION !
 Install libraries and dependencies 
 ----------------------------------
 
-- Ruby & Rubygems
-- Cucumber (V. 0.5.1) 0.6.3
+- Ruby (1.8) & Rubygems
+- Cucumber (V. 0.6.3)
 - Rspec
 - Parseconfig
 - Ooor (V. 1.2.8+)
