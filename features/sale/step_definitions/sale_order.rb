@@ -36,6 +36,7 @@ Given /^I have recorded on the (.*) a sale order of (.*) (.*) without tax called
   currency_id.should be_true
   # Create an so with found product and given amount
   so = SaleOrder.new
+  so.date_order = Date.parse(str=date).to_s
   #auto-complete the address and other data based on the partner
   so.on_change('onchange_partner_id', :partner_id,1, @partner.id)
   so.pricelist_id=ProductPricelist.find(:first,:domain=>[['currency_id','=',currency_id]]).id
@@ -108,10 +109,15 @@ Given /^I take the related invoice$/ do
 end
 
 ##############################################################################
-Given /^change the description for (\w+)$/ do |name|
+Given /^change the description for (\w+) and the date to (.*)$/ do |name,date|
+  # require 'ruby-debug'
+  # debugger
+  date=Date.parse(str=date).to_s
   @invoice.name = name
+  @invoice.date_invoice = date
   @invoice.save
   @invoice.name.should == name
+  # @invoice.date.should == date
 end
 
 ##############################################################################

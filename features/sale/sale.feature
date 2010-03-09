@@ -27,18 +27,18 @@ Feature Test sales process
     And I should have a related draft invoice created
     
     Given I take the related invoice
-    And change the description for SORelatedAccountCheck
+    And change the description for SORelatedAccountCheck and the date to 1 jan 2009
     When I press the validate button
     Then I should see the invoice SORelatedAccountCheck open
     
     Given I take the related invoice
     Then I should have a linked account move with 2 lines and a posted status
-    And the associated debit account move line should use the account choosen in the invoice line and have the following values:
+    And the associated credit account move line should use the account choosen in the invoice line and have the following values:
     |debit|amount_currency|currency|status|
-    |608.27|1000.0|CHF|valid|
-    And the associated credit account move line should use the account of the partner account payable property and have the following values:
-    |credit|amount_currency|currency|status|
     |608.27|-1000.0|CHF|valid|
+    And the associated debit account move line should use the account of the partner account payable property and have the following values:
+    |credit|amount_currency|currency|status|
+    |608.27|1000.0|CHF|valid|
 
   # Scenario specific tags
   ##############################################################################
@@ -55,7 +55,7 @@ Feature Test sales process
     And I should have a related draft invoice created
     
     Given I take the related invoice
-    And change the description for GeneratedBySO
+    And change the description for GeneratedBySO and the date to 1 jan 2009
     When I press the validate button
     Then I should see the invoice GeneratedBySO open
     

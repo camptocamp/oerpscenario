@@ -302,4 +302,39 @@ Then /^a tax base amount of (.*)$/ do |amount|
   @invoice.tax_line[0].base_amount.should == amount.to_f
 end
 
+##############################################################################
+# Scenario: Validate exception when cancelling a related invoice
+##############################################################################
+Then /^the associated credit account move line should use the account choosen in the invoice line and have the following values:$/ do |table|
+  # table is a Cucumber::Ast::Table
+  table.hashes.each do |line|
+    @invoice.move_id.line_id.each do |inv_line|
+      unless inv_line.credit.zero? :
+        inv_line.credit.should == line[:debit].to_f
+        inv_line.debit.should == 0.0
+        inv_line.amount_currency.should == line[:amount_currency].to_f
+        inv_line.currency_id.code.should == line[:currency]
+        inv_line.account_id.id.should == @invoice.invoice_line[0].account_id.id
+        inv_line.state.should == line[:status]
+      end
+    end
+  end
+end
 
+##############################################################################
+Then /^the associated debit account move line should use the account of the partner account payable property and have the following values:$/ do |table|
+  # table is a Cucumber::Ast::Table
+  table.hashes.each do |line|
+    @invoice.move_id.line_id.each do |inv_line|
+      unless inv_line.debit.zero? :
+        inv_line.debit.should == line[:credit].to_f
+        inv_line.credit.should == 0.0
+        inv_line.amount_currency.should == line[:amount_currency].to_f
+        inv_line.currency_id.code.should == line[:currency]
+        # TODO : Implement check on partner property AND add on_change partner instead of using any account
+        # inv_line.account_id.id.should == @invoice.invoice_line[0].account_id.id
+        inv_line.state.should == line[:status]
+      end
+    end
+  end
+end
