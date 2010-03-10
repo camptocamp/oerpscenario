@@ -135,11 +135,8 @@ end
 
 ##############################################################################
 Then /^the SO should be in invoice exception$/ do
-  # Commented, cause ooor seems to have a bug when using "action_cancel_draft"
-  # It doesn't reload objects
-  
-  # @saleorder=SaleOrderLine.find(@saleorder.id)
-  # @saleorder.state.should == 'invoice_except'
+  @saleorder=SaleOrder.find(@saleorder.id)
+  @saleorder.state.should == 'invoice_except'
 end
 
 ##############################################################################

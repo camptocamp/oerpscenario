@@ -101,7 +101,3 @@ Feature Test the invoicing process
 	Then I should see the invoice MySupplierInvoiceTax open
 	And I should have a linked account move with 4 lines and a posted status
 
-
-
-
-
