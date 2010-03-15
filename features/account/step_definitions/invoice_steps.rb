@@ -197,16 +197,16 @@ end
 
 ##############################################################################
 Then /^the total amount convert into company currency must be same amount than the credit line on the payable\/receivable account$/ do
-  company_currency_amount=ResCurrency.rpc_execute('compute',@invoice.company_id.currency_id.id,@invoice.currency_id.id,@invoice.amount_total,:context=>[:date=>@invoice.date_invoice])
+  company_currency_amount=ResCurrency.rpc_execute('compute', @invoice.currency_id.id, @invoice.company_id.currency_id.id,@invoice.amount_total,:context=>[:date=>@invoice.date_invoice])
   company_currency_amount.should be_true
   # Take the line to reconcile
   amount = false
   @invoice.move_id.line_id.each do |inv_line|
-     if inv_line.debit = 0.0 && inv_line.account_id.reconcile:
+     if inv_line.debit == 0.0 && inv_line.account_id.reconcile:
        amount = inv_line.credit
     end   
   end
-  company_currency_amount.should == amount
+  company_currency_amount.round(2).should == amount
 end
 
 ##############################################################################
