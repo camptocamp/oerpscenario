@@ -62,7 +62,7 @@ end
 And /^confirm the statement and see it confirmed$/ do
   # @statement.wkf_action('button_confirm')
   @statement.call('button_confirm',[@statement.id])
-  @statement=AccountBankStatement.find(@statement.id)
+  @statement=AccountBankStatement.find(@statement.id, :fields=>['id', 'state', 'line_ids'])
   @statement.state.should == 'confirm'
 end
 
@@ -97,8 +97,8 @@ end
 
 ##############################################################################
 When /^no entries should be created by the bank statement$/ do
-  accountmovelines=AccountMoveLine.find(:all,:domain=>[['statement_id','=',@statement.id]])
-  accountmovelines.should == []
+  accountmovelines=AccountMoveLine.find(:all,:domain=>[['statement_id','=',@statement.id]],:fields=>['id'])
+  accountmovelines.should_be_empty
 end
 
 

@@ -26,7 +26,7 @@
 ##############################################################################
 Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) without tax called (\w+)$/ do |date,inv_type,amount,currency,name|
   # Take first supplier partner with at least one address
-  @partner=ResPartner.get_valid_partner({:type=>'supplier'})
+  @partner=ResPartner.get_valid_partner({:type=>'supplier', :fields=>['id']})
   @partner.should be_true
   # Create an invoice with a line = amount
   # and store it in a variable named : name
@@ -34,8 +34,6 @@ Given /^I have recorded on the (.*) a supplier invoice \((\w+)\) of (.*) (\w+) w
   invoice=AccountInvoice.create_invoice_with_currency(name, @partner, {:currency_code=>currency, :date=>date, :amount=>amount.to_f, :type=>inv_type})
   $utils.set_var(name,invoice)
   $utils.get_var(name.strip).should be_true
-  # instance_variable_set(var_name, invoice)
-  # retrieve it with : instance_variable_get("@"+name)
   
   # For backward compatibility
   @invoice=invoice
@@ -138,10 +136,11 @@ When /^I press the set to draft button$/ do
 end
 ##############################################################################
 Given /^the entries on the invoice related journal can be cancelled$/ do
-  journal=AccountJournal.find(@invoice.journal_id.id)
+  journal=AccountJournal.find(@invoice.journal_id.id, :fields => ['id','update_posted'])
   journal.update_posted=true
   journal.save
   journal.update_posted.should be_true
+  journal = nil
   @invoice=AccountInvoice.find(@invoice.id)
 end
 ##############################################################################
@@ -150,7 +149,7 @@ Then /^the invoice should appear as paid invoice \(checkbox tic\)$/ do
 end
 ##############################################################################
 When /^I change the currency to (\w+)$/ do |currency_code|
-  cur=ResCurrency.find(:first, :domain=>[['code','=',currency_code]])
+  cur=ResCurrency.find(:first, :domain=>[['code','=',currency_code]], :fields => ['id'])
   @invoice.class.rpc_execute('write',@invoice.id,:currency_id => cur.id)
   @invoice=AccountInvoice.find(@invoice.id)
   @invoice.currency_id.code.should == currency_code
@@ -163,7 +162,7 @@ end
 ##############################################################################
 Given /^I add a line called (\w+) on the last created invoice of (.*)$/ do |line_name,amount|
   # Take an account
-  account_id = AccountAccount.find(:first, :domain=>[['type','=','other']]).id
+  account_id = AccountAccount.find(:first, :domain=>[['type','=','other']], :fields => ['id']).id
   line=AccountInvoiceLine.new(
     :account_id => account_id,
     :quantity => 1,
@@ -172,6 +171,7 @@ Given /^I add a line called (\w+) on the last created invoice of (.*)$/ do |line
     :invoice_id => @invoice.id
   )
   line.create
+  line = nil
   @invoice=AccountInvoice.find(@invoice.id)
 end
 
@@ -179,7 +179,9 @@ end
 Then /^the total credit amount must be equal to the total debit amount$/ do
   total_debit=0.0
   total_credit=0.0
-  @invoice.move_id.line_id.each do |inv_line|
+  #we use the find way for optimization purpose
+  move_id = @invoice.move_id.id
+  AccountMoveLine.find(:all, :domain => [['move_id','=',move_id]], :fields => ['id', 'debit', 'credit']).each do |inv_line|
     if inv_line.credit.zero? :
       total_debit = total_debit + inv_line.debit
     elsif inv_line.debit.zero? :
@@ -242,7 +244,7 @@ end
 ##############################################################################
 Given /^I add a line with tax called (\w+) on the last created invoice of (.*) with the tax called '(.*)'$/ do |name,amount,taxname|
   # Take an account
-  account_id = AccountAccount.find(:first, :domain=>[['type','=','other']]).id
+  account_id = AccountAccount.find(:first, :domain=>[['type','=','other']], :fields => ['id']).id
   line=AccountInvoiceLine.new(
     :account_id => account_id,
     :quantity => 1,
@@ -252,9 +254,10 @@ Given /^I add a line with tax called (\w+) on the last created invoice of (.*) w
   )
   line.create
   # Add the tax
-  tax_id=AccountTax.find(:first,:domain=>[['name','=',taxname]]).id
+  tax_id=AccountTax.find(:first,:domain=>[['name','=',taxname]], :fields => ['id']).id
   line.invoice_line_tax_id=[tax_id]
   line.save
+  line = nil
   @invoice=AccountInvoice.find(@invoice.id)
 end
 

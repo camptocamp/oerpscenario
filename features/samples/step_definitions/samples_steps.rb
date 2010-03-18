@@ -153,8 +153,7 @@ end
 # ##############################################################################
 Given /^I have created a partner named "([^\"]*)" with the following addresses:$/ do |name, table|
   # table is a Cucumber::Ast::Table
-  @partner = ResPartner.new(
-    :name => name)
+  @partner = ResPartner.new(:name => name)
   @partner.create
   @partner.should be_true
   table.hashes.each do |adress|

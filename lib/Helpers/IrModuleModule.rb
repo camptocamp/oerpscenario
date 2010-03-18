@@ -113,7 +113,7 @@ begin
       # res = IrModuleModule.load_demo_data_on_installed_modules()
       def self.load_demo_data_on_installed_modules()
         # find installed modules
-        modules=IrModuleModule.find(:all,:domain=>[['state','=','installed']])    
+        modules=IrModuleModule.find(:all,:domain=>[['state','=','installed']], :fields => ['id, demo, update', 'state'])    
         update=false
         res=true
         modules.each do |m|
@@ -121,13 +121,15 @@ begin
             m.demo=true
             update=true
             m.save
+            m = nil
           end
         end
         # Find module base and set it to to upgrade if there is some module to update
         if update:
-          m=IrModuleModule.find(:first,:domain=>[['name','=','base']])
+          m=IrModuleModule.find(:first,:domain=>[['name','=','base']], :fields => ['id, demo, update, state'])
           m.state='to upgrade'
           m.save
+          m = nil 
           res = IrModuleModule.update_needed_modules()
         end
 
@@ -154,6 +156,7 @@ begin
           if m.state != 'installed':
             m.state='to install'
             m.save
+            m = nil 
             update=true
           end
         end

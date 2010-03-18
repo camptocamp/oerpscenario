@@ -33,21 +33,23 @@
 Given /^the company currency is set to (\w+)$/ do |currency| 
   # TODO not the first, but the one of the user..
   company = ResCompany.find(:first)
-  cmpcurrency = ResCurrency.find(:first, :domain=>[['code','=',currency]])
+  cmpcurrency = ResCurrency.find(:first, :domain=>[['code','=',currency]], :fields =>['id', 'code'])
   company.currency_id = cmpcurrency.id
   company.save
+  company = nil
 end
 
 ##############################################################################
 Given /^the following currency rate settings are:$/ do |currencies|
   currencies.hashes.each do |c|
-    rate_to_clean = ResCurrencyRate.find(:first, :domain=>[['currency_id','=',ResCurrency.find(:first, :domain=>[['code','=',c[:code]]]).id]])
+    curr_id = ResCurrency.find(:first, :domain=>[['code','=',c[:code]]], :fields=>['id']).id
+    rate_to_clean = ResCurrencyRate.find(:first, :domain=>[['currency_id','=',curr_id]], :fields=>['id'])
     if rate_to_clean :
         rate_to_clean.destroy
     end
   end
   currencies.hashes.each do |c|
-    c[:currency_id] = ResCurrency.find(:first, :domain=>[['code','=',c[:code]]]).id
+    c[:currency_id] = ResCurrency.find(:first, :domain=>[['code','=',c[:code]]], :fields=>['id']).id
     ResCurrencyRate.create(c)
   end
 end
@@ -56,47 +58,50 @@ end
 # Look for a journal in the asked currency, if doen't exist then create it
 Given /^a (\w+) journal in (\w+) exists$/ do |type,currency|
   # Take the currency
-  currency_id = ResCurrency.find(:first, :domain=>[['code','=',currency]]).id
+  currency_id = ResCurrency.find(:first, :domain=>[['code','=',currency]], :fields=>["id"]).id
   # Look for the asked journal
   journal = AccountJournal.find(:first, :domain=>[['type','=',type],['currency','=',currency_id]])
-  if not journal:
+  unless journal:
     journal = AccountJournal.new({
       :type => type,
       :name => type + ' ' + currency + ' Journal',
       # Take the first found view
-      :view_id => AccountJournalView.find(:first).id,
+      :view_id => AccountJournalView.find(:first, :fields=>["id"]).id,
       # Take the first sequence with 'Account Journal' code
-      :sequence_id => IrSequence.find(:first, :domain =>[['code','=','Account Journal']]).id,
+      :sequence_id => IrSequence.find(:first, :domain =>[['code','=','Account Journal']], :fields=>["id"]).id,
       # Take the first 'other' account for both debit and credit
-      :default_debit_account_id => AccountAccount.find(:first, :domain => [['type','=','other'],]).id,
-      :default_credit_account_id => AccountAccount.find(:first, :domain => [['type','=','other']]).id,
+      :default_debit_account_id => AccountAccount.find(:first, :domain => [['type','=','other'],],:fields=>["id"]).id,
+      :default_credit_account_id => AccountAccount.find(:first, :domain => [['type','=','other']],:fields=>["id"]).id,
       :currency => currency_id,
     })
     journal.create
+    journal = nil
   end
 end
 
 ##############################################################################
 Given /^the demo data are loaded$/ do
   IrModuleModule.load_demo_data_on_installed_modules()
-  m=IrModuleModule.find(:first,:domain=>[['name','=','base']])
+  m=IrModuleModule.find(:first,:domain=>[['name','=','base']], :fields=>["name","base"])
   m.should be_true
   m.demo.should be_true
+  m = nil 
 end
 
 ##############################################################################
 Given /^on all journal entries can be canceled$/ do
-  journals = AccountJournal.find(:all)
+  journals = AccountJournal.find(:all, :fields=>["update_posted"])
   journals.each do |journal|
     journal.update_posted = true
     journal.save
     journal.update_posted.should be_true
   end
+  journals = nil 
 end
 
 ##############################################################################
 Given /^a purchase tax called '(.*)' with a rate of (.*) exists$/ do |name,rate|
-  foundtax=AccountTax.find(:first,:domain=>[['name','=',name]])
+  foundtax=AccountTax.find(:first,:domain=>[['name','=',name]], :fields=>['id'])
   if not foundtax:
     # Set options for a purchase tax at 19.6%
     o = {
@@ -113,11 +118,13 @@ Given /^a purchase tax called '(.*)' with a rate of (.*) exists$/ do |name,rate|
     foundtax=AccountTax.create_tax_and_code(name,o)
   end
   foundtax.should be_true
+  foundtax = nil
+  
 end
 
 ##############################################################################
 Given /^a sale tax called '(.*)' with a rate of (.*) exists$/ do |name,rate|
-  foundtax=AccountTax.find(:first,:domain=>[['name','=',name]])
+  foundtax=AccountTax.find(:first,:domain=>[['name','=',name]], :fields=>['id'])
   if not foundtax:
     # Set options for a purchase tax at 19.6%
     o = {
@@ -134,23 +141,24 @@ Given /^a sale tax called '(.*)' with a rate of (.*) exists$/ do |name,rate|
     foundtax=AccountTax.create_tax_and_code(name,o)
   end
   foundtax.should be_true
+  foundtax = nil
 end
 
 ##############################################################################
 Given /^a valid (\w+) pricelist in (\w+) exists$/ do |type,currency|
   # Take the currency
-  currency_id = ResCurrency.find(:first, :domain=>[['code','=',currency]]).id
+  currency_id = ResCurrency.find(:first, :domain=>[['code','=',currency]], :fields=>['id']).id
   # Look for the asked pricelist
-  pricelist = ProductPricelist.find(:first, :domain=>[['type','=',type],['currency_id','=',currency_id]])
+  pricelist = ProductPricelist.find(:first, :domain=>[['type','=',type],['currency_id','=',currency_id]], :fields=>['id'])
   if not pricelist:
     # A valid pricelist of the right type should exist to run this step
     pricelist = ProductPricelist.find(:first, :domain=>[['type','=',type]])
     pricelist.should be_true
-    
     copied_pricelist = pricelist.copy
     copied_pricelist.currency_id=currency_id
     copied_pricelist.name = 'OERPScenario '+type+' in '+currency
     copied_pricelist.save
+    copied_pricelist = nil
   end
   
 end

@@ -28,7 +28,7 @@
 
 ##############################################################################
 Given /^I want to run the quality tests provided by base_module_quality on installed module$/ do
-  @modules=IrModuleModule.find(:all,:domain=>[['name','=','base_module_quality']])
+  @modules=IrModuleModule.find(:all,:domain=>[['name','=','base_module_quality']], :fields => ['id, demo, update, state'])
   @modules.should be_true
 end
 ##############################################################################
@@ -38,7 +38,7 @@ When /^I install the base_module_quality$/ do
 end
 ##############################################################################
 And /^run the quality check on every installed module$/ do
-  @modules=IrModuleModule.find(:all,:domain=>[['state','=','installed']])
+  @modules=IrModuleModule.find(:all,:domain=>[['state','=','installed']], :fields => ['id, demo, update, state'])
   @modules.should be_true
   @test_result=IrModuleModule.run_base_quality_test(@modules)
   @test_result.should be_true
