@@ -147,3 +147,37 @@ Then /^I should get the invoice (\w+)$/ do |state|
   @invoice.state.should == state
 end
 
+
+# ##############################################################################
+# Scenario: Sample to create and rename a partner
+# ##############################################################################
+Given /^I have created a partner named "([^\"]*)" with the following addresses:$/ do |name, table|
+  # table is a Cucumber::Ast::Table
+  @partner = ResPartner.new(
+    :name => name)
+  @partner.create
+  @partner.should be_true
+  table.hashes.each do |adress|
+    add = ResPartnerAddress.new(:name => adress[:name],:partner_id => @partner.id)
+    add.create
+  end
+  @partner = ResPartner.find(@partner.id)
+  @partner.address.count.should == table.hashes.count
+end
+
+# ##############################################################################
+Then /^.*expect.* partner (\w+) to be "?([^"]+)"?$/ do |field,value|
+    @partner.send(field).to_s.should == value
+end
+
+# ##############################################################################
+When /^I change the partner name to "([^\"]*)"$/ do |name|
+  @partner.name = name
+  @partner.save
+end
+
+# ##############################################################################
+Then /^the partner name to be "([^\"]*)"$/ do |name|
+  @partner.reload
+  @partner.name.should == name
+end

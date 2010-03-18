@@ -41,3 +41,13 @@ Feature Make some scenario samples
         Given I have recorded a supplier invoice of 1000,0 EUR called MySampleSupplierInvoice using Helpers
         When I validate the invoice using the validate button
         Then I should get the invoice open
+
+    Scenario: Sample to create and rename a partner
+        Given I have created a partner named "Demour SA" with the following addresses:
+                | name |
+                | Luc  |
+                | Marc |
+        Then I expect the partner credit to be 0
+        And I expect the partner debit to be 0
+        When I change the partner name to "Demour sa"
+        Then the partner name to be "Demour sa"
