@@ -22,12 +22,11 @@ require 'pp'
 require 'rubygems'
 require 'ooor'
 
-
-
 begin
     # Add useful methode on partner handling
     ##############################################################################
     ResPartner.class_eval do 
+        puts "Extending  #{self.class} #{self.name}"
         ##########################################################################
         # Return the first encountred supplier with at least one address
         # Input :
@@ -36,9 +35,8 @@ begin
         #  - The found ResPartner as a instance of the class¨
         # Usage Example:
         # part = ResPartner.get_supplier({:name => 'toto', :type=>'supplier'})
-        puts "Extending  #{self.class} #{self.name}"
         def self.get_valid_partner(options={})
-            o = {:name => false, :type=> false}.merge(options)
+            o = {:name => false, :type => false}.merge(options)
             name = o[:name]
             type = o[:type]
             domain = []
@@ -48,13 +46,18 @@ begin
             if type :
                 domain.push [type ,'=', true]      
             end
-            res = ResPartner.find(:all, :domain => domain )
+            if o[:fields]
+                res = ResPartner.find(:all, :domain => domain, :fields => o[:fields])
+            else
+                res = ResPartner.find(:all, :domain => domain )
+            end
             unless res :
                 raise "!!! --- HELPER ERROR :get_supplier don't found a #{type} named #{name}" 
             end
             result=false
             res.each do |part|
-                if (part.address.length >0) :
+                #we do not do part.address.length >0 for performance optimizations reasons
+                if ResPartnerAddress.find(:first, :domain => [['partner_id', '=', part.id]], :fields => ['id']) 
                     result=part
                     break
                 end

@@ -5,13 +5,18 @@
 #
 ##############################################################################
 
-@account @addons @invoicing @init
-Feature Initialize the settings
-  In order ensure the right state for the tests suite
+# Features Generic tags (none for all)
+##############################################################################
+
+# Branch      # Module       # Processes     # System
+@addons       @account       @invoicing      @init
+
+Feature Initialize the settings for account module
+  In order ensure the right state before launching the tests suite
   I want to set some parameters and settings
   
-  Scenario: init_account_parameters
-      And the company currency is set to EUR 
+  Scenario: Initialize Account settings
+      Given the company currency is set to EUR 
       And the following currency rate settings are:
       |code|rate|name|
       |EUR|1.000|01-01-2009|
@@ -24,8 +29,6 @@ Feature Initialize the settings
       And a cash journal in CHF exists
       And a cash journal in EUR exists
       And on all journal entries can be canceled
-
-      Given the demo data are loaded
 
       Given a purchase tax called 'Buy 19.6%' with a rate of 0.196 exists
       And a sale tax called 'Sale 19.6%' with a rate of 0.196 exists

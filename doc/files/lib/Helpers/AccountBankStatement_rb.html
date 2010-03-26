@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Tue Mar 02 11:04:04 +0100 2010</td>
+      <td>Fri Mar 05 15:16:34 +0100 2010</td>
     </tr>
     </table>
   </div>
@@ -180,6 +180,31 @@ AccountBankStatement.create_statement_with_currency({currency_code
         </div>
       
         <div class="method-description">
+          <p>
+Import invoices into the given bank statements Input :
+</p>
+<pre>
+ - invoices :  A valid dict of AccountInvoice instance
+ - statement : A valid AccountBankStatement instance
+ - options {
+     date (Default today) : date used into the first screen of the wizard (date
+                            imported in lines)
+   }
+</pre>
+<p>
+Return
+</p>
+<pre>
+ - The AccountBankStatement as a instance of the class¨
+</pre>
+<p>
+Usage Example: statement =
+AccountBankStatement.import_invoice(invoices,statement)
+</p>
+<p>
+TODO implement journals TODO filter acc_move_line_ids to take the right one
+TODO Remove self to use it from an instance of the class
+</p>
         </div>
       </div>
 

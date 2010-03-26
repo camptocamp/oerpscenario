@@ -5,25 +5,28 @@
 #
 ##############################################################################
 
-@base 
-Feature check_base
-  In order to test the database integrity
-      
+# Features Generic tags (none for all)
+##############################################################################
+
+# Branch      # Module       # Processes     # System
+@addons       @base
+
+Feature Control the base module
+  In order to test the basic features of the base module
+  I want to make some basic tests
+
+  # Scenario specific tags
+  ##############################################################################
   @properties
-  Scenario: validate_properties
+  Scenario: Validate the model ir.property into the DB
     Given I check the integrity of ir.property named property_product_pricelist
     Then I check the value of ir.property and it should not start with a space
-    
-  @base_contact
-  Scenario: check_base_contact
-    Given I made a search on object res.partner.contact 
-    When I press search
-    Then the result  should be > 0 
-    
+
+
+  # Scenario specific tags
+  ##############################################################################  
   @partner
-  Scenario: create_partner
+  Scenario: Validate the partner creation
     Given I want to create a partner named automatedtest with default receivable account 
     Then I get a receivable account
-    When I press create
-    Then I should get a partner id
-    And  I should get account_payable and pricelist proprety
+    And I should get a partner id

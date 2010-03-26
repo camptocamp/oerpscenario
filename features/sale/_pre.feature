@@ -5,13 +5,17 @@
 #
 ##############################################################################
 
-@sale @addons @init
-Feature Initialize the settings
+# Features Generic tags (none for all)
+##############################################################################
+# Branch      # Module       # Processes     # System
+@addons       @sale          @sales          @init
+
+Feature Initialize the settings for sale module
   In order ensure the right state for the tests suite
   I want to set some parameters and settings
   
-  Scenario: init_account_parameters
-      And the company currency is set to EUR 
+  Scenario: Initialize Sales settings
+      Given the company currency is set to EUR 
       And the following currency rate settings are:
       |code|rate|name|
       |EUR|1.000|01-01-2009|
@@ -22,4 +26,6 @@ Feature Initialize the settings
       And a cash journal in USD exists
       And a cash journal in CHF exists
       And a cash journal in EUR exists
-      And the demo data are loaded
+      
+      Given a valid sale pricelist in CHF exists
+      And a valid sale pricelist in EUR exists

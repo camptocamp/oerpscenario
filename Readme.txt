@@ -59,22 +59,33 @@ TRY IT : SETUP AND INSTALLATION !
 Install libraries and dependencies 
 ----------------------------------
 
-- Ruby & Rubygems
-- Cucumber (V. 0.5.1)
+- Ruby (1.8) & Rubygems
+- Cucumber (V. 0.6.3)
 - Rspec
 - Parseconfig
 - Ooor (V. 1.2.8+)
 - Rake (optional)
+- htmlentities
+
+(Optionnal for pdf output)
+- Prawn (V.0.6.3)
+- Pawn format (V. 0.2.3)
+
 
 Commands On Ubuntu 9.10
 -----------------------
 sudo apt-get install ruby irb ri rdoc rubygems
-sudo gem install cucumber -v0.5.1
+sudo gem install cucumber -v0.6.3
 sudo gem install rspec
 sudo gem install parseconfig
 sudo gem install ooor --source http://gemcutter.org
 sudo apt-get install libopenssl-ruby
 sudo gem install rake
+sudo gem install htmlentities
+
+(Optionnal for pdf output)
+sudo gem install prawn --version 0.6.3
+sudo gem install prawn-format --version 0.2.3
 
 Finally add '/var/lib/gems/1.8/bin' to your PATH (Thanks to C. Almeida for the infos):
 

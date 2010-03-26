@@ -28,6 +28,7 @@ begin
   # Add useful methode on invoice handling
   ##############################################################################
   AccountInvoice.class_eval do 
+      puts "Extending  #{self.class} #{self.name}"
       ##########################################################################
       # Create an invoice with given informations
       # Add a line if amount <> false, the account could be provided or not
@@ -47,7 +48,6 @@ begin
       # part = ResPartner.find(:first)
       # puts part.id
       # inv = AccountInvoice.create_cust_invoice_with_currency('my name',part,{currency_code =>'CHF'})
-      puts "Extending  #{self.class} #{self.name}"
       def self.create_invoice_with_currency(name, partner, options={}, *args)
           o = {:type=>'out_invoice', :currency_code=>'EUR', :date=>false, :amount=>false, :account=>false}.merge(options)
            if o[:date] :
@@ -61,8 +61,9 @@ begin
           unless partner.class  == ResPartner :
               raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a #{partner.class.to_s} instead of ResPartner" 
           end 
-          # Set partner
-          if (partner.address.length >0) :
+          # Set partner 
+          #We use this syntax for optimisation reason, helper have to be fast
+          if  ResPartnerAddress.find(:first, :domain=>[['partner_id','=',partner.id]], :fields => ['id'])
               toreturn.partner_id = partner.id
           else
               raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a partner : #{partner.name} without adresses"
@@ -75,7 +76,7 @@ begin
 
           # Set type of invoice
           toreturn.type = o[:type]
-          curr =  ResCurrency.find(:first, :domain=>[['code','=',o[:currency_code]]])
+          curr =  ResCurrency.find(:first, :domain=>[['code','=',o[:currency_code]]], :fields => ['id'])
           # Set currency
           if curr : 
               toreturn.currency_id = curr.id
@@ -86,8 +87,6 @@ begin
           # Set amount and line if asked for
           toreturn.create
 
-          # toreturn.type = o[:type]
-          # toreturn.save
           if o[:amount] :
               
               if ['in_invoice', 'in_refund'].include? o[:type] :
@@ -100,7 +99,7 @@ begin
                   account_id = o[:account].id
               else
                   # If no account, take on of type 'other' and a non-reconciliable account
-                  account_id = AccountAccount.find(:first, :domain=>[['type','=','other'],['reconcile','=',false]]).id
+                  account_id = AccountAccount.find(:first, :domain=>[['type','=','other'],['reconcile','=',false]], :fields => ['id']).id
                   # Create a line = amount for the created invoice
                   line=AccountInvoiceLine.new(
                     :account_id => account_id,

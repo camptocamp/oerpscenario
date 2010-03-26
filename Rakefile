@@ -20,9 +20,6 @@
 ##############################################################################
 require "cucumber/rake/task"
 
-# Cucumber::Rake::Task.new(:run) do |task|
-#   task.cucumber_opts = ["-t","@#{ENV["TAG"] || "all" }","features"]
-# end
 
 # Launch the @compile tag in order to check it
 Cucumber::Rake::Task.new(:compile) do |task|
@@ -40,3 +37,17 @@ end
 Cucumber::Rake::Task.new(:quality) do |task|
   task.cucumber_opts = ["-t","@quality","features"]
 end
+
+# Launch the @account tag, to run all account related tests
+Cucumber::Rake::Task.new(:account) do |task|
+  task.cucumber_opts = ["-t","@init,@account","features"]
+end
+
+# Launch the @sale tag, to run all sale related tests
+Cucumber::Rake::Task.new(:sale) do |task|
+  task.cucumber_opts = ["-t","@init,@sale","features"]
+end
+
+
+
+

@@ -28,6 +28,7 @@ begin
   # Add useful methode on taxes handling
   ##############################################################################
   AccountTax.class_eval do 
+      puts "Extending  #{self.class} #{self.name}"
       ##########################################################################
       # Create a tax and tax code with given informations
       # Input :
@@ -47,7 +48,6 @@ begin
       #  - The created AccountTax as a instance of the class¨
       # Usage Example:
       # tax = AccountTax.create_tax_and_code('my name',{:type=>'percent',:amount=>rate,:type_tax_use=>'purchase',})
-      puts "Extending  #{self.class} #{self.name}"
       def self.create_tax_and_code(name, options={}, *args)
           # require 'ruby-debug'
           # debugger

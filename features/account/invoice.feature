@@ -5,14 +5,19 @@
 #
 ##############################################################################
 
-@account @addons  
+# Features Generic tags (none for all)
+##############################################################################
+# Branch      # Module       # Processes
+@addons       @account       @invoicing
+
 Feature Test the invoicing process
   In order to test the invoicing process and modules
-  As an administator
-  I want to see if the features work correctly 
-      
-  @invoicing @rounding
-  Scenario: validate_created_invoice
+  I want to see if the features work correctly
+
+  # Scenario specific tags
+  ##############################################################################
+  @workflow @rounding
+  Scenario: Validate the invoice creation and confirmation
 	Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoice
     When I press the validate button
     Then I should see the invoice MySupplierInvoice open
@@ -25,8 +30,10 @@ Feature Test the invoicing process
     |credit|amount_currency|currency|status|
     |608.27|-1000.0|CHF|valid|
 
-  @invoicing @workflow @rounding
-  Scenario: cancel_recreate_created_invoice
+  # Scenario specific tags
+  ##############################################################################
+  @workflow @rounding
+  Scenario: Cancel and reset the invoice to draft and finally confirm it again
     Given I take the created invoice MySupplierInvoice
     And the entries on the invoice related journal can be cancelled
      
@@ -41,10 +48,11 @@ Feature Test the invoicing process
 	And I press the validate button
 	Then I should see the invoice MySupplierInvoice open
 	And the residual amount = 1000,0
-    
-  @rounding
-  @bug452854
-  Scenario: check_rounding_diff_multi_line_inv
+
+  # Scenario specific tags
+  ##############################################################################
+  @rounding @bug452854
+  Scenario: Validate the rouding computation on an invoice with 3 lines
     Given I have recorded on the 11 oct 2009 a supplier invoice (in_invoice) of 1144.0 CHF without tax called MySupplierInvoiceRounding
     And I add a line called MyFirstLine on the last created invoice of 91.73
     And I add a line called MySecondLine on the last created invoice of 63.00
@@ -55,9 +63,10 @@ Feature Test the invoicing process
 	# Here we check the rounding to see if sum(rounded lines) == total invoice amount * current currency rate
     And the total amount convert into company currency must be same amount than the credit line on the payable/receivable account
 
-  @invoicing
-  @bug524521
-  Scenario: invoice_partial_payment_validate_cancel
+  # Scenario specific tags
+  ##############################################################################
+  @reconciliation @bug524521
+  Scenario: Try to cancel an invoice with a partial reconciliation done
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoicePartialCancel
     When I press the validate button
     Then I should see the invoice MySupplierInvoicePartialCancel open
@@ -71,9 +80,10 @@ Feature Test the invoicing process
 	And because the invoice is partially reconciled the payments lines should be kept
     And I should see the invoice MySupplierInvoice open
 
-  @invoicing @tax 
-  @bug524278
-  Scenario:compute_invoice_tax
+  # Scenario specific tags
+  ##############################################################################
+  @tax @bug524278
+  Scenario: Check the tax computation in foreign currency and change the tax amount
 	Given I have recorded on the 10 sept 2009 a supplier invoice (in_invoice) of 1000.0 CHF without tax called MySupplierInvoiceTax
     And I add a line with tax called MyTaxLine on the last created invoice of 12156.0 with the tax called 'Buy 19.6%'
 	When I compute the taxes on invoice
@@ -90,8 +100,4 @@ Feature Test the invoicing process
 	When I press the validate button
 	Then I should see the invoice MySupplierInvoiceTax open
 	And I should have a linked account move with 4 lines and a posted status
-
-
-
-
 

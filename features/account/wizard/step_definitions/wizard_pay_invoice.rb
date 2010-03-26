@@ -59,18 +59,24 @@ Then /^I completely pay the residual amount in (\w+) on the (.*)$/ do |currency,
   # Look for the right currency journal
   @journal = AccountJournal.find(:first, :domain=>[['currency','=',ResCurrency.find(:first, :domain=>[['code','=',currency]]).id]])
   @journal.should be_true
-  # Set the wizard with given values
-  step_dict = @wizard.datas.merge({:journal_id=>@journal.id, :name=>'OERPScenario test', :date=>date_p})
-  # Ask for writeoff check and update values
-  res=@wizard.writeoff_check(step_dict)
-  step_dict=res.datas.merge(step_dict)
-  # Ask for reconcile and get comment if write-off occure
-  res=@wizard.addendum(step_dict)
-  step_dict=res.datas.merge(step_dict)
-  # set the writeoff account = same account than the jouranl default debit one (doesn't really matters for this test)
-  step_dict = step_dict.merge({:writeoff_acc_id => @journal.default_debit_account_id.id, :writeoff_journal_id=>@journal.id})
-  # Finally reconile the invoice
+  step_dict = @wizard.datas.merge({:journal_id=>@journal.id, :name=>'OERPScenario test', :date=>date_p,:writeoff_acc_id => @journal.default_debit_account_id.id, :writeoff_journal_id=>@journal.id})
+  # puts step_dict
   @wizard.reconcile(step_dict)
+  
+   #  Old way to deal with wizard:
+   # 
+   # # Set the wizard with given values
+   # step_dict = @wizard.datas.merge({:journal_id=>@journal.id, :name=>'OERPScenario test', :date=>date_p})
+   # # Ask for writeoff check and update values
+   # res=@wizard.writeoff_check(step_dict)
+   # step_dict=res.datas.merge(step_dict)
+   # # Ask for reconcile and get comment if write-off occure
+   # res=@wizard.addendum(step_dict)
+   # step_dict=res.datas.merge(step_dict)
+   # # set the writeoff account = same account than the jouranl default debit one (doesn't really matters for this test)
+   # step_dict = step_dict.merge({:writeoff_acc_id => @journal.default_debit_account_id.id, :writeoff_journal_id=>@journal.id})
+   # # Finally reconile the invoice
+   # @wizard.reconcile(step_dict)
 end
 
 ##############################################################################

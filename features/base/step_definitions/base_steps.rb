@@ -20,7 +20,7 @@
 ##############################################################################
 
 ##############################################################################
-#           Scenario: validate_properties
+#           Scenario: Validate the model ir.property into the DB
 ##############################################################################
 
 ##############################################################################
@@ -29,30 +29,13 @@ Given /^I check the integrity of ir\.property named (\w+)$/ do |name_property|
 end
 ##############################################################################
 Then /^I check the value of ir.property and it should not start with a space$/ do
-    test_result = @properties.value.start_with?(' ')
+    value = @properties.value.to_s
+    test_result = value.start_with?(' ')
     test_result.should be_false
 end
 
 ##############################################################################
-#           Scenario: check_base_contact
-##############################################################################
-
-##############################################################################
-Given /^I made a search on object res\.partner\.contact$/ do    
-    @res = ResPartnerContact.find(:all) # we find by id 1
-end
-
-##############################################################################
-When /^I press search$/ do
-end
-
-##############################################################################
-Then /^the result  should be > 0/ do
-    @res.should be_true
-end
-
-##############################################################################
-#           Scenario: create_partner
+#           Scenario: Validate the partner creation
 ##############################################################################
 
 ##############################################################################
@@ -64,10 +47,6 @@ end
 Then /^I get a receivable account$/ do
     @account_id = AccountAccount.find(:first, :domain=>[['type', '=', 'receivable'],['active','=',1]])
     @account_id.should be_true
-end
-
-##############################################################################
-When /^I press create$/ do
 end
 
 ##############################################################################

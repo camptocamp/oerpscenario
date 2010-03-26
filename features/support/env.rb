@@ -29,6 +29,7 @@ unless $utils
 end
 begin
     unless $utils.ready? :
+        puts 'Attempt to connect'
         $utils.setConnexionfromConf()
     end
 rescue Exception => e

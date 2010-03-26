@@ -21,28 +21,24 @@
 
 @modules = false
 @test_result = false
-# Before do
-#     # Initiate vars used to stored object used trought the tests
-# end
-
 
 ##############################################################################
-#           Scenario: install_and_run_base_module_quality
+#           Scenario: Install base_module_quality and run the tests
 ##############################################################################
 
 ##############################################################################
 Given /^I want to run the quality tests provided by base_module_quality on installed module$/ do
-  @modules=IrModuleModule.find(:all,:domain=>[['name','=','base_module_quality']])
+  @modules=IrModuleModule.find(:all,:domain=>[['name','=','base_module_quality']], :fields => ['id, demo, update, state'])
   @modules.should be_true
 end
 ##############################################################################
-When /^I insall the base_module_quality$/ do
-  res = IrModuleModule.install_modules(@modules)
+When /^I install the base_module_quality$/ do
+  res = IrModuleModule.install_modules([@modules[0]])
   res.should be_true
 end
 ##############################################################################
 And /^run the quality check on every installed module$/ do
-  @modules=IrModuleModule.find(:all,:domain=>[['state','=','installed']])
+  @modules=IrModuleModule.find(:all,:domain=>[['state','=','installed']], :fields => ['id, demo, update, state'])
   @modules.should be_true
   @test_result=IrModuleModule.run_base_quality_test(@modules)
   @test_result.should be_true
@@ -60,12 +56,15 @@ Then /^all module, except (\w+), should have a final score greater than (.*) per
   end
 end
 ##############################################################################
-And /^here is a summary \(Not implemented yet\.\.\)$/ do
+And /^above is a detailed summary of the results$/ do
+  summary=''
+  details=''
   @test_result.each do |test_case|
-    output= ModuleQualityCheck.get_formatted_results(test_case)
-    # TODO Improve the output to appear into the test result...
-    # Don't find how to do it
-    # print output
+    output = ModuleQualityCheck.get_formatted_results(test_case)
+    summary += output[:summary]
+    details += output[:result]
   end
+  announce("Summary of results: \n-------------------------------------------------------\n"+summary)
+  announce("Details of results: \n-------------------------------------------------------\n"+details)
 end
 

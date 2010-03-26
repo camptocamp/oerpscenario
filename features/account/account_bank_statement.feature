@@ -5,15 +5,20 @@
 #
 ##############################################################################
 
-@account @addons
+# Features Generic tags (none for all)
+##############################################################################
+
+# Branch      # Module       # Processes
+@addons       @account       @reconciliation @invoicing
+
 Feature Test the Bank statement
   In order to test the invoicing process and modules
-  As an administator
-  I want to see if the basics bank statement  features work 
-      
-  @invoicing @reconciliation
+  I want to see if the basic bank statement features works
+
+  # Scenario specific tags
+  ##############################################################################
   @bug491892
-  Scenario: make_and_validate_payments_with_bank_statement
+  Scenario: Reconcile a confirmed invoice using a bank statement
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoiceBankStatement2
     When I press the validate button
     Then I should see the invoice MySupplierInvoiceBankStatement2 open
@@ -26,9 +31,10 @@ Feature Test the Bank statement
     And the residual amount = 0,0
     And the invoice should appear as paid invoice (checkbox tic)
   
-  @invoicing @reconciliation @bankstatement
+  # Scenario specific tags
+  ##############################################################################
   @bug485281
-  Scenario: validate_failure_rollback_on_statement
+  Scenario: Validate rollback entries when confirming a bank statement
     Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MyFirstSupplierInvoiceBankStatement
     When I press the validate button
     Then I should see the invoice MyFirstSupplierInvoiceBankStatement open
