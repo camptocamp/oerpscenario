@@ -10,34 +10,33 @@
   <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
 </head>
 <body class="standalone-code">
-  <pre><span class="ruby-comment cmt"># File lib/ERPConnector.rb, line 57</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setConnexionfromConf</span>(<span class="ruby-identifier">user</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">password</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">database</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">host</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">port</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">log_level</span>=<span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR</span>)
-        <span class="ruby-identifier">my_config</span> = <span class="ruby-constant">ParseConfig</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'base.conf'</span>)
-        <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'port'</span>)
-        <span class="ruby-ivar">@user</span> =  <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'user'</span>)
-        <span class="ruby-ivar">@dbname</span> =  <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'database'</span>)
-        <span class="ruby-ivar">@pwd</span> =  <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'password'</span>) 
-        <span class="ruby-ivar">@host</span> =  <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'host'</span>)
-        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">:</span>
-            <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">user</span>
+  <pre><span class="ruby-comment cmt"># File lib/ERPConnector.rb, line 55</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setConnexionfromConf</span>(<span class="ruby-identifier">para</span>={}, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+        <span class="ruby-identifier">conf_path</span> = <span class="ruby-value str">'base.conf'</span> 
+        <span class="ruby-keyword kw">if</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'CONF'</span>]
+            <span class="ruby-identifier">conf_path</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'CONF'</span>]
         <span class="ruby-keyword kw">end</span>
-        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">:</span>
-            <span class="ruby-ivar">@pwd</span> = <span class="ruby-identifier">password</span>
-        <span class="ruby-keyword kw">end</span>
-        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">database</span> <span class="ruby-operator">:</span>
-            <span class="ruby-ivar">@dbname</span> = <span class="ruby-identifier">database</span>
-        <span class="ruby-keyword kw">end</span>
-        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">host</span> <span class="ruby-operator">:</span>
-            <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">host</span>
-        <span class="ruby-keyword kw">end</span>
-        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">port</span> <span class="ruby-operator">:</span>
-            <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">port</span>
-        <span class="ruby-keyword kw">end</span>
-        <span class="ruby-identifier">puts</span> <span class="ruby-value str">'Connnecting &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;'</span>
+        <span class="ruby-identifier">my_config</span> = <span class="ruby-constant">ParseConfig</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">conf_path</span>)
+        <span class="ruby-ivar">@config</span>[<span class="ruby-identifier">:port</span>] = <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'port'</span>)
+        <span class="ruby-ivar">@config</span>[<span class="ruby-identifier">:user</span>] =  <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'user'</span>)
+        <span class="ruby-ivar">@config</span>[<span class="ruby-identifier">:dbname</span>] =  <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'database'</span>)
+        <span class="ruby-ivar">@config</span>[<span class="ruby-identifier">:pwd</span>] =  <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'password'</span>) 
+        <span class="ruby-ivar">@config</span>[<span class="ruby-identifier">:host</span>] =  <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'host'</span>)
+        <span class="ruby-ivar">@config</span>[<span class="ruby-identifier">:log_level</span>] = <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR</span>
+        <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">para</span>)
+
         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@ooor</span> <span class="ruby-operator">:</span>
-            <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">login</span>(<span class="ruby-ivar">@user</span>, <span class="ruby-ivar">@pwd</span>)
+            <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">login</span>({<span class="ruby-identifier">:user=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@config</span>[<span class="ruby-identifier">:user</span>], <span class="ruby-identifier">:pwd=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@config</span>[<span class="ruby-identifier">:pwd</span>]})
         <span class="ruby-keyword kw">else</span>
-             <span class="ruby-ivar">@ooor</span>=<span class="ruby-constant">Ooor</span>.<span class="ruby-identifier">new</span>({<span class="ruby-identifier">:url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;http://#{@host}:#{@port}/xmlrpc&quot;</span>, <span class="ruby-identifier">:database</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@dbname</span>, <span class="ruby-identifier">:username</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span>, <span class="ruby-identifier">:password</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@pwd</span>, <span class="ruby-identifier">:log_level=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">log_level</span>})
+             <span class="ruby-ivar">@ooor</span>=<span class="ruby-constant">Ooor</span>.<span class="ruby-identifier">new</span>(
+                            {
+                            <span class="ruby-identifier">:url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;http://#{ @config[:host]}:#{@config[:port]}/xmlrpc&quot;</span>,
+                            <span class="ruby-identifier">:database</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@config</span>[<span class="ruby-identifier">:dbname</span>], 
+                            <span class="ruby-identifier">:username</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-ivar">@config</span>[<span class="ruby-identifier">:user</span>], 
+                            <span class="ruby-identifier">:password</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@config</span>[<span class="ruby-identifier">:pwd</span>], 
+                            <span class="ruby-identifier">:log_level=</span><span class="ruby-operator">&gt;</span>  <span class="ruby-ivar">@config</span>[<span class="ruby-identifier">:log_level</span>]
+                            }
+                        )
              <span class="ruby-constant">Dir</span>[<span class="ruby-value str">&quot;lib/Helpers/*.rb&quot;</span>].<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">require</span> <span class="ruby-identifier">file</span> }
         <span class="ruby-keyword kw">end</span>
     <span class="ruby-keyword kw">end</span></pre>

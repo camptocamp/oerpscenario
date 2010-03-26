@@ -24,8 +24,9 @@
           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">partner</span>.<span class="ruby-identifier">class</span>  <span class="ruby-operator">==</span> <span class="ruby-constant">ResPartner</span> <span class="ruby-operator">:</span>
               <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;!!! --- HELPER ERROR :create_cust_invoice_with_currency received a #{partner.class.to_s} instead of ResPartner&quot;</span> 
           <span class="ruby-keyword kw">end</span> 
-          <span class="ruby-comment cmt"># Set partner</span>
-          <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">partner</span>.<span class="ruby-identifier">address</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span><span class="ruby-value">0</span>) <span class="ruby-operator">:</span>
+          <span class="ruby-comment cmt"># Set partner </span>
+          <span class="ruby-comment cmt">#We use this syntax for optimisation reason, helper have to be fast</span>
+          <span class="ruby-keyword kw">if</span>  <span class="ruby-constant">ResPartnerAddress</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:domain=</span><span class="ruby-operator">&gt;</span>[[<span class="ruby-value str">'partner_id'</span>,<span class="ruby-value str">'='</span>,<span class="ruby-identifier">partner</span>.<span class="ruby-identifier">id</span>]], <span class="ruby-identifier">:fields</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value str">'id'</span>])
               <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">partner_id</span> = <span class="ruby-identifier">partner</span>.<span class="ruby-identifier">id</span>
           <span class="ruby-keyword kw">else</span>
               <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;!!! --- HELPER ERROR :create_cust_invoice_with_currency received a partner : #{partner.name} without adresses&quot;</span>
@@ -38,7 +39,7 @@
 
           <span class="ruby-comment cmt"># Set type of invoice</span>
           <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">type</span> = <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:type</span>]
-          <span class="ruby-identifier">curr</span> =  <span class="ruby-constant">ResCurrency</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:domain=</span><span class="ruby-operator">&gt;</span>[[<span class="ruby-value str">'code'</span>,<span class="ruby-value str">'='</span>,<span class="ruby-identifier">o</span>[<span class="ruby-identifier">:currency_code</span>]]])
+          <span class="ruby-identifier">curr</span> =  <span class="ruby-constant">ResCurrency</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:domain=</span><span class="ruby-operator">&gt;</span>[[<span class="ruby-value str">'code'</span>,<span class="ruby-value str">'='</span>,<span class="ruby-identifier">o</span>[<span class="ruby-identifier">:currency_code</span>]]], <span class="ruby-identifier">:fields</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value str">'id'</span>])
           <span class="ruby-comment cmt"># Set currency</span>
           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">curr</span> <span class="ruby-operator">:</span> 
               <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">currency_id</span> = <span class="ruby-identifier">curr</span>.<span class="ruby-identifier">id</span>
@@ -49,8 +50,6 @@
           <span class="ruby-comment cmt"># Set amount and line if asked for</span>
           <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">create</span>
 
-          <span class="ruby-comment cmt"># toreturn.type = o[:type]</span>
-          <span class="ruby-comment cmt"># toreturn.save</span>
           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:amount</span>] <span class="ruby-operator">:</span>
               
               <span class="ruby-keyword kw">if</span> [<span class="ruby-value str">'in_invoice'</span>, <span class="ruby-value str">'in_refund'</span>].<span class="ruby-identifier">include?</span> <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:type</span>] <span class="ruby-operator">:</span>
@@ -63,7 +62,7 @@
                   <span class="ruby-identifier">account_id</span> = <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:account</span>].<span class="ruby-identifier">id</span>
               <span class="ruby-keyword kw">else</span>
                   <span class="ruby-comment cmt"># If no account, take on of type 'other' and a non-reconciliable account</span>
-                  <span class="ruby-identifier">account_id</span> = <span class="ruby-constant">AccountAccount</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:domain=</span><span class="ruby-operator">&gt;</span>[[<span class="ruby-value str">'type'</span>,<span class="ruby-value str">'='</span>,<span class="ruby-value str">'other'</span>],[<span class="ruby-value str">'reconcile'</span>,<span class="ruby-value str">'='</span>,<span class="ruby-keyword kw">false</span>]]).<span class="ruby-identifier">id</span>
+                  <span class="ruby-identifier">account_id</span> = <span class="ruby-constant">AccountAccount</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:domain=</span><span class="ruby-operator">&gt;</span>[[<span class="ruby-value str">'type'</span>,<span class="ruby-value str">'='</span>,<span class="ruby-value str">'other'</span>],[<span class="ruby-value str">'reconcile'</span>,<span class="ruby-value str">'='</span>,<span class="ruby-keyword kw">false</span>]], <span class="ruby-identifier">:fields</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value str">'id'</span>]).<span class="ruby-identifier">id</span>
                   <span class="ruby-comment cmt"># Create a line = amount for the created invoice</span>
                   <span class="ruby-identifier">line</span>=<span class="ruby-constant">AccountInvoiceLine</span>.<span class="ruby-identifier">new</span>(
                     <span class="ruby-identifier">:account_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">account_id</span>,

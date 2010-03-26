@@ -10,9 +10,14 @@
   <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
 </head>
 <body class="standalone-code">
-  <pre><span class="ruby-comment cmt"># File lib/ERPConnector.rb, line 96</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">login</span>(<span class="ruby-identifier">user</span>,<span class="ruby-identifier">pass</span>)
-        <span class="ruby-keyword kw">return</span>  <span class="ruby-ivar">@ooor</span>.<span class="ruby-identifier">global_login</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>)
+  <pre><span class="ruby-comment cmt"># File lib/ERPConnector.rb, line 93</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">login</span>(<span class="ruby-identifier">para</span>={}, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+        <span class="ruby-identifier">my_config</span> = <span class="ruby-constant">ParseConfig</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'base.conf'</span>)
+        <span class="ruby-identifier">log_para</span> = {}
+        <span class="ruby-identifier">log_para</span>[<span class="ruby-identifier">:user</span>]  = <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'user'</span>)
+        <span class="ruby-identifier">log_para</span>[<span class="ruby-identifier">:pwd</span>] =  <span class="ruby-identifier">my_config</span>.<span class="ruby-identifier">get_value</span>(<span class="ruby-value str">'password'</span>) 
+        <span class="ruby-identifier">log_para</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">para</span>)
+        <span class="ruby-keyword kw">return</span>  <span class="ruby-ivar">@ooor</span>.<span class="ruby-identifier">global_login</span>(<span class="ruby-identifier">log_para</span>[<span class="ruby-identifier">:user</span>], <span class="ruby-identifier">log_para</span>[<span class="ruby-identifier">:pwd</span>])
     <span class="ruby-keyword kw">end</span></pre>
 </body>
 </html>

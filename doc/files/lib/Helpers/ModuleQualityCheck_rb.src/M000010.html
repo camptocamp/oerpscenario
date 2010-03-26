@@ -13,20 +13,29 @@
   <pre><span class="ruby-comment cmt"># File lib/Helpers/ModuleQualityCheck.rb, line 40</span>
             <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_formatted_results</span>(<span class="ruby-identifier">qualityinstance</span>)
                 <span class="ruby-identifier">result</span>=<span class="ruby-keyword kw">true</span>
-                <span class="ruby-identifier">title</span>=<span class="ruby-value str">&quot;\n&quot;</span>
+                <span class="ruby-identifier">title</span>=<span class="ruby-value str">&quot;&quot;</span>
+                <span class="ruby-identifier">summary</span>=<span class="ruby-value str">&quot;&quot;</span>
+                <span class="ruby-comment cmt"># title=&quot;&lt;pre&gt;&quot;+&quot;\n&quot;+&quot;\n&quot;</span>
                 <span class="ruby-identifier">title</span><span class="ruby-operator">+=</span><span class="ruby-value str">&quot;Module : &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">qualityinstance</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; Scored : &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">qualityinstance</span>.<span class="ruby-identifier">final_score</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span>
-                <span class="ruby-identifier">title</span><span class="ruby-operator">+=</span><span class="ruby-value str">'-------------------------------------------------------'</span>
+                <span class="ruby-identifier">title</span><span class="ruby-operator">+=</span><span class="ruby-value str">&quot;-------------------------------------------------------&quot;</span>
 
+                <span class="ruby-comment cmt"># summary=&quot;\n&quot;+&quot;\n&quot;</span>
+                <span class="ruby-identifier">summary</span><span class="ruby-operator">+=</span> <span class="ruby-identifier">qualityinstance</span>.<span class="ruby-identifier">final_score</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; Scored for : &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">qualityinstance</span>.<span class="ruby-identifier">name</span>  <span class="ruby-operator">+</span>  <span class="ruby-value str">&quot;\n&quot;</span>
+                <span class="ruby-comment cmt"># summary+=qualityinstance.name + &quot; Scored : &quot; + qualityinstance.final_score + &quot;\n&quot;</span>
+                
+                
+                
                 <span class="ruby-identifier">details</span>=<span class="ruby-value str">&quot;\n&quot;</span>
                 <span class="ruby-identifier">qualityinstance</span>.<span class="ruby-identifier">check_detail_ids</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">detail</span><span class="ruby-operator">|</span>
                     <span class="ruby-identifier">details</span><span class="ruby-operator">+=</span><span class="ruby-identifier">detail</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; (State: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">detail</span>.<span class="ruby-identifier">state</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;) Scored : &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">detail</span>.<span class="ruby-identifier">score</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span>
                     <span class="ruby-identifier">details</span><span class="ruby-operator">+=</span><span class="ruby-value str">&quot;Ponderation: &quot;</span><span class="ruby-operator">+</span> <span class="ruby-identifier">detail</span>.<span class="ruby-identifier">ponderation</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span>
-                    <span class="ruby-identifier">details</span><span class="ruby-operator">+=</span><span class="ruby-value str">&quot;Note: &quot;</span><span class="ruby-operator">+</span> <span class="ruby-identifier">detail</span>.<span class="ruby-identifier">note</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span>
+                    <span class="ruby-identifier">details</span><span class="ruby-operator">+=</span><span class="ruby-value str">&quot;Note: &quot;</span><span class="ruby-operator">+</span> <span class="ruby-identifier">detail</span>.<span class="ruby-identifier">note</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span> 
                 <span class="ruby-keyword kw">end</span>
                 <span class="ruby-identifier">result</span>=<span class="ruby-identifier">title</span><span class="ruby-operator">+</span><span class="ruby-identifier">details</span>
+                <span class="ruby-comment cmt"># result=title+details+&quot;&lt;/pre&gt;&quot;</span>
 
                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">result</span> <span class="ruby-operator">:</span>
-                    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">result</span>
+                    <span class="ruby-keyword kw">return</span> {<span class="ruby-identifier">:summary</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">summary</span>, <span class="ruby-identifier">:result</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">result</span>}
                 <span class="ruby-keyword kw">else</span>
                     <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;!!! --- HELPER ERROR :get_formatted_results !&quot;</span>
                 <span class="ruby-keyword kw">end</span>
