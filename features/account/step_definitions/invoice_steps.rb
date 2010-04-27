@@ -179,6 +179,8 @@ end
 Then /^the total credit amount must be equal to the total debit amount$/ do
   total_debit=0.0
   total_credit=0.0
+  # take the rounding of the currency
+  precision=ResCurrency.find(@invoice.currency_id.id).rounding
   #we use the find way for optimization purpose
   move_id = @invoice.move_id.id
   AccountMoveLine.find(:all, :domain => [['move_id','=',move_id]], :fields => ['id', 'debit', 'credit']).each do |inv_line|
@@ -188,7 +190,7 @@ Then /^the total credit amount must be equal to the total debit amount$/ do
       total_credit = total_credit + inv_line.credit      
     end
   end
-  total_credit.should == total_debit
+  total_credit.round(precision).should == total_debit.round(precision)
 end
 
 ##############################################################################
@@ -208,7 +210,7 @@ Then /^the total amount convert into company currency must be same amount than t
        amount = inv_line.credit
     end   
   end
-  company_currency_amount.round(2).should == amount
+  company_currency_amount.should == amount
 end
 
 ##############################################################################
