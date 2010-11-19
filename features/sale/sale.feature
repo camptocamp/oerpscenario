@@ -10,7 +10,7 @@
 # Branch      # Module       # Processes     # System
 @addons      @sale          @sales
 
-Feature Test sales process
+Feature: Test sales process
   In order to test the sale process and modules
   As an administator
   I want to see if the sales features and workflow work well 

@@ -11,7 +11,7 @@
 # Branch      # Module       # Processes     # System
 @addons       @account       @invoicing      @init
 
-Feature Initialize the settings for account module
+Feature: Initialize the settings for account module
   In order ensure the right state before launching the tests suite
   I want to set some parameters and settings
   

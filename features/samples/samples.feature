@@ -11,7 +11,7 @@
 # System
 @sample
 
-Feature Make some scenario samples
+Feature: Make some scenario samples
   In order to show you how to work with OERPScenario
   I want to illustrate the basics behaviors
 

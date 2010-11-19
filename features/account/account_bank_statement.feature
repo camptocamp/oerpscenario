@@ -11,7 +11,7 @@
 # Branch      # Module       # Processes
 @addons       @account       @reconciliation @invoicing
 
-Feature Test the Bank statement
+Feature: Test the Bank statement
   In order to test the invoicing process and modules
   I want to see if the basic bank statement features works
 

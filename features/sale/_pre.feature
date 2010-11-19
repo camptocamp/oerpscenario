@@ -10,7 +10,7 @@
 # Branch      # Module       # Processes     # System
 @addons       @sale          @sales          @init
 
-Feature Initialize the settings for sale module
+Feature: Initialize the settings for sale module
   In order ensure the right state for the tests suite
   I want to set some parameters and settings
   

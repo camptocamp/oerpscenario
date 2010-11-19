@@ -10,7 +10,7 @@
 # Branch      # Module       # Processes
 @addons       @account       @invoicing
 
-Feature Test the invoicing process
+Feature: Test the invoicing process
   In order to test the invoicing process and modules
   I want to see if the features work correctly
 
@@ -100,4 +100,10 @@ Feature Test the invoicing process
 	When I press the validate button
 	Then I should see the invoice MySupplierInvoiceTax open
 	And I should have a linked account move with 4 lines and a posted status
+  # Testing report performance
+  ##############################################################################
+  @test_data
+  Scenario: Create a collection of invoice for testing purpose
+      Given I have recorded recorded on the 10 sept 2009 a list of 10000 a supplier invoice (in_invoice) of 1000.0 EUR
+      
 

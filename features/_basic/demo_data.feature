@@ -11,7 +11,7 @@
 # System
 @demo 
 
-Feature check base
+Feature: check base
   In order to load the demo data for installed module
       
   Scenario: Install demo datas on installed modules

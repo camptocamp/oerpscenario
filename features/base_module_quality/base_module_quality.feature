@@ -15,7 +15,7 @@
 # System
 @quality
  
-Feature Run quality tests provided by the editor
+Feature: Run quality tests provided by the editor
   In order to run the quality tests provided by base_module_quality
   I want to install the module and run the following tests
   

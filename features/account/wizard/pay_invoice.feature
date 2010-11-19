@@ -10,7 +10,7 @@
 # Branch      # Module       # Processes                      # System
 @addons       @account       @invoicing @reconciliation       @wizard
 
-Feature Test the pay invoice wizard
+Feature: Test the pay invoice wizard
   In order to test the pay invoice wizard
   I want to see if the wizard take care of complex cases
   

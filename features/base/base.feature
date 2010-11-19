@@ -11,7 +11,7 @@
 # Branch      # Module       # Processes     # System
 @addons       @base
 
-Feature Control the base module
+Feature: Control the base module
   In order to test the basic features of the base module
   I want to make some basic tests
 

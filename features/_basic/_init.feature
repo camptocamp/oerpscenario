@@ -8,7 +8,7 @@
 # Features Generic tags (none for all)
 ##############################################################################
 
-Feature basic initialization
+Feature: basic initialization
   In order to do BDD
   I want to log me into OpenERP server with the following user
   And run the OERPScenario suite with him
