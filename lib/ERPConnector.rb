@@ -26,7 +26,7 @@ require 'cucumber'
 
 # This class map OpenERP XMLRPC logins and common stuff
 class ScenarioUtils
-    
+    attr_accessor :ooor, :config
     def initialize
         @uid = false
         @ooor = false
