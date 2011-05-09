@@ -20,3 +20,5 @@ Feature: Compilation tests
   
     Scenario: Compile Test
         Given Build is OK
+        Given I have file "Rakefile"
+        Given module "base" is installed
