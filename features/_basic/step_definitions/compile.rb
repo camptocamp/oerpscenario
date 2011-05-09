@@ -26,13 +26,12 @@ Given /^I have file "([^"]*)"$/ do |f_name|
   File.exists?(f_name).should be_true
 end
 
-Given /^module "([^"]*)" is installed$/ do |mod_name|
-  mod_up = IrModuleModule.find(:first )
-  mod_up.should_not be_nil
-  mod_up.call('update_list')
-  
+Given /^module "([^"]*)" is installed$/ do |mod_name|  
   mod = IrModuleModule.find(:first, :domain=>[['name', '=', mod_name], ['state', '=', 'installed']])
   unless mod
+    mod_up = IrModuleModule.find(:first )
+    mod_up.should_not be_nil
+    mod_up.call('update_list')
     mod = IrModuleModule.find(:first, :domain=>[['name', '=', mod_name]])
     mod.should_not be_nil
     IrModuleModule.install_modules([mod])
