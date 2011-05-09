@@ -18,7 +18,7 @@ Feature: Test the pay invoice wizard
     ##############################################################################
     @bug511104 @bug496889 @bug497078 
     Scenario: Make payments in different currency with the pay invoice wizard
-      Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoicePayWizard
+      Given I have recorded on the 1 jan 2009 an invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoicePayWizard
       When I press the validate button
       Then I should see the invoice MySupplierInvoicePayWizard open
 

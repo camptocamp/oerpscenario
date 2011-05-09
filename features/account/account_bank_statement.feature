@@ -19,7 +19,7 @@ Feature: Test the Bank statement
   ##############################################################################
   @bug491892
   Scenario: Reconcile a confirmed invoice using a bank statement
-    Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoiceBankStatement2
+    Given I have recorded on the 1 jan 2009 an invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoiceBankStatement2
     When I press the validate button
     Then I should see the invoice MySupplierInvoiceBankStatement2 open
     And the residual amount = 1000,0
@@ -35,12 +35,12 @@ Feature: Test the Bank statement
   ##############################################################################
   @bug485281
   Scenario: Validate rollback entries when confirming a bank statement
-    Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MyFirstSupplierInvoiceBankStatement
+    Given I have recorded on the 1 jan 2009 an invoice (in_invoice) of 1000,0 CHF without tax called MyFirstSupplierInvoiceBankStatement
     When I press the validate button
     Then I should see the invoice MyFirstSupplierInvoiceBankStatement open
     And the residual amount = 1000,0
 
-    Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySecondSupplierInvoiceBankStatement
+    Given I have recorded on the 1 jan 2009 an invoice (in_invoice) of 1000,0 CHF without tax called MySecondSupplierInvoiceBankStatement
     When I press the validate button
     Then I should see the invoice MySecondSupplierInvoiceBankStatement open
     And the residual amount = 1000,0

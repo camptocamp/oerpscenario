@@ -18,7 +18,7 @@ Feature: Test the invoicing process
   ##############################################################################
   @workflow @rounding
   Scenario: Validate the invoice creation and confirmation
-	Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoice
+	Given I have recorded on the 1 jan 2009 an invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoice
     When I press the validate button
     Then I should see the invoice MySupplierInvoice open
 	And the residual amount = 1000,0
@@ -53,7 +53,7 @@ Feature: Test the invoicing process
   ##############################################################################
   @rounding @bug452854
   Scenario: Validate the rouding computation on an invoice with 3 lines
-    Given I have recorded on the 11 oct 2009 a supplier invoice (in_invoice) of 1144.0 CHF without tax called MySupplierInvoiceRounding
+    Given I have recorded on the 11 oct 2009 an invoice (in_invoice) of 1144.0 CHF without tax called MySupplierInvoiceRounding
     And I add a line called MyFirstLine on the last created invoice of 91.73
     And I add a line called MySecondLine on the last created invoice of 63.00
     And I correct the total amount of the invoice according to changes
@@ -67,7 +67,7 @@ Feature: Test the invoicing process
   ##############################################################################
   @reconciliation @bug524521
   Scenario: Try to cancel an invoice with a partial reconciliation done
-    Given I have recorded on the 1 jan 2009 a supplier invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoicePartialCancel
+    Given I have recorded on the 1 jan 2009 an invoice (in_invoice) of 1000,0 CHF without tax called MySupplierInvoicePartialCancel
     When I press the validate button
     Then I should see the invoice MySupplierInvoicePartialCancel open
     And the residual amount = 1000,0
@@ -84,7 +84,7 @@ Feature: Test the invoicing process
   ##############################################################################
   @tax @bug524278
   Scenario: Check the tax computation in foreign currency and change the tax amount
-	Given I have recorded on the 10 sept 2009 a supplier invoice (in_invoice) of 1000.0 CHF without tax called MySupplierInvoiceTax
+	Given I have recorded on the 10 sept 2009 an invoice (in_invoice) of 1000.0 CHF without tax called MySupplierInvoiceTax
     And I add a line with tax called MyTaxLine on the last created invoice of 12156.0 with the tax called 'Buy 19.6%'
 	When I compute the taxes on invoice
 	Then I should have a invoice tax line with a base amount of 12156.0
@@ -104,6 +104,6 @@ Feature: Test the invoicing process
   ##############################################################################
   @test_data
   Scenario: Create a collection of invoice for testing purpose
-      Given I have recorded recorded on the 10 sept 2009 a list of 10000 a supplier invoice (in_invoice) of 1000.0 EUR
+      Given I have recorded recorded on the 10 sept 2009 a list of 10000 an invoice (in_invoice) of 1000.0 EUR
       
 
