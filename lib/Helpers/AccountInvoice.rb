@@ -55,8 +55,6 @@ begin
             else
                 date_invoice = Date.today.to_s
             end
-          require 'ruby-debug'
-          debugger
           toreturn = AccountInvoice.new()
           
           unless partner.class  == ResPartner :
