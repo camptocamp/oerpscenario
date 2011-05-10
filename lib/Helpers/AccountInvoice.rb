@@ -55,7 +55,8 @@ begin
             else
                 date_invoice = Date.today.to_s
             end
-          
+          require 'ruby-debug'
+          debugger
           toreturn = AccountInvoice.new()
           
           unless partner.class  == ResPartner :
@@ -69,7 +70,7 @@ begin
               raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a partner : #{partner.name} without adresses"
           end
           toreturn.on_change('onchange_partner_id', :partner_id ,partner.id, o[:type], partner.id, date_invoice, false, false)
-          
+          toreturn.save
           # Set name & date
           toreturn.name = name
           toreturn.date_invoice=date_invoice
@@ -85,7 +86,7 @@ begin
           end
           
           # Set amount and line if asked for
-          toreturn.create
+          toreturn.save
 
           if o[:amount] :
               
