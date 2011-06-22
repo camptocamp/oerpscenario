@@ -140,6 +140,31 @@ begin
         end
       end
 
+
+      ##########################################################################
+      # Get recursively the whole list of modules dependencies
+      # for a list of modules.
+      # Do not add the module if it already exists in the input list
+      # Input :
+      #  - modules : A [] of valid IrModuleModule instances with dependencies_id attribute
+      # Return
+      #  -  [] of dependencies
+      # Usage Example:
+      # dependency_modules = get_dependencies(modules)
+      def self.get_dependencies(modules)
+        dependency_modules = []
+        modules.select {|m| m.dependencies_id}.each do |mod|
+          mod.dependencies_id.each do |dep|
+            dep_module = IrModuleModule.find(:first,
+                                             :domain => [['name', '=', dep.name]],
+                                             :fields => ['id', 'state', 'dependencies_id'])
+            dependency_modules << dep_module unless modules.map {|m| m.id}.include? dep_module.id
+          end
+        end
+        dependency_modules.concat(get_dependencies(dependency_modules)) if dependency_modules.count > 0
+        dependency_modules
+      end
+
       ##########################################################################
       # Run the upgrade wizard in order to install the requiered 
       # modules. Does nothing if already installed
@@ -149,9 +174,15 @@ begin
       #  - True
       # Usage Example:
       # res = IrModuleModule.install_modules(modules)
-      def self.install_modules(modules)
+      def self.install_modules(modules, dependencies=false)
         update=false
         res=true
+
+        if dependencies
+          dependency_modules = get_dependencies(modules)
+          modules.concat(dependency_modules) if dependency_modules
+        end
+
         modules.each do |m|
           if m.state != 'installed':
             m.state='to install'
