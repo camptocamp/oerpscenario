@@ -23,6 +23,11 @@ require 'ooor'
 require 'parseconfig'
 require 'pp'
 require 'cucumber'
+require 'xmlrpc/client'
+XMLRPC::Config::ENABLE_NIL_PARSER =true
+XMLRPC::Config::ENABLE_NIL_CREATE =true
+XMLRPC::Config::ENABLE_BIGINT=true
+
 
 # This class map OpenERP XMLRPC logins and common stuff
 class ScenarioUtils
