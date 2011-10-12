@@ -167,7 +167,7 @@ begin
 
       ##########################################################################
       # Run the upgrade wizard in order to install the requiered 
-      # modules. Does nothing if already installed
+      # modules. Upgrade installed modules as well.
       # Input :
       #  - modules : A [] of valid IrModuleModule instance
       # Return
@@ -177,27 +177,39 @@ begin
       def self.install_modules(modules, dependencies=false)
         update=false
         res=true
-
         if dependencies
           dependency_modules = get_dependencies(modules)
           modules.concat(dependency_modules) if dependency_modules
         end
-
+        modules_toinstall_ids=[]
+        modules_toupgrade_ids=[]
+        # If not installed, do it. Otherwise update it
         modules.each do |m|
-          if m.state != 'installed':
+          if m.state == 'uninstalled':
             m.state='to install'
             m.save
-            m = nil 
-            update=true
+            modules_toinstall_ids << m.id
+          elsif m.state == 'installed':
+            m.state='to upgrade'
+            m.save
+            modules_toupgrade_ids << m.id
+          elsif m.state == 'to install':
+            modules_toinstall_ids << m.id
+          elsif m.state == 'to upgrade'
+            modules_toupgrade_ids << m.id
           end
         end
-        if update:
-          res = IrModuleModule.update_needed_modules()
-        end
+        
+        #First installed required modules, then upgrade the others
+        upgrade=BaseModuleUpgrade.create()
+        upgrade.upgrade_module()
+        # IrModuleModule.button_install(modules_toinstall_ids)
+        # IrModuleModule.button_upgrade(modules_toupgrade_ids)
+
         if res :
           return true
         else
-          raise "!!! --- HELPER ERROR : install_modules was unable to upgrade needed modules.."
+          raise "!!! --- HELPER ERROR : install_modules was unable to install needed modules.."
         end
       end
 

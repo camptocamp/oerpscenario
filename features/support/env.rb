@@ -22,6 +22,7 @@
 require 'lib/ERPConnector'
 require 'rubygems'
 require 'ooor'
+require 'tmpdir'
 
 # Create a login if not initialized in feathures
 unless $utils
@@ -40,4 +41,29 @@ end
 
 
 
+# Use a temporary directory
+# we to do use mktempdir else in case of crash we will have a lot a temp folder
+$tmpdir = File.join(Dir.tmpdir(), 'oerps_folder')
+begin
+  Dir.mkdir($tmpdir)
+rescue Exception=>e
+  puts "Can't create tmpdir #{e.to_s}"
+end
 
+# "after all"
+at_exit do
+    begin
+      FileUtils.remove_entry_secure $tmpdir
+    rescue Exception => e
+      # Some tags does not create tmp dir
+    end
+    
+    #for dhl import
+    begin
+      `rm -rf /tmp/dhl_filestore/ready/*`
+      `rm -rf /tmp/dhl_filestore/done/*`
+      `rm -rf /tmp/dhl_filestore/in_error/*`
+    rescue Exception => e
+      #we do nothing it is in /tmp/
+    end
+end
