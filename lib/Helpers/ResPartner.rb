@@ -40,10 +40,10 @@ begin
             name = o[:name]
             type = o[:type]
             domain = []
-            if name :
+            if name
                 domain.push ['name', 'ilike', name]
             end  
-            if type :
+            if type
                 domain.push [type ,'=', true]      
             end
             if o[:fields]
@@ -51,7 +51,7 @@ begin
             else
                 res = ResPartner.find(:all, :domain => domain )
             end
-            unless res :
+            unless res
                 raise "!!! --- HELPER ERROR :get_supplier don't found a #{type} named #{name}" 
             end
             result=false
@@ -62,7 +62,7 @@ begin
                     break
                 end
             end
-            if result :
+            if result
                 return result
             else
                 raise "!!! --- HELPER ERROR :get_supplier found #{type} named #{name}, but without adresses"

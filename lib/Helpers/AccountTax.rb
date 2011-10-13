@@ -24,7 +24,7 @@ require 'pp'
 
 
 begin
-      if Object.const_defined?'AccountTax':
+      if Object.const_defined?'AccountTax'
   # Add useful methode on taxes handling
   ##############################################################################
   AccountTax.class_eval do 

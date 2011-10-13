@@ -24,7 +24,7 @@ require 'pp'
 
 
 begin
-      if Object.const_defined?'AccountInvoice':
+      if Object.const_defined?'AccountInvoice'
   # Add useful methode on invoice handling
   ##############################################################################
   AccountInvoice.class_eval do 
@@ -50,14 +50,14 @@ begin
       # inv = AccountInvoice.create_cust_invoice_with_currency('my name',part,{currency_code =>'CHF'})
       def self.create_invoice_with_currency(name, partner, options={}, *args)
           o = {:type=>'out_invoice', :currency_code=>'EUR', :date=>false, :amount=>false, :account=>false}.merge(options)
-           if o[:date] :
+           if o[:date]
                 date_invoice = Date.parse(str=o[:date]).to_s
             else
                 date_invoice = Date.today.to_s
             end
           toreturn = AccountInvoice.new()
           
-          unless partner.class  == ResPartner :
+          unless partner.class  == ResPartner
               raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a #{partner.class.to_s} instead of ResPartner" 
           end 
           # Set partner 
@@ -77,7 +77,7 @@ begin
           toreturn.type = o[:type]
           curr =  ResCurrency.find(:first, :domain=>[['code','=',o[:currency_code]]], :fields => ['id'])
           # Set currency
-          if curr : 
+          if curr
               toreturn.currency_id = curr.id
           else
               raise "!!! --- HELPER ERROR :#{o[:currency_code]} currency not found"
@@ -86,13 +86,13 @@ begin
           # Set amount and line if asked for
           toreturn.save
 
-          if o[:amount] :
+          if o[:amount]
               
-              if ['in_invoice', 'in_refund'].include? o[:type] :
+              if ['in_invoice', 'in_refund'].include? o[:type]
                   toreturn.check_total = o[:amount]
               end
-              if o[:account] :
-                  unless account.class  == AccountAccount :
+              if o[:account]
+                  unless account.class  == AccountAccount
                       raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a #{o[:account].class.to_s} instead of AccountAccount" 
                   end
                   account_id = o[:account].id

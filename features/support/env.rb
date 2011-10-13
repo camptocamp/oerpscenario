@@ -19,6 +19,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+$LOAD_PATH << '.'
 require 'lib/ERPConnector'
 require 'rubygems'
 require 'ooor'
@@ -29,7 +30,7 @@ unless $utils
     $utils = ScenarioUtils.new
 end
 begin
-    unless $utils.ready? :
+    unless $utils.ready?
         puts 'Attempt to connect'
         $utils.setConnexionfromConf()
     end

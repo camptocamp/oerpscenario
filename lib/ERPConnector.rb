@@ -71,7 +71,7 @@ class ScenarioUtils
         @config[:log_level] = Logger::ERROR
         @config.merge(para)
 
-        if @ooor :
+        if @ooor
             self.login({:user=>@config[:user], :pwd=>@config[:pwd]})
         else
              @ooor=Ooor.new(
@@ -88,7 +88,7 @@ class ScenarioUtils
     end 
     
     def ready?
-        if not @ooor:
+        if not @ooor
           return false
         else
           return @ooor.all_loaded_models.size >0

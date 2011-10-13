@@ -50,7 +50,7 @@ end
 ##############################################################################
 Then /^all module, except (\w+), should have a final score greater than (.*) percent$/ do |except_module,percent|
   @test_result.each do |test_case|
-    if not test_case.name == except_module:
+    if not test_case.name == except_module
       test_case.final_score.to_f.should > percent.to_f/100
     end
   end

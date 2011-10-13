@@ -23,7 +23,7 @@ require 'rubygems'
 require 'ooor'
 
 begin
-  if Object.const_defined?'IrModuleModule':
+  if Object.const_defined?'IrModuleModule'
     ###############################################################################
     # Add useful methode on ir.module,module handling
     ##############################################################################
@@ -53,7 +53,7 @@ begin
         step_dict=res.datas.merge(step_dict)
         res=wizard.end(step_dict)
 
-        if res :
+        if res
           return true
         else
           raise "!!! --- HELPER ERROR : update_needed_modules was unable to upgrade needed modules.."
@@ -67,7 +67,7 @@ begin
       #  - [] of Created ModuleQualityCheck instances
       # Usage Example:
       # result = IrModuleModule.run_base_quality_test(modules)
-      if Object.const_defined?'ModuleQualityCheck':
+      if Object.const_defined?'ModuleQualityCheck'
           def self.run_base_quality_test(modules)
             # Take the id of already recorded tests result
             # because we are unable to retrieve their ids from wizard
@@ -89,7 +89,7 @@ begin
             new_ids=all_stored_test_ids-already_stored_test_ids
             res= ModuleQualityCheck.find(new_ids)
 
-            if res :
+            if res
               return res
             else
               raise "!!! --- HELPER ERROR : run_base_quality_test was unable to upgrade needed modules.."
@@ -117,7 +117,7 @@ begin
         update=false
         res=true
         modules.each do |m|
-          if not m.demo:
+          if not m.demo
             m.demo=true
             update=true
             m.save
@@ -125,7 +125,7 @@ begin
           end
         end
         # Find module base and set it to to upgrade if there is some module to update
-        if update:
+        if update
           m=IrModuleModule.find(:first,:domain=>[['name','=','base']], :fields => ['id, demo, update, state'])
           m.state='to upgrade'
           m.save
@@ -133,7 +133,7 @@ begin
           res = IrModuleModule.update_needed_modules()
         end
 
-        if res :
+        if res
           return true
         else
           raise "!!! --- HELPER ERROR : load_demo_data_on_installed_modules was unable to upgrade needed modules.."
@@ -185,15 +185,15 @@ begin
         modules_toupgrade_ids=[]
         # If not installed, do it. Otherwise update it
         modules.each do |m|
-          if m.state == 'uninstalled':
+          if m.state == 'uninstalled'
             m.state='to install'
             m.save
             modules_toinstall_ids << m.id
-          elsif m.state == 'installed':
+          elsif m.state == 'installed'
             m.state='to upgrade'
             m.save
             modules_toupgrade_ids << m.id
-          elsif m.state == 'to install':
+          elsif m.state == 'to install'
             modules_toinstall_ids << m.id
           elsif m.state == 'to upgrade'
             modules_toupgrade_ids << m.id
@@ -206,7 +206,7 @@ begin
         # IrModuleModule.button_install(modules_toinstall_ids)
         # IrModuleModule.button_upgrade(modules_toupgrade_ids)
 
-        if res :
+        if res
           return true
         else
           raise "!!! --- HELPER ERROR : install_modules was unable to install needed modules.."

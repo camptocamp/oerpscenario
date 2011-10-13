@@ -26,7 +26,7 @@ require 'ooor'
 # Add useful methode on base module quality check module handling
 ##############################################################################
 begin
-    if Object.const_defined?'ModuleQualityCheck':
+    if Object.const_defined?'ModuleQualityCheck'
         ModuleQualityCheck.class_eval do 
             puts "Extending  #{self.class} #{self.name}"
             ##########################################################################
@@ -60,7 +60,7 @@ begin
                 result=title+details
                 # result=title+details+"</pre>"
 
-                if result :
+                if result
                     return {:summary => summary, :result => result}
                 else
                     raise "!!! --- HELPER ERROR :get_formatted_results !"

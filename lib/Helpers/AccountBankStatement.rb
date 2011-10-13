@@ -24,7 +24,7 @@ require 'pp'
 
 
 begin
-    if Object.const_defined?'AccountBankStatement':
+    if Object.const_defined?'AccountBankStatement'
 
         # Add useful methode on bank statement handling
         ##############################################################################
@@ -49,7 +49,7 @@ begin
           # TODO Remove self to use it from an instance of the class
           def import_invoice(invoices, options={},*args)
             o = {:date => false, :journals => []}.merge(options)
-            if o[:date] :
+            if o[:date]
                 o[:date] = Date.parse(str=o[:date]).to_s
             else
                 o[:date] = Date.today.to_s
@@ -66,7 +66,7 @@ begin
 
             # # For each invoices, add the right account.move.line and compute total
             invoices.each do |inv|
-              unless inv.class  == AccountInvoice :
+              unless inv.class  == AccountInvoice
                 raise "!!! --- HELPER ERROR :import_invoice received a #{inv.class.to_s} instead of AccountInvoice" 
               end
               # Take the move ids from concerned invoice
@@ -91,7 +91,7 @@ begin
             # Save the start and end values
             self.balance_end_real=inv_total
             self.save
-            unless self.class  == AccountBankStatement :
+            unless self.class  == AccountBankStatement
               raise "!!! --- HELPER ERROR :import_invoice received a #{self.class.to_s} instead of AccountBankStatement" 
             end
 
@@ -124,10 +124,10 @@ begin
           # statement = AccountBankStatement.create_statement_with_currency({currency_code =>'CHF'})
           def self.create_statement_with_currency(options={}, *args)
             o = {:currency_code=>'EUR', :journal=>false, :name=>false}.merge(options)
-            if not o[:journal] :
+            if not o[:journal]
               # Take the currency
               currency_id = ResCurrency.find(:first, :domain=>[['code','=',o[:currency_code]]]).id
-              if currency_id : 
+              if currency_id
                 # Look for the asked cash journal currency
                 journal = AccountJournal.find(:first, :domain=>[['type','=','cash'],['currency','=',currency_id]])
               else
@@ -139,7 +139,7 @@ begin
             toreturn = AccountBankStatement.new()
             toreturn.journal_id = journal.id
             toreturn.create
-            if o[:name]:
+            if o[:name]
               toreturn.name=o[:name]
               toreturn.save
             end

@@ -91,7 +91,7 @@ Given /^I should have a company named "([^\"]*)"$/ do |name|
 end
 
 Given /^I create another company named "([^\"]*)" with the following values :$/ do |name, table|
-  if not ResCompany.find(:first, :domain => [['name','=',name]]):
+  if not ResCompany.find(:first, :domain => [['name','=',name]])
       @cust_comp = ResCompany.new()
 
       table.hashes.each do |data|
@@ -112,7 +112,7 @@ Then /^I set the company with the following data :$/ do |table|
 end
 
 Given /^I create the company main partner named "([^\"]*)" with the following data :$/ do |name, table|
-  if not ResPartner.find(:first, :domain => [['name','=',name]]):
+  if not ResPartner.find(:first, :domain => [['name','=',name]])
       @cust_part = ResPartner.new()
       table.hashes.each do |data|
           eval("@cust_part.#{data['key']}=#{data['value']}")
@@ -298,7 +298,7 @@ Given /^there is a bank account named "([^"]*)" linked to partner "([^"]*)"$/ do
    part = ResPartner.find(:first, :domain=>[['name','=',pname]])
    part.should_not be_nil
    @res_p_bank = ResPartnerBank.find(:first, :domain=>[['name','=',bname]])
-   unless @res_p_bank :
+   unless @res_p_bank
      @res_p_bank = ResPartnerBank.new()
    end
    @res_p_bank.partner_id = part.id

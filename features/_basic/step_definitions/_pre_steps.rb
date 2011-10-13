@@ -44,7 +44,7 @@ Given /^the following currency rate settings are:$/ do |currencies|
   currencies.hashes.each do |c|
     curr_id = ResCurrency.find(:first, :domain=>[['code','=',c[:code]]], :fields=>['id']).id
     rate_to_clean = ResCurrencyRate.find(:first, :domain=>[['currency_id','=',curr_id]], :fields=>['id'])
-    if rate_to_clean :
+    if rate_to_clean
         rate_to_clean.destroy
     end
   end
@@ -61,7 +61,7 @@ Given /^a (\w+) journal in (\w+) exists$/ do |type,currency|
   currency_id = ResCurrency.find(:first, :domain=>[['code','=',currency]], :fields=>["id"]).id
   # Look for the asked journal
   journal = AccountJournal.find(:first, :domain=>[['type','=',type],['currency','=',currency_id]])
-  unless journal:
+  unless journal
     journal = AccountJournal.new({
       :type => type,
       :name => type + ' ' + currency + ' Journal',
@@ -102,7 +102,7 @@ end
 ##############################################################################
 Given /^a purchase tax called '(.*)' with a rate of (.*) exists$/ do |name,rate|
   foundtax=AccountTax.find(:first,:domain=>[['name','=',name]], :fields=>['id'])
-  if not foundtax:
+  if not foundtax
     # Set options for a purchase tax at 19.6%
     o = {
         :type=>'percent',
@@ -125,7 +125,7 @@ end
 ##############################################################################
 Given /^a sale tax called '(.*)' with a rate of (.*) exists$/ do |name,rate|
   foundtax=AccountTax.find(:first,:domain=>[['name','=',name]], :fields=>['id'])
-  if not foundtax:
+  if not foundtax
     # Set options for a purchase tax at 19.6%
     o = {
         :type=>'percent',
@@ -150,7 +150,7 @@ Given /^a valid (\w+) pricelist in (\w+) exists$/ do |type,currency|
   currency_id = ResCurrency.find(:first, :domain=>[['code','=',currency]], :fields=>['id']).id
   # Look for the asked pricelist
   pricelist = ProductPricelist.find(:first, :domain=>[['type','=',type],['currency_id','=',currency_id]], :fields=>['id'])
-  if not pricelist:
+  if not pricelist
     # A valid pricelist of the right type should exist to run this step
     pricelist = ProductPricelist.find(:first, :domain=>[['type','=',type]])
     pricelist.should be_true

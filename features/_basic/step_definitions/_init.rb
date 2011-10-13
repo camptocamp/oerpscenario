@@ -22,7 +22,7 @@ unless $utils
     $utils = ScenarioUtils.new
 end
 Before do
-    if not $utils :
+    if not $utils
         $utils = ScenarioUtils.new
         puts 'reset connection'
     end
@@ -36,7 +36,7 @@ end
 ##############################################################################
 Given /^I am logged as (\w+) user with password (\w+) used$/ do |user, pass|
     begin
-        if $utils.ready? :
+        if $utils.ready?
             $utils.login(:user =>user,:pwd => pass)
         else
             puts 'Attempt to connect'
@@ -52,7 +52,7 @@ end
 ##############################################################################
 Given /^I am logged as (\w+) user with the password set in config used$/ do |user, pass|
     begin
-        if $utils.ready? :
+        if $utils.ready?
             $utils.login(user, pass)
         else
             puts 'Attempt to connect'

@@ -84,7 +84,7 @@ Then /^the associated debit account move line should use the account choosen in 
   # table is a Cucumber::Ast::Table
   table.hashes.each do |line|
     @invoice.move_id.line_id.each do |inv_line|
-      unless inv_line.debit.zero? :
+      unless inv_line.debit.zero?
         inv_line.debit.should == line[:debit].to_f
         inv_line.credit.should == 0.0
         inv_line.amount_currency.should == line[:amount_currency].to_f
@@ -101,7 +101,7 @@ Then /^the associated credit account move line should use the account of the par
   # table is a Cucumber::Ast::Table
   table.hashes.each do |line|
     @invoice.move_id.line_id.each do |inv_line|
-      unless inv_line.credit.zero? :
+      unless inv_line.credit.zero?
         inv_line.credit.should == line[:credit].to_f
         inv_line.debit.should == 0.0
         inv_line.amount_currency.should == line[:amount_currency].to_f
@@ -184,9 +184,9 @@ Then /^the total credit amount must be equal to the total debit amount$/ do
   #we use the find way for optimization purpose
   move_id = @invoice.move_id.id
   AccountMoveLine.find(:all, :domain => [['move_id','=',move_id]], :fields => ['id', 'debit', 'credit']).each do |inv_line|
-    if inv_line.credit.zero? :
+    if inv_line.credit.zero?
       total_debit = total_debit + inv_line.debit
-    elsif inv_line.debit.zero? :
+    elsif inv_line.debit.zero?
       total_credit = total_credit + inv_line.credit      
     end
   end
@@ -206,7 +206,7 @@ Then /^the total amount convert into company currency must be same amount than t
   # Take the line to reconcile
   amount = false
   @invoice.move_id.line_id.each do |inv_line|
-     if inv_line.debit == 0.0 && inv_line.account_id.reconcile:
+     if inv_line.debit == 0.0 && inv_line.account_id.reconcile
        amount = inv_line.credit
     end   
   end
@@ -314,7 +314,7 @@ Then /^the associated credit account move line should use the account choosen in
   # table is a Cucumber::Ast::Table
   table.hashes.each do |line|
     @invoice.move_id.line_id.each do |inv_line|
-      unless inv_line.credit.zero? :
+      unless inv_line.credit.zero?
         inv_line.credit.should == line[:debit].to_f
         inv_line.debit.should == 0.0
         inv_line.amount_currency.should == line[:amount_currency].to_f
@@ -331,7 +331,7 @@ Then /^the associated debit account move line should use the account of the part
   # table is a Cucumber::Ast::Table
   table.hashes.each do |line|
     @invoice.move_id.line_id.each do |inv_line|
-      unless inv_line.debit.zero? :
+      unless inv_line.debit.zero?
         inv_line.debit.should == line[:credit].to_f
         inv_line.credit.should == 0.0
         inv_line.amount_currency.should == line[:amount_currency].to_f
