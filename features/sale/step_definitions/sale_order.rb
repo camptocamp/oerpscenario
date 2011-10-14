@@ -39,7 +39,7 @@ Given /^I have recorded on the (.*) a sale order of (.*) (.*) without tax called
   so.name = name
   so.date_order = Date.parse(str=date).to_s
   #auto-complete the address and other data based on the partner
-  so.on_change('onchange_partner_id', :partner_id,1, @partner.id)
+  so.on_change('onchange_partner_id', :partner_id,@partner.id, @partner.id)
   so.pricelist_id=ProductPricelist.find(:first,:domain=>[['currency_id','=',currency_id]],:fields => ['id']).id
   so.order_line = [SaleOrderLine.new(:name => 'OERPScenario line', :product_id => @product.id, :price_unit => amount.to_f, :product_uom => 1)]
   so.create
@@ -59,8 +59,16 @@ end
 ##############################################################################
 Then /^I should see the sale order (\w+) open$/ do |name|
   @saleorder=$utils.get_var(name.strip)
-  @saleorder.state.should == 'progress'
-  # @saleorder.state.should == 'manual' or @saleorder.state.should == 'progress'
+  @saleorder.state.should == 'manual' || @saleorder.state.should == 'progress'
+end
+
+##############################################################################
+Then /^I should see this sale order (\w+)$/ do |state|
+  if state == 'draft'
+  @saleorder.state.should == 'draft'
+  elsif state == 'open'
+  @saleorder.state.should == 'manual' || @saleorder.state.should == 'progress'
+  end
 end
 
 ##############################################################################

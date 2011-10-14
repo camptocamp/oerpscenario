@@ -75,7 +75,7 @@ begin
 
           # Set type of invoice
           toreturn.type = o[:type]
-          curr =  ResCurrency.find(:first, :domain=>[['code','=',o[:currency_code]]], :fields => ['id'])
+          curr =  ResCurrency.find(:first, :domain=>[['name','=',o[:currency_code]]], :fields => ['id'])
           # Set currency
           if curr
               toreturn.currency_id = curr.id

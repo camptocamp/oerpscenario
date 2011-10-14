@@ -36,22 +36,21 @@ begin
         # Usage Example:
         # part = ResPartner.get_supplier({:name => 'toto', :type=>'supplier'})
         def self.get_valid_partner(options={})
-            o = {:name => false, :type => false}.merge(options)
-            name = o[:name]
-            type = o[:type]
-            domain = []
-            if name
-                domain.push ['name', 'ilike', name]
-            end  
-            if type
-                domain.push [type ,'=', true]      
+            domain = options[:domain] || []
+            field = []
+            options.each do |key, value|
+                if key == :name
+                    domain.push ['name', 'ilike', value]
+                elsif key == :type
+                    domain.push [value ,'=', true]      
+                elsif key == :fields
+                    field = value
+                elsif key != domain 
+                    domain.push [key.to_s,'=', value]
+                end
             end
-            if o[:fields]
-                res = ResPartner.find(:all, :domain => domain, :fields => o[:fields])
-            else
-                res = ResPartner.find(:all, :domain => domain )
-            end
-            unless res
+            res = ResPartner.find(:all, :domain => domain, :fields => field)
+            if res.size == 0
                 raise "!!! --- HELPER ERROR :get_supplier don't found a #{type} named #{name}" 
             end
             result=false
