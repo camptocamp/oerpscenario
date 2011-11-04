@@ -58,6 +58,14 @@ Then /^I should see the invoice (\w+) (\w+)$/ do |name,state|
 end
 
 ##############################################################################
+Then /^I should see this invoice (\w+)$/ do |state|
+  # Old schoold system :
+  # @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name],['state','=',state]])
+  @invoice.should be_true
+  @invoice.state.should == state
+end
+
+##############################################################################
 Then /^the residual amount = (.*)$/ do |amount|
   @invoice=AccountInvoice.find(@invoice.id)
   @invoice.residual.should == amount.to_f

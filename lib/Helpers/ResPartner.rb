@@ -45,18 +45,31 @@ begin
                     domain.push [value ,'=', true]      
                 elsif key == :fields
                     field = value
-                elsif key != domain 
+                elsif key != :domain 
                     domain.push [key.to_s,'=', value]
                 end
             end
             res = ResPartner.find(:all, :domain => domain, :fields => field)
             if res.size == 0
-                raise "!!! --- HELPER ERROR :get_supplier don't found a #{type} named #{name}" 
+                createoptions = {:name => 'partnerscenario', :user_id => $utils.ooor.config[:user_id]}
+                options.each do |key, value|
+                    if key == :type
+                        createoptions[value] = true
+                    elsif key != :domain && key!= :fields
+                        createoptions[key] = value                 
+                    end
+                end
+                address = ResPartnerAddress.new(:name => 'partnerscenario', :email => createoptions[:email])
+                address.save
+                createoptions[:address] = [[6,0,[address.id]]]
+                partner = ResPartner.new(createoptions)
+                partner.save
+                return partner
             end
             result=false
             res.each do |part|
                 #we do not do part.address.length >0 for performance optimizations reasons
-                if ResPartnerAddress.find(:first, :domain => [['partner_id', '=', part.id]], :fields => ['id']) 
+                if ResPartnerAddress.find(:first, :domain => [['partner_id', '=', part.id]], :fields => ['id'])
                     result=part
                     break
                 end
@@ -64,7 +77,7 @@ begin
             if result
                 return result
             else
-                raise "!!! --- HELPER ERROR :get_supplier found #{type} named #{name}, but without adresses"
+                raise "!!! --- HELPER ERROR :get_supplier found #{type} named #{name}, but without addresses"
             end
         end
     end
