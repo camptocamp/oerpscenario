@@ -33,9 +33,11 @@ end
 Then /^my modules should have been installed$/ do
   modules = $utils.get_var('module_to_install')
   modules_ids = modules.map{|x|x.id}
-  found_module = IrModuleModule.find(:all, :domain => [['id','in',modules_ids],['state','=','installed']])
-  modules_ids.count.should == found_module.count
-  
+  modules_ids.each do | mod_id |
+    mod = IrModuleModule.find(mod_id, :fields=>['id', 'state'])
+    mod.should_not be_nil
+    mode.state.should eq('installed')
+  end
 end
 
 
