@@ -36,7 +36,7 @@ Then /^my modules should have been installed$/ do
   modules_ids.each do | mod_id |
     mod = IrModuleModule.find(mod_id, :fields=>['id', 'state'])
     mod.should_not be_nil
-    mode.state.should eq('installed')
+    mod.state.should eq('installed')
   end
 end
 
