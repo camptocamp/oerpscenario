@@ -158,6 +158,9 @@ begin
             dep_module = IrModuleModule.find(:first,
                                              :domain => [['name', '=', dep.name]],
                                              :fields => ['id', 'state', 'dependencies_id'])
+            if dep_module.nil?
+              raise RuntimeError, "#{dep.name} not found"
+            end
             dependency_modules << dep_module unless modules.map {|m| m.id}.include? dep_module.id
           end
         end
