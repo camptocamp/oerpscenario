@@ -54,6 +54,7 @@ begin
         res=wizard.end(step_dict)
 
         if res
+          $utils.ooor.load_models(false)
           return true
         else
           raise "!!! --- HELPER ERROR : update_needed_modules was unable to upgrade needed modules.."
