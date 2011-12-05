@@ -54,3 +54,39 @@ Then /^I should get a partner id$/ do
     @part.property_account_receivable = @account_id.id
     @part.save.should be_true
 end
+
+##############################################################################
+#           Scenario: Create shortcuts
+##############################################################################
+Given /^the menu "([^\"]*)" exists$/  do |menu_name|
+  @menu_found = IrUiMenu.find(:first, :domain => [['name', '=', menu_name]])
+  @menu_found.should_not be_nil
+end
+
+Then /^we create a shortcut on all users$/ do
+  ResUsers.all.each do |user|
+    shortcut = IrUiView_sc.find(:first,
+                                :domain => [
+                                  ['user_id', '=', user.id],
+                                  ['res_id' , '=', @menu_found.id],
+                                  ['resource', '=', 'ir.ui.menu']])
+    unless shortcut
+       shortcut = IrUiView_sc.new(:user_id => user.id,
+                                  :res_id => @menu_found.id,
+                                  :resource => 'ir.ui.menu',
+                                  :name => @menu_found.name)
+      shortcut.save
+    end
+  end
+end
+
+Given /^the shortcut "([^\"]*)" is assigned to some users$/ do |shortcut_name|
+  @shortcuts = IrUiView_sc.find(:all, :domain => [['name', '=', shortcut_name]])
+end
+Then /^delete it on all users$/ do
+  if @shortcuts
+    @shortcuts.each do |shortcut|
+      shortcut.destroy
+    end
+  end
+end
