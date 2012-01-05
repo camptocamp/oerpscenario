@@ -35,7 +35,7 @@ begin
             field = []
             options.each do |key, value|
                 if key == :product_id
-                    return ProductProduct.find(product_id, :fields => field)
+                    return ProductProduct.find(value, :fields => field)
                 elsif key == :name
                     domain.push ['name', 'ilike', value]
                 elsif key == :type
@@ -46,7 +46,7 @@ begin
                     domain.push [key.to_s,'=', value]
                 end
             end
-            if options[:qty_available]
+            if options[:qty_available] 
                 res = false
             else
                 res = ProductProduct.find(:first, :domain => domain, :fields => field)

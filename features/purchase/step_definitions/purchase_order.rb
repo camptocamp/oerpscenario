@@ -19,7 +19,7 @@
 #                                                                               #
 #########################################################################################################################################
 When /^I press the purchase button$/ do
-  @purchaseorder = PurchaseOrder.find(:first, :sale_id => @sale_order.id)
+  @purchaseorder = PurchaseOrder.find(:first, :sale_id => @saleorder.id)
   @purchaseorder.wkf_action('purchase_confirm')
 end
 

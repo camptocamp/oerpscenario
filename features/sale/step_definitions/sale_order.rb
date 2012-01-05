@@ -32,7 +32,7 @@ Given /^I have recorded on the (.*) a sale order of (.*) (.*) without tax called
   # Take first supplier partner with at least one address
   @partner=ResPartner.get_valid_partner({:type=>'supplier',:fields => ['id']})
   @partner.should be_true
-  currency_id = ResCurrency.find(:first, :domain=>[['name','=',curerncy_name]],:fields => ['id']).id
+  currency_id = ResCurrency.find(:first, :domain=>[['name','=',currency_name]],:fields => ['id']).id
   currency_id.should be_true
   # Create an so with found product and given amount
   so = SaleOrder.new

@@ -36,49 +36,47 @@ begin
         # Usage Example:
         # part = ResPartner.get_supplier({:name => 'toto', :type=>'supplier'})
         def self.get_valid_partner(options={})
-            domain = options[:domain] || []
-            field = []
-            options.each do |key, value|
-                if key == :name
-                    domain.push ['name', 'ilike', value]
-                elsif key == :type
-                    domain.push [value ,'=', true]      
-                elsif key == :fields
-                    field = value
-                elsif key != :domain 
-                    domain.push [key.to_s,'=', value]
-                end
-            end
-            res = ResPartner.find(:all, :domain => domain, :fields => field)
-            if res.size == 0
-                createoptions = {:name => 'partnerscenario', :user_id => $utils.ooor.config[:user_id]}
-                options.each do |key, value|
-                    if key == :type
-                        createoptions[value] = true
-                    elsif key != :domain && key!= :fields
-                        createoptions[key] = value                 
-                    end
-                end
-                address = ResPartnerAddress.new(:name => 'partnerscenario', :email => createoptions[:email])
-                address.save
-                createoptions[:address] = [[6,0,[address.id]]]
-                partner = ResPartner.new(createoptions)
-                partner.save
+            if options.is_a? Integer
+                partner = ResPartner.find(options)
+                $utils.set_var('current_partner',partner)
                 return partner
             end
-            result=false
-            res.each do |part|
-                #we do not do part.address.length >0 for performance optimizations reasons
-                if ResPartnerAddress.find(:first, :domain => [['partner_id', '=', part.id]], :fields => ['id'])
-                    result=part
-                    break
+            if not options[:new]
+                domain = options[:domain] || []
+                domain << ['address' , '!=', false]
+                field = []
+                options.each do |key, value|                
+                    if key == :name
+                        domain.push ['name', 'ilike', value]
+                    elsif key == :type
+                        domain.push [value ,'=', true]      
+                    elsif key == :fields
+                        field = value
+                    elsif key != :domain && key != :same
+                        domain.push [key.to_s,'=', value]
+                    end
+                end
+                partner = ResPartner.find(:first, :domain => domain, :fields => field)
+                if partner
+                    $utils.set_var('current_partner',partner)
+                    return partner
                 end
             end
-            if result
-                return result
-            else
-                raise "!!! --- HELPER ERROR :get_supplier found #{type} named #{name}, but without addresses"
+            createoptions = {:name => options[:name] || 'partnerscenario', :user_id => $utils.ooor.config[:user_id]}
+            options.each do |key, value|
+                if key == :type
+                    createoptions[value] = true
+                elsif key != :domain && key!= :fields
+                    createoptions[key] = value                 
+                end
             end
+            address = ResPartnerAddress.new(:name => createoptions[:name] || 'partnerscenario', :email => createoptions[:email])
+            address.save
+            createoptions[:address] = [[6,0,[address.id]]]
+            partner = ResPartner.new(createoptions)
+            partner.save
+            $utils.set_var('current_partner',partner)
+            return partner
         end
     end
 rescue Exception => e

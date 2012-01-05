@@ -126,7 +126,7 @@ begin
             o = {:currency_code=>'EUR', :journal=>false, :name=>false}.merge(options)
             if not o[:journal]
               # Take the currency
-              currency_id = ResCurrency.find(:first, :domain=>[['code','=',o[:currency_code]]]).id
+              currency_id = ResCurrency.find(:first, :domain=>[['name','=',o[:currency_code]]]).id
               if currency_id
                 # Look for the asked cash journal currency
                 journal = AccountJournal.find(:first, :domain=>[['type','=','cash'],['currency','=',currency_id]])

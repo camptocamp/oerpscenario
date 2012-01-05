@@ -54,6 +54,7 @@ begin
                 so.create_date = Date.parse(str=options[:creation_date]).to_s
             end
             so.save
+            so.write(createoptions)
             @saleorder=so
             return @saleorder
         end
