@@ -26,6 +26,9 @@ begin
     SaleOrderLine.class_eval do
         puts "Extending  #{self.class} #{self.name}"
         def self.get_sale_order_line(options,so)
+            unless options
+                options = [{:price_unit=>50}]
+            end
             sale_order_lines = []
             options.each do |sale_order_line|
                 @product=ProductProduct.get_valid_product(sale_order_line[:product])

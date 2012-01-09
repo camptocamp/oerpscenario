@@ -26,6 +26,15 @@ begin
     SaleOrder.class_eval do 
         puts "Extending  #{self.class} #{self.name}"
         # Add useful methode on sale order handling
+
+        def self.to_ary
+            return [name]
+        end
+
+        def confirm
+            wkf_action('order_confirm')
+        end
+
         def self.create_sale_order(options={}, function_line='get_sale_order_line')
             # Take a partner with appropriate attributes and at least one address
             createoptions = {}
@@ -48,7 +57,7 @@ begin
             so = SaleOrder.new(createoptions)
             so.on_change('onchange_partner_id', :partner_id, @partner.id, @partner.id)
             so.pricelist_id=ProductPricelist.find(:first,:domain=>[['currency_id','=',currency_id]],:fields => ['id']).id
-            so.order_line = eval("SaleOrderLine.#{function_line}(options[:order_lines],so)")
+            so.order_line = SaleOrderLine.send(function_line, options[:order_lines], so)
             so.create
             if options[:creation_date]
                 so.create_date = Date.parse(str=options[:creation_date]).to_s

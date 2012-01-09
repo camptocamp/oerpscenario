@@ -36,6 +36,11 @@ begin
         # Usage Example:
         # part = ResPartner.get_supplier({:name => 'toto', :type=>'supplier'})
         def self.get_valid_partner(options={})
+            unless options
+                options={}
+            end
+            domain = options[:domain] || []
+            field = []
             if options.is_a? Integer
                 partner = ResPartner.find(options)
                 $utils.set_var('current_partner',partner)

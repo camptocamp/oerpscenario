@@ -26,6 +26,11 @@ begin
     StockPicking.class_eval do 
         puts "Extending  #{self.class} #{self.name}"
         # Add useful methode on stock picking handling
+
+        def self.to_ary
+            return [name]
+        end
+
         def validate_picking()
             res = {'delivery_date' => (DateTime.now).strftime(fmt="%Y-%m-%d %H:%M:%S")}
             stock_moves = move_lines

@@ -18,57 +18,64 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-require 'pp'
-require 'rubygems'
-require 'ooor'
-
 
 begin
     ProductProduct.class_eval do 
         puts "Extending  #{self.class} #{self.name}"
         # Add useful methode on product handling
+
+          def self.to_ary
+            return [name]
+          end
+
         def self.get_valid_product(options={})
             unless options
                 options = {}
             end
-            domain = options[:domain] || []
-            field = []
-            options.each do |key, value|
-                if key == :product_id
-                    return ProductProduct.find(value, :fields => field)
-                elsif key == :name
-                    domain.push ['name', 'ilike', value]
-                elsif key == :type
-                    domain.push [value ,'=', true]      
-                elsif key == :fields
-                    field = value
-                elsif key != domain && key != :supplier
-                    domain.push [key.to_s,'=', value]
+            if options.is_a? Integer
+                return ProductProduct.find(options)
+            end
+            product = false
+            # To avoid error when a supplier info or an orderpoint is needed a new product is always created
+            if not (options[:new] || options[:supplierinfo] || options[:ordepoint])
+                domain = options[:domain] || []
+                field = []
+                options.each do |key, value|
+                    if key == :product_id
+                        return ProductProduct.find(value, :fields => field)
+                    elsif key == :name
+                        domain.push ['name', 'ilike', value]
+                    elsif key == :type
+                        domain.push [value ,'=', true]      
+                    elsif key == :fields
+                        field = value
+                    elsif key != domain
+                        domain.push [key.to_s,'=', value]
+                    end
                 end
+                product = find(:first, :domain => domain, :fields => field)
             end
-            if options[:qty_available] 
-                res = false
-            else
-                res = ProductProduct.find(:first, :domain => domain, :fields => field)
-            end
-            if res
-                return res
-            else
+            unless product
                 createoptions = {:name => 'scenarioproduct'}
                 options.each do |key, value|
-                    if key == :type
-                        createoptions[value] = true
-                    elsif key != :domain && key!= :fields && key != :supplierinfo
+                    if not [:domain, :fields, :new, :supplierinfo, :orderpoint].include?(key)
                         createoptions[key] = value                 
                     end
                 end
-                new_product = ProductProduct.new(createoptions)
-                new_product.save
+                product = ProductProduct.new(createoptions)
+                product.save
                 if options[:supplierinfo]
                     @supplier = ResPartner.get_valid_partner(options[:supplierinfo][:supplier])
                     user_id = $utils.ooor.config[:user_id]
                     user = ResUsers.find(:id => user_id)
-                    supplierinfo_options = {:name => @supplier.id, :product_name => new_product.name, :min_qty =>1, :qty => 1, :product_id => new_product.id, :company_id => user.company_id.id}
+                    supplierinfo_options = {
+                        :name => @supplier.id,
+                        :product_name => product.name,
+                        :min_qty =>1,
+                        :qty => 1,
+                        :product_id => product.id,
+                        :company_id => user.company_id.id,
+                        }
                     options[:supplierinfo].each do |key, value|
                         if key != :supplier
                             supplierinfo_options[key] = value                 
@@ -77,13 +84,37 @@ begin
                     new_supplierinfo = ProductSupplierinfo.new(supplierinfo_options)
                     new_supplierinfo.save
                 end
-                if options[:qty_available]
-                    wizard = StockChangeProductQty.new(:product_id => new_product.id, :new_quantity => options[:qty_available], :location_id => 20)
-                    wizard.save
-                    wizard.change_product_qty(context={:active_id => new_product.id})
+                if options[:orderpoint]
+                    default_stock_location_id = StockLocation.search([['name', '=', 'Stock']])[0]
+                    default_warehouse_id = StockWarehouse.search()[0]
+                    user_id = $utils.ooor.config[:user_id]
+                    user = ResUsers.find(:id => user_id)
+                    orderpoint_options = {
+                        :product_id => product.id,
+                        :location_id=> default_stock_location_id,
+                        :warehouse_id=> default_warehouse_id,
+                        :company_id => user.company_id.id,
+                        :product_max_qty=>0,
+                        :product_uom=>product.uom_id.id,
+                        }
+                    options[:orderpoint].each do |key, value|
+                        orderpoint_options[key] = value                 
+                    end
+                    new_orderpoint = StockWarehouseOrderpoint.new(orderpoint_options)
+                    new_orderpoint.save
                 end
-                return new_product
-            end 
+            end
+            if options[:qty_available]
+                location_id = StockLocation.search(:name=>'Stock')[0]
+                wizard = StockChangeProductQty.new(
+                            :product_id => product.id,
+                            :new_quantity => options[:qty_available],
+                            :location_id => location_id,
+                        )
+                wizard.save
+                wizard.change_product_qty(context={:active_id => product.id})
+            end
+            return product
         end
     end
 rescue Exception => e
