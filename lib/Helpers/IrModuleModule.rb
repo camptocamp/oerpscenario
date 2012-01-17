@@ -215,6 +215,7 @@ begin
         else
           raise "!!! --- HELPER ERROR : install_modules was unable to install needed modules.."
         end
+        $utils.ooor.load_models() # reload in order to have model Classes for modules installed
       end
 
     end
