@@ -130,7 +130,6 @@ begin
           m.state='to upgrade'
           m.save
           m = nil 
-          res = IrModuleModule.update_needed_modules()
         end
 
         if res
@@ -138,6 +137,7 @@ begin
         else
           raise "!!! --- HELPER ERROR : load_demo_data_on_installed_modules was unable to upgrade needed modules.."
         end
+        res = IrModuleModule.update_needed_modules()
       end
 
 
