@@ -50,20 +50,27 @@ Given /^no account set$/ do
   AccountAccount.find(:all).should be_empty
 end
 
-Given /^I want to generate account chart from module (\w+)$/ do |oerp_module|
+def install_chart_account(oerp_module, digits)
     chart = IrModuleModule.find(:first, :domain => [['name','=', oerp_module]], :fields => ['id', 'state'])
-      if chart.state == "installed" 
-        config_wizard = WizardMultiChartsAccounts.create()
-        config_wizard.code_digits = 4
-        begin
-            config_wizard.execute()
-        rescue Exception => e
-          # Must catch exception because execute() return None
-          pp "Chart of account generated ! "
-        end
-      else
-        raise "#{oerp_module} chart module not found"  
+    if chart.state == "installed"
+      config_wizard = WizardMultiChartsAccounts.create(:code_digits => digits)
+      begin
+          config_wizard.execute()
+      rescue Exception => e
+        # Must catch exception because execute() return None
+        pp "Chart of account generated ! "
       end
+    else
+      raise "#{oerp_module} chart module not found"
+    end
+end
+
+Given /^I want to generate account chart from module "([^"]*)" with "([^"]*)" digits if no account chart is installed$/ do |oerp_module, digits|
+    install_chart_account(oerp_module, digits.to_i)
+end
+
+Given /^I want to generate account chart from module "([^"]*)" with "([^"]*)" digits$/ do |oerp_module, digits|
+    install_chart_account(oerp_module, digits) if AccountAccount.find(:all).empty?
 end
 
 When /^I generate the chart$/ do
