@@ -37,7 +37,9 @@ begin
       #  - True
       # Usage Example:
       # res = IrModuleModule.update_needed_modules()
+      # Deprecated
       def self.update_needed_modules()
+        puts 'update_needed_modules is deprecated'
         # Call the wizard on whatever module
         wizard = IrModuleModule.find(:first).old_wizard_step('module.upgrade.simple')
         # Run all state of the wizard
