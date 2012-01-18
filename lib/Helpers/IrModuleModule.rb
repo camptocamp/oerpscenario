@@ -52,9 +52,8 @@ begin
 
         step_dict=res.datas.merge(step_dict)
         res=wizard.end(step_dict)
-
+        $utils.ooor.load_models(false)
         if res
-          $utils.ooor.load_models(false)
           return true
         else
           raise "!!! --- HELPER ERROR : update_needed_modules was unable to upgrade needed modules.."
