@@ -109,7 +109,7 @@ begin
                 wizard = StockChangeProductQty.new(
                             :product_id => product.id,
                             :new_quantity => options[:qty_available],
-                            :location_id => location_id,
+                            :location_id => location_id
                         )
                 wizard.save
                 wizard.change_product_qty(context={:active_id => product.id})

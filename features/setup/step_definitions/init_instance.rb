@@ -51,8 +51,9 @@ end
 Given /^I want to generate account chart from module (\w+)$/ do |oerp_module|
     chart = IrModuleModule.find(:first, :domain => [['name','=', oerp_module]], :fields => ['id', 'state'])
       if chart.state == "installed" 
-        config_wizard = WizardMultiChartsAccounts.create()
+        config_wizard = WizardMultiChartsAccounts.new()
         config_wizard.code_digits = 4
+        config_wizard.save
         begin
             config_wizard.execute()
         rescue Exception => e
