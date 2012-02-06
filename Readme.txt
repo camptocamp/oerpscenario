@@ -39,6 +39,9 @@ Examples:
 
 Here is a list of the main folder with content:
 
+basic: => all system related stuffs (like the @compile tag used in the rakefile)
+-------
+
 oerp_addons: => One folder per OpenERP addons
 ------------
 

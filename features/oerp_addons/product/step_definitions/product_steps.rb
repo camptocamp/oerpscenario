@@ -18,6 +18,26 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+
+##############################################################################
+Given /^a valid (\w+) pricelist in (\w+) exists$/ do |type,currency|
+  # Take the currency
+  currency_id = ResCurrency.find(:first, :domain=>[['code','=',currency]], :fields=>['id']).id
+  # Look for the asked pricelist
+  pricelist = ProductPricelist.find(:first, :domain=>[['type','=',type],['currency_id','=',currency_id]], :fields=>['id'])
+  if not pricelist
+    # A valid pricelist of the right type should exist to run this step
+    pricelist = ProductPricelist.find(:first, :domain=>[['type','=',type]])
+    pricelist.should be_true
+    copied_pricelist = pricelist.copy
+    copied_pricelist.currency_id=currency_id
+    copied_pricelist.name = 'OERPScenario '+type+' in '+currency
+    copied_pricelist.save
+    copied_pricelist = nil
+  end
+  
+end
+
 Given /^there is a product category named "([^"]*)"$/ do |name| #"
     categ = ProductCategory.find(:first, :domain=> [['name','=', name]])
     unless categ

@@ -56,6 +56,42 @@ Then /^I should get a partner id$/ do
 end
 
 ##############################################################################
+Given /^the company currency is set to (\w+)$/ do |currency| 
+  # TODO not the first, but the one of the user..
+  company = ResCompany.find(:first)
+  cmpcurrency = ResCurrency.find(:first, :domain=>[['code','=',currency]], :fields =>['id', 'code'])
+  company.currency_id = cmpcurrency.id
+  company.save
+  company = nil
+end
+
+##############################################################################
+Given /^the following currency rate settings are:$/ do |currencies|
+  currencies.hashes.each do |c|
+    curr_id = ResCurrency.find(:first, :domain=>[['code','=',c[:code]]], :fields=>['id']).id
+    rate_to_clean = ResCurrencyRate.find(:first, :domain=>[['currency_id','=',curr_id]], :fields=>['id'])
+    if rate_to_clean
+        rate_to_clean.destroy
+    end
+  end
+  currencies.hashes.each do |c|
+    c[:currency_id] = ResCurrency.find(:first, :domain=>[['code','=',c[:code]]], :fields=>['id']).id
+    ResCurrencyRate.create(c)
+  end
+end
+
+##############################################################################
+Given /^the demo data are loaded$/ do
+  IrModuleModule.load_demo_data_on_installed_modules()
+  m=IrModuleModule.find(:first,:domain=>[['name','=','base']], :fields=>["name","base"])
+  m.should be_true
+  m.demo.should be_true
+  m = nil 
+end
+
+
+
+##############################################################################
 #           Scenario: Create shortcuts
 ##############################################################################
 Given /^the menu "([^\"]*)" exists$/  do |menu_name|

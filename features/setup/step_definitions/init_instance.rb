@@ -1,3 +1,35 @@
+##############################################################################
+Given /^I am logged as (\w+) user with password (\w+) used$/ do |user, pass|
+    begin
+        if $utils.ready?
+            $utils.login(:user =>user,:pwd => pass)
+        else
+            puts 'Attempt to connect'
+            $utils.setConnexionfromConf(:user=>user, :pwd=>pass)            
+        end
+    rescue Exception => e
+        puts e.to_s
+        puts 'Force reconnect'
+        $utils.setConnexionfromConf(:user=>user, :pwd => pass)
+    end
+end
+
+##############################################################################
+Given /^I am logged as (\w+) user with the password set in config used$/ do |user, pass|
+    begin
+        if $utils.ready?
+            $utils.login(user, pass)
+        else
+            puts 'Attempt to connect'
+            $utils.setConnexionfromConf()            
+        end
+    rescue Exception => e
+        puts e.to_s
+        puts 'Force reconnect'
+        $utils.setConnexionfromConf()
+    end
+end
+
 Given /^I install the required modules with dependencies:$/ do |table|
   # table is a Cucumber::Ast::Table
   to_install = []
