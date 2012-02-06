@@ -415,3 +415,36 @@ end
 @add.save
 @add.should be_true
 end
+
+
+Given /^I reconnect with the database (.*)$/ do |database| #"
+    begin
+        @ooor=Ooor.new(
+                    {
+                    :url => 'http://localhost:8069/xmlrpc',
+                    :database => database, 
+                    :username =>  'admin', 
+                    :password => 'admin', 
+                    :log_level=>  Logger::ERROR
+                    }
+                )
+    rescue Exception => e
+        puts e.to_s
+        puts 'Force reconnect'
+        $utils.setConnexionfromConf()
+    end
+end
+
+Given /^I have created a database with the following attributes:$/ do |table| #"
+    options = {}
+    table.hashes.each do |data|
+        if data['key'] == 'demo_data' and data['value'] == 'true'
+            options[data['key'].to_sym]= true
+        elsif data['key'] == 'demo_data' and data['value'] == 'false'
+            options[data['key'].to_sym]= false
+        else
+            options[data['key'].to_sym]=data['value']
+        end
+    end
+    @Ooor = Ooor.new_database(options)
+end

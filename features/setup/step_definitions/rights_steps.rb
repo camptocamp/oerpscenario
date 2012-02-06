@@ -25,6 +25,10 @@ Given /^we select all users$/ do
   @users = ResUsers.find(:all, :domain => [['login', '!=', 'admin']])
 end
 
+Given /^we select admin user$/ do
+  @users = ResUsers.find(:all, :domain => [['login', '=', 'admin']])
+end
+
 Then /^we add their current company in the allowed companies$/ do
   @users.each do |user|
     user.company_ids = [user.company_id.id]
