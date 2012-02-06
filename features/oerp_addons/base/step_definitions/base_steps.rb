@@ -126,3 +126,4 @@ Then /^delete it on all users$/ do
     end
   end
 end
+

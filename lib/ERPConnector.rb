@@ -99,7 +99,7 @@ class ScenarioUtils
         my_config = ParseConfig.new('base.conf')
         log_para = {}
         log_para[:user]  = my_config.get_value('user')
-        log_para[:pwd] =  my_config.get_value('password') 
+        log_para[:pwd] =  my_config.get_value('password')
         log_para.merge(para)
         return  @ooor.global_login(log_para[:user], log_para[:pwd])
     end
