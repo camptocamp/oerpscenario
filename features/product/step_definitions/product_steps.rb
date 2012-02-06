@@ -18,6 +18,46 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+Given /^there is a product category named "([^"]*)"$/ do |name| #"
+    categ = ProductCategory.find(:first, :domain=> [['name','=', name]])
+    unless categ
+        categ = ProductCategory.new({:name => name})
+    end
+    categ.save
+    categ.should be_true
+end
+
+Given /^there is a product named "([^"]*)" with the following attributes :$/ do |name, table|#"
+    pclass = nil
+    @product = ProductProduct.find(:first, :domain =>[['name','=', name]])
+    unless @product
+        @product = ProductProduct.new()
+    end
+    table.hashes.each do |data|
+        eval("@product.#{data['key']}=#{data['value']}")
+    end
+    @product.should be_true
+    @product.save
+end
+
+Given /^product is in category "([^"]*)"$/ do |name|#"
+    categ = ProductCategory.find(:first, :domain=> [['name','=', name]])
+    categ.should be_true
+    @product.categ_id = categ.id
+    @product.save
+end
+
+Given /^the supplier of the product is "([^"]*)"$/ do |arg1|
+  partner = ResPartner.find(:first, :domain => [['name','=',arg1]], :fields => ['id','name'])
+  partner.should_not be_nil
+  @supplier = ProductSupplierinfo.new()
+  @supplier.product_id = @product.id
+  @supplier.name = partner.id
+  @supplier.min_qty = 0.0
+  @supplier.should be_true
+  @supplier.save
+end
+
 Given /^I need a "([^"]*)" with reference "([^"]*)"$/ do |model, reference|
   oerp_model = Kernel.const_get(model)
   @item = oerp_model.find(reference)
