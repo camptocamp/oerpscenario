@@ -163,3 +163,14 @@ end
 Then /^I should see the sale order MySimpleSO progress$/ do
   @saleorder.state.should == 'progress'
 end
+
+##############################################################################
+Then /^the delay of the line (\d+) should be (.*) days$/ do |line, order_delay|
+  @sale_order_line = @saleorder.order_line
+  @sale_order_line[(line.to_i - 1)].delay.should == order_delay.to_f
+end
+
+##############################################################################
+Then /^the expected date is (.*)$/ do |expected_date|
+  @saleorder.picking_ids[0].max_date.to_s.should == expected_date
+end
