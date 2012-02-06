@@ -22,6 +22,14 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+
+# Launch all the tags to have a valid magento
+# intance configured
+Cucumber::Rake::Task.new(:init_magento => ['compile']) do |task|
+  task.cucumber_opts = ["-t","@init_base","features"]
+  # task.cucumber_opts = ["-t","@init_base,@init_account,@init_sale,@init_purchase","features"]
+end
+
 # Launch the @compile tag in order to check it
 Cucumber::Rake::Task.new(:compile) do |task|
   task.cucumber_opts = ["-t","@compile","features"]

@@ -55,8 +55,6 @@ Feature: Create the Magento Instance and proceed to the initial synchronisations
     Given a store view with code "customer_es" exists
     Then I set the store view language on "es_ES"
     And I save the store view
-    
-
 
   @attributes
   Scenario: Synchronize the attribute sets, groups, attributes and options

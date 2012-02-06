@@ -21,6 +21,7 @@
 
 USAGE & GUIDLINES:
 ==================
+=================
 
 Every main addons folder (in oerp_addons) should have an init.feature that will build the basic
 config for this module. 
@@ -37,10 +38,22 @@ Examples:
  * base will create a DB and configure the main company
 
 
-Here is a list of the main folder with content:
+Available Tags :
+=================
+=================
 
-basic: => all system related stuffs (like the @compile tag used in the rakefile)
--------
+@init_base: 
+
+
+
+
+
+
+Folder Hierachie:
+=================
+=================
+
+Here is a list of the main folder with content:
 
 oerp_addons: => One folder per OpenERP addons
 ------------
@@ -51,7 +64,7 @@ setup: => All step definitions for setuping a new database
 sample: => Just sample of a new test folder
 -------
 
-support: => parsing of helpers and login to database define in .conf file
+support: => parsing of helpers and login to database define in .conf file + all system related stuffs (like the @compile tag used in the rakefile)
 --------
 
 
