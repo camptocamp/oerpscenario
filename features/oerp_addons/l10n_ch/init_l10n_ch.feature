@@ -8,7 +8,7 @@
 # Features Generic tags (none for all)
 ##############################################################################
 
-@init_base
+@init_l10n_ch
 Feature: Param the new database
   In order to have a coherent installation
   I autmated the manual steps.
