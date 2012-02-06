@@ -18,8 +18,9 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-require "cucumber/rake/task"
-
+require 'rubygems'
+require 'cucumber'
+require 'cucumber/rake/task'
 
 # Launch the @compile tag in order to check it
 Cucumber::Rake::Task.new(:compile) do |task|
@@ -47,7 +48,3 @@ end
 Cucumber::Rake::Task.new(:sale) do |task|
   task.cucumber_opts = ["-t","@init,@sale","features"]
 end
-
-
-
-
