@@ -17,7 +17,7 @@ Feature: Initialize the settings for sale module
   Scenario: Initialize Sales settings
       Given the company currency is set to EUR 
       And the following currency rate settings are:
-      |code|rate|name|
+      |name|rate|date|
       |EUR|1.000|01-01-2009|
       |CHF|1.644|01-01-2009|
       |CHF|1.500|09-09-2009|

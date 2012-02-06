@@ -25,21 +25,21 @@
 ##############################################################################
 
 ##############################################################################
-Given /^I have recorded on the (.*) a sale order of (.*) (.*) without tax called (\w+)$/ do |date,amount,curerncy_code,name|
+Given /^I have recorded on the (.*) a sale order of (.*) (.*) without tax called (\w+)$/ do |date,amount,currency_name,name|
   # Take first stockable product
   @product=ProductProduct.find(:first,:domain=>[['type','=','product']], :fields => ['id'])
   @product.should be_true
   # Take first supplier partner with at least one address
   @partner=ResPartner.get_valid_partner({:type=>'supplier',:fields => ['id']})
   @partner.should be_true
-  currency_id = ResCurrency.find(:first, :domain=>[['code','=',curerncy_code]],:fields => ['id']).id
+  currency_id = ResCurrency.find(:first, :domain=>[['name','=',currency_name]],:fields => ['id']).id
   currency_id.should be_true
   # Create an so with found product and given amount
   so = SaleOrder.new
   so.name = name
   so.date_order = Date.parse(str=date).to_s
   #auto-complete the address and other data based on the partner
-  so.on_change('onchange_partner_id', :partner_id,1, @partner.id)
+  so.on_change('onchange_partner_id', :partner_id,@partner.id, @partner.id)
   so.pricelist_id=ProductPricelist.find(:first,:domain=>[['currency_id','=',currency_id]],:fields => ['id']).id
   so.order_line = [SaleOrderLine.new(:name => 'OERPScenario line', :product_id => @product.id, :price_unit => amount.to_f, :product_uom => 1)]
   so.create
@@ -59,8 +59,20 @@ end
 ##############################################################################
 Then /^I should see the sale order (\w+) open$/ do |name|
   @saleorder=$utils.get_var(name.strip)
+  @saleorder.state.should == 'manual' || @saleorder.state.should == 'progress'
+end
+
+##############################################################################
+Then /^I should see this sale order (\w+)$/ do |state|
+  if state == 'draft'
+  @saleorder.state.should == 'draft'
+  elsif state == 'open'
+  @saleorder.state.should == 'manual'
+  elsif state == 'progress'
   @saleorder.state.should == 'progress'
-  # @saleorder.state.should == 'manual' or @saleorder.state.should == 'progress'
+  elsif state == 'done'
+  @saleorder.state.should == 'done'
+  end
 end
 
 ##############################################################################
@@ -87,6 +99,8 @@ end
 ##############################################################################
 When /^I press the create invoice button from SO$/ do
   @saleorder.wkf_action('manual_invoice')
+  @delivery_order=@saleorder.picking_ids[0]
+  @delivery_order.should be_true
 end
 
 ##############################################################################
@@ -148,4 +162,15 @@ end
 ##############################################################################
 Then /^I should see the sale order MySimpleSO progress$/ do
   @saleorder.state.should == 'progress'
+end
+
+##############################################################################
+Then /^the delay of the line (\d+) should be (.*) days$/ do |line, order_delay|
+  @sale_order_line = @saleorder.order_line
+  @sale_order_line[(line.to_i - 1)].delay.should == order_delay.to_f
+end
+
+##############################################################################
+Then /^the expected date is (.*)$/ do |expected_date|
+  @saleorder.picking_ids[0].max_date.to_s.should == expected_date
 end

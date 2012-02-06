@@ -58,6 +58,14 @@ Then /^I should see the invoice (\w+) (\w+)$/ do |name,state|
 end
 
 ##############################################################################
+Then /^I should see this invoice (\w+)$/ do |state|
+  # Old schoold system :
+  # @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name],['state','=',state]])
+  @invoice.should be_true
+  @invoice.state.should == state
+end
+
+##############################################################################
 Then /^the residual amount = (.*)$/ do |amount|
   @invoice=AccountInvoice.find(@invoice.id)
   @invoice.residual.should == amount.to_f
@@ -88,7 +96,7 @@ Then /^the associated debit account move line should use the account choosen in 
         inv_line.debit.should == line[:debit].to_f
         inv_line.credit.should == 0.0
         inv_line.amount_currency.should == line[:amount_currency].to_f
-        inv_line.currency_id.code.should == line[:currency]
+        inv_line.currency_id.name.should == line[:currency]
         inv_line.account_id.id.should == @invoice.invoice_line[0].account_id.id
         inv_line.state.should == line[:status]
       end
@@ -105,7 +113,7 @@ Then /^the associated credit account move line should use the account of the par
         inv_line.credit.should == line[:credit].to_f
         inv_line.debit.should == 0.0
         inv_line.amount_currency.should == line[:amount_currency].to_f
-        inv_line.currency_id.code.should == line[:currency]
+        inv_line.currency_id.name.should == line[:currency]
         # TODO : Implement check on partner property AND add on_change partner instead of using any account
         # inv_line.account_id.id.should == @invoice.invoice_line[0].account_id.id
         inv_line.state.should == line[:status]
@@ -149,10 +157,10 @@ Then /^the invoice should appear as paid invoice \(checkbox tic\)$/ do
 end
 ##############################################################################
 When /^I change the currency to (\w+)$/ do |currency_code|
-  cur=ResCurrency.find(:first, :domain=>[['code','=',currency_code]], :fields => ['id'])
+  cur=ResCurrency.find(:first, :domain=>[['name','=',currency_code]], :fields => ['id'])
   @invoice.class.rpc_execute('write',@invoice.id,:currency_id => cur.id)
   @invoice=AccountInvoice.find(@invoice.id)
-  @invoice.currency_id.code.should == currency_code
+  @invoice.currency_id.name.should == currency_code
 end
 
 ##############################################################################
@@ -318,7 +326,7 @@ Then /^the associated credit account move line should use the account choosen in
         inv_line.credit.should == line[:debit].to_f
         inv_line.debit.should == 0.0
         inv_line.amount_currency.should == line[:amount_currency].to_f
-        inv_line.currency_id.code.should == line[:currency]
+        inv_line.currency_id.name.should == line[:currency]
         inv_line.account_id.id.should == @invoice.invoice_line[0].account_id.id
         inv_line.state.should == line[:status]
       end
@@ -335,7 +343,7 @@ Then /^the associated debit account move line should use the account of the part
         inv_line.debit.should == line[:credit].to_f
         inv_line.credit.should == 0.0
         inv_line.amount_currency.should == line[:amount_currency].to_f
-        inv_line.currency_id.code.should == line[:currency]
+        inv_line.currency_id.name.should == line[:currency]
         # TODO : Implement check on partner property AND add on_change partner instead of using any account
         # inv_line.account_id.id.should == @invoice.invoice_line[0].account_id.id
         inv_line.state.should == line[:status]
