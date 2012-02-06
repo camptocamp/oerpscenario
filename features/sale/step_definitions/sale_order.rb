@@ -174,3 +174,9 @@ end
 Then /^the expected date is (.*)$/ do |expected_date|
   @saleorder.picking_ids[0].max_date.to_s.should == expected_date
 end
+
+##############################################################################
+Then /^the total amount of the sale order (.*) should be (.*)$/ do |sale_order, total_amount|
+    @saleorder = SaleOrder.find(:first, :domain => [['name', '=', sale_order]])
+    @saleorder.amount_total.should == total_amount.to_f
+end

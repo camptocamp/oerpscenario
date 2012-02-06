@@ -56,4 +56,3 @@ Feature: Create the Magento Instance and proceed to the initial synchronisations
     Then I set the store view language on "es_ES"
     And I save the store view
     
- 
