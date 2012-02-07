@@ -50,7 +50,7 @@ begin
       # tax = AccountTax.create_tax_and_code('my name',{:type=>'percent',:amount=>rate,:type_tax_use=>'purchase',})
       def self.create_tax_and_code(name, options={}, *args)
           # require 'ruby-debug'
-          # debugger
+          #           debugger
           # Set default values
           o = {
               :type=>'percent',

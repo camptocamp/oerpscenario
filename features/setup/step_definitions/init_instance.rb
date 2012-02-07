@@ -417,9 +417,8 @@ end
 end
 
 Then /^I reload the Ooor connexion and Helpers$/ do
-   para = {}
-   para['reload'] = true
-   $utils.setConnexionfromConf(para)
+   $utils.ooor.load_models(false)
+   Dir["lib/Helpers/*.rb"].each {|file| load file }
 end
 
 

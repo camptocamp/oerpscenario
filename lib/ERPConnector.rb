@@ -71,7 +71,7 @@ class ScenarioUtils
         @config[:log_level] = Logger::ERROR
         @config.merge(para)
 
-        if @ooor and not para['reload']
+        if @ooor
             self.login({:user=>@config[:user], :pwd=>@config[:pwd]})
         else
             begin
