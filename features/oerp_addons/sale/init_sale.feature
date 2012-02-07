@@ -18,7 +18,7 @@ Feature: Initialize the settings for sale module
     Given I install the required modules with dependencies:
      | name |
      |sale|
-    Then my modules should have been installed
+    Then my modules should have been installed and models reloaded
     Given I give all groups right access to admin user
 
   Scenario: Initialize Sales settings

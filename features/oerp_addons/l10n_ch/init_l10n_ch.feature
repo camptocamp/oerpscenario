@@ -19,7 +19,7 @@ Feature: Param the new database
      | name |
      |l10n_ch|
      |l10n_ch_bank|
-    Then my modules should have been installed
+    Then my modules should have been installed and models reloaded
     Given I give all groups right access to admin user
     Given the main company has a default_income_account set to "3000"
     Given the main company has a default payment_term set to "30 Days End of Month"

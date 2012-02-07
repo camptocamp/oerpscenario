@@ -26,20 +26,11 @@ require 'cucumber/rake/task'
 #  Sample
 ##############################################################################
 
-# Launch the @demo tag, to install demo data on
-# installed module
-Cucumber::Rake::Task.new(:demo) do |task|
+Cucumber::Rake::Task.new(:demo,"Launch the installation of demo data on installed modules") do |task|
   task.cucumber_opts = ["-t","@demo","features"]
 end
 
-# Launch the @quality tag, run the base_module_quality
-# module tests on all installed module
-Cucumber::Rake::Task.new(:quality) do |task|
-  task.cucumber_opts = ["-t","@quality","features"]
-end
-
-# Launch all tests among the magento instance
-Cucumber::Rake::Task.new(:test_magento) do |task|
+Cucumber::Rake::Task.new(:test_magento,"Launch Magento synchronisazation tests : attributes sets, attributes, product,.. (run rake init_magento first)") do |task|
   task.cucumber_opts = ["-t","@test_magento","features"]
 end
 
@@ -47,37 +38,28 @@ end
 ##############################################################################
 #  Useful tags : with dependencies on others (same as OpenERP)
 ##############################################################################
-
-# Launch the @compile tag in order to check it
-Cucumber::Rake::Task.new(:compile) do |task|
+Cucumber::Rake::Task.new(:compile, "Launch the test with tag @compile, just to verify all libs are well installed") do |task|
   task.cucumber_opts = ["-t","@compile","features"]
 end
 
-# Launch all the tags init_base
-Cucumber::Rake::Task.new(:init_base => ['compile']) do |task|
+Cucumber::Rake::Task.new({:init_base => ['compile']},"Install the base module, languages ans configure the company infos (header, logo,..)") do |task|
   task.cucumber_opts = ["-t","@init_base","features"]
 end
 
-# Launch all the tags init_account
-Cucumber::Rake::Task.new(:init_account => ['init_base']) do |task|
+Cucumber::Rake::Task.new({:init_account => ['init_base']},"Install the account module, configure basic taxes, journal and bank") do |task|
   task.cucumber_opts = ["-t","@init_account","features"]
 end
 
-# Launch all the tags init_sale
-Cucumber::Rake::Task.new(:init_sale => ['init_account']) do |task|
+Cucumber::Rake::Task.new({:init_sale => ['init_account']},"Install the sale module and create pricelists") do |task|
   task.cucumber_opts = ["-t","@init_sale","features"]
 end
 
-# Launch all the tags init_purchase
-Cucumber::Rake::Task.new(:init_purchase => ['init_account']) do |task|
+Cucumber::Rake::Task.new({:init_purchase => ['init_account']},"Install the purchase module ") do |task|
   task.cucumber_opts = ["-t","@init_purchase","features"]
 end
 
-# Launch all the tags to have a valid magento
-# intance configured
-Cucumber::Rake::Task.new(:init_magento => ['init_sale','init_purchase']) do |task|
+Cucumber::Rake::Task.new({:init_magento => ['init_sale','init_purchase']},"Install the required module for magento, create Magento instance and load mapping") do |task|
   task.cucumber_opts = ["-t","@init_magento","features"]
-  # task.cucumber_opts = ["-t","@init_base,@init_account,@init_sale,@init_purchase","features"]
 end
 
 

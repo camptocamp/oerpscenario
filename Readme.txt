@@ -38,9 +38,11 @@ Examples:
  * base will create a DB and configure the main company
 
 
-Available Tags :
-=================
-=================
+Available Tags & Rake :
+=======================
+=======================
+
+Launch "rake -T" to have all the list of available rake file...
 
 @init_base: 
 

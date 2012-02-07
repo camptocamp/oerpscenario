@@ -62,7 +62,7 @@ Given /^I install the require modules:$/ do |table|
   $utils.get_var('module_to_install').should be_true
 end
 
-Then /^my modules should have been installed$/ do
+Then /^my modules should have been installed and models reloaded$/ do
   modules = $utils.get_var('module_to_install')
   modules_ids = modules.map{|x|x.id}
   modules_ids.each do | mod_id |
@@ -70,6 +70,8 @@ Then /^my modules should have been installed$/ do
     mod.should_not be_nil
     mod.state.should == 'installed'
   end
+  $utils.ooor.load_models(false)
+  Dir["lib/Helpers/*.rb"].each {|file| load file }
 end
 
 
@@ -414,11 +416,6 @@ table.hashes.each do |data|
 end
 @add.save
 @add.should be_true
-end
-
-Then /^I reload the Ooor connexion and Helpers$/ do
-   $utils.ooor.load_models(false)
-   Dir["lib/Helpers/*.rb"].each {|file| load file }
 end
 
 

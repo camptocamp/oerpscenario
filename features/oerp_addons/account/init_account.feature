@@ -22,8 +22,7 @@ Feature: Param the new database
      |account_payment|
      |account_voucher|
      |analytic|
-    Then my modules should have been installed
-    And I reload the Ooor connexion and Helpers
+    Then my modules should have been installed and models reloaded
     Given I give all groups right access to admin user
 # TODO Complete with generic values
     # Given the main company has a default_income_account set to "3000"

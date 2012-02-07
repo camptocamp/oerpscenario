@@ -28,7 +28,7 @@ Feature: Param the new database
      |web_kanban|
      |web_mobile|
      |web_tests|
-    Then my modules should have been installed
+    Then my modules should have been installed and models reloaded
     Given I give all groups right access to admin user
     And we select admin user
     And we activate the extended view on the users

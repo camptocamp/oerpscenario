@@ -24,7 +24,7 @@ Feature: Create the Magento Instance and proceed to the initial synchronisations
      |base_sale_multichannels|
      |product_images_olbs|
      |product_links|
-    Then my modules should have been installed
+    Then my modules should have been installed and models reloaded
     Given I give all groups right access to admin user
 
 
