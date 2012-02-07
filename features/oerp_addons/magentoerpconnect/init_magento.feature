@@ -35,9 +35,9 @@ Feature: Create the Magento Instance and proceed to the initial synchronisations
       |key|value|
       |name| 'Magento' |
       |import_links_with_product| true | 
-      |location|http://localhost:8080|
-      |apiusername|openerp_connect|
-      |apipass|openerp_connect|
+      |location| 'http://localhost:8080' |
+      |apiusername| 'openerp_connect' |
+      |apipass| 'openerp_connect' |
       
     And I set the instance referential type on "magento1500"
     And I set the instance default language on "en_US"
@@ -50,8 +50,8 @@ Feature: Create the Magento Instance and proceed to the initial synchronisations
   @mapping_templates
   Scenario: Load or reload the mapping templates
     Given an instance with absolute id "base_external.magento" exists
-    Then I reload the referential mapping templates
-    Then I reload the referential mapping templates
+    Then I reload the referential mapping templates (1 - Reload Referential Mapping Templates)
+    Then I reload the referential mapping templates (1 - Reload Referential Mapping Templates)
 
 
 

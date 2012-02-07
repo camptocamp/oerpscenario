@@ -14,38 +14,36 @@
 Feature: Do the Magento initial synchronisations
   @referential
   Scenario: Synchronize the referential settings (shop, website, views)
-    Given an instance with absolute id "base_external.customer" exists
-    Then I synchronize the referential settings
+    Given an instance with absolute id "base_external.magento" exists
+    Then I synchronize the referential settings (2 - Synchronize Referential Settings)
   
   @store_views
   Scenario: Configure store views
-    Given a store view with code "magento_en" exists
+    Given a store view with code "default" exists
     Then I set the store view language on "en_US"
     And I save the store view
-  
-  @attributes
-  Scenario: Synchronize the attribute sets, groups, attributes and options
-    Given an instance with absolute id "base_external.magento" exists
-    Then I import the attribute sets
-    Then I import the attribute groups
-    Then I import the attributes
-
+ 
   @customer_groups
   Scenario: Import the customer groups from Magento
     Given an instance with absolute id "base_external.magento" exists
-    Then I import the customer groups
-
+    Then I import the customer groups (1 - Import Customer Groups (Partner Categories))
 
   @product_categories
   Scenario: Import the product categories
     Given an instance with absolute id "base_external.magento" exists
-    Then I import the product categories
+    Then I import the product categories (2 - Import Product Categories)
 
+  @attributes
+  Scenario: Synchronize the attribute sets, groups, attributes and options
+    Given an instance with absolute id "base_external.magento" exists
+    Then I import the attribute sets (3 - Import Product Attribute Sets)
+    Then I import the attribute groups (4 - Import Attribute Groups)
+    Then I import the attributes (5 - Import Product Attributes)
 
   # we need the categories to configure the shops
   @shops
   Scenario: Configure shops
-    Given a shop with name "Magento" exists
+    Given a shop with name "Main Website Store" exists
     Then I set the warehouse of the shop on "stock.warehouse0"
     And I set the price list of the shop on reference "product.list0"
     #And I set the root category of the shop on category with name "Default Category"
@@ -58,11 +56,21 @@ Feature: Do the Magento initial synchronisations
       | is_tax_included        | true |
     And I save the shop
 
-  @products
+  @products_import
   Scenario: Import the products from Magento
     When an instance with absolute id "base_external.magento" exists
     Then I set the instance default product category on category with name "Root Catalog"
     And I save the instance
-    Then I import the products
-    #And I import the product images
-    And I import the product links
+    Then I import the products (6 - Import Products)
+    And I import the product images (7 - Import Images)
+    And I import the product links (8 - Import Product Links)
+    
+  # @sale_import
+  # Scenario: Import the sales oders from Magento
+  #   When an instance with absolute id "base_external.magento" exists
+  #   Then I set the instance default product category on category with name "Root Catalog"
+  #   And I save the instance
+  #   Then I import the products (6 - Import Products)
+  #   And I import the product images (7 - Import Images)
+  #   And I import the product links (8 - Import Product Links)
+    
