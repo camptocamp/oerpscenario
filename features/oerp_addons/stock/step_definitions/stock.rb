@@ -3,6 +3,7 @@
 #                                                                               #
 #    OERPScenario, OpenERP Functional Tests                                     #
 #    Copyright (C) 2011 Akretion Benoît Guillot <benoit.guillot@akretion.com>   #
+#    Copyright (C) 2012 Camptocamp Joel Grand-Guillaume                         #
 #                                                                               #
 #    This program is free software: you can redistribute it and/or modify       #
 #    it under the terms of the GNU General Public License as published by       #
@@ -35,3 +36,92 @@ Then /^I should see the delivery order (.*)$/ do |state|
     @delivery_order.state.should == 'done'
   end
 end
+
+
+Given /^we create under "([^"]*)" the stock location "([^"]*)" with$/ do |parent, location, table|
+  @parent_id = StockLocation.find(:first, :domain=>[['name','=',parent]], :fields => ['id','name'])
+  @parent_id.should be_true
+  @new_location = StockLocation.find(:first, :domain=>[['name','=',location]], :fields => ['id','name'])
+  unless @new_location
+      @new_location = StockLocation.new()
+  end
+  table.hashes.each do |data|
+      eval("@new_location.#{data['key']}=#{data['value']}")
+  end
+  @new_location.name = location
+  @new_location.location_id = @parent_id.id
+  @new_location.save
+  @new_location.should be_true
+  @parent_id = nil
+  @new_location = nil
+end
+
+Given /^I affect the company "([^"]*)" to the location "([^"]*)"$/ do |company, location|
+  @location = StockLocation.find(:first, :domain=>[['name','=',location]], :fields => ['id'])
+  @location.should be_true
+  @company = ResCompany.find(:first, :domain=>[['name','=',company]], :fields => ['id'])
+  @company.should be_true
+  @location.company_id = @company.id
+  @location.save
+end
+
+Given /^we move the stock location "([^"]*)" under "([^"]*)" and update it with$/ do |location, parent, table|
+  @parent = StockLocation.find(:first, :domain=>[['name','=',parent]], :fields => ['id'])
+  @parent.should be_true
+  @location = StockLocation.find(:first, :domain=>[['name','=',location]], :fields => ['id'])
+  unless @location
+      @location = StockLocation.new()
+  end
+  table.hashes.each do |data|
+      eval("@location.#{data['key']}=#{data['value']}")
+  end
+  @location.name = location
+  @location.location_id = @parent.id
+  @location.save
+  @location.should be_true
+  @location = nil
+  @parent = nil
+end
+
+Given /^we create a warehouse called "([^"]*)" with the following attribute$/ do |warehouse, table|
+  @warehouse = StockWarehouse.find(:first, :domain=>[['name','=',warehouse]], :fields => ['id'])
+  unless @warehouse
+      @warehouse = StockWarehouse.new()
+  end
+  table.hashes.each do |data|
+      loc_id = StockLocation.find(:first, :domain=>[['name','=',eval("#{data['value']}")]], :fields => ['id'])
+      eval("@warehouse.#{data['key']}=#{loc_id.id}")
+  end
+  @warehouse.name = warehouse
+  @warehouse.save
+  @warehouse.should be_true
+end
+
+
+Given /^the related partner of the warehouse "([^"]*)" is "([^"]*)"$/ do |warehouse,partner|
+  @warehouse = StockWarehouse.find(:first, :domain=>[['name','=',warehouse]], :fields => ['id'])
+  @warehouse.should be_true
+  @partner = ResPartnerAddress.find(:first, :domain=>[['name','=',partner]], :fields => ['id'])
+  @partner.should be_true
+  @warehouse.partner_address_id = @partner.id
+  @warehouse.save
+end
+
+Given /^I affect the company "([^"]*)" to the warhouse "([^"]*)"$/ do |company, warehouse|
+  @warehouse = StockWarehouse.find(:first, :domain=>[['name','=',warehouse]], :fields => ['id'])
+  @warehouse.should be_true
+  @company = ResCompany.find(:first, :domain=>[['name','=',company]], :fields => ['id'])
+  @company.should be_true
+  @warehouse.company_id = @company.id
+  @warehouse.save
+end
+
+Given /^the "([^"]*)" of the partner named "([^"]*)" is "([^"]*)"$/ do |stock_property, partner, location|
+  @partner = ResPartner.find(:first, :domain=>[['name','=',partner]], :fields => ['id'])
+  @partner.should be_true
+  loc_id = StockLocation.find(:first, :domain=>[['name','=',location]], :fields => ['id'])
+  loc_id.should be_true
+  eval("@partner.#{stock_property}=#{loc_id.id}")
+  @partner.save
+end
+
