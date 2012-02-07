@@ -30,6 +30,8 @@ Feature: Param the new database
      |web_tests|
     Then my modules should have been installed
     Given I give all groups right access to admin user
+    And we select admin user
+    And we activate the extended view on the users
 
   Scenario: install lang
    Given I install the following language :

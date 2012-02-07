@@ -38,6 +38,12 @@ Cucumber::Rake::Task.new(:quality) do |task|
   task.cucumber_opts = ["-t","@quality","features"]
 end
 
+# Launch all tests among the magento instance
+Cucumber::Rake::Task.new(:test_magento) do |task|
+  task.cucumber_opts = ["-t","@test_magento","features"]
+end
+
+
 ##############################################################################
 #  Useful tags : with dependencies on others (same as OpenERP)
 ##############################################################################
