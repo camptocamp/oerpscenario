@@ -29,7 +29,7 @@ begin
         # Add useful methode on voucher handling
         ##############################################################################
         AccountVoucher.class_eval do 
-            puts "Extending  #{self.class} #{self.name}"
+            $utils.log.debug("Extending  #{self.class} #{self.name}")
             def self.create_voucher(options={})
                 if options[:invoice_id]
                     invoice = AccountInvoice.find(options[:invoice_id])

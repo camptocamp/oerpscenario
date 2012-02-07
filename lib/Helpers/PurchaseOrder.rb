@@ -22,7 +22,7 @@
 
 begin
     PurchaseOrder.class_eval do
-        puts "Extending  #{self.class} #{self.name}"
+        $utils.log.debug("Extending  #{self.class} #{self.name}")
 
         def confirm
             wkf_action('purchase_confirm')

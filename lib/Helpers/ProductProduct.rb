@@ -21,7 +21,7 @@
 
 begin
     ProductProduct.class_eval do 
-        puts "Extending  #{self.class} #{self.name}"
+        $utils.log.debug("Extending  #{self.class} #{self.name}")
         # Add useful methode on product handling
 
           def self.to_ary

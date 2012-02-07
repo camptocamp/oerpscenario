@@ -92,7 +92,7 @@ def install_chart_account(oerp_module, digits)
           config_wizard.execute()
       rescue Exception => e
         # Must catch exception because execute() return None
-        pp "Chart of account generated ! "
+        # pp "Chart of account generated ! "
       end
     else
       raise "#{oerp_module} chart module not found"
@@ -228,7 +228,7 @@ Given /^I install the following language :$/ do |table|
               IrModuleModule.update_translations([mod.id], data['lang'], {})
             rescue Exception => e
               # Must catch exception because update_translations return None
-              pp "Translation updated : "+data['lang']
+              $utils.log.info("Translation updated : "+data['lang'])
             end
         end
     end

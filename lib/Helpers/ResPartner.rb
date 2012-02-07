@@ -26,7 +26,7 @@ begin
     # Add useful methode on partner handling
     ##############################################################################
     ResPartner.class_eval do 
-        puts "Extending  #{self.class} #{self.name}"
+        $utils.log.debug("Extending  #{self.class} #{self.name}")
         ##########################################################################
         # Return the first encountred supplier with at least one address
         # Input :

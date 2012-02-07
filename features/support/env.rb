@@ -28,6 +28,8 @@ require 'tmpdir'
 # Create a login if not initialized in feathures
 unless $utils
     $utils = ScenarioUtils.new
+    #  Avaiable INFO, WARN, ERROR, DEBUG
+    $utils.log.level = Logger::WARN
 end
 begin
     unless $utils.ready?

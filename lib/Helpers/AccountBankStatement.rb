@@ -29,7 +29,7 @@ begin
         # Add useful methode on bank statement handling
         ##############################################################################
         AccountBankStatement.class_eval do 
-          puts "Extending  #{self.class} #{self.name}"
+          $utils.log.debug("Extending  #{self.class} #{self.name}")
           ############################################################################
           # Import invoices into the given bank statements
           # Input :

@@ -28,7 +28,7 @@ begin
   # Add useful methode on taxes handling
   ##############################################################################
   AccountTax.class_eval do 
-      puts "Extending  #{self.class} #{self.name}"
+      $utils.log.debug("Extending  #{self.class} #{self.name}")
       ##########################################################################
       # Create a tax and tax code with given informations
       # Input :

@@ -24,6 +24,8 @@ require 'parseconfig'
 require 'pp'
 require 'cucumber'
 require 'xmlrpc/client'
+require 'logger'
+
 XMLRPC::Config::ENABLE_NIL_PARSER =true
 XMLRPC::Config::ENABLE_NIL_CREATE =true
 XMLRPC::Config::ENABLE_BIGINT=true
@@ -31,13 +33,15 @@ XMLRPC::Config::ENABLE_BIGINT=true
 
 # This class map OpenERP XMLRPC logins and common stuff
 class ScenarioUtils
-    attr_accessor :ooor, :config
+    attr_accessor :ooor, :config, :log
     def initialize
         @uid = false
         @ooor = false
         # Genereic dict to store tested object
         @memorizer = {}
         @config = {}
+        @log = Logger.new(STDOUT)
+        
     end
     
     # Define a memorizer to store object handled by the test

@@ -24,7 +24,7 @@ require 'ooor'
 
 begin
     SaleOrderLine.class_eval do
-        puts "Extending  #{self.class} #{self.name}"
+        $utils.log.debug("Extending  #{self.class} #{self.name}")
         def self.get_sale_order_line(options,so)
             unless options
                 options = [{:price_unit=>50}]

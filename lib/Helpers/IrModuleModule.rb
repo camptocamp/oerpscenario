@@ -28,7 +28,7 @@ begin
     # Add useful methode on ir.module,module handling
     ##############################################################################
     IrModuleModule.class_eval do
-      puts "Extending  #{self.class} #{self.name}"
+      $utils.log.debug("Extending  #{self.class} #{self.name}")
       ##########################################################################
       # Run the upgrade wizard on all modules
       # Input :

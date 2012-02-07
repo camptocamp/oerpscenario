@@ -44,12 +44,12 @@ Available Tags & Rake :
 
 Launch "rake -T" to have all the list of available rake file...
 
-@init_base: 
 
+Enable debug mode:
+=================
+=================
 
-
-
-
+Look at the "env.rb" file into the support folder and change : utils.log.level = Logger::WARN
 
 Folder Hierachie:
 =================

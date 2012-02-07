@@ -24,7 +24,7 @@ require 'ooor'
 
 begin
     ResCurrency.class_eval do 
-        puts "Extending  #{self.class} #{self.name}"
+        $utils.log.debug("Extending  #{self.class} #{self.name}")
         def self.get_valid_currency(options={})
             if options != nil && options[:currency_name]
                 currency = ResCurrency.find(:first, :domain=>[['name','=',options[:currency_name]]],:fields => ['id'])

@@ -28,7 +28,7 @@ begin
   # Add useful methode on invoice handling
   ##############################################################################
   AccountInvoice.class_eval do 
-      puts "Extending  #{self.class} #{self.name}"
+      $utils.log.debug("Extending  #{self.class} #{self.name}")
       ##########################################################################
       # Create an invoice with given informations
       # Add a line if amount <> false, the account could be provided or not

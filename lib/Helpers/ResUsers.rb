@@ -26,7 +26,7 @@ begin
     # Add useful methode on partner handling
     ##############################################################################
     ResUsers.class_eval do 
-        puts "Extending  #{self.class} #{self.name}"
+        $utils.log.debug("Extending  #{self.class} #{self.name}")
 
         def self.add_role(user_login, group_array)
             if group_array != :all
