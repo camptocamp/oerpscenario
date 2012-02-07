@@ -74,17 +74,22 @@ class ScenarioUtils
         if @ooor and not para['reload']
             self.login({:user=>@config[:user], :pwd=>@config[:pwd]})
         else
-             @ooor=Ooor.new(
-                            {
-                            :url => "http://#{ @config[:host]}:#{@config[:port]}/xmlrpc",
-                            :database => @config[:dbname], 
-                            :username =>  @config[:user], 
-                            :password => @config[:pwd], 
-                            :log_level=>  @config[:log_level]
-                            }
-                        )
-            
-             Dir["lib/Helpers/*.rb"].each {|file| require file }
+            begin
+                 @ooor=Ooor.new(
+                                {
+                                :url => "http://#{ @config[:host]}:#{@config[:port]}/xmlrpc",
+                                :database => @config[:dbname], 
+                                :username =>  @config[:user], 
+                                :password => @config[:pwd], 
+                                :log_level=>  @config[:log_level]
+                                }
+                            )
+                 Dir["lib/Helpers/*.rb"].each {|file| require file }
+            #We catch RuntimeError because ooor doesn't give the error name. we deduce in that case that the database doesn't exist and we have to create it.
+            rescue RuntimeError
+                puts 'No database'
+                self.createdatabasefromConf(@config)
+            end
         end
     end 
     
@@ -105,5 +110,10 @@ class ScenarioUtils
         return  @ooor.global_login(log_para[:user], log_para[:pwd])
     end
     
-      
+    def createdatabasefromConf(config)
+        puts 'Creation of a new database'
+        @config = config
+        @ooor = Ooor.new(:url => "http://#{ @config[:host]}:#{@config[:port]}/xmlrpc")
+        @ooor.create(@config[:pwd], @config[:dbname], false, 'en_US', @config[:pwd])
+    end
 end
