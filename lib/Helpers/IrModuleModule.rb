@@ -39,7 +39,7 @@ begin
       # res = IrModuleModule.update_needed_modules()
       # Deprecated
       def self.update_needed_modules()
-        puts 'update_needed_modules is deprecated'
+        $utils.log.debug("DEBUG : update_needed_modules is deprecated")
         # Call the wizard on whatever module
         wizard = IrModuleModule.find(:first).old_wizard_step('module.upgrade.simple')
         # Run all state of the wizard
@@ -99,7 +99,7 @@ begin
           end
       else 
            def self.run_base_quality_test(modules)
-               puts 'function no available'
+               $utils.log.info("INFO : Function not available")
            end
       end
 
@@ -222,9 +222,8 @@ begin
     end
 
   else 
-    puts "WARNING : Account Helpers can't be initialized -> base module isn't installed !!!"
+     $utils.log.warn("WARNING : IrModuleModule Helpers can't be initialized !!!")
   end
 rescue Exception => e
-  puts "WAS NOT ABLE TO LOAD MODULE HELPER"
-  puts e.to_s
+  $utils.log.fatal("ERROR : #{e.to_s}")
 end

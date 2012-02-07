@@ -35,4 +35,6 @@ begin
             @ooor.create(options[:db_password], options[:database], options[:demo_data], options[:lang], options[:password]) 
         end
     end
+rescue Exception => e
+    $utils.log.fatal("ERROR : #{e.to_s}")
 end

@@ -18,6 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+$VERBOSE = nil
 require 'rubygems'
 require 'ooor'
 require 'parseconfig'
@@ -26,9 +27,9 @@ require 'cucumber'
 require 'xmlrpc/client'
 require 'logger'
 
-XMLRPC::Config::ENABLE_NIL_PARSER =true
-XMLRPC::Config::ENABLE_NIL_CREATE =true
-XMLRPC::Config::ENABLE_BIGINT=true
+XMLRPC::Config::ENABLE_NIL_PARSER = true if not XMLRPC::Config::ENABLE_NIL_PARSER
+XMLRPC::Config::ENABLE_NIL_CREATE = true if not XMLRPC::Config::ENABLE_NIL_CREATE
+XMLRPC::Config::ENABLE_BIGINT = true if not XMLRPC::Config::ENABLE_BIGINT
 
 
 # This class map OpenERP XMLRPC logins and common stuff
@@ -91,7 +92,7 @@ class ScenarioUtils
                  Dir["lib/Helpers/*.rb"].each {|file| require file }
             #We catch RuntimeError because ooor doesn't give the error name. we deduce in that case that the database doesn't exist and we have to create it.
             rescue RuntimeError
-                puts 'No database'
+                $utils.log.warn("WARNING : No database, try to create it")
                 self.createdatabasefromConf(@config)
             end
         end
@@ -115,13 +116,14 @@ class ScenarioUtils
     end
     
     def createdatabasefromConf(config)
-        puts 'Creation of a new database'
+        $utils.log.info("INFO : Create a new database")
         @config = config
         begin
             @ooor = Ooor.new(:url => "http://#{ @config[:host]}:#{@config[:port]}/xmlrpc")
             @ooor.create(@config[:pwd], @config[:dbname], false, 'en_US', @config[:pwd])
         rescue RuntimeError
-            raise 'cannot create database'
+            $utils.log.fatal("ERROR : Cannot create database")
+            raise 'Cannot create database'
         end
     end
 end

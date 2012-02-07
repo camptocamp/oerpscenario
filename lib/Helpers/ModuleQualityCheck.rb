@@ -87,9 +87,9 @@ begin
             # end
         end
     else
-        puts "WARNING : Quality Helpers can't be initialized -> Quality module isn't installed !!!"
+      $utils.log.warn("WARNING : ModuleQualityDetail Helpers can't be initialized !!!")
 
     end
 rescue Exception => e
-    puts "WARNING : base_quality_module isn't installed !!!"
+    $utils.log.fatal("ERROR : #{e.to_s}")
 end

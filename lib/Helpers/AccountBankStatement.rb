@@ -148,8 +148,8 @@ begin
 
         end
     else
-        puts "WARNING : Account Helpers can't be initialized -> account module isn't installed !!!"
+        $utils.log.warn("WARNING : AccountBankStatement Helpers can't be initialized !!!")
     end
 rescue Exception => e
-    puts e.to_s
+    $utils.log.fatal("ERROR : #{e.to_s}")
 end

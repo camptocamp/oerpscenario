@@ -4,12 +4,12 @@ Given /^I am logged as (\w+) user with password (\w+) used$/ do |user, pass|
         if $utils.ready?
             $utils.login(:user =>user,:pwd => pass)
         else
-            puts 'Attempt to connect'
+            $utils.log.info("INFO : Attempt to connect")
             $utils.setConnexionfromConf(:user=>user, :pwd=>pass)            
         end
     rescue Exception => e
-        puts e.to_s
-        puts 'Force reconnect'
+        $utils.log.warn("WARNING : #{e.to_s}")
+        $utils.log.info("INFO : Force reconnect")
         $utils.setConnexionfromConf(:user=>user, :pwd => pass)
     end
 end
@@ -20,12 +20,12 @@ Given /^I am logged as (\w+) user with the password set in config used$/ do |use
         if $utils.ready?
             $utils.login(user, pass)
         else
-            puts 'Attempt to connect'
+            $utils.log.info("INFO : Attempt to connect")
             $utils.setConnexionfromConf()            
         end
     rescue Exception => e
-        puts e.to_s
-        puts 'Force reconnect'
+        $utils.log.warn("WARNING : #{e.to_s}")
+        $utils.log.info("INFO : Force reconnect")
         $utils.setConnexionfromConf()
     end
 end
@@ -38,7 +38,6 @@ Given /^I install the required modules with dependencies:$/ do |table|
     raise "no module named #{oerp_module[:name]} found" unless mod
     to_install << mod
   end
-  puts '>>>>>>>>>>Installing modules and their dependencies'
   IrModuleModule.install_modules(to_install, dependencies=true)
   $utils.set_var('module_to_install',to_install)
   $utils.get_var('module_to_install').should be_true
@@ -47,7 +46,7 @@ end
 Given /^I install the require modules:$/ do |table|
   # table is a Cucumber::Ast::Table
   to_install = []
-  puts IrModuleModule.class
+  $utils.log.info("INFO : #{IrModuleModule.class}")
   table.hashes.each do |oerp_module|
       mod = IrModuleModule.find(:first, :domain => [['name','=', oerp_module[:name] ]], :fields =>['id','state'])
       unless mod
@@ -55,8 +54,6 @@ Given /^I install the require modules:$/ do |table|
       end
       to_install.push(mod)
   end
-  puts '>>>>>>>>>>Installing modules'
-  puts to_install
   IrModuleModule.install_modules(to_install)
   $utils.set_var('module_to_install',to_install)
   $utils.get_var('module_to_install').should be_true
@@ -366,7 +363,6 @@ Given /^I update the "([^"]*)" module$/ do |name| #"
   if name == 'all' 
       IrModuleModule.find(:all, :domain=>[['state','=','installed']]).each do |mod|
           mod.state = 'to upgrade'
-          puts mod
           mod.save
       end
       
@@ -431,8 +427,8 @@ Given /^I reconnect with the database (.*)$/ do |database| #"
                     }
                 )
     rescue Exception => e
-        puts e.to_s
-        puts 'Force reconnect'
+        $utils.log.warn("WARNING : #{e.to_s}")
+        $utils.log.info("INFO : Force reconnect")
         $utils.setConnexionfromConf()
     end
 end

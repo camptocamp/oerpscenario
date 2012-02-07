@@ -118,5 +118,5 @@ begin
         end
     end
 rescue Exception => e
-    puts e.to_s
+    $utils.log.fatal("ERROR : #{e.to_s}")
 end

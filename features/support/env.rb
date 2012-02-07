@@ -19,6 +19,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+$VERBOSE = nil
 $LOAD_PATH << '.'
 require 'lib/ERPConnector'
 require 'rubygems'
@@ -33,12 +34,12 @@ unless $utils
 end
 begin
     unless $utils.ready?
-        puts 'Attempt to connect'
+        $utils.log.info("INFO : Attempt to connect")
         $utils.setConnexionfromConf()
     end
 rescue Exception => e
-    puts e.to_s
-    puts 'Force reconnect'
+    $utils.log.warn("WARNING : #{e.to_s}")
+    $utils.log.info("INFO : Force reconnect")
     $utils.setConnexionfromConf()
 end
 
@@ -50,7 +51,7 @@ $tmpdir = File.join(Dir.tmpdir(), 'oerps_folder')
 begin
   Dir.mkdir($tmpdir)
 rescue Exception=>e
-  puts "Can't create tmpdir #{e.to_s}"
+  $utils.log.warn("WARNING : Can't create tmpdir #{e.to_s}")
 end
 
 # "after all"
@@ -58,7 +59,7 @@ at_exit do
     begin
       FileUtils.remove_entry_secure $tmpdir
     rescue Exception => e
-      # Some tags does not create tmp dir
+      $utils.log.debug("DEBUG : Some tags does not create tmp dir")
     end
     
     #for dhl import
@@ -67,6 +68,6 @@ at_exit do
       `rm -rf /tmp/dhl_filestore/done/*`
       `rm -rf /tmp/dhl_filestore/in_error/*`
     rescue Exception => e
-      #we do nothing it is in /tmp/
+      $utils.log.debug("DEBUG : we do nothing it is in /tmp/")
     end
 end

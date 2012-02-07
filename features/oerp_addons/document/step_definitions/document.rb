@@ -50,8 +50,7 @@ Given /^the transacion folder should be empty$/ do
     begin
         `rm -rf #{@path}`
     rescue Exception => e
-        puts e
-        'file empty'
+        $utils.log.debug("DEBUG : File empty #{e.to_s}")
     end
     File.exists?(@path).should be_false
     

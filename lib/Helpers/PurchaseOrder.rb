@@ -33,11 +33,7 @@ begin
         end
 
         def self.get_last_purchase_order_with_product(product_id)
-            puts 'product_id'
-            p product_id
             line = PurchaseOrderLine.find(:first, :domain=>[['product_id', '=', product_id]])
-            puts 'line'
-            p line
             
             if line
                 return line.order_id
@@ -47,7 +43,7 @@ begin
         end
     end
 rescue Exception => e
-    puts e.to_s
+    $utils.log.fatal("ERROR : #{e.to_s}")
 end
 
 
