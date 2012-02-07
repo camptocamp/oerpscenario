@@ -68,7 +68,7 @@ Then /^my modules should have been installed$/ do
   modules_ids.each do | mod_id |
     mod = IrModuleModule.find(mod_id, :fields=>['id', 'state'])
     mod.should_not be_nil
-    mod.state.should eq('installed')
+    mod.state.should == 'installed'
   end
 end
 
@@ -414,6 +414,10 @@ table.hashes.each do |data|
 end
 @add.save
 @add.should be_true
+end
+
+Then /^I reload the Ooor connexion and Helpers$/ do
+   $utils.setConnexionfromConf()
 end
 
 
