@@ -417,7 +417,9 @@ end
 end
 
 Then /^I reload the Ooor connexion and Helpers$/ do
-   $utils.setConnexionfromConf()
+   para = {}
+   para['reload'] = true
+   $utils.setConnexionfromConf(para)
 end
 
 

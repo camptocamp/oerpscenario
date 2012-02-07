@@ -77,24 +77,45 @@ Given /^on all journal entries can be canceled$/ do
 end
 
 ##############################################################################
+# Look for an account in the asked currency, if doen't exist then create it
+Given /^I have created a (\w+) account in (\w+)$/ do |type,currency|
+  # Take the currency
+  currency_id = ResCurrency.find(:first, :domain=>[['name','=',currency]], :fields=>["id"]).id
+  # Look for the asked account
+  user_type_id = AccountAccountType.find(:first, :domain => [['code', '=', type]], :fields =>["id"]).id
+  account = AccountAccount.find(:first, :domain=>[['user_type','=',user_type_id],['currency_id','=',currency_id]])
+  unless account
+    account = AccountAccount.new({
+      :name => type + ' ' + currency + ' Account',
+      :code => type + ' ' + currency,
+      :currency_id => currency_id,
+      :type => 'liquidity',
+      :user_type => AccountAccountType.find(:first, :domain => [['code', '=', type]], :fields =>["id"]).id,
+    })
+    account.create
+    account = nil
+  end
+end
+
 # Look for a journal in the asked currency, if doen't exist then create it
 Given /^a (\w+) journal in (\w+) exists$/ do |type,currency|
   # Take the currency
   currency_id = ResCurrency.find(:first, :domain=>[['name','=',currency]], :fields=>["id"]).id
   # Look for the asked journal
   journal = AccountJournal.find(:first, :domain=>[['type','=',type],['currency','=',currency_id]])
+  user_type_id = AccountAccountType.find(:first, :domain => [['code', '=', type]], :fields =>["id"]).id
   unless journal
     journal = AccountJournal.new({
       :type => type,
       :name => type + ' ' + currency + ' Journal',
-      :code => type + ' ' + currency,
+      :code => currency + ' C',
       # Take the first found view
       :view_id => AccountJournalView.find(:first, :fields=>["id"]).id,
       # Take the first sequence with 'Account Journal' code
       :sequence_id => IrSequence.find(:first, :domain =>[['code','=','Account Journal']], :fields=>["id"]).id,
       # Take the first 'other' account for both debit and credit
-      :default_debit_account_id => AccountAccount.find(:first, :domain => [['type','=','other'],],:fields=>["id"]).id,
-      :default_credit_account_id => AccountAccount.find(:first, :domain => [['type','=','other']],:fields=>["id"]).id,
+      :default_debit_account_id => AccountAccount.find(:first, :domain => [['user_type','=',user_type_id],['currency_id', '=', currency_id]],:fields=>["id"]).id,
+      :default_credit_account_id => AccountAccount.find(:first, :domain => [['user_type','=',user_type_id],['currency_id', '=', currency_id]],:fields=>["id"]).id,
       :currency => currency_id,
     })
     journal.create

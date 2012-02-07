@@ -29,9 +29,6 @@ Feature: Param the new database
     # Given the main company has a default_income_account set to "3000"
     # Given the main company has a default payment_term set to "30 Days End of Month"
 
-  Scenario: Set the chart of account
-    Given I want to generate account chart from module account with 4 digits
- 
   Scenario: Configure Taxes
     Given a purchase tax called 'Buy 19.6%' with a rate of 0.196 exists
     And a sale tax called 'Sale 19.6%' with a rate of 0.196 exists
@@ -63,6 +60,10 @@ Feature: Param the new database
          | printaccount | true |
    # And the bank account is linked to bank "Postfinance"
 
+   Scenario: Create new account
+       Given I have created a cash account in USD
+       And I have created a cash account in CHF
+       And I have created a cash account in EUR
 
    Scenario: Initialize Account Journal settings
        Given a cash journal in USD exists

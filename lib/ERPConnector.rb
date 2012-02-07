@@ -71,7 +71,7 @@ class ScenarioUtils
         @config[:log_level] = Logger::ERROR
         @config.merge(para)
 
-        if @ooor
+        if @ooor and not para['reload']
             self.login({:user=>@config[:user], :pwd=>@config[:pwd]})
         else
              @ooor=Ooor.new(
@@ -83,6 +83,7 @@ class ScenarioUtils
                             :log_level=>  @config[:log_level]
                             }
                         )
+            
              Dir["lib/Helpers/*.rb"].each {|file| require file }
         end
     end 

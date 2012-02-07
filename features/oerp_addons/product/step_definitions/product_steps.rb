@@ -22,7 +22,7 @@
 ##############################################################################
 Given /^a valid (\w+) pricelist in (\w+) exists$/ do |type,currency|
   # Take the currency
-  currency_id = ResCurrency.find(:first, :domain=>[['code','=',currency]], :fields=>['id']).id
+  currency_id = ResCurrency.find(:first, :domain=>[['name','=',currency]], :fields=>['id']).id
   # Look for the asked pricelist
   pricelist = ProductPricelist.find(:first, :domain=>[['type','=',type],['currency_id','=',currency_id]], :fields=>['id'])
   if not pricelist
