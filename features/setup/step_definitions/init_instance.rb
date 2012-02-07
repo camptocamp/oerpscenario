@@ -101,7 +101,7 @@ Given /^I want to generate account chart from module "([^"]*)" with "([^"]*)" di
     install_chart_account(oerp_module, digits.to_i)
 end
 
-Given /^I want to generate account chart from module "([^"]*)" with "([^"]*)" digits$/ do |oerp_module, digits|
+Given /^I want to generate account chart from module (.*) with (.*) digits$/ do |oerp_module, digits|
     install_chart_account(oerp_module, digits) if AccountAccount.find(:all).empty?
 end
 

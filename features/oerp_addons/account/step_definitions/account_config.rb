@@ -80,13 +80,14 @@ end
 # Look for a journal in the asked currency, if doen't exist then create it
 Given /^a (\w+) journal in (\w+) exists$/ do |type,currency|
   # Take the currency
-  currency_id = ResCurrency.find(:first, :domain=>[['code','=',currency]], :fields=>["id"]).id
+  currency_id = ResCurrency.find(:first, :domain=>[['name','=',currency]], :fields=>["id"]).id
   # Look for the asked journal
   journal = AccountJournal.find(:first, :domain=>[['type','=',type],['currency','=',currency_id]])
   unless journal
     journal = AccountJournal.new({
       :type => type,
       :name => type + ' ' + currency + ' Journal',
+      :code => type + ' ' + currency,
       # Take the first found view
       :view_id => AccountJournalView.find(:first, :fields=>["id"]).id,
       # Take the first sequence with 'Account Journal' code
