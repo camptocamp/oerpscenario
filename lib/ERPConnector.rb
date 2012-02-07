@@ -113,7 +113,11 @@ class ScenarioUtils
     def createdatabasefromConf(config)
         puts 'Creation of a new database'
         @config = config
-        @ooor = Ooor.new(:url => "http://#{ @config[:host]}:#{@config[:port]}/xmlrpc")
-        @ooor.create(@config[:pwd], @config[:dbname], false, 'en_US', @config[:pwd])
+        begin
+            @ooor = Ooor.new(:url => "http://#{ @config[:host]}:#{@config[:port]}/xmlrpc")
+            @ooor.create(@config[:pwd], @config[:dbname], false, 'en_US', @config[:pwd])
+        rescue RuntimeError
+            raise 'cannot create database'
+        end
     end
 end
