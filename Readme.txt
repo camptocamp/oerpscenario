@@ -128,5 +128,6 @@ sample: => Just sample of a new test folder
 support: => parsing of helpers and login to database define in .conf file + all system related stuffs (like the @compile tag used in the rakefile)
 --------
 
-
+datas: => Folder used to store the dump file for testing Magento and Prestshop while waiting for a full Vagrant-self-configured one ;)
+------
 
