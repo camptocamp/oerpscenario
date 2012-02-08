@@ -121,6 +121,8 @@ class ScenarioUtils
         begin
             @ooor = Ooor.new(:url => "http://#{ @config[:host]}:#{@config[:port]}/xmlrpc")
             @ooor.create(@config[:pwd], @config[:dbname], false, 'en_US', @config[:pwd])
+            $utils.ooor.load_models(false)
+            Dir["lib/Helpers/*.rb"].each {|file| load file }
         rescue RuntimeError
             $utils.log.fatal("ERROR : Cannot create database")
             raise 'Cannot create database'
