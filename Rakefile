@@ -30,7 +30,7 @@ Cucumber::Rake::Task.new(:demo,"Launch the installation of demo data on installe
   task.cucumber_opts = ["-t","@demo","features"]
 end
 
-Cucumber::Rake::Task.new(:test_magento,"Launch Magento synchronisazation tests : attributes sets, attributes, product,.. (run rake init_magento first)") do |task|
+Cucumber::Rake::Task.new(:test_magento,"Launch Magento synchronization tests : attributes sets, attributes, product,.. (run rake init_magento first)") do |task|
   task.cucumber_opts = ["-t","@test_magento","features"]
 end
 

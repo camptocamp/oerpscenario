@@ -97,6 +97,7 @@ Given /^I have created a (\w+) account in (\w+)$/ do |type,currency|
   end
 end
 
+##############################################################################
 # Look for a journal in the asked currency, if doen't exist then create it
 Given /^a (\w+) journal in (\w+) exists$/ do |type,currency|
   # Take the currency

@@ -65,11 +65,43 @@ Feature: Do the Magento initial synchronisations
     And I import the product images (7 - Import Images)
     And I import the product links (8 - Import Product Links)
     
-  # @sale_import
-  # Scenario: Import the sales oders from Magento
-  #   When an instance with absolute id "base_external.magento" exists
-  #   Then I set the instance default product category on category with name "Root Catalog"
-  #   And I save the instance
-  #   Then I import the products (6 - Import Products)
-  #   And I import the product images (7 - Import Images)
-  #   And I import the product links (8 - Import Product Links)
+  @sale_config
+  Scenario: Set options for payment type to validate the process
+    Given I the payment type with the name "Essaie" exists
+    When I set the following options:
+      |key|value|
+      | picking_policy | 'one' |
+      | order_policy | 'postpaid' |
+      | invoice_quantity | 'order' |
+      | validate_order | true |
+      | validate_picking | true |
+      | create_invoice | true |
+      | validate_payment | true |
+      | is_auto_reconcile | true |
+    And I set the payment journal on "EUR C"
+    Then I save the payment type
+
+  @sale_import
+  Scenario: Import the sales orders from Magento
+    When an instance with absolute id "base_external.magento" exists
+    And a shop with name "Main Website Store" exists
+    Then I import the sale orders (Import Orders)
+    Then the sale orders should have been created
+    Then I should see this sale order order_name open
+
+  @sale_statut
+  Scenario: Export the sale order status and verify it in magento
+#    Given I have test state
+#    export statut
+#    check magento statut
+#    check magento packing
+
+#  @invoicing_process
+#Then /^I should have a related draft invoice created$/ do
+#Given /^I take the related invoice$/ do
+#    open invoice
+#    check reconcile
+#    export statut
+#    check magento statut
+#    check magento invoice
+

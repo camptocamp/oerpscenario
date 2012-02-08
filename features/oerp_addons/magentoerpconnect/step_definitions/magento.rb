@@ -33,9 +33,9 @@ end
 Then /^I save the store view$/ do
   @store_view.save
 end
-Then /^I should have (.*) magento storeviews created$/ do |store_number|
-    @storeviews = MagerpStoreviews.search()
-    @storeviews.size.should == store_number.to_i
+Then /^I should have (.*) magento store views created$/ do |store_number|
+    @store_view = MagerpStoreviews.search()
+    @store_view.size.should == store_number.to_i
 end
 
 

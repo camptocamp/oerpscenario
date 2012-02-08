@@ -110,7 +110,7 @@ Enable debug mode:
 
 Look at the "env.rb" file into the support folder and change : utils.log.level = Logger::WARN
 
-Folder Hierachie:
+Folder Hierarchy:
 =================
 =================
 

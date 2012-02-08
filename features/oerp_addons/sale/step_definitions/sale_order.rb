@@ -180,3 +180,8 @@ Then /^the total amount of the sale order (.*) should be (.*)$/ do |sale_order, 
     @saleorder = SaleOrder.find(:first, :domain => [['name', '=', sale_order]])
     @saleorder.amount_total.should == total_amount.to_f
 end
+##############################################################################
+Then /^the sale orders should have been created$/ do
+    @saleorders = SaleOrder.find(:all)
+    @saleorders.should_not be_nil
+end

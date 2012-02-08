@@ -436,13 +436,7 @@ end
 Given /^I have created a database with the following attributes:$/ do |table| #"
     options = {}
     table.hashes.each do |data|
-        if data['key'] == 'demo_data' and data['value'] == 'true'
-            options[data['key'].to_sym]= true
-        elsif data['key'] == 'demo_data' and data['value'] == 'false'
-            options[data['key'].to_sym]= false
-        else
-            options[data['key'].to_sym]=data['value']
-        end
+        options[data['key'].to_sym]=data['value']
     end
     @Ooor = Ooor.new_database(options)
 end

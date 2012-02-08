@@ -35,7 +35,7 @@ Feature: Create the Magento Instance and proceed to the initial synchronisations
       |key|value|
       |name| 'Magento' |
       |import_links_with_product| true | 
-      |location| 'http://localhost:8080' |
+      |location| 'http://192.168.0.15:8080' |
       |apiusername| 'openerp_connect' |
       |apipass| 'openerp_connect' |
       
