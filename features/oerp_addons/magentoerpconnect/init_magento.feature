@@ -28,7 +28,7 @@ Feature: Create the Magento Instance and proceed to the initial synchronisations
     Given I give all groups right access to admin user
 
 
-  @instance
+  @instance_magento
   Scenario: Create the Magento instance
     Given an instance with absolute id "base_external.magento" should exist
     Then I set the following attributes on the instance:
@@ -47,7 +47,7 @@ Feature: Create the Magento Instance and proceed to the initial synchronisations
     Then an instance with absolute id "base_external.magento" exists
 
     
-  @mapping_templates
+  @mapping_templates_magento
   Scenario: Load or reload the mapping templates
     Given an instance with absolute id "base_external.magento" exists
     Then I reload the referential mapping templates (1 - Reload Referential Mapping Templates)

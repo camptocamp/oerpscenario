@@ -57,6 +57,7 @@ Then /^I set the instance default product category on category with name "([^"]*
   # category.should_not be_nil
   # @instance.default_pro_cat = category.id
 end
+
 And /^I set an absolute id "([^"]*)" on the instance$/ do |absolute_id|
   @instance.ir_model_data_id = absolute_id.split('.')
 end

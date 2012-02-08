@@ -12,28 +12,28 @@
 @test_prestashop @synchro_prestashop
 
 Feature: Do the Prestashop initial synchronisations
-  @referential
+  @referential_prestashop
   Scenario: Synchronize the referential settings (shop, website, views)
     Given an instance with absolute id "base_external.prestashop" exists
     Then I synchronize the referential settings (2 - Synchronize Referential Settings)
   
-  @store_views
+  @store_views_prestashop
   Scenario: Configure store views
     Given a store view with code "default" exists
     Then I set the store view language on "en_US"
     And I save the store view
  
-  @customer_groups
+  @customer_groups_prestashop
   Scenario: Import the customer groups from Prestashop
     Given an instance with absolute id "base_external.prestashop" exists
     Then I import the customer groups (1 - Import Customer Groups (Partner Categories))
 
-  @product_categories
+  @product_categories_prestashop
   Scenario: Import the product categories
     Given an instance with absolute id "base_external.prestashop" exists
     Then I import the product categories (2 - Import Product Categories)
 
-  @attributes
+  @attributes_prestashop
   Scenario: Synchronize the attribute sets, groups, attributes and options
     Given an instance with absolute id "base_external.prestashop" exists
     Then I import the attribute sets (3 - Import Product Attribute Sets)
@@ -41,7 +41,7 @@ Feature: Do the Prestashop initial synchronisations
     Then I import the attributes (5 - Import Product Attributes)
 
   # we need the categories to configure the shops
-  @shops
+  @shops_prestashop
   Scenario: Configure shops
     Given a shop with name "Main Website Store" exists
     Then I set the warehouse of the shop on "stock.warehouse0"
@@ -56,7 +56,7 @@ Feature: Do the Prestashop initial synchronisations
       | is_tax_included        | true |
     And I save the shop
 
-  @products_import
+  @products_import_prestashop
   Scenario: Import the products from Prestashop
     When an instance with absolute id "base_external.prestashop" exists
     Then I set the instance default product category on category with name "Root Catalog"
@@ -65,7 +65,7 @@ Feature: Do the Prestashop initial synchronisations
     And I import the product images (7 - Import Images)
     And I import the product links (8 - Import Product Links)
     
-  @sale_import
+  @sale_import_prestashop
   Scenario: Import the sales oders from Prestashop
     When an instance with absolute id "base_external.prestashop" exists
     And a shop with name "Main Website Store" exists

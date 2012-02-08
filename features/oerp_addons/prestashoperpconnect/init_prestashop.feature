@@ -28,7 +28,7 @@ Feature: Create the Prestashop Instance and proceed to the initial synchronisati
     Given I give all groups right access to admin user
 
 
-  @instance
+  @instance_prestashop
   Scenario: Create the Prestashop instance
     Given an instance with absolute id "base_external.prestashop" should exist
     Then I set the following attributes on the instance:
@@ -47,7 +47,7 @@ Feature: Create the Prestashop Instance and proceed to the initial synchronisati
     Then an instance with absolute id "base_external.prestashop" exists
 
     
-  @mapping_templates
+  @mapping_templates_prestashop
   Scenario: Load or reload the mapping templates
     Given an instance with absolute id "base_external.prestashop" exists
     Then I reload the referential mapping templates (1 - Reload Referential Mapping Templates)
