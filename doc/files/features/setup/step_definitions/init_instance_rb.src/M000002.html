@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>install_chart_account (features/setup/step_definitions/init_instance.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File features/setup/step_definitions/init_instance.rb, line 84</span>
+<span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install_chart_account</span>(<span class="ruby-identifier">oerp_module</span>, <span class="ruby-identifier">digits</span>)
+    <span class="ruby-identifier">chart</span> = <span class="ruby-constant">IrModuleModule</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:domain</span> =<span class="ruby-operator">&gt;</span> [[<span class="ruby-value str">'name'</span>,<span class="ruby-value str">'='</span>, <span class="ruby-identifier">oerp_module</span>]], <span class="ruby-identifier">:fields</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value str">'id'</span>, <span class="ruby-value str">'state'</span>])
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">chart</span>.<span class="ruby-identifier">state</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;installed&quot;</span>
+      <span class="ruby-identifier">config_wizard</span> = <span class="ruby-constant">WizardMultiChartsAccounts</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">:code_digits</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">digits</span>)
+      <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-identifier">config_wizard</span>.<span class="ruby-identifier">execute</span>()
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+        <span class="ruby-comment cmt"># Must catch exception because execute() return None</span>
+        <span class="ruby-comment cmt"># pp &quot;Chart of account generated ! &quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;#{oerp_module} chart module not found&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+<span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

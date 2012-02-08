@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>create_sale_order (lib/Helpers/SaleOrder.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/Helpers/SaleOrder.rb, line 38</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">create_sale_order</span>(<span class="ruby-identifier">options</span>={}, <span class="ruby-identifier">function_line</span>=<span class="ruby-value str">'get_sale_order_line'</span>)
+            <span class="ruby-comment cmt"># Take a partner with appropriate attributes and at least one address</span>
+            <span class="ruby-identifier">createoptions</span> = {}
+            <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> [<span class="ruby-identifier">:partner</span>, <span class="ruby-identifier">:currency</span>, <span class="ruby-identifier">:creation_date</span>, <span class="ruby-identifier">:order_lines</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">key</span>)
+                    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:date</span>
+                        <span class="ruby-identifier">createoptions</span>[<span class="ruby-identifier">:date_order</span>] = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>=<span class="ruby-identifier">value</span>).<span class="ruby-identifier">to_s</span>
+                    <span class="ruby-keyword kw">elsif</span> 
+                        <span class="ruby-identifier">createoptions</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>
+                    <span class="ruby-keyword kw">end</span>
+                <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-ivar">@partner</span>=<span class="ruby-constant">ResPartner</span>.<span class="ruby-identifier">get_valid_partner</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:partner</span>])
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:currency</span>].<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Integer</span>
+                <span class="ruby-identifier">currency_id</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:currency</span>]
+            <span class="ruby-keyword kw">else</span>
+                <span class="ruby-identifier">currency_id</span> = <span class="ruby-constant">ResCurrency</span>.<span class="ruby-identifier">get_valid_currency</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:currency</span>]).<span class="ruby-identifier">id</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-comment cmt"># Create a so with partner</span>
+            <span class="ruby-identifier">so</span> = <span class="ruby-constant">SaleOrder</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">createoptions</span>)
+            <span class="ruby-identifier">so</span>.<span class="ruby-identifier">on_change</span>(<span class="ruby-value str">'onchange_partner_id'</span>, <span class="ruby-identifier">:partner_id</span>, <span class="ruby-ivar">@partner</span>.<span class="ruby-identifier">id</span>, <span class="ruby-ivar">@partner</span>.<span class="ruby-identifier">id</span>)
+            <span class="ruby-identifier">so</span>.<span class="ruby-identifier">pricelist_id</span>=<span class="ruby-constant">ProductPricelist</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>,<span class="ruby-identifier">:domain=</span><span class="ruby-operator">&gt;</span>[[<span class="ruby-value str">'currency_id'</span>,<span class="ruby-value str">'='</span>,<span class="ruby-identifier">currency_id</span>]],<span class="ruby-identifier">:fields</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value str">'id'</span>]).<span class="ruby-identifier">id</span>
+            <span class="ruby-identifier">so</span>.<span class="ruby-identifier">order_line</span> = <span class="ruby-constant">SaleOrderLine</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">function_line</span>, <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:order_lines</span>], <span class="ruby-identifier">so</span>)
+            <span class="ruby-identifier">so</span>.<span class="ruby-identifier">create</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:creation_date</span>]
+                <span class="ruby-identifier">so</span>.<span class="ruby-identifier">create_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>=<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:creation_date</span>]).<span class="ruby-identifier">to_s</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">so</span>.<span class="ruby-identifier">save</span>
+            <span class="ruby-identifier">so</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">createoptions</span>)
+            <span class="ruby-ivar">@saleorder</span>=<span class="ruby-identifier">so</span>
+            <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@saleorder</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

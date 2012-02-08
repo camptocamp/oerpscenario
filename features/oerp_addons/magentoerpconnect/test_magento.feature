@@ -73,4 +73,3 @@ Feature: Do the Magento initial synchronisations
   #   Then I import the products (6 - Import Products)
   #   And I import the product images (7 - Import Images)
   #   And I import the product links (8 - Import Product Links)
-    

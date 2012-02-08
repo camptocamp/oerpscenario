@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>validate_picking (lib/Helpers/StockPicking.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/Helpers/StockPicking.rb, line 34</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate_picking</span>()
+            <span class="ruby-identifier">res</span> = {<span class="ruby-value str">'delivery_date'</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">now</span>).<span class="ruby-identifier">strftime</span>(<span class="ruby-identifier">fmt</span>=<span class="ruby-value str">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)}
+            <span class="ruby-identifier">stock_moves</span> = <span class="ruby-identifier">move_lines</span>
+            <span class="ruby-identifier">stock_moves</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">move_line</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">res</span>[<span class="ruby-node">&quot;move#{move_line.id}&quot;</span>] = {<span class="ruby-value str">'prodlot_id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">move_line</span>.<span class="ruby-identifier">prodlot_id</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">move_line</span>.<span class="ruby-identifier">prodlot_id</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-value str">'product_id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">move_line</span>.<span class="ruby-identifier">product_id</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value str">'product_uom'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">move_line</span>.<span class="ruby-identifier">product_uom</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value str">'product_qty'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">move_line</span>.<span class="ruby-identifier">product_qty</span>}
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-constant">StockPicking</span>.<span class="ruby-identifier">do_partial</span>([<span class="ruby-identifier">id</span>],<span class="ruby-identifier">res</span>)
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

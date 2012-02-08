@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>create_statement_with_currency (lib/Helpers/AccountBankStatement.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/Helpers/AccountBankStatement.rb, line 125</span>
+          <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">create_statement_with_currency</span>(<span class="ruby-identifier">options</span>={}, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+            <span class="ruby-identifier">o</span> = {<span class="ruby-identifier">:currency_code=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'EUR'</span>, <span class="ruby-identifier">:journal=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:name=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+            <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:journal</span>]
+              <span class="ruby-comment cmt"># Take the currency</span>
+              <span class="ruby-identifier">currency_id</span> = <span class="ruby-constant">ResCurrency</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:domain=</span><span class="ruby-operator">&gt;</span>[[<span class="ruby-value str">'name'</span>,<span class="ruby-value str">'='</span>,<span class="ruby-identifier">o</span>[<span class="ruby-identifier">:currency_code</span>]]]).<span class="ruby-identifier">id</span>
+              <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">currency_id</span>
+                <span class="ruby-comment cmt"># Look for the asked cash journal currency</span>
+                <span class="ruby-identifier">journal</span> = <span class="ruby-constant">AccountJournal</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:domain=</span><span class="ruby-operator">&gt;</span>[[<span class="ruby-value str">'type'</span>,<span class="ruby-value str">'='</span>,<span class="ruby-value str">'cash'</span>],[<span class="ruby-value str">'currency'</span>,<span class="ruby-value str">'='</span>,<span class="ruby-identifier">currency_id</span>]])
+              <span class="ruby-keyword kw">else</span>
+                <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;!!! --- HELPER ERROR : create_statement_with_currency #{o[:currency_code]} currency not found&quot;</span>
+              <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">journal</span> = <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:journal</span>]
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">toreturn</span> = <span class="ruby-constant">AccountBankStatement</span>.<span class="ruby-identifier">new</span>()
+            <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">journal_id</span> = <span class="ruby-identifier">journal</span>.<span class="ruby-identifier">id</span>
+            <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">create</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:name</span>]
+              <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">name</span>=<span class="ruby-identifier">o</span>[<span class="ruby-identifier">:name</span>]
+              <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">save</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">toreturn</span>
+          <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

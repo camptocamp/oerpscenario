@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>get_valid_partner (lib/Helpers/ResPartner.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/Helpers/ResPartner.rb, line 38</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_valid_partner</span>(<span class="ruby-identifier">options</span>={})
+            <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>
+                <span class="ruby-identifier">options</span>={}
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">domain</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:domain</span>] <span class="ruby-operator">||</span> []
+            <span class="ruby-identifier">field</span> = []
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Integer</span>
+                <span class="ruby-identifier">partner</span> = <span class="ruby-constant">ResPartner</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">options</span>)
+                <span class="ruby-identifier">$utils</span>.<span class="ruby-identifier">set_var</span>(<span class="ruby-value str">'current_partner'</span>,<span class="ruby-identifier">partner</span>)
+                <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">partner</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:new</span>]
+                <span class="ruby-identifier">domain</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:domain</span>] <span class="ruby-operator">||</span> []
+                <span class="ruby-identifier">domain</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-value str">'address'</span> , <span class="ruby-value str">'!='</span>, <span class="ruby-keyword kw">false</span>]
+                <span class="ruby-identifier">field</span> = []
+                <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>                
+                    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:name</span>
+                        <span class="ruby-identifier">domain</span>.<span class="ruby-identifier">push</span> [<span class="ruby-value str">'name'</span>, <span class="ruby-value str">'ilike'</span>, <span class="ruby-identifier">value</span>]
+                    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:type</span>
+                        <span class="ruby-identifier">domain</span>.<span class="ruby-identifier">push</span> [<span class="ruby-identifier">value</span> ,<span class="ruby-value str">'='</span>, <span class="ruby-keyword kw">true</span>]      
+                    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:fields</span>
+                        <span class="ruby-identifier">field</span> = <span class="ruby-identifier">value</span>
+                    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">:domain</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">:same</span>
+                        <span class="ruby-identifier">domain</span>.<span class="ruby-identifier">push</span> [<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>,<span class="ruby-value str">'='</span>, <span class="ruby-identifier">value</span>]
+                    <span class="ruby-keyword kw">end</span>
+                <span class="ruby-keyword kw">end</span>
+                <span class="ruby-identifier">partner</span> = <span class="ruby-constant">ResPartner</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:domain</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">domain</span>, <span class="ruby-identifier">:fields</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">field</span>)
+                <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">partner</span>
+                    <span class="ruby-identifier">$utils</span>.<span class="ruby-identifier">set_var</span>(<span class="ruby-value str">'current_partner'</span>,<span class="ruby-identifier">partner</span>)
+                    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">partner</span>
+                <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">createoptions</span> = {<span class="ruby-identifier">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:name</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">'partnerscenario'</span>, <span class="ruby-identifier">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">$utils</span>.<span class="ruby-identifier">ooor</span>.<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:user_id</span>]}
+            <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:type</span>
+                    <span class="ruby-identifier">createoptions</span>[<span class="ruby-identifier">value</span>] = <span class="ruby-keyword kw">true</span>
+                <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">:domain</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">key!</span>= <span class="ruby-identifier">:fields</span>
+                    <span class="ruby-identifier">createoptions</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>                 
+                <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">address</span> = <span class="ruby-constant">ResPartnerAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">createoptions</span>[<span class="ruby-identifier">:name</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">'partnerscenario'</span>, <span class="ruby-identifier">:email</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">createoptions</span>[<span class="ruby-identifier">:email</span>])
+            <span class="ruby-identifier">address</span>.<span class="ruby-identifier">save</span>
+            <span class="ruby-identifier">createoptions</span>[<span class="ruby-identifier">:address</span>] = [[<span class="ruby-value">6</span>,<span class="ruby-value">0</span>,[<span class="ruby-identifier">address</span>.<span class="ruby-identifier">id</span>]]]
+            <span class="ruby-identifier">partner</span> = <span class="ruby-constant">ResPartner</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">createoptions</span>)
+            <span class="ruby-identifier">partner</span>.<span class="ruby-identifier">save</span>
+            <span class="ruby-identifier">$utils</span>.<span class="ruby-identifier">set_var</span>(<span class="ruby-value str">'current_partner'</span>,<span class="ruby-identifier">partner</span>)
+            <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">partner</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

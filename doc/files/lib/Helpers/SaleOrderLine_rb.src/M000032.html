@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>get_sale_order_line (lib/Helpers/SaleOrderLine.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/Helpers/SaleOrderLine.rb, line 28</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_sale_order_line</span>(<span class="ruby-identifier">options</span>,<span class="ruby-identifier">so</span>)
+            <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>
+                <span class="ruby-identifier">options</span> = [{<span class="ruby-identifier">:price_unit=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">50</span>}]
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">sale_order_lines</span> = []
+            <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sale_order_line</span><span class="ruby-operator">|</span>
+                <span class="ruby-ivar">@product</span>=<span class="ruby-constant">ProductProduct</span>.<span class="ruby-identifier">get_valid_product</span>(<span class="ruby-identifier">sale_order_line</span>[<span class="ruby-identifier">:product</span>])
+                <span class="ruby-identifier">line</span> = <span class="ruby-constant">SaleOrderLine</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:product_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">id</span>)
+                <span class="ruby-identifier">line</span>.<span class="ruby-identifier">on_change</span>(<span class="ruby-value str">'product_id_change'</span>, <span class="ruby-identifier">:product_id</span>, <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">so</span>.<span class="ruby-identifier">pricelist_id</span>, <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">qty</span>=<span class="ruby-value">0</span>,
+            <span class="ruby-identifier">uom</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">qty_uos</span>=<span class="ruby-value">0</span>, <span class="ruby-identifier">uos</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">name</span>=<span class="ruby-value str">''</span>,<span class="ruby-identifier">partner_id</span>=<span class="ruby-identifier">so</span>.<span class="ruby-identifier">partner_id</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">lang</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">update_tax</span>=<span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">date_order</span>=<span class="ruby-identifier">so</span>.<span class="ruby-identifier">date_order</span>, <span class="ruby-identifier">packaging</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">fiscal_position</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">flag</span>=<span class="ruby-keyword kw">false</span>)
+                <span class="ruby-identifier">line</span>.<span class="ruby-identifier">price_unit</span> = <span class="ruby-identifier">sale_order_line</span>[<span class="ruby-identifier">:price_unit</span>].<span class="ruby-identifier">to_f</span>
+                <span class="ruby-identifier">line</span>.<span class="ruby-identifier">product_uom</span> = <span class="ruby-value">1</span>
+                <span class="ruby-identifier">sale_order_lines</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">sale_order_lines</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

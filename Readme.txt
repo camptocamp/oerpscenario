@@ -2,7 +2,7 @@
 #
 #    OERPScenario, OpenERP Functional Tests
 #    Author Joel Grand-Guillaume 2012
-#    Copyright Camptocamp SA, Akretion
+#    Copyright Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -19,9 +19,68 @@
 #
 ##############################################################################
 
+
+INSTALLATION
+==================
+==================
+
+Install libraries and dependencies 
+----------------------------------
+
+- Ruby (1.8) & Rubygems
+- Cucumber (V. 1.1.4)
+- Rspec
+- Parseconfig
+- Ooor (V. 1.2.8+)
+- Rake (optional)
+- htmlentities
+
+(Optionnal for pdf output)
+- Prawn
+- Pawn format
+
+
+Commands On Ubuntu 10.04
+-----------------------
+sudo apt-get install ruby1.8-dev irb ri rdoc rubygems
+sudo gem install cucumber -1.1.4
+sudo gem install rspec
+sudo gem install parseconfig
+sudo gem install ooor --source http://gemcutter.org
+sudo apt-get install libopenssl-ruby
+sudo gem install rake
+sudo gem install htmlentities
+
+(Optionnal for pdf output)
+sudo gem install prawn
+sudo gem install prawn-format
+
+Finally add '/var/lib/gems/1.8/bin' to your PATH (Thanks to C. Almeida for the infos):
+
+export PATH=$PATH:/var/lib/gems/1.8/bin
+
+Get the sources
+------------------
+
+Trunk:
+bzr branch lp:oerpscenario
+
+Configure it
+------------------
+
+Create the parameter file "base.conf" according to your settings in the folder
+(look at sample_base.conf):
+
+port = 8069
+user = admin
+database = mydatabase
+password = toto
+host = localhost
+
+
 USAGE & GUIDLINES:
 ==================
-=================
+==================
 
 Every main addons folder (in oerp_addons) should have an init.feature that will build the basic
 config for this module. 

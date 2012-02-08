@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>import_invoice (lib/Helpers/AccountBankStatement.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/Helpers/AccountBankStatement.rb, line 50</span>
+          <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">import_invoice</span>(<span class="ruby-identifier">invoices</span>, <span class="ruby-identifier">options</span>={},<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+            <span class="ruby-identifier">o</span> = {<span class="ruby-identifier">:date</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:journals</span> =<span class="ruby-operator">&gt;</span> []}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:date</span>]
+                <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:date</span>] = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>=<span class="ruby-identifier">o</span>[<span class="ruby-identifier">:date</span>]).<span class="ruby-identifier">to_s</span>
+            <span class="ruby-keyword kw">else</span>
+                <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:date</span>] = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>.<span class="ruby-identifier">to_s</span>
+            <span class="ruby-keyword kw">end</span>
+
+            <span class="ruby-comment cmt"># Parse the given journal ids if provided</span>
+            <span class="ruby-identifier">journal_ids</span>=[]
+            <span class="ruby-identifier">o</span>[<span class="ruby-identifier">:journals</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">journal</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">journal_ids</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">journal</span>.<span class="ruby-identifier">id</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">invoice_move_line_ids</span>=[]
+            <span class="ruby-identifier">inv_total</span>=<span class="ruby-value">0</span><span class="ruby-value">.0</span>
+            <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">balance_start</span>=<span class="ruby-identifier">inv_total</span>
+
+            <span class="ruby-comment cmt"># # For each invoices, add the right account.move.line and compute total</span>
+            <span class="ruby-identifier">invoices</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">inv</span><span class="ruby-operator">|</span>
+              <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">inv</span>.<span class="ruby-identifier">class</span>  <span class="ruby-operator">==</span> <span class="ruby-constant">AccountInvoice</span>
+                <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;!!! --- HELPER ERROR :import_invoice received a #{inv.class.to_s} instead of AccountInvoice&quot;</span> 
+              <span class="ruby-keyword kw">end</span>
+              <span class="ruby-comment cmt"># Take the move ids from concerned invoice</span>
+              <span class="ruby-comment cmt"># TODO add journal support and (journal_ids.include? move_line.journal_id or journal_ids == []</span>
+              <span class="ruby-comment cmt"># TODO : Debug the problem of undefined method `[]' for nil:NilClass (NoMethodError)</span>
+              <span class="ruby-comment cmt"># pp inv.move_id.line_id</span>
+              <span class="ruby-comment cmt">#       inv.move_id.line_id.each do |move_line|</span>
+              <span class="ruby-comment cmt">#         </span>
+              <span class="ruby-comment cmt">#         # if move_line.reconcile_id == false</span>
+              <span class="ruby-comment cmt">#         if move_line.account_id.reconcile == true</span>
+              <span class="ruby-comment cmt">#           invoice_move_line_ids.push move_line.id</span>
+              <span class="ruby-comment cmt">#         end</span>
+              <span class="ruby-comment cmt">#       end</span>
+              
+              <span class="ruby-identifier">inv</span>.<span class="ruby-identifier">move_id</span>.<span class="ruby-identifier">line_id</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">move_line</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword kw">if</span> (<span class="ruby-keyword kw">not</span> <span class="ruby-identifier">move_line</span>.<span class="ruby-identifier">reconcile_id</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">move_line</span>.<span class="ruby-identifier">account_id</span>.<span class="ruby-identifier">reconcile</span>
+                  <span class="ruby-identifier">invoice_move_line_ids</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">move_line</span>.<span class="ruby-identifier">id</span>
+                  <span class="ruby-identifier">inv_total</span> = <span class="ruby-identifier">inv_total</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">move_line</span>.<span class="ruby-identifier">amount_currency</span>
+                <span class="ruby-keyword kw">end</span>
+              <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-comment cmt"># Save the start and end values</span>
+            <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">balance_end_real</span>=<span class="ruby-identifier">inv_total</span>
+            <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">save</span>
+            <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>  <span class="ruby-operator">==</span> <span class="ruby-constant">AccountBankStatement</span>
+              <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;!!! --- HELPER ERROR :import_invoice received a #{self.class.to_s} instead of AccountBankStatement&quot;</span> 
+            <span class="ruby-keyword kw">end</span>
+
+            <span class="ruby-comment cmt"># Call the wizard</span>
+            <span class="ruby-identifier">wizard</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">old_wizard_step</span>(<span class="ruby-value str">'populate_statement_from_inv'</span>)
+            <span class="ruby-comment cmt"># Set the wizard with given values</span>
+            <span class="ruby-identifier">step_dict</span> = <span class="ruby-identifier">wizard</span>.<span class="ruby-identifier">datas</span>.<span class="ruby-identifier">merge</span>({<span class="ruby-identifier">:date=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">o</span>[<span class="ruby-identifier">:date</span>]})
+            <span class="ruby-identifier">step_dict</span>=<span class="ruby-identifier">step_dict</span>.<span class="ruby-identifier">merge</span>({<span class="ruby-identifier">:journal_id=</span><span class="ruby-operator">&gt;</span> [[[],[],<span class="ruby-identifier">journal_ids</span>]]})
+            <span class="ruby-comment cmt"># Search the invoices and update values</span>
+            <span class="ruby-identifier">res</span>=<span class="ruby-identifier">wizard</span>.<span class="ruby-identifier">go</span>(<span class="ruby-identifier">step_dict</span>)
+            <span class="ruby-identifier">step_dict</span>=<span class="ruby-identifier">res</span>.<span class="ruby-identifier">datas</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">step_dict</span>)
+            <span class="ruby-comment cmt"># Update the step_dict with invoice we want</span>
+            <span class="ruby-identifier">step_dict</span>=<span class="ruby-identifier">step_dict</span>.<span class="ruby-identifier">merge</span>({<span class="ruby-identifier">:lines=</span><span class="ruby-operator">&gt;</span> [[[],[],<span class="ruby-identifier">invoice_move_line_ids</span>]]})
+            <span class="ruby-comment cmt"># Ask to populate the statement with given invoice linked account move</span>
+            <span class="ruby-identifier">res</span>=<span class="ruby-identifier">wizard</span>.<span class="ruby-identifier">finish</span>(<span class="ruby-identifier">step_dict</span>)
+            <span class="ruby-comment cmt"># step_dict = step_dict.merge({:writeoff_acc_id =&gt; @journal.default_debit_account_id.id, :writeoff_journal_id=&gt;@journal.id})</span>
+            <span class="ruby-comment cmt"># return res</span>
+          <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

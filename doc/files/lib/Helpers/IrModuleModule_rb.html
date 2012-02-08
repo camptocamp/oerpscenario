@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Fri Mar 26 12:28:24 +0100 2010</td>
+      <td>Tue Feb 07 19:04:34 +0100 2012</td>
     </tr>
     </table>
   </div>
@@ -109,11 +109,12 @@ href="http://www.gnu.org/licenses">www.gnu.org/licenses</a>/&gt;.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000009">install_modules</a>&nbsp;&nbsp;
-      <a href="#M000008">load_demo_data_on_installed_modules</a>&nbsp;&nbsp;
-      <a href="#M000006">run_base_quality_test</a>&nbsp;&nbsp;
-      <a href="#M000007">run_base_quality_test</a>&nbsp;&nbsp;
-      <a href="#M000005">update_needed_modules</a>&nbsp;&nbsp;
+      <a href="#M000014">get_dependencies</a>&nbsp;&nbsp;
+      <a href="#M000015">install_modules</a>&nbsp;&nbsp;
+      <a href="#M000013">load_demo_data_on_installed_modules</a>&nbsp;&nbsp;
+      <a href="#M000012">run_base_quality_test</a>&nbsp;&nbsp;
+      <a href="#M000011">run_base_quality_test</a>&nbsp;&nbsp;
+      <a href="#M000010">update_needed_modules</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -135,20 +136,52 @@ href="http://www.gnu.org/licenses">www.gnu.org/licenses</a>/&gt;.
     <div id="methods">
       <h3 class="section-bar">Public Class methods</h3>
 
-      <div id="method-M000009" class="method-detail">
-        <a name="M000009"></a>
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
 
         <div class="method-heading">
-          <a href="IrModuleModule_rb.src/M000009.html" target="Code" class="method-signature"
-            onclick="popupCode('IrModuleModule_rb.src/M000009.html');return false;">
-          <span class="method-name">install_modules</span><span class="method-args">(modules)</span>
+          <a href="IrModuleModule_rb.src/M000014.html" target="Code" class="method-signature"
+            onclick="popupCode('IrModuleModule_rb.src/M000014.html');return false;">
+          <span class="method-name">get_dependencies</span><span class="method-args">(modules)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Run the upgrade wizard in order to install the requiered modules. Does
-nothing if already installed Input :
+Get recursively the whole list of modules dependencies for a list of
+modules. Do not add the module if it already exists in the input list Input
+:
+</p>
+<pre>
+ - modules : A [] of valid IrModuleModule instances with dependencies_id attribute
+</pre>
+<p>
+Return
+</p>
+<pre>
+ -  [] of dependencies
+</pre>
+<p>
+Usage Example: dependency_modules = <a
+href="IrModuleModule_rb.html#M000014">get_dependencies</a>(modules)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="IrModuleModule_rb.src/M000015.html" target="Code" class="method-signature"
+            onclick="popupCode('IrModuleModule_rb.src/M000015.html');return false;">
+          <span class="method-name">install_modules</span><span class="method-args">(modules, dependencies=false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Run the upgrade wizard in order to install the requiered modules. Upgrade
+installed modules as well. Input :
 </p>
 <pre>
  - modules : A [] of valid IrModuleModule instance
@@ -165,12 +198,12 @@ Usage Example: res = IrModuleModule.install_modules(modules)
         </div>
       </div>
 
-      <div id="method-M000008" class="method-detail">
-        <a name="M000008"></a>
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
 
         <div class="method-heading">
-          <a href="IrModuleModule_rb.src/M000008.html" target="Code" class="method-signature"
-            onclick="popupCode('IrModuleModule_rb.src/M000008.html');return false;">
+          <a href="IrModuleModule_rb.src/M000013.html" target="Code" class="method-signature"
+            onclick="popupCode('IrModuleModule_rb.src/M000013.html');return false;">
           <span class="method-name">load_demo_data_on_installed_modules</span><span class="method-args">()</span>
           </a>
         </div>
@@ -196,12 +229,12 @@ Usage Example: res = IrModuleModule.load_demo_data_on_installed_modules()
         </div>
       </div>
 
-      <div id="method-M000006" class="method-detail">
-        <a name="M000006"></a>
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
 
         <div class="method-heading">
-          <a href="IrModuleModule_rb.src/M000006.html" target="Code" class="method-signature"
-            onclick="popupCode('IrModuleModule_rb.src/M000006.html');return false;">
+          <a href="IrModuleModule_rb.src/M000012.html" target="Code" class="method-signature"
+            onclick="popupCode('IrModuleModule_rb.src/M000012.html');return false;">
           <span class="method-name">run_base_quality_test</span><span class="method-args">(modules)</span>
           </a>
         </div>
@@ -210,12 +243,12 @@ Usage Example: res = IrModuleModule.load_demo_data_on_installed_modules()
         </div>
       </div>
 
-      <div id="method-M000007" class="method-detail">
-        <a name="M000007"></a>
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
 
         <div class="method-heading">
-          <a href="IrModuleModule_rb.src/M000007.html" target="Code" class="method-signature"
-            onclick="popupCode('IrModuleModule_rb.src/M000007.html');return false;">
+          <a href="IrModuleModule_rb.src/M000011.html" target="Code" class="method-signature"
+            onclick="popupCode('IrModuleModule_rb.src/M000011.html');return false;">
           <span class="method-name">run_base_quality_test</span><span class="method-args">(modules)</span>
           </a>
         </div>
@@ -224,12 +257,12 @@ Usage Example: res = IrModuleModule.load_demo_data_on_installed_modules()
         </div>
       </div>
 
-      <div id="method-M000005" class="method-detail">
-        <a name="M000005"></a>
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
 
         <div class="method-heading">
-          <a href="IrModuleModule_rb.src/M000005.html" target="Code" class="method-signature"
-            onclick="popupCode('IrModuleModule_rb.src/M000005.html');return false;">
+          <a href="IrModuleModule_rb.src/M000010.html" target="Code" class="method-signature"
+            onclick="popupCode('IrModuleModule_rb.src/M000010.html');return false;">
           <span class="method-name">update_needed_modules</span><span class="method-args">()</span>
           </a>
         </div>
@@ -248,7 +281,7 @@ Return
  - True
 </pre>
 <p>
-Usage Example: res = IrModuleModule.update_needed_modules()
+Usage Example: res = IrModuleModule.update_needed_modules() Deprecated
 </p>
         </div>
       </div>
