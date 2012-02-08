@@ -21,6 +21,7 @@
 
 
 begin
+  if Object.const_defined?'PurchaseOrder'
     PurchaseOrder.class_eval do
         $utils.log.debug("Extending  #{self.class} #{self.name}")
 
@@ -42,6 +43,7 @@ begin
             
         end
     end
+  end
 rescue Exception => e
     $utils.log.fatal("ERROR : #{e.to_s}")
 end
