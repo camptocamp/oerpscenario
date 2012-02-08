@@ -86,9 +86,6 @@ begin
             #     end
             # end
         end
-    else
-      $utils.log.warn("WARNING : ModuleQualityDetail Helpers can't be initialized !!!")
-
     end
 rescue Exception => e
     $utils.log.fatal("ERROR : #{e.to_s}")
