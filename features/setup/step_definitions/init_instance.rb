@@ -81,27 +81,32 @@ Given /^no account set$/ do
   AccountAccount.find(:all).should be_empty
 end
 
-def install_chart_account(oerp_module, digits)
-    chart = IrModuleModule.find(:first, :domain => [['name','=', oerp_module]], :fields => ['id', 'state'])
-    if chart.state == "installed"
-      config_wizard = WizardMultiChartsAccounts.create(:code_digits => digits)
+def install_account_chart_from_template(account_chart_name, digits)
+    chart = AccountChartTemplate.find(:first, :domain => [['name','=', account_chart_name]], :fields => ['id', 'name', 'account_root_id'])
+    chart.should_not be_nil,
+      "Can't find chart named #{account_chart_name}"
+    if AccountAccount.find(:first, :domain=>[['code', '=', chart.account_root_id.code]])
+      puts "Account chart #{chart.account_root_id.name} allready generated from #{account_chart_name}"
+    else
+      config_wizard = WizardMultiChartsAccounts.create(:code_digits => digits, :chart_template_id => chart.id)
+      require 'ruby-debug'
+      debugger
+      config_wizard.on_change('onchange_chart_template_id', :chart_template_id, 1, chart.id, {})
+      config_wizard.save
+      pp config_wizard.purchase_tax
+      default_p_tax = 
+      config_wizard.purchase_tax
       begin
           config_wizard.execute()
       rescue Exception => e
         # Must catch exception because execute() return None
-        # pp "Chart of account generated ! "
+        pp "Chart of account generated ! "
       end
-    else
-      raise "#{oerp_module} chart module not found"
     end
 end
 
-Given /^I want to generate account chart from module "([^"]*)" with "([^"]*)" digits if no account chart is installed$/ do |oerp_module, digits|
-    install_chart_account(oerp_module, digits.to_i)
-end
-
-Given /^I want to generate account chart from module (.*) with (.*) digits$/ do |oerp_module, digits|
-    install_chart_account(oerp_module, digits) if AccountAccount.find(:all).empty?
+Given /^I want to generate account chart from chart template named "([^"]*)" with "([^"]*)" digits$/ do |chart, digits|
+  install_account_chart_from_template(chart, digits.to_i)
 end
 
 When /^I generate the chart$/ do

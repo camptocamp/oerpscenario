@@ -76,7 +76,7 @@ Feature: Param the new database
   Scenario: Generate account chart 
     Given I have the module account installed 
     And no account set
-    And I want to generate account chart from module l10n_ch
+    And I want to generate account chart from chart template named "Plan comptable STERCHI" with "0" digits
     When I generate the chart
     Then accounts should be available
 
