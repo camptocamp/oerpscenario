@@ -61,13 +61,4 @@ at_exit do
     rescue Exception => e
       $utils.log.debug("DEBUG : Some tags does not create tmp dir")
     end
-    
-    #for dhl import
-    begin
-      `rm -rf /tmp/dhl_filestore/ready/*`
-      `rm -rf /tmp/dhl_filestore/done/*`
-      `rm -rf /tmp/dhl_filestore/in_error/*`
-    rescue Exception => e
-      $utils.log.debug("DEBUG : we do nothing it is in /tmp/")
-    end
 end
