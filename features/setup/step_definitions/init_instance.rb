@@ -89,17 +89,13 @@ def install_account_chart_from_template(account_chart_name, digits)
       puts "Account chart #{chart.account_root_id.name} allready generated from #{account_chart_name}"
     else
       config_wizard = WizardMultiChartsAccounts.create(:code_digits => digits, :chart_template_id => chart.id)
-      require 'ruby-debug'
-      debugger
       config_wizard.on_change('onchange_chart_template_id', :chart_template_id, 1, chart.id, {})
       config_wizard.save
-      pp config_wizard.purchase_tax
-      default_p_tax = 
-      config_wizard.purchase_tax
       begin
           config_wizard.execute()
       rescue Exception => e
         # Must catch exception because execute() return None
+        pp e
         pp "Chart of account generated ! "
       end
     end
