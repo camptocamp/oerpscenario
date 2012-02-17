@@ -90,7 +90,9 @@ Given /^we create a warehouse called "([^"]*)" with the following attribute$/ do
   end
   table.hashes.each do |data|
       loc_id = StockLocation.find(:first, :domain=>[['name','=',eval("#{data['value']}")]], :fields => ['id'])
-      eval("@warehouse.#{data['key']}=#{loc_id.id}")
+      loc_id.should_not be_nil, 
+        "location #{data['value']} not found"
+      eval("@warehouse.#{data['key']} = #{loc_id.id}")
   end
   @warehouse.name = warehouse
   @warehouse.save
@@ -125,3 +127,17 @@ Given /^the "([^"]*)" of the partner named "([^"]*)" is "([^"]*)"$/ do |stock_pr
   @partner.save
 end
 
+Given /^I renamed (warehouse|location) named "([^"]*)" to "([^"]*)"$/ do |type, old_name, new_name|
+  if type == 'warehouse':
+    obj = StockWarehouse
+  else
+    obj = StockLocation
+  end
+  entitiy = obj.find(:first, :domain=>[['name', '=', old_name]], :fields=>['id', 'name'])
+  if entitiy
+    entitiy.name = new_name
+    entitiy.save
+  else
+    puts "No #{type} named #{old_name} found"
+  end
+end

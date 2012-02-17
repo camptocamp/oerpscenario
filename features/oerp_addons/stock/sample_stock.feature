@@ -10,6 +10,14 @@
 
 # Branch      # Module       # Processes     # System
 Feature: Ensure base data are present for base config and tests as well
+
+    Scenario: Renaming warehouse 
+    Given I renamed warehouse named "Your Company" to "real name"
+    
+    Scenario: Renaming location 
+    Given I renamed location named "Your Company" to "real"
+
+
     Scenario: Create Suppliers, Resellers and Customers
     Given there is a partner named "Fournisseur Device" with the following attribute
         | key | value |

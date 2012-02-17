@@ -129,7 +129,7 @@ When /^I create monthly periods on the fiscal year with reference "([^"]*)"$/ do
   fy = AccountFiscalyear.find(fy_ref)
   fy.should_not be_nil
   if fy.period_ids.empty?
-    AccountFiscalyear.create_period([fy.id]).should be_true
+    AccountFiscalyear.create_period([fy.id], {}, 1).should be_true
   end
 end
 Given /^I set the tax with code ([^"]*) to price include$/ do |vat_code|
