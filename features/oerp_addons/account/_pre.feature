@@ -18,12 +18,12 @@ Feature: Initialize the settings for account module
   Scenario: Initialize Account settings
       Given the company currency is set to EUR 
       And the following currency rate settings are:
-      |code|rate|name|
-      |EUR|1.000|01-01-2009|
-      |CHF|1.644|01-01-2009|
-      |CHF|1.500|09-09-2009|
-      |CHF|0.6547|10-10-2009|
-      |USD|1.3785|01-01-2009|
+      | code | rate   | name       |
+      | EUR  | 1.000  | 01-01-2009 |
+      | CHF  | 1.644  | 01-01-2009 |
+      | CHF  | 1.500  | 09-09-2009 |
+      | CHF  | 0.6547 | 10-10-2009 |
+      | USD  | 1.3785 | 01-01-2009 |
 
       Given a cash journal in USD exists
       And a cash journal in CHF exists

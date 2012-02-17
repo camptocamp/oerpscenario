@@ -24,11 +24,11 @@ Feature: Test the invoicing process
 	And the residual amount = 1000,0
     Then I should have a linked account move with 2 lines and a posted status
     And the associated debit account move line should use the account choosen in the invoice line and have the following values:
-    |debit|amount_currency|currency|status|
-    |608.27|1000.0|CHF|valid|
+    | debit  | amount_currency | currency | status |
+    | 608.27 | 1000.0          | CHF      | valid  |
     And the associated credit account move line should use the account of the partner account payable property and have the following values:
-    |credit|amount_currency|currency|status|
-    |608.27|-1000.0|CHF|valid|
+    | credit | amount_currency | currency | status |
+    | 608.27 | -1000.0         | CHF      | valid  |
 
   # Scenario specific tags
   ##############################################################################
@@ -106,4 +106,3 @@ Feature: Test the invoicing process
   Scenario: Create a collection of invoice for testing purpose
       Given I have recorded recorded on the 10 sept 2009 a list of 10000 an invoice (in_invoice) of 1000.0 EUR
       
-

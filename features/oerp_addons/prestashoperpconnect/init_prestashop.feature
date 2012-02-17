@@ -17,13 +17,13 @@ Feature: Create the Prestashop Instance and proceed to the initial synchronisati
   Scenario: install modules
     Given I update the module list
     Given I install the required modules with dependencies:
-     | name |
-     |prestashoperpconnect|
-     |product_m2mcategories|
-     |delivery|
-     |base_sale_multichannels|
-     |product_images_olbs|
-     |product_links|
+     | name                    |
+     | prestashoperpconnect    |
+     | product_m2mcategories   |
+     | delivery                |
+     | base_sale_multichannels |
+     | product_images_olbs     |
+     | product_links           |
     Then my modules should have been installed and models reloaded
     Given I give all groups right access to admin user
 
@@ -32,12 +32,12 @@ Feature: Create the Prestashop Instance and proceed to the initial synchronisati
   Scenario: Create the Prestashop instance
     Given an instance with absolute id "base_external.prestashop" should exist
     Then I set the following attributes on the instance:
-      |key|value|
-      |name| 'Prestashop' |
-      |import_links_with_product| true | 
-      |location| 'http://localhost:8080' |
-      |apiusername| 'openerp_connect' |
-      |apipass| 'openerp_connect' |
+      | key                       | value                   |
+      | name                      | 'Prestashop'            |
+      | import_links_with_product | true                    |
+      | location                  | 'http://localhost:8080' |
+      | apiusername               | 'openerp_connect'       |
+      | apipass                   | 'openerp_connect'       |
       
     And I set the instance referential type on "prestashop1.5"
     And I set the instance default language on "en_US"

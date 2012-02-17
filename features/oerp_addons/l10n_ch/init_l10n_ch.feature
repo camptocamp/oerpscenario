@@ -16,9 +16,9 @@ Feature: Param the new database
   Scenario: install modules
     Given I update the module list
     Given I install the required modules with dependencies:
-     | name |
-     |l10n_ch|
-     |l10n_ch_bank|
+     | name         |
+     | l10n_ch      |
+     | l10n_ch_bank |
     Then my modules should have been installed and models reloaded
     Given I give all groups right access to admin user
     Given the main company has a default_income_account set to "3000"
@@ -41,20 +41,20 @@ Feature: Param the new database
   Scenario: Configure banque account:
     Given there is a bank account named "XX-XXXX-X" linked to partner "Customer_name"
      And I set the bank account with the following data :
-         | key | value |
-         | city | 'Bern' |
-         | owner_name | 'Customer_name' |     
-         | name | '01-78367-7'|
-         | zip | '3012' |
-         | country_id | 41 |
-         | state | 'bvrpost' |
-         | street | 'Stadtbachstrasse 40' |
-         | acc_number | 'XX' |
-         | bvr_number | 'XX' |
-         | post_number | 'XX' |
-         | bvr_adherent_num | '0000000'|
-         | printbank | false |
-         | printaccount | true |
+         | key              | value                 |
+         | city             | 'Bern'                |
+         | owner_name       | 'Customer_name'       |
+         | name             | '01-78367-7'          |
+         | zip              | '3012'                |
+         | country_id       | 41                    |
+         | state            | 'bvrpost'             |
+         | street           | 'Stadtbachstrasse 40' |
+         | acc_number       | 'XX'                  |
+         | bvr_number       | 'XX'                  |
+         | post_number      | 'XX'                  |
+         | bvr_adherent_num | '0000000'             |
+         | printbank        | false                 |
+         | printaccount     | true                  |
     And the bank account is linked to bank "Postfinance"
 
   Scenario: Configure main partner and company

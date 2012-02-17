@@ -18,47 +18,47 @@ Feature: Param the new database
   Scenario: install modules
     Given I update the module list
     Given I install the required modules with dependencies:
-     | name |
-     |account|
-     |account_cancel|
-     |account_payment|
-     |account_voucher|
-     |analytic|
-     |base|
-     |base_action_rule|
-     |base_calendar|
-     |base_iban|
-     |base_setup|
-     |base_tools|
-     |board|
-     |crm|
-     |decimal_precision|
-     |fetchmail|
-     |l10n_ch|
-     |mail|
-     |process|
-     |procurement|
-     |product|
-     |purchase|
-     |report_webkit|
-     |resource|
-     |sale|
-     |sale_crm|
-     |stock|
-     |web|
-     |web_calendar|
-     |web_dashboard|
-     |web_diagram|
-     |web_gantt|
-     |web_graph|
-     |web_kanban|
-     |web_mobile|
-     |web_tests|
+     | name              |
+     | account           |
+     | account_cancel    |
+     | account_payment   |
+     | account_voucher   |
+     | analytic          |
+     | base              |
+     | base_action_rule  |
+     | base_calendar     |
+     | base_iban         |
+     | base_setup        |
+     | base_tools        |
+     | board             |
+     | crm               |
+     | decimal_precision |
+     | fetchmail         |
+     | l10n_ch           |
+     | mail              |
+     | process           |
+     | procurement       |
+     | product           |
+     | purchase          |
+     | report_webkit     |
+     | resource          |
+     | sale              |
+     | sale_crm          |
+     | stock             |
+     | web               |
+     | web_calendar      |
+     | web_dashboard     |
+     | web_diagram       |
+     | web_gantt         |
+     | web_graph         |
+     | web_kanban        |
+     | web_mobile        |
+     | web_tests         |
     Then my modules should have been installed and models reloaded
     Given I give all groups right access to admin user
   Scenario: install lang
    Given I install the following language :
-      | lang |
+      | lang  |
       | fr_FR |
       | de_DE |
    Then the language should be available
@@ -85,30 +85,30 @@ Feature: Param the new database
       Given the company has the "logo.png" logo
       And his rml header set to "rml_header.txt"
       Then I set the company with the following data :
-         | key | value |
-         | name | 'Customer_name' |
-         | bvr_background | true |
+         | key            | value           |
+         | name           | 'Customer_name' |
+         | bvr_background | true            |
          
      
       And the main company currency is "CHF" with a rate of "1.00"
      
       And I set the company main partner with the following data :
-         | key | value |
-         | first_name | 'Customer_name' |
-         | lang | 'fr_FR' |     
-         | website | 'www.website.com'|
-         | customer | false |
+         | key        | value             |
+         | first_name | 'Customer_name'   |
+         | lang       | 'fr_FR'           |
+         | website    | 'www.website.com' |
+         | customer   | false             |
      
       And I set the main address with the following data :
-         | key | value |
-         | zip | '3012' |
-         | fax | '+358 9 8561 9901' |  
-         | phone | '+41 79 210 98 55' |  
-         | email | 'nfo-switzerland@website.com'  | 
-         |street | 'Stadtbachstrasse 40' |
-         |street2 | '' |
-         | city | 'Bern' |
-         | name | 'Customer_name System AG' |
+         | key     | value                         |
+         | zip     | '3012'                        |
+         | fax     | '+358 9 8561 9901'            |
+         | phone   | '+41 79 210 98 55'            |
+         | email   | 'nfo-switzerland@website.com' |
+         | street  | 'Stadtbachstrasse 40'         |
+         | street2 | ''                            |
+         | city    | 'Bern'                        |
+         | name    | 'Customer_name System AG'     |
      
      And I update the address country code to CH
      Given the main company has a default_income_account set to "3000"
@@ -123,20 +123,20 @@ Feature: Param the new database
   Scenario: Configure banque account:
     Given there is a bank account named "XX-XXXX-X" linked to partner "Customer_name"
      And I set the bank account with the following data :
-         | key | value |
-         | city | 'Bern' |
-         | owner_name | 'Customer_name' |     
-         | name | '01-78367-7'|
-         | zip | '3012' |
-         | country_id | 41 |
-         | state | 'bvrpost' |
-         | street | 'Stadtbachstrasse 40' |
-         | acc_number | 'XX' |
-         | bvr_number | 'XX' |
-         | post_number | 'XX' |
-         | bvr_adherent_num | '0000000'|
-         | printbank | false |
-         | printaccount | true |
+         | key              | value                 |
+         | city             | 'Bern'                |
+         | owner_name       | 'Customer_name'       |
+         | name             | '01-78367-7'          |
+         | zip              | '3012'                |
+         | country_id       | 41                    |
+         | state            | 'bvrpost'             |
+         | street           | 'Stadtbachstrasse 40' |
+         | acc_number       | 'XX'                  |
+         | bvr_number       | 'XX'                  |
+         | post_number      | 'XX'                  |
+         | bvr_adherent_num | '0000000'             |
+         | printbank        | false                 |
+         | printaccount     | true                  |
          
     And the bank account is linked to bank "Postfinance"
 

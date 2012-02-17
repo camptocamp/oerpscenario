@@ -15,8 +15,7 @@ Feature: Initialize the settings for purchase module
   Scenario: install modules
     Given I update the module list
     Given I install the required modules with dependencies:
-     | name |
-     |purchase|
+     | name     |
+     | purchase |
     Then my modules should have been installed and models reloaded
     Given I give all groups right access to admin user
-

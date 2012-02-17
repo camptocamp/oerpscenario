@@ -16,12 +16,12 @@ Feature: Param the new database
   Scenario: install modules
     Given I update the module list
     Given I install the required modules with dependencies:
-     | name |
-     |account|
-     |account_cancel|
-     |account_payment|
-     |account_voucher|
-     |analytic|
+     | name            |
+     | account         |
+     | account_cancel  |
+     | account_payment |
+     | account_voucher |
+     | analytic        |
     Then my modules should have been installed and models reloaded
     Given I give all groups right access to admin user
 # TODO Complete with generic values
@@ -43,20 +43,20 @@ Feature: Param the new database
   Scenario: Configure banque account:
     Given there is a bank account named "XX-XXXX-X" linked to partner "Customer_name"
      And I set the bank account with the following data :
-         | key | value |
-         | city | 'Bern' |
-         | owner_name | 'Customer_name' |     
-         | name | '01-78367-7'|
-         | zip | '3012' |
-         | country_id | 41 |
-         | state | 'bvrpost' |
-         | street | 'Stadtbachstrasse 40' |
-         | acc_number | 'XX' |
-         | bvr_number | 'XX' |
-         | post_number | 'XX' |
-         | bvr_adherent_num | '0000000'|
-         | printbank | false |
-         | printaccount | true |
+         | key              | value                 |
+         | city             | 'Bern'                |
+         | owner_name       | 'Customer_name'       |
+         | name             | '01-78367-7'          |
+         | zip              | '3012'                |
+         | country_id       | 41                    |
+         | state            | 'bvrpost'             |
+         | street           | 'Stadtbachstrasse 40' |
+         | acc_number       | 'XX'                  |
+         | bvr_number       | 'XX'                  |
+         | post_number      | 'XX'                  |
+         | bvr_adherent_num | '0000000'             |
+         | printbank        | false                 |
+         | printaccount     | true                  |
    # And the bank account is linked to bank "Postfinance"
 
    Scenario: Create new account
@@ -71,4 +71,3 @@ Feature: Param the new database
        And on all journal entries can be canceled
 
         
-

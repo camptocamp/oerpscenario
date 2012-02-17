@@ -16,18 +16,18 @@ Feature: Param the new database
   Scenario: install modules
     Given I update the module list
     Given I install the required modules with dependencies:
-     | name |
-     |base|
-     |decimal_precision|
-     |web|
-     |web_calendar|
-     |web_dashboard|
-     |web_diagram|
-     |web_gantt|
-     |web_graph|
-     |web_kanban|
-     |web_mobile|
-     |web_tests|
+     | name              |
+     | base              |
+     | decimal_precision |
+     | web               |
+     | web_calendar      |
+     | web_dashboard     |
+     | web_diagram       |
+     | web_gantt         |
+     | web_graph         |
+     | web_kanban        |
+     | web_mobile        |
+     | web_tests         |
     Then my modules should have been installed and models reloaded
     Given I give all groups right access to admin user
     And we select admin user
@@ -35,7 +35,7 @@ Feature: Param the new database
 
   Scenario: install lang
    Given I install the following language :
-      | lang |
+      | lang  |
       | fr_FR |
       | de_DE |
    Then the language should be available
@@ -55,26 +55,26 @@ Feature: Param the new database
     Given the company has the "logo.png" logo
     And his rml header set to "rml_header.txt"
     Then I set the company with the following data :
-       | key | value |
+       | key  | value           |
        | name | 'Customer_name' |
     
     And I set the company main partner with the following data :
-       | key | value |
-       | first_name | 'Customer_name' |
-       | lang | 'fr_FR' |     
-       | website | 'www.website.com'|
-       | customer | false |
+       | key        | value             |
+       | first_name | 'Customer_name'   |
+       | lang       | 'fr_FR'           |
+       | website    | 'www.website.com' |
+       | customer   | false             |
     
     And I set the main address with the following data :
-       | key | value |
-       | zip | '3012' |
-       | fax | '+358 9 8561 9901' |  
-       | phone | '+41 79 210 98 55' |  
-       | email | 'nfo-switzerland@website.com'  | 
-       |street | 'Stadtbachstrasse 40' |
-       |street2 | '' |
-       | city | 'Bern' |
-       | name | 'Customer_name System AG' |
+       | key     | value                         |
+       | zip     | '3012'                        |
+       | fax     | '+358 9 8561 9901'            |
+       | phone   | '+41 79 210 98 55'            |
+       | email   | 'nfo-switzerland@website.com' |
+       | street  | 'Stadtbachstrasse 40'         |
+       | street2 | ''                            |
+       | city    | 'Bern'                        |
+       | name    | 'Customer_name System AG'     |
     
 
 
