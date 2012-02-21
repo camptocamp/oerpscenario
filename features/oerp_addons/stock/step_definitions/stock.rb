@@ -128,7 +128,7 @@ Given /^the "([^"]*)" of the partner named "([^"]*)" is "([^"]*)"$/ do |stock_pr
 end
 
 Given /^I renamed (warehouse|location) named "([^"]*)" to "([^"]*)"$/ do |type, old_name, new_name|
-  if type == 'warehouse':
+  if type == 'warehouse'
     obj = StockWarehouse
   else
     obj = StockLocation

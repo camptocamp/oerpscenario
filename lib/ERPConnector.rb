@@ -20,12 +20,16 @@
 ##############################################################################
 $VERBOSE = nil
 require 'rubygems'
+require 'core_ext/basic_object'
 require 'ooor'
 require 'parseconfig'
 require 'pp'
 require 'cucumber'
 require 'xmlrpc/client'
 require 'logger'
+require 'utils/memoizer_utils'
+require 'utils/ooor_utils'
+require 'utils/sequel_utils'
 
 XMLRPC::Config::ENABLE_NIL_PARSER = true if not XMLRPC::Config::ENABLE_NIL_PARSER
 XMLRPC::Config::ENABLE_NIL_CREATE = true if not XMLRPC::Config::ENABLE_NIL_CREATE
@@ -34,98 +38,48 @@ XMLRPC::Config::ENABLE_BIGINT = true if not XMLRPC::Config::ENABLE_BIGINT
 
 # This class map OpenERP XMLRPC logins and common stuff
 class ScenarioUtils
-    attr_accessor :ooor, :config, :log
-    def initialize
-        @uid = false
-        @ooor = false
-        # Genereic dict to store tested object
-        @memorizer = {}
-        @config = {}
-        @log = Logger.new(STDOUT)
-        
-    end
-    
-    # Define a memorizer to store object handled by the test
-    # Useful to store an invoice in a var which name = invoice name !
-    def set_var (name,value)
-      @memorizer[name]=value
-    end  
-    def get_var (name)
-      return @memorizer[name]
-    end
-    def clean_var (name)
-      @memorizer.delete(name)
-    end
-    def clean_all_var
-      @memorizer=[]
-    end
-    
-    #read the base.conf file to set all the parameter to begin an xml rpc session with openerp
-    #you can override any of the parameters
-    def setConnexionfromConf(para={}, *args)
-        conf_path = 'base.conf' 
-        if ENV['CONF']
-            conf_path = ENV['CONF']
-        end
-        my_config = ParseConfig.new(conf_path)
-        @config[:port] = my_config.get_value('port')
-        @config[:user] =  my_config.get_value('user')
-        @config[:dbname] =  my_config.get_value('database')
-        @config[:pwd] =  my_config.get_value('password') 
-        @config[:host] =  my_config.get_value('host')
-        @config[:log_level] = Logger::ERROR
-        @config.merge(para)
+  include MemoizerUtils
+  include OoorUtils
+  include SequelUtils
 
-        if @ooor
-            self.login({:user=>@config[:user], :pwd=>@config[:pwd]})
-        else
-            begin
-                 @ooor=Ooor.new(
-                                {
-                                :url => "http://#{ @config[:host]}:#{@config[:port]}/xmlrpc",
-                                :database => @config[:dbname], 
-                                :username =>  @config[:user], 
-                                :password => @config[:pwd], 
-                                :log_level=>  @config[:log_level]
-                                }
-                            )
-                 Dir["lib/Helpers/*.rb"].each {|file| require file }
-            #We catch RuntimeError because ooor doesn't give the error name. we deduce in that case that the database doesn't exist and we have to create it.
-            rescue RuntimeError
-                $utils.log.warn("WARNING : No database, try to create it")
-                self.createdatabasefromConf(@config)
-            end
-        end
-    end 
-    
-    def ready?
-        if not @ooor
-          return false
-        else
-          return @ooor.all_loaded_models.size >0
-        end
-    end
-    
-    def login(para={}, *args)
-        my_config = ParseConfig.new('base.conf')
-        log_para = {}
-        log_para[:user]  = my_config.get_value('user')
-        log_para[:pwd] =  my_config.get_value('password')
-        log_para.merge(para)
-        return  @ooor.global_login(log_para[:user], log_para[:pwd])
-    end
-    
-    def createdatabasefromConf(config)
-        $utils.log.info("INFO : Create a new database")
-        @config = config
-        begin
-            @ooor = Ooor.new(:url => "http://#{ @config[:host]}:#{@config[:port]}/xmlrpc")
-            @ooor.create(@config[:pwd], @config[:dbname], false, 'en_US', @config[:pwd])
-            $utils.ooor.load_models(false)
-            Dir["lib/Helpers/*.rb"].each {|file| load file }
-        rescue RuntimeError
-            $utils.log.fatal("ERROR : Cannot create database")
-            raise 'Cannot create database'
-        end
-    end
+  attr_accessor :log
+
+  def initialize
+    @uid = false
+    @log = Logger.new(STDOUT)
+  end
+
+  def config
+    @config ||= get_config
+  end
+
+  def config_path
+    ENV['CONF'] || 'base.conf'
+  end
+  private :config_path
+
+  def get_config
+    my_config = ParseConfig.new(config_path)
+
+    {# ooor options
+     :port => my_config.get_value('port'),
+     :user => my_config.get_value('user'),
+     :dbname => my_config.get_value('database'),
+     :pwd => my_config.get_value('password'),
+     :host => my_config.get_value('host'),
+     :log_level => Logger::ERROR,
+
+     # sequel options
+     :db_host => my_config.get_value('db_host'),
+     :db_port => my_config.get_value('db_port'),
+     :db_user => my_config.get_value('db_user'),
+     :db_password => my_config.get_value('db_password')}
+  end
+  private :get_config
+
+  def load_helpers
+    Dir["lib/Helpers/*.rb"].each { |file| require file }
+  end
+  private :load_helpers
+
 end

@@ -34,20 +34,20 @@ unless $utils
 end
 begin
     unless $utils.ready?
-        $utils.log.info("INFO : Attempt to connect")
-        $utils.setConnexionfromConf()
+        $utils.log.info("Attempt to connect")
+        $utils.create_ooor_connexion
     end
 rescue Exception => e
-    $utils.log.warn("WARNING : #{e.to_s}")
-    $utils.log.info("INFO : Force reconnect")
-    $utils.setConnexionfromConf()
+    $utils.log.warn("#{e.to_s}")
+    $utils.log.info("Force reconnect")
+    $utils.create_ooor_connexion
 end
 
 
 
 # Use a temporary directory
 # we to do use mktempdir else in case of crash we will have a lot a temp folder
-$tmpdir = File.join(Dir.tmpdir(), 'oerps_folder')
+$tmpdir = File.join(Dir.tmpdir, 'oerps_folder')
 begin
   Dir.mkdir($tmpdir)
 rescue Exception=>e

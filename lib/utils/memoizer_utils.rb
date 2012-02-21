@@ -1,7 +1,7 @@
 ###############################################################################
 #
 #    OERPScenario, OpenERP Functional Tests
-#    Author Nicolas Bessi & Joel Grand-Guillaume 2009 
+#    Author Nicolas Bessi 2009
 #    Copyright Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,14 +18,30 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-port = 8069
-user = admin
-database = accounting
-password = admin
-host = localhost
- 
-db_user = my_db_user
-db_password = my_db_password
-db_host = localhost
-db_port = 5432
 
+module MemoizerUtils
+
+  # Define a memorizer to store object handled by the test
+  # Useful to store an invoice in a var which name = invoice name !
+  def set_var(name, value)
+    memoizer[name] = value
+  end
+
+  def get_var(name)
+    memoizer[name]
+  end
+
+  def clean_var(name)
+    memoizer.delete(name)
+  end
+
+  def clean_all_var
+    memoizer.clear
+  end
+
+  def memoizer
+    @memoizer ||= {}
+  end
+  private :memoizer
+
+end
