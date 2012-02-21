@@ -21,10 +21,16 @@
 ##############################################################################
 $VERBOSE = nil
 $LOAD_PATH << '.'
-require 'lib/ERPConnector'
 require 'rubygems'
 require 'ooor'
 require 'tmpdir'
+begin
+  require 'sequel'
+  SEQUEL_ACTIVE = true
+rescue LoadError => err
+  SEQUEL_ACTIVE = false
+end
+require 'lib/ERPConnector'
 
 # Create a login if not initialized in feathures
 unless $utils
@@ -35,12 +41,12 @@ end
 begin
     unless $utils.ready?
         $utils.log.info("Attempt to connect")
-        $utils.create_ooor_connexion
+        $utils.create_ooor_connection
     end
 rescue Exception => e
     $utils.log.warn("#{e.to_s}")
     $utils.log.info("Force reconnect")
-    $utils.create_ooor_connexion
+    $utils.create_ooor_connection
 end
 
 
