@@ -106,8 +106,8 @@ class OoorProxy < BasicObject
     def create_database(params)
       log.info("Creating a new database")
       begin
-        @ooor = Ooor.new(:url => xmlrpc_url(ooor_config))
-        @ooor.create(ooor_config[:pwd], ooor_config[:dbname], false, 'en_US', ooor_config[:pwd])
+        @ooor = Ooor.new(:url => xmlrpc_url(params))
+        @ooor.create(ooor_config[:pwd], params[:dbname], false, 'en_US', params[:pwd])
         @ooor.load_models(false)
       rescue RuntimeError
         log.fatal("ERROR : Cannot create database")
