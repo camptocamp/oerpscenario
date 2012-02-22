@@ -104,22 +104,6 @@ When /^I set its currency to "([^"]*)"$/ do |currency_name|
   @item.currency_id = get_currency(currency_name).id
 end
 
-When /^I save it$/ do
-  @item.save
-end
-
-Then /^I should have a "([^"]*)" with reference "([^"]*)"$/ do |model, reference|
-  @item = Kernel.const_get(model).find(reference)
-  @item.should_not be_nil
-end
-
-When /^I update it with values:$/ do |table|
-  # table is a | name | 'UK Public Pricelist' |
-  table.hashes.each do |data|
-    @item.send "#{data['key'].to_sym}=", eval(data['value'])
-  end
-end
-
 When /^I set its price list to reference "([^"]*)"$/ do |price_list_ref|
   pl = ProductPricelist.find(price_list_ref)
   pl.should_not be_nil
