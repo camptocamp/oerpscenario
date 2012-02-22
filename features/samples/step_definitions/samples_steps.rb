@@ -82,12 +82,12 @@ end
 
 # ##############################################################################
 Given /^I call back the memorizer to retieve the (\w+) variable$/ do |var_name|
-  @Memorized_partner=$utils.get_var(var_name.strip).should be_true
+  @memorized_partner=$utils.get_var(var_name.strip).should be_true
 end
 
 # ##############################################################################
 Then /^I should have the same partner as contained into @partner variable$/ do
-  @Memorized_partner.id.should == @partner.id
+  @memorized_partner.id.should == @partner.id
 end
 
 # ##############################################################################
@@ -180,3 +180,19 @@ Then /^the partner name to be "([^\"]*)"$/ do |name|
   @partner.reload
   @partner.name.should == name
 end
+
+# ##############################################################################
+# Scenario: Sample to use sequel to establish a direct db connection
+# ##############################################################################
+Given /^I open a database connection with sequel$/ do
+  @db = $utils.sequel
+end
+When /^I select all the users$/ do
+  @users = @db[:res_users].select.all
+end
+Then /^I must have selected users$/ do
+  @users.should_not be_empty
+end
+
+
+

@@ -51,3 +51,8 @@ Feature: Make some scenario samples
         And I expect the partner debit to be 0
         When I change the partner name to "Demour sa"
         Then the partner name to be "Demour sa"
+
+    Scenario: Sample to use sequel to establish a direct db connection
+      Given I open a database connection with sequel
+      When I select all the users
+      Then I must have selected users
