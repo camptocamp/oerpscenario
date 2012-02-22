@@ -56,3 +56,9 @@ Feature: Make some scenario samples
       Given I open a database connection with sequel
       When I select all the users
       Then I must have selected users
+      
+    Scenario: Sample to execute raw SQL
+      Given I execute following sql:
+      """
+      update res_partner set customer = True where not customer and not supplier;
+      """
