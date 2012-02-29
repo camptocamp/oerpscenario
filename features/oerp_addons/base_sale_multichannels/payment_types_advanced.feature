@@ -14,9 +14,9 @@ Feature: In order to finely configure workflows based on payment type used on Ma
   and ensure that the steps of the workflow is automatic or not for each action.
 
   Scenario: I define a global configuration for all the workflows and some common patterns.
-    Each one of them is applied to a list of payment codes.
-    I set a reference on each list of codes in order to be able to modify them later, as instance
-    to extract one payment code in a different or new pattern.
+  Each one of them is applied to a list of payment codes.
+  I set a reference on each list of codes in order to be able to modify them later, as instance
+  to extract one payment code in a different or new pattern.
 
   @magento_payment_types
   Scenario: Configure trusted payment mode
@@ -38,6 +38,9 @@ Feature: In order to finely configure workflows based on payment type used on Ma
       | days_before_order_cancel     | 30         |
       | validate_payment             | false      |
       | is_auto_reconcile            | false      |
+      | payment_term_id              | false      |
+      | journal_id                   | false      |
+
     When I define a "DIRECT TOTAL" payment type pattern with values:
       | key               | value |
       | validate_order    | true  |
@@ -46,6 +49,7 @@ Feature: In order to finely configure workflows based on payment type used on Ma
       | validate_invoice  | true  |
       | validate_payment  | true  |
       | is_auto_reconcile | true  |
+
     And I define a "CHEQUE" payment type pattern with values:
       | key               | value |
       | validate_order    | false |
@@ -54,6 +58,7 @@ Feature: In order to finely configure workflows based on payment type used on Ma
       | validate_invoice  | true  |
       | validate_payment  | true  |
       | is_auto_reconcile | true  |
+
     And I define a "FULL MANUAL" payment type pattern with values:
       | key               | value |
       | validate_order    | false |
