@@ -1,4 +1,5 @@
 Given /^I want to configure the following (TRUSTED|UNTRUSTED) Magento payment mode to (AUTOMATICALLY|MANUALLY) handle related sale orders workflow:$/ do |trust, mode, table|
+  %w(UNTRUSTED TRUSTED).should include(trust), "trust should be TRUSTED or UNTRUSTED"
   if trust == 'UNTRUSTED'
     xml_id = 'magentoerpconnect.payment_type1'
     order_policy = 'manual'
@@ -31,7 +32,7 @@ Given /^I want to configure the following (TRUSTED|UNTRUSTED) Magento payment mo
 end
 
 Given /^I "([^"]*)" partial picking on (TRUSTED|UNTRUSTED) payment mode$/ do |action, trust|
-  ['allow', 'forbid'].should include(action),
+  %w(allow forbid).should include(action),
     "action shoud be allow or forbid"
   if action == 'allow'
     picking_policy = 'direct'

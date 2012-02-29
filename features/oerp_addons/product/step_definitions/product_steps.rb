@@ -78,15 +78,6 @@ Given /^the supplier of the product is "([^"]*)"$/ do |arg1|
   @supplier.save
 end
 
-Given /^I need a "([^"]*)" with reference "([^"]*)"$/ do |model, reference|
-  oerp_model = Kernel.const_get(model)
-  @item = oerp_model.find(reference)
-  unless @item
-    @item = oerp_model.new
-    @item.ir_model_data_id = ['scenario', reference]
-  end
-end
-
 def get_currency(currency_name)
   curr = ResCurrency.find(:first, :domain => [['name', '=', currency_name]])
   curr.should_not be_nil
