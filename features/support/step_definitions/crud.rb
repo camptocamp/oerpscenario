@@ -1,4 +1,4 @@
-Given /^I need a "([^"]*)" with reference "([^"]*)"$/ do |model, reference|
+Given /^I need an? "([^"]*)" with reference "([^"]*)"$/ do |model, reference|
   oerp_model = get_model_object(model)
   @item = oerp_model.find(reference)
   unless @item
