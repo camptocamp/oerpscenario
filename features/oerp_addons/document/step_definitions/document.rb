@@ -20,6 +20,11 @@ Given /^all directories are linked to the "([^"]*)"$/ do |storage_name|
   storage.should be_true
   directories.each do |dir|
     dir.storage_id = storage.id
+    # openerp crashes if these columns are in the update
+    @item.attributes.delete('write_date')
+    @item.associations.delete('write_uid')
+    @item.associations.delete('create_uid')
+    @item.attributes.delete('create_date')
     dir.save()
   end
 end
@@ -46,7 +51,7 @@ Given /^the invoice report has no reload from attachement$/ do
  act.save
 end
 
-Given /^the transacion folder should be empty$/ do
+Given /^the transaction folder should be empty$/ do
     begin
         `rm -rf #{@path}`
     rescue Exception => e
@@ -70,9 +75,10 @@ end
 
 
 
-Then /^I should have something in the transacion folder$/ do
+Then /^I should have something in the transaction folder$/ do
   Dir.new(@path).entries.empty?.should be_false
 end
+
 Given /^I rename the storage media "([^"]*)" to "([^"]*)"$/ do |storage_name, new_storage_name|
   @item = DocumentStorage.find(:first, :domain => [['name', '=', storage_name]])
   if @item

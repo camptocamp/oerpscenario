@@ -17,8 +17,4 @@ Feature: Ensure that document configuration is correct
     Given I have a media storage called "root filestore" of type "filestore" owned by "Administrator"
     # Note: The default path is always ROOT_PATH + filestore + DB_NAME, so this already
     # compliant with qa, test, prod,...
-
     And all directories are linked to the "root filestore"
-    # I don't know why, but I get this error here:
-    # ProgrammingError: multiple assignments to same column "write_uid"
-    # I commit that anyway to have it at least in the scenario
