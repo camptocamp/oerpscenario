@@ -30,7 +30,7 @@ module OoorUtils
   end
 
   def ready?
-    ooor && ooor.all_loaded_models.size > 0
+    !ooor.nil? && ooor.all_loaded_models.size == 0
   end
 
   def login(params={})

@@ -78,7 +78,7 @@ class ScenarioUtils
   private :get_config
 
   def load_helpers
-    Dir["lib/Helpers/*.rb"].each { |file| require file }
+    Dir["./Helpers/*.rb"].each { |file| require file }
   end
   private :load_helpers
 

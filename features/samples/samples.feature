@@ -56,7 +56,28 @@ Feature: Make some scenario samples
       Given I open a database connection with sequel
       When I select all the users
       Then I must have selected users
-      
+
+  Scenario: Sample to create a random resource with the generic sentences
+    Given I need a "res.partner" with reference "partner_rincewind"
+    When I update it with values:
+      | key  | value       |
+      | name | 'Rincewind' |
+      | ref  | 'test'      |
+      | lang | 'en_US'     |
+    Then I save it
+
+    Given I need a "res.partner.address" with reference "partner_address_rincewind"
+    When I update it with values:
+      | key        | value                                   |
+      | partner_id | ref('res.partner', 'partner_rincewind') |
+      | function   | 'Wizzard'                               |
+      | country_id | name('res.country', 'United Kingdom')   |
+      | type       | 'default'                               |
+      | street     | 'Unseen University'                     |
+      | city       | 'Ankh-Morpork'                          |
+      | active     | true                                    |
+    Then I save it
+
     Scenario: Sample to execute raw SQL
       Given I execute following sql:
       """

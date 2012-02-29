@@ -20,7 +20,9 @@
 #
 ##############################################################################
 $VERBOSE = nil
-$LOAD_PATH << '.'
+
+$LOAD_PATH.unshift(File.dirname(__FILE__) + '/../../lib')
+
 require 'rubygems'
 require 'ooor'
 require 'tmpdir'
@@ -30,7 +32,8 @@ begin
 rescue LoadError => err
   SEQUEL_ACTIVE = false
 end
-require 'lib/ERPConnector'
+
+require 'ERPConnector'
 
 # Create a login if not initialized in feathures
 unless $utils
