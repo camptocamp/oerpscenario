@@ -13,3 +13,9 @@ When /^I update it with values:$/ do |table|
     @item.send "#{data['key'].to_sym}=", eval(data['value'])
   end
 end
+
+When /^I delete the "([^"]*)" with reference "([^"]*)"$/ do |model, reference|
+  item = Kernel.const_get(model).find(reference)
+  item.should_not be_nil
+  item.destroy
+end

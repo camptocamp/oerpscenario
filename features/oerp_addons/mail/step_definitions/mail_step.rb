@@ -1,45 +1,14 @@
-Given /^I have no outgoing mail conf named "([^"]*)"$/ do |name|
-  IrMail_server.find(:all, :domain=>[[:name, '=', name]]).each do | conf|
-    conf.destroy
-  end
+
+When /^I set the incoming mail new record on model "([^"]*)"$/ do  |model_name|
+  model = IrModel.find(:first, :domain => [['name', '=', model_name]])
+  model.should_not be_nil
+  @item.object_id = model.id
 end
 
-Given /^I have a outgoing mailconf  named "([^"]*)"$/ do |name|
-  out_conf = IrMail_server.find(:first, :domain=>[[:name, '=', name]])
-  unless out_conf
-    out_conf = IrMail_server.new
-  end
-  out_conf.name = name
-  out_conf.save
-  out_conf.should_not be_nil
-end
-
-Given /^I have a incoming mail conf named "([^"]*)"$/ do |name|
-  @in_conf = FetchmailServer.find(:first, :domain=>[[:name, '=', name]])
-  unless @in_conf
-     @in_conf = FetchmailServer.new
-  end
-  @in_conf.name = name
-end
-
-Given /^the incoming conf generate "([^"]*)"$/ do |obj|
-  @in_conf.should_not be_nil
-  obj = IrModel.find(:first, :domain=>[[:name, '=', obj]])
-  obj.should_not be_nil
-  @in_conf.object_id = obj.id
-
-end
-
-When /^I save the incoming conf it should be ok$/ do
-  @in_conf.should_not be_nil
-  @in_conf.save
-  @in_conf.should_not be_nil
-  
-end
-
-Given /^I activate the incoming conf$/ do
-  @in_conf.should_not be_nil
-  @in_conf.call('button_confirm_login', [@in_conf.id])
-  @in_conf = FetchmailServer.find(@in_conf.id)
-  @in_conf.state.should eq('done')
+When /^I test and confirm the fetchmail server with reference "([^"]*)"$/ do |mail_server_ref|
+  server = FetchmailServer.find(mail_server_ref)
+  server.should_not be_nil
+  FetchmailServer.button_confirm_login([server.id])
+  server = FetchmailServer.find(mail_server_ref)
+  server.state.should eq('done'), "The mail server should be in state 'done' but it is not. The mail setup is probably wrong."
 end
