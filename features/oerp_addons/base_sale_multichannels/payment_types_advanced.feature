@@ -18,6 +18,22 @@ Feature: In order to finely configure workflows based on payment type used on Ma
   I set a reference on each list of codes in order to be able to modify them later, as instance
   to extract one payment code in a different or new pattern.
 
+  @payment_types_journal
+  Scenario: Create the accounting journals used to create the payments for orders imported from Magento
+    Given I need an "account.journal" with reference "paypal_journal"
+    When I update it with values:
+      | key                       | value                                                            |
+      | name                      | 'Paypal'                                                         |
+      | code                      | 'PAYP'                                                           |
+      | type                      | 'bank'                                                           |
+      | company_id                | ref('res.company', 'base.main_company')                          |
+      # dummy accounts
+      | default_debit_account_id  | name('account.account', 'Comptes de liaison des établissements') |
+      | default_credit_account_id | name('account.account', 'Comptes de liaison des établissements') |
+      | allow_date                | true                                                             |
+      | view_id                   | 1                                                                |
+    Then I save it
+
   @magento_payment_types
   Scenario: Configure trusted payment mode
     Given I delete the "BaseSalePaymentType" with reference "magentoerpconnect.payment_type1"
@@ -50,6 +66,16 @@ Feature: In order to finely configure workflows based on payment type used on Ma
       | validate_payment  | true  |
       | is_auto_reconcile | true  |
 
+    When I define a "DIRECT PAYPAL" payment type pattern with values:
+      | key               | value                                    |
+      | validate_order    | true                                     |
+      | check_if_paid     | true                                     |
+      | create_invoice    | true                                     |
+      | validate_invoice  | true                                     |
+      | validate_payment  | true                                     |
+      | is_auto_reconcile | true                                     |
+      | journal_id        | ref('account.journal', 'paypal_journal') |
+
     And I define a "CHEQUE" payment type pattern with values:
       | key               | value |
       | validate_order    | false |
@@ -69,10 +95,13 @@ Feature: In order to finely configure workflows based on payment type used on Ma
       | is_auto_reconcile | false |
 
     Then I want to use the following payment codes with the "DIRECT TOTAL" payment type with reference "direct_total":
+      | Payment Code  |
+      | atos_standard |
+      | free          |
+
+    Then I want to use the following payment codes with the "DIRECT PAYPAL" payment type with reference "direct_paypal":
       | Payment Code    |
-      | atos_standard   |
       | paypal_standard |
-      | free            |
 
     And I want to use the following payment codes with the "CHEQUE" payment type with reference "cheq_vir":
       | Payment Code |
