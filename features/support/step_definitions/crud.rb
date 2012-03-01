@@ -26,7 +26,7 @@ module FieldDSL
   extend self
 
   def parse(ooor_model, field_name, value)
-    if /ref\(? *['"]([a-zA-Z_]+)['"] *\)?/.match(value)
+    if /ref\(? *['"]([a-zA-Z_.]+)['"] *\)?/.match(value)
       # ref('xmlid') or ref 'xmlid'
       relation_name = relation(ooor_model, field_name)
       parsed_value = mref(relation_name, $1)
