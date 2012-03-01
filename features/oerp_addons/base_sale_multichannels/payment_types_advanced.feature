@@ -26,10 +26,10 @@ Feature: In order to finely configure workflows based on payment type used on Ma
       | name                      | 'Paypal'                                                         |
       | code                      | 'PAYP'                                                           |
       | type                      | 'bank'                                                           |
-      | company_id                | ref('res.company', 'base.main_company')                          |
+      | company_id                | ref('base.main_company')                          |
       # dummy accounts
-      | default_debit_account_id  | name('account.account', 'Comptes de liaison des établissements') |
-      | default_credit_account_id | name('account.account', 'Comptes de liaison des établissements') |
+      | default_debit_account_id  | name('Comptes de liaison des établissements') |
+      | default_credit_account_id | name('Comptes de liaison des établissements') |
       | allow_date                | true                                                             |
       | view_id                   | 1                                                                |
     Then I save it
@@ -74,7 +74,7 @@ Feature: In order to finely configure workflows based on payment type used on Ma
       | validate_invoice  | true                                     |
       | validate_payment  | true                                     |
       | is_auto_reconcile | true                                     |
-      | journal_id        | ref('account.journal', 'paypal_journal') |
+      | journal_id        | ref('paypal_journal') |
 
     And I define a "CHEQUE" payment type pattern with values:
       | key               | value |
