@@ -77,8 +77,13 @@ class ScenarioUtils
   end
   private :get_config
 
+  def helpers_absolute_path
+    File.expand_path("Helpers/*", File.dirname(__FILE__))
+  end
+  private :helpers_absolute_path
+
   def load_helpers
-    Dir["./Helpers/*.rb"].each { |file| require file }
+    Dir[helpers_absolute_path].each { |file| load file }
   end
   private :load_helpers
 
