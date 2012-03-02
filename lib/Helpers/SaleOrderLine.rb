@@ -23,45 +23,50 @@ require 'rubygems'
 require 'ooor'
 
 begin
+  if Object.const_defined? 'SaleOrderLine'
     SaleOrderLine.class_eval do
-        $utils.log.debug("Extending  #{self.class} #{self.name}")
-        def self.get_sale_order_line(options,so)
-            unless options
-                options = [{:price_unit=>50}]
-            end
-            sale_order_lines = []
-            options.each do |sale_order_line|
-                @product=ProductProduct.get_valid_product(sale_order_line[:product])
-                line = SaleOrderLine.new(:product_id => @product.id)
-                line.on_change('product_id_change', :product_id, @product.id, so.pricelist_id, @product.id, qty=0,
-            uom=false, qty_uos=0, uos=false, name='',partner_id=so.partner_id.id, lang=false, update_tax=true, date_order=so.date_order, packaging=false, fiscal_position=false, flag=false)
-                line.price_unit = sale_order_line[:price_unit].to_f
-                line.product_uom = 1
-                sale_order_lines << line
-            end
-            return sale_order_lines
+      $utils.log.debug("Extending  #{self.class} #{self.name}")
+
+      def self.get_sale_order_line(options, so)
+        unless options
+          options = [{:price_unit => 50}]
         end
+        sale_order_lines = []
+        options.each do |sale_order_line|
+          @product=ProductProduct.get_valid_product(sale_order_line[:product])
+          line = SaleOrderLine.new(:product_id => @product.id)
+          line.on_change('product_id_change', :product_id, @product.id, so.pricelist_id, @product.id, qty=0,
+                         uom=false, qty_uos=0, uos=false, name='', partner_id=so.partner_id.id, lang=false, update_tax=true, date_order=so.date_order, packaging=false, fiscal_position=false, flag=false)
+          line.price_unit = sale_order_line[:price_unit].to_f
+          line.product_uom = 1
+          sale_order_lines << line
+        end
+        return sale_order_lines
+      end
 
 
 ################################ CUSTOM HELPER ####################################################
-        #Custom helper for the module delivery_delays
-        def self.delivery_delays_get_sale_order_line(options,so)
-            sale_order_lines = []
-            onchange_order_lines = []
-            options.each do |sale_order_line|
-                @product=ProductProduct.get_valid_product(sale_order_line[:product])
-                line = SaleOrderLine.new(:product_id => @product.id)
-                line.on_change('product_id_change', :product_id, @product.id, so.pricelist_id, @product.id, qty=sale_order_line[:product_uom_qty] || 1.0,
-            uom=false, qty_uos=0, uos=false, name='',partner_id=so.partner_id.id, lang=false, update_tax=true, date_order=so.date_order, packaging=false, fiscal_position=false, flag=false, context=false, order_lines=onchange_order_lines)
-                line.price_unit = sale_order_line[:price_unit].to_f
-                line.product_uom = 1
-                line.product_uom_qty = sale_order_line[:product_uom_qty] || 1.0
-                onchange_order_lines <<[0,0,{:product_id => @product.id, :name => @product.name, :product_uom_qty => sale_order_line[:product_uom_qty] || 1.0}]
-                sale_order_lines << line
-            end
-            return sale_order_lines
+#Custom helper for the module delivery_delays
+      def self.delivery_delays_get_sale_order_line(options, so)
+        sale_order_lines = []
+        onchange_order_lines = []
+        options.each do |sale_order_line|
+          @product=ProductProduct.get_valid_product(sale_order_line[:product])
+          line = SaleOrderLine.new(:product_id => @product.id)
+          line.on_change('product_id_change', :product_id, @product.id, so.pricelist_id, @product.id, qty=sale_order_line[:product_uom_qty] || 1.0,
+                         uom=false, qty_uos=0, uos=false, name='', partner_id=so.partner_id.id, lang=false, update_tax=true, date_order=so.date_order, packaging=false, fiscal_position=false, flag=false, context=false, order_lines=onchange_order_lines)
+          line.price_unit = sale_order_line[:price_unit].to_f
+          line.product_uom = 1
+          line.product_uom_qty = sale_order_line[:product_uom_qty] || 1.0
+          onchange_order_lines <<[0, 0, {:product_id => @product.id, :name => @product.name, :product_uom_qty => sale_order_line[:product_uom_qty] || 1.0}]
+          sale_order_lines << line
         end
+        return sale_order_lines
+      end
     end
+  else
+    $utils.log.debug("SaleOrderLine helper not initialized")
+  end
 rescue Exception => e
-    $utils.log.fatal("ERROR : #{e.to_s}")
+  $utils.log.fatal("ERROR : #{e.to_s}")
 end

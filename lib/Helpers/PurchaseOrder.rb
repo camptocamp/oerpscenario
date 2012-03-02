@@ -21,31 +21,33 @@
 
 
 begin
-  if Object.const_defined?'PurchaseOrder'
+  if Object.const_defined? 'PurchaseOrder'
     PurchaseOrder.class_eval do
-        $utils.log.debug("Extending  #{self.class} #{self.name}")
+      $utils.log.debug("Extending  #{self.class} #{self.name}")
 
-        def confirm
-            wkf_action('purchase_confirm')
-        end
+      def confirm
+        wkf_action('purchase_confirm')
+      end
 
-        def self.to_ary
-            return [name]
-        end
+      def self.to_ary
+        return [name]
+      end
 
-        def self.get_last_purchase_order_with_product(product_id)
-            line = PurchaseOrderLine.find(:first, :domain=>[['product_id', '=', product_id]])
-            
-            if line
-                return line.order_id
-            end
-            return false
-            
+      def self.get_last_purchase_order_with_product(product_id)
+        line = PurchaseOrderLine.find(:first, :domain => [['product_id', '=', product_id]])
+
+        if line
+          return line.order_id
         end
+        return false
+
+      end
     end
+  else
+    $utils.log.debug("PurchaseOrder helper not initialized")
   end
 rescue Exception => e
-    $utils.log.fatal("ERROR : #{e.to_s}")
+  $utils.log.fatal("ERROR : #{e.to_s}")
 end
 
 

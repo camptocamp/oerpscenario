@@ -23,7 +23,7 @@ require 'rubygems'
 require 'ooor'
 
 begin
-  if Object.const_defined?'IrModuleModule'
+  if Object.const_defined? 'IrModuleModule'
     ###############################################################################
     # Add useful methode on ir.module,module handling
     ##############################################################################
@@ -61,6 +61,7 @@ begin
           raise "!!! --- HELPER ERROR : update_needed_modules was unable to upgrade needed modules.."
         end
       end
+
       ##########################################################################
       # Run the quality check wizard on all requested modules
       # Input :
@@ -69,38 +70,38 @@ begin
       #  - [] of Created ModuleQualityCheck instances
       # Usage Example:
       # result = IrModuleModule.run_base_quality_test(modules)
-      if Object.const_defined?'ModuleQualityCheck'
-          def self.run_base_quality_test(modules)
-            # Take the id of already recorded tests result
-            # because we are unable to retrieve their ids from wizard
-            # cause it has only one step 'init'
-            already_stored_test_ids=[]
-            ModuleQualityCheck.find(:all).each do |stored_result| 
-              already_stored_test_ids.push stored_result.id
-            end
-            modules.each do |m|
-              # Call the wizard on module
-              wizard = m.old_wizard_step('create_quality_check_wiz')
-            end
-
-            # Find all recorded tests, and substract old created ones
-            all_stored_test_ids=[]
-            ModuleQualityCheck.find(:all).each do |stored_result| 
-              all_stored_test_ids.push stored_result.id
-            end
-            new_ids=all_stored_test_ids-already_stored_test_ids
-            res= ModuleQualityCheck.find(new_ids)
-
-            if res
-              return res
-            else
-              raise "!!! --- HELPER ERROR : run_base_quality_test was unable to upgrade needed modules.."
-            end
+      if Object.const_defined? 'ModuleQualityCheck'
+        def self.run_base_quality_test(modules)
+          # Take the id of already recorded tests result
+          # because we are unable to retrieve their ids from wizard
+          # cause it has only one step 'init'
+          already_stored_test_ids=[]
+          ModuleQualityCheck.find(:all).each do |stored_result|
+            already_stored_test_ids.push stored_result.id
           end
-      else 
-           def self.run_base_quality_test(modules)
-               $utils.log.info("INFO : Function not available")
-           end
+          modules.each do |m|
+            # Call the wizard on module
+            wizard = m.old_wizard_step('create_quality_check_wiz')
+          end
+
+          # Find all recorded tests, and substract old created ones
+          all_stored_test_ids=[]
+          ModuleQualityCheck.find(:all).each do |stored_result|
+            all_stored_test_ids.push stored_result.id
+          end
+          new_ids=all_stored_test_ids-already_stored_test_ids
+          res= ModuleQualityCheck.find(new_ids)
+
+          if res
+            return res
+          else
+            raise "!!! --- HELPER ERROR : run_base_quality_test was unable to upgrade needed modules.."
+          end
+        end
+      else
+        def self.run_base_quality_test(modules)
+          $utils.log.info("INFO : Function not available")
+        end
       end
 
       ##########################################################################
@@ -115,7 +116,7 @@ begin
       # res = IrModuleModule.load_demo_data_on_installed_modules()
       def self.load_demo_data_on_installed_modules()
         # find installed modules
-        modules=IrModuleModule.find(:all,:domain=>[['state','=','installed']], :fields => ['id, demo, update', 'state'])    
+        modules=IrModuleModule.find(:all, :domain => [['state', '=', 'installed']], :fields => ['id, demo, update', 'state'])
         update=false
         res=true
         modules.each do |m|
@@ -128,10 +129,10 @@ begin
         end
         # Find module base and set it to to upgrade if there is some module to update
         if update
-          m=IrModuleModule.find(:first,:domain=>[['name','=','base']], :fields => ['id, demo, update, state'])
+          m=IrModuleModule.find(:first, :domain => [['name', '=', 'base']], :fields => ['id, demo, update, state'])
           m.state='to upgrade'
           m.save
-          m = nil 
+          m = nil
         end
 
         if res
@@ -155,7 +156,7 @@ begin
       # dependency_modules = get_dependencies(modules)
       def self.get_dependencies(modules)
         dependency_modules = []
-        modules.select {|m| m.dependencies_id}.each do |mod|
+        modules.select { |m| m.dependencies_id }.each do |mod|
           mod.dependencies_id.each do |dep|
             dep_module = IrModuleModule.find(:first,
                                              :domain => [['name', '=', dep.name]],
@@ -163,7 +164,7 @@ begin
             if dep_module.nil?
               raise RuntimeError, "#{dep.name} not found"
             end
-            dependency_modules << dep_module unless modules.map {|m| m.id}.include? dep_module.id
+            dependency_modules << dep_module unless modules.map { |m| m.id }.include? dep_module.id
           end
         end
         dependency_modules.concat(get_dependencies(dependency_modules)) if dependency_modules.count > 0
@@ -219,8 +220,8 @@ begin
 
     end
 
-  else 
-     $utils.log.warn("WARNING : IrModuleModule Helpers can't be initialized !!!")
+  else
+    $utils.log.debug("IrModuleModule helper not initialized")
   end
 rescue Exception => e
   $utils.log.fatal("ERROR : #{e.to_s}")

@@ -23,18 +23,19 @@ require 'rubygems'
 require 'ooor'
 
 begin
-    Ooor.class_eval do 
-        $utils.log.debug("Extending  #{self.class} #{self.name}")
-        # Add useful methode on ooor handling
+  Ooor.class_eval do
+    $utils.log.debug("Extending  #{self.class} #{self.name}")
+    # Add useful methode on ooor handling
 
-        def self.to_ary
-            return [name]
-        end
-        def self.new_database(options)
-            @ooor = self.new(:url => options[:url])
-            @ooor.create(options[:db_password], options[:database], options[:demo_data], options[:lang], options[:password]) 
-        end
+    def self.to_ary
+      return [name]
     end
+
+    def self.new_database(options)
+      @ooor = self.new(:url => options[:url])
+      @ooor.create(options[:db_password], options[:database], options[:demo_data], options[:lang], options[:password])
+    end
+  end
 rescue Exception => e
-    $utils.log.fatal("ERROR : #{e.to_s}")
+  $utils.log.fatal("ERROR : #{e.to_s}")
 end

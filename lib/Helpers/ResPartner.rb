@@ -23,67 +23,67 @@ require 'rubygems'
 require 'ooor'
 
 begin
-    # Add useful methode on partner handling
-    ##############################################################################
-    ResPartner.class_eval do 
-        $utils.log.debug("Extending  #{self.class} #{self.name}")
-        ##########################################################################
-        # Return the first encountred supplier with at least one address
-        # Input :
-        #  - 
-        # Return
-        #  - The found ResPartner as a instance of the class¨
-        # Usage Example:
-        # part = ResPartner.get_supplier({:name => 'toto', :type=>'supplier'})
-        def self.get_valid_partner(options={})
-            unless options
-                options={}
-            end
-            domain = options[:domain] || []
-            field = []
-            if options.is_a? Integer
-                partner = ResPartner.find(options)
-                $utils.set_var('current_partner',partner)
-                return partner
-            end
-            if not options[:new]
-                domain = options[:domain] || []
-                domain << ['address' , '!=', false]
-                field = []
-                options.each do |key, value|                
-                    if key == :name
-                        domain.push ['name', 'ilike', value]
-                    elsif key == :type
-                        domain.push [value ,'=', true]      
-                    elsif key == :fields
-                        field = value
-                    elsif key != :domain && key != :same
-                        domain.push [key.to_s,'=', value]
-                    end
-                end
-                partner = ResPartner.find(:first, :domain => domain, :fields => field)
-                if partner
-                    $utils.set_var('current_partner',partner)
-                    return partner
-                end
-            end
-            createoptions = {:name => options[:name] || 'partnerscenario', :user_id => $utils.ooor.config[:user_id]}
-            options.each do |key, value|
-                if key == :type
-                    createoptions[value] = true
-                elsif key != :domain && key!= :fields
-                    createoptions[key] = value                 
-                end
-            end
-            address = ResPartnerAddress.new(:name => createoptions[:name] || 'partnerscenario', :email => createoptions[:email])
-            address.save
-            createoptions[:address] = [[6,0,[address.id]]]
-            partner = ResPartner.new(createoptions)
-            partner.save
-            $utils.set_var('current_partner',partner)
-            return partner
+  # Add useful methode on partner handling
+  ##############################################################################
+  ResPartner.class_eval do
+    $utils.log.debug("Extending  #{self.class} #{self.name}")
+    ##########################################################################
+    # Return the first encountred supplier with at least one address
+    # Input :
+    #  -
+    # Return
+    #  - The found ResPartner as a instance of the class¨
+    # Usage Example:
+    # part = ResPartner.get_supplier({:name => 'toto', :type=>'supplier'})
+    def self.get_valid_partner(options={})
+      unless options
+        options={}
+      end
+      domain = options[:domain] || []
+      field = []
+      if options.is_a? Integer
+        partner = ResPartner.find(options)
+        $utils.set_var('current_partner', partner)
+        return partner
+      end
+      if not options[:new]
+        domain = options[:domain] || []
+        domain << ['address', '!=', false]
+        field = []
+        options.each do |key, value|
+          if key == :name
+            domain.push ['name', 'ilike', value]
+          elsif key == :type
+            domain.push [value, '=', true]
+          elsif key == :fields
+            field = value
+          elsif key != :domain && key != :same
+            domain.push [key.to_s, '=', value]
+          end
         end
+        partner = ResPartner.find(:first, :domain => domain, :fields => field)
+        if partner
+          $utils.set_var('current_partner', partner)
+          return partner
+        end
+      end
+      createoptions = {:name => options[:name] || 'partnerscenario', :user_id => $utils.ooor.config[:user_id]}
+      options.each do |key, value|
+        if key == :type
+          createoptions[value] = true
+        elsif key != :domain && key!= :fields
+          createoptions[key] = value
+        end
+      end
+      address = ResPartnerAddress.new(:name => createoptions[:name] || 'partnerscenario', :email => createoptions[:email])
+      address.save
+      createoptions[:address] = [[6, 0, [address.id]]]
+      partner = ResPartner.new(createoptions)
+      partner.save
+      $utils.set_var('current_partner', partner)
+      return partner
     end
+  end
 rescue Exception => e
-    $utils.log.fatal("ERROR : #{e.to_s}")
+  $utils.log.fatal("ERROR : #{e.to_s}")
 end

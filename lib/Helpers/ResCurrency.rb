@@ -23,21 +23,26 @@ require 'rubygems'
 require 'ooor'
 
 begin
-    ResCurrency.class_eval do 
-        $utils.log.debug("Extending  #{self.class} #{self.name}")
-        def self.get_valid_currency(options={})
-            if options != nil && options[:currency_name]
-                currency = ResCurrency.find(:first, :domain=>[['name','=',options[:currency_name]]],:fields => ['id'])
-            else
-                user_id = $utils.ooor.config[:user_id]
-                user = ResUsers.find(:id => user_id)
-                currency = ResCurrency.find(user.company_id.currency_id.id, :fields => ['id'])
-            end
-            return currency
+  if Object.const_defined? 'ResCurrency'
+    ResCurrency.class_eval do
+      $utils.log.debug("Extending  #{self.class} #{self.name}")
+
+      def self.get_valid_currency(options={})
+        if options != nil && options[:currency_name]
+          currency = ResCurrency.find(:first, :domain => [['name', '=', options[:currency_name]]], :fields => ['id'])
+        else
+          user_id = $utils.ooor.config[:user_id]
+          user = ResUsers.find(:id => user_id)
+          currency = ResCurrency.find(user.company_id.currency_id.id, :fields => ['id'])
         end
+        currency
+      end
     end
+  else
+    $utils.log.debug("ResCurrency helper not initialized")
+  end
 rescue Exception => e
-    $utils.log.fatal("ERROR : #{e.to_s}")
+  $utils.log.fatal("ERROR : #{e.to_s}")
 end
 
 

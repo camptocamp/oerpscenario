@@ -23,95 +23,99 @@ require 'rubygems'
 require 'ooor'
 
 begin
-    # Add useful methode on partner handling
-    ##############################################################################
-    ResUsers.class_eval do 
-        $utils.log.debug("Extending  #{self.class} #{self.name}")
+  # Add useful methode on partner handling
+  ##############################################################################
+  if Object.const_defined? 'ResUsers'
+    ResUsers.class_eval do
+      $utils.log.debug("Extending  #{self.class} #{self.name}")
 
-        def self.add_role(user_login, group_array)
-            if group_array != :all
-                if group_array.empty?
-                    announce("no group given")
-                    return
-                end
-            end
-
-            user = ResUsers.find(:first, :domain => [['login','=',user_login]])
-            unless user
-                raise 'no user found'
-            end
-            roles = user.roles_id
-            if roles 
-                roles.map! {|x| x=x.id}
-            else
-                roles = []
-            end
-            if group_array == :all
-                ResRoles.find(:all, :fields => ['id'] ).each do |g|
-                    roles.push g.id
-                end
-            else
-                group_array.each do |role|
-                    g = ResRoles.find(:first, :domain=> [['name','=', role ]], :fields => ['id'])
-                    if g 
-                        roles.push g.id
-                    end
-                end
-            end
-            user.roles_id = roles
-            user.save
-
+      def self.add_role(user_login, group_array)
+        if group_array != :all
+          if group_array.empty?
+            announce("no group given")
+            return
+          end
         end
 
-        def self.add_group(user_login, group_array, ignor_non_exsiting=false)
-            if group_array.empty?
-                announce("no group given")
-            else
-                user = ResUsers.find(:first, :domain => [['login','=',user_login]])
-                unless user
-                    if ignor_non_exsiting 
-                        announce("no user found for #{user_login}") 
-                        return
-                    else 
-                        raise "no user found for #{user_login}" 
-                    end
-                end
-                groups = user.groups_id
-                if groups 
-                    groups.map! {|x| x=x.id}
-                else
-                    groups = []
-                end
-                group_array.each do |group|
-                    g = ResGroups.find(:first, :domain=> [['name','=', group ]])
-                    if g 
-                        groups.push g.id
-                    end
-                end
-                user.groups_id = groups
-                user.save
-            end
+        user = ResUsers.find(:first, :domain => [['login', '=', user_login]])
+        unless user
+          raise 'no user found'
         end
+        roles = user.roles_id
+        if roles
+          roles.map! { |x| x=x.id }
+        else
+          roles = []
+        end
+        if group_array == :all
+          ResRoles.find(:all, :fields => ['id']).each do |g|
+            roles.push g.id
+          end
+        else
+          group_array.each do |role|
+            g = ResRoles.find(:first, :domain => [['name', '=', role]], :fields => ['id'])
+            if g
+              roles.push g.id
+            end
+          end
+        end
+        user.roles_id = roles
+        user.save
+
+      end
+
+      def self.add_group(user_login, group_array, ignor_non_exsiting=false)
+        if group_array.empty?
+          announce("no group given")
+        else
+          user = ResUsers.find(:first, :domain => [['login', '=', user_login]])
+          unless user
+            if ignor_non_exsiting
+              announce("no user found for #{user_login}")
+              return
+            else
+              raise "no user found for #{user_login}"
+            end
+          end
+          groups = user.groups_id
+          if groups
+            groups.map! { |x| x=x.id }
+          else
+            groups = []
+          end
+          group_array.each do |group|
+            g = ResGroups.find(:first, :domain => [['name', '=', group]])
+            if g
+              groups.push g.id
+            end
+          end
+          user.groups_id = groups
+          user.save
+        end
+      end
 
 
-        def self.add_access(acessname, group, o_model, perm = {})
-            if IrModelAccess.find(:first, :domain=>[['name','=',acessname]],:fields=>['id'])
-                $log.error "Access #{acessname} allready exist".red
-            else
-                permissions = {:read => false, :write =>false, :create => false, :unlink => false}.merge(perm)
-                model_id = IrModel.find(:first, :domain=> [['model','=',o_model]],:fields=>['id']).id
-                group_id = ResGroups.find(:first, :domain=>[['name','=',group]],:fields=>['id']).id
-                access = IrModelAccess.new
-                access.name = acessname
-                access.model_id = model_id
-                access.group_id = group_id
-                permissions.each do |key, val|
-                    eval("access.perm_#{key.to_s} = #{val}")
-                end
-                access.create()
-            end
+      def self.add_access(acessname, group, o_model, perm = {})
+        if IrModelAccess.find(:first, :domain => [['name', '=', acessname]], :fields => ['id'])
+          $log.error "Access #{acessname} allready exist".red
+        else
+          permissions = {:read => false, :write => false, :create => false, :unlink => false}.merge(perm)
+          model_id = IrModel.find(:first, :domain => [['model', '=', o_model]], :fields => ['id']).id
+          group_id = ResGroups.find(:first, :domain => [['name', '=', group]], :fields => ['id']).id
+          access = IrModelAccess.new
+          access.name = acessname
+          access.model_id = model_id
+          access.group_id = group_id
+          permissions.each do |key, val|
+            eval("access.perm_#{key.to_s} = #{val}")
+          end
+          access.create()
         end
+      end
     end
+  else
+    $utils.log.debug("ResUsers helper not initialized")
+  end
 rescue Exception => e
-    $utils.log.fatal("ERROR : #{e.to_s}")
+  $utils.log.fatal("ERROR : #{e.to_s}")
 end

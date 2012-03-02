@@ -24,10 +24,10 @@ require 'pp'
 
 
 begin
-      if Object.const_defined?'AccountInvoice'
-  # Add useful methode on invoice handling
-  ##############################################################################
-  AccountInvoice.class_eval do 
+  if Object.const_defined? 'AccountInvoice'
+    # Add useful methode on invoice handling
+    ##############################################################################
+    AccountInvoice.class_eval do
       $utils.log.debug("Extending  #{self.class} #{self.name}")
       ##########################################################################
       # Create an invoice with given informations
@@ -49,74 +49,74 @@ begin
       # puts part.id
       # inv = AccountInvoice.create_cust_invoice_with_currency('my name',part,{currency_code =>'CHF'})
       def self.create_invoice_with_currency(name, partner, options={}, *args)
-          o = {:type=>'out_invoice', :currency_code=>'EUR', :date=>false, :amount=>false, :account=>false}.merge(options)
-           if o[:date]
-                date_invoice = Date.parse(str=o[:date]).to_s
-            else
-                date_invoice = Date.today.to_s
+        o = {:type => 'out_invoice', :currency_code => 'EUR', :date => false, :amount => false, :account => false}.merge(options)
+        if o[:date]
+          date_invoice = Date.parse(str=o[:date]).to_s
+        else
+          date_invoice = Date.today.to_s
+        end
+        toreturn = AccountInvoice.new()
+
+        unless partner.class == ResPartner
+          raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a #{partner.class.to_s} instead of ResPartner"
+        end
+        # Set partner
+        #We use this syntax for optimisation reason, helper have to be fast
+        if  ResPartnerAddress.find(:first, :domain => [['partner_id', '=', partner.id]], :fields => ['id'])
+          toreturn.partner_id = partner.id
+        else
+          raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a partner : #{partner.name} without adresses"
+        end
+        toreturn.on_change('onchange_partner_id', :partner_id, partner.id, o[:type], partner.id, date_invoice, false, false)
+        toreturn.save
+        # Set name & date
+        toreturn.name = name
+        toreturn.date_invoice=date_invoice
+
+        # Set type of invoice
+        toreturn.type = o[:type]
+        curr = ResCurrency.find(:first, :domain => [['name', '=', o[:currency_code]]], :fields => ['id'])
+        # Set currency
+        if curr
+          toreturn.currency_id = curr.id
+        else
+          raise "!!! --- HELPER ERROR :#{o[:currency_code]} currency not found"
+        end
+
+        # Set amount and line if asked for
+        toreturn.save
+
+        if o[:amount]
+
+          if ['in_invoice', 'in_refund'].include? o[:type]
+            toreturn.check_total = o[:amount]
+          end
+          if o[:account]
+            unless account.class == AccountAccount
+              raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a #{o[:account].class.to_s} instead of AccountAccount"
             end
-          toreturn = AccountInvoice.new()
-          
-          unless partner.class  == ResPartner
-              raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a #{partner.class.to_s} instead of ResPartner" 
-          end 
-          # Set partner 
-          #We use this syntax for optimisation reason, helper have to be fast
-          if  ResPartnerAddress.find(:first, :domain=>[['partner_id','=',partner.id]], :fields => ['id'])
-              toreturn.partner_id = partner.id
+            account_id = o[:account].id
           else
-              raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a partner : #{partner.name} without adresses"
+            # If no account, take on of type 'other' and a non-reconciliable account
+            account_id = AccountAccount.find(:first, :domain => [['type', '=', 'other'], ['reconcile', '=', false]], :fields => ['id']).id
+            # Create a line = amount for the created invoice
+            line=AccountInvoiceLine.new(
+                :account_id => account_id,
+                :quantity => 1,
+                :name => name+' line',
+                :price_unit => o[:amount],
+                :invoice_id => toreturn.id
+            )
+            line.create
           end
-          toreturn.on_change('onchange_partner_id', :partner_id ,partner.id, o[:type], partner.id, date_invoice, false, false)
-          toreturn.save
-          # Set name & date
-          toreturn.name = name
-          toreturn.date_invoice=date_invoice
-
-          # Set type of invoice
-          toreturn.type = o[:type]
-          curr =  ResCurrency.find(:first, :domain=>[['name','=',o[:currency_code]]], :fields => ['id'])
-          # Set currency
-          if curr
-              toreturn.currency_id = curr.id
-          else
-              raise "!!! --- HELPER ERROR :#{o[:currency_code]} currency not found"
-          end
-          
-          # Set amount and line if asked for
-          toreturn.save
-
-          if o[:amount]
-              
-              if ['in_invoice', 'in_refund'].include? o[:type]
-                  toreturn.check_total = o[:amount]
-              end
-              if o[:account]
-                  unless account.class  == AccountAccount
-                      raise "!!! --- HELPER ERROR :create_cust_invoice_with_currency received a #{o[:account].class.to_s} instead of AccountAccount" 
-                  end
-                  account_id = o[:account].id
-              else
-                  # If no account, take on of type 'other' and a non-reconciliable account
-                  account_id = AccountAccount.find(:first, :domain=>[['type','=','other'],['reconcile','=',false]], :fields => ['id']).id
-                  # Create a line = amount for the created invoice
-                  line=AccountInvoiceLine.new(
-                    :account_id => account_id,
-                    :quantity => 1,
-                    :name => name+' line',
-                    :price_unit => o[:amount],
-                    :invoice_id => toreturn.id
-                  )
-                  line.create
-              end
-          end
-          toreturn.save 
-          return toreturn
+        end
+        toreturn.save
+        return toreturn
       end
+    end
+  else
+    $utils.log.debug("AccountInvoice helper not initialized")
   end
-else 
-    $utils.log.warn("WARNING : AccountInvoice Helpers can't be initialized !!!")
-end
 rescue Exception => e
   $utils.log.fatal("ERROR : #{e.to_s}")
 end

@@ -26,67 +26,68 @@ require 'ooor'
 # Add useful methode on base module quality check module handling
 ##############################################################################
 begin
-    if Object.const_defined?'ModuleQualityCheck'
-        ModuleQualityCheck.class_eval do 
-            $utils.log.debug("Extending  #{self.class} #{self.name}")
-            ##########################################################################
-            # Print out the tests result
-            # Input :
-            #  - qualityinstance : A Valid ModuleQualityCheck instance
-            # Return
-            #  - Nice string to print
-            # Usage Example:
-            # print ModuleQualityCheck.get_formatted_results(qualityinstance)
-            def self.get_formatted_results(qualityinstance)
-                result=true
-                title=""
-                summary=""
-                # title="<pre>"+"\n"+"\n"
-                title+="Module : " + qualityinstance.name + " Scored : " + qualityinstance.final_score + "\n"
-                title+="-------------------------------------------------------"
+  if Object.const_defined? 'ModuleQualityCheck'
+    ModuleQualityCheck.class_eval do
+      $utils.log.debug("Extending  #{self.class} #{self.name}")
+      ##########################################################################
+      # Print out the tests result
+      # Input :
+      #  - qualityinstance : A Valid ModuleQualityCheck instance
+      # Return
+      #  - Nice string to print
+      # Usage Example:
+      # print ModuleQualityCheck.get_formatted_results(qualityinstance)
+      def self.get_formatted_results(qualityinstance)
+        result=true
+        title=""
+        summary=""
+        # title="<pre>"+"\n"+"\n"
+        title+="Module : " + qualityinstance.name + " Scored : " + qualityinstance.final_score + "\n"
+        title+="-------------------------------------------------------"
 
-                # summary="\n"+"\n"
-                summary+= qualityinstance.final_score + " Scored for : " + qualityinstance.name  +  "\n"
-                # summary+=qualityinstance.name + " Scored : " + qualityinstance.final_score + "\n"
-                
-                
-                
-                details="\n"
-                qualityinstance.check_detail_ids.each do |detail|
-                    details+=detail.name + " (State: " + detail.state + ") Scored : " + detail.score.to_s + "\n"
-                    details+="Ponderation: "+ detail.ponderation.to_s + "\n"
-                    details+="Note: "+ detail.note + "\n" 
-                end
-                result=title+details
-                # result=title+details+"</pre>"
+        # summary="\n"+"\n"
+        summary+= qualityinstance.final_score + " Scored for : " + qualityinstance.name + "\n"
+        # summary+=qualityinstance.name + " Scored : " + qualityinstance.final_score + "\n"
 
-                if result
-                    return {:summary => summary, :result => result}
-                else
-                    raise "!!! --- HELPER ERROR :get_formatted_results !"
-                end
-            end
-        end  
 
-        ModuleQualityDetail.class_eval do 
-            ##########################################################################
-            # Print out the tests result
-            # Input :
-            #  - 
-            # Return
-            #  - Nice print
-            # Usage Example:
-            # modules_ids = My_ModuleQualityInstance.print_formatted_results()
-            # def print_formatted_results()
-            #     
-            #     if result :
-            #         return result
-            #     else
-            #          raise "!!! --- HELPER ERROR :get_supplier found #{type} named #{name}, but without adresses"
-            #     end
-            # end
+        details="\n"
+        qualityinstance.check_detail_ids.each do |detail|
+          details+=detail.name + " (State: " + detail.state + ") Scored : " + detail.score.to_s + "\n"
+          details+="Ponderation: "+ detail.ponderation.to_s + "\n"
+          details+="Note: "+ detail.note + "\n"
         end
+        result=title+details
+        # result=title+details+"</pre>"
+
+        if result
+          return {:summary => summary, :result => result}
+        else
+          raise "!!! --- HELPER ERROR :get_formatted_results !"
+        end
+      end
     end
+
+    ModuleQualityDetail.class_eval do
+      ##########################################################################
+      # Print out the tests result
+      # Input :
+      #  -
+      # Return
+      #  - Nice print
+      # Usage Example:
+      # modules_ids = My_ModuleQualityInstance.print_formatted_results()
+      # def print_formatted_results()
+      #
+      #     if result :
+      #         return result
+      #     else
+      #          raise "!!! --- HELPER ERROR :get_supplier found #{type} named #{name}, but without adresses"
+      #     end
+      # end
+    end
+  else
+    $utils.log.debug("ModuleQualityCheck helper not initialized")
+  end
 rescue Exception => e
-    $utils.log.fatal("ERROR : #{e.to_s}")
+  $utils.log.fatal("ERROR : #{e.to_s}")
 end

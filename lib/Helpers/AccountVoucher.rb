@@ -24,25 +24,28 @@ require 'pp'
 
 
 begin
-    if Object.const_defined?'AccountVoucher'
+  if Object.const_defined? 'AccountVoucher'
 
-        # Add useful methode on voucher handling
-        ##############################################################################
-        AccountVoucher.class_eval do 
-            $utils.log.debug("Extending  #{self.class} #{self.name}")
-            def self.create_voucher(options={})
-                if options[:invoice_id]
-                    invoice = AccountInvoice.find(options[:invoice_id])
-                    journal = AccountJournal.find(:first, :domain=>[['type','=','cash']])
-                    toreturn = AccountVoucher.new(:currency_id => invoice.currency_id.id, :partner_id => invoice.partner_id.id, :account_id => journal.default_debit_account_id.id, :journal_id => journal.id, :type => 'receipt', :amount => invoice.amount_total)
-                    toreturn.save
-                    line = AccountVoucherLine.new(:voucher_id => toreturn.id, :type => 'cr', :account_id => invoice.account_id.id, :amount => invoice.amount_total, :name => invoice.origin)
-                    line.save
-                    return toreturn
-                end
-            end
+    # Add useful methode on voucher handling
+    ##############################################################################
+    AccountVoucher.class_eval do
+      $utils.log.debug("Extending  #{self.class} #{self.name}")
+
+      def self.create_voucher(options={})
+        if options[:invoice_id]
+          invoice = AccountInvoice.find(options[:invoice_id])
+          journal = AccountJournal.find(:first, :domain => [['type', '=', 'cash']])
+          toreturn = AccountVoucher.new(:currency_id => invoice.currency_id.id, :partner_id => invoice.partner_id.id, :account_id => journal.default_debit_account_id.id, :journal_id => journal.id, :type => 'receipt', :amount => invoice.amount_total)
+          toreturn.save
+          line = AccountVoucherLine.new(:voucher_id => toreturn.id, :type => 'cr', :account_id => invoice.account_id.id, :amount => invoice.amount_total, :name => invoice.origin)
+          line.save
+          return toreturn
         end
+      end
     end
+  else
+    $utils.log.debug("AccountVoucher helper not initialized")
+  end
 rescue Exception => e
-    $utils.log.fatal("ERROR : #{e.to_s}")
+  $utils.log.fatal("ERROR : #{e.to_s}")
 end

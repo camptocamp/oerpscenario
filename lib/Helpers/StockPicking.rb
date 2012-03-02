@@ -23,23 +23,27 @@ require 'rubygems'
 require 'ooor'
 
 begin
-    StockPicking.class_eval do 
-        $utils.log.debug("Extending  #{self.class} #{self.name}")
-        # Add useful methode on stock picking handling
+  if Object.const_defined? 'StockPicking'
+    StockPicking.class_eval do
+      $utils.log.debug("Extending  #{self.class} #{self.name}")
+      # Add useful methode on stock picking handling
 
-        def self.to_ary
-            return [name]
-        end
+      def self.to_ary
+        return [name]
+      end
 
-        def validate_picking()
-            res = {'delivery_date' => (DateTime.now).strftime(fmt="%Y-%m-%d %H:%M:%S")}
-            stock_moves = move_lines
-            stock_moves.each do |move_line|
-                res["move#{move_line.id}"] = {'prodlot_id' => move_line.prodlot_id && move_line.prodlot_id.id || false, 'product_id' => move_line.product_id.id, 'product_uom' => move_line.product_uom.id, 'product_qty' => move_line.product_qty}
-            end
-            StockPicking.do_partial([id],res)
+      def validate_picking()
+        res = {'delivery_date' => (DateTime.now).strftime(fmt="%Y-%m-%d %H:%M:%S")}
+        stock_moves = move_lines
+        stock_moves.each do |move_line|
+          res["move#{move_line.id}"] = {'prodlot_id' => move_line.prodlot_id && move_line.prodlot_id.id || false, 'product_id' => move_line.product_id.id, 'product_uom' => move_line.product_uom.id, 'product_qty' => move_line.product_qty}
         end
+        StockPicking.do_partial([id], res)
+      end
     end
+  else
+    $utils.log.debug("StockPicking helper not initialized")
+  end
 rescue Exception => e
-    $utils.log.fatal("ERROR : #{e.to_s}")
+  $utils.log.fatal("ERROR : #{e.to_s}")
 end

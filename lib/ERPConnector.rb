@@ -83,6 +83,9 @@ class ScenarioUtils
   private :helpers_absolute_path
 
   def load_helpers
+    # TODO generic method to load each helper
+    # actually each ruby file contains the same
+    # code : test if class exists, run a class_eval
     Dir[helpers_absolute_path].each { |file| load file }
   end
   private :load_helpers

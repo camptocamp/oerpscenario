@@ -24,63 +24,63 @@ require 'pp'
 
 
 begin
-      if Object.const_defined?'AccountTax'
-  # Add useful methode on taxes handling
-  ##############################################################################
-  AccountTax.class_eval do 
+  if Object.const_defined? 'AccountTax'
+    # Add useful methode on taxes handling
+    ##############################################################################
+    AccountTax.class_eval do
       $utils.log.debug("Extending  #{self.class} #{self.name}")
       ##########################################################################
       # Create a tax and tax code with given informations
       # Input :
       #  - name : Name of the tax
       #  - option {
-          # :type=>'percent',
-          # :amount=>0.196,
-          # :type_tax_use=>'sale',
-          # # For refund
-          # :ref_base_sign=>-1.0,
-          # :ref_tax_sign=>-1.0,
-          # # For VAT declaration
-          # :base_sign=>1.0,
-          # :tax_sign=>1.0,
+      # :type=>'percent',
+      # :amount=>0.196,
+      # :type_tax_use=>'sale',
+      # # For refund
+      # :ref_base_sign=>-1.0,
+      # :ref_tax_sign=>-1.0,
+      # # For VAT declaration
+      # :base_sign=>1.0,
+      # :tax_sign=>1.0,
       #  }
       # Return
       #  - The created AccountTax as a instance of the class¨
       # Usage Example:
       # tax = AccountTax.create_tax_and_code('my name',{:type=>'percent',:amount=>rate,:type_tax_use=>'purchase',})
       def self.create_tax_and_code(name, options={}, *args)
-          # require 'ruby-debug'
-          #           debugger
-          # Set default values
-          o = {
-              :type=>'percent',
-              :amount=>0.196,
-              :type_tax_use=>'sale',
-              # For refund
-              :ref_base_sign=>-1.0,
-              :ref_tax_sign=>-1.0,
-              # For VAT declaration
-              :base_sign=>1.0,
-              :tax_sign=>1.0,
-           }.merge(options)
-             
-          toreturn = AccountTax.new(o)
-          toreturn.name = name
-          toreturn.type = o[:type]
-          toreturn.amount = o[:amount]
-          toreturn.type_tax_use = o[:type_tax_use]
-          toreturn.ref_base_sign = o[:ref_base_sign]
-          toreturn.ref_tax_sign = o[:ref_tax_sign]
-          toreturn.base_sign = o[:base_sign]
-          toreturn.tax_sign = o[:tax_sign]
-          
-          toreturn.create
-          return toreturn
+        # require 'ruby-debug'
+        #           debugger
+        # Set default values
+        o = {
+            :type => 'percent',
+            :amount => 0.196,
+            :type_tax_use => 'sale',
+            # For refund
+            :ref_base_sign => -1.0,
+            :ref_tax_sign => -1.0,
+            # For VAT declaration
+            :base_sign => 1.0,
+            :tax_sign => 1.0,
+        }.merge(options)
+
+        toreturn = AccountTax.new(o)
+        toreturn.name = name
+        toreturn.type = o[:type]
+        toreturn.amount = o[:amount]
+        toreturn.type_tax_use = o[:type_tax_use]
+        toreturn.ref_base_sign = o[:ref_base_sign]
+        toreturn.ref_tax_sign = o[:ref_tax_sign]
+        toreturn.base_sign = o[:base_sign]
+        toreturn.tax_sign = o[:tax_sign]
+
+        toreturn.create
+        return toreturn
       end
+    end
+  else
+    $utils.log.debug("AccountTax helper not initialized")
   end
-else 
-    $utils.log.warn("WARNING : AccountTax Helpers can't be initialized !!!")
-end
 rescue Exception => e
   $utils.log.fatal("ERROR : #{e.to_s}")
 end
