@@ -377,9 +377,7 @@ end
 
 
 Given /^I update the module list$/ do
-  mod = IrModuleModule.find(:first )
-  mod.should_not be_nil
-  mod.call('update_list')
+  IrModuleModule.update_list
 end
 
 Given /^the company should have "([^"]*)" as parent$/ do |name| #"
