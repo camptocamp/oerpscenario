@@ -22,22 +22,29 @@ def find_item_by_ref(model, reference)
   model_const.find(reference, :fields => %w(id))
 end
 
-module FieldDSL
-  extend self
+class FieldDSL
 
-  def parse(ooor_model, field_name, value)
-    if /ref\(? *['"]([a-zA-Z_.]+)['"] *\)?/.match(value)
-      # ref('xmlid') or ref 'xmlid'
-      relation_name = relation(ooor_model, field_name)
-      parsed_value = mref(relation_name, $1)
-    elsif /name\(? *['"](.+)['"] *\)?/.match(value)
-      # name('My name') or name 'My name'
-      relation_name = relation(ooor_model, field_name)
-      parsed_value = mname(relation_name, $1)
-    else
-      parsed_value = eval(value)
+  def initialize(model, field_name, value)
+    @model = model
+    @field_name = field_name
+    @value = value
+  end
+
+  M2O_METHODS = {
+      /ref\(? *['"]([a-zA-Z_.]+)['"] *\)?/ => :mref, # ref('xmlid') or ref 'xmlid'
+      /name\(? *['"](.+)['"] *\)?/ => :mname # name('My name') or name 'My name'
+  }
+
+  def parse
+    if m2o?
+      relation_model_name = m2o_relation
+      M2O_METHODS.each do |pattern, method_sym|
+        if pattern.match(@value)
+          return send(method_sym, relation_model_name, $1)
+        end
+      end
     end
-    parsed_value
+    eval(@value)
   end
 
   def mref(model, reference)
@@ -54,17 +61,22 @@ module FieldDSL
     res[0].id
   end
 
-  def relation(ooor_model, field_name)
-    field_definition = ooor_model.many2one_associations[field_name]
+  def m2o?
+    @model.many2one_associations.include? @field_name
+  end
+  private :m2o?
+
+  def m2o_relation
+    field_definition = @model.many2one_associations[@field_name]
     field_definition['relation']
   end
-  private :relation
+  private :m2o_relation
 end
 
 When /^I update it with values:$/ do |table|
   # table is a | key | value |
   table.hashes.each do |data|
-    value = FieldDSL.parse(@item.class, data['key'], data['value'])
+    value = FieldDSL.new(@item.class, data['key'], data['value']).parse
     @item.send "#{data['key'].to_sym}=", value
   end
 end
