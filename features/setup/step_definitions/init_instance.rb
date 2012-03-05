@@ -43,7 +43,7 @@ Given /^I install the required modules with dependencies:$/ do |table|
   $utils.get_var('module_to_install').should be_true
 end
 
-Given /^I install the require modules:$/ do |table|
+Given /^I install the required modules:$/ do |table|
   # table is a Cucumber::Ast::Table
   to_install = []
   $utils.log.info("INFO : #{IrModuleModule.class}")
@@ -57,6 +57,12 @@ Given /^I install the require modules:$/ do |table|
   IrModuleModule.install_modules(to_install)
   $utils.set_var('module_to_install',to_install)
   $utils.get_var('module_to_install').should be_true
+end
+
+Given /^I install the require modules:$/ do |table|
+  # fix typo, please do not use anymore this sentence
+  $utils.log.warn "Deprecated sentence, please use this one : \"I install the required modules:\""
+  step "I install the required modules:", table
 end
 
 Then /^my modules should have been installed and models reloaded$/ do
