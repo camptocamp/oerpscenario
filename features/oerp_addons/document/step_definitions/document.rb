@@ -21,10 +21,10 @@ Given /^all directories are linked to the "([^"]*)"$/ do |storage_name|
   directories.each do |dir|
     dir.storage_id = storage.id
     # openerp crashes if these columns are in the update
-    @item.attributes.delete('write_date')
-    @item.associations.delete('write_uid')
-    @item.associations.delete('create_uid')
-    @item.attributes.delete('create_date')
+    dir.attributes.delete('write_date')
+    dir.associations.delete('write_uid')
+    dir.associations.delete('create_uid')
+    dir.attributes.delete('create_date')
     dir.save()
   end
 end
