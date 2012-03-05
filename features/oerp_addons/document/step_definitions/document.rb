@@ -84,13 +84,11 @@ Given /^I rename the storage media "([^"]*)" to "([^"]*)"$/ do |storage_name, ne
   if @item
     @item.name = new_storage_name
     # openerp crashes if these columns are in the update
-    @item.attributes.delete('write_date')
-    @item.associations.delete('write_uid')
-    @item.associations.delete('create_uid')
-    @item.attributes.delete('create_date')
+    step "I fix the date and uid columns"
     @item.save
   else
     @item = DocumentStorage.find(:first, :domain => [['name', '=', new_storage_name]])
   end
   @item.should_not be_nil
 end
+

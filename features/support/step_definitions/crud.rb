@@ -96,3 +96,14 @@ When /^I delete the "([^"]*)" with reference "([^"]*)"$/ do |model, reference|
     item.should_not be_nil
   end
 end
+
+
+Then /^I fix the date and uid columns$/ do
+  # weird hack
+  # for some objects, a bug forbid to save a resource
+  # and we have to delete the log columns before save them
+  @item.associations.delete('write_uid')
+  @item.associations.delete('create_uid')
+  @item.attributes.delete('write_date')
+  @item.attributes.delete('create_date')
+end
