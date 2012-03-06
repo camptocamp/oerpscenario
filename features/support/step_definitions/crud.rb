@@ -31,7 +31,7 @@ class FieldDSL
   end
 
   M2O_METHODS = {
-      /ref\(? *['"]([a-zA-Z_.]+)['"] *\)?/ => :mref, # ref('xmlid') or ref 'xmlid'
+      /ref\(? *['"]([a-zA-Z0-9_.]+)['"] *\)?/ => :mref, # ref('xmlid') or ref 'xmlid'
       /name\(? *['"](.+)['"] *\)?/ => :mname # name('My name') or name 'My name'
   }
 
