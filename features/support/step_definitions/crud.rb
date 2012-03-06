@@ -93,7 +93,7 @@ end
 When /^I delete the "([^"]*)" with reference "([^"]*)"$/ do |model, reference|
   item = find_item_by_ref(model, reference)
   if item
-    item.should_not be_nil
+    item.destroy
   end
 end
 
