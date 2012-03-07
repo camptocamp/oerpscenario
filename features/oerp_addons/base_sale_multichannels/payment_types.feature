@@ -28,6 +28,7 @@ Feature: In order to configure the two mains workflows on the sale order importa
       | BBVA                      | bbva                      |
       | Cofidis                   | cofidis                   |
     And I "allow" partial picking on TRUSTED payment mode
+    And I demand OpenERP to regulary ask Magento if sale orders are paid
 
   Scenario: Configure untrusted payment mode
     Given I want to configure the following UNTRUSTED Magento payment mode to MANUALLY handle related sale orders workflow:

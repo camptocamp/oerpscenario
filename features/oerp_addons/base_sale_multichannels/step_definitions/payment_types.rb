@@ -1,5 +1,4 @@
 Given /^I want to configure the following (TRUSTED|UNTRUSTED) Magento payment mode to (AUTOMATICALLY|MANUALLY) handle related sale orders workflow:$/ do |trust, mode, table|
-  %w(UNTRUSTED TRUSTED).should include(trust), "trust should be TRUSTED or UNTRUSTED"
   if trust == 'UNTRUSTED'
     xml_id = 'magentoerpconnect.payment_type1'
     order_policy = 'manual'
@@ -20,7 +19,7 @@ Given /^I want to configure the following (TRUSTED|UNTRUSTED) Magento payment mo
   end
   @base_payment.name = name
   @base_payment.order_policy = order_policy
-  if mode == 'AUTOMATICALLY'
+  if trust == 'AUTOMATICALLY'
     @base_payment.validate_order = true
     @base_payment.validate_invoice = true
   end
@@ -32,11 +31,11 @@ Given /^I want to configure the following (TRUSTED|UNTRUSTED) Magento payment mo
 end
 
 Given /^I "([^"]*)" partial picking on (TRUSTED|UNTRUSTED) payment mode$/ do |action, trust|
-  %w(allow forbid).should include(action),
+  ['allow', 'forbid'].should include(action),
     "action shoud be allow or forbid"
   if action == 'allow'
     picking_policy = 'direct'
-  elsif trust == 'forbid'
+  elsif action == 'forbid'
     picking_policy = 'one'
   end
   @base_payment.should_not be_nil,
@@ -45,3 +44,9 @@ Given /^I "([^"]*)" partial picking on (TRUSTED|UNTRUSTED) payment mode$/ do |ac
   @base_payment.save
 end
 
+Given /^I demand OpenERP to regulary ask Magento if sale orders are paid$/ do
+  @base_payment.should_not be_nil,
+    'No payment sale payment type previously defined'
+  @base_payment.check_if_paid = true
+  @base_payment.save
+end
