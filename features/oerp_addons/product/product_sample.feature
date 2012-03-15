@@ -42,3 +42,24 @@ Feature: Create the needed product
          | is_device_lot  | true            |
     And product is in category "Devices"
     And the supplier of the product is "Fournisseur Device"
+    
+
+
+    Scenario: create Supplier 
+    Given I need a "res.partner" with name: Pro living and oid: scenario.main_supplier
+    And having
+     | name       | value                           |
+     | lang       | fr_FR                           |
+     | company_id | by name: MyCompany |
+     | supplier   | 1                               |
+
+    Given I need a "res.partner.address" with name: Pro living and oid: scenario.main_supplier_add
+    And having
+     | name | value |
+     | partner_id | by oid: scenario.main_supplier |
+     | country_id | by code: FR |
+
+
+    Scenario: Set product suplier rel on all product
+     Given I set on supplier line on all product using supplier "scenario.main_supplier"
+

@@ -111,3 +111,21 @@ When /^I set its base price to reference "([^"]*)"$/ do |pricetype_ref|
   pt.should_not be_nil
   @item.base = pt.id
 end
+
+Given /^I set on supplier line on all product using supplier "([^"]*)"$/ do |supplier_id| #"
+  supp = ResPartner.find_by_oid(supplier_id)
+  supp.should_not be_nil, 
+    "can not find specified supplier"
+  ProductTemplate.find(:all, :fields=>['id', 'seller_ids']).each do | prod |
+    info = ProductSupplierinfo.find_by_product_id(prod.id)
+    unless info
+      info = ProductSupplierinfo.new
+    end
+    info.product_name = prod.name
+    info.product_id = prod.id
+    info.name = supp.id
+    info.min_qty = 1
+    info.save
+  end
+end
+
