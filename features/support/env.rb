@@ -25,6 +25,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../../lib')
 
 require 'rubygems'
 require 'ooor'
+require 'ooor_finders'
 require 'tmpdir'
 begin
   require 'sequel'
