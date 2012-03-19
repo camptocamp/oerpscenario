@@ -50,12 +50,11 @@ And /^I set the instance default product category on "([^"]*)"$/ do |product_cat
 end
 
 Then /^I set the instance default product category on category with name "([^"]*)"$/ do |product_category|
-  # We set it to 1, because Ooor doesn't currently support sparse field, so I can't
-  # read this ressource : undefined method `new' for nil:NilClass (NoMethodError)
-  @instance.default_pro_cat = 1
-  # category = ProductCategory.find(:first, :domain => [['name', '=', product_category]])
-  # category.should_not be_nil
-  # @instance.default_pro_cat = category.id
+  category = ProductCategory.find(:first,
+                                  :domain => [['name', '=', product_category]],
+                                  :fields => %w(id))
+  category.should_not be_nil
+  @instance.default_pro_cat = category.id
 end
 
 And /^I set an absolute id "([^"]*)" on the instance$/ do |absolute_id|
