@@ -22,20 +22,20 @@ Feature: In order to finely configure workflows based on payment type used on Ma
   Scenario: Create the accounting journals used to create the payments for orders imported from Magento
     Given I need an "account.journal" with reference "paypal_journal"
     When I update it with values:
-      | key                       | value                                                            |
-      | name                      | 'Paypal'                                                         |
-      | code                      | 'PAYP'                                                           |
-      | type                      | 'bank'                                                           |
-      | company_id                | ref('base.main_company')                          |
+      | key                       | value                                         |
+      | name                      | 'Paypal'                                      |
+      | code                      | 'PAYP'                                        |
+      | type                      | 'bank'                                        |
+      | company_id                | ref('base.main_company')                      |
       # dummy accounts
       | default_debit_account_id  | name('Comptes de liaison des établissements') |
       | default_credit_account_id | name('Comptes de liaison des établissements') |
-      | allow_date                | true                                                             |
-      | view_id                   | 1                                                                |
+      | allow_date                | true                                          |
+      | view_id                   | 1                                             |
     Then I save it
 
   @magento_payment_types
-  Scenario: Configure trusted payment mode
+  Scenario: Configure payment modes
     Given I delete the "BaseSalePaymentType" with reference "magentoerpconnect.payment_type1"
     And I delete the "BaseSalePaymentType" with reference "magentoerpconnect.payment_type2"
 
@@ -57,7 +57,7 @@ Feature: In order to finely configure workflows based on payment type used on Ma
       | payment_term_id              | false      |
       | journal_id                   | false      |
 
-    When I define a "DIRECT TOTAL" payment type pattern with values:
+    When I define a "AUTOMATIC" payment type pattern with values:
       | key               | value |
       | validate_order    | true  |
       | check_if_paid     | true  |
@@ -66,15 +66,10 @@ Feature: In order to finely configure workflows based on payment type used on Ma
       | validate_payment  | true  |
       | is_auto_reconcile | true  |
 
-    When I define a "DIRECT PAYPAL" payment type pattern with values:
-      | key               | value                                    |
-      | validate_order    | true                                     |
-      | check_if_paid     | true                                     |
-      | create_invoice    | true                                     |
-      | validate_invoice  | true                                     |
-      | validate_payment  | true                                     |
-      | is_auto_reconcile | true                                     |
+    When I define a "AUTOMATIC PAYPAL" payment type pattern with values:
+      | key               | value                 |
       | journal_id        | ref('paypal_journal') |
+    And the other values of "AUTOMATIC PAYPAL" pattern are those of "AUTOMATIC"
 
     And I define a "CHEQUE" payment type pattern with values:
       | key               | value |
@@ -94,12 +89,12 @@ Feature: In order to finely configure workflows based on payment type used on Ma
       | validate_payment  | false |
       | is_auto_reconcile | false |
 
-    Then I want to use the following payment codes with the "DIRECT TOTAL" payment type with reference "direct_total":
+    Then I want to use the following payment codes with the "AUTOMATIC" payment type with reference "direct_total":
       | Payment Code  |
       | atos_standard |
       | free          |
 
-    Then I want to use the following payment codes with the "DIRECT PAYPAL" payment type with reference "direct_paypal":
+    Then I want to use the following payment codes with the "AUTOMATIC PAYPAL" payment type with reference "direct_paypal":
       | Payment Code    |
       | paypal_standard |
 
