@@ -74,6 +74,14 @@ Given /^a shop with name "([^"]*)" exists$/ do |shop_name|
   @shop = SaleShop.find(:first, :domain => [['name', '=', shop_name]])
   @shop.should_not be_nil
 end
+Given /^a shop with reference "([^"]*)" exists$/ do |shop_ref|
+  @shop = SaleShop.find(shop_ref)
+  @shop.should_not be_nil
+end
+Then /^I set the shop field "([^"]*)" to "([^"]*)"$/ do |field, value|
+  @shop.send("#{field}=".to_sym, value)
+  @shop.save
+end
 Then /^I set the warehouse of the shop on "([^"]*)"$/ do |warehouse_absolute_id|
   warehouse = StockWarehouse.find(warehouse_absolute_id)
   warehouse.should_not be_nil
