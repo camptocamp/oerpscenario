@@ -50,6 +50,7 @@ sudo gem install ooor --source http://gemcutter.org
 sudo apt-get install libopenssl-ruby
 sudo gem install rake
 sudo gem install htmlentities
+sudo gem install ooor_finders
 
 (Optionnal for pdf output)
 sudo gem install prawn
