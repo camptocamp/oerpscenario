@@ -17,6 +17,10 @@ Feature: Ensure base data are present for base config and tests as well
     Scenario: Renaming location 
     Given I renamed location named "Your Company" to "real"
 
+    Scenario: Take a location stock for product code and see it increase/decrease
+    Given we take the available number of device "DEV1" in stock location "Swisspost"
+    Then we should see the stock in location "Stock" of product code "DEV1" increase by 20
+    Then we should see the stock in location "Stock" of product code "DEV1" decrease by 20
 
     Scenario: Create Suppliers, Resellers and Customers
     Given there is a partner named "Fournisseur Device" with the following attribute

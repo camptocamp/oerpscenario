@@ -141,3 +141,22 @@ Given /^I renamed (warehouse|location) named "([^"]*)" to "([^"]*)"$/ do |type, 
     puts "No #{type} named #{old_name} found"
   end
 end
+
+Given /^we take the available number of device "([^"]*)" in stock location "([^"]*)"$/ do |prod_code,location|
+  loc_id=StockLocation.find(:first, :domain=>[['name','=',location]], :fields => ['id'])
+  loc_id.should be_true
+  product = ProductProduct.find(:first, :domain=>[['default_code','=',prod_code]], :fields => ['id','name','qty_available'], :context => {:location => loc_id.id})
+  @instock = product.qty_available
+  @instock.should be_true
+end
+
+Then /^we should see the stock in location "([^"]*)" of product code "([^"]*)" (increase|decrease) by (\d+)$/ do |location,product,type,arg1|
+  loc_id=StockLocation.find(:first, :domain=>[['name','=',location]], :fields => ['id'])
+  loc_id.should be_true
+  qty = ProductProduct.find(:first, :domain=>[['default_code','=',product]], :fields => ['id','name','qty_available'], :context => {:location => loc_id.id}).qty_available
+  if type == 'increase':
+    (qty - @instock).should ==  arg1.to_f
+  else
+    (qty + arg1.to_f).should ==  @instock
+  end
+end

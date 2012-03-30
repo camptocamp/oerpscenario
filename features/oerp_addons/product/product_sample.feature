@@ -39,7 +39,6 @@ Feature: Create the needed product
          | price_extra    | "0.0"           |
          | price_margin   | "1.0"           |
          | active         | true            |
-         | is_device_lot  | true            |
     And product is in category "Devices"
     And the supplier of the product is "Fournisseur Device"
     
@@ -63,3 +62,29 @@ Feature: Create the needed product
     Scenario: Set product suplier rel on all product
      Given I set on supplier line on all product using supplier "scenario.main_supplier"
 
+  Scenario: Create a product using DSL
+     Given I need a "product.product" with name: Mission 1.0 and oid: scenario.mission1
+     And having
+          | name | value |
+          | weight_net | 0.0 |
+          | name | Mission 1.0 |
+          | sale_ok | 1 |
+          | sale_delay | 7.0 |
+          | weight | 0.0 |
+          | volume | 0.0 |
+          | type | service |
+          | purchase_ok | 0 |
+          | produce_delay | 1.0 |
+          | procure_method | make_to_order |
+          | supply_method | produce |
+          | standard_price | 10.0 |
+          | warranty | 0.0 |
+          | uos_coeff | 1.0 |
+          | mes_type | fixed |
+          | list_price | 30.0 |
+          | cost_method | standard |
+          | default_code | MSN1 |
+          | price_extra | 0.0 |
+          | price_margin | 1.0 |
+          | active | 1 |
+          | categ_id | by name: Missions |
