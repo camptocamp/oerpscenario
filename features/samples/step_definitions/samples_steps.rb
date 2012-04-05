@@ -106,7 +106,7 @@ end
 Then /^you can use one of the ResPartner helper called get_valid_partner$/ do
   # Use the ResPartner Helper to get a partner of a certain type
   # and with at least one address
-  @partner=ResPartner.get_valid_partner({:type=>'supplier'})
+  @partner=ResPartner.get_valid_partner(@openerp, {:type=>'supplier'})
   @partner.should be_true
 end
 
@@ -126,7 +126,7 @@ end
 # ##############################################################################
 Given /^I have recorded a supplier invoice of (.*) (\w+) called (\w+) using Helpers$/ do |amount, currency, name|
   # Take first supplier partner with at least one address
-  @partner=ResPartner.get_valid_partner({:type=>'supplier'})
+  @partner=ResPartner.get_valid_partner(@openerp, {:type=>'supplier'})
   @partner.should be_true
   # Create an invoice with a line = amount
   @invoice=AccountInvoice.create_invoice_with_currency(name, @partner, 

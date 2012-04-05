@@ -33,7 +33,7 @@ Given /^I want to run the quality tests provided by base_module_quality on insta
 end
 ##############################################################################
 When /^I install the base_module_quality$/ do
-  res = IrModuleModule.install_modules([@modules[0]])
+  res = IrModuleModule.install_modules(@openerp, [@modules[0]])
   res.should be_true
 end
 ##############################################################################

@@ -23,17 +23,3 @@
 
 require 'rubygems'
 require 'cucumber/openerp'
-
-
-  def helpers_absolute_path
-    File.expand_path("Helpers/*", File.dirname(__FILE__))
-  end
-
-  def load_helpers
-    # TODO generic method to load each helper
-    # actually each ruby file contains the same
-    # code : test if class exists, run a class_eval it will probabley be a gem
-     Dir[helpers_absolute_path].each { |file| load file }
-  end
-  
-  load_helpers

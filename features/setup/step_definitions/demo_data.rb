@@ -53,7 +53,7 @@ When /^ask to upgrade the (\w+) module$/ do |module_name|
 end
 ##############################################################################
 When /^run the update$/ do
-  res = IrModuleModule.update_needed_modules()
+  res = IrModuleModule.update_needed_modules(@openerp)
   res.should be_true
 end
 ##############################################################################

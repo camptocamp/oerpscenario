@@ -82,7 +82,7 @@ end
 
 ##############################################################################
 Given /^the demo data are loaded$/ do
-  IrModuleModule.load_demo_data_on_installed_modules()
+  IrModuleModule.load_demo_data_on_installed_modules(@openerp)
   m=IrModuleModule.find(:first,:domain=>[['name','=','base']], :fields=>["name","base"])
   m.should be_true
   m.demo.should be_true

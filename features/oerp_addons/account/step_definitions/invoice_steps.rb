@@ -26,7 +26,7 @@
 ##############################################################################
 Given /^I have recorded on the (.*) an invoice \((\w+)\) of (.*) (\w+) without tax called (\w+)$/ do |date,inv_type,amount,currency,name|
   # Take first supplier partner with at least one address
-  @partner=ResPartner.get_valid_partner({:type=>'supplier', :fields=>['id']})
+  @partner=ResPartner.get_valid_partner(@openerp, {:type=>'supplier', :fields=>['id']})
   @partner.should be_true
   # Create an invoice with a line = amount
   # and store it in a variable named : name

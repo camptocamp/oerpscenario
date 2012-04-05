@@ -30,7 +30,7 @@ Given /^I have recorded on the (.*) a sale order of (.*) (.*) without tax called
   @product=ProductProduct.find(:first,:domain=>[['type','=','product']], :fields => ['id'])
   @product.should be_true
   # Take first supplier partner with at least one address
-  @partner=ResPartner.get_valid_partner({:type=>'supplier',:fields => ['id']})
+  @partner=ResPartner.get_valid_partner(@openerp, {:type=>'supplier',:fields => ['id']})
   @partner.should be_true
   currency_id = ResCurrency.find(:first, :domain=>[['name','=',currency_name]],:fields => ['id']).id
   currency_id.should be_true
