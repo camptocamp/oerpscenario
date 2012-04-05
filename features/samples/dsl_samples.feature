@@ -10,17 +10,15 @@
 # Branch      # Module       # Processes     # System
 @dsl_samples
 
-
-
-
+Feature: Make some DSL samples
   Scenario: Create/Update a user
       Given I need a "res.users" with name: Cucumber and login: is rocking
       And having
           | name | value |
           | password | my_pass |
           | context_lang | en_us |
-          | company_id | by name: My company | # "by" has a special meaning it will look for relation matching args
-
+          | company_id | by name: My company | 
+          # "by" has a special meaning it will look for relation matching args
 
     Scenario: Create/Update with some subtility
       Given I need a "res.users" with name: Scenario and login: rulezzz
@@ -28,7 +26,8 @@
           | name | value |
           | password | my_pass |
           | context_lang | en_us |
-          | company_id | by name!: My company |  # you can see here the ! it will raise an error
+          | company_id | by name!: My company | 
+          # you can see here the ! it will raise an error
 
 
    Scenario: Create/Update a user with some other subtility
@@ -37,28 +36,34 @@
           | name | value |
           | password | my_pass |
           | context_lang | en_us |
-          | company_id | by name: My company and account_no: my-number|  # You can cumulate args
+          | company_id | by name: My company and account_no: my-number|  
+          # You can cumulate args
 
 
     Scenario: Ensure user is unique at creation
-      Given I create a "res.users" with name: Scenario and login: rulezzz # This will raise en error because it will ensure that user does not exists
+      # This will raise en error because it will ensure that user does not exists
+      Given I create a "res.users" with name: Scenario and login: rulezzz 
       And having
           | name | value |
           | password | my_pass |
           | context_lang | en_us |
-          | company_id | by name: My company and account_no: my-number|  # You can cumulate args
+          | company_id | by name: My company and account_no: my-number|  
+          # You can cumulate args
 
 
     Scenario: Ensure Someting exists
-      Given I find a "res.users" with name: Scenario and login: rulezzz # This will raise if noting found
+      Given I find a "res.users" with name: Scenario and login: rulezzz 
+      # This will raise if noting found
       And having
           | name | value |
           | password | my_pass |
           | context_lang | en_us |
-          | company_id | by name: My company and account_no: my-number|  # You can cumulate args
+          | company_id | by name: My company and account_no: my-number|  
+          # You can cumulate args
 
     Scenario: find all 
-      Given I find all "res.partner" with customer: 1  # It will find all customers
+      Given I find all "res.partner" with customer: 1  
+      # It will find all customers
      
 
   # oid is a special key word it creates ok look for an xml id in OpenERP
