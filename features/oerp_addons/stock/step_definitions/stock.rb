@@ -154,7 +154,7 @@ Then /^we should see the stock in location "([^"]*)" of product code "([^"]*)" (
   loc_id=StockLocation.find(:first, :domain=>[['name','=',location]], :fields => ['id'])
   loc_id.should be_true
   qty = ProductProduct.find(:first, :domain=>[['default_code','=',product]], :fields => ['id','name','qty_available'], :context => {:location => loc_id.id}).qty_available
-  if type == 'increase':
+  if type == 'increase'
     (qty - @instock).should ==  arg1.to_f
   else
     (qty + arg1.to_f).should ==  @instock
