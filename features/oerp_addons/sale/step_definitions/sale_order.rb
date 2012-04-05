@@ -44,8 +44,8 @@ Given /^I have recorded on the (.*) a sale order of (.*) (.*) without tax called
   so.order_line = [SaleOrderLine.new(:name => 'OERPScenario line', :product_id => @product.id, :price_unit => amount.to_f, :product_uom => 1)]
   so.create
   # Set it in the memorizer
-  openerp.set_var(name.strip,so)
-  openerp.get_var(name.strip).should be_true
+  @openerp.set_var(name.strip,so)
+  @openerp.get_var(name.strip).should be_true
   @saleorder=so
 
 end
@@ -58,7 +58,7 @@ end
 
 ##############################################################################
 Then /^I should see the sale order (\w+) open$/ do |name|
-  @saleorder=openerp.get_var(name.strip)
+  @saleorder=@openerp.get_var(name.strip)
   @saleorder.state.should == 'manual' || @saleorder.state.should == 'progress'
 end
 
@@ -92,7 +92,7 @@ end
 
 ##############################################################################
 Then /^I should see the sale order (\w+) manual in progress$/ do |name|
-  @saleorder=openerp.get_var(name.strip)
+  @saleorder=@openerp.get_var(name.strip)
   @saleorder.state.should == 'manual'
 end
 
@@ -105,7 +105,7 @@ end
 
 ##############################################################################
 Then /^I should see the sale order (\w+) in progress$/ do |name|
-  @saleorder=openerp.get_var(name.strip)
+  @saleorder=@openerp.get_var(name.strip)
   @saleorder.state.should == 'progress'
 end
 
@@ -131,7 +131,7 @@ Given /^change the description for (\w+) and the date to (.*)$/ do |name,date|
   @invoice.date_invoice = date
   @invoice.save
   @invoice.name.should == name
-  openerp.set_var(@invoice.name,@invoice)
+  @openerp.set_var(@invoice.name,@invoice)
   # @invoice.date.should == date
 end
 

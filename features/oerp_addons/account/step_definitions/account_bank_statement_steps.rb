@@ -34,7 +34,7 @@ end
 ##############################################################################
 And /^import on the (.*) the invoice called (\w+)$/ do |date,name|
   # @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name]])
-  @invoice=openerp.get_var(name.strip)
+  @invoice=@openerp.get_var(name.strip)
   @invoice.should be_true
   @statement.import_invoice([@invoice],{:date=>date})
 end
@@ -45,7 +45,7 @@ end
 And /^I import on the (.*), the following invoice \(order matters\) : (.*)$/ do |date,invoices_name|
     invoices=[]
     invoices_name.split(',').each do |inv_name|
-      invoices.push @invoice=openerp.get_var(inv_name.strip)
+      invoices.push @invoice=@openerp.get_var(inv_name.strip)
       # Old school system
       # invoices.push AccountInvoice.find(:first,:domain=>[['name','=',inv_name.strip]])
     end

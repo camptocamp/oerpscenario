@@ -47,6 +47,6 @@ Then /^I import the sale orders \(Import Orders\)$/ do
   @saleorders = SaleOrder.find(:all)
   @saleorders.each do |so|
     name = so.name
-    openerp.set_var(name.strip,so)
+    @openerp.set_var(name.strip,so)
   end
 end

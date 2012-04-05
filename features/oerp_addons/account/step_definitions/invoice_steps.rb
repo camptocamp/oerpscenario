@@ -32,8 +32,8 @@ Given /^I have recorded on the (.*) an invoice \((\w+)\) of (.*) (\w+) without t
   # and store it in a variable named : name
   # var_name = "@#{name}"
   invoice=AccountInvoice.create_invoice_with_currency(name, @partner, {:currency_code=>currency, :date=>date, :amount=>amount.to_f, :type=>inv_type})
-  openerp.set_var(name,invoice)
-  openerp.get_var(name.strip).should be_true
+  @openerp.set_var(name,invoice)
+  @openerp.get_var(name.strip).should be_true
   
   # For backward compatibility
   @invoice=invoice
@@ -49,7 +49,7 @@ end
 ##############################################################################
 Then /^I should see the invoice (\w+) (\w+)$/ do |name,state|
   # Take the invoice
-  @invoice=openerp.get_var(name.strip)
+  @invoice=@openerp.get_var(name.strip)
   @invoice=AccountInvoice.find(@invoice.id)
   # Old schoold system :
   # @invoice=AccountInvoice.find(:first,:domain=>[['name','=',name],['state','=',state]])
@@ -74,7 +74,7 @@ end
 ##############################################################################
 Given /^I take the created invoice (\w+)$/ do |inv_name|
   # Take the inv_name with open state
-  @invoice=openerp.get_var(inv_name.strip)
+  @invoice=@openerp.get_var(inv_name.strip)
   @invoice=AccountInvoice.find(@invoice.id)
   # Old schoold system :
   # @invoice=AccountInvoice.find(:first,:domain=>[['name','=',inv_name],['state','=','open']])

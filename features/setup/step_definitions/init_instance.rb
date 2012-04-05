@@ -1,32 +1,32 @@
 ##############################################################################
 Given /^I am logged as (\w+) user with password (\w+) used$/ do |user, pass|
     begin
-        if openerp.ready?
-            openerp.login(:user =>user,:pwd => pass)
+        if @openerp.ready?
+            @openerp.login(:user =>user,:pwd => pass)
         else
-            openerp.log.info("INFO : Attempt to connect")
-            openerp.setConnexionfromConf(:user=>user, :pwd=>pass)            
+            @openerp.log.info("INFO : Attempt to connect")
+            @openerp.setConnexionfromConf(:user=>user, :pwd=>pass)            
         end
     rescue Exception => e
-        openerp.log.warn("WARNING : #{e.to_s}")
-        openerp.log.info("INFO : Force reconnect")
-        openerp.setConnexionfromConf(:user=>user, :pwd => pass)
+        @openerp.log.warn("WARNING : #{e.to_s}")
+        @openerp.log.info("INFO : Force reconnect")
+        @openerp.setConnexionfromConf(:user=>user, :pwd => pass)
     end
 end
 
 ##############################################################################
 Given /^I am logged as (\w+) user with the password set in config used$/ do |user, pass|
     begin
-        if openerp.ready?
-            openerp.login(user, pass)
+        if @openerp.ready?
+            @openerp.login(user, pass)
         else
-            openerp.log.info("INFO : Attempt to connect")
-            openerp.setConnexionfromConf()            
+            @openerp.log.info("INFO : Attempt to connect")
+            @openerp.setConnexionfromConf()            
         end
     rescue Exception => e
-        openerp.log.warn("WARNING : #{e.to_s}")
-        openerp.log.info("INFO : Force reconnect")
-        openerp.setConnexionfromConf()
+        @openerp.log.warn("WARNING : #{e.to_s}")
+        @openerp.log.info("INFO : Force reconnect")
+        @openerp.setConnexionfromConf()
     end
 end
 
@@ -39,14 +39,14 @@ Given /^I install the required modules with dependencies:$/ do |table|
     to_install << mod
   end
   IrModuleModule.install_modules(to_install, dependencies=true)
-  openerp.set_var('module_to_install',to_install)
-  openerp.get_var('module_to_install').should be_true
+  @openerp.set_var('module_to_install',to_install)
+  @openerp.get_var('module_to_install').should be_true
 end
 
 Given /^I install the required modules:$/ do |table|
   # table is a Cucumber::Ast::Table
   to_install = []
-  openerp.log.info("INFO : #{IrModuleModule.class}")
+  @openerp.log.info("INFO : #{IrModuleModule.class}")
   table.hashes.each do |oerp_module|
       mod = IrModuleModule.find(:first, :domain => [['name','=', oerp_module[:name] ]], :fields =>['id','state'])
       unless mod
@@ -55,25 +55,25 @@ Given /^I install the required modules:$/ do |table|
       to_install.push(mod)
   end
   IrModuleModule.install_modules(to_install)
-  openerp.set_var('module_to_install',to_install)
-  openerp.get_var('module_to_install').should be_true
+  @openerp.set_var('module_to_install',to_install)
+  @openerp.get_var('module_to_install').should be_true
 end
 
 Given /^I install the require modules:$/ do |table|
   # fix typo, please do not use anymore this sentence
-  openerp.log.warn "Deprecated sentence, please use this one : \"I install the required modules:\""
+  @openerp.log.warn "Deprecated sentence, please use this one : \"I install the required modules:\""
   step "I install the required modules:", table
 end
 
 Then /^my modules should have been installed and models reloaded$/ do
-  modules = openerp.get_var('module_to_install')
+  modules = @openerp.get_var('module_to_install')
   modules_ids = modules.map{|x|x.id}
   modules_ids.each do | mod_id |
     mod = IrModuleModule.find(mod_id, :fields=>['id', 'state'])
     mod.should_not be_nil
     mod.state.should == 'installed'
   end
-  openerp.ooor.load_models(false)
+  @openerp.ooor.load_models(false)
   Dir["lib/Helpers/*.rb"].each {|file| load file }
 end
 
@@ -83,7 +83,7 @@ Given /^I have the module account installed$/ do
 end
 
 Given /^no account set$/ do
-  openerp.ooor.load_models()
+  @openerp.ooor.load_models()
   AccountAccount.find(:all).should be_empty
 end
 
@@ -232,7 +232,7 @@ Given /^I install the following language :$/ do |table|
               IrModuleModule.update_translations([mod.id], data['lang'], {})
             rescue Exception => e
               # Must catch exception because update_translations return None
-              openerp.log.info("Translation updated : "+data['lang'])
+              @openerp.log.info("Translation updated : "+data['lang'])
             end
         end
     end
@@ -432,9 +432,9 @@ Given /^I reconnect with the database (.*)$/ do |database| #"
                     }
                 )
     rescue Exception => e
-        openerp.log.warn("WARNING : #{e.to_s}")
-        openerp.log.info("INFO : Force reconnect")
-        openerp.setConnexionfromConf()
+        @openerp.log.warn("WARNING : #{e.to_s}")
+        @openerp.log.info("INFO : Force reconnect")
+        @openerp.setConnexionfromConf()
     end
 end
 
