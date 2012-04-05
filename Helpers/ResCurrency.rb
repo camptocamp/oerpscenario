@@ -43,7 +43,7 @@ begin
     @log.debug("ResCurrency helper not initialized")
   end
 rescue Exception => e
-  @log.fatal("ERROR : #{e.to_s}")
+  puts("ERROR : #{e.to_s}")
 end
 
 
