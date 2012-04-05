@@ -27,43 +27,19 @@ INSTALLATION
 Install libraries and dependencies 
 ----------------------------------
 
-- Ruby (1.8) & Rubygems
-- Cucumber (V. 1.1.4)
-- Rspec
-- Parseconfig
-- Ooor (V. 1.2.8+)
-- Rake (optional)
-- htmlentities
+We strongly recommande the use of RVM
+
+(Install the core)
+
+Gem install gem install cucumber-openerpscenario
 
 (Optionnal for pdf output)
 - Prawn
 - Pawn format
+- Rake (optional)
 
 
-Commands On Ubuntu 10.04
------------------------
-sudo apt-get install ruby1.8-dev irb ri rdoc rubygems
-sudo gem install cucumber -1.1.4
-sudo gem install rspec
-sudo gem install parseconfig
-sudo gem install ooor --source http://gemcutter.org
-sudo apt-get install libopenssl-ruby
-sudo gem install rake
-sudo gem install htmlentities
-sudo gem install ooor_finders
-
-(Optionnal for pdf output)
-sudo gem install prawn
-sudo gem install prawn-format
-
-Finally add '/var/lib/gems/1.8/bin' to your PATH (Thanks to C. Almeida for the infos):
-
-export PATH=$PATH:/var/lib/gems/1.8/bin
-
-Get the sources
-------------------
-
-Trunk:
+Get the latest scenario:
 bzr branch lp:oerpscenario
 
 Configure it

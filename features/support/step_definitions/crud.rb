@@ -1,4 +1,5 @@
 Given /^I need an? "([^"]*)" with reference "([^"]*)"$/ do |model, reference|
+  puts "Deprecated please use DSL syntax. Have a look at dsl_samples.feature"
   oerp_model = get_model_object(model)
   @item = oerp_model.find(reference)
   unless @item

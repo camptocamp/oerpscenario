@@ -19,56 +19,21 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-$VERBOSE = nil
 
-$LOAD_PATH.unshift(File.dirname(__FILE__) + '/../../lib')
 
 require 'rubygems'
-require 'ooor'
-require 'ooor_finders'
-require 'tmpdir'
-begin
-  require 'sequel'
-  SEQUEL_ACTIVE = true
-rescue LoadError => err
-  SEQUEL_ACTIVE = false
-end
-
-require 'ERPConnector'
-
-# Create a login if not initialized in feathures
-unless $utils
-    $utils = ScenarioUtils.new
-    #  Avaiable INFO, WARN, ERROR, DEBUG
-    $utils.log.level = Logger::WARN
-end
-begin
-    unless $utils.ready?
-        $utils.log.info("Attempt to connect")
-        $utils.create_ooor_connection
-    end
-rescue Exception => e
-    $utils.log.warn("#{e.to_s}")
-    $utils.log.info("Force reconnect")
-    $utils.create_ooor_connection
-end
+require 'cucumber/openerp'
 
 
+  def helpers_absolute_path
+    File.expand_path("Helpers/*", File.dirname(__FILE__))
+  end
 
-# Use a temporary directory
-# we to do use mktempdir else in case of crash we will have a lot a temp folder
-$tmpdir = File.join(Dir.tmpdir, 'oerps_folder')
-begin
-  Dir.mkdir($tmpdir)
-rescue Exception=>e
-  $utils.log.warn("WARNING : Can't create tmpdir #{e.to_s}")
-end
-
-# "after all"
-at_exit do
-    begin
-      FileUtils.remove_entry_secure $tmpdir
-    rescue Exception => e
-      $utils.log.debug("DEBUG : Some tags does not create tmp dir")
-    end
-end
+  def load_helpers
+    # TODO generic method to load each helper
+    # actually each ruby file contains the same
+    # code : test if class exists, run a class_eval it will probabley be a gem
+     Dir[helpers_absolute_path].each { |file| load file }
+  end
+  
+  load_helpers
