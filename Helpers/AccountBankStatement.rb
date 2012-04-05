@@ -30,7 +30,7 @@ begin
     ##############################################################################
     AccountBankStatement.class_eval do
       @log = Logger.new('AccountBankStatement')
-      @.log.debug("Extending  #{self.class} #{self.name}")
+      @log.debug("Extending  #{self.class} #{self.name}")
       ############################################################################
       # Import invoices into the given bank statements
       # Input :
