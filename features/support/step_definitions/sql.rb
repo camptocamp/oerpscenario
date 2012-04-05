@@ -1,3 +1,3 @@
 Given /^I execute following sql:$/ do |sql|
-  $utils.sequel.run sql
+  openerp.sequel.run sql
 end

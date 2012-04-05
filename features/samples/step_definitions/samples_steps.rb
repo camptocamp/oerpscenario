@@ -77,12 +77,12 @@ Given /^I store it into the memorizer as (\w+) in order to retrieve it in anothe
   # Memorize the partner in order
   # to retrieve it again when needed in another
   # scenario or feature
-  $utils.set_var(var_name,@partner)
+  openerp.set_var(var_name,@partner)
 end
 
 # ##############################################################################
 Given /^I call back the memorizer to retieve the (\w+) variable$/ do |var_name|
-  @memorized_partner=$utils.get_var(var_name.strip).should be_true
+  @memorized_partner=openerp.get_var(var_name.strip).should be_true
 end
 
 # ##############################################################################
@@ -185,7 +185,7 @@ end
 # Scenario: Sample to use sequel to establish a direct db connection
 # ##############################################################################
 Given /^I open a database connection with sequel$/ do
-  @db = $utils.sequel
+  @db = openerp.sequel
 end
 When /^I select all the users$/ do
   @users = @db[:res_users].select.all

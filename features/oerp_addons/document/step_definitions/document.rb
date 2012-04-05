@@ -55,20 +55,20 @@ Given /^the transaction folder should be empty$/ do
     begin
         `rm -rf #{@path}`
     rescue Exception => e
-        $utils.log.debug("DEBUG : File empty #{e.to_s}")
+        openerp.log.debug("DEBUG : File empty #{e.to_s}")
     end
     File.exists?(@path).should be_false
     
 end
 
 Given /^I print the first invoice$/ do
-  client = XMLRPC::Client.new2("http://#{ $utils.config[:host]}:#{$utils.config[:port]}/xmlrpc/common")
-  uid = client.call('login',$utils.config[:dbname],$utils.config[:pwd], $utils.config[:pwd])
-  client = XMLRPC::Client.new2("http://#{ $utils.config[:host]}:#{$utils.config[:port]}/xmlrpc/report")
-  r_id = client.call('report',$utils.config[:dbname], uid, $utils.config[:pwd], 'account.invoice', [1], {'model'=> 'account.invoice', 'id'=> 1, 'report_type'=>'pdf'})
+  client = XMLRPC::Client.new2("http://#{ openerp.config[:host]}:#{openerp.config[:port]}/xmlrpc/common")
+  uid = client.call('login',openerp.config[:dbname],openerp.config[:pwd], openerp.config[:pwd])
+  client = XMLRPC::Client.new2("http://#{ openerp.config[:host]}:#{openerp.config[:port]}/xmlrpc/report")
+  r_id = client.call('report',openerp.config[:dbname], uid, openerp.config[:pwd], 'account.invoice', [1], {'model'=> 'account.invoice', 'id'=> 1, 'report_type'=>'pdf'})
   state = false
   while state == false
-    report = client.call('report_get',$utils.config[:dbname], uid, $utils.config[:pwd], r_id)
+    report = client.call('report_get',openerp.config[:dbname], uid, openerp.config[:pwd], r_id)
     state=report['state']
   end
 end
