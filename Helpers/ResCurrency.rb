@@ -25,14 +25,13 @@ require 'ooor'
 begin
   if Object.const_defined? 'ResCurrency'
     ResCurrency.class_eval do
-      @log = Logger.new('ResCurrency')
-      @log.debug("Extending  #{self.class} #{self.name}")
+      $helperlogger.debug("Extending  #{self.class} #{self.name}")
 
-      def self.get_valid_currency(openerp, options={})
+      def self.get_valid_currency(options={})
         if options != nil && options[:currency_name]
           currency = ResCurrency.find(:first, :domain => [['name', '=', options[:currency_name]]], :fields => ['id'])
         else
-          user_id = openerp.ooor.config[:user_id]
+          user_id = $utils.ooor.config[:user_id]
           user = ResUsers.find(:id => user_id)
           currency = ResCurrency.find(user.company_id.currency_id.id, :fields => ['id'])
         end
@@ -40,10 +39,10 @@ begin
       end
     end
   else
-    @log.debug("ResCurrency helper not initialized")
+    $helperlogger.debug("ResCurrency helper not initialized")
   end
 rescue Exception => e
-  puts("ERROR : #{e.to_s}")
+  $helperlogger.fatal("ERROR : #{e.to_s}")
 end
 
 

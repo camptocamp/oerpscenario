@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 ###############################################################################
 #                                                                             #
-#   Helper for OERPScenario and InspectOOOR, OpenERP. Functional Tests         #
+#   Helper for OERPScenario and InspectOOOR, $utils. Functional Tests         #
 #   Copyright (C) 2011 Akretion Sébastien BEAU <sebastien.beau@akretion.com>  #
 #                                                                             #
 #   This program is free software: you can redistribute it and/or modify      #
@@ -23,8 +23,7 @@
 begin
   if Object.const_defined? 'PurchaseOrder'
     PurchaseOrder.class_eval do
-      @log = Logger.new('PurchaseOrder')
-      @log.debug("Extending  #{self.class} #{self.name}")
+      $helperlogger.debug("Extending  #{self.class} #{self.name}")
 
       def confirm
         wkf_action('purchase_confirm')
@@ -45,10 +44,10 @@ begin
       end
     end
   else
-    @log.debug("PurchaseOrder helper not initialized")
+    $helperlogger.debug("PurchaseOrder helper not initialized")
   end
 rescue Exception => e
-  puts("ERROR : #{e.to_s}")
+  $helperlogger.fatal("ERROR : #{e.to_s}")
 end
 
 

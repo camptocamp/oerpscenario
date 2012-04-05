@@ -29,8 +29,7 @@ begin
     # Add useful methode on bank statement handling
     ##############################################################################
     AccountBankStatement.class_eval do
-      @log = Logger.new('AccountBankStatement')
-      @log.debug("Extending  #{self.class} #{self.name}")
+      $helperlogger.debug("Extending  #{self.class} #{self.name}")
       ############################################################################
       # Import invoices into the given bank statements
       # Input :
@@ -149,7 +148,7 @@ begin
 
     end
   else
-    @log.debug("AccountBankStatement helper not initialized !")
+    $helperlogger.debug("AccountBankStatement helper not initialized !")
   end
 rescue Exception => e
   puts("ERROR : #{e.to_s}")

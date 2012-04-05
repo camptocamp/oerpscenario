@@ -22,15 +22,13 @@ require 'rubygems'
 require 'ooor'
 require 'pp'
 
-
 begin
   if Object.const_defined? 'AccountVoucher'
 
     # Add useful methode on voucher handling
     ##############################################################################
     AccountVoucher.class_eval do
-      @log = Logger.new('AccountVoucher')
-      @log.debug("Extending  #{self.class} #{self.name}")
+      $helperlogger.debug("Extending  #{self.class} #{self.name}")
 
       def self.create_voucher(options={})
         if options[:invoice_id]
@@ -45,7 +43,7 @@ begin
       end
     end
   else
-    @log.debug("AccountVoucher helper not initialized")
+    $helperlogger.debug("AccountVoucher helper not initialized")
   end
 rescue Exception => e
   puts("ERROR : #{e.to_s}")

@@ -25,8 +25,7 @@ require 'ooor'
 begin
   if Object.const_defined? 'StockPicking'
     StockPicking.class_eval do
-      @log = Logger.new('StockPicking')
-      @log.debug("Extending  #{self.class} #{self.name}")
+      $helperlogger.debug("Extending  #{self.class} #{self.name}")
       # Add useful methode on stock picking handling
 
       def self.to_ary
@@ -43,8 +42,8 @@ begin
       end
     end
   else
-    @log.debug("StockPicking helper not initialized")
+    $helperlogger.debug("StockPicking helper not initialized")
   end
 rescue Exception => e
-  puts("ERROR : #{e.to_s}")
+  $helperlogger.fatal("ERROR : #{e.to_s}")
 end

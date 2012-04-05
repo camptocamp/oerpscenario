@@ -27,8 +27,7 @@ begin
   ##############################################################################
   if Object.const_defined? 'ResUsers'
     ResUsers.class_eval do
-      @log = Logger.new('ResUsers')
-      @log.debug("Extending  #{self.class} #{self.name}")
+      $helperlogger.debug("Extending  #{self.class} #{self.name}")
 
       def self.add_role(user_login, group_array)
         if group_array != :all
@@ -115,8 +114,8 @@ begin
       end
     end
   else
-    @log.debug("ResUsers helper not initialized")
+    $helperlogger.debug("ResUsers helper not initialized")
   end
 rescue Exception => e
-  puts("ERROR : #{e.to_s}")
+  $helperlogger.fatal("ERROR : #{e.to_s}")
 end

@@ -28,8 +28,8 @@ begin
     # Add useful methode on ir.module,module handling
     ##############################################################################
     IrModuleModule.class_eval do
-      @log = Logger.new('IrModuleModule')
-      @log.debug("Extending  #{self.class} #{self.name}")
+      $helperlogger.info("Extending  #{self.class} #{self.name}")
+      
       ##########################################################################
       # Run the upgrade wizard on all modules
       # Input :
@@ -40,7 +40,7 @@ begin
       # res = IrModuleModule.update_needed_modules(@openerp)
       # Deprecated
       def self.update_needed_modules(openerp)
-        @log.debug("DEBUG : update_needed_modules is deprecated")
+        $helperlogger.debug("DEBUG : update_needed_modules is deprecated")
         # Call the wizard on whatever module
         wizard = IrModuleModule.find(:first).old_wizard_step('module.upgrade.simple')
         # Run all state of the wizard
@@ -101,7 +101,7 @@ begin
         end
       else
         def self.run_base_quality_test(modules)
-          @log.info("INFO : Function not available")
+          $helperlogger.info("INFO : Function not available")
         end
       end
 
@@ -222,8 +222,8 @@ begin
     end
 
   else
-    @log.debug("IrModuleModule helper not initialized")
+    $helperlogger.debug("IrModuleModule helper not initialized")
   end
 rescue Exception => e
-  puts("ERROR : #{e.to_s}")
+  $helperlogger.fatal("ERROR : #{e.to_s}")
 end

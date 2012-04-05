@@ -1,23 +1,8 @@
-
-def helpers_absolute_path
-  File.expand_path("../../../Helpers/*", File.dirname(__FILE__))
-end
-
-def load_helpers
-  # TODO generic method to load each helper
-  # actually each ruby file contains the same
-  # code : test if class exists, run a class_eval it will probabley be a gem
-   Dir[helpers_absolute_path].each { |file| load file }
-end
-
-
-
 ##############################################################################
 Given /^I am logged as (\w+) user with password (\w+) used$/ do |user, pass|
     begin
         if @openerp.ready?
-            @openerp.login(:user =>user,:pwd => pass)
-            load_helpers
+            @openerp.login(:user =>user,:pwd => pass)            
         else
             @openerp.log.info("INFO : Attempt to connect")
             @openerp.setConnexionfromConf(:user=>user, :pwd=>pass)            
@@ -70,8 +55,10 @@ Given /^I install the required modules:$/ do |table|
       to_install.push(mod)
   end
   IrModuleModule.install_modules(@openerp, to_install)
-  @openerp.set_var('module_to_install',to_install)
-  @openerp.get_var('module_to_install').should be_true
+  @openerp.set_var('module_to_install', to_install)
+  mod = @openerp.get_var('module_to_install')
+  mod.should_not be_nil
+  mod.should be_true
 end
 
 Given /^I install the require modules:$/ do |table|

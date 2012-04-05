@@ -28,8 +28,7 @@ begin
     # Add useful methode on invoice handling
     ##############################################################################
     AccountInvoice.class_eval do
-       @log = Logger.new('AccountInvoice')
-       @log.log.debug("Extending  #{self.class} #{self.name}")
+       $helperlogger.log.debug("Extending  #{self.class} #{self.name}")
       ##########################################################################
       # Create an invoice with given informations
       # Add a line if amount <> false, the account could be provided or not
@@ -116,7 +115,7 @@ begin
       end
     end
   else
-    @log.debug("AccountInvoice helper not initialized")
+    $helperlogger.debug("AccountInvoice helper not initialized")
   end
 rescue Exception => e
   puts("ERROR : #{e.to_s}")

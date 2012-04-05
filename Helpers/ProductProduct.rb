@@ -22,8 +22,7 @@
 begin
   if Object.const_defined? 'ProductProduct'
     ProductProduct.class_eval do
-      @log = Logger.new('ProductProduct')
-      @log.debug("Extending  #{self.class} #{self.name}")
+      $helperlogger.debug("Extending  #{self.class} #{self.name}")
       # Add useful methode on product handling
 
       def self.to_ary
@@ -120,7 +119,7 @@ begin
       end
     end
   else
-    @log.debug("ProductProduct helper not initialized")
+    $helperlogger.debug("ProductProduct helper not initialized")
   end
 rescue Exception => e
   puts("ERROR : #{e.to_s}")

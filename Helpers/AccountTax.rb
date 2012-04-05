@@ -28,8 +28,7 @@ begin
     # Add useful methode on taxes handling
     ##############################################################################
     AccountTax.class_eval do
-      @log = Logger.new('AccountTax')
-      @log.debug("Extending  #{self.class} #{self.name}")
+      $helperlogger.debug("Extending  #{self.class} #{self.name}")
       ##########################################################################
       # Create a tax and tax code with given informations
       # Input :
@@ -80,7 +79,7 @@ begin
       end
     end
   else
-    @log.debug("AccountTax helper not initialized")
+    $helperlogger.debug("AccountTax helper not initialized")
   end
 rescue Exception => e
   puts("ERROR : #{e.to_s}")

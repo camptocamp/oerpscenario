@@ -26,8 +26,7 @@ begin
   # Add useful methode on partner handling
   ##############################################################################
   ResPartner.class_eval do
-    @log = Logger.new('ResPartner')
-    @log.debug("Extending  #{self.class} #{self.name}")
+    $helperlogger.debug("Extending  #{self.class} #{self.name}")
     ##########################################################################
     # Return the first encountred supplier with at least one address
     # Input :
@@ -36,7 +35,7 @@ begin
     #  - The found ResPartner as a instance of the class¨
     # Usage Example:
     # part = ResPartner.get_supplier({:name => 'toto', :type=>'supplier'})
-    def self.get_valid_partner(openerp, options={})
+    def self.get_valid_partner(options={})
       unless options
         options={}
       end
@@ -44,7 +43,7 @@ begin
       field = []
       if options.is_a? Integer
         partner = ResPartner.find(options)
-        openerp.set_var('current_partner', partner)
+        $utils.set_var('current_partner', partner)
         return partner
       end
       if not options[:new]
@@ -64,11 +63,11 @@ begin
         end
         partner = ResPartner.find(:first, :domain => domain, :fields => field)
         if partner
-          openerp.set_var('current_partner', partner)
+          $utils.set_var('current_partner', partner)
           return partner
         end
       end
-      createoptions = {:name => options[:name] || 'partnerscenario', :user_id => openerp.ooor.config[:user_id]}
+      createoptions = {:name => options[:name] || 'partnerscenario', :user_id => $utils.ooor.config[:user_id]}
       options.each do |key, value|
         if key == :type
           createoptions[value] = true
@@ -81,10 +80,10 @@ begin
       createoptions[:address] = [[6, 0, [address.id]]]
       partner = ResPartner.new(createoptions)
       partner.save
-      openerp.set_var('current_partner', partner)
+      $utils.set_var('current_partner', partner)
       return partner
     end
   end
 rescue Exception => e
-  puts("ERROR : #{e.to_s}")
+  $helperlogger.fatal("ERROR : #{e.to_s}")
 end

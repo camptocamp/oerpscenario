@@ -22,11 +22,11 @@ require 'pp'
 require 'rubygems'
 require 'ooor'
 
+
 begin
   if Object.const_defined? 'SaleOrder'
     SaleOrder.class_eval do
-      @log = Logger.new('SaleOrder')
-      @log.debug("Extending  #{self.class} #{self.name}")
+      $helperlogger.debug("Extending  #{self.class} #{self.name}")
       # Add useful methode on sale order handling
 
       def self.to_ary
@@ -36,7 +36,10 @@ begin
       def confirm
         wkf_action('order_confirm')
       end
-
+    end
+  else
+    $helperlogger.debug("ProductProduct helper not initialized")
+  end
 rescue Exception => e
-  puts("ERROR : #{e.to_s}")
+  $helperlogger.fatal("ERROR : #{e.to_s}")
 end

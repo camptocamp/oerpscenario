@@ -28,8 +28,7 @@ require 'ooor'
 begin
   if Object.const_defined? 'ModuleQualityCheck'
     ModuleQualityCheck.class_eval do
-      @log = Logger.new('IrModuleModule')
-      @log.debug("Extending  #{self.class} #{self.name}")
+      $helperlogger.debug("Extending  #{self.class} #{self.name}")
       ##########################################################################
       # Print out the tests result
       # Input :
@@ -87,8 +86,8 @@ begin
       # end
     end
   else
-    @log.debug("ModuleQualityCheck helper not initialized")
+    $helperlogger.debug("ModuleQualityCheck helper not initialized")
   end
 rescue Exception => e
-  puts("ERROR : #{e.to_s}")
+  $helperlogger.fatal("ERROR : #{e.to_s}")
 end

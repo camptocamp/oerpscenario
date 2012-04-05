@@ -24,8 +24,7 @@ require 'ooor'
 
 begin
   Ooor.class_eval do
-    @log = Logger.new('OOOR Extention')
-    @log.debug("Extending  #{self.class} #{self.name}")
+    $helperlogger.debug("Extending  #{self.class} #{self.name}")
     # Add useful methode on ooor handling
 
     def self.to_ary

@@ -25,8 +25,7 @@ require 'ooor'
 begin
   if Object.const_defined? 'SaleOrderLine'
     SaleOrderLine.class_eval do
-      @log = Logger.new('SaleOrderLine')
-      @log.debug("Extending  #{self.class} #{self.name}")
+      $helperlogger.debug("Extending  #{self.class} #{self.name}")
 
       def self.get_sale_order_line(options, so)
         unless options
@@ -66,7 +65,7 @@ begin
       end
     end
   else
-    @log.debug("SaleOrderLine helper not initialized")
+    $helperlogger.debug("SaleOrderLine helper not initialized")
   end
 rescue Exception => e
   puts("ERROR : #{e.to_s}")
