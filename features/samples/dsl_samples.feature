@@ -13,7 +13,7 @@
 Feature: Make some DSL samples
   Scenario: Create/Update a user
       Given I need a "res.users" with name: Cucumber and login: is rocking
-      And having
+      And having:
           | name | value |
           | password | my_pass |
           | context_lang | en_us |
@@ -22,7 +22,7 @@ Feature: Make some DSL samples
 
     Scenario: Create/Update with some subtility
       Given I need a "res.users" with name: Scenario and login: rulezzz
-      And having
+      And having:
           | name | value |
           | password | my_pass |
           | context_lang | en_us |
@@ -32,7 +32,7 @@ Feature: Make some DSL samples
 
    Scenario: Create/Update a user with some other subtility
       Given I need a "res.users" with name: Scenario and login: rulezzz
-      And having
+      And having:
           | name | value |
           | password | my_pass |
           | context_lang | en_us |
@@ -43,7 +43,7 @@ Feature: Make some DSL samples
     Scenario: Ensure user is unique at creation
       # This will raise en error because it will ensure that user does not exists
       Given I create a "res.users" with name: Scenario and login: rulezzz 
-      And having
+      And having:
           | name | value |
           | password | my_pass |
           | context_lang | en_us |
@@ -54,7 +54,7 @@ Feature: Make some DSL samples
     Scenario: Ensure Someting exists
       Given I find a "res.users" with name: Scenario and login: rulezzz 
       # This will raise if noting found
-      And having
+      And having:
           | name | value |
           | password | my_pass |
           | context_lang | en_us |
@@ -69,7 +69,7 @@ Feature: Make some DSL samples
   # oid is a special key word it creates ok look for an xml id in OpenERP
   Scenario: Create a Sale Order with DSL and system wide id
       Given I need a "sale.order" with name: SO Device Reseller and oid: scenario.so_reseller
-      And having
+      And having:
           | name | value |
           | name | SO Device Reseller |
           | partner_id | by oid: scenario.my_partner |
@@ -79,7 +79,7 @@ Feature: Make some DSL samples
           | partner_shipping_id | by oid: scenario.my_partner_add |
           | shop_id | by name: Your Company |
       Given I need a "sale.order.line" with name: SO Line 1 Device Reseller and oid: scenario.so_reseller_line1
-      And having
+      And having:
           | name | value |
           | name | SO Line 1 Device Reseller |
           | product_id | by oid: scenario.device1 |

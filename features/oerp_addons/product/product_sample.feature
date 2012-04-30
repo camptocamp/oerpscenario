@@ -46,14 +46,14 @@ Feature: Create the needed product
 
     Scenario: create Supplier 
     Given I need a "res.partner" with name: Pro living and oid: scenario.main_supplier
-    And having
+    And having:
      | name       | value                           |
      | lang       | fr_FR                           |
      | company_id | by name: MyCompany |
      | supplier   | 1                               |
 
     Given I need a "res.partner.address" with name: Pro living and oid: scenario.main_supplier_add
-    And having
+    And having:
      | name | value |
      | partner_id | by oid: scenario.main_supplier |
      | country_id | by code: FR |
@@ -64,7 +64,7 @@ Feature: Create the needed product
 
   Scenario: Create a product using DSL
      Given I need a "product.product" with name: Mission 1.0 and oid: scenario.mission1
-     And having
+     And having:
           | name | value |
           | weight_net | 0.0 |
           | name | Mission 1.0 |

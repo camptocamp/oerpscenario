@@ -33,7 +33,7 @@ Feature: Control the base module
 
   Scenario: Create a partner using DSL
       Given I need a "res.partner" with name: Fournisseur Device and oid: scenario.main_device_supplier
-      And having
+      And having:
       | name | value |
       | name | Fournisseur Device |
       | lang | en_US |
@@ -43,7 +43,7 @@ Feature: Control the base module
       | active | 1 |
 
       Given I need a "res.partner.address" with name: Pro living and oid: scenario.main_device_supplier_add
-      And having
+      And having:
        | name | value |
        | name | Fournisseur Device |
        | type | default |

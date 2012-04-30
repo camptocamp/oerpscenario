@@ -17,7 +17,7 @@ Feature: Test sales process
       
   Scenario: Create a Sale Order with DSL
       Given I need a "sale.order" with name: SO Device Reseller and oid: scenario.so_reseller
-      And having
+      And having:
           | name | value |
           | name | SO Device Reseller |
           | partner_id | by oid: scenario.partner_swisspost |
@@ -27,7 +27,7 @@ Feature: Test sales process
           | partner_shipping_id | by oid: scenario.partner_swisspost_add |
           | shop_id | by name: Your Company |
       Given I need a "sale.order.line" with name: SO Line 1 Device Reseller and oid: scenario.so_reseller_line1
-      And having
+      And having:
           | name | value |
           | name | SO Line 1 Device Reseller |
           | product_id | by oid: scenario.device1 |
