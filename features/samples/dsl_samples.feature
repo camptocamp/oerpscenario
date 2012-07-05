@@ -11,6 +11,7 @@
 @dsl_samples
 
 Feature: Make some DSL samples
+  @tmp
   Scenario: Create/Update a user
       Given I need a "res.users" with name: Cucumber and login: is rocking
       And having:

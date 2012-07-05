@@ -108,3 +108,8 @@ support: => parsing of helpers and login to database define in .conf file + all 
 datas: => Folder used to store the dump file for testing Magento and Prestshop while waiting for a full Vagrant-self-configured one ;)
 ------
 
+Run commands:
+CONF=... cucumber features path_to_an_addon_scenarios_folder path_to_an_other_one
+or
+Make your rake file (Documented on cucumber Wiki)
+
