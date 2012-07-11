@@ -34,6 +34,11 @@ Given /^I want to load the demo data on all installed modules$/ do
   # @modules=IrModuleModule.find(:all,:state=>'installed')
   @modules.should be_true
 end
+ ##############################################################################
+When /^I want all demo data to be loaded on install$/ do
+  ids = IrModuleModule.search([])
+  IrModuleModule.write(ids, {'demo'=>true})
+end
 ##############################################################################
 When /^I tic the demo data field on all found modules$/ do
   @modules.each do |m|

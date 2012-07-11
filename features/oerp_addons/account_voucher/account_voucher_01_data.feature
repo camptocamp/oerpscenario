@@ -6,21 +6,22 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_date
+@addons       @account_voucher       @account_voucher_data
 
 Feature: In order to validate account voucher behavious as an admin user I prepare data
-  @account_voucher_init
+  @account_voucher_addon_install
   Scenario: Install module
     Given I need a "ir.module.module" with name: account_voucher
     And having:
       |name|value|
       | demo | 1 |
 
-    Given I install the required modules:
-      | name                      |
-      | account                   |
-      | account_voucher           |
-      | account_cancel            |
+    Given I want all demo data to be loaded on install
+    And I install the required modules with dependencies:
+      | name            |
+      | account_voucher |
+      | account_cancel  |
+    Then my modules should have been installed and models reloaded
 
   @account_voucher_init
   Scenario: Lang Parameters
@@ -34,6 +35,26 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
   Scenario: Clean period
     Given I correct the period default set up (all special by default) :
     #UPDATE account_period SET special ='f' WHERE fiscalyear_id = 1;
+
+  @account_voucher_init
+  Scenario: Partner
+    Given I need a "res.partner" with oid: scen.voucher_partner
+    And having:
+      | name              | value              |
+      | name              | Voucher partner    |
+      | customer          | 1                  |
+
+    Given I need a "res.partner.address" with oid: scen.voucher_partner_add
+    And having:
+      | name       | value                        |
+      | name       | Luc Maurer                   |
+      | zip        | 1015                         |
+      | city       | lausanne                     |
+      | email      | openerp@locahost.dummy       |
+      | phone      | +41 21 619 10 12             |
+      | street     | PSE-A, EPF                   |
+      | partner_id | by oid: scen.voucher_partner |
+
 
   @account_voucher_init
   Scenario: Company setting
@@ -54,14 +75,14 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
   @account_voucher_init
   Scenario: Admin user right
     Given I set the following currency rates :
-      | currency    |  rate  | date     |
-      | EUR      | 1.0000 | 01-01-%Y |
-      | USD      | 1.5000 | 01-01-%Y |
-      | USD      | 1.8000 | 01-02-%Y |
-      | USD      | 1.5000 | 01-03-%Y |
-      | GBP      | 0.8000 | 01-02-%Y |
-      | GBP      | 0.9000 | 01-02-%Y |
-      | GBP      | 0.8000 | 01-02-%Y |
+      | currency |   rate | date     |
+      | EUR      | 1.0000 | %Y-01-01 |
+      | USD      | 1.5000 | %Y-01-01 |
+      | USD      | 1.8000 | %Y-02-01 |
+      | USD      | 1.5000 | %Y-03-01 |
+      | GBP      | 0.8000 | %Y-02-01 |
+      | GBP      | 0.9000 | %Y-02-01 |
+      | GBP      | 0.8000 | %Y-02-01 |
 
   @account_voucher_init
   Scenario: Account
@@ -87,7 +108,7 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
 
   @account_voucher_init
   Scenario: setting journals
-   Given I need a "account.journal" with oid: scen.voucher_uds_journal
+   Given I need a "account.journal" with oid: scen.voucher_usd_journal
    And having:
      | name                      | value                           |
      | name                      | USD bank                        |
@@ -100,7 +121,7 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
      | default_credit_account_id | by code: X11010                 |
      | view_id                   | by name: Bank/Cash Journal View |
 
-   Given I need a "account.journal" with oid: scen.voucher_uds_journal
+   Given I need a "account.journal" with oid: scen.voucher_gbp_journal
    And having:
       | name                      | value                           |
       | name                      | GBP bank                        |
