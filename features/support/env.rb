@@ -2,7 +2,7 @@
 #
 #    OERPScenario, OpenERP Functional Tests
 #    Author Nicolas Bessi 2009
-#    Contribs Joel Grand-Guillaume 2009 
+#    Contribs Joel Grand-Guillaume 2009
 #    Copyright Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@
 
 require 'rubygems'
 require 'cucumber/openerp'
-require "Logger"
+require "logger"
 
 def helpers_absolute_path
   File.expand_path("../../Helpers/*", File.dirname(__FILE__))
@@ -35,4 +35,3 @@ def load_helpers
   # code : test if class exists, run a class_eval it will probabley be a gem
    Dir[helpers_absolute_path].each { |file| load file }
 end
-
