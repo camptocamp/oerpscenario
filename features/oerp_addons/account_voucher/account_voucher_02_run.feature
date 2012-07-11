@@ -47,6 +47,7 @@ Feature: In order to validate account voucher behavious as an admin user I do a 
      | date        | %Y-02-15                          |
      | currency_id | by name: USD                      |
      | journal_id  | by oid:  scen.voucher_usd_journal |
+    And the bank statement is linked to period "X 02/%Y"
 
 
  @account_voucher_run @account_voucher_import_invoice
@@ -65,8 +66,9 @@ Feature: In order to validate account voucher behavious as an admin user I do a 
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_1
     Then I should have following journal entries in voucher:
       | date     | period  | account                        |  debit | credit | curr.amt | curr. | reconcile | partial |
-      | %Y-02-15 | X 02/%Y | Creditors - (test)             |        | 666.67 |     1000 | USD   | yes       |         |
+      | %Y-02-15 | X 02/%Y | Creditors - (test)             |        | 555.56 |     1000 | USD   | yes       |         |
       | %Y-02-15 | X 02/%Y | USD bank account               | 555.56 |        |    -1000 | USD   |           |         |
+      | %Y-02-15 | X 02/%Y | Creditors - (test)             |        | 111.11 |     1000 | USD   | yes       |         |
       | %Y-02-15 | X 02/%Y | Foreign Exchange Loss - (test) | 111.11 |        |          | USD   |           |         |
 
   @account_voucher_run @account_voucher_valid_invoice_1

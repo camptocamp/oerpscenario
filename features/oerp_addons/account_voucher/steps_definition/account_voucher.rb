@@ -84,13 +84,15 @@ Then /^I should have following journal entries in voucher:$/ do |table|
   end
   @found_item.should_not be_nil, "No statement find"
   @found_item.is_a?(AccountBankStatement).should be_true, "found item is not a bank statement"
-  @found_item.move_line_ids.length.should eq h_list.length,
-  "We should have #{h_list.length} lines  but we have #{@found_item.move_line_ids.length}"
+  @found_item.move_line_ids.length.should eq h_list.length
+   # "We should have #{h_list.length} lines  but we have #{@found_item.move_line_ids.length}"
   errors = []
   # we can use inverse approach
   h_list.each do | row |
     account = AccountAccount.find_by_name(row['account'], :fields=>['id'])
     account.should_not be_nil, "no account named #{row['account']} found"
+    currency = ResCurrency.find_by_name(row['curr.'], :fields=>['id'])
+    currency.should_not be_nil, "Could not find currency #{row['curr.']}"
     pname = Time.new().strftime(row['period'])
     period = AccountPeriod.find_by_name(pname, :fields=['id'])
     period.should_not be_nil, "no period #{pname} found"
@@ -98,6 +100,7 @@ Then /^I should have following journal entries in voucher:$/ do |table|
               ['date', '=', Time.new().strftime(row['date'])], ['reconcile_id', '=', row['reconcile']],
               ['reconcile_partial_id', '=', row['partial']], ['credit', '=', row.fetch('credit', 0.0)],
               ['debit', '=', row.fetch('debit', 0.0)],['amount_currency', '=', row.fetch('curr.amt', 0.0)],
+              ['currency_id', '=', currency.id],
               ['id', 'in', @found_item.move_line_ids.collect {|x| x.id}]]
     pp domain
     line = AccountMoveLine.find(:first, :domain=>domain)
@@ -110,4 +113,14 @@ Given /^My invoice "(.*?)" is in state "(.*?)" reconciled with a residual amount
   invoice.should_not be_nil, "Can't find invoice #{inv_name}"
   invoice.residual.should be_within(0.0001).of(residual.to_f) , "residual is #{invoice.residual} instead of #{residual}"
   invoice.state.should eq state
+end
+
+Given /^the bank statement is linked to period "(.*?)"$/ do |p_name|
+  @found_item.should_not be_nil, "No statement find"
+  @found_item.is_a?(AccountBankStatement).should be_true, "found item is not a bank statement"
+  pname = Time.new().strftime(p_name)
+  period = AccountPeriod.find_by_name(pname, :fields=['id'])
+  period.should_not be_nil, "no period #{pname} found"
+  @found_item.period_id = period.id
+  @found_item.save
 end
