@@ -21,10 +21,10 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
       | name               | SI_301                             |
       | date_invoice       | %Y-01-01                           |
       | date_due           | %Y-02-15                           |
-      | address_invoice_id | by oid: scen.voucher_partner_add   |
-      | partner_id         | by oid: scen.voucher_partner       |
-      | account_id         | by name: Debtors - (test)          |
-      | journal_id         | by name: Sales Journal - (test)    |
+      | address_invoice_id | by oid: scen.partner_1_add   |
+      | partner_id         | by oid: scen.partner_1       |
+      | account_id         | by name: Debtors                   |
+      | journal_id         | by name: Sales                     |
       | currency_id        | by name: EUR                       |
       | type               | out_invoice                        |
 
@@ -35,7 +35,7 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
       | name       | invoice line 301                |
       | quantity   | 1                               |
       | price_unit | 1000                            |
-      | account_id | by name: Product Sales - (test) |
+      | account_id | by name: Sales                  |
       | invoice_id | by oid:scen.voucher_inv_301     |
     Given I find a "account.invoice" with oid: scen.voucher_inv_301
     And I open the credit invoice
@@ -49,7 +49,7 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
      | date        | %Y-02-15                          |
      | currency_id | by name: USD                      |
      | journal_id  | by oid:  scen.voucher_usd_journal |
-    And the bank statement is linked to period "X 02/%Y"
+    And the bank statement is linked to period "02/%Y"
 
 
  @account_voucher_run @account_voucher_import_invoice
@@ -68,9 +68,9 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_301
     Then I should have following journal entries in voucher:
       | date     | period  | account                        |  debit | credit | curr.amt | curr. | reconcile | partial |
-      | %Y-02-15 | X 02/%Y | Foreign Exchange Loss - (test) | 444.44 |        |          |       |           |         |    
-      | %Y-02-15 | X 02/%Y | Debtors - (test)               |        | 1000   |          |       | yes       |         |
-      | %Y-02-15 | X 02/%Y | USD bank account               | 555.56 |        |     1000 | USD   |           |         |
+      | %Y-02-15 | 02/%Y | Currency fx                      | 444.44 |        |          |       |           |         |    
+      | %Y-02-15 | 02/%Y | Debtors                          |        | 1000   |          |       | yes       |         |
+      | %Y-02-15 | 02/%Y | USD bank account                 | 555.56 |        |     1000 | USD   |           |         |
 
 
   @account_voucher_run @account_voucher_valid_invoice_301

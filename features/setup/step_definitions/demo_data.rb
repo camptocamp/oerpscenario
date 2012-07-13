@@ -70,5 +70,9 @@ Then /^I should see some demo data loaded$/ do
   partner = nil
   cat = nil 
 end
-
+When /^I do not want all demo data to be loaded on install$/ do
+  ids = IrModuleModule.search([])
+  IrModuleModule.write(ids, {'demo'=>false})
+end
+##############################################################################
 
