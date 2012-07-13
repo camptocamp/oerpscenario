@@ -6,11 +6,12 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_run
+@addons       @account_voucher       @account_voucher_run   @account_voucher_test   @account_voucher_test201
 
 Feature: In order to validate multicurrency account_voucher behaviour as an admin user I do a reconciliation run.
-         I want to create a customer invoice for 1000 USD (rate : 1.5) and pay it in full in EUR (rate : 1)
-         with account_voucher. The Journal entries must calculate the correct currency gain/loss.
+         I want to create a customer invoice for 1000 USD (rate : 1.5) and pay it in full in USD (rate : 1.8)
+         with account_voucher. The Journal entries do not calculate currency gain/loss but a write off where you 
+         must select the currency gain/loss account.
 
   @account_voucher_run
   Scenario: Create invoice 201
@@ -44,9 +45,10 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
     Given I need a "account.bank.statement" with oid: scen.voucher_statement_201
     And having:
      | name        | value                             |
+     | name        | Bk.St.201                         |
      | date        | %Y-02-15                          |
-     | currency_id | by name: USD                      |
-     | journal_id  | by oid:  scen.voucher_usd_journal |
+     | currency_id | by name: EUR                      |
+     | journal_id  | by oid:  scen.voucher_eur_journal |
     And the bank statement is linked to period "X 02/%Y"
 
 
@@ -56,20 +58,21 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
     And I import invoice "SI_201" using import invoice button
 
   @account_voucher_run @account_voucher_confirm
-  Scenario: comfirming voucher
+  Scenario: confirm bank statement (/!\ Voucher payment options must be 'reconcile payment balance' by default )
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_201
-    And I set voucher balance
-    When I confirm voucher
+    And I set bank statement end-balance
+    When I confirm bank statement
 
-  @account_voucher_run @account_voucher_valid_201
+  @account_voucher_run @account_voucher_valid_201 @debugg_voucher
   Scenario: validate voucher
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_201
     Then I should have following journal entries in voucher:
       | date     | period  | account                        |  debit | credit | curr.amt | curr. | reconcile | partial |
-      | %Y-02-15 | X 02/%Y | Foreign Exchange Loss - (test) |        | 333.33 |          | USD   |           |         |    
-      | %Y-02-15 | X 02/%Y | Debtors - (test)               | 333.33 |        |          | USD   | yes       |         |
-      | %Y-02-15 | X 02/%Y | Debtors - (test)               |        |1000.00 | -1000    | USD   | yes       |         |
-      | %Y-02-15 | X 02/%Y | USD bank account               |1000.00 |        |          | USD   |           |         |
+      | %Y-02-15 | X 02/%Y | Debtors - (test)               | 333.34 |        |          |       |           |         |
+      | %Y-02-15 | X 02/%Y | Foreign Exchange Gain - (test) |        | 333.34 |          |       |           |         |    
+      | %Y-02-15 | X 02/%Y | Debtors - (test)               | 333.34 |        |          |       | yes       |         |
+      | %Y-02-15 | X 02/%Y | Debtors - (test)               |        |1000.01 | -1800.02 | USD   | yes       |         |
+      | %Y-02-15 | X 02/%Y | EUR bank account               | 666.67 |        |          |       |           |         |
 
 
   @account_voucher_run @account_voucher_valid_invoice_201

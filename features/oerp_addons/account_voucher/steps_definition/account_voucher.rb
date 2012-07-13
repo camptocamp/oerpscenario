@@ -62,7 +62,7 @@ Given /^I import invoice "(.*?)" using import invoice button$/ do |inv_name|
 end
 
 
-Given /^I set voucher balance$/ do
+Given /^I set bank statement end-balance$/ do
   @found_item.should_not be_nil, "No statement find"
   @found_item.is_a?(AccountBankStatement).should be_true, "found item is not a bank statement"
   @found_item.balance_end_real = @found_item.balance_end
@@ -71,7 +71,7 @@ Given /^I set voucher balance$/ do
   @found_item.balance_end.should eq @found_item.balance_end_real
 end
 
-When /^I confirm voucher$/ do
+When /^I confirm bank statement$/ do
    @found_item.should_not be_nil, "No statement find"
    @found_item.is_a?(AccountBankStatement).should be_true, "found item is not a bank statement"
    @found_item.button_confirm_bank
@@ -80,7 +80,7 @@ end
 Then /^I should have following journal entries in voucher:$/ do |table|
   h_list = table.hashes
   h_list.each do | h |
-    h.each {|k, v| h[k] = false if v.empty?}
+    h.delete_if {|k, v| v.empty?}
   end
   @found_item.should_not be_nil, "No statement find"
   @found_item.is_a?(AccountBankStatement).should be_true, "found item is not a bank statement"
@@ -91,17 +91,31 @@ Then /^I should have following journal entries in voucher:$/ do |table|
   h_list.each do | row |
     account = AccountAccount.find_by_name(row['account'], :fields=>['id'])
     account.should_not be_nil, "no account named #{row['account']} found"
-    currency = ResCurrency.find_by_name(row['curr.'], :fields=>['id'])
-    currency.should_not be_nil, "Could not find currency #{row['curr.']}"
+    if row['curr.']
+      currency = ResCurrency.find_by_name(row['curr.'], :fields=>['id'])
+      currency.should_not be_nil, "Could not find currency #{row['curr.']}"
+      currency_id = currency.id
+    else
+      currency_id = false
+    end
     pname = Time.new().strftime(row['period'])
     period = AccountPeriod.find_by_name(pname, :fields=['id'])
     period.should_not be_nil, "no period #{pname} found"
     domain = [['account_id', '=', account.id], ['period_id', '=', period.id],
-              ['date', '=', Time.new().strftime(row['date'])], ['reconcile_id', '=', row['reconcile']],
-              ['reconcile_partial_id', '=', row['partial']], ['credit', '=', row.fetch('credit', 0.0)],
+              ['date', '=', Time.new().strftime(row['date'])], ['credit', '=', row.fetch('credit', 0.0)],
               ['debit', '=', row.fetch('debit', 0.0)],['amount_currency', '=', row.fetch('curr.amt', 0.0)],
-              ['currency_id', '=', currency.id],
+              ['currency_id', '=', currency_id],
               ['id', 'in', @found_item.move_line_ids.collect {|x| x.id}]]
+    if row['reconcile']
+        domain.push ['reconcile_id', '!=', false]
+    else
+        domain.push ['reconcile_id', '=', false]
+    end
+    if row['partial']
+        domain.push ['reconcile_partial_id', '!=', false]
+    else
+        domain.push ['reconcile_partial_id', '=', false]
+    end
     pp domain
     line = AccountMoveLine.find(:first, :domain=>domain)
     line.should_not be_nil, "Can not find line #{row.inspect}"

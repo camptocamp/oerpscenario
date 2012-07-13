@@ -6,23 +6,9 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_data
+@addons       @account_voucher       @account_voucher_data    @account_voucher_test  @account_voucher_test201
 
 Feature: In order to validate account voucher behavious as an admin user I prepare data
-  @account_voucher_addon_install
-  Scenario: Install module
-    Given I need a "ir.module.module" with name: account_voucher
-    And having:
-      |name|value|
-      | demo | 1 |
-
-    Given I want all demo data to be loaded on install
-    And I install the required modules with dependencies:
-      | name            |
-      | account_voucher |
-      | account_cancel  |
-    Then my modules should have been installed and models reloaded
-
   @account_voucher_init
   Scenario: Lang Parameters
     Given I need a "res.lang" with code: en_US
@@ -86,6 +72,15 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
 
   @account_voucher_init
   Scenario: Account
+   Given I need a "account.account" with oid: scen.voucher_eur
+    And having:
+    | name        | value            |
+    | name        | EUR bank account |
+    | code        | X11013           |
+    | parent_id   | by code: X101    |
+    | type        | other            |
+    | user_type   | by name: Cash    |
+    
     Given I need a "account.account" with oid: scen.voucher_usd
     And having:
     | name        | value            |
@@ -108,6 +103,19 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
 
   @account_voucher_init
   Scenario: setting journals
+   Given I need a "account.journal" with oid: scen.voucher_eur_journal
+   And having:
+     | name                      | value                           |
+     | name                      | EUR bank                        |
+     | code                      | BEUR                            |
+     | type                      | bank                            |
+     | journal_user              | 1                               |
+     | check_dtls                | 1                               |
+     | default_debit_account_id  | by code: X11013                 |
+     | default_credit_account_id | by code: X11013                 |
+     | view_id                   | by name: Bank/Cash Journal View |
+  
+  
    Given I need a "account.journal" with oid: scen.voucher_usd_journal
    And having:
      | name                      | value                           |
@@ -133,5 +141,7 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
       | default_debit_account_id  | by code: X11011                 |
       | default_credit_account_id | by code: X11011                 |
       | view_id                   | by name: Bank/Cash Journal View |
+      
+      
 
    Given I allow cancelling entries on all journals

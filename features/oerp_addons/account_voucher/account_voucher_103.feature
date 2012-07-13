@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_run
+@addons       @account_voucher       @account_voucher_run   @account_voucher_test
 
 Feature: In order to validate multicurrency account_voucher behaviour as an admin user I do a reconciliation run.
          I want to create a supplier invoice for 1000 USD (rate : 1.5) and pay it in full in USD (rate : 1.8)
@@ -44,6 +44,7 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
     Given I need a "account.bank.statement" with oid: scen.voucher_statement_103
     And having:
      | name        | value                             |
+     | name        | Bk.St.103                         |
      | date        | %Y-02-15                          |
      | currency_id | by name: USD                      |
      | journal_id  | by oid:  scen.voucher_usd_journal |
@@ -56,10 +57,10 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
     And I import invoice "SI_103" using import invoice button
 
   @account_voucher_run @account_voucher_confirm
-  Scenario: comfirming voucher
+  Scenario: confirm bank statement (/!\ Voucher payment options must be 'reconcile payment balance' by default )
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_103
-    And I set voucher balance
-    When I confirm voucher
+    And I set bank statement end-balance
+    When I confirm bank statement
 
   @account_voucher_run @account_voucher_valid_103
   Scenario: validate voucher
@@ -67,9 +68,9 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
     Then I should have following journal entries in voucher:
       | date     | period  | account                        |  debit | credit | curr.amt | curr. | reconcile | partial |
       | %Y-02-15 | X 02/%Y | Foreign Exchange Gain - (test) |        | 111.11 |          | USD   |           |         |
-      | %Y-02-15 | X 02/%Y | Creditors - (test)             | 111.11 |        |     1000 | USD   | yes       |         |
-      | %Y-02-15 | X 02/%Y | Creditors - (test)             |        | 666.67 |    -1000 | USD   | yes       |         |
-      | %Y-02-15 | X 02/%Y | USD bank account               | 555.56 |        |     1000 | USD   |           |         |
+      | %Y-02-15 | X 02/%Y | Creditors - (test)             | 111.11 |        |          | USD   | yes       |         |
+      | %Y-02-15 | X 02/%Y | Creditors - (test)             | 555.56 |        |     1000 | USD   | yes       |         |
+      | %Y-02-15 | X 02/%Y | USD bank account               |        | 555.56 |    -1000 | USD   |           |         |
 
   @account_voucher_run @account_voucher_valid_invoice_103
   Scenario: validate voucher
