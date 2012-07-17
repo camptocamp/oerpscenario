@@ -138,3 +138,11 @@ Given /^the bank statement is linked to period "(.*?)"$/ do |p_name|
   @found_item.period_id = period.id
   @found_item.save
 end
+
+Given /^the line amount should be (.*)$/ do |amount|
+  @found_item.amount.should eq amount.to_f
+end
+Given /^I modify the line amount to (.*)$/ do |amount|
+  @found_item.amount = amount.to_f
+  @found_item.save
+end
