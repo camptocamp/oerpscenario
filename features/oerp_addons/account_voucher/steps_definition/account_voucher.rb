@@ -146,3 +146,82 @@ Given /^I modify the line amount to (.*)$/ do |amount|
   @found_item.amount = amount.to_f
   @found_item.save
 end
+
+########################################################################################
+Added by guewen lastly for scenario 401 using pay invoice button
+
+
+Given /^I pay the customer invoice with name "([^"]+)"$/ do |invoice_name|
+  invoice = AccountInvoice.find_by_name invoice_name
+  invoice.should_not be_nil, "Invoice with #{invoice_name} not found"
+
+  payment_context = invoice.invoice_pay_customer['context']
+  @voucher = AccountVoucher.new({}, false, payment_context)
+end
+
+Then /^I set the voucher paid amount to "(\d+)"$/ do |amount_paid|
+  @voucher.on_change('onchange_amount', :amount, [],
+                     amount_paid.to_f,
+                     @voucher.payment_rate,
+                     @voucher.partner_id.id,
+                     @voucher.journal_id ? @voucher.journal_id.id : false,
+                     @voucher.currency_id ? @voucher.currency_id.id : false,
+                     @voucher.type,
+                     @voucher.date,
+                     @voucher.payment_rate,
+                     @voucher.company_id ? @voucher.company_id.id : false)
+  @voucher.amount = amount_paid.to_f
+end
+
+Then /^I set the voucher payment method to "([^"]+)"$/ do |journal_name|
+  journal = AccountJournal.find_by_name(journal_name, :fields => ['id'])
+  journal.should_not be_nil, "Journal #{journal_name} not found"
+
+  @voucher.on_change('onchange_journal', :journal_id, [],
+                     journal.id,
+                     @voucher.line_ids.map(&:id),
+                     @voucher.tax_id ? @voucher.tax_id.id : false,
+                     @voucher.partner_id.id,
+                     @voucher.date,
+                     @voucher.amount,
+                     @voucher.type,
+                     @voucher.company_id ? @voucher.company_id.id : false)
+  @voucher.journal_id = journal.id
+end
+
+Then /^I change the voucher's options to create a write-off on account "([^"]+)"$/ do |account_code|
+  account = AccountAccount.find_by_code(account_code, :fields => ['id'])
+  account.should_not be_nil
+
+  @voucher.payment_option = 'with_writeoff'
+  @voucher.writeoff_acc_id = account.id
+end
+
+Then /^I set the voucher's first line to be "([^"]+)" with a "(\w+)" allocation$/ do |reconcile, allocation|
+  reconciled = reconcile == 'full reconcile'
+
+  @voucher = AccountVoucher.find(@voucher.id)
+
+  line = @voucher.line_cr_ids[0]
+  line.reconcile = reconciled
+  line.amount = allocation.to_f
+  line.save
+
+  @voucher = AccountVoucher.find(@voucher.id)
+  @voucher.on_change('onchange_line_ids', :line_cr_ids, [@voucher.id],
+                     @voucher.line_dr_ids.empty? ? [] : @voucher.line_dr_ids.map(&:id),
+                     @voucher.line_cr_ids.empty? ? [] : @voucher.line_cr_ids.map(&:id),
+                     @voucher.amount,
+                     @voucher.currency_id ? @voucher.currency_id.id : false)
+  @voucher.save
+end
+
+Then /^I save the voucher$/ do
+  @voucher.save
+end
+
+Then /^I validate the voucher$/ do
+  @voucher.proforma_voucher
+end
+
+
