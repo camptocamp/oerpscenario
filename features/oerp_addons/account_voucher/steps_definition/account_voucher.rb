@@ -148,7 +148,7 @@ Given /^I modify the line amount to (.*)$/ do |amount|
 end
 
 ########################################################################################
-Added by guewen lastly for scenario 401 using pay invoice button
+#Added by guewen lastly for scenario 401 using pay invoice button
 
 
 Given /^I pay the customer invoice with name "([^"]+)"$/ do |invoice_name|

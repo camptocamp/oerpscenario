@@ -70,3 +70,12 @@ Cucumber::Rake::Task.new(:init_magento, "Install the required module for magento
 end
 task :init_magento => :init_sale
 task :init_magento => :init_purchase
+
+##############################################################################
+#  Test For accounting in multicurrency
+##############################################################################
+namespace :accounting do
+  Cucumber::Rake::Task.new(:init_param, "Install the base module and configure base vate") do |task|
+    task.cucumber_opts = %W(--tags=@params features #{conf_file})
+  end
+end
