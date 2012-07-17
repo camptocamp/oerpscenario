@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_run   @toto
+@addons       @account_voucher       @account_voucher_run   @toto403
 
 Feature: In order to validate multicurrency account_voucher behaviour as an admin user I do a reconciliation run.
          I want to create a supplier invoice for 1000 EUR (rate : 1) and pay it in full in EUR (rate : 1)

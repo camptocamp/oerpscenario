@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_run   @toto
+@addons       @account_voucher       @account_voucher_run   @411
 
 Feature: In order to validate multicurrency account_voucher behaviour as an admin user I do a reconciliation run.
          I want to create a customer invoice for 1000 EUR (rate : 1) and pay 950 EUR (rate : 1). I consider the 
@@ -54,15 +54,13 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
  @account_voucher_run @account_voucher_import_invoice
   Scenario: Import invoice into statement
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_411
-    And I import invoice "SI_411" using import invoice button with the oid: scen.voucher_statement_line_411
+    And I import invoice "SI_411" using import invoice button
 
-###########TODO###############################################################################################
  @acccout_voucher_run @account_statement_line_amount_modified   
-  Scenario: Modify the paid amount of the imported invoice (voucher will remain as 'keep open')
-    Given I find a "account.bank.statement.line" with the name: SI_411
+  Scenario: Modify the paid amount of the imported invoice
+    Given I need a "account.bank.statement.line" with name: SI_411
     And the line amount should be 1000
     Then I modify the line amount to 950
-###########TODO###############################################################################################  
 
   @account_voucher_run @account_voucher_confirm
   Scenario: confirm bank statement 

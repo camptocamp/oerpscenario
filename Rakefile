@@ -76,6 +76,6 @@ task :init_magento => :init_purchase
 ##############################################################################
 namespace :accounting do
   Cucumber::Rake::Task.new(:init_param, "Install the base module and configure base vate") do |task|
-    task.cucumber_opts = %W(--tags=@params features #{conf_file})
+    task.cucumber_opts = %W(--tags=@param features #{conf_file})
   end
 end
