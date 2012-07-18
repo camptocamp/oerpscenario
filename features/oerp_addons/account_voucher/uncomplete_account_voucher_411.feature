@@ -60,7 +60,7 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
   Scenario: Modify the paid amount of the imported invoice
     Given I need a "account.bank.statement.line" with name: SI_411
     And the line amount should be 1000
-    Then I modify the line amount to 950
+    Then I modify the bank statement line amount to 950
 
   @account_voucher_run @account_voucher_confirm
   Scenario: confirm bank statement 
@@ -73,10 +73,11 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_411
     Then I should have following journal entries in voucher:
       | date     | period  | account                        |  debit | credit | curr.amt | curr. | reconcile | partial |
-      | %Y-02-15 | 02/%Y | Debtors                          |        | 950.00 |          |       |           | yes     |
+      | %Y-02-15 | 02/%Y | Debtors                          |  50.00 |        |          |       |           |         |
+      | %Y-02-15 | 02/%Y | Debtors                          |        | 1000.00|          |       |    yes    |         |
       | %Y-02-15 | 02/%Y | EUR bank account                 | 950.00 |        |          |       |           |         |
 
 
   @account_voucher_run @account_voucher_valid_invoice_411
   Scenario: validate voucher
-    Given My invoice "SI_411" is in state "open" reconciled with a residual amount of "50.0"
+    Given My invoice "SI_411" is in state "paid" reconciled with a residual amount of "0.0"

@@ -74,7 +74,7 @@ task :init_magento => :init_purchase
 ##############################################################################
 #  Test For accounting in multicurrency
 ##############################################################################
-namespace :accounting do
+namespace :accounting_multicurrency do
   Cucumber::Rake::Task.new(:init_param, "Install the base module and configure base vate") do |task|
     task.cucumber_opts = %W(--tags=@param features #{conf_file})
   end

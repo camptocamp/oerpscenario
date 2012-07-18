@@ -147,6 +147,13 @@ Given /^I modify the line amount to (.*)$/ do |amount|
   @found_item.save
 end
 
+Then /^I modify the bank statement line amount to (.*)$/ do |amount|
+  @found_item.on_change('onchange_amount',:amount,[],amount.to_f)
+  @found_item.amount = amount.to_f
+  @found_item.save
+end
+
+
 ########################################################################################
 #Added by guewen lastly for scenario 401 using pay invoice button
 
