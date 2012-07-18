@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_run   @pay_inv_401PI
+@addons       @account_voucher       @account_voucher_run   @401PI
 
 Feature: In order to validate multicurrency account_voucher behaviour as an admin user I do a reconciliation run.
          I want to create a customer invoice for 1000 EUR (rate : 1) and pay it in full in EUR (rate : 1)
@@ -40,11 +40,12 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
     And I open the credit invoice
 
 
-    Given I pay the customer invoice with name "401PI"
+    Given I pay the customer invoice with name "SI_401PI"
     And I set the voucher paid amount to "1150"
     And I set the voucher payment method to "EUR bank"
+    And I set the voucher's first line to be "full reconcile" with a "1000" allocation    
     And I change the voucher's options to create a write-off on account "658"
-    And I save the voucher
+#    And I save the voucher
     And I set the voucher's first line to be "full reconcile" with a "1000" allocation
     When I validate the voucher
     Then generated move lines should be:

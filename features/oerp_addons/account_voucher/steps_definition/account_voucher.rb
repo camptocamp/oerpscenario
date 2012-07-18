@@ -196,7 +196,7 @@ Then /^I set the voucher payment method to "([^"]+)"$/ do |journal_name|
   @voucher.journal_id = journal.id
 end
 
-Then /^I change the voucher's options to create a write-off on account "([^"]+)"$/ do |account_code|
+Then /^I set the payment options to choose the write-off account code:"([^"]+)"$/ do |account_code|
   account = AccountAccount.find_by_code(account_code, :fields => ['id'])
   account.should_not be_nil
 
