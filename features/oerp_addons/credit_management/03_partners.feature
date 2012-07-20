@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_addons  @param
+@addons       @credit_management
 
 Feature: I create a list of partners
    @account_voucher_init
@@ -19,7 +19,8 @@ Feature: I create a list of partners
       | supplier                   | 1                  |
       | property_account_payable   | by name: Creditors |
       | property_account_receivable| by name: Debtors   |
-      
+      | credit_profile_id          | by name:  2 time policy |
+            
     Given I need a "res.partner.address" with oid: scen.partner_1_add
     And having:
       | name       | value                        |
@@ -76,6 +77,7 @@ Feature: I create a list of partners
     And having:
       | name                       | value              |
       | name                       | supplier_3         |
+      | customer                   | 0                  |
       | supplier                   | 1                  |
       | property_account_payable   | by name: Creditors |
       | property_account_receivable| by name: Debtors   |
@@ -97,9 +99,11 @@ Feature: I create a list of partners
       | name                       | value              |
       | name                       | customer_1         |
       | customer                   | 1                  |
+      | property_payment_term      | by name: 30 Days End of Month |
       | property_account_payable   | by name: Creditors |
       | property_account_receivable| by name: Debtors   |
-      
+      | credit_profile_id          | by name:  2 time policy |
+            
     Given I need a "res.partner.address" with oid: scen.customer_1_add
     And having:
       | name       | value                        |
@@ -117,9 +121,11 @@ Feature: I create a list of partners
       | name                       | value              |
       | name                       | customer_2         |
       | customer                   | 1                  |
+      | property_payment_term      | by name: 30 Days End of Month |
       | property_account_payable   | by name: Creditors |
       | property_account_receivable| by name: Debtors   |
-      
+      | credit_profile_id          | by name: 3 time policy     |
+            
     Given I need a "res.partner.address" with oid: scen.customer_2_add
     And having:
       | name       | value                        |
@@ -137,9 +143,11 @@ Feature: I create a list of partners
       | name                       | value              |
       | name                       | customer_3         |
       | customer                   | 1                  |
+      | property_payment_term      | by name: 30% Advance End 30 Days|
       | property_account_payable   | by name: Creditors |
       | property_account_receivable| by name: Debtors   |
-      
+      | credit_profile_id          | by name: 3 time policy   |
+            
     Given I need a "res.partner.address" with oid: scen.customer_3_add
     And having:
       | name       | value                        |
@@ -157,9 +165,11 @@ Feature: I create a list of partners
       | name                       | value              |
       | name                       | customer_4         |
       | customer                   | 1                  |
+      | property_payment_term      | by name: 30 Days End of Month |
       | property_account_payable   | by name: Creditors |
       | property_account_receivable| by name: Debtors   |
-      
+      | credit_profile_id          | by name: 3 time policy   |
+            
     Given I need a "res.partner.address" with oid: scen.customer_4_add
     And having:
       | name       | value                        |
@@ -178,9 +188,11 @@ Feature: I create a list of partners
       | name                       | value              |
       | name                       | customer_4         |
       | customer                   | 1                  |
+      | property_payment_term      | by name: 30 Net Days|
       | property_account_payable   | by name: Creditors |
       | property_account_receivable| by name: Debtors   |
-      
+      | credit_profile_id          | by name: No follow |
+            
     Given I need a "res.partner.address" with oid: scen.customer_4_add
     And having:
       | name       | value                        |

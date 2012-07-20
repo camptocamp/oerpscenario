@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_addons  @param
+@addons       @account_voucher       @account_voucher_addons   
 
 Feature: I create a list of partners
    @account_voucher_init
@@ -76,6 +76,7 @@ Feature: I create a list of partners
     And having:
       | name                       | value              |
       | name                       | supplier_3         |
+      | customer                   | 0                  |
       | supplier                   | 1                  |
       | property_account_payable   | by name: Creditors |
       | property_account_receivable| by name: Debtors   |
