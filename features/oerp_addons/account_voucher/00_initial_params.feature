@@ -20,8 +20,9 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
     And I install the required modules with dependencies:
       | name               |
       | account_voucher    |
-      | account_accountant |      
+      | account_accountant |
       | account_cancel     |
+      | purchase           |
     Then my modules should have been installed and models reloaded
 
   @account_voucher_init
