@@ -32,11 +32,12 @@ Feature: I create manually Purchase Orders
       | price      | 75                              |
 
   Then I validate the PO 
-  And a pack should be created
-  Then I receive the goods 
+  And a pack should be created   # simple check peut etre pas indispensable
+  Then I receive the goods # je voudrais que le stock move généré soit à la date indiqué ci-dessous
       | date       | %Y-01-25
       | product_id | by oid: scenario.p1             |
       | qty        | 10                              |
   And I validate the good reception
-  
+  And a dreft invoice should be created
+  Then I validate the invoice
         
