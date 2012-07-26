@@ -142,3 +142,41 @@ Feature: Creation of a basic chart of account (not avoid demo data installation)
     | name                                 | value                |
     | expense_currency_exchange_account_id | by name: Currency fx |
     | income_currency_exchange_account_id  | by name: Currency fx |
+
+  @account_voucher_init
+  Scenario: Company setting
+    Given I need a "ir.property" with name: property_account_receivable
+    And having:
+    | field     | Account Receivable     |
+    | type      | Many2One               |
+    | value     | by name: Debtors       |
+
+  @account_voucher_init
+  Scenario: Company setting
+    Given I need a "ir.property" with name: property_account_payable
+    And having:
+    | field     | Account Payable        |
+    | type      | Many2One               |
+    | value     | by name: Creditors     |
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
