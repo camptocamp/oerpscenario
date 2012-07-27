@@ -249,3 +249,42 @@ Then /^I validate the voucher$/ do
 end
 
 
+############# purchase order helpers ###########################
+
+
+And /^I confirm the PO$/ do
+  purchase_order = @found_item
+  purchase_order.should_not be_nil
+  if purchase_order.state == 'draft'
+    purchase_order.wkf_action('purchase_confirm')
+  end
+  purchase_order.state.should == 'approved'
+end
+
+Then /^(\d)+ pickings? should be created for the PO$/ do |nb_pick|
+  purchase_order = @found_item
+  purchase_order.should_not be_nil
+  nb_pick = nb_pick.to_i
+  purchase_order.picking_ids.length.should == nb_pick
+end
+
+Given /^I validate the pickings? for the PO$/ do
+  purchase_order = @found_item
+  purchase_order.should_not be_nil
+  purchase_order.picking_ids.each do |picking|
+    move_ids = StockMove.search(['picking_id', '=', picking.id])
+    StockMove.action_done(move_ids)
+    purchase_order.state.should == 'done'
+  end
+end
+
+Given /^(\d)+  ([^ ]+) invoices? should be created for the PO$/ do |nb_invoice, state|
+  purchase_order = @found_item
+  purchase_order.should_not be_nil
+  purchase_order.invoice_ids.length.should == nb_invoice.to_i
+  purchase_order.invoice_ids.each do |invoice|
+    invoice.state.should == state
+  end
+end
+
+

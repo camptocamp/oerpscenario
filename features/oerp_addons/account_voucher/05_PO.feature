@@ -34,14 +34,16 @@ Feature: I create manually Purchase Orders
       | name         | invoice line po_1   |
       | price_unit   | 75                  |
       | date_planned | %Y-01-16            |
-
-  Then I validate the PO
-  And a pack should be created   # simple check peut etre pas indispensable
-  Then I receive the goods # je voudrais que le stock move généré soit à la date indiqué ci-dessous
+  Given I find a "purchase.order" with oid: scen.po_1 
+  And I confirm the PO
+  # simple check peut etre pas indispensable
+  Then 1 picking should be created for the PO
+  # je voudrais que le stock move généré soit à la date indiqué ci-dessous
+  Then I receive the goods for the PO
       | date       | %Y-01-25            |
       | product_id | by oid: scenario.p1 |
       | qty        | 10                  |
-  And I validate the good reception
-  And a draft invoice should be created
+  Given I validate the picking for the PO
+  Then 1 draft invoice should be created for the PO
   Then I validate the invoice
 
