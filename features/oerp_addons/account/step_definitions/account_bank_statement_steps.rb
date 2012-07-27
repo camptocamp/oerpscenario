@@ -101,4 +101,7 @@ When /^no entries should be created by the bank statement$/ do
   accountmovelines.should_be_empty
 end
 
+Then /^I save the statement$/ do
+  @found_item.save
+end
 
