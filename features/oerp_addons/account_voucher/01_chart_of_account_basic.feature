@@ -159,7 +159,21 @@ Feature: Creation of a basic chart of account (not avoid demo data installation)
     | type            | many2one           |
     | value_reference | by name: Creditors |
 
+  @account_voucher_init
+  Scenario: Company setting
+    Given I need a "ir.property" with name: property_account_expense
+    And having:
+    | field           | Expense Account        |
+    | type            | Many2One               |
+    | value_reference | by name: Expense       |
 
+  @account_voucher_init
+  Scenario: Company setting
+    Given I need a "ir.property" with name: property_account_income
+    And having:
+    | field           | Income Account         |
+    | type            | Many2One               |
+    | value_reference | by name: Income        |
 
 
 
