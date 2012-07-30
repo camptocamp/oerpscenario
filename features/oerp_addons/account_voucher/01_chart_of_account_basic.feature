@@ -13,7 +13,7 @@ Feature: Creation of a basic chart of account (not avoid demo data installation)
   @account_voucher_init
   Scenario: Accountevrait
 
-      Given I need a "account.account" with oid: scen.root
+    Given I need a "account.account" with oid: scen.root
     And having:
     | name        | value               |
     | name        | Chart               |
