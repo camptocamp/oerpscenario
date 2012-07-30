@@ -6,11 +6,11 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons   @credit_management_module @credit_management_base_data    
+@addons   @account_voucher
 
 
 Feature: Invoices creation
-  @credit_management_base_data  @inv_CM1
+  @inv_CM1
   Scenario: Create invoice CM1
   Given I need a "account.invoice" with oid: scen.voucher_inv_CM1
     And having:
@@ -37,7 +37,7 @@ Feature: Invoices creation
     And I open the credit invoice
     
 
-  @credit_management_base_data  @inv_CM2
+  @inv_CM2
   Scenario: Create invoice CM2
   Given I need a "account.invoice" with oid: scen.voucher_inv_CM2
     And having:
@@ -64,7 +64,7 @@ Feature: Invoices creation
     And I open the credit invoice
     
 
-  @credit_management_base_data  @inv_CM3
+  @inv_CM3
   Scenario: Create invoice CM3
   Given I need a "account.invoice" with oid: scen.voucher_inv_CM3
     And having:
