@@ -251,6 +251,27 @@ end
 
 ############# purchase order helpers ###########################
 
+And /^containing the following purchase order lines:$/ do | table|
+  purchase_order = @found_item
+  purchase_order.should_not be_nil
+  table.hashes.each do |row|
+    product = _manage_col_search({'relation'=>'product.product'},
+                                 row[:product_id])
+    qty = row[:qty].to_f
+    price = row[:price_unit].to_f
+    date = row[:date_planned]
+    if date.include? "%"
+      date = Time.new().strftime(date)
+    end
+    pol = PurchaseOrderLine.new(:order_id => purchase_order.id,
+                                :product_id => product.id,
+                                :product_qty => qty,
+                                :price_unit => price,
+                                :date_planned => date,
+                                :name => "#{purchase_order.name} #{product.partner_ref}")
+    pol.create
+  end
+end
 
 And /^I confirm the PO$/ do
   purchase_order = @found_item
@@ -314,7 +335,7 @@ Given /^I process all moves on (.*)$/ do |date|
   @pickings.should_not be_nil
   picking_ids = []
   @pickings.each do |p| picking_ids << p.id end
-  move_ids=StockMove.search(['picking_id', 'in', picking_ids])
+  move_ids=StockMove.search([['picking_id', 'in', picking_ids]])
   StockMove.action_done(move_ids)
 end
 
@@ -325,6 +346,7 @@ Then /^the picking should be in state (.*)$/ do |state|
     pick.state.should == state
   end
 end
+
 And /^I create an? ([^ ]+) invoice for the pickings? on (.*)$/ do |invoice_type, date|
   @pickings.should_not be_nil
   if date.include? "%"
