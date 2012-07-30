@@ -174,7 +174,6 @@ end
 ########################################################################################
 #Added by guewen lastly for scenario 401 using pay invoice button
 
-
 Given /^I pay the customer invoice with name "([^"]+)"$/ do |invoice_name|
   invoice = AccountInvoice.find_by_name invoice_name
   invoice.should_not be_nil, "Invoice with #{invoice_name} not found"
@@ -212,6 +211,7 @@ Then /^I set the voucher payment method to "([^"]+)"$/ do |journal_name|
                      @voucher.company_id ? @voucher.company_id.id : false)
   @voucher.journal_id = journal.id
 end
+
 
 Then /^I set the payment options to choose the write-off account code:"([^"]+)"$/ do |account_code|
   account = AccountAccount.find_by_code(account_code, :fields => ['id'])
@@ -266,24 +266,95 @@ Then /^(\d)+ pickings? should be created for the PO$/ do |nb_pick|
   purchase_order.should_not be_nil
   nb_pick = nb_pick.to_i
   purchase_order.picking_ids.length.should == nb_pick
+  @pickings = purchase_order.picking_ids
 end
 
-Given /^I validate the pickings? for the PO$/ do
-  purchase_order = @found_item
-  purchase_order.should_not be_nil
-  purchase_order.picking_ids.each do |picking|
-    move_ids = StockMove.search(['picking_id', '=', picking.id])
-    StockMove.action_done(move_ids)
-    purchase_order.state.should == 'done'
+Given /^I process the following product moves?:$/ do |table|
+  @pickings.should_not be_nil
+  @pickings.length.should == 1
+  picking = @pickings[0]
+  moves_by_product = {}
+  move_ids = []
+  StockMove.find(:all, :domain=>[['picking_id', '=', picking.id]]).each do |move|
+    product_id = move.product_id.id
+    if moves_by_product.include?(product_id)
+        moves_by_product[product_id] << move
+    else
+        moves_by_product[product_id] = [move]
+    end
+  end
+  partial_datas = {}
+  reception_dates = {}
+  table.hashes.each do |row|
+    product = _manage_col_search({'relation'=>'product.product'},
+                                 row[:product])
+    qty = row[:qty].to_f
+    date = row[:date]
+    if date.include? "%"
+      date = Time.new().strftime(date)
+    end
+    reception_dates[product.id] = date
+    for move in moves_by_product[product.id]
+      picked_qty = [move.product_qty, qty].min
+      partial_datas["move#{move.id}"] = {:product_qty => picked_qty}
+      qty -= picked_qty
+      move_ids << move.id
+      if qty < 0
+        break
+      end
+    end
+  end
+  complete_move_ids = StockMove.do_partial(move_ids, partial_datas)
+  for move in StockMove.find(complete_move_ids)
+    StockMove.write([move.id], {:date => reception_dates[move.product_id.id]})
   end
 end
 
-Given /^(\d)+  ([^ ]+) invoices? should be created for the PO$/ do |nb_invoice, state|
+Given /^I process all moves on (.*)$/ do |date|
+  @pickings.should_not be_nil
+  picking_ids = []
+  @pickings.each do |p| picking_ids << p.id end
+  move_ids=StockMove.search(['picking_id', 'in', picking_ids])
+  StockMove.action_done(move_ids)
+end
+
+Then /^the picking should be in state (.*)$/ do |state|
+  @pickings.should_not be_nil
+  @pickings.each do |pick|
+    pick = StockPicking.find(pick.id)
+    pick.state.should == state
+  end
+end
+And /^I create an? ([^ ]+) invoice for the pickings? on (.*)$/ do |invoice_type, date|
+  @pickings.should_not be_nil
+  if date.include? "%"
+    date = Time.new().strftime(date)
+  end
+  type = {'supplier' => 'in_invoice',
+    'customer' => 'out_invoice',
+  }
+  @pickings.each do |pick|
+    begin
+      StockPicking.action_invoice_create([pick.id], false, false,
+                                         type[invoice_type],
+                                         {'date_inv'=>date})
+    rescue RuntimeError => exc
+      # work around an OpenERP bug
+      raise exc if not exc.message.include? "dictionary key must be string"
+    end
+  end
+end
+Given /^(\d)+ ([^ ]+) invoices? should be created for the PO$/ do |nb_invoice, state|
   purchase_order = @found_item
   purchase_order.should_not be_nil
   purchase_order.invoice_ids.length.should == nb_invoice.to_i
   purchase_order.invoice_ids.each do |invoice|
     invoice.state.should == state
+  end
+  if nb_invoice.to_i == 1
+    @found_item = purchase_order.invoice_ids[0]
+  else
+    @found_items = purchase_order.invoice_ids
   end
 end
 
