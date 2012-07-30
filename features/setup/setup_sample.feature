@@ -9,12 +9,12 @@
 ##############################################################################
 
 # Branch      # Module       # Processes     # System
-@customer @customer_init 
+@customer @customer_init
 
 Feature: Param the new database
   In order to have a coherent installation
   I autmated the manual steps.
-  
+
   Scenario: install modules
     Given I update the module list
     Given I install the required modules with dependencies:
@@ -62,19 +62,19 @@ Feature: Param the new database
       | fr_FR |
       | de_DE |
    Then the language should be available
-   
-   
+
+
   Scenario: Config lang_locals
   Given I have install "fr_FR" language
   And I set "fr_FR" language to swiss formatting
   Then  "fr_FR" language date format should have changed
-  
+
   Given I have install "de_DE" language
   And I set "de_DE" language to swiss formatting
   Then "de_DE" language date format should have changed
-  
-  Scenario: Generate account chart 
-    Given I have the module account installed 
+
+  Scenario: Generate account chart
+    Given I have the module account installed
     And no account set
     And I want to generate account chart from chart template named "Plan comptable STERCHI" with "0" digits
     When I generate the chart
@@ -88,17 +88,17 @@ Feature: Param the new database
          | key            | value           |
          | name           | 'Customer_name' |
          | bvr_background | true            |
-         
-     
+
+
       And the main company currency is "CHF" with a rate of "1.00"
-     
+
       And I set the company main partner with the following data :
          | key        | value             |
          | first_name | 'Customer_name'   |
          | lang       | 'fr_FR'           |
          | website    | 'www.website.com' |
          | customer   | false             |
-     
+
       And I set the main address with the following data :
          | key     | value                         |
          | zip     | '3012'                        |
@@ -109,17 +109,17 @@ Feature: Param the new database
          | street2 | ''                            |
          | city    | 'Bern'                        |
          | name    | 'Customer_name System AG'     |
-     
+
      And I update the address country code to CH
      Given the main company has a default_income_account set to "3000"
      Given the main company has a default payment_term set to "30 Days End of Month"
- 
+
   Scenario: Configure journal
-    Given there is a journal named "Banque CHF" of type "bank" 
+    Given there is a journal named "Banque CHF" of type "bank"
      And the journal default debit account is set to "1020"
      And the journal default credit account is set to "1020"
      Given all journals allow entry cancellation
-     
+
   Scenario: Configure banque account:
     Given there is a bank account named "XX-XXXX-X" linked to partner "Customer_name"
      And I set the bank account with the following data :
@@ -137,8 +137,10 @@ Feature: Param the new database
          | bvr_adherent_num | '0000000'             |
          | printbank        | false                 |
          | printaccount     | true                  |
-         
+
     And the bank account is linked to bank "Postfinance"
 
-
-        
+  @setup_property
+  Scenario: set properties
+    Given I set global property named "property_account_receivable" for model "res.partner" and field "property_account_receivable"
+    And the property is related to model "account.account" using column "code" and value "X11002"

@@ -2,10 +2,10 @@
 Given /^I am logged as (\w+) user with password (\w+) used$/ do |user, pass|
     begin
         if @openerp.ready?
-            @openerp.login(:user =>user,:pwd => pass)            
+            @openerp.login(:user =>user,:pwd => pass)
         else
             @openerp.log.info("INFO : Attempt to connect")
-            @openerp.setConnexionfromConf(:user=>user, :pwd=>pass)            
+            @openerp.setConnexionfromConf(:user=>user, :pwd=>pass)
         end
     rescue Exception => e
         @openerp.log.warn("WARNING : #{e.to_s}")
@@ -21,7 +21,7 @@ Given /^I am logged as (\w+) user with the password set in config used$/ do |use
             @openerp.login(user, pass)
         else
             @openerp.log.info("INFO : Attempt to connect")
-            @openerp.setConnexionfromConf()            
+            @openerp.setConnexionfromConf()
         end
     rescue Exception => e
         @openerp.log.warn("WARNING : #{e.to_s}")
@@ -157,7 +157,7 @@ Then /^I set the company with the following data :$/ do |table|
       eval("@cust_comp.#{data['key']} = #{data['value']}")
   end
   @cust_comp.save
-  
+
 end
 
 Given /^I create the company main partner named "([^\"]*)" with the following data :$/ do |name, table|
@@ -243,7 +243,7 @@ end
 Then /^the language should be available$/ do
   all_language_installed = true
   @cust_table.hashes.each do |data|
-      unless ResLang.find(:first, :domain => [['code','=', data['lang'] ]], :fields=>['id']) 
+      unless ResLang.find(:first, :domain => [['code','=', data['lang'] ]], :fields=>['id'])
           all_language_installed = true
       end
   end
@@ -269,7 +269,7 @@ Then /^the main company currency is "([^"]*)" with a rate of "([^"]*)"$/ do |cod
   rate.should_not be_nil
   rate.rate = ratevalue.to_f
   rate.save
-  curr.should_not be_nil 
+  curr.should_not be_nil
   @cust_comp.currency_id = curr.id
   @cust_comp.save
 end
@@ -354,7 +354,7 @@ Given /^there is a bank account named "([^"]*)" linked to partner "([^"]*)"$/ do
 end
 
 Given /^I set the bank account with the following data :$/ do |table|
-    
+
      table.hashes.each do |data|
          eval("@res_p_bank.#{data['key']}=#{data['value']}")
      end
@@ -369,12 +369,12 @@ end
 
 
 Given /^I update the "([^"]*)" module$/ do |name| #"
-  if name == 'all' 
+  if name == 'all'
       IrModuleModule.find(:all, :domain=>[['state','=','installed']]).each do |mod|
           mod.state = 'to upgrade'
           mod.save
       end
-      
+
   else
     mod = IrModuleModule.find(:first, :domain=>[['name','=',name]])
     mod.should_not be_nil
@@ -396,7 +396,7 @@ end
 
 Given /^there is a partner named "([^"]*)" with the following attribute$/ do |name, table| #"
 @part = ResPartner.find(:first, :domain=>[['name','=',name]])
-unless @part 
+unless @part
     @part = ResPartner.new()
 end
 table.hashes.each do |data|
@@ -427,9 +427,9 @@ Given /^I reconnect with the database (.*)$/ do |database| #"
         @ooor=Ooor.new(
                     {
                     :url => 'http://localhost:8069/xmlrpc',
-                    :database => database, 
-                    :username =>  'admin', 
-                    :password => 'admin', 
+                    :database => database,
+                    :username =>  'admin',
+                    :password => 'admin',
                     :log_level=>  Logger::ERROR
                     }
                 )
@@ -446,4 +446,25 @@ Given /^I have created a database with the following attributes:$/ do |table| #"
         options[data['key'].to_sym]=data['value']
     end
     @Ooor = Ooor.new_database(options)
+end
+
+Given /^I set global property named "(.*?)" for model "(.*?)" and field "(.*?)"$/ do |name, model, field|
+   field = IrModelFields.find_by_name_and_model(name, model, :fields=>['id'])
+   field.should_not be_nil, "Could not find field"
+   @property = IrProperty.find(:first, :domain=>[['name', '=', name], ['fields_id', '=', field.id], ['res_id', '=', false]])
+   unless @property
+     @property = IrProperty.new
+     @property.fields_id = field.id
+     @property.name = name
+     @property.type = 'many2one'
+   end
+end
+
+Given /^the property is related to model "(.*?)" using column "(.*?)" and value "(.*?)"$/ do |model, col, value|
+  @property.should_not be_nil, 'no found property'
+  oclass = Object.const_get(model.split('.').collect {|s| s.capitalize}.join)
+  res = oclass.find(:first, :domain=>[[col, '=', value]], :fields=>['id'])
+  res.should_not be_nil, 'could not find value for property'
+  @property.value_reference = "#{model},#{res.id}"
+  @property.save
 end
