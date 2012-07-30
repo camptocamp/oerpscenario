@@ -11,7 +11,7 @@
 Feature: Creation of a basic chart of account (not avoid demo data installation)
 
   @account_voucher_init
-  Scenario: Account
+  Scenario: Accountevrait
 
       Given I need a "account.account" with oid: scen.root
     And having:
@@ -20,6 +20,15 @@ Feature: Creation of a basic chart of account (not avoid demo data installation)
     | code        | C0                  |
     | type        | other               |
     | user_type   | by name: Root/View  |
+
+     Given I need a "account.account" with oid: scen.acc_stock_var
+    And having:
+    | name        | value               |
+    | name        | Stock variation     |
+    | code        | 603                 |
+    | type        | other               |
+    | parent_id   | by code: C0         |
+    | user_type   | by name: Expense    |
 
      Given I need a "account.account" with oid: scen.acc_fx
     And having:
@@ -165,7 +174,7 @@ Feature: Creation of a basic chart of account (not avoid demo data installation)
     And having:
     | field           | Expense Account        |
     | type            | Many2One               |
-    | value_reference | by name: Expense       |
+    | value_reference | by name: Purchases     |
 
   @account_voucher_init
   Scenario: Company setting
@@ -173,10 +182,23 @@ Feature: Creation of a basic chart of account (not avoid demo data installation)
     And having:
     | field           | Income Account         |
     | type            | Many2One               |
-    | value_reference | by name: Income        |
+    | value_reference | by name: Sales         |
 
+  @account_voucher_init
+  Scenario: Company setting
+    Given I need a "ir.property" with name: property_account_output
+    And having:
+    | field           | Stock Output Account        |
+    | type            | Many2One                    |
+    | value_reference | by name: Stock variation    |
 
-
+  @account_voucher_init
+  Scenario: Company setting
+    Given I need a "ir.property" with name: property_account_input
+    And having:
+    | field           | Stock Input Account         |
+    | type            | Many2One                    |
+    | value_reference | by name: Stock variation    |
 
 
 
