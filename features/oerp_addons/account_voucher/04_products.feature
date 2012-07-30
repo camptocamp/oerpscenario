@@ -52,7 +52,7 @@ Feature: I create a list of partners
           | procure_method  | make_to_order     |
           | supply_method   | buy               |    
           | list_price      | 1000.0            |
-          | cost_method     | standard          |
+          | cost_method     | average           |
           | standard_price  | 100.0             |
           | weight_net      | 0.0               |
           | weight          | 0.0               |
@@ -78,7 +78,7 @@ Feature: I create a list of partners
           | procure_method  | make_to_order     |
           | supply_method   | buy               |    
           | list_price      | 500.0             |
-          | cost_method     | standard          |
+          | cost_method     | average           |
           | standard_price  | 50.0              |
           | weight_net      | 0.0               |
           | weight          | 0.0               |
@@ -104,7 +104,7 @@ Feature: I create a list of partners
           | procure_method  | make_to_order     |
           | supply_method   | buy               |    
           | list_price      | 400.0             |
-          | cost_method     | standard          |
+          | cost_method     | average           |
           | standard_price  | 40.0              |
           | weight_net      | 0.0               |
           | weight          | 0.0               |
@@ -130,7 +130,7 @@ Feature: I create a list of partners
           | procure_method  | make_to_order     |
           | supply_method   | buy               |    
           | list_price      | 800.0             |
-          | cost_method     | standard          |
+          | cost_method     | average           |
           | standard_price  | 80.0              |
           | weight_net      | 0.0               |
           | weight          | 0.0               |
@@ -156,7 +156,7 @@ Feature: I create a list of partners
           | procure_method  | make_to_order     |
           | supply_method   | buy               |    
           | list_price      | 300.0             |
-          | cost_method     | standard          |
+          | cost_method     | average           |
           | standard_price  | 30.0              |
           | weight_net      | 0.0               |
           | weight          | 0.0               |

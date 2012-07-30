@@ -156,40 +156,40 @@ Feature: Creation of a basic chart of account (not avoid demo data installation)
   Scenario: Company setting
     Given I need a "ir.property" with name: property_account_receivable
     And having:
-    | field           | Account Receivable |
-    | type            | many2one           |
-    | value_reference | by name: Debtors   |
+    | field_id        | by model: res.partner and name: property_account_receivable |
+    | type            | many2one                                                    |
+    | value_reference | by name: Debtors                                            |
 
   @account_voucher_init33q
   Scenario: Company setting
     Given I need a "ir.property" with name: property_account_payable
     And having:
-    | field           | Account Payable    |
-    | type            | many2one           |
-    | value_reference | by name: Creditors |
+    | field_id        | by model: res.partner and name: property_account_payable    |
+    | type            | many2one                                                    |
+    | value_reference | by name: Creditors                                          |
 
   @account_voucher_init
   Scenario: Company setting
     Given I need a "ir.property" with name: property_account_expense
     And having:
-    | field           | Expense Account        |
-    | type            | Many2One               |
-    | value_reference | by name: Purchases     |
+    | field           | Expense Account                                             |
+    | type            | many2one                                                    |
+    | value_reference | by name: Purchases                                          |
 
   @account_voucher_init
   Scenario: Company setting
     Given I need a "ir.property" with name: property_account_income
     And having:
-    | field           | Income Account         |
-    | type            | Many2One               |
-    | value_reference | by name: Sales         |
+    | field           | Income Account                                              |
+    | type            | many2one                                                    |
+    | value_reference | by name: Sales                                              |
 
   @account_voucher_init
   Scenario: Company setting
     Given I need a "ir.property" with name: property_account_output
     And having:
     | field           | Stock Output Account        |
-    | type            | Many2One                    |
+    | type            | many2one                    |
     | value_reference | by name: Stock variation    |
 
   @account_voucher_init
@@ -197,7 +197,7 @@ Feature: Creation of a basic chart of account (not avoid demo data installation)
     Given I need a "ir.property" with name: property_account_input
     And having:
     | field           | Stock Input Account         |
-    | type            | Many2One                    |
+    | type            | many2one                    |
     | value_reference | by name: Stock variation    |
 
 

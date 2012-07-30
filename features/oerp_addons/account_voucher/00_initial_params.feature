@@ -18,11 +18,15 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
 
     Given I do not want all demo data to be loaded on install
     And I install the required modules with dependencies:
-      | name               |
-      | account_voucher    |
-      | account_accountant |
-      | account_cancel     |
-      | purchase           |
+      | name                            |
+      | account_voucher                 |
+      | account_accountant              |
+      | account_cancel                  |
+      | purchase                        |
+      | sale                            |
+      | stock_move_change_delivery_date |
+      | product_standard_margin         |
+      | product_historical_margin       |             
     Then my modules should have been installed and models reloaded
 
   @account_voucher_init
@@ -62,12 +66,36 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
       | USD      | 1.5000 | %Y-01-01 |
       | USD      | 1.8000 | %Y-02-01 |
       | USD      | 1.5000 | %Y-03-01 |
-      | GBP      | 0.8000 | %Y-02-01 |
+      | USD      | 1.4000 | %Y-04-01 |
+      | USD      | 1.4500 | %Y-05-01 |      
+      | USD      | 1.5500 | %Y-06-01 |  
+      | USD      | 1.5700 | %Y-07-01 |                
+      | USD      | 1.6000 | %Y-08-01 | 
+      | USD      | 1.6500 | %Y-09-01 |
+      | USD      | 1.6300 | %Y-10-01 |                             
+      | USD      | 1.6100 | %Y-11-01 |
+      | USD      | 1.5700 | %Y-12-01 |                  
+      | GBP      | 0.8000 | %Y-01-01 |
       | GBP      | 0.9000 | %Y-02-01 |
-      | GBP      | 0.8000 | %Y-02-01 |
-
-
-    
-    
-    
-
+      | GBP      | 0.8000 | %Y-03-01 |
+      | GBP      | 0.8200 | %Y-04-01 |
+      | GBP      | 0.8300 | %Y-05-01 |
+      | GBP      | 0.7900 | %Y-06-01 |    
+      | GBP      | 0.8400 | %Y-07-01 |    
+      | GBP      | 0.7600 | %Y-08-01 |    
+      | GBP      | 0.7700 | %Y-09-01 |
+      | GBP      | 0.8900 | %Y-10-01 |
+      | GBP      | 0.9200 | %Y-11-01 |      
+      | GBP      | 0.9500 | %Y-12-01 |
+      | CAD      | 1.1500 | %Y-01-01 |
+      | CAD      | 1.1700 | %Y-02-01 |
+      | CAD      | 1.1900 | %Y-03-01 |
+      | CAD      | 1.2000 | %Y-04-01 |
+      | CAD      | 1.0500 | %Y-05-01 |
+      | CAD      | 1.1000 | %Y-06-01 |    
+      | CAD      | 1.1800 | %Y-07-01 |    
+      | CAD      | 1.2200 | %Y-08-01 |    
+      | CAD      | 1.2400 | %Y-09-01 |
+      | CAD      | 1.2600 | %Y-10-01 |
+      | CAD      | 1.1600 | %Y-11-01 |      
+      | CAD      | 1.1300 | %Y-12-01 |
