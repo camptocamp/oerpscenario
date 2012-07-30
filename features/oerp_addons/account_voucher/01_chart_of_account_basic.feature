@@ -11,7 +11,7 @@
 Feature: Creation of a basic chart of account (not avoid demo data installation)
 
   @account_voucher_init
-  Scenario: Accountevrait
+  Scenario: Generic Chart of account creation
 
     Given I need a "account.account" with oid: scen.root
     And having:
@@ -145,60 +145,43 @@ Feature: Creation of a basic chart of account (not avoid demo data installation)
 
 
   @account_voucher_init
-  Scenario: Company setting
+  Scenario: Company default accounts for currency fx journal posting 
     Given I need a "res.company" with oid: base.main_company
     And having:
     | name                                 | value                |
     | expense_currency_exchange_account_id | by name: Currency fx |
     | income_currency_exchange_account_id  | by name: Currency fx |
 
-  @account_voucher_init33
-  Scenario: Company setting
-    Given I need a "ir.property" with name: property_account_receivable
-    And having:
-    | field_id        | by model: res.partner and name: property_account_receivable |
-    | type            | many2one                                                    |
-    | value_reference | by name: Debtors                                            |
+  @setup_property
+  Scenario: Default debtor account settings
+    Given I set global property named "property_account_receivable" for model "res.partner" and field "property_account_receivable"
+    And the property is related to model "account.account" using column "code" and value "4111"
 
-  @account_voucher_init33q
-  Scenario: Company setting
-    Given I need a "ir.property" with name: property_account_payable
-    And having:
-    | field_id        | by model: res.partner and name: property_account_payable    |
-    | type            | many2one                                                    |
-    | value_reference | by name: Creditors                                          |
+  @setup_property
+  Scenario: Default creditor account settings
+    Given I set global property named "property_account_payable" for model "res.partner" and field "property_account_payable"
+    And the property is related to model "account.account" using column "code" and value "4011"
 
-  @account_voucher_init
-  Scenario: Company setting
-    Given I need a "ir.property" with name: property_account_expense
-    And having:
-    | field           | Expense Account                                             |
-    | type            | many2one                                                    |
-    | value_reference | by name: Purchases                                          |
+  @setup_property
+  Scenario: Default expenses account settings
+    Given I set global property named "property_account_expense" for model "product.template" and field "property_account_expense"
+    And the property is related to model "account.account" using column "code" and value "607"
 
-  @account_voucher_init
-  Scenario: Company setting
-    Given I need a "ir.property" with name: property_account_income
-    And having:
-    | field           | Income Account                                              |
-    | type            | many2one                                                    |
-    | value_reference | by name: Sales                                              |
+  @setup_property
+  Scenario: Default income account settings
+    Given I set global property named "property_account_income" for model "product.template" and field "property_account_income"
+    And the property is related to model "account.account" using column "code" and value "707"
+    
+  @setup_property
+  Scenario: Default stock variation account settings
+    Given I set global property named "property_stock_account_input" for model "product.template" and field "property_stock_account_input"
+    And the property is related to model "account.account" using column "code" and value "603"
 
-  @account_voucher_init
-  Scenario: Company setting
-    Given I need a "ir.property" with name: property_account_output
-    And having:
-    | field           | Stock Output Account        |
-    | type            | many2one                    |
-    | value_reference | by name: Stock variation    |
+  @setup_property
+  Scenario: Default stock variation account settings
+    Given I set global property named "property_stock_account_output" for model "product.template" and field "property_stock_account_output"
+    And the property is related to model "account.account" using column "code" and value "603"
 
-  @account_voucher_init
-  Scenario: Company setting
-    Given I need a "ir.property" with name: property_account_input
-    And having:
-    | field           | Stock Input Account         |
-    | type            | many2one                    |
-    | value_reference | by name: Stock variation    |
 
 
 

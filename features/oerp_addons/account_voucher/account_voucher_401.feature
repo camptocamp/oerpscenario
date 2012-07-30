@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_run   @toto401
+@addons       @account_voucher       @account_voucher_run   @401
 
 Feature: In order to validate multicurrency account_voucher behaviour as an admin user I do a reconciliation run.
          I want to create a customer invoice for 1000 EUR (rate : 1) and pay it in full in EUR (rate : 1)
@@ -27,7 +27,6 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
       | currency_id        | by name: EUR                       |
       | type               | out_invoice                        |
 
-
     Given I need a "account.invoice.line" with oid: scen.voucher_inv401_line401
     And having:
       | name       | value                           |
@@ -35,7 +34,7 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
       | quantity   | 1                               |
       | price_unit | 1000                            |
       | account_id | by name: Sales                  |
-      | invoice_id | by oid:scen.voucher_inv_401     |
+      | invoice_id | by oid: scen.voucher_inv_401    |
     Given I find a "account.invoice" with oid: scen.voucher_inv_401
     And I open the credit invoice
 
@@ -47,9 +46,8 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
      | name        | Bk.St.401                         |
      | date        | %Y-02-15                          |
      | currency_id | by name: EUR                      |
-     | journal_id  | by oid:  scen.voucher_eur_journal |
+     | journal_id  | by oid: scen.voucher_eur_journal  |
     And the bank statement is linked to period "02/%Y"
-
 
  @account_voucher_run @account_voucher_import_invoice
   Scenario: Import invoice into statement
@@ -66,10 +64,9 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
   Scenario: validate voucher
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_401
     Then I should have following journal entries in voucher:
-      | date     | period  | account                        |  debit | credit | curr.amt | curr. | reconcile | partial |
-      | %Y-02-15 | 02/%Y | Debtors                          |        |1000.00 |          |       | yes       |         |
-      | %Y-02-15 | 02/%Y | EUR bank account                 |1000.00 |        |          |       |           |         |
-
+      | date     | period   | account                           |  debit | credit | curr.amt | curr. | reconcile | partial |
+      | %Y-02-15 | 02/%Y    | Debtors                           |        |1000.00 |          |       | yes       |         |
+      | %Y-02-15 | 02/%Y    | EUR bank account                  |1000.00 |        |          |       |           |         |
 
   @account_voucher_run @account_voucher_valid_invoice_401
   Scenario: validate voucher
