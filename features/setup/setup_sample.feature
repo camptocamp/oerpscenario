@@ -144,3 +144,6 @@ Feature: Param the new database
   Scenario: set properties
     Given I set global property named "property_account_receivable" for model "res.partner" and field "property_account_receivable"
     And the property is related to model "account.account" using column "code" and value "X11002"
+
+  Scenario: create user ERP Manager
+    Given create a ERP manager user with password "naewaiT6N"

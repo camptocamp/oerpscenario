@@ -89,3 +89,41 @@ Then /^we activate the extended view on the users$/ do
     user_save(user)
   end
 end
+
+Given /^create a ERP manager user with password "(.*?)"$/ do |password|
+  erp_user = ResUsers.find_by_login "erp_manager"
+  unless erp_user
+    erp_user = ResUsers.new
+    erp_user.name = "ERP Manager"
+    erp_user.login = "erp_manager"
+  end
+  erp_user.password = password
+  erp_user.save
+  group = ResGroups.find("base.erp_manager")
+  unless group
+    group = ResGroups.new(:name=>"ERPManager")
+    group.ir_model_data_id = ['base', 'erp_manager']
+    group.save
+  end
+  groups_ids = ResGroups.find(:all, :domain=>[['name', '!=', 'Configuration']], :fields => ['id'])
+  erp_user.groups_id = groups_ids.map{|x|x.id}
+  erp_user.save
+  model_to_exclude = ['ir.module', 'res.users']
+  IrModel.find(:all).each do | model |
+    if model_to_exclude.include? model.name
+      next
+    end
+    access = IrModelAccess.find_by_name("erp_manager_rule.#{model.name}")
+    unless access
+      access = IrModelAccess.new(:name=>"erp_manager_rule.#{model.name}")
+    end
+    access.group_id = group.id
+    access.model_id = model.id
+    access.perm_write = true
+    access.perm_read = true
+    access.perm_create = true
+    access.perm_unlink = true
+    access.save
+  end
+end
+
