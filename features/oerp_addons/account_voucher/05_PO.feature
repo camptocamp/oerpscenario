@@ -12,7 +12,7 @@ Feature: I create manually Purchase Orders
 
   @PO
   Scenario: Create a purchase order manually
-  Given I need a "purchase.order" with name: SI_CM20
+  Given I need a "purchase.order" with name: SI_CM31
   And having:
       | name               | value                               |
       | date_order         | %Y-01-15                            |

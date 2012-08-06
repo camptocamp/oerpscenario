@@ -257,7 +257,7 @@ And /^containing the following purchase order lines:$/ do | table|
   table.hashes.each do |row|
     product = _manage_col_search({'relation'=>'product.product'},
                                  row[:product_id])
-    qty = row[:qty].to_f
+    qty = row[:product_qty].to_f
     price = row[:price_unit].to_f
     date = row[:date_planned]
     if date.include? "%"
@@ -361,8 +361,8 @@ And /^I create an? ([^ ]+) invoice for the pickings? on (.*)$/ do |invoice_type,
                                          type[invoice_type],
                                          {'date_inv'=>date})
     rescue RuntimeError => exc
-      # work around an OpenERP bug
-      raise exc if not exc.message.include? "dictionary key must be string"
+      # work around an OpenERP bug in action_invoice_create
+      raise exc if not exc.message.include? 'HTTP-Error: 500 INTERNAL SERVER ERROR'
     end
   end
 end
