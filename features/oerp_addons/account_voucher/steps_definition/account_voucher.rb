@@ -362,7 +362,7 @@ And /^I create an? ([^ ]+) invoice for the pickings? on (.*)$/ do |invoice_type,
                                          {'date_inv'=>date})
     rescue RuntimeError => exc
       # work around an OpenERP bug in action_invoice_create (see https://bugs.launchpad.net/openobject-server/+bug/1030795)
-      raise exc if not exc.message.include? 'HTTP-Error: 500 INTERNAL SERVER ERROR'
+      raise exc if not (exc.message.include?('HTTP-Error: 500 INTERNAL SERVER ERROR') or exc.message.include?('dictionary key must be string'))
     end
   end
 end
