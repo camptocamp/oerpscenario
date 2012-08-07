@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons @PO
+@addons @POall
 
 Feature: I create manually several Purchase Orders (PO)
 
@@ -23,8 +23,8 @@ Feature: I create manually several Purchase Orders (PO)
       | pricelist_id       | by name: Default Purchase Pricelist |
       | invoice_method     | picking                             |
   And containing the following purchase order lines:
-      | product_id          | product_qty | price_unit | date_planned |
-      | by oid: scenario.p1 |          10 |         75 | %Y-01-16     |
+      | product_id          | product_qty | uom          | price_unit | date_planned |
+      | by oid: scenario.p1 |          10 | by name: PCE |         75 | %Y-01-16     |
 
   When I confirm the PO
   # simple check peut etre pas indispensable
@@ -59,10 +59,10 @@ Feature: I create manually several Purchase Orders (PO)
       | pricelist_id       | by name: Default Purchase Pricelist |
       | invoice_method     | picking                             |
   And containing the following purchase order lines:
-      | product_id          | product_qty | price_unit | date_planned |
-      | by oid: scenario.p1 |          10 |         75 | %Y-01-20     |
-      | by oid: scenario.p2 |          23 |         35 | %Y-01-19     |
-      | by oid: scenario.p3 |          36 |         66 | %Y-01-26     |
+      | product_id          | product_qty | uom          | price_unit | date_planned |
+      | by oid: scenario.p1 |          10 | by name: PCE |         75 | %Y-01-20     |
+      | by oid: scenario.p2 |          23 | by name: PCE |         35 | %Y-01-19     |
+      | by oid: scenario.p3 |          36 | by name: PCE |         66 | %Y-01-26     |
 
   When I confirm the PO
   Then 1 picking should be created for the PO
@@ -85,10 +85,10 @@ Feature: I create manually several Purchase Orders (PO)
       | pricelist_id       | by name: Default Purchase Pricelist |
       | invoice_method     | picking                             |
   And containing the following purchase order lines:
-      | product_id          | product_qty | price_unit | date_planned |
-      | by oid: scenario.p1 |          24 |         87 | %Y-01-19     |
-      | by oid: scenario.p2 |          43 |         37 | %Y-01-19     |
-      | by oid: scenario.p3 |          46 |         62 | %Y-01-26     |
+      | product_id          | product_qty | uom          |price_unit | date_planned |
+      | by oid: scenario.p1 |          24 | by name: PCE |        87 | %Y-01-19     |
+      | by oid: scenario.p2 |          43 | by name: PCE |        37 | %Y-01-19     |
+      | by oid: scenario.p3 |          46 | by name: PCE |        62 | %Y-01-26     |
   When I confirm the PO
   Then 1 picking should be created for the PO
   When I process all moves on %Y-01-17
@@ -110,10 +110,10 @@ Feature: I create manually several Purchase Orders (PO)
       | pricelist_id       | by name: Default Purchase Pricelist |
       | invoice_method     | picking                             |
   And containing the following purchase order lines:
-      | product_id          | product_qty | price_unit | date_planned |
-      | by oid: scenario.p1 |          14 |         80 | %Y-01-26     |
-      | by oid: scenario.p2 |          23 |         31 | %Y-01-26     |
-      | by oid: scenario.p3 |          16 |         52 | %Y-01-25     |
+      | product_id          | product_qty | uom          | price_unit | date_planned |
+      | by oid: scenario.p1 |          14 | by name: PCE |         80 | %Y-01-26     |
+      | by oid: scenario.p2 |          23 | by name: PCE |         31 | %Y-01-26     |
+      | by oid: scenario.p3 |          16 | by name: PCE |         52 | %Y-01-25     |
   When I confirm the PO
   Then 1 picking should be created for the PO
   When I process all moves on %Y-01-27
@@ -135,10 +135,10 @@ Feature: I create manually several Purchase Orders (PO)
       | pricelist_id       | by name: Default Purchase Pricelist |
       | invoice_method     | picking                             |
   And containing the following purchase order lines:
-      | product_id          | product_qty | price_unit | date_planned |
-      | by oid: scenario.p1 |          10 |         75 | %Y-02-20     |
-      | by oid: scenario.p2 |          23 |         35 | %Y-02-19     |
-      | by oid: scenario.p3 |          36 |         66 | %Y-02-26     |
+      | product_id          | product_qty | uom          | price_unit | date_planned |
+      | by oid: scenario.p1 |          10 | by name: PCE |         75 | %Y-02-20     |
+      | by oid: scenario.p2 |          23 | by name: PCE |         35 | %Y-02-19     |
+      | by oid: scenario.p3 |          36 | by name: PCE |         66 | %Y-02-26     |
 
   When I confirm the PO
   Then 1 picking should be created for the PO
@@ -161,10 +161,10 @@ Feature: I create manually several Purchase Orders (PO)
       | pricelist_id       | by name: Default Purchase Pricelist |
       | invoice_method     | picking                             |
   And containing the following purchase order lines:
-      | product_id          | product_qty | price_unit | date_planned |
-      | by oid: scenario.p1 |          24 |         87 | %Y-02-19     |
-      | by oid: scenario.p2 |          43 |         37 | %Y-02-19     |
-      | by oid: scenario.p3 |          46 |         62 | %Y-02-26     |
+      | product_id          | product_qty | uom          | price_unit | date_planned |
+      | by oid: scenario.p1 |          24 | by name: PCE |         87 | %Y-02-19     |
+      | by oid: scenario.p2 |          43 | by name: PCE |         37 | %Y-02-19     |
+      | by oid: scenario.p3 |          46 | by name: PCE |         62 | %Y-02-26     |
   When I confirm the PO
   Then 1 picking should be created for the PO
   When I process all moves on %Y-02-17
@@ -186,10 +186,10 @@ Feature: I create manually several Purchase Orders (PO)
       | pricelist_id       | by name: Default Purchase Pricelist |
       | invoice_method     | picking                             |
   And containing the following purchase order lines:
-      | product_id          | product_qty | price_unit | date_planned |
-      | by oid: scenario.p1 |          14 |         80 | %Y-02-26     |
-      | by oid: scenario.p2 |          23 |         31 | %Y-02-26     |
-      | by oid: scenario.p3 |          16 |         52 | %Y-02-25     |
+      | product_id          | product_qty | uom          | price_unit | date_planned |
+      | by oid: scenario.p1 |          14 | by name: PCE |         80 | %Y-02-26     |
+      | by oid: scenario.p2 |          23 | by name: PCE |         31 | %Y-02-26     |
+      | by oid: scenario.p3 |          16 | by name: PCE |         52 | %Y-02-25     |
   When I confirm the PO
   Then 1 picking should be created for the PO
   When I process all moves on %Y-02-27
