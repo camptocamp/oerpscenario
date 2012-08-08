@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_run   
+@addons       @account_voucher       @account_voucher_run   @CN401   
 
 Feature: In order to validate multicurrency account_voucher behaviour as an admin user I do a reconciliation run.
          I want to create a customer credit note for 1000 EUR (rate : 1) and refund it in full in EUR (rate : 1)
