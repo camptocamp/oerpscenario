@@ -258,6 +258,8 @@ And /^containing the following purchase order lines:$/ do | table|
     product = _manage_col_search({'relation'=>'product.product'},
                                  row[:product_id])
     qty = row[:product_qty].to_f
+    product_uom = _manage_col_search({'relation'=>'product.uom'},
+                                     row[:uom])
     price = row[:price_unit].to_f
     date = row[:date_planned]
     if date.include? "%"
@@ -266,6 +268,7 @@ And /^containing the following purchase order lines:$/ do | table|
     pol = PurchaseOrderLine.new(:order_id => purchase_order.id,
                                 :product_id => product.id,
                                 :product_qty => qty,
+                                :product_uom => product_uom.id,
                                 :price_unit => price,
                                 :date_planned => date,
                                 :name => "#{purchase_order.name} #{product.partner_ref}")
@@ -291,6 +294,8 @@ Then /^(\d)+ pickings? should be created for the PO$/ do |nb_pick|
 end
 
 Given /^I process the following product moves?:$/ do |table|
+  purchase_order = @found_item
+  purchase_order.should_not be_nil
   @pickings.should_not be_nil
   @pickings.length.should == 1
   picking = @pickings[0]
@@ -317,7 +322,12 @@ Given /^I process the following product moves?:$/ do |table|
     reception_dates[product.id] = date
     for move in moves_by_product[product.id]
       picked_qty = [move.product_qty, qty].min
-      partial_datas["move#{move.id}"] = {:product_qty => picked_qty}
+      partial_datas["move#{move.id}"] = {
+        :product_qty => picked_qty, 
+        :product_price => move.price_unit,
+        :product_uom => move.product_uom.id,
+        :product_currency => purchase_order.pricelist_id.currency_id.id
+      }
       qty -= picked_qty
       move_ids << move.id
       if qty < 0
@@ -332,11 +342,31 @@ Given /^I process the following product moves?:$/ do |table|
 end
 
 Given /^I process all moves on (.*)$/ do |date|
+  purchase_order = @found_item
+  purchase_order.should_not be_nil
   @pickings.should_not be_nil
-  picking_ids = []
-  @pickings.each do |p| picking_ids << p.id end
-  move_ids=StockMove.search([['picking_id', 'in', picking_ids]])
-  StockMove.action_done(move_ids)
+  @pickings.length.should == 1
+  picking = @pickings[0]
+  move_ids = []
+  partial_datas = {}
+  if date.include? "%"
+    date = Time.new().strftime(date)
+  end
+  StockMove.find(:all, :domain=>[['picking_id', '=', picking.id]]).each do |move|
+    product = move.product_id
+    picked_qty = move.product_qty
+    partial_datas["move#{move.id}"] = {
+        :product_qty => picked_qty, 
+        :product_price => move.price_unit,
+        :product_uom => move.product_uom.id,
+        :product_currency => purchase_order.pricelist_id.currency_id.id
+      }
+      move_ids << move.id
+  end
+  complete_move_ids = StockMove.do_partial(move_ids, partial_datas)
+  for move in StockMove.find(complete_move_ids)
+    StockMove.write([move.id], {:date => date})
+  end
 end
 
 Then /^the picking should be in state (.*)$/ do |state|
