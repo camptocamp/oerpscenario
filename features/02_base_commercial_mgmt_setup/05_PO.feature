@@ -6,7 +6,8 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons @POall
+@base_finance_setup @base_comercial_mgmt
+
 
 Feature: I create manually several Purchase Orders (PO)
 
@@ -197,4 +198,3 @@ Feature: I create manually several Purchase Orders (PO)
   Then the picking should be in state done
   And 1 draft invoice should be created for the PO
   When I open the credit invoice
-

@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_addons  @param
+@base_finance_setup @base_comercial_mgmt 
 
 Feature: In order to validate account voucher behavious as an admin user I prepare data
   @account_voucher_addon_install
