@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_addons     @param
+@base_finance_setup @base_comercial_mgmt 
 
 Feature: As an admin user I prepare data
 

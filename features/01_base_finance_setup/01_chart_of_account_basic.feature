@@ -6,11 +6,11 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @chart_of_account     @param
+@base_finance_setup @base_comercial_mgmt 
 
-Feature: Creation of a basic chart of account (not avoid demo data installation)
+Feature: Creation of a basic chart of account (to avoid demo data installation)
 
-  @account_voucher_init
+  @chart_of_account
   Scenario: Generic Chart of account creation
 
     Given I need a "account.account" with oid: scen.root
@@ -100,6 +100,26 @@ Feature: Creation of a basic chart of account (not avoid demo data installation)
     | name        | value               |
     | name        | Creditors           |
     | code        | 4011                |
+    | parent_id   | by code: C0         |
+    | type        | payable             |
+    | user_type   | by name: Payable    |
+    | reconcile   | true                |
+
+     Given I need a "account.account" with oid: scen.acc_receivable_usd
+    And having:
+    | name        | value               |
+    | name        | Debtors USD         |
+    | code        | 4112                |
+    | parent_id   | by code: C0         |
+    | type        | receivable          |
+    | user_type   | by name: Receivable |
+    | reconcile   | true                |
+
+     Given I need a "account.account" with oid: scen.acc_payable_usd
+    And having:
+    | name        | value               |
+    | name        | Creditors USD       |
+    | code        | 4012                |
     | parent_id   | by code: C0         |
     | type        | payable             |
     | user_type   | by name: Payable    |

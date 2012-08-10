@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_addons  @param
+@base_finance_setup @base_comercial_mgmt 
 
 Feature: I create a list of partners
    @account_voucher_init
@@ -81,6 +81,26 @@ Feature: I create a list of partners
       | property_account_receivable| by name: Debtors   |
       
     Given I need a "res.partner.address" with oid: scen.supplier_3_add
+    And having:
+      | name       | value                        |
+      | name       | Joel Grandguillaume          |
+      | zip        | 1900                         |
+      | city       | Neuchatel                    |
+      | email      | openerp@locahost.dummy       |
+      | phone      | +41 21 619 10 15             |
+      | street     | PSE-A, EPF                   |
+      | partner_id | by oid: scen.supplier_3      |
+
+  Scenario: Supplier_4 en USD
+    Given I need a "res.partner" with oid: scen.supplier_4_usd
+    And having:
+      | name                       | value                  |
+      | name                       | supplier_4_usd         |
+      | supplier                   | 1                      |
+      | property_account_payable   | by name: Creditors USD |
+      | property_account_receivable| by name: Debtors USD   |
+      
+    Given I need a "res.partner.address" with oid: scen.supplier_4_add
     And having:
       | name       | value                        |
       | name       | Joel Grandguillaume          |
@@ -192,4 +212,23 @@ Feature: I create a list of partners
       | street     | PSE-A, EPF                   |
       | partner_id | by oid: scen.customer_4      |
 
+  Scenario: Customer_5
+    Given I need a "res.partner" with oid: scen.customer_5
+    And having:
+      | name                       | value              |
+      | name                       | customer_5_usd     |
+      | customer                   | 1                  |
+      | property_account_payable   | by name: Creditors USD |
+      | property_account_receivable| by name: Debtors USD   |
+      
+    Given I need a "res.partner.address" with oid: scen.customer_5_add
+    And having:
+      | name       | value                        |
+      | name       | Barack Obama                 |
+      | zip        | 20500                        |
+      | city       | Washington, DC               |
+      | email      | openerp@locahost.dummy       |
+      | phone      | +01 21 619 20 88             |
+      | street     | 1600 Pennsylvania Ave        |
+      | partner_id | by oid: scen.customer_5      |
 
