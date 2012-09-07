@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_run
+@addons       @account_voucher       @1     @111
 
 Feature: In order to validate multicurrency account_voucher behaviour as an admin user I do a reconciliation run.
          I want to create a customer invoice for 1000 USD (rate : 1.5) and get paid 950 USD (rate : 1.8)
@@ -58,7 +58,7 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
 
  @acccout_voucher_run @account_statement_line_amount_modified   
   Scenario: Modify the paid amount of the imported invoice to pay partialy my invoice
-    Given I need a "account.bank.statement.line" with name: SI_411
+    Given I need a "account.bank.statement.line" with name: SI_111
     And the line amount should be 1000
     Then I modify the bank statement line amount to 950
 

@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@base_finance_setup @base_comercial_mgmt
+@base_commercial_management
 
 
 Feature: I create manually several Purchase Orders (PO)

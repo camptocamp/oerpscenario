@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_run   @account_voucher_test
+@addons       @account_voucher       @1     @113wo
 
 Feature: In order to validate multicurrency account_voucher behaviour as an admin user I do a reconciliation run.
          I want to create a supplier invoice for 1000 USD (rate : 1.5) and pay 950 USD (rate : 1.8)
@@ -63,7 +63,7 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
 
  @acccout_voucher_run @account_voucher_with_wo
   Scenario: As this is a final payment, in the payment options, I want to post the write off into the wo account
-    Then I set the payment options to choose the write-off account code:658 
+    Then I set the payment options to choose the writeoff account code 658 
 
   @account_voucher_run @account_voucher_confirm
   Scenario: confirm bank statement 

@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_run   @account_voucher_test
+@addons       @account_voucher       @3     @301
 
 Feature: In order to validate multicurrency account_voucher behaviour as an admin user I do a reconciliation run.
          I want to create a customer invoice for 1000 EUR (rate : 1) and pay it in full in USD (rate : 1.8)
