@@ -220,6 +220,9 @@ end
 Then /^we are all done$/ do
 end
 
+Given /^I install the following language :$/ do |table|
+  raise "Please use the corrected sentence -> I install the following languages:"
+end
 
 Given /^I install the following languages:$/ do |table|
     @cust_table = table
