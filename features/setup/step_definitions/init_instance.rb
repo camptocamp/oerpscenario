@@ -221,7 +221,7 @@ Then /^we are all done$/ do
 end
 
 
-Given /^I install the following language :$/ do |table|
+Given /^I install the following languages:$/ do |table|
     @cust_table = table
     # XMLRPC::Config.const_set(:ENABLE_NIL_PARSER, true)
     # erpmodule = IrModuleModule.find(:first)
