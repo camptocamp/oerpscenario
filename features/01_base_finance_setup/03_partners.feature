@@ -9,20 +9,22 @@
 @base_finance   @base_commercial_management 
 
 Feature: CUSTOMER & SUPPLIER CREATION
-   @account_voucher_init
+   @partner
   Scenario: Partner_1
     Given I need a "res.partner" with oid: scen.partner_1
     And having:
-      | name                       | value              |
-      | name                       | partner_1          |
-      | customer                   | 1                  |
-      | supplier                   | 1                  |
-      | property_account_payable   | by name: Creditors |
-      | property_account_receivable| by name: Debtors   |
+      | name                       | value                              |
+      | name                       | partner_1                          |
+      | customer                   | 1                                  |
+      | supplier                   | 1                                  |
+      | property_account_payable   | by name: Creditors                 |
+      | property_account_receivable| by name: Debtors                   |
+      | property_payment_term      | by name: 30 Net Days               |    
       
     Given I need a "res.partner.address" with oid: scen.partner_1_add
     And having:
       | name       | value                        |
+      | type       | default                      |
       | name       | Luc Maurer                   |
       | zip        | 1015                         |
       | city       | lausanne                     |
@@ -34,15 +36,18 @@ Feature: CUSTOMER & SUPPLIER CREATION
   Scenario: Supplier_1
     Given I need a "res.partner" with oid: scen.supplier_1
     And having:
-      | name                       | value              |
-      | name                       | supplier_1         |
-      | supplier                   | 1                  |
-      | property_account_payable   | by name: Creditors |
-      | property_account_receivable| by name: Debtors   |
+      | name                       | value                              |
+      | name                       | supplier_1                         |
+      | supplier                   | 1                                  |
+      | property_account_payable   | by name: Creditors                 |
+      | property_account_receivable| by name: Debtors                   |
+      | property_payment_term      | by name: 30 Net Days               |    
+      
       
     Given I need a "res.partner.address" with oid: scen.supplier_1_add
     And having:
       | name       | value                        |
+      | type       | default                      |
       | name       | Frederic Clementi            |
       | zip        | 1030                         |
       | city       | Bussigny                     |
@@ -54,15 +59,17 @@ Feature: CUSTOMER & SUPPLIER CREATION
   Scenario: Supplier_2
     Given I need a "res.partner" with oid: scen.supplier_2
     And having:
-      | name                       | value              |
-      | name                       | supplier_2         |
-      | supplier                   | 1                  |
-      | property_account_payable   | by name: Creditors |
-      | property_account_receivable| by name: Debtors   |
+      | name                       | value                              |
+      | name                       | supplier_2                         |
+      | supplier                   | 1                                  |
+      | property_account_payable   | by name: Creditors                 |
+      | property_account_receivable| by name: Debtors                   |
+      | property_payment_term      | by name: 30% Advance End 30 Days   |    
       
     Given I need a "res.partner.address" with oid: scen.supplier_2_add
     And having:
       | name       | value                        |
+      | type       | default                      |      
       | name       | Vincent Renaville            |
       | zip        | 1005                         |
       | city       | Lausanne                     |
@@ -74,15 +81,17 @@ Feature: CUSTOMER & SUPPLIER CREATION
   Scenario: Supplier_3
     Given I need a "res.partner" with oid: scen.supplier_3
     And having:
-      | name                       | value              |
-      | name                       | supplier_3         |
-      | supplier                   | 1                  |
-      | property_account_payable   | by name: Creditors |
-      | property_account_receivable| by name: Debtors   |
+      | name                       | value                              |
+      | name                       | supplier_3                         |
+      | supplier                   | 1                                  |
+      | property_account_payable   | by name: Creditors                 |
+      | property_account_receivable| by name: Debtors                   |
+      | property_payment_term      | by name: 30 Days End of Month      |     
       
     Given I need a "res.partner.address" with oid: scen.supplier_3_add
     And having:
       | name       | value                        |
+      | type       | default                      |      
       | name       | Joel Grandguillaume          |
       | zip        | 1900                         |
       | city       | Neuchatel                    |
@@ -94,15 +103,17 @@ Feature: CUSTOMER & SUPPLIER CREATION
   Scenario: Supplier_4 en USD
     Given I need a "res.partner" with oid: scen.supplier_4_usd
     And having:
-      | name                       | value                  |
-      | name                       | supplier_4_usd         |
-      | supplier                   | 1                      |
-      | property_account_payable   | by name: Creditors USD |
-      | property_account_receivable| by name: Debtors USD   |
+      | name                       | value                              |
+      | name                       | supplier_4_usd                     |
+      | supplier                   | 1                                  |
+      | property_account_payable   | by name: Creditors USD             |
+      | property_account_receivable| by name: Debtors USD               |
+      | property_payment_term      | by name: 30 Net Days               |    
       
     Given I need a "res.partner.address" with oid: scen.supplier_4_add
     And having:
       | name       | value                        |
+      | type       | default                      |      
       | name       | Joel Grandguillaume          |
       | zip        | 1900                         |
       | city       | Neuchatel                    |
@@ -114,15 +125,17 @@ Feature: CUSTOMER & SUPPLIER CREATION
   Scenario: Customer_1
     Given I need a "res.partner" with oid: scen.customer_1
     And having:
-      | name                       | value              |
-      | name                       | customer_1         |
-      | customer                   | 1                  |
-      | property_account_payable   | by name: Creditors |
-      | property_account_receivable| by name: Debtors   |
+      | name                       | value                              |
+      | name                       | customer_1                         |
+      | customer                   | 1                                  |
+      | property_account_payable   | by name: Creditors                 |
+      | property_account_receivable| by name: Debtors                   |
+      | property_payment_term      | by name: 30 Net Days               |    
       
     Given I need a "res.partner.address" with oid: scen.customer_1_add
     And having:
       | name       | value                        |
+      | type       | default                      |      
       | name       | Guewen Baconnier             |
       | zip        | 1800                         |
       | city       | Orbe                         |
@@ -134,15 +147,17 @@ Feature: CUSTOMER & SUPPLIER CREATION
   Scenario: Customer_2
     Given I need a "res.partner" with oid: scen.customer_2
     And having:
-      | name                       | value              |
-      | name                       | customer_2         |
-      | customer                   | 1                  |
-      | property_account_payable   | by name: Creditors |
-      | property_account_receivable| by name: Debtors   |
+      | name                       | value                              |
+      | name                       | customer_2                         |
+      | customer                   | 1                                  |
+      | property_account_payable   | by name: Creditors                 |
+      | property_account_receivable| by name: Debtors                   |
+      | property_payment_term      | by name: 30% Advance End 30 Days   |    
       
     Given I need a "res.partner.address" with oid: scen.customer_2_add
     And having:
       | name       | value                        |
+      | type       | default                      |      
       | name       | Nicolas Bessi                |
       | zip        | 1456                         |
       | city       | Pentalaz                     |
@@ -154,15 +169,17 @@ Feature: CUSTOMER & SUPPLIER CREATION
   Scenario: Customer_3
     Given I need a "res.partner" with oid: scen.customer_3
     And having:
-      | name                       | value              |
-      | name                       | customer_3         |
-      | customer                   | 1                  |
-      | property_account_payable   | by name: Creditors |
-      | property_account_receivable| by name: Debtors   |
+      | name                       | value                              |
+      | name                       | customer_3                         |
+      | customer                   | 1                                  |
+      | property_account_payable   | by name: Creditors                 |
+      | property_account_receivable| by name: Debtors                   |
+  
       
     Given I need a "res.partner.address" with oid: scen.customer_3_add
     And having:
       | name       | value                        |
+      | type       | default                      |      
       | name       | Yannick Vauchet              |
       | zip        | 1456                         |
       | city       | Neuchatel                    |
@@ -174,15 +191,17 @@ Feature: CUSTOMER & SUPPLIER CREATION
   Scenario: Customer_4
     Given I need a "res.partner" with oid: scen.customer_4
     And having:
-      | name                       | value              |
-      | name                       | customer_4         |
-      | customer                   | 1                  |
-      | property_account_payable   | by name: Creditors |
-      | property_account_receivable| by name: Debtors   |
+      | name                       | value                              |
+      | name                       | customer_4                         |
+      | customer                   | 1                                  |
+      | property_account_payable   | by name: Creditors                 |
+      | property_account_receivable| by name: Debtors                   |
+      | property_payment_term      | by name: 30 Net Days               |    
       
     Given I need a "res.partner.address" with oid: scen.customer_4_add
     And having:
       | name       | value                        |
+      | type       | default                      |      
       | name       | Alexandre Fayolle            |
       | zip        | 1456                         |
       | city       | Neuchatel                    |
@@ -192,38 +211,20 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | partner_id | by oid: scen.customer_4      |
 
 
-  Scenario: Customer_4
-    Given I need a "res.partner" with oid: scen.customer_4
-    And having:
-      | name                       | value              |
-      | name                       | customer_4         |
-      | customer                   | 1                  |
-      | property_account_payable   | by name: Creditors |
-      | property_account_receivable| by name: Debtors   |
-      
-    Given I need a "res.partner.address" with oid: scen.customer_4_add
-    And having:
-      | name       | value                        |
-      | name       | Maxime Wiot                  |
-      | zip        | 1456                         |
-      | city       | Neuchatel                    |
-      | email      | openerp@locahost.dummy       |
-      | phone      | +33 21 619 20 88             |
-      | street     | PSE-A, EPF                   |
-      | partner_id | by oid: scen.customer_4      |
-
   Scenario: Customer_5
     Given I need a "res.partner" with oid: scen.customer_5
     And having:
-      | name                       | value              |
-      | name                       | customer_5_usd     |
-      | customer                   | 1                  |
-      | property_account_payable   | by name: Creditors USD |
-      | property_account_receivable| by name: Debtors USD   |
+      | name                       | value                              |
+      | name                       | customer_5_usd                     |
+      | customer                   | 1                                  |
+      | property_account_payable   | by name: Creditors USD             |
+      | property_account_receivable| by name: Debtors USD               |
+      | property_payment_term      | by name: 30 Days End of Month      |    
       
     Given I need a "res.partner.address" with oid: scen.customer_5_add
     And having:
       | name       | value                        |
+      | type       | default                      |      
       | name       | Barack Obama                 |
       | zip        | 20500                        |
       | city       | Washington, DC               |
@@ -232,3 +233,25 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | street     | 1600 Pennsylvania Ave        |
       | partner_id | by oid: scen.customer_5      |
 
+
+  Scenario: Customer_6
+    Given I need a "res.partner" with oid: scen.customer_6
+    And having:
+      | name                       | value                              |
+      | name                       | customer_6                         |
+      | customer                   | 1                                  |
+      | property_account_payable   | by name: Creditors                 |
+      | property_account_receivable| by name: Debtors                   |
+      | property_payment_term      | by name: 30 Days End of Month|          
+      
+    Given I need a "res.partner.address" with oid: scen.customer_6_add
+    And having:
+      | name       | value                        |
+      | type       | default                      |      
+      | name       | Maxime Wiot                  |
+      | zip        | 1456                         |
+      | city       | Neuchatel                    |
+      | email      | openerp@locahost.dummy       |
+      | phone      | +33 21 619 20 88             |
+      | street     | PSE-A, EPF                   |
+      | partner_id | by oid: scen.customer_6      |

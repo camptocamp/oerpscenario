@@ -31,7 +31,7 @@ Given /^I allow cancelling entries on all journals$/ do
   end
 end
 
-Given /^I open the credit invoice$/ do
+Given /^I open the (credit|debit|supplier|customer) invoice$/ do |type|
  @found_item.should_not be_nil,
   "no invoice found"
  ['draft', 'open'].should include(@found_item.state),
