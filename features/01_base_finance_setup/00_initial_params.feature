@@ -6,11 +6,12 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@base_finance_setup @base_comercial_mgmt 
+@base_finance 	@base_commercial_management 
 
-Feature: In order to validate account voucher behavious as an admin user I prepare data
-  @account_voucher_addon_install
-  Scenario: Install module
+Feature: INITIAL SET-UP FOR NEW DATABASE
+
+  @base_finance_setup_install_modules
+  Scenario: MODULES INSTALLATION
     Given I need a "ir.module.module" with name: account_voucher
     And having:
       |name     | value |
@@ -29,23 +30,24 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
       | product_historical_margin       |             
     Then my modules should have been installed and models reloaded
 
-  @account_voucher_init
-  Scenario: Lang Parameters
+  @base_finance_setup_languages
+  Scenario: LANGUAGE SETTINGS
     Given I need a "res.lang" with code: en_US
     And having:
     | name        | value    |
     | date_format | %d/%m/%Y |
     | grouping    | [3,0]    |
     
-  @account_voucher_init
-  Scenario: Admin user right
+  @base_finance_setup_access_rights
+  Scenario: USER RIGHTS SETTINGS
     Given we select users below:
       | login |
       | admin |
     Then we assign all groups to the users
     And we activate the extended view on the users
-    
-  Scenario: create fiscal year
+
+  @base_finance_setup_create_fy
+  Scenario: CREATION OF FISCAL YEAR 2012
     Given I need a "account.fiscalyear" with oid: scenario.fy2012
     And having:
     | name       | value      |
@@ -57,9 +59,8 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
     And I create monthly periods on the fiscal year with reference "fy2012"
     Then I find a "account.fiscalyear" with oid: scenario.fy2012
     
-
-  @account_voucher_init
-  Scenario: Admin user right
+  @base_finance_setup_currency_rates
+  Scenario: CURRENCY RATES SETTINGS
     Given I set the following currency rates :
       | currency |   rate | date     |
       | EUR      | 1.0000 | %Y-01-01 |

@@ -6,12 +6,12 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@base_finance_setup @base_comercial_mgmt 
+@base_finance   @base_commercial_management 
 
-Feature: As an admin user I prepare data
+Feature: FINANCIAL JOURNALS CREATION
 
   @account_voucher_init
-  Scenario: setting journals
+  Scenario: FINANCIAL JOURNALS CREATION
    Given I need a "account.journal" with oid: scen.voucher_eur_journal
    And having:
      | name                      | value                           |
@@ -133,6 +133,5 @@ Feature: As an admin user I prepare data
       | view_id                   | by name: Journal View               |   
       | centralisation            | t                                   |
     
-      
-      
+     
    Given I allow cancelling entries on all journals

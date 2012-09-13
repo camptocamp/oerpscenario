@@ -6,19 +6,18 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@base_finance_setup @base_comercial_mgmt 
+@base_finance   @base_commercial_management 
 
-Feature: Creation of a basic chart of account (to avoid demo data installation)
+Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
 
-  @chart_of_account
-  Scenario: Generic Chart of account creation
-
+  @base_finance_setup_chart
+  Scenario: GENERIC CHART OF ACCOUNT CREATION
     Given I need a "account.account" with oid: scen.root
     And having:
     | name        | value               |
     | name        | Chart               |
     | code        | C0                  |
-    | type        | other               |
+    | type        | view                |
     | user_type   | by name: Root/View  |
 
      Given I need a "account.account" with oid: scen.acc_stock_var
@@ -125,6 +124,24 @@ Feature: Creation of a basic chart of account (to avoid demo data installation)
     | user_type   | by name: Payable    |
     | reconcile   | true                |
 
+     Given I need a "account.account" with oid: scen.acc_sales_vat
+    And having:
+    | name        | value               |
+    | name        | Sales VAT           |
+    | code        | 4457                |
+    | parent_id   | by code: C0         |
+    | type        | other               |
+    | user_type   | by name: Liability  |
+
+     Given I need a "account.account" with oid: scen.acc_purchases_vat
+    And having:
+    | name        | value               |
+    | name        | Purchases VAT       |
+    | code        | 4456                |
+    | parent_id   | by code: C0         |
+    | type        | other               |
+    | user_type   | by name: Asset      |
+
       Given I need a "account.account" with oid: scen.acc_asset
     And having:
     | name        | value               |
@@ -164,41 +181,30 @@ Feature: Creation of a basic chart of account (to avoid demo data installation)
     | currency_id | by name: GBP        |
 
 
-  @account_voucher_init
-  Scenario: Company default accounts for currency fx journal posting 
+  @base_finance_setup_properties
+  Scenario: DEFAULT ACCOUNT SETTINGS (PROPERTIES)
+
     Given I need a "res.company" with oid: base.main_company
     And having:
     | name                                 | value                |
     | expense_currency_exchange_account_id | by name: Currency fx |
     | income_currency_exchange_account_id  | by name: Currency fx |
 
-  @setup_property
-  Scenario: Default debtor account settings
     Given I set global property named "property_account_receivable" for model "res.partner" and field "property_account_receivable"
     And the property is related to model "account.account" using column "code" and value "4111"
 
-  @setup_property
-  Scenario: Default creditor account settings
     Given I set global property named "property_account_payable" for model "res.partner" and field "property_account_payable"
     And the property is related to model "account.account" using column "code" and value "4011"
 
-  @setup_property
-  Scenario: Default expenses account settings
     Given I set global property named "property_account_expense" for model "product.template" and field "property_account_expense"
     And the property is related to model "account.account" using column "code" and value "607"
 
-  @setup_property
-  Scenario: Default income account settings
     Given I set global property named "property_account_income" for model "product.template" and field "property_account_income"
     And the property is related to model "account.account" using column "code" and value "707"
     
-  @setup_property
-  Scenario: Default stock variation account settings
     Given I set global property named "property_stock_account_input" for model "product.template" and field "property_stock_account_input"
     And the property is related to model "account.account" using column "code" and value "603"
 
-  @setup_property
-  Scenario: Default stock variation account settings
     Given I set global property named "property_stock_account_output" for model "product.template" and field "property_stock_account_output"
     And the property is related to model "account.account" using column "code" and value "603"
 

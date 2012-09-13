@@ -6,9 +6,9 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@base_finance_setup @base_comercial_mgmt 
+@base_finance   @base_commercial_management 
 
-Feature: I create a list of partners
+Feature: CUSTOMER & SUPPLIER CREATION
    @account_voucher_init
   Scenario: Partner_1
     Given I need a "res.partner" with oid: scen.partner_1
