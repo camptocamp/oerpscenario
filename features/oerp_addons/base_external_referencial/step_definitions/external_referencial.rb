@@ -115,7 +115,7 @@ Then /^I reload the referential mapping templates \(1 - Reload Referential Mappi
   ExternalReferential.refresh_mapping([@instance.id]).should be_true
 end
 Then /^I synchronize the referential settings \(2 - Synchronize Referential Settings\)$/ do
-  ExternalReferential.core_sync([@instance.id]).should be_true
+  ExternalReferential.import_referentials([@instance.id]).should be_true
 end
 Then /^I import the attribute sets \(3 - Import Product Attribute Sets\)$/ do
   ExternalReferential.sync_attrib_sets([@instance.id]).should be_true
@@ -127,10 +127,10 @@ Then /^I import the attributes \(5 - Import Product Attributes\)$/ do
   ExternalReferential.sync_attribs([@instance.id]).should be_true
 end
 Then /^I import the customer groups \(1 - Import Customer Groups \(Partner Categories\)\)$/ do
-  ExternalReferential.sync_customer_groups([@instance.id]).should be_true
+  ExternalReferential.import_customer_groups([@instance.id]).should be_true
 end
 Then /^I import the product categories \(2 - Import Product Categories\)$/ do
-  ExternalReferential.sync_categs([@instance.id]).should be_true
+  ExternalReferential.import_product_categories([@instance.id]).should be_true
 end
 Then /^I import the products \(6 - Import Products\)$/ do
   ExternalReferential.sync_products([@instance.id]).should be_true
