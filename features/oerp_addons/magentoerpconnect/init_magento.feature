@@ -39,7 +39,7 @@ Feature: Create the Magento Instance and proceed to the initial synchronisations
       | apiusername               | 'openerp_connect'          |
       | apipass                   | 'openerp_connect'          |
       
-    And I set the instance referential type on "magento1500"
+    And I set the instance referential version on "magento1500"
     And I set the instance default language on "en_US"
     And I set the instance default product category on "cat0"
     And I set an absolute id "base_external.magento" on the instance

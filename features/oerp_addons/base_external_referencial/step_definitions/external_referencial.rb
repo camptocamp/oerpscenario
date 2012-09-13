@@ -30,10 +30,10 @@ Then /^I set the following attributes on the instance:$/ do |table|
       @instance.send "#{data['key'].to_sym}=", eval(data['value'])
   end
 end
-And /^I set the instance referential type on "([^"]*)"$/ do |referential_type|
-  ref_type = ExternalReferentialType.find(referential_type)
-  ref_type.should_not be_nil
-  @instance.type_id = ref_type.id
+And /^I set the instance referential version on "([^"]*)"$/ do |referential_version|
+  ref_version = ExternalReferentialVersion.find(referential_version)
+  ref_version.should_not be_nil
+  @instance.version_id = ref_version.id
 end
 And /^I set the instance default language on "([^"]*)"$/ do |lang_code|
   lang = ResLang.find(:first, :domain => [['code', '=', lang_code]])
