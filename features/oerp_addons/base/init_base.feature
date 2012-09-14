@@ -34,7 +34,7 @@ Feature: Param the new database
     And we activate the extended view on the users
 
   Scenario: install lang
-   Given I install the following language :
+   Given I install the following languages:
       | lang  |
       | fr_FR |
       | de_DE |
