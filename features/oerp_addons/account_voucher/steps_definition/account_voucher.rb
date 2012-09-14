@@ -35,7 +35,7 @@ Given /^I open the (credit|debit|supplier|customer) invoice$/ do |type|
  @found_item.should_not be_nil,
   "no invoice found"
  ['draft', 'open'].should include(@found_item.state),
-  "Invoice is not draf or open"
+  "Invoice is not draft or open"
  if @found_item.state == 'draft'
    @found_item.wkf_action('invoice_open')
  end
