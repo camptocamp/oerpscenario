@@ -8,7 +8,7 @@
 # Features Generic tags (none for all)
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons      @sale          @sales
+@addons      @sale          @sales1
 
 Feature: Test sales process
   In order to test the sale process and modules
@@ -18,23 +18,23 @@ Feature: Test sales process
   Scenario: Create a Sale Order with DSL
       Given I need a "sale.order" with name: SO Device Reseller and oid: scenario.so_reseller
       And having:
-          | name | value |
-          | name | SO Device Reseller |
-          | partner_id | by oid: scenario.partner_swisspost |
-          | pricelist_id | by oid: product.list0 |
-          | partner_invoice_id | by oid: scenario.partner_swisspost_add |
-          | partner_order_id | by oid: scenario.partner_swisspost_add |
-          | partner_shipping_id | by oid: scenario.partner_swisspost_add |
-          | shop_id | by name: Your Company |
+          | name                        | value                                     |
+          | name                        | SO Device Reseller                        |
+          | partner_id                  | by oid: scenario.partner_swisspost        |
+          | pricelist_id                | by oid: product.list0                     |
+          | partner_invoice_id          | by oid: scenario.partner_swisspost_add    |
+          | partner_order_id            | by oid: scenario.partner_swisspost_add    |
+          | partner_shipping_id         | by oid: scenario.partner_swisspost_add    |
+          | shop_id                     | by name: Your Company                     |
       Given I need a "sale.order.line" with name: SO Line 1 Device Reseller and oid: scenario.so_reseller_line1
       And having:
-          | name | value |
-          | name | SO Line 1 Device Reseller |
-          | product_id | by oid: scenario.device1 |
-          | price_unit | 30.0 |
-          | product_uom_qty | 5.0 |
-          | product_uom | by name: PCE |
-          | order_id | by oid: scenario.so_reseller |
+          | name                        | value                                     |
+          | name                        | SO Line 1 Device Reseller                 |
+          | product_id                  | by oid: scenario.device1                  |
+          | price_unit                  | 30.0                                      |
+          | product_uom_qty             | 5.0                                       |
+          | product_uom                 | by name: PCE                              |
+          | order_id                    | by oid: scenario.so_reseller              |
       
   Scenario: Validate a confirmed sale order
     Given I have recorded on the 1 jan 2009 a sale order of 1000,0 CHF without tax called MySimpleSO
