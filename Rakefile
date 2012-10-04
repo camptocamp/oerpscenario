@@ -68,6 +68,15 @@ task :init_purchase => :init_account
 Cucumber::Rake::Task.new(:init_magento, "Install the required module for magento, create Magento instance and load mapping") do |task|
   task.cucumber_opts = %W(--tags=@init_magento features #{conf_file})
 end
+
+Cucumber::Rake::Task.new(:base_finance, "Install the required module for finance, and perform standard data configuration") do |task|
+  task.cucumber_opts = %W(--tags=@base_finance features #{conf_file})
+end
+
+Cucumber::Rake::Task.new(:voucher_test, "Perform test on voucher") do |task|
+  task.cucumber_opts = %W(--tags=@113wo features #{conf_file})
+end
+
 task :init_magento => :init_sale
 task :init_magento => :init_purchase
 
