@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @account_voucher_addons   
+@addons       
 
 Feature: I create a list of partners
    @account_voucher_init

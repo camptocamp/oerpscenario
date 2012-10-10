@@ -27,7 +27,15 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
       | sale                            |
       | stock_move_change_delivery_date |
       | product_standard_margin         |
-      | product_historical_margin       |             
+      | product_historical_margin       |
+      | report_webkit_lib               |
+      | account_financial_report_webkit |
+      | invoice_webkit                  |
+      | purchase_order_webkit           |
+      | sale_order_webkit               |
+      | stock_picking_webkit            |      
+      
+                   
     Then my modules should have been installed and models reloaded
 
   @base_finance_setup_languages

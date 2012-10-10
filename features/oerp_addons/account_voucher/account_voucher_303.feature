@@ -9,9 +9,8 @@
 @addons       @account_voucher       @3     @303
 
 Feature: In order to validate multicurrency account_voucher behaviour as an admin user I do a reconciliation run.
-         I want to create a supplier invoice for 1000 EUR (rate : 1) and pay it in full in USD (rate : 1.8)
-         with account_voucher. The Journal entries do not calculate currency gain/loss but a write off where you 
-         must select the currency gain/loss account.
+         I want to create a supplier invoice for 1000 EUR (rate : 1) and pay 500 USD (rate : 1.8)
+         with account_voucher. The Journal entries do not calculate currency gain/loss neither a write off. Invoice should remains open.
          
   @account_voucher_run
   Scenario: Create invoice 303
@@ -57,8 +56,13 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_303
     And I import invoice "SI_303" using import invoice button
 
+ @acccout_voucher_run @account_statement_line_amount_modified   
+  Scenario: Modify the paid amount of the imported invoice to pay partialy my invoice
+    Given I need a "account.bank.statement.line" with name: SI_303
+    Then I modify the bank statement line amount to -900
+
   @account_voucher_run @account_voucher_confirm
-  Scenario: confirm bank statement (/!\ Voucher payment options must be 'reconcile payment balance' by default )
+  Scenario: confirm bank statement 
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_303
     And I set bank statement end-balance
     When I confirm bank statement
@@ -68,10 +72,10 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_303
     Then I should have following journal entries in voucher:
       | date     | period  | account                        |  debit | credit | curr.amt | curr. | reconcile | partial |
-      | %Y-02-15 | 02/%Y | Currency fx                      |        | 444.44 |          |       |           |         |
-      | %Y-02-15 | 02/%Y | Creditors                        |1000.00 |        |          |       | yes       |         |
-      | %Y-02-15 | 02/%Y | USD bank account                 |        | 555.56 |    -1000 | USD   |           |         |
+      | %Y-02-15 | 02/%Y | Creditors                        | 500.00 |        |          |       |           |  yes    |
+      | %Y-02-15 | 02/%Y | USD bank account                 |        | 500.00 | -900.00  |  USD  |           |         |
+# BUG : Openerp gets 552.15 instead of 500.00 (same bug that in 201/203)
 
   @account_voucher_run @account_voucher_valid_invoice_303
   Scenario: validate voucher
-    Given My invoice "SI_303" is in state "paid" reconciled with a residual amount of "0.0"
+    Given My invoice "SI_303" is in state "open" reconciled with a residual amount of "500.0"

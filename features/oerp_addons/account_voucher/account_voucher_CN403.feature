@@ -22,8 +22,8 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
       | date_due           | %Y-02-15                           |
       | address_invoice_id | by oid: scen.partner_1_add         |
       | partner_id         | by oid: scen.partner_1             |
-      | account_id         | by name: Debtors                   |
-      | journal_id         | by name: Sales credit notes        |
+      | account_id         | by name: Creditors                 |
+      | journal_id         | by name: Purchases credit notes    |
       | currency_id        | by name: EUR                       |
       | type               | in_refund                          |
 
@@ -34,7 +34,7 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
       | name       | credit note line CN403          |
       | quantity   | 1                               |
       | price_unit | 1000                            |
-      | account_id | by name: Sales                  |
+      | account_id | by name: Purchases              |
       | invoice_id | by oid:scen.voucher_inv_CN403   |
     Given I find a "account.invoice" with oid: scen.voucher_inv_CN403
     And I open the credit invoice
@@ -57,7 +57,7 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
     And I import invoice "SI_CN403" using import invoice button
 
   @account_voucher_run @account_voucher_confirm
-  Scenario: confirm bank statement (/!\ Voucher payment options must be 'reconcile payment balance' by default )
+  Scenario: confirm bank statement 
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_CN403
     And I set bank statement end-balance
     When I confirm bank statement
@@ -67,7 +67,7 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_CN403
     Then I should have following journal entries in voucher:
       | date     | period  | account                        |  debit | credit | curr.amt | curr. | reconcile | partial |
-      | %Y-02-15 | 02/%Y   | Creditor                       |        |1000.00 |          |       | yes       |         |
+      | %Y-02-15 | 02/%Y   | Creditors                      |        |1000.00 |          |       | yes       |         |
       | %Y-02-15 | 02/%Y   | EUR bank account               |1000.00 |        |          |       |           |         |
 
 

@@ -57,7 +57,7 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
     And I import invoice "SI_CN401" using import invoice button
 
   @account_voucher_run @account_voucher_confirm
-  Scenario: confirm bank statement (/!\ Voucher payment options must be 'reconcile payment balance' by default )
+  Scenario: confirm bank statement 
     Given I find a "account.bank.statement" with oid: scen.voucher_statement_CN401
     And I set bank statement end-balance
     When I confirm bank statement

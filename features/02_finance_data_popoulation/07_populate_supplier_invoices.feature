@@ -25,7 +25,6 @@ Feature: PURCHASES INVOICES POPULATION
       | currency_id        | by name: USD                       |
       | type               | in_invoice                         |
 
-
     Given I need a "account.invoice.line" with oid: scen.purchases_invPI1_line1
     And having:
       | name       | value                                      |
@@ -34,7 +33,17 @@ Feature: PURCHASES INVOICES POPULATION
       | price_unit | 1000                                       |
       | account_id | by name: Purchases                         |
       | invoice_id | by oid:scen.purchases_inv_PI1              |
-      | invoice_line_tax_id | all by oid: scen.purchases_vat_20 |                  
+      | invoice_line_tax_id | all by oid: scen.purchases_vat_10 |    
+      
+    Given I need a "account.invoice.line" with oid: scen.purchases_invPI1_line2
+    And having:
+      | name       | value                                      |
+      | name       | invoice line 2 PI1                         |
+      | quantity   | 1                                          |
+      | price_unit | 1000                                       |
+      | account_id | by name: Purchases                         |
+      | invoice_id | by oid:scen.purchases_inv_PI1              |
+      | invoice_line_tax_id | all by oid: scen.purchases_vat_20 |                      
     Given I find a "account.invoice" with oid: scen.purchases_inv_PI1
     And I open the supplier invoice
     

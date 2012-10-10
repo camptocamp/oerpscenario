@@ -6,11 +6,13 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@addons       @account_voucher       @1     @113wo
+@addons       
 
-Feature: In order to validate multicurrency account_voucher behaviour as an admin user I do a reconciliation run.
+Feature: ### TODO - MISSING SENTENCES ###
+In order to validate multicurrency account_voucher behaviour as an admin user I do a reconciliation run.
          I want to create a supplier invoice for 1000 USD (rate : 1.5) and pay 950 USD (rate : 1.8)
          with account_voucher. I considere the 50 USD left as write-off amount. The Journal entries must calculate the correct currency gain/loss.
+
 
   @account_voucher_run
   Scenario: Create invoice 113wo
@@ -78,7 +80,7 @@ Feature: In order to validate multicurrency account_voucher behaviour as an admi
       | date     | period  | account                        |  debit | credit | curr.amt | curr. | reconcile | partial |
       | %Y-02-15 | 02/%Y   | Write-off                      |        |  27.78 |      -50 | USD   |           |         |
       | %Y-02-15 | 02/%Y   | Currency fx                    |        | 111.11 |          |       |           |         |
-      | %Y-02-15 | 02/%Y   | Creditors                      | 111.11 |        |          | USD   |  yes      |         |      
+      | %Y-02-15 | 02/%Y   | Creditors                      | 111.11 |        |          | USD   |  yes      |         |
       | %Y-02-15 | 02/%Y   | Creditors                      | 555.56 |        |     1000 | USD   |  yes      |         |
       | %Y-02-15 | 02/%Y   | USD bank account               |        | 527.78 |     -950 | USD   |           |         |
 
