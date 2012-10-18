@@ -12,7 +12,7 @@
 
 Feature: Ensure that mail credit line generation first pass is correct
 
-  @credit_management_first_run
+  @credit_management_run
   Scenario: Create run
     Given I need a "credit.management.run" with oid: credit_management.run1
     And having:

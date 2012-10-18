@@ -59,7 +59,7 @@ Feature: I add profile to partners already created
       
   @credit_management_customer_6      
   Scenario: Customer_6
-    Given I need a "res.partner" with oid: scen.customer_5
+    Given I need a "res.partner" with oid: scen.customer_6
     And having:
       | name                       | value                  |
       | name                       | customer_6             |
