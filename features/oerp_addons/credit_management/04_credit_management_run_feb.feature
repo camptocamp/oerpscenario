@@ -8,7 +8,7 @@
 # Features Generic tags (none for all)
 ##############################################################################
 
-@credit_management        @credit_management_run    @credit_management_run_feb
+      @credit_management_run    @credit_management_run_feb
 
 Feature: Ensure that mail credit line generation first pass is correct
 
@@ -27,7 +27,8 @@ Feature: Ensure that mail credit line generation first pass is correct
     When I launch the credit run
     Then my credit run should be in state "done"
     And credit lines should have following values:
-     | balance |   date due | account       | profile       |       date | partner            | canal | level | move line     | profile rule            | state | amount due | currency |
-     |     360 | 2012-01-18 | Debtors       | 3 time policy | 2012-02-28 | customer_4         | mail  |  1.00 | SI_11         | 10 days net             | draft |        360 |  USD     |
-     |    1000 | 2012-02-17 | Debtors USD   | 3 time policy | 2012-02-28 | customer_5_usd     | mail  |  1.00 | SI_13         | 10 days net             | draft |       1000 |  USD     |
-     |     300 | 2012-02-18 | Debtors       | 3 time policy | 2012-02-28 | customer_4         | mail  |  2.00 | SI_10         | 30 days end of month    | draft |        300 |          |      
+     | balance |   date due | account       | profile       |       date | partner            | canal | level | move line     | profile rule            | state     | amount due | currency |
+     |     300 | 2012-01-18 | Debtors       | 3 time policy | 2012-01-31 | customer_4         | mail  |  1.00 | SI_10         | 10 days net             |To be sent |        300 |          |
+     |     360 | 2012-01-18 | Debtors       | 3 time policy | 2012-02-28 | customer_4         | mail  |  1.00 | SI_11         | 10 days net             | draft     |        360 |  USD     |
+     |    1000 | 2012-02-17 | Debtors USD   | 3 time policy | 2012-02-28 | customer_5_usd     | mail  |  1.00 | SI_13         | 10 days net             | draft     |       1000 |  USD     |
+     |     300 | 2012-02-18 | Debtors       | 3 time policy | 2012-02-28 | customer_4         | mail  |  2.00 | SI_10         | 30 days end of month    | draft     |        300 |          |      
