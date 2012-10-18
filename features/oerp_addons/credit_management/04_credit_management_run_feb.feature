@@ -20,8 +20,6 @@ Feature: Ensure that mail credit line generation first pass is correct
       | date | 2012-02-28 |
     When I launch the credit run
     Then my credit run should be in state "done"
-    And I should have "2" credit lines of level "1"
-    And I should have "1" credit lines of level "2"
     And credit lines should have following values:
      | balance |   date due | account       | profile       |       date | partner            | canal | level | move line     | profile rule            | state | amount due | currency |
      |     360 | 2012-01-18 | Debtors       | 3 time policy | 2012-02-28 | customer_4         | mail  |  1.00 | SI_11         | 10 days net             | draft |        360 |  USD     |
