@@ -99,7 +99,7 @@ Then /^credit lines should have following values:$/ do |table|
     rule.should_not be_nil, "No profile rune #{row['profile rule']} found"
 
     domain = [['account_id', '=', account.id], ['profile_id', '=', profile.id],
-              ['partner_id', '=', partner.id], ['move_line_id', '=', move_line.id],
+              ['partner_id', '=', partner.id], 
               ['profile_rule_id', '=', rule.id], ['amount_due', '=', row.fetch('amount due', 0.0)],
               ['state', '=', row.fetch('state')], ['level', '=', row.fetch('level', 0.0)],
               ['canal', '=', row.fetch('canal')], ['balance_due', '=', row.fetch('balance', 0.0)],
