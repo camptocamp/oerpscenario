@@ -36,7 +36,7 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
 
   @base_finance_setup_languages
   Scenario: LANGUAGE SETTINGS
-    Given I need a "res.lang" with code: fr_FR
+    Given I need a "res.lang" with code: en_US
     And having:
     | name        | value    |
     | date_format | %d/%m/%Y |
