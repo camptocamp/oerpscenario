@@ -8,16 +8,22 @@
 # Features Generic tags (none for all)
 ##############################################################################
 
-@credit_management      @credit_management_run_mar
+@credit_management        @credit_management_run    @credit_management_run_mar
 
 Feature: Ensure that mail credit line generation first pass is correct
 
-  @credit_management_run
+    @credit_management_mark
+  Scenario: mark lines
+    Given there is "draft" credit lines
+    And I mark all draft mail to state "to_be_sent"
+    Then the draft line should be in state "to_be_sent"
+  
+    @credit_management_run
   Scenario: Create run
-    Given I need a "credit.management.run" with oid: credit_management.run1
+    Given I need a "credit.management.run" with oid: credit_management.run3
     And having:
       | name |      value |
-      | date | 2012-02-28 |
+      | date | 2012-03-31 |
     When I launch the credit run
     Then my credit run should be in state "done"
     And credit lines should have following values:
@@ -29,4 +35,4 @@ Feature: Ensure that mail credit line generation first pass is correct
      |    1200 | 2012-03-16 | Debtors USD   | 3 time policy | 2012-03-31 | customer_5_usd     | mail  |  1.00 | SI_14         | 10 days net             | draft |      1200  |   USD    |
      |     360 | 2012-02-15 | Debtors       | 3 time policy | 2012-03-31 | customer_4         | mail  |  2.00 | SI_11         | 10 days net             | draft |       360  |   USD    |
      |    1000 | 2012-02-17 | Debtors USD   | 3 time policy | 2012-03-31 | customer_5_usd     | mail  |  2.00 | SI_13         | 10 days net             | draft |      1000  |   USD    |
-     |     300 | 2012-01-18 | Debtors       | 3 time policy | 2012-03-31 | customer_4         | mail  |  3.00 | SI_10         | 10 days net             | draft |       300  |          |                        
+     |     300 | 2012-01-18 | Debtors       | 3 time policy | 2012-03-31 | customer_4         | manual|  3.00 | SI_10         | 10 days net             | draft |       300  |          |                        
