@@ -47,6 +47,23 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | parent_id   | by code: C0         |
     | user_type   | by name: Expense    |
 
+     Given I need a "account.account" with oid: scen.acc_exp
+    And having:
+    | name        | value               |
+    | name        | Other expenses      |
+    | code        | 699                 |
+    | type        | other               |
+    | parent_id   | by code: C0         |
+    | user_type   | by name: Expense    |
+
+     Given I need a "account.account" with oid: scen.acc_inc
+    And having:
+    | name        | value               |
+    | name        | Other incomes       |
+    | code        | 799                 |
+    | parent_id   | by code: C0         |
+    | type        | other               |
+    | user_type   | by name: Income     |
 
      Given I need a "account.account" with oid: scen.acc_sales
     And having:
@@ -141,7 +158,25 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | parent_id   | by code: C0         |
     | type        | other               |
     | user_type   | by name: Asset      |
+    
+         Given I need a "account.account" with oid: scen.acc_EU_purchases_vat
+    And having:
+    | name        | value               |
+    | name        | Sales VAT           |
+    | code        | 445662              |
+    | parent_id   | by code: C0         |
+    | type        | other               |
+    | user_type   | by name: Liability  |
 
+     Given I need a "account.account" with oid: scen.acc_EU_purchases_rev_vat
+    And having:
+    | name        | value               |
+    | name        | Purchases VAT       |
+    | code        | 4452                |
+    | parent_id   | by code: C0         |
+    | type        | other               |
+    | user_type   | by name: Asset      |
+    
       Given I need a "account.account" with oid: scen.acc_asset
     And having:
     | name        | value               |

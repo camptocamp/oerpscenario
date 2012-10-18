@@ -186,4 +186,30 @@ Feature: PURCHASES INVOICES POPULATION
     Given I find a "account.invoice" with oid: scen.purchases_inv_PI6
     And I open the supplier invoice
 
+ @inv_PI7
+  Scenario: Create supplier invoice PI7
+  Given I need a "account.invoice" with oid: scen.purchases_inv_PI7
+    And having:
+      | name               | value                              |
+      | name               | PI_PI7                             |
+      | date_invoice       | %Y-04-20                           |
+      | address_invoice_id | by oid: scen.supplier_3_add        |
+      | partner_id         | by oid: scen.supplier_3            |
+      | account_id         | by name: Creditors                 |
+      | journal_id         | by name: Purchases                 |
+      | currency_id        | by name: EUR                       |
+      | type               | in_invoice                         |
 
+
+    Given I need a "account.invoice.line" with oid: scen.purchases_invPI7_line1
+    And having:
+      | name       | value                                      |
+      | name       | invoice line PI7                           |
+      | quantity   | 1                                          |
+      | price_unit | 1000                                       |
+      | account_id | by name: Purchases                         |
+      | invoice_id | by oid:scen.purchases_inv_PI7              |
+      | invoice_line_tax_id | all by oid: scen.EU_purchases and scen.EU_purchases_rev |     
+              
+    Given I find a "account.invoice" with oid: scen.purchases_inv_PI7
+    And I open the supplier invoice

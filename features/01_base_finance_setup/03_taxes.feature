@@ -46,6 +46,18 @@ Feature: GENERIC CHART OF TAXES & GENERIC CHART OF TAX CODES
     | name                  | VAT / Sales 20%               |
     | parent_id             | by oid: scen.taxe_code_vat    |
 
+    Given I need a "account.tax.code" with oid: scen.taxe_code_EU_purchases_vat
+    And having:
+    | name                  | value                         |
+    | name                  | VAT / Purchases               |
+    | parent_id             | by oid: scen.taxe_code_vat    |
+
+    Given I need a "account.tax.code" with oid: scen.taxe_code_EU_purchases_rev_vat
+    And having:
+    | name                  | value                         |
+    | name                  | VAT / Purchases               |
+    | parent_id             | by oid: scen.taxe_code_vat    |
+
 # VAT Bases
 
      Given I need a "account.tax.code" with oid: scen.taxe_code_base
@@ -66,9 +78,12 @@ Feature: GENERIC CHART OF TAXES & GENERIC CHART OF TAX CODES
     | name                  | Sales at 20%                  |
     | parent_id             | by oid: scen.taxe_code_base   |
     
+     Given I need a "account.tax.code" with oid: scen.taxe_code_base_EU_purchases
+    And having:
+    | name                  | value                         |
+    | name                  | EU purchases                  |
+    | parent_id             | by oid: scen.taxe_code_base   |  
 
-
-#########################################################################################################
 
   @base_taxes
   Scenario: GENERIC CHART OF TAXES
@@ -185,9 +200,41 @@ Feature: GENERIC CHART OF TAXES & GENERIC CHART OF TAX CODES
     
 
 
+   Given I need a "account.tax" with oid: scen.EU_purchases
+    And having:
+    | name                  | value                                     |
+    | name                  | EU purchases_20%                          |
+    | description           | EU_P20                                    |
+    | price_include         | false                                     |    
+    | type_tax_use          | purchase                                  |
+    | type                  | percent                                   |   
+    | amount                | 0.2                                       |       
+    | account_collected_id  | by oid: scen.acc_EU_purchases_vat         |
+    | account_paid_id       | by oid: scen.acc_EU_purchases_vat         |    
+    | base_code_id          | by oid: scen.taxe_code_base_EU_purchases  |    
+    | base_sign             | -1                                        |      
+    | tax_code_id           | by oid: scen.taxe_code_EU_purchases_vat   |    
+    | tax_sign              | -1                                        |      
+    | ref_base_code_id      | by oid: scen.taxe_code_base_EU_purchases  |    
+    | ref_base_sign         | 1                                         |   
+    | ref_tax_code_id       | by oid: scen.taxe_code_EU_purchases_vat   |     
+    | ref_tax_sign          | 1                                         |   
 
-
-    
+     Given I need a "account.tax" with oid: scen.EU_purchases_rev
+    And having:
+    | name                  | value                                     |
+    | name                  | EU purchases_20% reverse                  |
+    | description           | EU_P20_rev                                |
+    | price_include         | false                                     |    
+    | type_tax_use          | purchase                                  |
+    | type                  | percent                                   |   
+    | amount                | -0.2                                      |       
+    | account_collected_id  | by oid: scen.acc_EU_purchases_rev_vat     |
+    | account_paid_id       | by oid: scen.acc_EU_purchases_rev_vat     |    
+    | tax_code_id           | by oid: scen.taxe_code_EU_purchases_rev_vat|    
+    | tax_sign              | -1                                        |      
+    | ref_tax_code_id       | by oid: scen.taxe_code_EU_purchases_rev_vat|     
+    | ref_tax_sign          | 1                                         |   
 
 
 

@@ -190,4 +190,32 @@ Feature: SALES INVOICES POPULATION
     And I open the customer invoice  
 
 
+  @inv_SI7
+  Scenario: Create customer invoice SI7
+  Given I need a "account.invoice" with oid: scen.sales_inv_SI7
+    And having:
+      | name               | value                              |
+      | name               | SI_SI7                             |
+      | date_invoice       | %Y-01-01                           |
+      | partner_id         | by oid: scen.partner_1             |
+      | address_invoice_id | by oid: scen.partner_1_add         |      
+      | account_id         | by name: Debtors                   |
+      | journal_id         | by name: Sales                     |
+      | currency_id        | by name: EUR                       |
+      | payment_term       | by name: 30 Net Days               | 
+      | type               | out_invoice                        |
+
+
+    Given I need a "account.invoice.line" with oid: scen.sales_invSI7_line1
+    And having:
+      | name       | value                                      |
+      | name       | invoice line 1 SI7                         |
+      | quantity   | 1                                          |
+      | price_unit | 1000                                       |
+      | account_id | by name: Sales                             |
+      | invoice_id | by oid:scen.sales_inv_SI7                  |
+      | invoice_line_tax_id | all by oid: scen.sales_vat_10     |            
+ 
+    Given I find a "account.invoice" with oid: scen.sales_inv_SI7
+    And I open the customer invoice
 
