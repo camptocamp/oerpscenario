@@ -73,6 +73,10 @@ Cucumber::Rake::Task.new(:base_finance, "Install the required module for finance
   task.cucumber_opts = %W(--tags=@base_finance features #{conf_file})
 end
 
+Cucumber::Rake::Task.new(:credit_management, "Run the credit control tests") do |task|
+  task.cucumber_opts = %W(--tags=@credit_management features #{conf_file})
+end
+
 Cucumber::Rake::Task.new(:voucher_test, "Perform test on voucher") do |task|
   task.cucumber_opts = %W(--tags=@113wo features #{conf_file})
 end
