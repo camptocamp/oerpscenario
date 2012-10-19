@@ -14,6 +14,7 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
   Scenario: MODULES INSTALLATION
 
     Given I do not want all demo data to be loaded on install
+    And I update the module list
     And I install the required modules with dependencies:
       | name                            |
       | account_voucher                 |
