@@ -187,36 +187,50 @@ begin
           dependency_modules = get_dependencies(modules)
           modules.concat(dependency_modules) if dependency_modules
         end
+
         modules_toinstall_ids = []
         modules_toupgrade_ids = []
         # If not installed, do it. Otherwise update it
         modules.each do |m|
-          if m.state == 'uninstalled'
-            m.state = 'to install'
-            m.save
+          case m.state
+          when 'uninstalled', 'to install'
             modules_toinstall_ids << m.id
-          elsif m.state == 'installed'
-            m.state = 'to upgrade'
-            m.save
-            modules_toupgrade_ids << m.id
-          elsif m.state == 'to install'
-            modules_toinstall_ids << m.id
-          elsif m.state == 'to upgrade'
+          when 'installed', 'to upgrade'
             modules_toupgrade_ids << m.id
           end
         end
-        #First installed required modules, then upgrade the others
-        upgrade = BaseModuleUpgrade.create()
-        upgrade.upgrade_module()
-        # IrModuleModule.button_install(modules_toinstall_ids)
-        # IrModuleModule.button_upgrade(modules_toupgrade_ids)
 
-        if res
-          return true
-        else
-          raise "!!! --- HELPER ERROR : install_modules was unable to install needed modules.."
-        end
+        IrModuleModule.button_install(modules_toinstall_ids)
+        IrModuleModule.button_upgrade(modules_toupgrade_ids)
+
+        # install / upgrade modules
+        launch_operations
+
         openerp.load_models() # reload in order to have model Classes for modules installed
+        res
+      end
+
+      ##########################################################################
+      # Uninstall one or many modules
+      # Input :
+      #  - modules : An [] of valid IrModuleModule instances
+      # Return
+      #  - True
+      # Usage Example:
+      # res = IrModuleModule.uninstall_modules(openerp, modules)
+      def self.uninstall_modules(openerp, modules)
+        res = IrModuleModule.button_uninstall(modules.map(&:id))
+        launch_operations
+        openerp.load_models() # reload in order to not have model Classes for modules uninstalled
+        res
+      end
+
+
+      private
+
+      def self.launch_operations
+        upgrade = BaseModuleUpgrade.create
+        upgrade.upgrade_module
       end
 
     end
