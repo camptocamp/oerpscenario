@@ -6,7 +6,7 @@
 ##############################################################################
 
 
-@credit_management       @credit_management_base_data    @credit_management_invoices
+@credit_control       @credit_control_base_data    @credit_control_invoices
 
 Feature: Invoices creation
 
