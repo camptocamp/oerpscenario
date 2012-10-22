@@ -8,7 +8,7 @@
 # Features Generic tags (none for all)
 ##############################################################################
 
-@credit_management        @credit_management_run    @credit_management_run_jan
+@credit_management  @credit_management_run  @credit_management_run_jan
 
 Feature: Ensure that mail credit line generation first pass is correct
 
@@ -26,7 +26,7 @@ Feature: Ensure that mail credit line generation first pass is correct
       | date | 2012-01-31 |
     When I launch the credit run
     Then my credit run should be in state "done"
-    And credit lines should have following values:
-     | balance |   date due | account       | profile       |       date | partner            | canal | level | move line     | profile rule | state | amount due | currency |
+    And the generated credit lines should have the following values:
+     | balance |   date due | account       | profile       |       date | partner            | canal | level | move line     | policy level | state | amount due | currency |
      |     300 | 2012-01-18 | Debtors       | 3 time policy | 2012-01-31 | customer_4         | mail  |  1.00 | SI_10         | 10 days net  | draft |        300 |          |
-   
+

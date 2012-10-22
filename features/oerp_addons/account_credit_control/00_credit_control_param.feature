@@ -10,7 +10,7 @@
 
 Feature: In order to validate account voucher behavious as an admin user I prepare data
     
- @credit_management_setup_install_modules
+  @credit_management_setup_install_modules
   Scenario: MODULES INSTALLATION
 
     Given I do not want all demo data to be loaded on install
@@ -19,3 +19,4 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
       | account_credit_management       |
     
     Then my modules should have been installed and models reloaded
+
