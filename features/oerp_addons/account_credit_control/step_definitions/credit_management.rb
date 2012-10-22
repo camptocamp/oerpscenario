@@ -76,11 +76,12 @@ Then /^I should have "(.*?)" credit lines of level "(.*?)"$/ do |number, level|
   CreditManagementLine.find_all_by_level(level).length.should eq (number.to_i)
 end
 
-Then /^credit lines should have following values:$/ do |table|
+Then /^the generated credit lines should have the following values:$/ do |table|
   h_list = table.hashes
   h_list.each do | h |
     h.delete_if {|k, v| v.empty?}
   end
+
   errors = []
   h_list.each do | row |
     account = AccountAccount.find_by_name(row['account'], :fields=>['id'])
@@ -95,11 +96,11 @@ Then /^credit lines should have following values:$/ do |table|
     move_line = AccountMoveLine.find_by_name(row['move line'], :fields=>['id'])
     move_line.should_not be_nil, "No move line #{row['move line']} found"
 
-    rule = CreditManagementProfileRule.find_by_name(row['profile rule'], :fields=>['id'])
-    rule.should_not be_nil, "No profile rune #{row['profile rule']} found"
+    rule = CreditManagementProfileRule.find_by_name_and_profile_id(row['policy level'], profile.id, :fields=>['id'])
+    rule.should_not be_nil, "No policy level #{row['policy level']} found"
 
     domain = [['account_id', '=', account.id], ['profile_id', '=', profile.id],
-              ['partner_id', '=', partner.id], 
+              ['partner_id', '=', partner.id],
               ['profile_rule_id', '=', rule.id], ['amount_due', '=', row.fetch('amount due', 0.0)],
               ['state', '=', row.fetch('state')], ['level', '=', row.fetch('level', 0.0)],
               ['canal', '=', row.fetch('canal')], ['balance_due', '=', row.fetch('balance', 0.0)],
@@ -108,8 +109,12 @@ Then /^credit lines should have following values:$/ do |table|
         curreny = ResCurrency.find_by_name(row['currency'], :fields=>['id'])
         domain.push ['currency_id', '=', curreny.id]
     end
-    pp domain
-    line = CreditManagementLine.find(:first, :domain=>domain)
-    line.should_not be_nil, "Can not find line #{row.inspect}"
+    line = CreditManagementLine.find(:all, :domain=>domain)
+    line.first.should_not be_nil, "Can not find line #{row.inspect}"
+    line.should have(1).things, "More than one found for #{row.inspect}"
   end
+
+  date_lines = CreditManagementLine.find(:all, :domain => [['date', '=', @found_item.date.to_s]], :fields => %w(id))
+  date_lines.should have(h_list.count).items, "Too many lines generated: #{date_lines.inspect}"
 end
+
