@@ -55,7 +55,7 @@ begin
 
         step_dict=res.datas.merge(step_dict)
         res=wizard.end(step_dict)
-        openerp.load_models(false)
+        openerp.ooor.load_models(false)
         if res
           return true
         else
@@ -206,7 +206,7 @@ begin
         # install / upgrade modules
         launch_operations
 
-        openerp.load_models() # reload in order to have model Classes for modules installed
+        openerp.ooor.load_models # reload in order to have model Classes for modules installed
         res
       end
 
@@ -221,7 +221,7 @@ begin
       def self.uninstall_modules(openerp, modules)
         res = IrModuleModule.button_uninstall(modules.map(&:id))
         launch_operations
-        openerp.load_models() # reload in order to not have model Classes for modules uninstalled
+        openerp.ooor.load_models # reload in order to not have model Classes for modules uninstalled
         res
       end
 
