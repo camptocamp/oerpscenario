@@ -27,12 +27,12 @@ Feature: Ensure that mail credit line generation first pass is correct
     When I launch the credit run
     Then my credit run should be in state "done"
     And the generated credit lines should have the following values:
-     | balance |   date due | account       | policy       |       date | partner            | canal | level | move line     | policy level            | state     | amount due | currency |
-     |    1000 | 2012-02-29 | Debtors       | 2 time policy | 2012-03-31 | customer_2         | mail  |  1.00 | SI_4          | 30 days end of month    | draft     |       1000 |          |
-     |    1000 | 2012-02-17 | Debtors       | 2 time policy | 2012-03-31 | customer_3         | mail  |  1.00 | SI_7          | 30 days end of month    | draft     |       1000 |          |
-     |     700 | 2012-02-29 | Debtors       | 3 time policy | 2012-03-31 | customer_4         | mail  |  1.00 | SI_10         | 10 days net             | draft     |        700 |          |
-     |     450 | 2012-03-15 | Debtors       | 3 time policy | 2012-03-31 | customer_4         | mail  |  1.00 | SI_12         | 10 days net             | draft     |        450 |          |
-     |    1200 | 2012-03-16 | Debtors USD   | 3 time policy | 2012-03-31 | customer_5_usd     | mail  |  1.00 | SI_14         | 10 days net             | draft     |       1200 |   USD    |
-     |     360 | 2012-02-15 | Debtors       | 3 time policy | 2012-03-31 | customer_4         | mail  |  2.00 | SI_11         | 30 days end of month    | draft     |        360 |   USD    |
-     |    1000 | 2012-02-17 | Debtors USD   | 3 time policy | 2012-03-31 | customer_5_usd     | mail  |  2.00 | SI_13         | 30 days end of month    | draft     |       1000 |   USD    |
-     |     300 | 2012-01-18 | Debtors       | 3 time policy | 2012-03-31 | customer_4         | manual|  3.00 | SI_10         | 10 days last reminder       | draft     |        300 |          |
+     | balance | date due   | account     | policy        | date       | partner        | canal  | level | move line | policy level          | state | amount due | currency |
+     | 1000    | 2012-02-29 | Debtors     | 2 time policy | 2012-03-31 | customer_2     | mail   | 1     | SI_4      | 30 days end of month  | draft | 1000       |          |
+     | 1000    | 2012-02-17 | Debtors     | 2 time policy | 2012-03-31 | customer_3     | mail   | 1     | SI_7      | 30 days end of month  | draft | 1000       |          |
+     | 700     | 2012-02-29 | Debtors     | 3 time policy | 2012-03-31 | customer_4     | mail   | 1     | SI_10     | 10 days net           | draft | 700        |          |
+     | 450     | 2012-03-15 | Debtors     | 3 time policy | 2012-03-31 | customer_4     | mail   | 1     | SI_12     | 10 days net           | draft | 450        |          |
+     | 1200    | 2012-03-16 | Debtors USD | 3 time policy | 2012-03-31 | customer_5_usd | mail   | 1     | SI_14     | 10 days net           | draft | 1200       | USD      |
+     | 360     | 2012-02-15 | Debtors     | 3 time policy | 2012-03-31 | customer_4     | mail   | 2     | SI_11     | 30 days end of month  | draft | 360        | USD      |
+     | 1000    | 2012-02-17 | Debtors USD | 3 time policy | 2012-03-31 | customer_5_usd | mail   | 2     | SI_13     | 30 days end of month  | draft | 1000       | USD      |
+     | 300     | 2012-01-18 | Debtors     | 3 time policy | 2012-03-31 | customer_4     | manual | 3     | SI_10     | 10 days last reminder | draft | 300        |          |

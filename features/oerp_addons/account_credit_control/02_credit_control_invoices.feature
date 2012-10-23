@@ -14,7 +14,7 @@ Feature: Invoices creation
 
   @inv_1
   Scenario: Create invoice 1
-  
+
   Given I need a "account.invoice" with oid: scen._inv_1
     And having:
       | name               | value                              |
@@ -39,8 +39,8 @@ Feature: Invoices creation
       | invoice_id | by oid:scen._inv_1              |
     Given I find a "account.invoice" with oid: scen._inv_1
     And I open the credit invoice
-    
-        Given I need a "account.invoice.line" with oid: scen._inv1_line2
+
+    Given I need a "account.invoice.line" with oid: scen._inv1_line2
     And having:
       | name       | value                           |
       | name       | invoice line 2                  |

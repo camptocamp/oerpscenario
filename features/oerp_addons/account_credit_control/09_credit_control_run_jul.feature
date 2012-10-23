@@ -27,7 +27,7 @@ Feature: Ensure that mail credit line generation first pass is correct
     When I launch the credit run
     Then my credit run should be in state "done"
     And the generated credit lines should have the following values:
-     | balance |   date due | account       | policy       |       date | partner            | canal | level | move line     | policy level            | state     | amount due | currency |
-     |    1500 | 2012-04-30 | Debtors       | 2 time policy | 2012-07-31 | customer_2         | manual|  2.00 | SI_6          | 60 days last reminder       | draft     |       1500 |   USD    |           
-     |    1500 | 2012-04-14 | Debtors       | 2 time policy | 2012-07-31 | customer_3         | manual|  2.00 | SI_9          | 60 days last reminder       | draft     |       1500 |   USD    |     
-     |    1050 | 2012-04-30 | Debtors       | 3 time policy | 2012-07-31 | customer_4         | manual|  3.00 | SI_12         | 10 days last reminder       | draft     |       1050 |   USD    |       
+     | balance | date due   | account | policy        | date       | partner    | canal  | level | move line | policy level          | state | amount due | currency |
+     | 1500    | 2012-04-30 | Debtors | 2 time policy | 2012-07-31 | customer_2 | manual | 2     | SI_6      | 60 days last reminder | draft | 1500       | USD      |
+     | 1500    | 2012-04-14 | Debtors | 2 time policy | 2012-07-31 | customer_3 | manual | 2     | SI_9      | 60 days last reminder | draft | 1500       | USD      |
+     | 1050    | 2012-04-30 | Debtors | 3 time policy | 2012-07-31 | customer_4 | manual | 3     | SI_12     | 10 days last reminder | draft | 1050       | USD      |
