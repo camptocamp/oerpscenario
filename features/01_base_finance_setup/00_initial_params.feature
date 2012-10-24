@@ -41,7 +41,7 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
     And having:
     | name        | value    |
     | date_format | %d/%m/%Y |
-    | grouping    | [3,0]    |
+    | grouping    | [3,2,-1] |
     
   @base_finance_setup_access_rights
   Scenario: USER RIGHTS SETTINGS
