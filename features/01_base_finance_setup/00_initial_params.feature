@@ -39,9 +39,10 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
   Scenario: LANGUAGE SETTINGS
     Given I need a "res.lang" with code: en_US
     And having:
-    | name        | value    |
-    | date_format | %d/%m/%Y |
-    | grouping    | [3,2,-1] |
+    | name              | value     |
+    | date_format       | %d/%m/%Y  |
+    | grouping          | [3,2,-1]  |
+    | thousands_sep     | '          |  
     
   @base_finance_setup_access_rights
   Scenario: USER RIGHTS SETTINGS
