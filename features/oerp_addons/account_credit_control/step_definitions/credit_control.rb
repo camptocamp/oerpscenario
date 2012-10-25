@@ -7,6 +7,19 @@
 #    @found_item.wkf_action('invoice_open')
 #  end
 # end
+#
+
+Given /^I configure the following accounts on the credit control policy with oid: "(.+)":$/ do |policy_xmlid, table|
+  @policy = CreditControlPolicy.find(policy_xmlid)
+  @policy.should_not be_nil, "Policy with oid #{policy_xmlid} not found"
+  account_ids = table.rows.map do |code|
+    AccountAccount.find_by_code(code[0], :fields => %w(id)).tap do |res|
+      res.should_not be_nil, "Account with code #{code} not found"
+    end
+  end
+  @policy.account_ids = account_ids.map(&:id)
+  @policy.save
+end
 
 Then /^I launch the credit run$/ do
   @found_item.should_not be_nil,
