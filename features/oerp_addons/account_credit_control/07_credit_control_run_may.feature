@@ -12,13 +12,28 @@
 
 Feature: Ensure that mail credit line generation first pass is correct
 
-    @credit_control_mark
+  @credit_control_mark
   Scenario: mark lines
     Given there is "draft" credit lines
     And I mark all draft mail to state "to_be_sent"
     Then the draft line should be in state "to_be_sent"
-  
-    @credit_control_run
+
+ @pay_invoice_si_16
+  Scenario: Create Statement SI_16
+    Given I need a "account.bank.statement" with oid: scen.voucher_statement_si_16
+    And having:
+     | name        | value                             |
+     | name        | Bk.St.si_16                       |
+     | date        | 2012-05-30                        |
+     | currency_id | by name: EUR                      |
+     | journal_id  | by oid:  scen.voucher_eur_journal |
+    And the bank statement is linked to period "05/2012"
+    And I import invoice "SI_16" using import invoice button
+    And I set bank statement end-balance
+    When I confirm bank statement
+    Then My invoice "SI_16" is in state "paid" reconciled with a residual amount of "0.0"
+
+  @credit_control_run
   Scenario: Create run
     Given I need a "credit.control.run" with oid: credit_control.run5
     And having:

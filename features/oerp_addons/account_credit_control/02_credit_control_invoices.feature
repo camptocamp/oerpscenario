@@ -454,5 +454,30 @@ Feature: Invoices creation
     Given I find a "account.invoice" with oid: scen._inv_15
     And I open the credit invoice
 
+  @inv_16
+  Scenario: Create invoice 16
+  Given I need a "account.invoice" with oid: scen._inv_16
+    And having:
+      | name               | value                              |
+      | name               | SI_16                              |
+      | date_invoice       | %Y-03-15                           |
+      | address_invoice_id | by oid: scen.customer_4_add        |
+      | partner_id         | by oid: scen.customer_4            |
+      | account_id         | by name: Debtors                   |
+      | journal_id         | by name: Sales                     |
+      | currency_id        | by name: EUR                       |
+      | payment_term       | by name: 30 Net Days               |
+      | type               | out_invoice                        |
+
+    And I need a "account.invoice.line" with oid: scen._inv16_line1
+    And having:
+      | name       | value                           |
+      | name       | invoice line 1                  |
+      | quantity   | 1                               |
+      | price_unit | 1500                            |
+      | account_id | by name: Sales                  |
+      | invoice_id | by oid:scen._inv_16             |
+    Then I find a "account.invoice" with oid: scen._inv_16
+    And I open the credit invoice
 
 

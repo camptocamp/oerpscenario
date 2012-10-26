@@ -16,7 +16,7 @@ Feature: I add policy to partners already created
       | name             | value              |
       | name             | partner_1          |
       | credit_policy_id | by name: No follow |
-      
+
   @credit_control_customer_1
   Scenario: Customer_1
     Given I need a "res.partner" with oid: scen.customer_1
@@ -24,7 +24,7 @@ Feature: I add policy to partners already created
       | name             | value                   |
       | name             | customer_1              |
       | credit_policy_id | by name:  2 time policy |
-      
+
   @credit_control_customer_2
   Scenario: Customer_2
     Given I need a "res.partner" with oid: scen.customer_2
@@ -41,23 +41,23 @@ Feature: I add policy to partners already created
       | name             | customer_3              |
       | credit_policy_id | by name:  2 time policy |
 
-  @credit_control_customer_4      
+  @credit_control_customer_4
   Scenario: Customer_4
     Given I need a "res.partner" with oid: scen.customer_4
     And having:
       | name             | value                   |
       | name             | customer_4              |
-      | credit_policy_id | by name:  3 time policy |
+      # the credit policy must be 3 time policy (inherited from company)
 
-  @credit_control_customer_5      
+  @credit_control_customer_5
   Scenario: Customer_5
     Given I need a "res.partner" with oid: scen.customer_5
     And having:
       | name             | value                   |
       | name             | customer_5_usd          |
       | credit_policy_id | by name:  3 time policy |
-      
-  @credit_control_customer_6      
+
+  @credit_control_customer_6
   Scenario: Customer_6
     Given I need a "res.partner" with oid: scen.customer_6
     And having:
