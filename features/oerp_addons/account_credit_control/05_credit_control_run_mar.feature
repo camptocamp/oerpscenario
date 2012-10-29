@@ -36,3 +36,4 @@ Feature: Ensure that mail credit line generation first pass is correct
      | 360     | 2012-02-15 | Debtors     | 3 time policy | 2012-03-31 | customer_4     | mail   | 2     | SI_11     | 30 days end of month  | draft | 360        | USD      |
      | 1000    | 2012-02-17 | Debtors USD | 3 time policy | 2012-03-31 | customer_5_usd | mail   | 2     | SI_13     | 30 days end of month  | draft | 1000       | USD      |
      | 300     | 2012-01-18 | Debtors     | 3 time policy | 2012-03-31 | customer_4     | manual | 3     | SI_10     | 10 days last reminder | draft | 300        |          |
+     | 450     | 2012-03-15 | Debtors     | 3 time policy | 2012-03-31 | Donald Duck    | mail   | 1     | SI_18     | 10 days net           | draft | 450        |          |
