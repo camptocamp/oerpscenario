@@ -12,13 +12,11 @@
 
 Feature: Ensure that mail credit line generation first pass is correct
 
-
-  @credit_control_first_run
   Scenario: clean data
     Given I clean all the credit lines
     #Given I unreconcile and clean all move line
 
-  @credit_control_first_run
+  @credit_control_run_month
   Scenario: Create run
     Given I need a "credit.control.run" with oid: credit_control.run1
     And having:

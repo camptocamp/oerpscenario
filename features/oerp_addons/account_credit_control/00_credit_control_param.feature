@@ -14,7 +14,7 @@ Feature: In order to validate account voucher behavious as an admin user I prepa
   Scenario: MODULES INSTALLATION
 
     Given I do not want all demo data to be loaded on install
-    And I install the required modules with dependencies:
+    And I install the required modules:
       | name                   |
       | account_credit_control |
 

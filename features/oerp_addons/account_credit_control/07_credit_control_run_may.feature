@@ -84,7 +84,7 @@ Feature: Ensure that mail credit line generation first pass is correct
     When I confirm bank statement
     Then My invoice "SI_18" is in state "open" reconciled with a residual amount of "1050.0"
 
-  @credit_control_run
+  @credit_control_run_month @xxxxxx
   Scenario: Create run
     Given I need a "credit.control.run" with oid: credit_control.run5
     And having:
@@ -106,4 +106,6 @@ Feature: Ensure that mail credit line generation first pass is correct
      | 1200    | 2012-03-16 | Debtors USD | 3 time policy | 2012-05-31 | customer_5_usd | manual | 3     | SI_14     | 10 days last reminder | draft | 1200       | USD      |
      | 500     | 2012-04-14 | Debtors     | 3 time policy | 2012-05-31 | Scrooge McDuck | mail   | 2     | SI_17     | 30 days end of month  | draft | 1500       |          |
      | 1050    | 2012-04-30 | Debtors     | 3 time policy | 2012-05-31 | Donald Duck    | mail   | 1     | SI_18     | 10 days net           | draft | 1050       |          |
+     | 150     | 2012-03-15 | Debtors     | 3 time policy | 2012-05-31 | Gus Goose      | manual | 3     | SI_19     | 10 days last reminder | draft | 450        |          |
+     | 1050    | 2012-04-30 | Debtors     | 3 time policy | 2012-05-31 | Gus Goose      | mail   | 1     | SI_19     | 10 days net           | draft | 1050       |          |
 

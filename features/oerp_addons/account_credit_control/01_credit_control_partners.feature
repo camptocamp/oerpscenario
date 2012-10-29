@@ -101,3 +101,21 @@ Feature: I add policy to partners already created
       | street     | Duckstreet                             |
       | partner_id | by oid: scen.customer_multiple_payterm |
 
+  @credit_control_customer_multiple_payterm2
+  Scenario: A customer who use payment terms in 2 times
+    Given I need a "res.partner" with oid: scen.customer_multiple_payterm2
+    And having:
+      | name | value     |
+      | name | Gus Goose |
+    Given I need a "res.partner.address" with oid: scen.customer_add_multiple_payterm2
+    And having:
+      | name       | value                                   |
+      | type       | default                                 |
+      | name       | Gus Goose                               |
+      | zip        | 1100                                    |
+      | city       | Duckburg                                |
+      | email      | openerp@locahost.dummy                  |
+      | phone      |                                         |
+      | street     | Duckstreet                              |
+      | partner_id | by oid: scen.customer_multiple_payterm2 |
+

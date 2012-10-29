@@ -532,3 +532,27 @@ Feature: Invoices creation
     Then I find a "account.invoice" with oid: scen._inv_18
     And I open the credit invoice
 
+  @inv_19
+  Scenario: Create invoice 19
+  Given I need a "account.invoice" with oid: scen._inv_19
+    And having:
+      | name               | value                                       |
+      | name               | SI_19                                       |
+      | date_invoice       | 2012-03-15                                  |
+      | address_invoice_id | by oid: scen.customer_add_multiple_payterm2 |
+      | partner_id         | by oid: scen.customer_multiple_payterm2     |
+      | account_id         | by name: Debtors                            |
+      | journal_id         | by name: Sales                              |
+      | currency_id        | by name: EUR                                |
+      | payment_term       | by name: 30% Advance End 30 Days            |
+      | type               | out_invoice                                 |
+    And I need a "account.invoice.line" with oid: scen._inv19_line1
+    And having:
+      | name       | value                           |
+      | name       | invoice line 1                  |
+      | quantity   | 1                               |
+      | price_unit | 1500                            |
+      | account_id | by name: Sales                  |
+      | invoice_id | by oid:scen._inv_19             |
+    Then I find a "account.invoice" with oid: scen._inv_19
+    And I open the credit invoice

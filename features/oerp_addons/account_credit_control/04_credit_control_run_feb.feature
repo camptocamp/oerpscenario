@@ -18,7 +18,7 @@ Feature: Ensure that mail credit line generation first pass is correct
     And I mark all draft mail to state "to_be_sent"
     Then the draft line should be in state "to_be_sent"
 
-  @credit_control_first_run
+  @credit_control_run_month
   Scenario: Create run
     Given I need a "credit.control.run" with oid: credit_control.run2
     And having:

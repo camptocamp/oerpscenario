@@ -18,7 +18,7 @@ Feature: Ensure that mail credit line generation first pass is correct
     And I mark all draft mail to state "to_be_sent"
     Then the draft line should be in state "to_be_sent"
 
-  @credit_control_run
+  @credit_control_run_month
   Scenario: Create run
     Given I need a "credit.control.run" with oid: credit_control.run6
     And having:
@@ -35,4 +35,5 @@ Feature: Ensure that mail credit line generation first pass is correct
      | 1500    | 2012-04-14 | Debtors USD | 3 time policy | 2012-06-30 | customer_5_usd | manual | 3     | SI_15     | 10 days last reminder | draft | 1500       | USD      |
      | 500     | 2012-04-14 | Debtors     | 3 time policy | 2012-06-30 | Scrooge McDuck | manual | 3     | SI_17     | 10 days last reminder | draft | 1500       |          |
      | 1050    | 2012-04-30 | Debtors     | 3 time policy | 2012-06-30 | Donald Duck    | mail   | 2     | SI_18     | 30 days end of month  | draft | 1050       |          |
+     | 1050    | 2012-04-30 | Debtors     | 3 time policy | 2012-06-30 | Gus Goose      | mail   | 2     | SI_19     | 30 days end of month  | draft | 1050       |          |
 
