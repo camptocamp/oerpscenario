@@ -19,7 +19,8 @@ Feature: Ensure that mail credit line generation first pass is correct
     Then the draft line should be in state "to_be_sent"
 
  @pay_invoice_si_16
-  Scenario: Create Statement SI_16
+  Scenario: I pay entirely the invoice SI 16,
+    so it should no longer appear in the credit control lines
     Given I need a "account.bank.statement" with oid: scen.voucher_statement_si_16
     And having:
      | name        | value                             |
@@ -32,6 +33,28 @@ Feature: Ensure that mail credit line generation first pass is correct
     And I set bank statement end-balance
     When I confirm bank statement
     Then My invoice "SI_16" is in state "paid" reconciled with a residual amount of "0.0"
+
+ @pay_invoice_si_17
+  Scenario: I pay entirely the invoice SI 17,
+    so it should no longer appear in the credit control lines
+    Given I need a "account.bank.statement" with oid: scen.voucher_statement_si_17
+    And having:
+     | name        | value                             |
+     | name        | Bk.St.si_17                       |
+     | date        | 2012-05-30                        |
+     | currency_id | by name: EUR                      |
+     | journal_id  | by oid:  scen.voucher_eur_journal |
+    And the bank statement is linked to period "05/2012"
+    And I import invoice "SI_17" using import invoice button
+    And I need a "account.bank.statement.line" with name: SI_17
+    And the line amount should be 1500
+    And I set the voucher paid amount to "1000"
+    And I save the voucher
+    Then I modify the line amount to 1000
+    And I should have a "account.bank.statement" with oid: scen.voucher_statement_si_17
+    And I set bank statement end-balance
+    When I confirm bank statement
+    Then My invoice "SI_17" is in state "open" reconciled with a residual amount of "500.0"
 
   @credit_control_run
   Scenario: Create run
@@ -53,3 +76,5 @@ Feature: Ensure that mail credit line generation first pass is correct
      | 700     | 2012-02-29 | Debtors     | 3 time policy | 2012-05-31 | customer_4     | manual | 3     | SI_10     | 10 days last reminder | draft | 700        |          |
      | 450     | 2012-03-15 | Debtors     | 3 time policy | 2012-05-31 | customer_4     | manual | 3     | SI_12     | 10 days last reminder | draft | 450        | USD      |
      | 1200    | 2012-03-16 | Debtors USD | 3 time policy | 2012-05-31 | customer_5_usd | manual | 3     | SI_14     | 10 days last reminder | draft | 1200       | USD      |
+     | 500     | 2012-04-14 | Debtors     | 3 time policy | 2012-05-31 | Scrooge McDuck | mail   | 2     | SI_17     | 30 days end of month  | draft | 1500       |          |
+

@@ -64,3 +64,21 @@ Feature: I add policy to partners already created
       | name             | value                   |
       | name             | customer_6              |
       | credit_policy_id | by name:  3 time policy |
+
+  @credit_control_customer_partial_pay
+  Scenario: A customer who like to do partial payments
+    Given I need a "res.partner" with oid: scen.customer_partial_pay
+    And having:
+      | name             | value                   |
+      | name             | Scrooge McDuck          |
+    Given I need a "res.partner.address" with oid: scen.customer_partial_pay_address
+    And having:
+      | name       | value                             |
+      | type       | default                           |
+      | name       | Scrooge McDuck                    |
+      | zip        | 1000                              |
+      | city       | Duckburg                          |
+      | email      | openerp@locahost.dummy            |
+      | phone      |                                   |
+      | street     | Duckstreet                        |
+      | partner_id | by oid: scen.customer_partial_pay |
