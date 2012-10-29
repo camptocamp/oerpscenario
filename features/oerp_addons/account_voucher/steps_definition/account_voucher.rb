@@ -140,20 +140,12 @@ Given /^the bank statement is linked to period "(.*?)"$/ do |p_name|
 end
 
 Given /^the line amount should be (.*)$/ do |amount|
-  pp amount
-  pp @found_item.save
-  pp @found_item.statement_id
   @statement = AccountBankStatement.find(@found_item.statement_id.id)
-  pp @statement
   @statement.save
-  pp @statement
   @found_item.save
-  pp @found_item
   @voucher = AccountVoucher.find(@found_item.voucher_id.id)
   @voucher.save
-  pp @voucher
   @found_item.amount.should eq amount.to_f
-  pp @found_item.amount
 end
 Given /^I modify the line amount to (.*)$/ do |amount|
   @found_item.amount = amount.to_f
@@ -163,7 +155,6 @@ end
 Then /^I modify the bank statement line amount to (.*)$/ do |amount|
   line = @found_item.voucher_id.line_cr_ids[0]
   @voucher = AccountVoucher.find(@found_item.voucher_id.id)
-  pp @voucher
   @voucher.save
   @found_item.on_change('onchange_amount',:amount,[],amount.to_f)
   @found_item.amount = amount.to_f
