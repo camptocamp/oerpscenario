@@ -36,14 +36,15 @@ end
 Given /^I mark all draft mail to state "(.*?)"$/ do | state |
   wiz = CreditControlMarker.new
   wiz.name = state
-  wiz.mark_all = true
+  lines = CreditControlLines.find(:all, :domain => [['state', '=', 'draft']], :fields => %w(id))
+  wiz.line_ids = lines.map(&:id)
   wiz.save
   wiz.mark_lines
 end
 
 Then /^the draft line should be in state "(.*?)"$/ do | state |
   @credit_lines.should_not be_nil,
-  "no line where stored"
+  "no line were stored"
   @credit_lines.each do |line|
     line = CreditControlLine.find(line.id)
     line.state.should eql(state),
@@ -54,9 +55,13 @@ end
 
 Given /^I mail all ready lines$/ do
   @credit_lines.should_not be_nil,
-  "no line where stored"
+  "no line were stored"
   wiz = CreditControlMailer.new
-  wiz.mail_all = true
+  lines = CreditControlLines.find(:all,
+                                  :domain => [['state', '=', 'to_be_sent'],
+                                              ['channel', '=', 'email']],
+                                  :fields => %w(id))
+  wiz.line_ids = lines.map(&:id)
   wiz.save
   wiz.mail_lines
 end
