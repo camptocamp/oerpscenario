@@ -28,9 +28,9 @@ Feature: Ensure that mail credit line generation first pass is correct
     Then my credit run should be in state "done"
     And the generated credit lines should have the following values:
      | balance | date due   | account | policy        | date       | partner     | channel  | level | move line | policy level          | state | amount due | currency |
-     | 1500    | 2012-04-30 | Debtors | 2 time policy | 2012-07-31 | customer_2  | manual | 2     | SI_6      | 60 days last reminder | draft | 1500       | USD      |
-     | 1500    | 2012-04-14 | Debtors | 2 time policy | 2012-07-31 | customer_3  | manual | 2     | SI_9      | 60 days last reminder | draft | 1500       | USD      |
-     | 1050    | 2012-04-30 | Debtors | 3 time policy | 2012-07-31 | customer_4  | manual | 3     | SI_12     | 10 days last reminder | draft | 1050       | USD      |
-     | 1050    | 2012-04-30 | Debtors | 3 time policy | 2012-07-31 | Donald Duck | manual | 3     | SI_18     | 10 days last reminder | draft | 1050       |          |
-     | 1050    | 2012-04-30 | Debtors | 3 time policy | 2012-07-31 | Gus Goose   | manual | 3     | SI_19     | 10 days last reminder | draft | 1050       |          |
+     | 1500    | 2012-04-30 | Debtors | 2 time policy | 2012-07-31 | customer_2  | letter | 2     | SI_6      | 60 days last reminder | draft | 1500       | USD      |
+     | 1500    | 2012-04-14 | Debtors | 2 time policy | 2012-07-31 | customer_3  | letter | 2     | SI_9      | 60 days last reminder | draft | 1500       | USD      |
+     | 1050    | 2012-04-30 | Debtors | 3 time policy | 2012-07-31 | customer_4  | letter | 3     | SI_12     | 10 days last reminder | draft | 1050       | USD      |
+     | 1050    | 2012-04-30 | Debtors | 3 time policy | 2012-07-31 | Donald Duck | letter | 3     | SI_18     | 10 days last reminder | draft | 1050       |          |
+     | 1050    | 2012-04-30 | Debtors | 3 time policy | 2012-07-31 | Gus Goose   | letter | 3     | SI_19     | 10 days last reminder | draft | 1050       |          |
 
