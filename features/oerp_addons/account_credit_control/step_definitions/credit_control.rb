@@ -116,7 +116,7 @@ Then /^the generated credit lines should have the following values:$/ do |table|
               ['partner_id', '=', partner.id],
               ['policy_level_id', '=', level.id], ['amount_due', '=', row.fetch('amount due', 0.0)],
               ['state', '=', row.fetch('state')], ['level', '=', row.fetch('level', 0.0)],
-              ['canal', '=', row.fetch('canal')], ['balance_due', '=', row.fetch('balance', 0.0)],
+              ['channel', '=', row.fetch('channel')], ['balance_due', '=', row.fetch('balance', 0.0)],
               ['date_due', '=',  row.fetch('date due')], ['date', '=', row.fetch('date')]]
     if row['currency']
         curreny = ResCurrency.find_by_name(row['currency'], :fields=>['id'])
