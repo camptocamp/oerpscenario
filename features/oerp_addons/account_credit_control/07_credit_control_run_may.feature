@@ -10,12 +10,12 @@
 
 @credit_control  @credit_control_run  @credit_control_run_may
 
-Feature: Ensure that mail credit line generation first pass is correct
+Feature: Ensure that email credit line generation first pass is correct
 
   @credit_control_mark
   Scenario: mark lines
     Given there is "draft" credit lines
-    And I mark all draft mail to state "to_be_sent"
+    And I mark all draft email to state "to_be_sent"
     Then the draft line should be in state "to_be_sent"
 
  @pay_invoice_si_16
@@ -84,7 +84,7 @@ Feature: Ensure that mail credit line generation first pass is correct
     When I confirm bank statement
     Then My invoice "SI_18" is in state "open" reconciled with a residual amount of "1050.0"
 
-  @credit_control_run_month @xxxxxx
+  @credit_control_run_month
   Scenario: Create run
     Given I need a "credit.control.run" with oid: credit_control.run5
     And having:
@@ -93,19 +93,19 @@ Feature: Ensure that mail credit line generation first pass is correct
     When I launch the credit run
     Then my credit run should be in state "done"
     And the generated credit lines should have the following values:
-     | balance | date due   | account     | policy        | date       | partner        | channel  | level | move line | policy level          | state | amount due | currency |
-     | 1500    | 2012-04-30 | Debtors     | 2 time policy | 2012-05-31 | customer_2     | mail   | 1     | SI_6      | 30 days end of month  | draft | 1500       | USD      |
-     | 1500    | 2012-04-14 | Debtors     | 2 time policy | 2012-05-31 | customer_3     | mail   | 1     | SI_8      | 30 days end of month  | draft | 1500       | USD      |
-     | 1050    | 2012-04-30 | Debtors     | 3 time policy | 2012-05-31 | customer_4     | mail   | 1     | SI_11     | 10 days net           | draft | 1050       | USD      |
-     | 1000    | 2012-02-29 | Debtors     | 2 time policy | 2012-05-31 | customer_2     | letter | 2     | SI_4      | 60 days last reminder | draft | 1000       |          |
-     | 1000    | 2012-02-17 | Debtors     | 2 time policy | 2012-05-31 | customer_3     | letter | 2     | SI_7      | 60 days last reminder | draft | 1000       |          |
-     | 840     | 2012-03-31 | Debtors     | 3 time policy | 2012-05-31 | customer_4     | mail   | 2     | SI_11     | 30 days end of month  | draft | 840        | USD      |
-     | 1500    | 2012-04-14 | Debtors USD | 3 time policy | 2012-05-31 | customer_5_usd | mail   | 2     | SI_15     | 30 days end of month  | draft | 1500       | USD      |
-     | 700     | 2012-02-29 | Debtors     | 3 time policy | 2012-05-31 | customer_4     | letter | 3     | SI_10     | 10 days last reminder | draft | 700        |          |
-     | 450     | 2012-03-15 | Debtors     | 3 time policy | 2012-05-31 | customer_4     | letter | 3     | SI_12     | 10 days last reminder | draft | 450        | USD      |
-     | 1200    | 2012-03-16 | Debtors USD | 3 time policy | 2012-05-31 | customer_5_usd | letter | 3     | SI_14     | 10 days last reminder | draft | 1200       | USD      |
-     | 500     | 2012-04-14 | Debtors     | 3 time policy | 2012-05-31 | Scrooge McDuck | mail   | 2     | SI_17     | 30 days end of month  | draft | 1500       |          |
-     | 1050    | 2012-04-30 | Debtors     | 3 time policy | 2012-05-31 | Donald Duck    | mail   | 1     | SI_18     | 10 days net           | draft | 1050       |          |
-     | 150     | 2012-03-15 | Debtors     | 3 time policy | 2012-05-31 | Gus Goose      | letter | 3     | SI_19     | 10 days last reminder | draft | 450        |          |
-     | 1050    | 2012-04-30 | Debtors     | 3 time policy | 2012-05-31 | Gus Goose      | mail   | 1     | SI_19     | 10 days net           | draft | 1050       |          |
+     | balance | date due   | account     | policy        | date       | partner        | channel | level | move line | policy level          | state | amount due | currency |
+     | 1500    | 2012-04-30 | Debtors     | 2 time policy | 2012-05-31 | customer_2     | email   | 1     | SI_6      | 30 days end of month  | draft | 1500       | USD      |
+     | 1500    | 2012-04-14 | Debtors     | 2 time policy | 2012-05-31 | customer_3     | email   | 1     | SI_8      | 30 days end of month  | draft | 1500       | USD      |
+     | 1050    | 2012-04-30 | Debtors     | 3 time policy | 2012-05-31 | customer_4     | email   | 1     | SI_11     | 10 days net           | draft | 1050       | USD      |
+     | 1000    | 2012-02-29 | Debtors     | 2 time policy | 2012-05-31 | customer_2     | letter  | 2     | SI_4      | 60 days last reminder | draft | 1000       |          |
+     | 1000    | 2012-02-17 | Debtors     | 2 time policy | 2012-05-31 | customer_3     | letter  | 2     | SI_7      | 60 days last reminder | draft | 1000       |          |
+     | 840     | 2012-03-31 | Debtors     | 3 time policy | 2012-05-31 | customer_4     | email   | 2     | SI_11     | 30 days end of month  | draft | 840        | USD      |
+     | 1500    | 2012-04-14 | Debtors USD | 3 time policy | 2012-05-31 | customer_5_usd | email   | 2     | SI_15     | 30 days end of month  | draft | 1500       | USD      |
+     | 700     | 2012-02-29 | Debtors     | 3 time policy | 2012-05-31 | customer_4     | letter  | 3     | SI_10     | 10 days last reminder | draft | 700        |          |
+     | 450     | 2012-03-15 | Debtors     | 3 time policy | 2012-05-31 | customer_4     | letter  | 3     | SI_12     | 10 days last reminder | draft | 450        | USD      |
+     | 1200    | 2012-03-16 | Debtors USD | 3 time policy | 2012-05-31 | customer_5_usd | letter  | 3     | SI_14     | 10 days last reminder | draft | 1200       | USD      |
+     | 500     | 2012-04-14 | Debtors     | 3 time policy | 2012-05-31 | Scrooge McDuck | email   | 2     | SI_17     | 30 days end of month  | draft | 1500       |          |
+     | 1050    | 2012-04-30 | Debtors     | 3 time policy | 2012-05-31 | Donald Duck    | email   | 1     | SI_18     | 10 days net           | draft | 1050       |          |
+     | 150     | 2012-03-15 | Debtors     | 3 time policy | 2012-05-31 | Gus Goose      | letter  | 3     | SI_19     | 10 days last reminder | draft | 450        |          |
+     | 1050    | 2012-04-30 | Debtors     | 3 time policy | 2012-05-31 | Gus Goose      | email   | 1     | SI_19     | 10 days net           | draft | 1050       |          |
 

@@ -15,7 +15,7 @@ Feature: Ensure that mail credit line generation first pass is correct
   @credit_control_mark
   Scenario: mark lines
     Given there is "draft" credit lines
-    And I mark all draft mail to state "to_be_sent"
+    And I mark all draft email to state "to_be_sent"
     Then the draft line should be in state "to_be_sent"
 
   @credit_control_run_month
@@ -28,7 +28,7 @@ Feature: Ensure that mail credit line generation first pass is correct
     Then my credit run should be in state "done"
     And the generated credit lines should have the following values:
      | balance | date due   | account     | policy        | date       | partner        | channel | level | move line | policy level         | state | amount due | currency |
-     | 360     | 2012-02-15 | Debtors     | 3 time policy | 2012-02-29 | customer_4     | mail  | 1     | SI_11     | 10 days net          | draft | 360        | USD      |
-     | 1000    | 2012-02-17 | Debtors USD | 3 time policy | 2012-02-29 | customer_5_usd | mail  | 1     | SI_13     | 10 days net          | draft | 1000       | USD      |
-     | 300     | 2012-01-18 | Debtors     | 3 time policy | 2012-02-29 | customer_4     | mail  | 2     | SI_10     | 30 days end of month | draft | 300        |          |
+     | 360     | 2012-02-15 | Debtors     | 3 time policy | 2012-02-29 | customer_4     | email  | 1     | SI_11     | 10 days net          | draft | 360        | USD      |
+     | 1000    | 2012-02-17 | Debtors USD | 3 time policy | 2012-02-29 | customer_5_usd | email  | 1     | SI_13     | 10 days net          | draft | 1000       | USD      |
+     | 300     | 2012-01-18 | Debtors     | 3 time policy | 2012-02-29 | customer_4     | email  | 2     | SI_10     | 30 days end of month | draft | 300        |          |
 

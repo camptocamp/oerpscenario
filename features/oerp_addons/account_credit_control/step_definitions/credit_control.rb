@@ -33,10 +33,10 @@ Given /^there is "(.*?)" credit lines$/ do |state|
   "not #{state} lines found"
 end
 
-Given /^I mark all draft mail to state "(.*?)"$/ do | state |
+Given /^I mark all draft email to state "(.*?)"$/ do | state |
   wiz = CreditControlMarker.new
   wiz.name = state
-  lines = CreditControlLines.find(:all, :domain => [['state', '=', 'draft']], :fields => %w(id))
+  lines = CreditControlLine.find(:all, :domain => [['state', '=', 'draft']], :fields => %w(id))
   wiz.line_ids = lines.map(&:id)
   wiz.save
   wiz.mark_lines
@@ -53,17 +53,17 @@ Then /^the draft line should be in state "(.*?)"$/ do | state |
 
 end
 
-Given /^I mail all ready lines$/ do
+Given /^I email all ready lines$/ do
   @credit_lines.should_not be_nil,
   "no line were stored"
-  wiz = CreditControlMailer.new
-  lines = CreditControlLines.find(:all,
+  wiz = CreditControlEmailer.new
+  lines = CreditControlLine.find(:all,
                                   :domain => [['state', '=', 'to_be_sent'],
                                               ['channel', '=', 'email']],
                                   :fields => %w(id))
   wiz.line_ids = lines.map(&:id)
   wiz.save
-  wiz.mail_lines
+  wiz.email_lines
 end
 
 Given /^I clean all the credit lines$/ do
@@ -80,13 +80,13 @@ Then /^my credit run should be in state "(.*?)"$/ do |state|
 end
 
 
-Then /^All sent lines should be linked to a mail and in mail status "(.*?)"$/ do |status|
+Then /^All sent lines should be linked to a email and in email status "(.*?)"$/ do |status|
   @credit_lines.should_not be_nil,
   "no line where stored"
   @credit_lines.each do |line|
     line =  CreditControlLine.find(line.id)
     line.state.should eql(status),
-    "The line #{line.id} is has no mail status #{status} but #{line.state}"
+    "The line #{line.id} is has no email status #{status} but #{line.state}"
   end
 end
 

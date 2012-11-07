@@ -10,12 +10,12 @@
 
 @credit_control  @credit_control_run  @credit_control_run_jul
 
-Feature: Ensure that mail credit line generation first pass is correct
+Feature: Ensure that email credit line generation first pass is correct
 
     @credit_control_mark
   Scenario: mark lines
     Given there is "draft" credit lines
-    And I mark all draft mail to state "to_be_sent"
+    And I mark all draft email to state "to_be_sent"
     Then the draft line should be in state "to_be_sent"
 
   @credit_control_run_month
