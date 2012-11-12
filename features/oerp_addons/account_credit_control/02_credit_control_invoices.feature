@@ -6,7 +6,7 @@
 ##############################################################################
 
 
-@credit_management       @credit_management_base_data    @credit_management_invoices
+@credit_control       @credit_control_base_data    @credit_control_invoices
 
 Feature: Invoices creation
 
@@ -14,12 +14,12 @@ Feature: Invoices creation
 
   @inv_1
   Scenario: Create invoice 1
-  
+
   Given I need a "account.invoice" with oid: scen._inv_1
     And having:
       | name               | value                              |
       | name               | SI_1                               |
-      | date_invoice       | %Y-01-15                           |
+      | date_invoice       | 2012-01-15                           |
       | address_invoice_id | by oid: scen.partner_1_add         |
       | partner_id         | by oid: scen.partner_1             |
       | account_id         | by name: Debtors                   |
@@ -39,8 +39,8 @@ Feature: Invoices creation
       | invoice_id | by oid:scen._inv_1              |
     Given I find a "account.invoice" with oid: scen._inv_1
     And I open the credit invoice
-    
-        Given I need a "account.invoice.line" with oid: scen._inv1_line2
+
+    Given I need a "account.invoice.line" with oid: scen._inv1_line2
     And having:
       | name       | value                           |
       | name       | invoice line 2                  |
@@ -57,7 +57,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_2                               |
-      | date_invoice       | %Y-02-15                           |
+      | date_invoice       | 2012-02-15                           |
       | address_invoice_id | by oid: scen.partner_1_add         |
       | partner_id         | by oid: scen.partner_1             |
       | account_id         | by name: Debtors                   |
@@ -85,7 +85,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_3                               |
-      | date_invoice       | %Y-03-15                           |
+      | date_invoice       | 2012-03-15                           |
       | address_invoice_id | by oid: scen.partner_1_add         |
       | partner_id         | by oid: scen.partner_1             |
       | account_id         | by name: Debtors                   |
@@ -115,7 +115,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_4                               |
-      | date_invoice       | %Y-01-18                           |
+      | date_invoice       | 2012-01-18                           |
       | address_invoice_id | by oid: scen.customer_2_add        |
       | partner_id         | by oid: scen.customer_2            |
       | account_id         | by name: Debtors                   |
@@ -144,7 +144,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_5                               |
-      | date_invoice       | %Y-02-15                           |
+      | date_invoice       | 2012-02-15                           |
       | address_invoice_id | by oid: scen.customer_2_add        |
       | partner_id         | by oid: scen.customer_2            |
       | account_id         | by name: Debtors                   |
@@ -172,7 +172,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_6                               |
-      | date_invoice       | %Y-03-15                           |
+      | date_invoice       | 2012-03-15                           |
       | address_invoice_id | by oid: scen.customer_2_add        |
       | partner_id         | by oid: scen.customer_2            |
       | account_id         | by name: Debtors                   |
@@ -202,7 +202,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_7                               |
-      | date_invoice       | %Y-01-18                           |
+      | date_invoice       | 2012-01-18                           |
       | address_invoice_id | by oid: scen.customer_3_add        |
       | partner_id         | by oid: scen.customer_3            |
       | account_id         | by name: Debtors                   |
@@ -231,7 +231,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_8                               |
-      | date_invoice       | %Y-02-15                           |
+      | date_invoice       | 2012-02-15                           |
       | address_invoice_id | by oid: scen.customer_3_add        |
       | partner_id         | by oid: scen.customer_3            |
       | account_id         | by name: Debtors                   |
@@ -259,7 +259,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_9                               |
-      | date_invoice       | %Y-03-15                           |
+      | date_invoice       | 2012-03-15                           |
       | address_invoice_id | by oid: scen.customer_3_add        |
       | partner_id         | by oid: scen.customer_3            |
       | account_id         | by name: Debtors                   |
@@ -289,7 +289,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_10                              |
-      | date_invoice       | %Y-01-18                           |
+      | date_invoice       | 2012-01-18                           |
       | address_invoice_id | by oid: scen.customer_4_add        |
       | partner_id         | by oid: scen.customer_4            |
       | account_id         | by name: Debtors                   |
@@ -318,7 +318,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_11                              |
-      | date_invoice       | %Y-02-15                           |
+      | date_invoice       | 2012-02-15                           |
       | address_invoice_id | by oid: scen.customer_4_add        |
       | partner_id         | by oid: scen.customer_4            |
       | account_id         | by name: Debtors                   |
@@ -346,7 +346,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_12                              |
-      | date_invoice       | %Y-03-15                           |
+      | date_invoice       | 2012-03-15                           |
       | address_invoice_id | by oid: scen.customer_4_add        |
       | partner_id         | by oid: scen.customer_4            |
       | account_id         | by name: Debtors                   |
@@ -376,7 +376,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_13                              |
-      | date_invoice       | %Y-01-18                           |
+      | date_invoice       | 2012-01-18                           |
       | address_invoice_id | by oid: scen.customer_5_add        |
       | partner_id         | by oid: scen.customer_5            |
       | account_id         | by name: Debtors USD               |
@@ -405,7 +405,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_14                              |
-      | date_invoice       | %Y-02-15                           |
+      | date_invoice       | 2012-02-15                           |
       | address_invoice_id | by oid: scen.customer_5_add        |
       | partner_id         | by oid: scen.customer_5            |
       | account_id         | by name: Debtors USD               |
@@ -433,7 +433,7 @@ Feature: Invoices creation
     And having:
       | name               | value                              |
       | name               | SI_15                              |
-      | date_invoice       | %Y-03-15                           |
+      | date_invoice       | 2012-03-15                           |
       | address_invoice_id | by oid: scen.customer_5_add        |
       | partner_id         | by oid: scen.customer_5            |
       | account_id         | by name: Debtors USD               |
@@ -454,5 +454,105 @@ Feature: Invoices creation
     Given I find a "account.invoice" with oid: scen._inv_15
     And I open the credit invoice
 
+  @inv_16
+  Scenario: Create invoice 16
+  Given I need a "account.invoice" with oid: scen._inv_16
+    And having:
+      | name               | value                              |
+      | name               | SI_16                              |
+      | date_invoice       | 2012-03-15                           |
+      | address_invoice_id | by oid: scen.customer_4_add        |
+      | partner_id         | by oid: scen.customer_4            |
+      | account_id         | by name: Debtors                   |
+      | journal_id         | by name: Sales                     |
+      | currency_id        | by name: EUR                       |
+      | payment_term       | by name: 30 Net Days               |
+      | type               | out_invoice                        |
 
+    And I need a "account.invoice.line" with oid: scen._inv16_line1
+    And having:
+      | name       | value                           |
+      | name       | invoice line 1                  |
+      | quantity   | 1                               |
+      | price_unit | 1500                            |
+      | account_id | by name: Sales                  |
+      | invoice_id | by oid:scen._inv_16             |
+    Then I find a "account.invoice" with oid: scen._inv_16
+    And I open the credit invoice
 
+  @inv_17
+  Scenario: Create invoice 17
+  Given I need a "account.invoice" with oid: scen._inv_17
+    And having:
+      | name               | value                                     |
+      | name               | SI_17                                     |
+      | date_invoice       | 2012-03-15                                |
+      | address_invoice_id | by oid: scen.customer_partial_pay_address |
+      | partner_id         | by oid: scen.customer_partial_pay         |
+      | account_id         | by name: Debtors                          |
+      | journal_id         | by name: Sales                            |
+      | currency_id        | by name: EUR                              |
+      | payment_term       | by name: 30 Net Days                      |
+      | type               | out_invoice                               |
+
+    And I need a "account.invoice.line" with oid: scen._inv17_line1
+    And having:
+      | name       | value                           |
+      | name       | invoice line 1                  |
+      | quantity   | 1                               |
+      | price_unit | 1500                            |
+      | account_id | by name: Sales                  |
+      | invoice_id | by oid:scen._inv_17             |
+    Then I find a "account.invoice" with oid: scen._inv_17
+    And I open the credit invoice
+
+  @inv_18
+  Scenario: Create invoice 18
+  Given I need a "account.invoice" with oid: scen._inv_18
+    And having:
+      | name               | value                                      |
+      | name               | SI_18                                      |
+      | date_invoice       | 2012-03-15                                 |
+      | address_invoice_id | by oid: scen.customer_add_multiple_payterm |
+      | partner_id         | by oid: scen.customer_multiple_payterm     |
+      | account_id         | by name: Debtors                           |
+      | journal_id         | by name: Sales                             |
+      | currency_id        | by name: EUR                               |
+      | payment_term       | by name: 30% Advance End 30 Days           |
+      | type               | out_invoice                                |
+
+    And I need a "account.invoice.line" with oid: scen._inv18_line1
+    And having:
+      | name       | value                           |
+      | name       | invoice line 1                  |
+      | quantity   | 1                               |
+      | price_unit | 1500                            |
+      | account_id | by name: Sales                  |
+      | invoice_id | by oid:scen._inv_18             |
+    Then I find a "account.invoice" with oid: scen._inv_18
+    And I open the credit invoice
+
+  @inv_19
+  Scenario: Create invoice 19
+  Given I need a "account.invoice" with oid: scen._inv_19
+    And having:
+      | name               | value                                       |
+      | name               | SI_19                                       |
+      | date_invoice       | 2012-03-15                                  |
+      | address_invoice_id | by oid: scen.customer_add_multiple_payterm2 |
+      | partner_id         | by oid: scen.customer_multiple_payterm2     |
+      | account_id         | by name: Debtors                            |
+      | journal_id         | by name: Sales                              |
+      | currency_id        | by name: EUR                                |
+      | payment_term       | by name: 30% Advance End 30 Days            |
+      | type               | out_invoice                                 |
+    And I need a "account.invoice.line" with oid: scen._inv19_line1
+    And having:
+      | name       | value                           |
+      | name       | invoice line 1                  |
+      | quantity   | 1                               |
+      | price_unit | 1500                            |
+      | account_id | by name: Sales                  |
+      | invoice_id | by oid:scen._inv_19             |
+    Then I find a "account.invoice" with oid: scen._inv_19
+    And I open the credit invoice
