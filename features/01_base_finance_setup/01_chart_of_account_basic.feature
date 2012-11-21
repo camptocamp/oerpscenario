@@ -172,7 +172,7 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
          Given I need a "account.account" with oid: scen.acc_EU_purchases_vat
     And having:
     | name        | value               |
-    | name        | Sales VAT           |
+    | name        | Purchases UE VAT    |
     | code        | 445662              |
     | parent_id   | by code: C0         |
     | type        | other               |
@@ -181,7 +181,7 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
      Given I need a "account.account" with oid: scen.acc_EU_purchases_rev_vat
     And having:
     | name        | value               |
-    | name        | Purchases VAT       |
+    | name        | Purchases UE Reverse VAT |
     | code        | 4452                |
     | parent_id   | by code: C0         |
     | type        | other               |
@@ -228,19 +228,19 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     Given I need a "account.account" with oid: scen.acc_grni
     And having:
     | name        | value               |
-    | name        | GRNI (Goods received Not Invoiced)|
+    | name        | Goods received not invoiced  |
     | code        | 499                 |
     | parent_id   | by code: C0         |
-    | type        | payable             |
+    | type        | other               |
     | user_type   | by name: Liability  |
 
     Given I need a "account.account" with oid: scen.acc_cos
     And having:
     | name        | value               |
     | name        | Cost of sales       |
-    | code        | 499                 |
+    | code        | 690                 |
     | parent_id   | by code: C0         |
-    | type        | payable             |
+    | type        | other               |
     | user_type   | by name: Expense    |
 
     Given I need a "account.account" with oid: scen.acc_pricediff
@@ -249,7 +249,7 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | name        | Price difference    |
     | code        | 688                 |
     | parent_id   | by code: C0         |
-    | type        | payable             |
+    | type        | other               |
     | user_type   | by name: Expense    |
 
 
