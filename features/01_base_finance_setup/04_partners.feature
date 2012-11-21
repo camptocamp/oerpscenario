@@ -17,6 +17,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name                       | partner_1                          |
       | customer                   | 1                                  |
       | supplier                   | 1                                  |
+      | lang                       | fr_FR                              |
       | property_account_payable   | by name: Creditors                 |
       | property_account_receivable| by name: Debtors                   |
       | property_payment_term      | by name: 30 Net Days               |    
@@ -28,7 +29,19 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name       | Luc Maurer                   |
       | zip        | 1015                         |
       | city       | lausanne                     |
-      | email      | openerp@locahost.dummy       |
+      | email      | partner_1@camptocamp.com     |
+      | phone      | +41 21 619 10 12             |
+      | street     | PSE-A, EPF                   |
+      | partner_id | by oid: scen.partner_1       |
+
+    Given I need a "res.partner.address" with oid: scen.partner_1_add_inv
+    And having:
+      | name       | value                        |
+      | type       | invoice                      |
+      | name       | Stéphanie Debayle            |
+      | zip        | 1015                         |
+      | city       | lausanne                     |
+      | email      | partner_1_stephanie@camptocamp.com     |
       | phone      | +41 21 619 10 12             |
       | street     | PSE-A, EPF                   |
       | partner_id | by oid: scen.partner_1       |
@@ -84,6 +97,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name                       | value                              |
       | name                       | supplier_3                         |
       | supplier                   | 1                                  |
+      | lang                       | fr_FR                              |      
       | property_account_payable   | by name: Creditors                 |
       | property_account_receivable| by name: Debtors                   |
       | property_payment_term      | by name: 30 Days End of Month      |     
@@ -106,6 +120,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name                       | value                              |
       | name                       | supplier_4_usd                     |
       | supplier                   | 1                                  |
+      | lang                       | en_US                              |      
       | property_account_payable   | by name: Creditors USD             |
       | property_account_receivable| by name: Debtors USD               |
       | property_payment_term      | by name: 30 Net Days               |    
@@ -128,6 +143,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name                       | value                              |
       | name                       | customer_1                         |
       | customer                   | 1                                  |
+      | lang                       | fr_FR                              |      
       | property_account_payable   | by name: Creditors                 |
       | property_account_receivable| by name: Debtors                   |
       | property_payment_term      | by name: 30 Net Days               |    
@@ -139,7 +155,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name       | Guewen Baconnier             |
       | zip        | 1800                         |
       | city       | Orbe                         |
-      | email      | openerp@locahost.dummy       |
+      | email      | customer_1@camptocamp.com    |
       | phone      | +41 21 619 10 13             |
       | street     | PSE-A, EPF                   |
       | partner_id | by oid: scen.customer_1      |
@@ -149,6 +165,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
     And having:
       | name                       | value                              |
       | name                       | customer_2                         |
+      | lang                       | fr_FR                              |      
       | customer                   | 1                                  |
       | property_account_payable   | by name: Creditors                 |
       | property_account_receivable| by name: Debtors                   |
@@ -161,7 +178,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name       | Nicolas Bessi                |
       | zip        | 1456                         |
       | city       | Pentalaz                     |
-      | email      | openerp@locahost.dummy       |
+      | email      | customer_2@camptocamp.com    |
       | phone      | +41 21 619 10 16             |
       | street     | PSE-A, EPF                   |
       | partner_id | by oid: scen.customer_2      |
@@ -171,6 +188,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
     And having:
       | name                       | value                              |
       | name                       | customer_3                         |
+      | lang                       | fr_FR                              |      
       | customer                   | 1                                  |
       | property_account_payable   | by name: Creditors                 |
       | property_account_receivable| by name: Debtors                   |
@@ -183,7 +201,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name       | Yannick Vauchet              |
       | zip        | 1456                         |
       | city       | Neuchatel                    |
-      | email      | openerp@locahost.dummy       |
+      | email      | customer_3@camptocamp.com    |
       | phone      | +41 21 619 10 18             |
       | street     | PSE-A, EPF                   |
       | partner_id | by oid: scen.customer_3      |
@@ -194,6 +212,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name                       | value                              |
       | name                       | customer_4                         |
       | customer                   | 1                                  |
+      | lang                       | fr_FR                              |      
       | property_account_payable   | by name: Creditors                 |
       | property_account_receivable| by name: Debtors                   |
       | property_payment_term      | by name: 30 Net Days               |    
@@ -205,7 +224,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name       | Alexandre Fayolle            |
       | zip        | 1456                         |
       | city       | Neuchatel                    |
-      | email      | openerp@locahost.dummy       |
+      | email      | customer_4@camptocamp.com    |
       | phone      | +41 21 619 10 18             |
       | street     | PSE-A, EPF                   |
       | partner_id | by oid: scen.customer_4      |
@@ -217,6 +236,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name                       | value                              |
       | name                       | customer_5_usd                     |
       | customer                   | 1                                  |
+      | lang                       | en_US                              |      
       | property_account_payable   | by name: Creditors USD             |
       | property_account_receivable| by name: Debtors USD               |
       | property_payment_term      | by name: 30 Days End of Month      |    
@@ -228,7 +248,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name       | Barack Obama                 |
       | zip        | 20500                        |
       | city       | Washington, DC               |
-      | email      | openerp@locahost.dummy       |
+      | email      | customer_5@camptocamp.com    |
       | phone      | +01 21 619 20 88             |
       | street     | 1600 Pennsylvania Ave        |
       | partner_id | by oid: scen.customer_5      |
@@ -240,6 +260,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name                       | value                              |
       | name                       | customer_6                         |
       | customer                   | 1                                  |
+      | lang                       | en_US                              |      
       | property_account_payable   | by name: Creditors                 |
       | property_account_receivable| by name: Debtors                   |
       | property_payment_term      | by name: 30 Days End of Month|          
@@ -251,7 +272,7 @@ Feature: CUSTOMER & SUPPLIER CREATION
       | name       | Maxime Wiot                  |
       | zip        | 1456                         |
       | city       | Neuchatel                    |
-      | email      | openerp@locahost.dummy       |
+      | email      | customer_6@camptocamp.com    |
       | phone      | +33 21 619 20 88             |
       | street     | PSE-A, EPF                   |
       | partner_id | by oid: scen.customer_6      |

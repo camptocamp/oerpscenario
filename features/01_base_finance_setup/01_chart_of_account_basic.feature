@@ -120,7 +120,7 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | type        | payable             |
     | user_type   | by name: Payable    |
     | reconcile   | true                |
-
+    
      Given I need a "account.account" with oid: scen.acc_receivable_usd
     And having:
     | name        | value               |
@@ -130,6 +130,16 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | type        | receivable          |
     | user_type   | by name: Receivable |
     | reconcile   | true                |
+    
+     Given I need a "account.account" with oid: scen.acc_receivable_gbp
+    And having:
+    | name        | value               |
+    | name        | Debtors GBP         |
+    | code        | 4113                |
+    | parent_id   | by code: C0         |
+    | type        | receivable          |
+    | user_type   | by name: Receivable |
+    | reconcile   | true                |    
 
      Given I need a "account.account" with oid: scen.acc_payable_usd
     And having:
@@ -214,6 +224,35 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | type        | other               |
     | user_type   | by name: Cash       |
     | currency_id | by name: GBP        |
+
+    Given I need a "account.account" with oid: scen.acc_grni
+    And having:
+    | name        | value               |
+    | name        | GRNI (Goods received Not Invoiced)|
+    | code        | 499                 |
+    | parent_id   | by code: C0         |
+    | type        | payable             |
+    | user_type   | by name: Liability  |
+
+    Given I need a "account.account" with oid: scen.acc_cos
+    And having:
+    | name        | value               |
+    | name        | Cost of sales       |
+    | code        | 499                 |
+    | parent_id   | by code: C0         |
+    | type        | payable             |
+    | user_type   | by name: Expense    |
+
+    Given I need a "account.account" with oid: scen.acc_pricediff
+    And having:
+    | name        | value               |
+    | name        | Price difference    |
+    | code        | 688                 |
+    | parent_id   | by code: C0         |
+    | type        | payable             |
+    | user_type   | by name: Expense    |
+
+
 
 
   @base_finance_setup_properties

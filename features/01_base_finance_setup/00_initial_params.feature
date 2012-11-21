@@ -23,25 +23,39 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
       | purchase                        |
       | sale                            |
       | stock_move_change_delivery_date |
-#      | product_standard_margin         |
-#      | product_historical_margin       |
-#      | report_webkit_lib               |
-#      | account_financial_report_webkit |
-#      | invoice_webkit                  |
-#      | purchase_order_webkit           |
-#      | sale_order_webkit               |
-#      | stock_picking_webkit            |
-#      | account_advanced_reconcile      |     
+      | report_webkit_lib               |
+      | product_standard_margin         |
+      | product_historical_margin       |
+      | report_webkit_lib               |
+      | account_financial_report_webkit |
+      | invoice_webkit                  |
+      | purchase_order_webkit           |
+      | sale_order_webkit               |
+      | stock_picking_webkit            |
+      | account_advanced_reconcile      |     
                    
     Then my modules should have been installed and models reloaded
 
   @base_finance_setup_languages
-  Scenario: LANGUAGE SETTINGS
+  Scenario: LANGUAGE INSTALL
+    Given I install the following languages:
+      | lang  |
+      | fr_FR |
+    Then the language should be available
+    
+  Scenario: LANGUAGE SETTINGS  
     Given I need a "res.lang" with code: en_US
     And having:
     | name              | value     |
     | date_format       | %d/%m/%Y  |
-    | grouping          | [3,0]    |
+    | grouping          | [3,0]     |
+    | thousands_sep     | '         |  
+    
+   Given I need a "res.lang" with code: fr_FR
+    And having:
+    | name              | value     |
+    | date_format       | %d/%m/%Y  |
+    | grouping          | [3,0]     |
     | thousands_sep     | '         |  
     
   @base_finance_setup_access_rights

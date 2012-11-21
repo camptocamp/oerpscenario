@@ -10,7 +10,7 @@
 
 @credit_control  @credit_control_run  @credit_control_run_jan
 
-Feature: Ensure that email credit line generation first pass is correct
+Feature: Ensure that mail credit line generation first pass is correct
 
   Scenario: clean data
     Given I clean all the credit lines
@@ -25,6 +25,6 @@ Feature: Ensure that email credit line generation first pass is correct
     When I launch the credit run
     Then my credit run should be in state "done"
     And the generated credit lines should have the following values:
-     | balance | date due   | account | policy        | date       | partner    | channel | level | move line | policy level | state | amount due | currency |
+     | balance | date due   | account | policy        | date       | partner    |channel| level | move line | policy level | state | amount due | currency |
      | 300     | 2012-01-18 | Debtors | 3 time policy | 2012-01-31 | customer_4 | email  | 1     | SI_10     | 10 days net  | draft | 300        |          |
 
