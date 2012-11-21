@@ -196,6 +196,16 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | type        | other               |
     | user_type   | by name: Asset      |
 
+      Given I need a "account.account" with oid: scen.acc_inv
+    And having:
+    | name        | value               |
+    | name        | Inventory           |
+    | code        | 370                 |
+    | parent_id   | by code: C0         |
+    | type        | other               |
+    | user_type   | by name: Asset      |
+
+
    Given I need a "account.account" with oid: scen.acc_bank_eur
     And having:
     | name        | value               |
@@ -225,35 +235,7 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | user_type   | by name: Cash       |
     | currency_id | by name: GBP        |
 
-    Given I need a "account.account" with oid: scen.acc_grni
-    And having:
-    | name        | value               |
-    | name        | Goods received not invoiced  |
-    | code        | 499                 |
-    | parent_id   | by code: C0         |
-    | type        | other               |
-    | user_type   | by name: Liability  |
-
-    Given I need a "account.account" with oid: scen.acc_cos
-    And having:
-    | name        | value               |
-    | name        | Cost of sales       |
-    | code        | 690                 |
-    | parent_id   | by code: C0         |
-    | type        | other               |
-    | user_type   | by name: Expense    |
-
-    Given I need a "account.account" with oid: scen.acc_pricediff
-    And having:
-    | name        | value               |
-    | name        | Price difference    |
-    | code        | 688                 |
-    | parent_id   | by code: C0         |
-    | type        | other               |
-    | user_type   | by name: Expense    |
-
-
-
+  
 
   @base_finance_setup_properties
   Scenario: DEFAULT ACCOUNT SETTINGS (PROPERTIES)
@@ -281,21 +263,4 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
 
     Given I set global property named "property_stock_account_output" for model "product.template" and field "property_stock_account_output"
     And the property is related to model "account.account" using column "code" and value "603"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

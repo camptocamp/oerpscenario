@@ -155,7 +155,7 @@ Then /^the picking should be in state (.*)$/ do |state|
   end
 end
 
-And /^I create a supplier invoice for the pickings? on (.*)$/ do |invoice_type, date|
+And /^I create a (supplier|customer) invoice for the picking   on (.*)$/ do |invoice_type, date|
   @pickings.should_not be_nil
   if date.include? "%"
     date = Time.new().strftime(date)

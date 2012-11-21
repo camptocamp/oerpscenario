@@ -312,27 +312,6 @@ Given /^I process all shipments on (.*)$/ do |date|
   end
 end
 
-
-
-And /^I create a customer invoice for the pickings? on (.*)$/ do |date|
-  @pickings.should_not be_nil
-  if date.include? "%"
-    date = Time.new().strftime(date)
-  end
-  type = {'supplier' => 'in_invoice',
-    'customer' => 'out_invoice',
-  }
-  @pickings.each do |pick|
-    begin
-      StockPicking.action_invoice_create([pick.id], false, false,
-                                         type['out_invoice'],
-                                         {'date_inv'=>date})
-    rescue RuntimeError => exc
-      # work around an OpenERP bug in action_invoice_create (see https://bugs.launchpad.net/openobject-server/+bug/1030795)
-      raise exc if not (exc.message.include?('HTTP-Error: 500 INTERNAL SERVER ERROR') or exc.message.include?('dictionary key must be string'))
-    end
-  end
-end
 Given /^(\d)+ ([^ ]+) invoices? should be created for the SO$/ do |nb_invoice, state|
   sale_order = @found_item
   sale_order.should_not be_nil
