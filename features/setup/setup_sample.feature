@@ -147,3 +147,15 @@ Feature: Param the new database
 
   Scenario: create user ERP Manager
     Given create a ERP manager user with password "naewaiT6N"
+    
+  @set_ir_exports
+  Scenario: create ir.exports
+    Given I create an "Arrêt standard" export for model "cpm.arret" with following columns:
+       | name                |
+       | ar_code_int         |
+       | ar_code_comm        |
+       | ar_lib              |
+       | ar_zon_id/zon_code  |
+       | company_id/etc_code |
+       | deb_val_date        |
+       | fin_val_date        |
