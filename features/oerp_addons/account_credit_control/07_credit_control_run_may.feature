@@ -19,8 +19,7 @@ Feature: Ensure that email credit line generation first pass is correct
     Then the draft line should be in state "to_be_sent"
 
  @pay_invoice_si_16
-  Scenario: I pay entirely the invoice SI 16,
-    so it should no longer appear in the credit control lines
+  Scenario: I pay entirely the invoice SI 16,  so it should no longer appear in the credit control lines
     Given I need a "account.bank.statement" with oid: scen.voucher_statement_si_16
     And having:
      | name        | value                             |
@@ -35,8 +34,7 @@ Feature: Ensure that email credit line generation first pass is correct
     Then My invoice "SI_16" is in state "paid" reconciled with a residual amount of "0.0"
 
   @pay_invoice_si_17
-  Scenario: I pay entirely the invoice SI 17,
-    so it should no longer appear in the credit control lines
+  Scenario: I pay entirely the invoice SI 17,    so it should no longer appear in the credit control lines
     Given I need a "account.bank.statement" with oid: scen.voucher_statement_si_17
     And having:
      | name        | value                             |
@@ -57,9 +55,7 @@ Feature: Ensure that email credit line generation first pass is correct
     Then My invoice "SI_17" is in state "open" reconciled with a residual amount of "500.0"
 
   @pay_invoice_si_18_part1
-  Scenario: I pay the first part of the invoice SI 18,
-    so it should no longer appear in the credit control lines
-    however, the second move lines should still appears
+  Scenario: I pay the first part of the invoice SI 18,     so it should no longer appear in the credit control lines    however, the second move lines should still appears
     Given I need a "account.bank.statement" with oid: scen.voucher_statement_si_18
     And having:
      | name        | value                             |

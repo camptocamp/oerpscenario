@@ -13,10 +13,7 @@
 Feature: In order to finely configure workflows based on payment type used on Magento, I need to configure them on OpenERP
   and ensure that the steps of the workflow is automatic or not for each action.
 
-  Scenario: I define a global configuration for all the workflows and some common patterns.
-  Each one of them is applied to a list of payment codes.
-  I set a reference on each list of codes in order to be able to modify them later, as instance
-  to extract one payment code in a different or new pattern.
+  Scenario: I define a global configuration for all the workflows and some common patterns.  Each one of them is applied to a list of payment codes.  I set a reference on each list of codes in order to be able to modify them later, as instance  to extract one payment code in a different or new pattern.
 
   @payment_types_journal
   Scenario: Create the accounting journals used to create the payments for orders imported from Magento

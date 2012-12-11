@@ -13,8 +13,7 @@
 Feature: In order to configure the two mains workflows on the sale order importation from Magento. On the Sale order confirmation,
          And ensure  everything will be automatically or manually generated (invoice, payment, etc..).
  
- Scenario: Configure the two mains workflows on the sale order importation from Magento. On the Sale order  confirmation,
-   everything will be automatically generated (invoice, payment, etc..). 
+ Scenario: Configure the two mains workflows on the sale order importation from Magento. On the Sale order  confirmation, everything will be automatically generated (invoice, payment, etc..). 
  
   @magento_payment_mode
   Scenario: Configure trusted payment mode
