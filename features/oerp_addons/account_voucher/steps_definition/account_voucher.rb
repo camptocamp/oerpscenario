@@ -5,7 +5,7 @@ Given /^I correct the period default set up \(all special by default\) :$/ do
   end
 end
 
-Given /^I set the following currency rates :$/ do |table|
+Given /^I set the following currency rates:$/ do |table|
    table.hashes.each do |row|
     date =  Time.new().strftime(row['date'])
     currency = ResCurrency.find_by_name(row['currency'], :fields=>['id'])

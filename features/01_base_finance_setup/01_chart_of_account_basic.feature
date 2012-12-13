@@ -10,6 +10,12 @@
 
 Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
 
+  Scenario: Ensure the db is available
+    Given the server is on
+    And the database "behave" exists
+    Then user "admin" log in with password "admin"
+
+
   @base_finance_setup_chart
   Scenario: GENERIC CHART OF ACCOUNT CREATION
     Given I need a "account.account" with oid: scen.root

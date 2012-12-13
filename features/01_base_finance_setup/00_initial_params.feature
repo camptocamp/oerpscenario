@@ -13,26 +13,26 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
   @base_finance_setup_install_modules
   Scenario: MODULES INSTALLATION
 
-    Given I do not want all demo data to be loaded on install
-    And I update the module list
-    And I install the required modules with dependencies:
-      | name                            |
-      | account_voucher                 |
-      | account_accountant              |
-      | account_cancel                  |
-      | purchase                        |
-      | sale                            |
-      | stock_move_change_delivery_date |
-      | report_webkit_lib               |
-      | product_standard_margin         |
-      | product_historical_margin       |
-      | report_webkit_lib               |
-      | account_financial_report_webkit |
-      | invoice_webkit                  |
-      | purchase_order_webkit           |
-      | sale_order_webkit               |
-      | stock_picking_webkit            |
-      | account_advanced_reconcile      |     
+    # Given I do not want all demo data to be loaded on install
+    # And I update the module list
+    # And I install the required modules with dependencies:
+    #   | name                            |
+    #   | account_voucher                 |
+    #   | account_accountant              |
+    #   | account_cancel                  |
+    #   | purchase                        |
+    #   | sale                            |
+    #   | stock_move_change_delivery_date |
+    #   | report_webkit_lib               |
+    #   | product_standard_margin         |
+    #   | product_historical_margin       |
+    #   | report_webkit_lib               |
+    #   | account_financial_report_webkit |
+    #   | invoice_webkit                  |
+    #   | purchase_order_webkit           |
+    #   | sale_order_webkit               |
+    #   | stock_picking_webkit            |
+    #   | account_advanced_reconcile      |     
                    
     Then my modules should have been installed and models reloaded
 
@@ -76,12 +76,12 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
     | date_start | 2012-01-01 |
     | date_stop  | 2012-12-31 |
 
-    And I create monthly periods on the fiscal year with reference "fy2012"
+    And I create monthly periods on the fiscal year with reference "scenario.fy2012"
     Then I find a "account.fiscalyear" with oid: scenario.fy2012
     
   @base_finance_setup_currency_rates
   Scenario: CURRENCY RATES SETTINGS
-    Given I set the following currency rates :
+    Given I set the following currency rates:
       | currency |   rate | date     |
       | EUR      | 1.0000 | %Y-01-01 |
       | USD      | 1.5000 | %Y-01-01 |
