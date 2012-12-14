@@ -4,11 +4,13 @@ def impl(ctx):
     db = ctx.client.db
     assert_in('server', ctx.conf.keys())
     assert_equal(db.server_version(), '6.1')
+    
 @step('the database "{db_name}" exists')
 def impl(ctx, db_name):
     assert_in(db_name, ctx.client.db.list())
     ctx.conf['db_name'] = db_name
     # puts('Hey, db exists!')
+    
 @step('user "{user}" log in with password "{password}"')
 def impl(ctx, user, password):
     client = ctx.client

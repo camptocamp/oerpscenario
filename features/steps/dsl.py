@@ -1,6 +1,7 @@
 from ast import literal_eval
-
+import time
 from support.tools import puts, set_trace, model
+
 
 def parse_domain(domain):
     rv = {}
@@ -45,7 +46,10 @@ def build_search_domain(ctx, obj, values):
 
 def parse_table_values(ctx, obj, table):
     fields = model(obj).fields()
-    assert_equal(len(table.headings), 2)
+    if hasattr(table, 'headings'):
+        # if we have a real table, ensure it has 2 columns
+        # otherwise, we will just fail during iteration 
+        assert_equal(len(table.headings), 2)
     assert_true(fields)
     res = {}
     for (key, value) in table:

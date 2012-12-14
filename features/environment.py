@@ -27,6 +27,7 @@ def before_all(ctx):
         'admin_passwd': 'admin', #admin_passwd,
         'db_name': 'behave', #database,
     }
+    ctx.client.login('admin', 'admin', database='behave') # XXX
 
 
 def before_feature(ctx, feature):
