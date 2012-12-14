@@ -6,6 +6,7 @@ Some of them might be proposed upstream
 from behave import formatter
 from behave import matchers
 from behave import model
+from behave import runner
 
 __all__ = ['patch_all']
 _behave_patched = False
@@ -128,3 +129,26 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
         self.replay()
         self.stream.write('\033[A')
         self.stream.flush()
+
+
+# monkey patch Runner so that feature files are sorted
+import os
+def _patched_feature_files(self):
+    files = []
+    for path in self.config.paths:
+        if os.path.isdir(path):
+            for dirpath, dirnames, filenames in os.walk(path):
+                dirnames.sort()
+                for filename in sorted(filenames):
+                    if filename.endswith('.feature'):
+                        files.append(os.path.join(dirpath, filename))
+        elif path.startswith('@'):
+            files.extend([filename.strip() for filename in open(path)])
+        elif os.path.exists(path):
+            files.append(path)
+        else:
+            raise Exception("Can't find path: " + path)
+    return files
+
+from types import MethodType
+runner.Runner.feature_files = MethodType(_patched_feature_files, None, runner.Runner)
