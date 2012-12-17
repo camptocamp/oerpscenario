@@ -101,9 +101,12 @@ Then /^I should have following journal entries in voucher:$/ do |table|
     pname = Time.new().strftime(row['period'])
     period = AccountPeriod.find_by_name(pname, :fields=['id'])
     period.should_not be_nil, "no period #{pname} found"
-    domain = [['account_id', '=', account.id], ['period_id', '=', period.id],
-              ['date', '=', Time.new().strftime(row['date'])], ['credit', '=', row.fetch('credit', 0.0)],
-              ['debit', '=', row.fetch('debit', 0.0)],['amount_currency', '=', row.fetch('curr.amt', 0.0)],
+    domain = [['account_id', '=', account.id], 
+              ['period_id', '=', period.id],
+              ['date', '=', Time.new().strftime(row['date'])],
+              ['credit', '=', row.fetch('credit', 0.0)],
+              ['debit', '=', row.fetch('debit', 0.0)],
+              ['amount_currency', '=', row.fetch('curr.amt', 0.0)],
               ['currency_id', '=', currency_id],
               ['id', 'in', @found_item.move_line_ids.collect {|x| x.id}]]
     if row['reconcile']
