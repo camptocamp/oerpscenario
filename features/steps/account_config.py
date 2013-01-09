@@ -11,7 +11,7 @@ def impl(ctx, fy_ref):
     fy.read('period_ids')
     if not fy.period_ids:
         model('account.fiscalyear').create_period([fy.id], {}, 1)
-        
+
 
 @given('I set the following currency rates')
 def impl(ctx):
@@ -25,11 +25,22 @@ def impl(ctx):
             model('res.currency.rate').create(values)
         else:
             curr_rate[0].rate = row["rate"]
-            
-        
-        
+
+
+
 @given('I allow cancelling entries on all journals')
 def impl(ctx):
-    ids = model('account.journal').search([])
-    if ids:
-        model('account.journal').write(ids, {'update_posted': True})
+    for jrn in model('account.journal').browse([]):
+        jrn.write({'update_posted': True})
+
+@given(u'I have the module account installed')
+def impl(ctx):
+    assert model('ir.module.module').get(['name = account', 'state = installed'])
+
+@given(u'no account set')
+def impl(ctx):
+    assert model('account.account').get([]) is None
+
+@given(u'I want to generate account chart from chart template named "{name}" with "{digits}" digits')
+def impl(ctx, name, digits=0):
+    assert False

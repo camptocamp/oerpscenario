@@ -7,13 +7,12 @@
 
 # Features Generic tags (none for all)
 ##############################################################################
-
 # Branch      # Module       # Processes     # System
-@customer @customer_init
 
+@gm_init
 Feature: Param the new database
   In order to have a coherent installation
-  I autmated the manual steps.
+  As an administrator autmated the manual installation steps.
 
   Scenario: install modules
     Given I update the module list
@@ -24,54 +23,69 @@ Feature: Param the new database
      | account_payment   |
      | account_voucher   |
      | analytic          |
-     | base              |
-     | base_action_rule  |
-     | base_calendar     |
-     | base_iban         |
-     | base_setup        |
-     | base_tools        |
      | board             |
-     | crm               |
      | decimal_precision |
      | fetchmail         |
      | l10n_ch           |
-     | mail              |
-     | process           |
-     | procurement       |
-     | product           |
-     | purchase          |
      | report_webkit     |
-     | resource          |
-     | sale              |
-     | sale_crm          |
-     | stock             |
-     | web               |
-     | web_calendar      |
-     | web_dashboard     |
-     | web_diagram       |
-     | web_gantt         |
-     | web_graph         |
-     | web_kanban        |
-     | web_mobile        |
-     | web_tests         |
+
     Then my modules should have been installed and models reloaded
-    Given I give all groups right access to admin user
-  Scenario: install lang
-   Given I install the following language :
-      | lang  |
-      | fr_FR |
-      | de_DE |
-   Then the language should be available
+
+  Scenario: USER RIGHTS SETTINGS
+    Given we select users below:
+        | login |
+        | admin |
+    Then we assign all groups to the users
+
+  Scenario: LANGUAGE INSTALL
+    Given I install the following languages:
+        | lang  |
+        | fr_FR |
+        | de_DE |
+        | it_IT |
+    Then the language should be available
+
+  Scenario: LANGUAGE SETTINGS
+    Given I need a "res.lang" with code: en_US
+    And having:
+    | name              | value     |
+    | date_format       | %d/%m/%Y  |
+    | grouping          | [3,0]     |
+    | thousands_sep     | '         |
+
+   Given I need a "res.lang" with code: fr_FR
+    And having:
+    | name              | value     |
+    | date_format       | %d/%m/%Y  |
+    | grouping          | [3,0]     |
+    | thousands_sep     | '         |
+
+  Given I need a "res.lang" with code: de_DE
+     And having:
+     | name              | value     |
+     | date_format       | %d/%m/%Y  |
+     | grouping          | [3,0]     |
+     | thousands_sep     | '         |
+
+  Given I need a "res.lang" with code: it_IT
+    And having:
+    | name              | value     |
+    | date_format       | %d/%m/%Y  |
+    | grouping          | [3,0]     |
+    | thousands_sep     | '         |
 
 
-  Scenario: Config lang_locals
-  Given I have install "fr_FR" language
-  And I set "fr_FR" language to swiss formatting
-  Then  "fr_FR" language date format should have changed
+  Scenario: CREATION OF FISCAL YEAR 2013
+    Given I need a "account.fiscalyear" with oid: scenario.fy2013
+    And having:
+       | name       | value      |
+       | name       | 2013       |
+       | code       | 2013       |
+       | date_start | 2013-01-01 |
+       | date_stop  | 2013-12-31 |
 
-  Given I have install "de_DE" language
-  And I set "de_DE" language to swiss formatting
-  Then "de_DE" language date format should have changed
+       And I create monthly periods on the fiscal year with reference "scenario.fy2013"
+       Then I find a "account.fiscalyear" with oid: scenario.fy2012
 
   Scenario: Generate account chart
     Given I have the module account installed
@@ -139,23 +153,3 @@ Feature: Param the new database
          | printaccount     | true                  |
 
     And the bank account is linked to bank "Postfinance"
-
-  @setup_property
-  Scenario: set properties
-    Given I set global property named "property_account_receivable" for model "res.partner" and field "property_account_receivable"
-    And the property is related to model "account.account" using column "code" and value "X11002"
-
-  Scenario: create user ERP Manager
-    Given create a ERP manager user with password "naewaiT6N"
-    
-  @set_ir_exports
-  Scenario: create ir.exports
-    Given I create an "Arrêt standard" export for model "cpm.arret" with following columns:
-       | name                |
-       | ar_code_int         |
-       | ar_code_comm        |
-       | ar_lib              |
-       | ar_zon_id/zon_code  |
-       | company_id/etc_code |
-       | deb_val_date        |
-       | fin_val_date        |
