@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+import sys
 import erppeek
 import pdb
 from support import tools, behave_better
 
 __all__ = []
-OPENERP_ARGS = '-c etc/openerp-server.conf --without-demo all'
+OPENERP_ARGS = '-c etc/openerp.cfg --without-demo all'
 OPENERP_ARGS += ' --logfile var/log/behave-stdout.log'
 
 # Print readable 'Fault' errors
@@ -14,20 +15,16 @@ behave_better.patch_all()
 
 
 def before_all(ctx):
-    #pdb.set_trace()
     server = erppeek.start_openerp_services(OPENERP_ARGS)
-    admin_passwd = server.tools.config['admin_passwd']
     database = server.tools.config['db_name']
-    #assert database, 'no database found'
     ctx._is_context = True
     ctx.client = erppeek.Client(server, verbose=ctx.config.verbose)
-    ctx.conf = {
-        'server': server,
-        # XXX 
-        'admin_passwd': 'admin', #admin_passwd,
-        'db_name': 'behave', #database,
-    }
-    ctx.client.login('admin', 'admin', database='behave') # XXX
+    ctx.conf = {'server': server,
+                'admin_passwd': server.tools.config['admin_passwd'],
+                'db_name': database,
+                }
+    ctx.client.login('admin', 'admin', database=database)
+
 
 
 def before_feature(ctx, feature):
