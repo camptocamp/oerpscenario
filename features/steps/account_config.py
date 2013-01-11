@@ -39,7 +39,7 @@ def impl(ctx):
 
 @given(u'no account set')
 def impl(ctx):
-    assert model('account.account').search([]) is None
+    len(model('account.account').search([])) == 0
 
 @given(u'I want to generate account chart from chart template named "{name}" with "{digits}" digits')
 def impl(ctx, name, digits=0):
@@ -47,7 +47,6 @@ def impl(ctx, name, digits=0):
     assert template
     root_account = template.account_root_id
     assert root_account
-    import pdb; pdb.set_trace()
     configuration_wizard = model('wizard.multi.charts.accounts').create({'code_digits': digits,
                                                                          'chart_template_id': template.id})
     vals = configuration_wizard.onchange_chart_template_id(template.id)

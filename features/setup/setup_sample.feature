@@ -9,26 +9,32 @@
 ##############################################################################
 # Branch      # Module       # Processes     # System
 
-@gm_init
+@customer_init
 Feature: Param the new database
   In order to have a coherent installation
   As an administrator autmated the manual installation steps.
+  @customer_db
+  Scenario: CREATE DATABASE
+    #Given I drop database "openerp_test_customer" TODO
+    Given I create database "openerp_test_customer"
 
-  Scenario: install modules
+  @customer_addons
+  Scenario: INSTALL MODULES
     Given I update the module list
     Given I install the required modules with dependencies:
-     | name              |
-     | account           |
-     | account_cancel    |
-     | account_payment   |
-     | account_voucher   |
-     | analytic          |
-     | board             |
-     | decimal_precision |
-     | fetchmail         |
-     | l10n_ch           |
-     | report_webkit     |
-
+     | name                 |
+     | account              |
+     | account_cancel       |
+     | account_payment      |
+     | sale                 |
+     | analytic             |
+     | l10n_ch              |
+     | l10n_ch_payment_slip |
+     | report_webkit        |
+     | l10_ch_dta           |
+     | l10n_ch_bank         |
+     | base_headers_webkit  |
+     | invoice_webkit       |
     Then my modules should have been installed and models reloaded
 
   Scenario: USER RIGHTS SETTINGS
@@ -48,31 +54,31 @@ Feature: Param the new database
   Scenario: LANGUAGE SETTINGS
     Given I need a "res.lang" with code: en_US
     And having:
-    | name              | value     |
-    | date_format       | %d/%m/%Y  |
-    | grouping          | [3,0]     |
-    | thousands_sep     | '         |
+    | name          | value    |
+    | date_format   | %d/%m/%Y |
+    | grouping      | [3,0]    |
+    | thousands_sep | '        |
 
    Given I need a "res.lang" with code: fr_FR
     And having:
-    | name              | value     |
-    | date_format       | %d/%m/%Y  |
-    | grouping          | [3,0]     |
-    | thousands_sep     | '         |
+    | name          | value    |
+    | date_format   | %d/%m/%Y |
+    | grouping      | [3,0]    |
+    | thousands_sep | '        |
 
   Given I need a "res.lang" with code: de_DE
      And having:
-     | name              | value     |
-     | date_format       | %d/%m/%Y  |
-     | grouping          | [3,0]     |
-     | thousands_sep     | '         |
+     | name          | value    |
+     | date_format   | %d/%m/%Y |
+     | grouping      | [3,0]    |
+     | thousands_sep | '        |
 
   Given I need a "res.lang" with code: it_IT
     And having:
-    | name              | value     |
-    | date_format       | %d/%m/%Y  |
-    | grouping          | [3,0]     |
-    | thousands_sep     | '         |
+    | name          | value    |
+    | date_format   | %d/%m/%Y |
+    | grouping      | [3,0]    |
+    | thousands_sep | '        |
 
 
   Scenario: CREATION OF FISCAL YEAR 2013
@@ -87,69 +93,59 @@ Feature: Param the new database
        And I create monthly periods on the fiscal year with reference "scenario.fy2013"
        Then I find a "account.fiscalyear" with oid: scenario.fy2012
 
-  Scenario: Generate account chart
+  Scenario: GENERATE ACCOUNT CHART
     Given I have the module account installed
     And no account set
     And I want to generate account chart from chart template named "Plan comptable STERCHI" with "0" digits
     When I generate the chart
     Then accounts should be available
 
-  Scenario: Configure main partner and company
-      Given I should have a company
+  Scenario: CONFIGURE MAIN PARTNER AND COMPANY
+      Given I need a "res.company" with oid: base.main_company
+      And having:
+         | name           | value           |
+         | name           | GeneralMedia SA |
+         | bvr_background | 0               |
       Given the company has the "logo.png" logo
-      And his rml header set to "rml_header.txt"
-      Then I set the company with the following data :
-         | key            | value           |
-         | name           | 'Customer_name' |
-         | bvr_background | true            |
-
-
       And the main company currency is "CHF" with a rate of "1.00"
 
-      And I set the company main partner with the following data :
-         | key        | value             |
-         | first_name | 'Customer_name'   |
-         | lang       | 'fr_FR'           |
-         | website    | 'www.website.com' |
-         | customer   | false             |
+      Given I need a "res.partner" with oid: base.main_partner
+      And having:
+         | name                        | customer           |
+         | lang                        | fr_FR              |
+         | website                     | www.customer.ch    |
+         | customer                    |                    |
+         | supplier                    |                    |
+         | street                      | Chemin de xxx 8    |
+         | street2                     | Case postale 107   |
+         | city                        | Lausanne           |
+         | zip                         | CH-1000            |
+         | phone                       | +41 (0)21 21 21 21 |
+         | fax                         | +41 (0)21 21 21 21 |
+         | email                       | info@customer.ch   |
+         | country_id                  | by code: CH        |
+         | property_account_receivable | by code: 1100      |
 
-      And I set the main address with the following data :
-         | key     | value                         |
-         | zip     | '3012'                        |
-         | fax     | '+358 9 8561 9901'            |
-         | phone   | '+41 79 210 98 55'            |
-         | email   | 'nfo-switzerland@website.com' |
-         | street  | 'Stadtbachstrasse 40'         |
-         | street2 | ''                            |
-         | city    | 'Bern'                        |
-         | name    | 'Customer_name System AG'     |
 
-     And I update the address country code to CH
-     Given the main company has a default_income_account set to "3000"
-     Given the main company has a default payment_term set to "30 Days End of Month"
+  Scenario: SETUP WEBKIT
+    Given I need a "res.company" with oid: base.main_company
+    And I set the webkit path to "/srv/openerp/webkit_library/wkhtmltopdf-amd64"
 
-  Scenario: Configure journal
-    Given there is a journal named "Banque CHF" of type "bank"
-     And the journal default debit account is set to "1020"
-     And the journal default credit account is set to "1020"
-     Given all journals allow entry cancellation
-
-  Scenario: Configure banque account:
-    Given there is a bank account named "XX-XXXX-X" linked to partner "Customer_name"
-     And I set the bank account with the following data :
-         | key              | value                 |
-         | city             | 'Bern'                |
-         | owner_name       | 'Customer_name'       |
-         | name             | '01-78367-7'          |
-         | zip              | '3012'                |
-         | country_id       | 41                    |
-         | state            | 'bvrpost'             |
-         | street           | 'Stadtbachstrasse 40' |
-         | acc_number       | 'XX'                  |
-         | bvr_number       | 'XX'                  |
-         | post_number      | 'XX'                  |
-         | bvr_adherent_num | '0000000'             |
-         | printbank        | false                 |
-         | printaccount     | true                  |
-
-    And the bank account is linked to bank "Postfinance"
+  @customer_bank_account
+  Scenario: CONFIGURE BANQUE ACCOUNT:
+     Given I need a "res.partner.bank" with oid: scen.main_bank
+     And having:
+         | name             | value                     |
+         | partner_id       | by oid: base.main_partner |
+         | company_id       | by oid: base.main_company |
+         | zip              | CH-1000                   |
+         | country_id       | by code: CH               |
+         | state            | bvr                       |
+         | street           | Chemin de xxx 8           |
+         | acc_number       | xx-xxxx-x                 |
+         | bvr_adherent_num | xxxxxx                    |
+         | print_bank       | 0                         |
+         | print_account    | 1                         |
+         | bank_name        | CREDIT SUISSE             |
+         | bank_bic         | CRESCHZZ80A               |
+         | currency_id      | by name: CHF              |

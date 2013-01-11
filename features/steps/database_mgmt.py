@@ -4,13 +4,13 @@ def impl(ctx):
     db = ctx.client.db
     assert_in('server', ctx.conf.keys())
     assert_equal(db.server_version(), '6.1')
-    
+
 @step('the database "{db_name}" exists')
 def impl(ctx, db_name):
     assert_in(db_name, ctx.client.db.list())
     ctx.conf['db_name'] = db_name
     # puts('Hey, db exists!')
-    
+
 @step('user "{user}" log in with password "{password}"')
 def impl(ctx, user, password):
     client = ctx.client
@@ -24,3 +24,6 @@ def impl(ctx, user, password):
     # set_trace()
     # assert_true(0)
 
+@given(u'I create database "{db_name}"')
+def impl(ctx, db_name):
+    ctx.client.create_database('admin', db_name)
