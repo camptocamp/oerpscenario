@@ -16,7 +16,7 @@ Feature: Param the new database
   @customer_db
   Scenario: CREATE DATABASE
     #Given I drop database "openerp_test_customer" TODO
-    Given I create database "openerp_test_customer"
+    Given I create database "openerp_test_customer" with admin password "admin"
 
   @customer_addons
   Scenario: INSTALL MODULES

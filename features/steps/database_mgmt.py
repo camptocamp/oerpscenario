@@ -24,6 +24,6 @@ def impl(ctx, user, password):
     # set_trace()
     # assert_true(0)
 
-@given(u'I create database "{db_name}"')
-def impl(ctx, db_name):
-    ctx.client.create_database('admin', db_name)
+@given(u'I create database "{db_name}" with admin password "{admin_pass}"')
+def impl(ctx, db_name, admin_pass):
+    ctx.client.create_database(admin_pass, db_name)
