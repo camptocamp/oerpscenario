@@ -24,6 +24,7 @@ def impl(ctx, rate_code, rate_value):
     rate = model('res.currency.rate').get([('currency_id', '=', currency_id)])
     assert rate
     rate.write({'rate': rate_value})
+    company.write({'currency_id': rate.id})
 
 @given(u'I set the webkit path to "{webkit_path}"')
 def impl(ctx, webkit_path):
