@@ -27,6 +27,8 @@ def impl(ctx, rate_code, rate_value):
 
 @given(u'I set the webkit path to "{webkit_path}"')
 def impl(ctx, webkit_path):
-    assert ctx.found_item
-    company = ctx.found_item
-    model('ir.config_parameter').create({'key': 'webkit_path', 'value': webkit_path})
+    key = model('ir.config_parameter').get("key = webkit_path")
+    if key:
+        key.write({'value': webkit_path})
+    else:
+        model('ir.config_parameter').create({'key': 'webkit_path', 'value': webkit_path})

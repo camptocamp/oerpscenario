@@ -10,7 +10,7 @@
 
 Feature: GENERIC CHART OF TAXES & GENERIC CHART OF TAX CODES
 
-  @base_taxes
+  @base_finance_taxe_codes
   Scenario: GENERIC CHART OF TAX CODES
  
 # CHART ROOT
@@ -85,7 +85,7 @@ Feature: GENERIC CHART OF TAXES & GENERIC CHART OF TAX CODES
     | parent_id             | by oid: scen.taxe_code_base   |  
 
 
-  @base_taxes
+  @base_finance_taxes
   Scenario: GENERIC CHART OF TAXES
     Given I need a "account.tax" with oid: scen.purchases_vat_10
     And having:

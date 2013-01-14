@@ -10,6 +10,11 @@
 
 Feature: INITIAL SET-UP FOR NEW DATABASE
 
+  @base_finance_create_db
+  Scenario: CREATE DATABASE
+    #Given I drop database "toto" TODO
+    Given I create database "lp7"
+
   @base_finance_setup_install_modules
   Scenario: MODULES INSTALLATION
 
@@ -22,17 +27,16 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
       | account_cancel                  |
       | purchase                        |
       | sale                            |
-      | stock_move_change_delivery_date |
-      | report_webkit_lib               |
-      | product_standard_margin         |
-      | product_historical_margin       |
-      | report_webkit_lib               |
-      | account_financial_report_webkit |
-      | invoice_webkit                  |
-      | purchase_order_webkit           |
-      | sale_order_webkit               |
-      | stock_picking_webkit            |
-      | account_advanced_reconcile      |
+#      | stock_move_change_delivery_date |
+#      | report_webkit_lib               |
+#      | product_standard_margin         |
+#      | product_historical_margin       |
+#      | account_financial_report_webkit |
+#      | invoice_webkit                  |
+#      | purchase_order_webkit           |
+#      | sale_order_webkit               |
+#      | stock_picking_webkit            |
+#      | account_advanced_reconcile      |
 
     Then my modules should have been installed and models reloaded
 
@@ -64,20 +68,19 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
       | login |
       | admin |
     Then we assign all groups to the users
-    And we activate the extended view on the users
 
   @base_finance_setup_create_fy
-  Scenario: CREATION OF FISCAL YEAR 2012
-    Given I need a "account.fiscalyear" with oid: scenario.fy2012
+  Scenario: CREATION OF FISCAL YEAR 2013
+    Given I need a "account.fiscalyear" with oid: scenario.fy2013
     And having:
     | name       | value      |
-    | name       | 2012       |
-    | code       | 2012       |
-    | date_start | 2012-01-01 |
-    | date_stop  | 2012-12-31 |
+    | name       | 2013       |
+    | code       | 2013       |
+    | date_start | 2013-01-01 |
+    | date_stop  | 2013-12-31 |
 
-    And I create monthly periods on the fiscal year with reference "scenario.fy2012"
-    Then I find a "account.fiscalyear" with oid: scenario.fy2012
+    And I create monthly periods on the fiscal year with reference "scenario.fy2013"
+    Then I find a "account.fiscalyear" with oid: scenario.fy2013
 
   @base_finance_setup_currency_rates
   Scenario: CURRENCY RATES SETTINGS

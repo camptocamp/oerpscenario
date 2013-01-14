@@ -10,9 +10,9 @@
 
 Feature: FINANCIAL JOURNALS CREATION
 
-  @account_voucher_init
+  @base_finance_journals
   Scenario: FINANCIAL JOURNALS CREATION
-   Given I need a "account.journal" with oid: scen.voucher_eur_journal
+   Given I need a "account.journal" with oid: scen.eur_journal
    And having:
      | name                      | value                           |
      | name                      | EUR bank                        |
@@ -20,10 +20,9 @@ Feature: FINANCIAL JOURNALS CREATION
      | type                      | bank                            |
      | default_debit_account_id  | by code: 5121                   |
      | default_credit_account_id | by code: 5121                   |
-     | view_id                   | by name: Bank/Cash Journal View |
      | allow_date                | t                               |
 
-   Given I need a "account.journal" with oid: scen.voucher_usd_journal
+   Given I need a "account.journal" with oid: scen.usd_journal
    And having:
      | name                      | value                           |
      | name                      | USD bank                        |
@@ -32,10 +31,9 @@ Feature: FINANCIAL JOURNALS CREATION
      | currency                  | by name: USD                    |
      | default_debit_account_id  | by code: 5122                   |
      | default_credit_account_id | by code: 5122                   |
-     | view_id                   | by name: Bank/Cash Journal View |
      | allow_date                | t                               |
 
-   Given I need a "account.journal" with oid: scen.voucher_gbp_journal
+   Given I need a "account.journal" with oid: scen.gbp_journal
    And having:
       | name                      | value                           |
       | name                      | GBP bank                        |
@@ -44,7 +42,6 @@ Feature: FINANCIAL JOURNALS CREATION
       | currency                  | by name: GBP                    |
       | default_debit_account_id  | by code: 5123                   |
       | default_credit_account_id | by code: 5123                   |
-      | view_id                   | by name: Bank/Cash Journal View |
       | allow_date                | t                               |
 
    Given I need a "account.journal" with oid: scen.sales_journal
@@ -55,7 +52,6 @@ Feature: FINANCIAL JOURNALS CREATION
       | type                      | sale                                |
       | default_debit_account_id  | by code: 707                        |
       | default_credit_account_id | by code: 707                        |
-      | view_id                   | by name: Sale/Purchase Journal View |
       | group_invoice_lines       | f                                   |
       | allow_date                | t                                   |
 
@@ -67,7 +63,6 @@ Feature: FINANCIAL JOURNALS CREATION
       | type                      | sale_refund                         |
       | default_debit_account_id  | by code: 707                        |
       | default_credit_account_id | by code: 707                        |
-      | view_id                   | by name: Sale/Purchase Journal View |
       | group_invoice_lines       | f                                   |
       | allow_date                | t                                   |
 
@@ -79,7 +74,6 @@ Feature: FINANCIAL JOURNALS CREATION
       | type                      | purchase                            |
       | default_debit_account_id  | by code: 607                        |
       | default_credit_account_id | by code: 607                        |
-      | view_id                   | by name: Sale/Purchase Journal View |
       | group_invoice_lines       | f                                   |
       | allow_date                | t                                   |
 
@@ -91,7 +85,6 @@ Feature: FINANCIAL JOURNALS CREATION
       | type                      | purchase_refund                     |
       | default_debit_account_id  | by code: 607                        |
       | default_credit_account_id | by code: 607                        |
-      | view_id                   | by name: Sale/Purchase Journal View |
       | group_invoice_lines       | f                                   |
       | allow_date                | t                                   |
 
@@ -101,7 +94,6 @@ Feature: FINANCIAL JOURNALS CREATION
       | name                      | Miscellaneous                       |
       | code                      | MISC                                |
       | type                      | general                             |
-      | view_id                   | by name: Journal View               |
       | allow_date                | t                                   |
 
      Given I need a "account.journal" with oid: scen.misc_journal
@@ -112,7 +104,6 @@ Feature: FINANCIAL JOURNALS CREATION
       | type                      | situation                           |
       | default_debit_account_id  | by code: 120                        |
       | default_credit_account_id | by code: 120                        |
-      | view_id                   | by name: Journal View               |
       | centralisation            | t                                   |
 
 

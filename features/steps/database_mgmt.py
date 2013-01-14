@@ -3,7 +3,7 @@ from support import *
 def impl(ctx):
     db = ctx.client.db
     assert_in('server', ctx.conf.keys())
-    assert_equal(db.server_version(), '6.1')
+    assert_equal(db.server_version(), '7.0')
 
 @step('the database "{db_name}" exists')
 def impl(ctx, db_name):
