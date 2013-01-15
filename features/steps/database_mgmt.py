@@ -1,9 +1,10 @@
 from support import *
-@given('the server is on')
-def impl(ctx):
+
+@given('the server is up and running OpenERP {version}')
+def impl(ctx, version):
     db = ctx.client.db
     assert_in('server', ctx.conf.keys())
-    assert_equal(db.server_version(), '7.0')
+    assert_equal(db.server_version(), version)
 
 @step('the database "{db_name}" exists')
 def impl(ctx, db_name):

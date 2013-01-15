@@ -11,7 +11,7 @@
 Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
 
   Scenario: Ensure the db is available
-    Given the server is on
+    Given the server is up and running OpenERP 7.0
     And the database "behave" exists
     Then user "admin" log in with password "admin"
 
