@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-import sys
 import erppeek
-import pdb
 from support import tools, behave_better
 
 __all__ = []
