@@ -38,7 +38,7 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
      Given I need a "account.account" with oid: scen.acc_fx
     And having:
     | name        | value               |
-    | name        | Currency fx         |
+    | name        | Curr. fx gain&loss  |
     | code        | 666                 |
     | type        | other               |
     | parent_id   | by code: C0         |
@@ -96,6 +96,15 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | code        | 6821                |
     | parent_id   | by code: C0         |
     | type        | other               |
+    | user_type   | by name: Expense    |
+
+     Given I need a "account.account" with oid: scen.acc_fi_dep
+    And having:
+    | name        | value               |
+    | name        | Fi. depreciation    |
+    | code        | 686                 |
+    | type        | other               |
+    | parent_id   | by code: C0         |
     | user_type   | by name: Expense    |
 
      Given I need a "account.account" with oid: scen.acc_pl
@@ -201,6 +210,34 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | parent_id   | by code: C0         |
     | type        | other               |
     | user_type   | by name: Asset      |
+
+      Given I need a "account.account" with oid: scen.prov
+    And having:
+    | name        | value               |
+    | name        | Provision bs acc.   |
+    | code        | 1515                |
+    | parent_id   | by code: C0         |
+    | type        | other               |
+    | user_type   | by name: Liability  |
+
+      Given I need a "account.account" with oid: scen.unrealized_loss
+    And having:
+    | name        | value               |
+    | name        | Unrealized fx loss  |
+    | code        | 476                 |
+    | parent_id   | by code: C0         |
+    | type        | other               |
+    | user_type   | by name: Asset      |
+
+      Given I need a "account.account" with oid: scen.unrealized_gain
+    And having:
+    | name        | value               |
+    | name        | Unrealized fx gain  |
+    | code        | 477                 |
+    | parent_id   | by code: C0         |
+    | type        | other               |
+    | user_type   | by name: Liability  |
+
 
       Given I need a "account.account" with oid: scen.acc_inv
     And having:

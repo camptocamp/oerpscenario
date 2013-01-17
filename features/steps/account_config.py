@@ -18,10 +18,11 @@ def impl(ctx):
     for row in ctx.table:
         date = datetime.date.today().strftime(row['date'])
         currency = model('res.currency').get([('name', '=', row['currency'])])
+        type = model('res.currency.rate.type').get([('name', '=', row['type'])])
         curr_rate = model('res.currency.rate').browse([('name', '=', date), ('currency_id', '=', currency.id)])
         if not curr_rate:
             puts('creating new rate')
-            values = {'name': date, 'currency_id': currency.id, 'rate': row['rate']}
+            values = {'name': date, 'currency_id': currency.id, 'rate': row['rate'],'currency_rate_type_id': type.id}
             model('res.currency.rate').create(values)
         else:
             curr_rate[0].rate = row["rate"]

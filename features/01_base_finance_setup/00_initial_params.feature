@@ -13,7 +13,7 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
   @base_finance_create_db
   Scenario: CREATE DATABASE
     #Given I drop database "toto" TODO
-    Given I create database "lp7"
+    Given I create database "70" with admin password "admin"
 
   @base_finance_setup_install_modules
   Scenario: MODULES INSTALLATION
@@ -27,6 +27,7 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
       | account_cancel                  |
       | purchase                        |
       | sale                            |
+      | web_shortcuts                   |       
 #      | stock_move_change_delivery_date |
 #      | report_webkit_lib               |
 #      | product_standard_margin         |
@@ -70,6 +71,19 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
     Then we assign all groups to the users
 
   @base_finance_setup_create_fy
+  Scenario: CREATION OF FISCAL YEAR 2012
+    Given I need a "account.fiscalyear" with oid: scenario.fy2012
+    And having:
+    | name       | value      |
+    | name       | 2012       |
+    | code       | 2012       |
+    | date_start | 2012-01-01 |
+    | date_stop  | 2012-12-31 |
+
+    And I create monthly periods on the fiscal year with reference "scenario.fy2012"
+    Then I find a "account.fiscalyear" with oid: scenario.fy2012
+
+  @base_finance_setup_create_fy
   Scenario: CREATION OF FISCAL YEAR 2013
     Given I need a "account.fiscalyear" with oid: scenario.fy2013
     And having:
@@ -83,43 +97,56 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
     Then I find a "account.fiscalyear" with oid: scenario.fy2013
 
   @base_finance_setup_currency_rates
-  Scenario: CURRENCY RATES SETTINGS
+   Scenario: CURRENCY RATES TYPE NAME CREATION (mainly for module account_multicurrency_revaluation)
+    Given I need a "res.currency.rate.type" with oid: scen.average_fx_rate_type
+    And having:
+    | name                  | value          |
+    | name                  | average        |
+
+   Scenario: CURRENCY RATES SETTINGS
     Given I set the following currency rates:
-      | currency |   rate | date     |
-      | EUR      | 1.0000 | %Y-01-01 |
-      | USD      | 1.5000 | %Y-01-01 |
-      | USD      | 1.8000 | %Y-02-01 |
-      | USD      | 1.5000 | %Y-03-01 |
-      | USD      | 1.4000 | %Y-04-01 |
-      | USD      | 1.4500 | %Y-05-01 |
-      | USD      | 1.5500 | %Y-06-01 |
-      | USD      | 1.5700 | %Y-07-01 |
-      | USD      | 1.6000 | %Y-08-01 |
-      | USD      | 1.6500 | %Y-09-01 |
-      | USD      | 1.6300 | %Y-10-01 |
-      | USD      | 1.6100 | %Y-11-01 |
-      | USD      | 1.5700 | %Y-12-01 |
-      | GBP      | 0.8000 | %Y-01-01 |
-      | GBP      | 0.9000 | %Y-02-01 |
-      | GBP      | 0.8000 | %Y-03-01 |
-      | GBP      | 0.8200 | %Y-04-01 |
-      | GBP      | 0.8300 | %Y-05-01 |
-      | GBP      | 0.7900 | %Y-06-01 |
-      | GBP      | 0.8400 | %Y-07-01 |
-      | GBP      | 0.7600 | %Y-08-01 |
-      | GBP      | 0.7700 | %Y-09-01 |
-      | GBP      | 0.8900 | %Y-10-01 |
-      | GBP      | 0.9200 | %Y-11-01 |
-      | GBP      | 0.9500 | %Y-12-01 |
-      | CAD      | 1.1500 | %Y-01-01 |
-      | CAD      | 1.1700 | %Y-02-01 |
-      | CAD      | 1.1900 | %Y-03-01 |
-      | CAD      | 1.2000 | %Y-04-01 |
-      | CAD      | 1.0500 | %Y-05-01 |
-      | CAD      | 1.1000 | %Y-06-01 |
-      | CAD      | 1.1800 | %Y-07-01 |
-      | CAD      | 1.2200 | %Y-08-01 |
-      | CAD      | 1.2400 | %Y-09-01 |
-      | CAD      | 1.2600 | %Y-10-01 |
-      | CAD      | 1.1600 | %Y-11-01 |
-      | CAD      | 1.1300 | %Y-12-01 |
+      | currency |   rate | date     |  type |
+      | EUR      | 1.0000 | %Y-01-01 |       |
+      | USD      | 1.5000 | %Y-01-01 |       |
+      | USD      | 1.8000 | %Y-02-01 |       |
+      | USD      | 1.5000 | %Y-03-01 |       |
+      | USD      | 1.4000 | %Y-04-01 |       |
+      | USD      | 1.4500 | %Y-05-01 |       |
+      | USD      | 1.5500 | %Y-06-01 |       |
+      | USD      | 1.5700 | %Y-07-01 |       |
+      | USD      | 1.6000 | %Y-08-01 |       |
+      | USD      | 1.6500 | %Y-09-01 |       |
+      | USD      | 1.6300 | %Y-10-01 |       |
+      | USD      | 1.6100 | %Y-11-01 |       |
+      | USD      | 1.5700 | %Y-12-01 |       |
+      | GBP      | 0.8000 | %Y-01-01 |       |
+      | GBP      | 0.9000 | %Y-02-01 |       |
+      | GBP      | 0.8000 | %Y-03-01 |       |
+      | GBP      | 0.8200 | %Y-04-01 |       |
+      | GBP      | 0.8300 | %Y-05-01 |       |
+      | GBP      | 0.7900 | %Y-06-01 |       |
+      | GBP      | 0.8400 | %Y-07-01 |       |
+      | GBP      | 0.7600 | %Y-08-01 |       |
+      | GBP      | 0.7700 | %Y-09-01 |       |
+      | GBP      | 0.8900 | %Y-10-01 |       |
+      | GBP      | 0.9200 | %Y-11-01 |       |
+      | GBP      | 0.9500 | %Y-12-01 |       |
+      | CAD      | 1.1500 | %Y-01-01 |       |
+      | CAD      | 1.1700 | %Y-02-01 |       |
+      | CAD      | 1.1900 | %Y-03-01 |       |
+      | CAD      | 1.2000 | %Y-04-01 |       |
+      | CAD      | 1.0500 | %Y-05-01 |       |
+      | CAD      | 1.1000 | %Y-06-01 |       |
+      | CAD      | 1.1800 | %Y-07-01 |       |
+      | CAD      | 1.2200 | %Y-08-01 |       |
+      | CAD      | 1.2400 | %Y-09-01 |       |
+      | CAD      | 1.2600 | %Y-10-01 |       |
+      | CAD      | 1.1600 | %Y-11-01 |       |
+      | CAD      | 1.1300 | %Y-12-01 |       |
+      | USD      | 1.6000 | %Y-01-31 |average|
+      | USD      | 1.9000 | %Y-02-28 |average|   
+      | GBP      | 0.7000 | %Y-01-31 |average|   
+      | GBP      | 0.8000 | %Y-02-28 |average|   
+      | CAD      | 1.2500 | %Y-01-01 |average|
+      | CAD      | 1.2700 | %Y-02-01 |average|
+   
