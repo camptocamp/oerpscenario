@@ -53,7 +53,7 @@ Feature: Param the new database
      | company_id               | by oid: base.main_company    |
      | company_ids              | all by oid: base.main_company  |
 
-    And we assign to user the groups bellow:
+    And we assign to user the groups bellow
      | group_name                       |
      | Contact Creation                 |
      | Settings                         |

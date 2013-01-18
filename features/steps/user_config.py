@@ -25,7 +25,7 @@ def impl(ctx):
     for user in ctx.found_items:
         assign_groups(user, groups)
 
-@given(u'we assign to {users} the groups bellow:')
+@given(u'we assign to {users} the groups bellow')
 def impl(ctx, users):
     group_names = [row['group_name'] for row in ctx.table]
     groups = model('res.groups').browse([('name', 'in', group_names)])
