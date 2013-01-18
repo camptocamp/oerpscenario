@@ -28,6 +28,7 @@ def impl(ctx):
 @given(u'we assign to {users} the groups bellow')
 def impl(ctx, users):
     group_names = [row['group_name'] for row in ctx.table]
+    group_names list(set(group_names))
     groups = model('res.groups').browse([('name', 'in', group_names)])
     assert_equal(len(groups), len(group_names))
     assert users in ('user', 'users')
