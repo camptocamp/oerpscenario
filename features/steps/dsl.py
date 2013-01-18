@@ -48,7 +48,7 @@ def parse_table_values(ctx, obj, table):
     fields = model(obj).fields()
     if hasattr(table, 'headings'):
         # if we have a real table, ensure it has 2 columns
-        # otherwise, we will just fail during iteration 
+        # otherwise, we will just fail during iteration
         assert_equal(len(table.headings), 2)
     assert_true(fields)
     res = {}
@@ -94,7 +94,8 @@ def impl_having(ctx):
     if isinstance(ctx.found_item, dict):
         values = ctx.found_item
         values.update(table_values)
-        create_new_obj(ctx, ctx.search_model_name, values)
+        ctx.found_item = create_new_obj(ctx, ctx.search_model_name, values)
+
     else:
         ctx.found_item.write(table_values)
 
