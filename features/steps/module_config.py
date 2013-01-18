@@ -2,9 +2,7 @@ from support.tools import puts, set_trace, model, assert_true, assert_less
 import pprint
 if False:
     def given(str):
-        return 
-
-
+        return
 
 @given(u'I install the following languages')
 def impl(ctx):
@@ -15,7 +13,7 @@ def impl(ctx):
         res = model('base.language.install').create({'lang': lang})
         model('base.language.install').lang_install([res.id])
         cfglang.add(lang)
-        
+
 @then('these languages should be available')
 def impl(ctx):
     for lang in ctx.data['lang']:
@@ -59,3 +57,8 @@ def impl(ctx):
 @then('my modules should have been installed and models reloaded')
 def impl(ctx):
     pass # XXX
+
+@given('The setting execution is run')
+def impl(ctx):
+    assert ctx.found_item
+    ctx.found_item.execute()
