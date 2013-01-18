@@ -43,6 +43,28 @@ Feature: Param the new database
         | admin |
     Then we assign all groups to the users
 
+ Given I need a "res.users" with oid: scen.fr_main_user
+     And having:
+     | name                     | value                        |
+     | name                     | fr                           |
+     | login                    | fr                           |
+     | password                 | fr                           |
+     | lang                     | fr_FR                        |
+     | company_id               | by oid: base.main_company    |
+     | company_ids              | all by oid: base.main_company  |
+
+    And we assign to user the groups bellow:
+     | group_name                       |
+     | Contact Creation                 |
+     | Settings                         |
+     | Access Rights                    |
+     | Multi Companies                  |
+     | Multi Currencies                 |
+     | Technical Features               |
+     | Manager                          |
+     | User                             |
+
+
   Scenario: LANGUAGE INSTALL
     Given I install the following languages:
         | lang  |
