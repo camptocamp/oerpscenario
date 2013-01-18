@@ -12,7 +12,7 @@
 Feature: Param the new database
   In order to have a coherent installation
   I autmated the manual steps.
-  
+
   Scenario: install modules
     Given I update the module list
     Given I install the required modules with dependencies:
@@ -25,19 +25,19 @@ Feature: Param the new database
     Given the main company has a default payment_term set to "30 Days End of Month"
 
   Scenario: Configure journal
-    Given there is a journal named "Banque CHF" of type "bank" 
+    Given there is a journal named "Banque CHF" of type "bank"
      And the journal default debit account is set to "1020"
      And the journal default credit account is set to "1020"
      Given all journals allow entry cancellation
 
 
-   Scenario: Generate account chart 
-     Given I have the module account installed 
+   Scenario: Generate account chart
+     Given I have the module account installed
      And no account set
      And I want to generate account chart from module l10n_ch
      When I generate the chart
      Then accounts should be available
-       
+
   Scenario: Configure banque account:
     Given there is a bank account named "XX-XXXX-X" linked to partner "Customer_name"
      And I set the bank account with the following data :
@@ -59,7 +59,5 @@ Feature: Param the new database
 
   Scenario: Configure main partner and company
     Given I should have a company
-    And the main company currency is "CHF" with a rate of "1.00"
+    And the company currency is "CHF" with a rate of "1.00"
     And I update the address country code to CH
-
-        

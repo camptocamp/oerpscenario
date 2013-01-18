@@ -107,7 +107,7 @@ Feature: Param the new database
          | name           | GeneralMedia SA |
          | bvr_background | 0               |
       Given the company has the "logo.png" logo
-      And the main company currency is "CHF" with a rate of "1.00"
+      And the company currency is "CHF" with a rate of "1.00"
 
       Given I need a "res.partner" with oid: base.main_partner
       And having:

@@ -3,6 +3,8 @@ import base64
 import os
 @given(u'the company has the "{logo_path}" logo')
 def impl(ctx, logo_path):
+    import pdb; pdb.set_trace()
+
     assert ctx.found_item
     company = ctx.found_item
     tmp_path = ctx.feature.filename.split(os.path.sep)
@@ -15,7 +17,7 @@ def impl(ctx, logo_path):
         encoded_image = base64.b64encode(image_file.read())
     company.write({'logo': encoded_image})
 
-@given(u'the main company currency is "{rate_code}" with a rate of "{rate_value}"')
+@given(u'the company currency is "{rate_code}" with a rate of "{rate_value}"')
 def impl(ctx, rate_code, rate_value):
     assert ctx.found_item
     company = ctx.found_item
