@@ -3,8 +3,6 @@ import base64
 import os
 @given(u'the company has the "{logo_path}" logo')
 def impl(ctx, logo_path):
-    import pdb; pdb.set_trace()
-
     assert ctx.found_item
     company = ctx.found_item
     tmp_path = ctx.feature.filename.split(os.path.sep)
@@ -21,13 +19,11 @@ def impl(ctx, logo_path):
 def impl(ctx, rate_code, rate_value):
     assert ctx.found_item
     company = ctx.found_item
-    currency_id = model('res.currency').search([('name', '=', rate_code)])
-    assert currency_id
-    rate = model('res.currency.rate').get([('currency_id', '=', currency_id)])
+    currency = model('res.currency').get([('name', '=', rate_code)])
+    assert currency
+    rate = model('res.currency.rate').get([('currency_id', '=', currency.id)])
     assert rate
     rate.write({'rate': rate_value})
-    currency = model('res.currency').get(['name', '=', rate_code])
-    assert currency
     company.write({'currency_id': currency.id})
 
 @given(u'I set the webkit path to "{webkit_path}"')
