@@ -37,20 +37,27 @@ def impl(ctx):
 @given(u'I have the module account installed')
 def impl(ctx):
     assert model('ir.module.module').get(['name = account', 'state = installed'])
+@given(u'no account set for company "{company_name}"')
+def impl(ctx, company_name):
+    company = model('res.company').get([('name', '=', company_name)])
+    assert company
+    assert len(model('account.account').search([("company_id", "=", company.id)])) == 0
 
-@given(u'no account set')
-def impl(ctx):
-    len(model('account.account').search([])) == 0
-
-@given(u'I want to generate account chart from chart template named "{name}" with "{digits}" digits')
-def impl(ctx, name, digits=0):
+@given(u'I want to generate account chart from chart template named "{name}" with "{digits}" digits for company "{company_name}"')
+def impl(ctx, name, digits, company_name):
     template = model('account.chart.template').get([("name", "=", name)])
     assert template
     root_account = template.account_root_id
     assert root_account
+    company = model('res.company').get([('name', '=', company_name)])
+    assert company
     configuration_wizard = model('wizard.multi.charts.accounts').create({'code_digits': digits,
-                                                                         'chart_template_id': template.id})
+                                                                         'chart_template_id': template.id,
+                                                                         'company_id': company.id})
+
     vals = configuration_wizard.onchange_chart_template_id(template.id)
+    configuration_wizard.write(vals['value'])
+    vals = configuration_wizard.onchange_company_id(company.id)
     configuration_wizard.write(vals['value'])
     configuration_wizard.execute()
 
@@ -58,6 +65,8 @@ def impl(ctx, name, digits=0):
 def impl(ctx):
    pass
 
-@then(u'accounts should be available')
-def impl(context):
-    assert (model('account.account').count() > 0)
+@then(u'accounts should be available for company "{company_name}"')
+def impl(context, company_name):
+    company = model('res.company').get([('name', '=', company_name)])
+    assert company
+    assert len(model('account.account').search([("company_id", "=", company.id)])) > 0
