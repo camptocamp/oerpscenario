@@ -72,7 +72,7 @@ def parse_table_values(ctx, obj, table):
                 method = getattr(model(relation), value)
                 value = method()
             if value and field_type == 'many2one':
-                assert_equal(len(value), 1)
+                assert_equal(len(value), 1, msg="more than item found for %s" % key)
                 value = value[0]
         elif field_type == 'integer':
             value = int(value)
@@ -90,7 +90,7 @@ def impl_having(ctx):
     assert ctx.table, 'please supply a table of values'
     assert ctx.search_model_name, 'cannot use "having" step without a previous step setting a model'
     table_values = parse_table_values(ctx, ctx.search_model_name,
-                                ctx.table)
+                                      ctx.table)
     if isinstance(ctx.found_item, dict):
         values = ctx.found_item
         values.update(table_values)
