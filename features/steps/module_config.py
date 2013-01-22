@@ -4,7 +4,7 @@ if False:
     def given(str):
         return
 
-@given(u'I install the following languages')
+@given(u'/I install the following languages?/')
 def impl(ctx):
     ctx.data['lang'] = cfglang = set()
     for (lang,) in ctx.table:
