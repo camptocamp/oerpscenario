@@ -85,6 +85,7 @@ def parse_table_values(ctx, obj, table):
         res[key] = value
     return res
 
+
 @step('/^having:?$/')
 def impl_having(ctx):
     assert ctx.table, 'please supply a table of values'
@@ -113,6 +114,7 @@ def create_new_obj(ctx, model_name, values):
                                        'module': module,
                                        })
     return record
+
 
 @step(u'I find a "{model_name}" with {domain}')
 def impl(ctx, model_name, domain):
@@ -162,6 +164,7 @@ def impl(ctx, model_name, domain):
             puts('writing %s to %s' % (new_attrs, ids))
             Model.write(ids, new_attrs)
 
+
 @given('I set global property named "{pname}" for model "{modelname}" and field "{fieldname}"')
 def impl(ctx, pname, modelname, fieldname):
     field = model('ir.model.fields').get([('name', '=', fieldname), ('model', '=', modelname)])
@@ -175,6 +178,7 @@ def impl(ctx, pname, modelname, fieldname):
                                                 'res_id': False,
                                                 'type': 'many2one'})
     ctx.property = property
+
 
 @step('the property is related to model "{modelname}" using column "{column}" and value "{value}"')
 def impl(ctx, modelname, column, value):
