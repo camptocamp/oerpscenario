@@ -12,7 +12,7 @@
 Feature: Initialize the settings for sale module
   In order ensure the right state for the tests suite
   I want to set some parameters and settings
-  
+
   Scenario: install modules
     Given I update the module list
     Given I install the required modules with dependencies:
@@ -22,9 +22,12 @@ Feature: Initialize the settings for sale module
     Given I give all groups right access to admin user
 
   Scenario: Initialize Sales settings
-      Given a cash journal in USD exists
+      Given a cash journal in EUR exists
+      And a cash journal in GBP exists
+      And a cash journal in USD exists
       And a cash journal in CHF exists
-      And a cash journal in EUR exists
-      
-      Given a valid sale pricelist in CHF exists
-      And a valid sale pricelist in EUR exists
+
+      Given a valid sale pricelist in EUR exists
+      And a valid sale pricelist in USD exists
+      And a valid sale pricelist in GBP exists
+      And a valid sale pricelist in CHF exists
