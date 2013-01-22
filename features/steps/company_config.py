@@ -10,7 +10,7 @@ def impl(ctx, logo_path):
     tmp_path.extend(['data', logo_path])
     tmp_path = [str(x) for x in tmp_path]
     path = os.path.join('/', *tmp_path)
-    assert os.path.exists(path)
+    assert os.path.exists(path), "path not found %s" % path
     with open(path, "rb") as image_file:
         encoded_image = base64.b64encode(image_file.read())
     company.write({'logo': encoded_image})
