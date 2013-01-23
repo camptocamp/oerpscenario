@@ -1,12 +1,14 @@
 OpenERP Scenario in Python.
 ###########################
-Integration of OpenERP scenario with Python, behave and the anybox buidlout receipt:
+
+Integration of OpenERP scenario with Python, behave and the Anybox buildout recipe:
 `http://pypi.python.org/pypi/anybox.recipe.openerp/1.3.0 <http://pypi.python.org/pypi/anybox.recipe.openerp/1.3.0>`_
 
 Installation:
-Refer to anybox receipt documentation to create your instance.
-Then you can add following line to you buildout config file:
-# To use python scenarios ::
+
+Refer to Anybox recipe documentation to create your instance.
+Then you can add the following lines to you buildout configuration file
+to use Python scenarios::
 
   [python]
   recipe = zc.recipe.egg
@@ -45,23 +47,29 @@ Then you can add following line to you buildout config file:
 
 Usage
 #####
+
 Checkout the branch of Python scenario.
-Then move to the root of your instance where the bin should be available  ::
+Then move to the root of your instance where the bin should be available::
   
   bin/behave
 
-should be available. To run some scenario launch the following command ::
+should be available. To run some scenario launch the following command::
 
  bin/behave -k --tags=mytag ../path_to_python_scenario/features/ path_to_my_custom_scenario/features
 
-The -k option will only show executed scenarios --tags will launch specific scenario. For more information please refer to behave documentation: `http://packages.python.org/behave/ <http://packages.python.org/behave/>`_
+The -k option will only show executed scenarios --tags will launch
+specific scenario. For more information please refer to behave
+documentation: `http://packages.python.org/behave/
+<http://packages.python.org/behave/>`_
 
 If you want to use **pdb** you have to set --no-capture option when launching behave
 
 Anatomy of a custom scenario folder
 ###################################
 
-If you want to create you own custom scenario for you project you should use the following guide lines. The folder should be organized the following way: ::
+If you want to create you own custom scenario for you project you
+should use the following guide lines. The folder should be organized
+the following way::
 
   OERPScenario/
   ├── data
@@ -81,4 +89,5 @@ If you want to create you own custom scenario for you project you should use the
 * setup: contains features required to setup all required data to run your tests
 * addons: contains addons specific test, small independents scenarios
 * stories: contains user/workflow tests that are related together
-* upgarde: scenario to update an instance
+* upgrade: scenario to update an instance
+* steps: contains Python code implementing the gherkin phrases
