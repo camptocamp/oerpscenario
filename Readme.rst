@@ -1,10 +1,11 @@
 OpenERP Scenario in Python.
 ###########################
+
 Integration of OpenERP scenario with Python, behave and the anybox buidlout recipe:
 `http://pypi.python.org/pypi/anybox.recipe.openerp/1.3.0 <http://pypi.python.org/pypi/anybox.recipe.openerp/1.3.0>`_
 
 Installation:
-Refer to anybox recipe documentation to create your instance.
+Refer to Anybox recipe documentation to create your instance.
 Then you can add the following lines to your buildout config file: ::
 
   [python]
@@ -44,23 +45,26 @@ Then you can add the following lines to your buildout config file: ::
 
 Usage
 #####
-Check out the branch of Python scenario.
+Checkout the branch of Python scenario.
 Then move to the root of your instance where the bin folder is located  ::
   
   bin/behave
 
-should be available. To run some scenario launch the following command ::
+should be available. To run some scenario launch the following command::
 
  bin/behave -k --tags=mytag ../path_to_python_scenario/features/ path_to_my_custom_scenario/features
 
-The -k option will only show executed scenario --tags will launch specific scenario. For more information, please refer to behave documentation: `http://packages.python.org/behave/ <http://packages.python.org/behave/>`_
+The -k option will only show executed scenario --tags will launch specific scenario. 
+For more information, please refer to behave documentation: 
+`http://packages.python.org/behave/ <http://packages.python.org/behave/>`_
 
 If you want to use **pdb** you have to set --no-capture option when launching behave
 
 Anatomy of a custom scenario folder
 ###################################
 
-If you want to create your own custom scenario for your project, you should use the guidelines below. The folder should be organized as follows: ::
+If you want to create your own custom scenario for your project, 
+you should use the guidelines below. The folder should be organized as follows: ::
 
   OERPScenario/
   ├── data
@@ -81,3 +85,4 @@ If you want to create your own custom scenario for your project, you should use 
 * addons: contains addons specific tests, small independent scenarios.
 * stories: contains user/workflow tests that are related.
 * upgrade: scenario to update an instance.
+* steps: contains Python code implementing the gherkin phrases
