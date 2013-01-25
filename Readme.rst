@@ -6,13 +6,13 @@ Integration of OpenERP scenario with Python, behave and the anybox buidlout reci
 
 Installation:
 Refer to Anybox recipe documentation to create your instance.
-Then you can add the following lines to your buildout config file: ::
+Then you can add the following lines to your buildout config file::
 
   [python]
   recipe = zc.recipe.egg
   interpreter = python
   extra-paths = ${buildout:directory}/parts/server
-            
+  
   eggs = behave
          ERPpeek
          mock
@@ -46,16 +46,16 @@ Then you can add the following lines to your buildout config file: ::
 Usage
 #####
 Checkout the branch of Python scenario.
-Then move to the root of your instance where the bin folder is located  ::
-  
+Then move to the root of your instance where the bin folder is located::
+
   bin/behave
 
 should be available. To run some scenario launch the following command::
 
  bin/behave -k --tags=mytag ../path_to_python_scenario/features/ path_to_my_custom_scenario/features
 
-The -k option will only show executed scenario --tags will launch specific scenario. 
-For more information, please refer to behave documentation: 
+The -k option will only show executed scenario --tags will launch specific scenario.
+For more information, please refer to behave documentation:
 `http://packages.python.org/behave/ <http://packages.python.org/behave/>`_
 
 If you want to use **pdb** you have to set --no-capture option when launching behave
@@ -63,8 +63,8 @@ If you want to use **pdb** you have to set --no-capture option when launching be
 Anatomy of a custom scenario folder
 ###################################
 
-If you want to create your own custom scenario for your project, 
-you should use the guidelines below. The folder should be organized as follows: ::
+If you want to create your own custom scenario for your project,
+you should use the guidelines below. The folder should be organized as follows::
 
   OERPScenario/
   ├── data
