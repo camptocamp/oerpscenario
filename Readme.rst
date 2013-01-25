@@ -69,7 +69,7 @@ you should use the guidelines below. The folder should be organized as follows: 
   OERPScenario/
   ├── data
   │   ├── account_chart.csv
-  │   ├── logo.png
+  │   └── logo.png
   └── features
       ├── setup
       │   ├── 01_installation.feature
