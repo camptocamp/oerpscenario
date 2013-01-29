@@ -58,7 +58,7 @@ def impl(ctx):
 def impl(ctx):
     pass # XXX
 
-@given('execute the setup')
+@then('execute the setup')
 def impl(ctx):
     assert ctx.found_item
     ctx.found_item.execute()
