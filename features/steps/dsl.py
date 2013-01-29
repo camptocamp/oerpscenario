@@ -165,7 +165,7 @@ def impl(ctx, model_name, domain):
             Model.write(ids, new_attrs)
 
 
-def get_company(ctx, pname, modelname, fieldname, company_oid=None):
+def get_company_property(ctx, pname, modelname, fieldname, company_oid=None):
     company = None
     if company_oid:
         c_domain = build_search_domain(ctx, 'res.company', {'xmlid': company_oid})
@@ -178,28 +178,28 @@ def get_company(ctx, pname, modelname, fieldname, company_oid=None):
               ('res_id', '=', False)]
     if company:
         domain.append(('company_id', '=', company.id))
-    property = model('ir.property').get(domain)
-    if property is None:
-        property = model('ir.property').create({'fields_id': field.id,
-                                                'name': pname,
-                                                'res_id': False,
-                                                'type': 'many2one'})
+    ir_property = model('ir.property').get(domain)
+    if ir_property is None:
+        ir_property = model('ir.property').create({'fields_id': field.id,
+                                                   'name': pname,
+                                                   'res_id': False,
+                                                   'type': 'many2one'})
         if company:
-            property.write({'company_id': company.id})
-    ctx.property = property
+            ir_property.write({'company_id': company.id})
+    ctx.ir_property = ir_property
 
 @given('I set global property named "{pname}" for model "{modelname}" and field "{fieldname}" for company with ref "{company_oid}"')
 def impl(ctx, pname, modelname, fieldname, company_oid):
-    get_company(ctx, pname, modelname, fieldname, company_oid=company_oid)
+    get_company_property(ctx, pname, modelname, fieldname, company_oid=company_oid)
 
 @given('I set global property named "{pname}" for model "{modelname}" and field "{fieldname}"')
 def impl(ctx, pname, modelname, fieldname):
-    get_company(ctx, pname, modelname, fieldname)
+    get_company_property(ctx, pname, modelname, fieldname)
 
 @step('the property is related to model "{modelname}" using column "{column}" and value "{value}"')
 def impl(ctx, modelname, column, value):
-    assert hasattr(ctx, 'property')
-    property = ctx.property
+    assert hasattr(ctx, 'ir_property')
+    ir_property = ctx.ir_property
     res = model(modelname).get([(column, '=', value)])
     assert res, "no value for %s value %s" % (column, value)
-    property.value_reference = '%s,%s' % (modelname, res.id)
+    ir_property.write({'value_reference': '%s,%s' % (modelname, res.id)})
