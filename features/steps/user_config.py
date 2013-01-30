@@ -31,8 +31,8 @@ def impl(ctx, users):
     group_names = [row['group_name'] for row in ctx.table]
     group_names = list(set(group_names))
     group_full_names = [name for name in group_names if '/' in name]
-    group_names = [name for name in group_names if not '/' in name]
-    search_cond = [('name', 'in', group_names)]
+    group_single_names = [name for name in group_names if not '/' in name]
+    search_cond = [('name', 'in', group_single_names)]
     # it isn't possible to use the 'in' operator on full_name
     full_name_conds = [('full_name', '=', full_name)
             for full_name in group_full_names]
@@ -40,7 +40,7 @@ def impl(ctx, users):
         search_cond.insert(0, '|')
         search_cond.append(cond)
     groups = model('res.groups').browse(search_cond)
-    # assert_equal(len(groups), len(group_names))
+    assert_equal(len(groups), len(group_names))
     assert users in ('user', 'users')
     if users == "users":
         for user in ctx.found_items:
