@@ -38,7 +38,7 @@ def impl(ctx, users):
     else:
         single_name_cond = []
     # it isn't possible to use the 'in' operator on full_name
-    # so we add one OR by full_name search
+    # so we add one OR by search term
     full_name_cond = [('full_name', '=', full_name)
             for full_name in group_full_names]
     num_operators = len(single_name_cond) + len(full_name_cond) - 1
