@@ -40,7 +40,7 @@ Feature: COMPANIES BANK ACCOUNTS
 
   @multicompany_base_finance_bank_account
   Scenario: CONFIGURE BANQUE ACCOUNT:
-     Given I need a "res.partner.bank" with oid: scen.main_bank
+     Given I need a "res.partner.bank" with oid: scen.CH_bank
      And having:
          | name             | value                     |
          | partner_id       | by oid: scen.CH_partner   |
@@ -50,14 +50,14 @@ Feature: COMPANIES BANK ACCOUNTS
          | state            | bvr                       |
          | street           | Chemin de la Gravière 8   |
          | acc_number       | 01-4544-9                 |
-         | bvr_adherent_num | 935430                    |
+#         | bvr_adherent_num | 935430                    |
          | print_bank       | 0                         |
          | print_account    | 1                         |
          | bank_name        | CREDIT SUISSE             |
          | bank_bic         | CRESCHZZ80A               |
          | currency_id      | by name: CHF              |
 
-     Given I need a "res.partner.bank" with oid: scen.main_bank_dta
+     Given I need a "res.partner.bank" with oid: scen.CH_bank_dta
      And having:
          | name             | value                      |
          | partner_id       | by oid: scen.CH_partner    |

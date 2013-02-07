@@ -49,8 +49,6 @@ Feature: FINANCIAL JOURNALS SETTINGS
      | name                      | COMM 4900                       |
      | code                      | B4900                           |
      | type                      | bank                            |
-     | default_debit_account_id  | by code: 1021                   |
-     | default_credit_account_id | by code: 1021                   |
      | allow_date                | f                               |
      | analytic_journal_id       | by oid: scen.ch_analytic_journal|
 
@@ -63,11 +61,10 @@ Feature: FINANCIAL JOURNALS SETTINGS
      | name                      | UCB 0008                        |
      | code                      | B0008                           |
      | type                      | bank                            |
-     | default_debit_account_id  | by code: 1022                   |
-     | default_credit_account_id | by code: 1022                   |
      | currency                  | by name: USD                    |
      | allow_date                | f                               |
      | analytic_journal_id       | by oid: scen.ch_analytic_journal|
+
 
 
   Scenario: FINANCIAL JOURNALS CREATION
@@ -156,14 +153,6 @@ Feature: FINANCIAL JOURNALS SETTINGS
      | centralisation            | true                            |
      | analytic_journal_id       | by oid: scen.fr_analytic_journal|
                 
-  
-  Scenario: FINANCIAL JOURNALS CREATION
-   Given there is a journal with name "Stock Journal" and company "MA SOCIETE FR"
-   And having:
-     | name                      | value                           |
-     | name                      | FR-Stock                        |
-     | code                      | FRST                            |
-     | type                      | general                         | 
      
   @multicompany_base_finance_petty_cash_journal_settings
   Scenario: FINANCIAL JOURNALS CREATION
@@ -248,14 +237,6 @@ Feature: FINANCIAL JOURNALS SETTINGS
      | centralisation            | true                            |
 
  
-  Scenario: FINANCIAL JOURNALS CREATION
-   Given there is a journal with name "Stock Journal" and company "MA SOCIETE CH"
-   And having:
-     | name                      | value                           |
-     | name                      | CH-Stock                        |
-     | code                      | CHST                            |
-     | type                      | general                         |
-     | analytic_journal_id       | by oid: scen.ch_analytic_journal|
 
   @multicompany_base_finance_petty_cash_journal_settings
   Scenario: FINANCIAL JOURNALS CREATION

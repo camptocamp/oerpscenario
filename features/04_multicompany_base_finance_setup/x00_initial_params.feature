@@ -12,8 +12,7 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
 
   @multicompany_base_finance_create_db
   Scenario: CREATE DATABASE
-    #Given I drop database "toto" TODO
-    Given I create database "70" with admin password "admin"
+    Given I create database "7XA" with admin password "admin"
 
   @multicompany_base_finance_setup_install_modules
   Scenario: MODULES INSTALLATION
@@ -48,6 +47,13 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
       | lang  |
       | fr_FR |
     Then the language should be available
+    
+  Scenario: LANGUAGE INSTALL
+    Given I install the following languages:
+      | lang  |
+      | de_DE |
+    Then the language should be available    
+    
 
   Scenario: LANGUAGE SETTINGS
      Given I need a "res.lang" with code: en_US
@@ -63,6 +69,7 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
      | date_format       | %d/%m/%Y  |
      | grouping          | [3,0]     |
      | thousands_sep     | '         |
+
      Given I need a "res.lang" with code: de_DE
      And having:
      | name              | value     |
@@ -109,59 +116,67 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
      And I set the webkit path to "/srv/openerp/webkit_library/wkhtmltopdf-amd64"
     
 
-# TODO --> add multicurrency here + type column
-
   @multicompany_base_finance_setup_currency_rates
-   Scenario: CURRENCY RATES TYPE NAME CREATION (mainly for module account_multicurrency_revaluation)
-    Given I need a "res.currency.rate.type" with oid: scen.average_fx_rate_type
-    And having:
-    | name                  | value          |
-    | name                  | average        |
-
    Scenario: CURRENCY RATES SETTINGS
     Given I set the following currency rates:
-      | currency |   rate | date     |  type |
-      | EUR      | 1.0000 | %Y-01-01 |       |
-      | USD      | 1.5000 | %Y-01-01 |       |
-      | USD      | 1.8000 | %Y-02-01 |       |
-      | USD      | 1.5000 | %Y-03-01 |       |
-      | USD      | 1.4000 | %Y-04-01 |       |
-      | USD      | 1.4500 | %Y-05-01 |       |
-      | USD      | 1.5500 | %Y-06-01 |       |
-      | USD      | 1.5700 | %Y-07-01 |       |
-      | USD      | 1.6000 | %Y-08-01 |       |
-      | USD      | 1.6500 | %Y-09-01 |       |
-      | USD      | 1.6300 | %Y-10-01 |       |
-      | USD      | 1.6100 | %Y-11-01 |       |
-      | USD      | 1.5700 | %Y-12-01 |       |
-      | GBP      | 0.8000 | %Y-01-01 |       |
-      | GBP      | 0.9000 | %Y-02-01 |       |
-      | GBP      | 0.8000 | %Y-03-01 |       |
-      | GBP      | 0.8200 | %Y-04-01 |       |
-      | GBP      | 0.8300 | %Y-05-01 |       |
-      | GBP      | 0.7900 | %Y-06-01 |       |
-      | GBP      | 0.8400 | %Y-07-01 |       |
-      | GBP      | 0.7600 | %Y-08-01 |       |
-      | GBP      | 0.7700 | %Y-09-01 |       |
-      | GBP      | 0.8900 | %Y-10-01 |       |
-      | GBP      | 0.9200 | %Y-11-01 |       |
-      | GBP      | 0.9500 | %Y-12-01 |       |
-      | CAD      | 1.1500 | %Y-01-01 |       |
-      | CAD      | 1.1700 | %Y-02-01 |       |
-      | CAD      | 1.1900 | %Y-03-01 |       |
-      | CAD      | 1.2000 | %Y-04-01 |       |
-      | CAD      | 1.0500 | %Y-05-01 |       |
-      | CAD      | 1.1000 | %Y-06-01 |       |
-      | CAD      | 1.1800 | %Y-07-01 |       |
-      | CAD      | 1.2200 | %Y-08-01 |       |
-      | CAD      | 1.2400 | %Y-09-01 |       |
-      | CAD      | 1.2600 | %Y-10-01 |       |
-      | CAD      | 1.1600 | %Y-11-01 |       |
-      | CAD      | 1.1300 | %Y-12-01 |       |
-      | USD      | 1.6000 | %Y-01-31 |average|
-      | USD      | 1.9000 | %Y-02-28 |average|   
-      | GBP      | 0.7000 | %Y-01-31 |average|   
-      | GBP      | 0.8000 | %Y-02-28 |average|   
-      | CAD      | 1.2500 | %Y-01-01 |average|
-      | CAD      | 1.2700 | %Y-02-01 |average|
+      | currency |   rate | date     |  
+      | EUR      | 1.0000 | %Y-01-01 |      
+      | USD      | 1.5000 | %Y-01-01 |      
+      | USD      | 1.8000 | %Y-02-01 |      
+      | USD      | 1.5000 | %Y-03-01 |       
+      | USD      | 1.4000 | %Y-04-01 |       
+      | USD      | 1.4500 | %Y-05-01 |       
+      | USD      | 1.5500 | %Y-06-01 |       
+      | USD      | 1.5700 | %Y-07-01 |       
+      | USD      | 1.6000 | %Y-08-01 |       
+      | USD      | 1.6500 | %Y-09-01 |       
+      | USD      | 1.6300 | %Y-10-01 |       
+      | USD      | 1.6100 | %Y-11-01 |       
+      | USD      | 1.5700 | %Y-12-01 |       
+      | GBP      | 0.8000 | %Y-01-01 |       
+      | GBP      | 0.9000 | %Y-02-01 |       
+      | GBP      | 0.8000 | %Y-03-01 |       
+      | GBP      | 0.8200 | %Y-04-01 |       
+      | GBP      | 0.8300 | %Y-05-01 |       
+      | GBP      | 0.7900 | %Y-06-01 |       
+      | GBP      | 0.8400 | %Y-07-01 |       
+      | GBP      | 0.7600 | %Y-08-01 |       
+      | GBP      | 0.7700 | %Y-09-01 |       
+      | GBP      | 0.8900 | %Y-10-01 |       
+      | GBP      | 0.9200 | %Y-11-01 |       
+      | GBP      | 0.9500 | %Y-12-01 |       
+      | CAD      | 1.1500 | %Y-01-01 |       
+      | CAD      | 1.1700 | %Y-02-01 |       
+      | CAD      | 1.1900 | %Y-03-01 |       
+      | CAD      | 1.2000 | %Y-04-01 |       
+      | CAD      | 1.0500 | %Y-05-01 |       
+      | CAD      | 1.1000 | %Y-06-01 |       
+      | CAD      | 1.1800 | %Y-07-01 |       
+      | CAD      | 1.2200 | %Y-08-01 |       
+      | CAD      | 1.2400 | %Y-09-01 |       
+      | CAD      | 1.2600 | %Y-10-01 |       
+      | CAD      | 1.1600 | %Y-11-01 |       
+      | CAD      | 1.1300 | %Y-12-01 |       
+
+
+# following is usefull for account_multicurrency_revaluation module
+
+
+# TODO --> add multicurrency here + type column
+
+#  @multicompany_base_finance_setup_currency_rates
+#   Scenario: CURRENCY RATES TYPE NAME CREATION (mainly for module account_multicurrency_revaluation)
+#    Given I need a "res.currency.rate.type" with oid: scen.average_fx_rate_type
+#    And having:
+#    | name                  | value          |
+#    | name                  | average        |
+
+#    Given I set the following currency rates:
+#      | currency |   rate | date     |  type |
+#      | USD      | 1.6000 | %Y-01-31 |average|
+#      | USD      | 1.9000 | %Y-02-28 |average|   
+#      | GBP      | 0.7000 | %Y-01-31 |average|   
+#      | GBP      | 0.8000 | %Y-02-28 |average|   
+#      | CAD      | 1.2500 | %Y-01-01 |average|
+#      | CAD      | 1.2700 | %Y-02-01 |average|
    
