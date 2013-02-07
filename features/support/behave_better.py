@@ -3,6 +3,7 @@
 
 Some of them might be proposed upstream
 """
+
 from behave import formatter
 from behave import matchers
 from behave import model
@@ -132,7 +133,9 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
 
 
 # monkey patch Runner so that feature files are sorted
-import os
+import os, sys
+from behave.runner import exec_file
+from behave import step_registry
 def _patched_feature_files(self):
     files = []
     for path in self.config.paths:
@@ -150,5 +153,35 @@ def _patched_feature_files(self):
             raise Exception("Can't find path: " + path)
     return files
 
+def _patched_load_step_definitions(self, extra_step_paths=None):
+        print "load steps"
+        steps_dir = os.path.join(self.base_dir, 'steps')
+        if extra_step_paths is None:
+            extra_step_paths = []
+            for path in self.config.paths[1:]:
+                dirname = os.path.abspath(path)
+                extra_step_paths.append(os.path.join(dirname, 'features', 'steps'))
+        # allow steps to import other stuff from the steps dir
+        sys.path.insert(0, steps_dir)
+
+        step_globals = {
+            'step_matcher': matchers.step_matcher,
+        }
+
+        for step_type in ('given', 'when', 'then', 'step'):
+            decorator = getattr(step_registry, step_type)
+            step_globals[step_type] = decorator
+            step_globals[step_type.title()] = decorator
+
+        for path in [steps_dir] + list(extra_step_paths):
+            for name in os.listdir(path):
+                if name.endswith('.py'):
+                    exec_file(os.path.join(path, name), step_globals)
+
+        # clean up the path
+        sys.path.pop(0)
+
+
 from types import MethodType
 runner.Runner.feature_files = MethodType(_patched_feature_files, None, runner.Runner)
+runner.Runner.load_step_definitions = MethodType(_patched_load_step_definitions, None, runner.Runner)
