@@ -154,7 +154,6 @@ def _patched_feature_files(self):
     return files
 
 def _patched_load_step_definitions(self, extra_step_paths=None):
-        print "load steps"
         steps_dir = os.path.join(self.base_dir, 'steps')
         if extra_step_paths is None:
             extra_step_paths = []
@@ -182,6 +181,5 @@ def _patched_load_step_definitions(self, extra_step_paths=None):
         sys.path.pop(0)
 
 
-from types import MethodType
-runner.Runner.feature_files = MethodType(_patched_feature_files, None, runner.Runner)
-runner.Runner.load_step_definitions = MethodType(_patched_load_step_definitions, None, runner.Runner)
+runner.Runner.feature_files = _patched_feature_files
+runner.Runner.load_step_definitions = _patched_load_step_definitions
