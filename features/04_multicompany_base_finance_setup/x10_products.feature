@@ -16,22 +16,19 @@ Feature: PRODUCT CATEGORIES CREATION
      And having:
           | name                            | value             |
           | type                            | normal            |  
-          | property_account_income_categ   | by code: 707      |
-          | property_account_expense_categ  | by code: 607      |
+
 
     Given I need a "product.category" with name: Cat_B and oid: scenario.cat_B
      And having:
           | name                            | value             |
           | type                            | normal            |  
-          | property_account_income_categ   | by code: 707      |
-          | property_account_expense_categ  | by code: 607      |
+
 
     Given I need a "product.category" with name: Cat_C and oid: scenario.cat_C
      And having:
           | name                            | value             |
           | type                            | normal            |  
-          | property_account_income_categ   | by code: 707      |
-          | property_account_expense_categ  | by code: 607      |
+
 
 
   @multicompany_base_finance_product_creation
