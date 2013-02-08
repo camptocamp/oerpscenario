@@ -154,31 +154,34 @@ def _patched_feature_files(self):
     return files
 
 def _patched_load_step_definitions(self, extra_step_paths=None):
-        steps_dir = os.path.join(self.base_dir, 'steps')
-        if extra_step_paths is None:
-            extra_step_paths = []
-            for path in self.config.paths[1:]:
-                dirname = os.path.abspath(path)
-                extra_step_paths.append(os.path.join(dirname, 'features', 'steps'))
-        # allow steps to import other stuff from the steps dir
-        sys.path.insert(0, steps_dir)
+    steps_dir = os.path.join(self.base_dir, 'steps')
+    if extra_step_paths is None:
+        extra_step_paths = []
+        for path in self.config.paths[1:]:
+            dirname = os.path.abspath(path)
+            for dirname, subdirs, _fnames in os.walk(dirname):
+                if 'steps' in subdirs:
+                    extra_step_paths.append(os.path.join(dirname, 'steps'))
+                    subdirs.remove('steps') # prune search
+    # allow steps to import other stuff from the steps dir
+    sys.path.insert(0, steps_dir)
 
-        step_globals = {
-            'step_matcher': matchers.step_matcher,
-        }
+    step_globals = {
+        'step_matcher': matchers.step_matcher,
+    }
 
-        for step_type in ('given', 'when', 'then', 'step'):
-            decorator = getattr(step_registry, step_type)
-            step_globals[step_type] = decorator
-            step_globals[step_type.title()] = decorator
+    for step_type in ('given', 'when', 'then', 'step'):
+        decorator = getattr(step_registry, step_type)
+        step_globals[step_type] = decorator
+        step_globals[step_type.title()] = decorator
 
-        for path in [steps_dir] + list(extra_step_paths):
-            for name in os.listdir(path):
-                if name.endswith('.py'):
-                    exec_file(os.path.join(path, name), step_globals)
+    for path in [steps_dir] + list(extra_step_paths):
+        for name in os.listdir(path):
+            if name.endswith('.py'):
+                exec_file(os.path.join(path, name), step_globals)
 
-        # clean up the path
-        sys.path.pop(0)
+    # clean up the path
+    sys.path.pop(0)
 
 
 runner.Runner.feature_files = _patched_feature_files
