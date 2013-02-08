@@ -1,0 +1,10 @@
+ref,date,period_id,journal_id,Entries / account_id,Entries / partner_id,Entries / name,Entries / date_maturity,Entries / debit,Entries / credit,Entries / amount_currency,Entries / currency_id,Entries / tax_code_id,Entries / tax_amount
+TOTO6,2013-01-15,SJAN13,FR-Ventes Sensee,411000,Client 1,ztjdh,2012-04-14,1000,,1500,USD,"TVA collectée 19.6% - TVA 19.6%",1000
+,,,,707100,Client 1,rwtztezawt,,,1000,-1500,USD,,
+TOTO7,2013-01-15,SJAN13,FR-Ventes Sensee,411000,Client 1,ztjdh,2012-04-14,6000,,1500,USD,,
+,,,,707100,Client 1,rwtztezawt,,,1000,-1500,USD,,
+,,,,707100,Client 1,rwtztezawt,,,1000,-1500,USD,,
+,,,,707100,Client 1,rwtztezawt,,,1000,-1500,USD,,
+,,,,707100,Client 1,rwtztezawt,,,1000,-1500,USD,,
+,,,,707100,Client 1,rwtztezawt,,,1000,-1500,USD,"TVA collectée 19.6% - TVA 19.6%",1000
+,,,,707100,Client 1,rwtztezawt,,,1000,-1500,USD,"TVA collectée 19.6% - TVA 19.6%",1000
