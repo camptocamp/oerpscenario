@@ -63,7 +63,7 @@ def parse_table_values(ctx, obj, table):
             relation = fields[key]['relation']
             if value.startswith('add all by '):
                 add_mode = True
-	            value = value[4:] # fall back on "all by xxx" below
+                value = value[4:] # fall back on "all by xxx" below
             else:
                 add_mode = False
             if value.startswith('by ') or value.startswith('all by '):
