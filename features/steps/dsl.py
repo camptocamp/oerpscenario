@@ -53,6 +53,7 @@ def parse_table_values(ctx, obj, table):
     assert_true(fields)
     res = {}
     for (key, value) in table:
+        add_mode = False
         field_type = fields[key]['type']
         if field_type in ('char', 'text'):
             pass
@@ -60,7 +61,7 @@ def parse_table_values(ctx, obj, table):
             value = False
         elif field_type in ('many2one', 'one2many', 'many2many'):
             relation = fields[key]['relation']
-            if value.startswith('by ') or value.startswith('all by '):
+            if value.startswith('by ') or value.startswith('all by ') or or value.startswith('add all by '):
                 value = value.split('by ', 1)[1]
                 values = parse_domain(value)
                 search_domain = build_search_domain(ctx, relation, values)
@@ -68,6 +69,8 @@ def parse_table_values(ctx, obj, table):
                     value = model(relation).browse(search_domain).id
                 else:
                     value = []
+                if value.startswith('add all by '):
+                    value = res.get(key, []) + value
             else:
                 method = getattr(model(relation), value)
                 value = method()
