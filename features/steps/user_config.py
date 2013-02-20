@@ -1,4 +1,4 @@
-from support import model, assert_equal
+from support import model, assert_equal, puts
 
 @given('we select all users')
 def impl(ctx):
@@ -24,16 +24,20 @@ def impl(ctx):
     groups = model('res.groups').browse([])
     for user in ctx.found_items:
         assign_groups(user, groups)
-
+        
 @given(u'we assign to {users} the groups bellow')
 def impl(ctx, users):
+    puts(['This sentence is deprecated ! Please use "we assign to {users} the groups below" with one "l"'])
+    raise Exception ("Sentence Deprecated !")
+
+@given(u'we assign to {users} the groups below')
+def impl(ctx, users):
     # search groups by name and full name
-    import pdb;pdb.set_trace()
     group_names = [row['group_name'] for row in ctx.table]
     group_names = list(set(group_names))
     group_full_names = [name for name in group_names if '/' in name]
     group_single_names = [name for name in group_names if not '/' in name]
-    ModelCategory = model('ir.module.category')
+    ModulCategory = model('ir.module.category')
     groups = []
     group_full_names_category = []
     
@@ -55,10 +59,10 @@ def impl(ctx, users):
         full_name_cond_build = [[
                 '&',
                 ('name', '=', line['name']), 
-                ('category_id','=', ModelCategory.get([('name','=',line['categ'])]).id)
+                ('category_id','=', ModulCategory.get([('name','=',line['categ'])]).id)
             ] for line in group_full_names_category
         ]
-        full_name_cond = reduce( lambda a,b : a.extend( b ) or a , full_name_cond_build)
+        full_name_cond = [item for sublist in full_name_cond_build for item in sublist]
         # Search for full_name groups (composed by '/')
         num_operators = len(full_name_cond_build) - 1    
         or_operators = ['|'] * num_operators
