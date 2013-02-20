@@ -1,4 +1,4 @@
-from support import model, assert_equal, puts
+from support import model, assert_equal, puts, set_trace
 
 @given('we select all users')
 def impl(ctx):
@@ -40,40 +40,33 @@ def impl(ctx, users):
     ModulCategory = model('ir.module.category')
     groups = []
     group_full_names_category = []
-    
     if group_full_names:
-        # Take the category_id (first part for all group_full_names)
-        # [
-        #     {'categ': 'Purchase', 'name': 'User'},
-        #     {'categ': 'Sale', 'name': 'User'}
-        # ]
-        group_full_names_category = [{
-                'categ': line.split('/')[0].strip(),
-                'name': line.split('/')[1].strip()
-              } for line in group_full_names]
-        # Take the category_id to build the domain
-        # [
-        #   ('&',('name','=','User'), ('category_id','=',40)),
-        #   ('&',('name','=','User'), ('category_id','=',47)),
-        # ]
-        full_name_cond_build = [[
-                '&',
-                ('name', '=', line['name']), 
-                ('category_id','=', ModulCategory.get([('name','=',line['categ'])]).id)
-            ] for line in group_full_names_category
-        ]
-        full_name_cond = [item for sublist in full_name_cond_build for item in sublist]
-        # Search for full_name groups (composed by '/')
-        num_operators = len(full_name_cond_build) - 1    
+        full_name_cond = []
+        for line in group_full_names:
+            categ, name = line.split('/', 1)
+            categ = categ.strip(),
+            name = name.strip()
+            category = ModulCategory.get([('name', '=', categ)])
+            assert category, 'no category named %s' % categ
+            condition = [
+                    '&',
+                    ('name', '=', name), 
+                    ('category_id', '=', category.id)
+                ]
+            # Take the category_id to build the domain
+            # [
+            #   ('&',('name','=','User'), ('category_id','=',40)),
+            #   ('&',('name','=','User'), ('category_id','=',47)),
+            # ]
+            full_name_cond += condition
+        num_operators = len(group_full_names) - 1    
         or_operators = ['|'] * num_operators
         search_cond = or_operators + full_name_cond
         groups.extend(model('res.groups').browse(search_cond))
-    
     if group_single_names:
         single_name_cond = [('name', 'in', group_single_names)]
         # Search for single groups
         groups.extend(model('res.groups').browse(single_name_cond))
-
     assert_equal(len(groups), len(group_names))
     assert users in ('user', 'users')
     if users == "users":
