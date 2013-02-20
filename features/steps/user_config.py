@@ -1,4 +1,4 @@
-from support import model, assert_equal
+from support import model, assert_equal, puts, set_trace
 
 @given('we select all users')
 def impl(ctx):
@@ -24,29 +24,49 @@ def impl(ctx):
     groups = model('res.groups').browse([])
     for user in ctx.found_items:
         assign_groups(user, groups)
-
+        
 @given(u'we assign to {users} the groups bellow')
+def impl(ctx, users):
+    puts(['This sentence is deprecated ! Please use "we assign to {users} the groups below" with one "l"'])
+    raise Exception ("Sentence Deprecated !")
+
+@given(u'we assign to {users} the groups below')
 def impl(ctx, users):
     # search groups by name and full name
     group_names = [row['group_name'] for row in ctx.table]
     group_names = list(set(group_names))
     group_full_names = [name for name in group_names if '/' in name]
     group_single_names = [name for name in group_names if not '/' in name]
-
+    ModulCategory = model('ir.module.category')
+    groups = []
+    group_full_names_category = []
+    if group_full_names:
+        full_name_cond = []
+        for line in group_full_names:
+            categ, name = line.split('/', 1)
+            categ = categ.strip(),
+            name = name.strip()
+            category = ModulCategory.get([('name', '=', categ)])
+            assert category, 'no category named %s' % categ
+            condition = [
+                    '&',
+                    ('name', '=', name), 
+                    ('category_id', '=', category.id)
+                ]
+            # Take the category_id to build the domain
+            # [
+            #   ('&',('name','=','User'), ('category_id','=',40)),
+            #   ('&',('name','=','User'), ('category_id','=',47)),
+            # ]
+            full_name_cond += condition
+        num_operators = len(group_full_names) - 1    
+        or_operators = ['|'] * num_operators
+        search_cond = or_operators + full_name_cond
+        groups.extend(model('res.groups').browse(search_cond))
     if group_single_names:
         single_name_cond = [('name', 'in', group_single_names)]
-    else:
-        single_name_cond = []
-    # it isn't possible to use the 'in' operator on full_name
-    # so we add one OR by search term
-    full_name_cond = [('full_name', '=', full_name)
-            for full_name in group_full_names]
-    num_operators = len(single_name_cond) + len(full_name_cond) - 1
-    or_operators = ['|'] * num_operators
-
-    search_cond = or_operators + single_name_cond + full_name_cond
-
-    groups = model('res.groups').browse(search_cond)
+        # Search for single groups
+        groups.extend(model('res.groups').browse(single_name_cond))
     assert_equal(len(groups), len(group_names))
     assert users in ('user', 'users')
     if users == "users":
