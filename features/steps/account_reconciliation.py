@@ -2,7 +2,7 @@
 def impl(ctx):
     assert ctx.found_item
     rule_ids = []
-    for(name,) in ctx.table:
+    for (name,) in ctx.table:
        rule = model('account.statement.completion.rule').get([('name', '=', name)])
        assert rule
        rule_ids.append(rule.id)
