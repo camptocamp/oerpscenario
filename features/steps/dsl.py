@@ -41,6 +41,8 @@ def build_search_domain(ctx, obj, values):
     search_domain = [(key, '=', value) for (key, value) in values.items()]
     if res_id:
         search_domain = [('id', '=', res_id)] + search_domain
+    if 'company_id' in ctx.data and 'company_id' in model(obj).fields():
+        search_domain.append(('company_id', '=', ctx.data['company_id']))
     return search_domain
 
 
@@ -103,6 +105,10 @@ def impl_having(ctx):
     if isinstance(ctx.found_item, dict):
         values = ctx.found_item
         values.update(table_values)
+        if 'company_id' not in values and \
+           'company_id' in ctx.data and \
+           'company_id' in model(ctx.search_model_name).keys():
+            values['company_id'] = ctx.data['company_id']
         ctx.found_item = create_new_obj(ctx, ctx.search_model_name, values)
 
     else:
@@ -208,6 +214,12 @@ def impl(ctx, pname, modelname, fieldname):
 def impl(ctx, modelname, column, value):
     assert hasattr(ctx, 'ir_property')
     ir_property = ctx.ir_property
-    res = model(modelname).get([(column, '=', value)])
+    res = model(modelname).get([(column, '=', value), ('company_id', '=', ir_property.company_id.id)])
     assert res, "no value for %s value %s" % (column, value)
     ir_property.write({'value_reference': '%s,%s' % (modelname, res.id)})
+
+@given('I am configuring the company with ref "{company_oid}"')
+def impl(ctx, company_oid):
+    c_domain = build_search_domain(ctx, 'res.company', {'xmlid': company_oid})
+    company = model('res.company').get(c_domain)
+    ctx.data['company_id'] = company.id
