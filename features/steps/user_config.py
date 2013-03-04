@@ -26,7 +26,7 @@ def impl(ctx):
         assign_groups(user, groups)
         
 
-@given(u'we assign to {users} the groups below')
+@step(u'we assign to {users} the groups below')
 def impl(ctx, users):
     # search groups by name and full name
     group_names = [row['group_name'] for row in ctx.table]
