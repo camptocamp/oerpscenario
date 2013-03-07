@@ -21,6 +21,7 @@ def impl(ctx, logo_path):
 
 @given(u'the company has a header image "{logo_name}" from file "{logo_path}"')
 def impl(ctx, logo_name, logo_path):
+    cp_id = ctx.data.get('company_id')
 
     filename, extension = os.path.splitext(logo_path)
     assert extension.lower() in ['.png', '.gif', '.jpeg', '.jpg'], "Image extension must be (.png, .gif or .jpeg)"
@@ -31,9 +32,12 @@ def impl(ctx, logo_name, logo_path):
             'img' : encoded_image,
             'name' : logo_name,
             'type': extension[1:],
+            'company_id': cp_id,
             }
 
-    header_img = model('ir.header_img').browse([('name', '=', logo_name)])
+    header_img = model('ir.header_img').browse(
+            [('name', '=', logo_name),
+             ('company_id', '=', cp_id)])
     if header_img:
         header_img.write(values)
     else:
