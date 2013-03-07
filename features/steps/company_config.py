@@ -19,7 +19,7 @@ def impl(ctx, logo_path):
     encoded_image = get_encoded_image(ctx, logo_path)
     company.write({'logo': encoded_image})
 
-@given(u'the company has a header image "{logo_name}" from file "{logo_path}"')
+@given(u'I have a header image "{logo_name}" from file "{logo_path}"')
 def impl(ctx, logo_name, logo_path):
     cp_id = ctx.data.get('company_id')
 
