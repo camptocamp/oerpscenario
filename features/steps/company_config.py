@@ -22,19 +22,21 @@ def impl(ctx, logo_path):
 @given(u'the company has a header image "{logo_name}" from file "{logo_path}"')
 def impl(ctx, logo_name, logo_path):
 
+    filename, extension = os.path.splitext(logo_path)
+    assert extension.lower() in ['.png', '.gif', '.jpeg', '.jpg'], "Image extension must be (.png, .gif or .jpeg)"
+
+    encoded_image = get_encoded_image(ctx, logo_path)
+
+    values = {
+            'img' : encoded_image,
+            'name' : logo_name,
+            'type': extension[1:],
+            }
+
     header_img = model('ir.header_img').browse([('name', '=', logo_name)])
-    if not header_img:
-        filename, extension = os.path.splitext(logo_path)
-        assert extension.lower() in ['.png', '.gif', '.jpeg', '.jpg'], "Image extension must be (.png, .gif or .jpeg)"
-
-        encoded_image = get_encoded_image(ctx, logo_path)
-
-        values = {
-                'img' : encoded_image,
-                'name' : logo_name,
-                'type': extension[1:],
-                }
-
+    if header_img:
+        header_img.write(values)
+    else:
         model('ir.header_img').create(values)
 
 @given(u'the company currency is "{rate_code}" with a rate of "{rate_value}"')
