@@ -25,12 +25,8 @@ def impl(ctx):
     for user in ctx.found_items:
         assign_groups(user, groups)
         
-@given(u'we assign to {users} the groups bellow')
-def impl(ctx, users):
-    puts(['This sentence is deprecated ! Please use "we assign to {users} the groups below" with one "l"'])
-    raise Exception ("Sentence Deprecated !")
 
-@given(u'we assign to {users} the groups below')
+@step(u'we assign to {users} the groups below')
 def impl(ctx, users):
     # search groups by name and full name
     group_names = [row['group_name'] for row in ctx.table]
