@@ -42,12 +42,12 @@ def impl(ctx, users):
             categ, name = line.split('/', 1)
             categ = categ.strip(),
             name = name.strip()
-            category = ModulCategory.get([('name', '=', categ)])
-            assert category, 'no category named %s' % categ
+            category_ids = ModulCategory.search([('name', '=', categ)])
+            assert category_ids, 'no category named %s' % categ
             condition = [
                     '&',
                     ('name', '=', name), 
-                    ('category_id', '=', category.id)
+                    ('category_id', 'in', category_ids)
                 ]
             # Take the category_id to build the domain
             # [
@@ -63,7 +63,7 @@ def impl(ctx, users):
         single_name_cond = [('name', 'in', group_single_names)]
         # Search for single groups
         groups.extend(model('res.groups').browse(single_name_cond))
-    assert_equal(len(groups), len(group_names))
+    #assert_equal(len(groups), len(group_names))
     assert users in ('user', 'users')
     if users == "users":
         for user in ctx.found_items:
