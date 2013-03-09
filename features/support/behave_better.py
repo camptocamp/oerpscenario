@@ -3,6 +3,7 @@
 
 Some of them might be proposed upstream
 """
+import os.path
 
 from behave import formatter
 from behave import matchers
@@ -17,19 +18,32 @@ def patch_all():
     global _behave_patched
     if not _behave_patched:
         patch_matchers_get_matcher()
+        patch_model_Feature_run()
         patch_model_Table_raw()
+        patch_runner_Runner_feature_files()
+        formatter.formatters.register(PlainFormatter)
         formatter.formatters.register(PrettyFormatter)
         _behave_patched = True
 
 
 def patch_matchers_get_matcher():
     # Detect the regex expressions
-    # https://github.com/jeamland/behave/issues/73
+    # https://github.com/behave/behave/issues/73
     def get_matcher(func, string):
         if string[:1] == string[-1:] == '/':
             return matchers.RegexMatcher(func, string[1:-1])
         return matchers.current_matcher(func, string)
     matchers.get_matcher = get_matcher
+
+
+def patch_model_Feature_run():
+    # Fix exit status
+    # https://github.com/behave/behave/issues/52
+    def run(self, runner):
+        self._run_orig(runner)
+        return runner.context.failed
+    model.Feature._run_orig = model.Feature.run
+    model.Feature.run = run
 
 
 def patch_model_Table_raw():
@@ -41,6 +55,42 @@ def patch_model_Table_raw():
     model.Table.raw = property(raw)
 
 
+def patch_runner_Runner_feature_files():
+    # Fix features loading
+    # https://github.com/behave/behave/issues/103
+    def feature_files(self):
+        files = []
+        for path in self.config.paths:
+            if os.path.isdir(path):
+                new_files = []
+                for dirpath, dirnames, filenames in os.walk(path):
+                    for filename in filenames:
+                        if filename.endswith('.feature'):
+                            new_files.append(os.path.join(dirpath, filename))
+                new_files.sort()
+                files.extend(new_files)
+            elif path.startswith('@') and os.path.exists(path[1:]):
+                with open(path[1:]) as f:
+                    files.extend([filename.strip() for filename in f])
+            elif os.path.exists(path):
+                files.append(path)
+            else:
+                raise RuntimeError("Can't find path: %s" % path)
+        return files
+    runner.Runner.feature_files = feature_files
+
+
+# Flush the output after each scenario
+class PlainFormatter(formatter.plain.PlainFormatter):
+
+    def result(self, result):
+        super(PlainFormatter, self).result(result)
+        self.stream.flush()
+
+
+# https://github.com/behave/behave/pull/115
+# https://github.com/behave/behave/issues/118
+#
 # Fixes:
 # * colors for tags
 # * colors for tables
@@ -70,8 +120,14 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
             self.stream.write('\n')
         self.stream.flush()
 
+        table_width = 7 + 3 * len(table.headings) + sum(max_lengths)
+        self.table_lines = len(all_rows) * (1 + table_width // self.display_width)
+
     def doc_string(self, doc_string, strformat=unicode):
         triplequotes = self.format('comments').text(u'"""')
+        self.text_lines = 2 + sum(
+            [(1 + (6 + len(line)) // self.display_width)
+             for line in doc_string.splitlines()])
         doc_string = strformat(self.escape_triple_quotes(doc_string))
         self.stream.write(self.indent(u'\n'.join([
             triplequotes, doc_string, triplequotes]), u'      ') + u'\n')
@@ -111,7 +167,7 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
             line_length += len(location)
         self.stream.write("\n")
 
-        self.step_lines = int((line_length - 1) / self.display_width)
+        self.step_lines = int((line_length - 1) // self.display_width)
 
         if self.show_multiline:
             if step.text:
@@ -122,36 +178,21 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
     def print_tags(self, tags, indent):
         if not tags:
             return
-        formatted_tags = u' '.join(self.format('tag').text('@' + tag)
-                                   for tag in tags)
-        self.stream.write(indent + formatted_tags + '\n')
+        tags = u' '.join(u'@' + tag for tag in tags)
+        self.stream.write(indent + self.format('tag').text(tags) + '\n')
 
     def eof(self):
         self.replay()
+        # Skip empty line (key up)
         self.stream.write('\033[A')
         self.stream.flush()
 
 
 # monkey patch Runner so that feature files are sorted
-import os, sys
+import sys
 from behave.runner import exec_file
 from behave import step_registry
-def _patched_feature_files(self):
-    files = []
-    for path in self.config.paths:
-        if os.path.isdir(path):
-            for dirpath, dirnames, filenames in os.walk(path):
-                dirnames.sort()
-                for filename in sorted(filenames):
-                    if filename.endswith('.feature'):
-                        files.append(os.path.join(dirpath, filename))
-        elif path.startswith('@'):
-            files.extend([filename.strip() for filename in open(path)])
-        elif os.path.exists(path):
-            files.append(path)
-        else:
-            raise Exception("Can't find path: " + path)
-    return files
+
 
 def _patched_load_step_definitions(self, extra_step_paths=None):
     steps_dir = os.path.join(self.base_dir, 'steps')
@@ -183,6 +224,4 @@ def _patched_load_step_definitions(self, extra_step_paths=None):
     # clean up the path
     sys.path.pop(0)
 
-
-runner.Runner.feature_files = _patched_feature_files
 runner.Runner.load_step_definitions = _patched_load_step_definitions
