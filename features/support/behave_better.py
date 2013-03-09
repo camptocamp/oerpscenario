@@ -21,6 +21,7 @@ def patch_all():
         patch_model_Feature_run()
         patch_model_Table_raw()
         patch_runner_Runner_feature_files()
+        patch_runner_Runner_load_step_definitions()
         formatter.formatters.register(PlainFormatter)
         formatter.formatters.register(PrettyFormatter)
         _behave_patched = True
@@ -78,6 +79,22 @@ def patch_runner_Runner_feature_files():
                 raise RuntimeError("Can't find path: %s" % path)
         return files
     runner.Runner.feature_files = feature_files
+
+
+def patch_runner_Runner_load_step_definitions():
+    # Lookup 'steps' recursively below each feature directory
+    def load_step_definitions(self, extra_step_paths=None):
+        if extra_step_paths is None:
+            extra_step_paths = []
+            for path in self.config.paths[1:]:
+                dirname = os.path.abspath(path)
+                for dirname, subdirs, _fnames in os.walk(dirname):
+                    if 'steps' in subdirs:
+                        extra_step_paths.append(os.path.join(dirname, 'steps'))
+                        subdirs.remove('steps')   # prune search
+        self._load_step_definitions_orig(extra_step_paths=extra_step_paths)
+    runner.Runner._load_step_definitions_orig = runner.Runner.load_step_definitions
+    runner.Runner.load_step_definitions = load_step_definitions
 
 
 # Flush the output after each scenario
@@ -186,42 +203,3 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
         # Skip empty line (key up)
         self.stream.write('\033[A')
         self.stream.flush()
-
-
-# monkey patch Runner so that feature files are sorted
-import sys
-from behave.runner import exec_file
-from behave import step_registry
-
-
-def _patched_load_step_definitions(self, extra_step_paths=None):
-    steps_dir = os.path.join(self.base_dir, 'steps')
-    if extra_step_paths is None:
-        extra_step_paths = []
-        for path in self.config.paths[1:]:
-            dirname = os.path.abspath(path)
-            for dirname, subdirs, _fnames in os.walk(dirname):
-                if 'steps' in subdirs:
-                    extra_step_paths.append(os.path.join(dirname, 'steps'))
-                    subdirs.remove('steps') # prune search
-    # allow steps to import other stuff from the steps dir
-    sys.path.insert(0, steps_dir)
-
-    step_globals = {
-        'step_matcher': matchers.step_matcher,
-    }
-
-    for step_type in ('given', 'when', 'then', 'step'):
-        decorator = getattr(step_registry, step_type)
-        step_globals[step_type] = decorator
-        step_globals[step_type.title()] = decorator
-
-    for path in [steps_dir] + list(extra_step_paths):
-        for name in os.listdir(path):
-            if name.endswith('.py'):
-                exec_file(os.path.join(path, name), step_globals)
-
-    # clean up the path
-    sys.path.pop(0)
-
-runner.Runner.load_step_definitions = _patched_load_step_definitions
