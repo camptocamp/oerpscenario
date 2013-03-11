@@ -40,7 +40,7 @@ def impl(ctx, users):
         full_name_cond = []
         for line in group_full_names:
             categ, name = line.split('/', 1)
-            categ = categ.strip(),
+            categ = categ.strip()
             name = name.strip()
             category_ids = ModulCategory.search([('name', '=', categ)])
             assert category_ids, 'no category named %s' % categ
