@@ -20,8 +20,8 @@ def patch_all():
         patch_matchers_get_matcher()
         patch_model_Feature_run()
         patch_model_Table_raw()
-        patch_runner_Runner_feature_files()
         patch_runner_Runner_load_step_definitions()
+        patch_runner_Runner_feature_files()
         formatter.formatters.register(PlainFormatter)
         formatter.formatters.register(PrettyFormatter)
         _behave_patched = True
@@ -56,6 +56,22 @@ def patch_model_Table_raw():
     model.Table.raw = property(raw)
 
 
+def patch_runner_Runner_load_step_definitions():
+    # Lookup 'steps' recursively below each feature directory
+    def load_step_definitions(self, extra_step_paths=None):
+        if extra_step_paths is None:
+            extra_step_paths = []
+            for path in self.config.paths[1:]:
+                dirname = os.path.abspath(path)
+                for dirname, subdirs, _fnames in os.walk(dirname):
+                    if 'steps' in subdirs:
+                        extra_step_paths.append(os.path.join(dirname, 'steps'))
+                        subdirs.remove('steps')   # prune search
+        self._load_step_definitions_orig(extra_step_paths=extra_step_paths)
+    runner.Runner._load_step_definitions_orig = runner.Runner.load_step_definitions
+    runner.Runner.load_step_definitions = load_step_definitions
+
+
 def patch_runner_Runner_feature_files():
     # Fix features loading
     # https://github.com/behave/behave/issues/103
@@ -79,22 +95,6 @@ def patch_runner_Runner_feature_files():
                 raise RuntimeError("Can't find path: %s" % path)
         return files
     runner.Runner.feature_files = feature_files
-
-
-def patch_runner_Runner_load_step_definitions():
-    # Lookup 'steps' recursively below each feature directory
-    def load_step_definitions(self, extra_step_paths=None):
-        if extra_step_paths is None:
-            extra_step_paths = []
-            for path in self.config.paths[1:]:
-                dirname = os.path.abspath(path)
-                for dirname, subdirs, _fnames in os.walk(dirname):
-                    if 'steps' in subdirs:
-                        extra_step_paths.append(os.path.join(dirname, 'steps'))
-                        subdirs.remove('steps')   # prune search
-        self._load_step_definitions_orig(extra_step_paths=extra_step_paths)
-    runner.Runner._load_step_definitions_orig = runner.Runner.load_step_definitions
-    runner.Runner.load_step_definitions = load_step_definitions
 
 
 # Flush the output after each scenario
