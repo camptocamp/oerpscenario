@@ -58,8 +58,14 @@ def patch_model_Table_raw():
 
 
 def patch_runner_Runner_load_step_definitions():
-    # Lookup 'steps' recursively below each feature directory
-    def load_step_definitions(self, extra_step_paths=None):
+    # Fix globals leaking between modules
+    # https://github.com/behave/behave/issues/135
+    # and lookup 'steps' recursively below each feature directory
+    def exec_file(filename, globals={}, locals=None):
+        g = globals.copy()
+        exec_file_orig(filename, g, locals)
+
+    def load_step_definitions(self, extra_step_paths=[]):
         if extra_step_paths is None:
             extra_step_paths = []
             for path in self.config.paths[1:]:
@@ -68,8 +74,13 @@ def patch_runner_Runner_load_step_definitions():
                     if 'steps' in subdirs:
                         extra_step_paths.append(os.path.join(dirname, 'steps'))
                         subdirs.remove('steps')   # prune search
-        self._load_step_definitions_orig(extra_step_paths=extra_step_paths)
-    runner.Runner._load_step_definitions_orig = runner.Runner.load_step_definitions
+        runner.exec_file = exec_file
+        try:
+            self._lsd_orig(extra_step_paths)
+        finally:
+            runner.exec_file = exec_file_orig
+    exec_file_orig = runner.exec_file
+    runner.Runner._lsd_orig = runner.Runner.load_step_definitions
     runner.Runner.load_step_definitions = load_step_definitions
 
 
