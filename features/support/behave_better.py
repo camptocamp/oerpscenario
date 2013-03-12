@@ -9,6 +9,7 @@ from behave import formatter
 from behave import matchers
 from behave import model
 from behave import runner
+from behave.formatter.ansi_escapes import up
 
 __all__ = ['patch_all']
 _behave_patched = False
@@ -113,6 +114,27 @@ class PlainFormatter(formatter.plain.PlainFormatter):
 # * colors for tables
 # * colors for docstrings
 class PrettyFormatter(formatter.pretty.PrettyFormatter):
+
+    def result(self, result):
+        if not self.monochrome:
+            lines = self.step_lines + 1
+            if self.show_multiline:
+                if result.table:
+                    lines += self.table_lines
+                if result.text:
+                    lines += self.text_lines
+            self.stream.write(up(lines))
+            arguments = []
+            location = None
+            if self._match:
+                arguments = self._match.arguments
+                location = self._match.location
+            self.print_step(result.status, arguments, location, True)
+        if result.error_message:
+            self.stream.write(self.indent(result.error_message.strip(),
+                                          u'      '))
+            self.stream.write('\n\n')
+        self.stream.flush()
 
     def table(self, table, strformat=unicode):
         cell_lengths = []
