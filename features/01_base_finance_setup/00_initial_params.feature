@@ -12,8 +12,7 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
 
   @base_finance_create_db
   Scenario: CREATE DATABASE
-    #Given I drop database "toto" TODO
-    Given I create database "70" with admin password "admin"
+    Given I create database from config file
 
   @base_finance_setup_install_modules
   Scenario: MODULES INSTALLATION
@@ -27,7 +26,7 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
       | account_cancel                  |
       | purchase                        |
       | sale                            |
-      | web_shortcuts                   |       
+      | web_shortcuts                   |
 #      | stock_move_change_delivery_date |
 #      | report_webkit_lib               |
 #      | product_standard_margin         |
@@ -103,6 +102,7 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
     | name                  | value          |
     | name                  | average        |
 
+   @debug_taxes
    Scenario: CURRENCY RATES SETTINGS
     Given I set the following currency rates:
       | currency |   rate | date     |  type |
@@ -144,9 +144,8 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
       | CAD      | 1.1600 | %Y-11-01 |       |
       | CAD      | 1.1300 | %Y-12-01 |       |
       | USD      | 1.6000 | %Y-01-31 |average|
-      | USD      | 1.9000 | %Y-02-28 |average|   
-      | GBP      | 0.7000 | %Y-01-31 |average|   
-      | GBP      | 0.8000 | %Y-02-28 |average|   
+      | USD      | 1.9000 | %Y-02-28 |average|
+      | GBP      | 0.7000 | %Y-01-31 |average|
+      | GBP      | 0.8000 | %Y-02-28 |average|
       | CAD      | 1.2500 | %Y-01-01 |average|
       | CAD      | 1.2700 | %Y-02-01 |average|
-   
