@@ -214,7 +214,10 @@ def impl(ctx, pname, modelname, fieldname):
 def impl(ctx, modelname, column, value):
     assert hasattr(ctx, 'ir_property')
     ir_property = ctx.ir_property
-    res = model(modelname).get([(column, '=', value), ('company_id', '=', ir_property.company_id.id)])
+    domain = [(column, '=', value)]
+    if ir_property.company_id and 'company_id' in model(modelname).fields():
+        domain.append(('company_id', '=', ir_property.company_id.id))
+    res = model(modelname).get(domain)
     assert res, "no value for %s value %s" % (column, value)
     ir_property.write({'value_reference': '%s,%s' % (modelname, res.id)})
 
