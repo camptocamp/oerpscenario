@@ -21,7 +21,14 @@ def before_all(ctx):
                 'admin_passwd': server.tools.config['admin_passwd'],
                 'db_name': database,
                 }
-    ctx.client.login('admin', 'admin', database=database)
+    # We try to manage default login
+    # even if there is a sentence to log a given user
+    # Just add options.admin_login_password in your buildout to log from config
+    admin_login_password = server.tools.config.get('admin_login_password')
+    if admin_login_password:
+        ctx.client.login('admin', admin_login_password, database=database)
+    else:
+        ctx.client.login('admin', 'admin', database=database)
 
 
 
