@@ -6,14 +6,12 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@base_finance   @base_commercial_management 
+@base_finance   @base_commercial_management
 
 Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
 
   Scenario: Ensure the db is available
     Given the server is up and running OpenERP 7.0
-    And the database "behave" exists
-    Then user "admin" log in with password "admin"
 
 
   @base_finance_setup_chart
@@ -135,7 +133,7 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | type        | payable             |
     | user_type   | by name: Payable    |
     | reconcile   | true                |
-    
+
      Given I need a "account.account" with oid: scen.acc_receivable_usd
     And having:
     | name        | value               |
@@ -145,7 +143,7 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | type        | receivable          |
     | user_type   | by name: Receivable |
     | reconcile   | true                |
-    
+
      Given I need a "account.account" with oid: scen.acc_receivable_gbp
     And having:
     | name        | value               |
@@ -154,7 +152,7 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | parent_id   | by code: C0         |
     | type        | receivable          |
     | user_type   | by name: Receivable |
-    | reconcile   | true                |    
+    | reconcile   | true                |
 
      Given I need a "account.account" with oid: scen.acc_payable_usd
     And having:
@@ -183,7 +181,7 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | parent_id   | by code: C0         |
     | type        | other               |
     | user_type   | by name: Asset      |
-    
+
          Given I need a "account.account" with oid: scen.acc_EU_purchases_vat
     And having:
     | name        | value               |
@@ -201,7 +199,7 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | parent_id   | by code: C0         |
     | type        | other               |
     | user_type   | by name: Asset      |
-    
+
       Given I need a "account.account" with oid: scen.acc_asset
     And having:
     | name        | value               |
@@ -278,7 +276,7 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
     | user_type   | by name: Cash       |
     | currency_id | by name: GBP        |
 
-  
+
 
   @base_finance_setup_properties
   Scenario: DEFAULT ACCOUNT SETTINGS (PROPERTIES)
@@ -300,7 +298,7 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
 
     Given I set global property named "property_account_income" for model "product.template" and field "property_account_income"
     And the property is related to model "account.account" using column "code" and value "707"
-    
+
     Given I set global property named "property_stock_account_input" for model "product.template" and field "property_stock_account_input"
     And the property is related to model "account.account" using column "code" and value "603"
 
