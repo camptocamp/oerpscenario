@@ -31,10 +31,15 @@ def before_all(ctx):
         ctx.client.login('admin', 'admin', database=database)
 
 
-
 def before_feature(ctx, feature):
     #pdb.set_trace()
     ctx.data = {}
+
+
+# Work around https://github.com/behave/behave/issues/145
+def before_scenario(ctx, scenario):
+    if not hasattr(ctx, 'data'):
+        ctx.data = {}
 
 
 def before_step(ctx, step):
