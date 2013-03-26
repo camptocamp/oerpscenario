@@ -226,3 +226,7 @@ def impl(ctx, company_oid):
     c_domain = build_search_domain(ctx, 'res.company', {'xmlid': company_oid})
     company = model('res.company').get(c_domain)
     ctx.data['company_id'] = company.id
+
+@step('I delete it')
+def impl(ctx):
+    ctx.found_item.unlink()
