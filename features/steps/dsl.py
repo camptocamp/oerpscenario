@@ -41,14 +41,14 @@ def build_search_domain(ctx, obj, values):
     search_domain = [(key, '=', value) for (key, value) in values.items()]
     if res_id:
         search_domain = [('id', '=', res_id)] + search_domain
-    if 'company_id' in ctx.data and \
+    if hasattr(ctx, 'company_id') and \
        'company_id' in model(obj).fields() and \
        not [term for term in search_domain if term[0] == 'company_id']:
-        # we add a company_id domain restriction if there is one definied in ctx.data,
+        # we add a company_id domain restriction if there is one definied in ctx,
         # and there is a company_id column in the model
         # and there was no explicit company_id restriction in the domain
         # (we need this to search shared records, such as res.currencies)
-        search_domain.append(('company_id', '=', ctx.data['company_id']))
+        search_domain.append(('company_id', '=', ctx.company_id))
     return search_domain
 
 
@@ -112,9 +112,9 @@ def impl_having(ctx):
         values = ctx.found_item
         values.update(table_values)
         if 'company_id' not in values and \
-           'company_id' in ctx.data and \
+           hasattr(ctx, 'company_id') and \
            'company_id' in model(ctx.search_model_name).keys():
-            values['company_id'] = ctx.data['company_id']
+            values['company_id'] = ctx.company_id
         ctx.found_item = create_new_obj(ctx, ctx.search_model_name, values)
 
     else:
@@ -231,4 +231,4 @@ def impl(ctx, modelname, column, value):
 def impl(ctx, company_oid):
     c_domain = build_search_domain(ctx, 'res.company', {'xmlid': company_oid})
     company = model('res.company').get(c_domain)
-    ctx.data['company_id'] = company.id
+    ctx.company_id = company.id
