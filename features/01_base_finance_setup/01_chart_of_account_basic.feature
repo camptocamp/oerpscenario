@@ -283,9 +283,9 @@ Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
 
     Given I need a "res.company" with oid: base.main_company
     And having:
-    | name                                 | value                |
-    | expense_currency_exchange_account_id | by name: Currency fx |
-    | income_currency_exchange_account_id  | by name: Currency fx |
+    | name                                 | value                       |
+    | expense_currency_exchange_account_id | by name: Curr. fx gain&loss |
+    | income_currency_exchange_account_id  | by name: Curr. fx gain&loss |
 
     Given I set global property named "property_account_receivable" for model "res.partner" and field "property_account_receivable"
     And the property is related to model "account.account" using column "code" and value "4111"

@@ -27,16 +27,6 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
       | purchase                        |
       | sale                            |
       | web_shortcuts                   |
-#      | stock_move_change_delivery_date |
-#      | report_webkit_lib               |
-#      | product_standard_margin         |
-#      | product_historical_margin       |
-#      | account_financial_report_webkit |
-#      | invoice_webkit                  |
-#      | purchase_order_webkit           |
-#      | sale_order_webkit               |
-#      | stock_picking_webkit            |
-#      | account_advanced_reconcile      |
 
     Then my modules should have been installed and models reloaded
 
@@ -96,14 +86,14 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
     Then I find a "account.fiscalyear" with oid: scenario.fy2013
 
   @base_finance_setup_currency_rates
-   Scenario: CURRENCY RATES TYPE NAME CREATION (mainly for module account_multicurrency_revaluation)
+  Scenario: CURRENCY RATES TYPE NAME CREATION (mainly for module account_multicurrency_revaluation)
     Given I need a "res.currency.rate.type" with oid: scen.average_fx_rate_type
     And having:
     | name                  | value          |
     | name                  | average        |
 
-   @debug_taxes
-   Scenario: CURRENCY RATES SETTINGS
+  @debug_taxes
+  Scenario: CURRENCY RATES SETTINGS
     Given I set the following currency rates:
       | currency |   rate | date     |  type |
       | EUR      | 1.0000 | %Y-01-01 |       |
@@ -149,3 +139,46 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
       | GBP      | 0.8000 | %Y-02-28 |average|
       | CAD      | 1.2500 | %Y-01-01 |average|
       | CAD      | 1.2700 | %Y-02-01 |average|
+
+  @set_payment_term
+  Scenario: PAYMENT TERM SETTINGS
+    Given I need a "account.payment.term" with oid: account.account_payment_term
+    And having:
+    | name | value                |
+    | name | 30 Days End of Month |
+    | note | 30 Days End of Month |
+
+    # 30 Days End of Month
+    Given I need a "account.payment.term.line" with oid: account.account_payment_term_line
+    | name | value |
+    | value | balance |
+    | days | 30 |
+    | days2 | -1 |
+    | payment_id | by oid: account.account_payment_term|
+
+
+    Given I need a "account.payment.term" with oid: account.account_payment_term_advance
+    And having:
+    | name | value                |
+    | name | 30% Advance End 30 Days|
+    | note | 30% Advance End 30 Days |
+
+    # 30% Advance
+    Given I need a "account.payment.term.line" with oid: account.account_payment_term_line_advance1
+    And having:
+    | name | value |
+    | value | procent |
+    |value_amount| 0.300000 |
+    | days | 0 |
+    | days2 | 0 |
+    | payment_id | by oid: account.account_payment_term_advance|
+
+    # Remaining Balance
+    Given I need a "account.payment.term.line" with oid: account.account_payment_term_line_advance2
+    And having:
+    | name | value |
+    | value | balance |
+    | days | 30 |
+    | days2 | -1 |
+    | payment_id | by oid: account.account_payment_term_advance|
+
