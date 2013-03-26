@@ -56,7 +56,7 @@ def impl(ctx, rate_code, rate_value):
 
 @given(u'I set the webkit path to "{webkit_path}"')
 def impl(ctx, webkit_path):
-    key = model('ir.config_parameter').get("key = webkit_path")
+    key = model('ir.config_parameter').get([('key',  '=',  "webkit_path")])
     if key:
         key.write({'value': webkit_path})
     else:
