@@ -41,7 +41,13 @@ def build_search_domain(ctx, obj, values):
     search_domain = [(key, '=', value) for (key, value) in values.items()]
     if res_id:
         search_domain = [('id', '=', res_id)] + search_domain
-    if 'company_id' in ctx.data and 'company_id' in model(obj).fields():
+    if 'company_id' in ctx.data and \
+       'company_id' in model(obj).fields() and \
+       not [term for term in search_domain if term[0] == 'company_id']:
+        # we add a company_id domain restriction if there is one definied in ctx.data,
+        # and there is a company_id column in the model
+        # and there was no explicit company_id restriction in the domain
+        # (we need this to search shared records, such as res.currencies)
         search_domain.append(('company_id', '=', ctx.data['company_id']))
     return search_domain
 
