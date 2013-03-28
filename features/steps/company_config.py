@@ -21,7 +21,7 @@ def impl(ctx, logo_path):
 
 @given(u'I have a header image "{logo_name}" from file "{logo_path}"')
 def impl(ctx, logo_name, logo_path):
-    cp_id = ctx.data.get('company_id')
+    cp_id = getattr(ctx, 'company_id')
 
     filename, extension = os.path.splitext(logo_path)
     assert extension.lower() in ['.png', '.gif', '.jpeg', '.jpg'], "Image extension must be (.png, .gif or .jpeg)"
