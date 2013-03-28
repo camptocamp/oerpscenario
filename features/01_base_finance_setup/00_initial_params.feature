@@ -6,7 +6,7 @@
 ##############################################################################
 ##############################################################################
 # Branch      # Module       # Processes     # System
-@base_finance 	@base_commercial_management
+@base_finance   @base_commercial_management
 
 Feature: INITIAL SET-UP FOR NEW DATABASE
 
@@ -144,41 +144,41 @@ Feature: INITIAL SET-UP FOR NEW DATABASE
   Scenario: PAYMENT TERM SETTINGS
     Given I need a "account.payment.term" with oid: account.account_payment_term
     And having:
-    | name | value                |
+    | name | value                |
     | name | 30 Days End of Month |
     | note | 30 Days End of Month |
 
     # 30 Days End of Month
     Given I need a "account.payment.term.line" with oid: account.account_payment_term_line
-    | name | value |
-    | value | balance |
-    | days | 30 |
-    | days2 | -1 |
-    | payment_id | by oid: account.account_payment_term|
+    And having:
+    | name       | value                               |
+    | value      | balance                             |
+    | days       | 30                                  |
+    | days2      | -1                                  |
+    | payment_id | by oid: account.account_payment_term |
+
 
 
     Given I need a "account.payment.term" with oid: account.account_payment_term_advance
     And having:
-    | name | value                |
-    | name | 30% Advance End 30 Days|
+    | name | value                   |
+    | name | 30% Advance End 30 Days |
     | note | 30% Advance End 30 Days |
-
     # 30% Advance
     Given I need a "account.payment.term.line" with oid: account.account_payment_term_line_advance1
     And having:
-    | name | value |
-    | value | procent |
-    |value_amount| 0.300000 |
-    | days | 0 |
-    | days2 | 0 |
-    | payment_id | by oid: account.account_payment_term_advance|
+    | name         |                                        value |
+    | value        |                                      procent |
+    | value_amount |                                     0.300000 |
+    | days         |                                            0 |
+    | days2        |                                            0 |
+    | payment_id   | by oid: account.account_payment_term_advance |
 
     # Remaining Balance
     Given I need a "account.payment.term.line" with oid: account.account_payment_term_line_advance2
     And having:
-    | name | value |
-    | value | balance |
-    | days | 30 |
-    | days2 | -1 |
-    | payment_id | by oid: account.account_payment_term_advance|
-
+    | name       | value                                        |
+    | value      | balance                                      |
+    | days       | 30                                           |
+    | days2      | -1                                           |
+    | payment_id | by oid: account.account_payment_term_advance |
