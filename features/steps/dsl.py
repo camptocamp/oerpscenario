@@ -71,7 +71,7 @@ def parse_table_values(ctx, obj, table):
             relation = fields[key]['relation']
             if value.startswith('add all by '):
                 add_mode = True
-                value = value[4:] # fall back on "all by xxx" below
+                value = value[4:]  # fall back on "all by xxx" below
             else:
                 add_mode = False
             if value.startswith('by ') or value.startswith('all by '):
@@ -80,6 +80,7 @@ def parse_table_values(ctx, obj, table):
                 search_domain = build_search_domain(ctx, relation, values)
                 if search_domain:
                     value = model(relation).browse(search_domain).id
+                    assert value, "no value found for col %s domain %s" % (key, str(search_domain))
                 else:
                     value = []
                 if add_mode:
