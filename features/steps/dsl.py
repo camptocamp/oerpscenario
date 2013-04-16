@@ -227,7 +227,9 @@ def impl(ctx, modelname, column, value):
         res = model(modelname).get(domain)
         if not res: # try again without company
             del domain[-1]
-    res = model(modelname).get(domain)
+        res = model(modelname).get(domain)
+    else:
+        res = model(modelname).get(domain)
     assert res, "no value for %s value %s" % (column, value)
     ir_property.write({'value_reference': '%s,%s' % (modelname, res.id)})
 
