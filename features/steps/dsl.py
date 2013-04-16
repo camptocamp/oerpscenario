@@ -224,6 +224,9 @@ def impl(ctx, modelname, column, value):
     domain = [(column, '=', value)]
     if ir_property.company_id and 'company_id' in model(modelname).fields():
         domain.append(('company_id', '=', ir_property.company_id.id))
+        res = model(modelname).get(domain)
+        if not res: # try again without company
+            del domain[-1]
     res = model(modelname).get(domain)
     assert res, "no value for %s value %s" % (column, value)
     ir_property.write({'value_reference': '%s,%s' % (modelname, res.id)})
