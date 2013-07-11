@@ -15,6 +15,10 @@ behave_better.patch_all()
 def before_all(ctx):
     server = erppeek.start_openerp_services(OPENERP_ARGS)
     database = server.tools.config['db_name']
+    def _output_write(text):
+        for stream in ctx.config.outputs:
+            stream.open().write(text)
+    ctx._output_write = _output_write
     ctx._is_context = True
     ctx.client = erppeek.Client(server, verbose=ctx.config.verbose)
     ctx.conf = {'server': server,
@@ -32,7 +36,6 @@ def before_all(ctx):
 
 
 def before_feature(ctx, feature):
-    #pdb.set_trace()
     ctx.data = {}
 
 
@@ -43,7 +46,6 @@ def before_scenario(ctx, scenario):
 
 
 def before_step(ctx, step):
-    #pdb.set_trace()
     ctx._messages = []
     # Extra cleanup (should be fixed upstream?)
     ctx.table = None
@@ -51,14 +53,13 @@ def before_step(ctx, step):
 
 
 def after_step(ctx, laststep):
-    #pdb.set_trace()
     if ctx._messages:
         # Flush the messages collected with puts(...)
-        output = ctx.config.output
         for item in ctx._messages:
             for line in str(item).splitlines():
-                output.write(u'      %s\n' % (line,))
-        # output.flush()
+                ctx._output_write(u'      %s\n' % (line,))
+        for stream in ctx.config.outputs:
+            stream.open().flush()
     if laststep.status == 'failed' and ctx.config.stop:
         # Enter the interactive debugger
         tools.set_trace()
