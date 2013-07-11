@@ -10,6 +10,10 @@ from behave import matchers
 from behave import model
 from behave import runner
 from behave.formatter.ansi_escapes import up
+from behave.model_describe import escape_cell, escape_triple_quotes, indent
+# Defeat lazy import, because we need to patch the formatters
+import behave.formatter.plain
+import behave.formatter.pretty
 
 __all__ = ['patch_all']
 _behave_patched = False
@@ -19,10 +23,7 @@ def patch_all():
     global _behave_patched
     if not _behave_patched:
         patch_matchers_get_matcher()
-        patch_model_Feature_run()
         patch_model_Table_raw()
-        patch_runner_Runner_load_step_definitions()
-        patch_runner_Runner_feature_files()
         formatter.formatters.register(PlainFormatter)
         formatter.formatters.register(PrettyFormatter)
         _behave_patched = True
@@ -38,16 +39,6 @@ def patch_matchers_get_matcher():
     matchers.get_matcher = get_matcher
 
 
-def patch_model_Feature_run():
-    # Fix exit status
-    # https://github.com/behave/behave/issues/52
-    def run(self, runner):
-        self._run_orig(runner)
-        return runner.context.failed
-    model.Feature._run_orig = model.Feature.run
-    model.Feature.run = run
-
-
 def patch_model_Table_raw():
     # Add attribute Table.raw
     def raw(self):
@@ -57,58 +48,6 @@ def patch_model_Table_raw():
     model.Table.raw = property(raw)
 
 
-def patch_runner_Runner_load_step_definitions():
-    # Fix globals leaking between modules
-    # https://github.com/behave/behave/issues/135
-    # and lookup 'steps' recursively below each feature directory
-    def exec_file(filename, globals={}, locals=None):
-        g = globals.copy()
-        exec_file_orig(filename, g, locals)
-
-    def load_step_definitions(self, extra_step_paths=[]):
-        if extra_step_paths is None:
-            extra_step_paths = []
-            for path in self.config.paths[1:]:
-                dirname = os.path.abspath(path)
-                for dirname, subdirs, _fnames in os.walk(dirname):
-                    if 'steps' in subdirs:
-                        extra_step_paths.append(os.path.join(dirname, 'steps'))
-                        subdirs.remove('steps')   # prune search
-        runner.exec_file = exec_file
-        try:
-            self._lsd_orig(extra_step_paths)
-        finally:
-            runner.exec_file = exec_file_orig
-    exec_file_orig = runner.exec_file
-    runner.Runner._lsd_orig = runner.Runner.load_step_definitions
-    runner.Runner.load_step_definitions = load_step_definitions
-
-
-def patch_runner_Runner_feature_files():
-    # Fix features loading
-    # https://github.com/behave/behave/issues/103
-    def feature_files(self):
-        files = []
-        for path in self.config.paths:
-            if os.path.isdir(path):
-                new_files = []
-                for dirpath, dirnames, filenames in os.walk(path):
-                    for filename in filenames:
-                        if filename.endswith('.feature'):
-                            new_files.append(os.path.join(dirpath, filename))
-                new_files.sort()
-                files.extend(new_files)
-            elif path.startswith('@') and os.path.exists(path[1:]):
-                with open(path[1:]) as f:
-                    files.extend([filename.strip() for filename in f])
-            elif os.path.exists(path):
-                files.append(path)
-            else:
-                raise RuntimeError("Can't find path: %s" % path)
-        return files
-    runner.Runner.feature_files = feature_files
-
-
 # Flush the output after each scenario
 class PlainFormatter(formatter.plain.PlainFormatter):
 
@@ -116,8 +55,13 @@ class PlainFormatter(formatter.plain.PlainFormatter):
         super(PlainFormatter, self).result(result)
         self.stream.flush()
 
+    def eof(self):
+        if self.config.show_skipped:
+            self.stream.write('\n')
 
-# https://github.com/behave/behave/pull/115
+
+# https://github.com/behave/behave/pull/157
+# https://github.com/behave/behave/pull/165
 # https://github.com/behave/behave/issues/118
 #
 # Fixes:
@@ -142,8 +86,7 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
                 location = self._match.location
             self.print_step(result.status, arguments, location, True)
         if result.error_message:
-            self.stream.write(self.indent(result.error_message.strip(),
-                                          u'      '))
+            self.stream.write(indent(result.error_message.strip(), u'      '))
             self.stream.write('\n\n')
         self.stream.flush()
 
@@ -151,7 +94,7 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
         cell_lengths = []
         all_rows = [table.headings] + table.rows
         for row in all_rows:
-            lengths = [len(formatter.pretty.escape_cell(c)) for c in row]
+            lengths = [len(escape_cell(c)) for c in row]
             cell_lengths.append(lengths)
 
         max_lengths = []
@@ -178,8 +121,8 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
         self.text_lines = 2 + sum(
             [(1 + (6 + len(line)) // self.display_width)
              for line in doc_string.splitlines()])
-        doc_string = strformat(self.escape_triple_quotes(doc_string))
-        self.stream.write(self.indent(u'\n'.join([
+        doc_string = strformat(escape_triple_quotes(doc_string))
+        self.stream.write(indent(u'\n'.join([
             triplequotes, doc_string, triplequotes]), u'      ') + u'\n')
 
     def print_step(self, status, arguments, location, proceed):
@@ -199,6 +142,13 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
 
         text_start = 0
         for arg in arguments:
+            if arg.end <= text_start:
+                # -- SKIP-OVER: Optional and nested regexp args
+                #    - Optional regexp args (unmatched: None).
+                #    - Nested regexp args that are already processed.
+                continue
+                # -- VALID, MATCHED ARGUMENT:
+            assert arg.original is not None
             text = step_name[text_start:arg.start]
             self.stream.write(text_format.text(text))
             line_length += len(text)
@@ -211,10 +161,24 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
             self.stream.write(text_format.text(text))
             line_length += (len(text))
 
-        location = self.indented_location(location, proceed)
+        if self.show_timings:
+            if status in ('passed', 'failed'):
+                timing = '%6.3fs' % step.duration
+            else:
+                timing = ' ' * 7
+        else:
+            timing = ''
         if self.show_source:
+            location = unicode(location)
+            if timing:
+                location = location + ' ' + timing
+            location = self.indented_text(location, proceed)
             self.stream.write(self.format('comments').text(location))
             line_length += len(location)
+        elif timing:
+            timing = self.indented_text(timing, proceed)
+            self.stream.write(self.format('comments').text(timing))
+            line_length += len(timing)
         self.stream.write("\n")
 
         self.step_lines = int((line_length - 1) // self.display_width)
@@ -225,14 +189,14 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
             if step.table:
                 self.table(step.table, strformat=text_format.text)
 
-    def print_tags(self, tags, indent):
+    def print_tags(self, tags, indentation):
         if not tags:
             return
         tags = u' '.join(u'@' + tag for tag in tags)
-        self.stream.write(indent + self.format('tag').text(tags) + '\n')
+        self.stream.write(indentation + self.format('tag').text(tags) + '\n')
 
     def eof(self):
         self.replay()
-        # Skip empty line (key up)
-        self.stream.write('\033[A')
+        if self.config.show_skipped:
+            self.stream.write('\n')
         self.stream.flush()
