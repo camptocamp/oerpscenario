@@ -3,7 +3,7 @@ import erppeek
 from support import tools, behave_better
 
 __all__ = []
-OPENERP_ARGS = '-c etc/openerp.cfg --without-demo all'
+OPENERP_ARGS = '-c etc/openerp.cfg'
 OPENERP_ARGS += ' --logfile var/log/behave-stdout.log'
 
 # Print readable 'Fault' errors
@@ -20,6 +20,7 @@ def before_all(ctx):
     ctx.conf = {'server': server,
                 'admin_passwd': server.tools.config['admin_passwd'],
                 'db_name': database,
+                'openerp_config': server.tools.config,
                 }
     # We try to manage default login
     # even if there is a sentence to log a given user
