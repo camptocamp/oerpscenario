@@ -63,8 +63,6 @@ def impl(ctx, name, digits, company_name):
 
     vals = configuration_wizard.onchange_chart_template_id(template.id)
     configuration_wizard.write(vals['value'])
-    vals = configuration_wizard.onchange_company_id(company.id)
-    configuration_wizard.write(vals['value'])
     # the onchange calls above may have changed this
     configuration_wizard.write({'code_digits': digits})
     configuration_wizard.execute()
