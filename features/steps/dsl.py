@@ -79,7 +79,8 @@ def parse_table_values(ctx, obj, table):
                 values = parse_domain(value)
                 search_domain = build_search_domain(ctx, relation, values)
                 if search_domain:
-                    value = model(relation).browse(search_domain).id
+                    value = model(relation).browse(search_domain,
+                                                   context={'active_test': False}).id
                     assert value, "no value found for col %s domain %s" % (key, str(search_domain))
                 else:
                     value = []
@@ -144,7 +145,7 @@ def impl(ctx, model_name, domain):
     values = parse_domain(domain)
     domain = build_search_domain(ctx, model_name, values)
     if domain is not None:
-        ids = Model.search(domain)
+        ids = Model.search(domain, context={'active_test': False})
     else:
         ids = []
     if len(ids) == 1:
@@ -167,7 +168,7 @@ def impl(ctx, model_name, domain):
     else:
         domain = build_search_domain(ctx, model_name, values)
     if domain is not None:
-        ids = Model.search(domain)
+        ids = Model.search(domain, context={'active_test': False})
     else:
         ids = []
     if not ids: # nothing found
