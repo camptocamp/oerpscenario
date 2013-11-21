@@ -1,6 +1,16 @@
 from ast import literal_eval
 import time
 from support.tools import puts, set_trace, model
+from behave.matchers import register_type
+
+
+def parse_optional(text):
+    return text.strip()
+# https://pypi.python.org/pypi/parse#custom-type-conversions
+parse_optional.pattern = r'\s?\w*\s?'
+
+# http://pythonhosted.org/behave/api.html#behave.matchers.register_type
+register_type(optional=parse_optional)
 
 
 def parse_domain(domain):
@@ -22,11 +32,22 @@ def parse_domain(domain):
     return rv
 
 
-def build_search_domain(ctx, obj, values):
+def build_search_domain(ctx, obj, values, active=True):
+    """ Build a search domain as expected by `search()`
+
+    :param obj: name of the model as string
+    :param values: search values (dict of field names with their values)
+    :param active: False: only inactive records
+                   None: include inactive and active records
+                   True: only active records
+
+    """
     values = values.copy()
     xml_id = values.pop('xmlid', None)
     res_id = values.pop('id', None)
     if xml_id:
+        if 'active' in model(obj).fields():
+            active = None  # we must find a record by xmlid, even inactive
         module, name = xml_id.split('.')
         search_domain = [('module', '=', module), ('name', '=', name)]
         records = model('ir.model.data').browse(search_domain)
@@ -39,6 +60,15 @@ def build_search_domain(ctx, obj, values):
         else:
             res_id = res['res_id']
     search_domain = [(key, '=', value) for (key, value) in values.items()]
+    if active in (False, None):
+        if 'active' not in model(obj).fields():
+            puts("Searching inactive records on %s have no effect "
+                 "because it has no 'active' field." % obj)
+        elif active is None:
+            search_domain += ['|', ('active', '=', False),
+                                   ('active', '=', True)]
+        elif active is False:
+            search_domain += [('active', '=', False)]
     if res_id:
         search_domain = [('id', '=', res_id)] + search_domain
     if hasattr(ctx, 'company_id') and \
@@ -53,6 +83,21 @@ def build_search_domain(ctx, obj, values):
 
 
 def parse_table_values(ctx, obj, table):
+    """ Parse the values of the tables in the phrases 'And having:'
+
+    The relations supports the following options:
+
+    * by {field}: {value}
+    * all by {field}: {value}
+    * add all by {field}: {value}
+    * inactive by {field}: {value}
+    * possibly inactive by {field}: {value}
+    * all inactive by {field}: {value}
+    * add all inactive by {field}: {value}
+    * all possibly inactive by {field}: {value}
+    * add all possibly inactive by {field}: {value}
+
+    """
     fields = model(obj).fields()
     if hasattr(table, 'headings'):
         # if we have a real table, ensure it has 2 columns
@@ -69,18 +114,28 @@ def parse_table_values(ctx, obj, table):
             value = False
         elif field_type in ('many2one', 'one2many', 'many2many'):
             relation = fields[key]['relation']
-            if value.startswith('add all by '):
+            active = True
+            if value.startswith('add all'):
                 add_mode = True
                 value = value[4:]  # fall back on "all by xxx" below
             else:
                 add_mode = False
+            if (value.startswith('inactive by ') or
+                    value.startswith('all inactive by ')):
+                active = False
+                # fall back on "by " and "all by " below
+                value = value.replace('inactive ', '', 1)
+            if (value.startswith('possibly inactive by ') or
+                    value.startswith('all possibly inactive by ')):
+                active = None
+                # fall back on "by " and "all by " below
+                value = value.replace('possibly inactive ', '', 1)
             if value.startswith('by ') or value.startswith('all by '):
                 value = value.split('by ', 1)[1]
                 values = parse_domain(value)
-                search_domain = build_search_domain(ctx, relation, values)
+                search_domain = build_search_domain(ctx, relation, values, active=active)
                 if search_domain:
-                    value = model(relation).browse(search_domain,
-                                                   context={'active_test': False}).id
+                    value = model(relation).browse(search_domain).id
                     assert value, "no value found for col %s domain %s" % (key, str(search_domain))
                 else:
                     value = []
@@ -108,6 +163,7 @@ def parse_table_values(ctx, obj, table):
 def impl_having(ctx):
     assert ctx.table, 'please supply a table of values'
     assert ctx.search_model_name, 'cannot use "having" step without a previous step setting a model'
+    assert ctx.found_item, 'No record found'
     table_values = parse_table_values(ctx, ctx.search_model_name,
                                       ctx.table)
     if isinstance(ctx.found_item, dict):
@@ -138,14 +194,21 @@ def create_new_obj(ctx, model_name, values):
     return record
 
 
-@step(u'I find a "{model_name}" with {domain}')
-def impl(ctx, model_name, domain):
+@step(u'I find a{n:optional}{active_text:optional} "{model_name}" with {domain}')
+def impl(ctx, n, active_text, model_name, domain):
+    # n is there for the english grammar, but not used
+    assert active_text in ('', 'inactive', 'active', 'possibly inactive')
     Model = model(model_name)
     ctx.search_model_name = model_name
     values = parse_domain(domain)
-    domain = build_search_domain(ctx, model_name, values)
+    active = True
+    if active_text == 'inactive':
+        active = False
+    elif active_text == 'possibly inactive':
+        active = None
+    domain = build_search_domain(ctx, model_name, values, active=active)
     if domain is not None:
-        ids = Model.search(domain, context={'active_test': False})
+        ids = Model.search(domain)
     else:
         ids = []
     if len(ids) == 1:
@@ -155,20 +218,29 @@ def impl(ctx, model_name, domain):
     ctx.found_items = Model.browse(ids)
 
 
-@step(u'I need a "{model_name}" with {domain}')
-def impl(ctx, model_name, domain):
+@step(u'I need a{n:optional}{active_test:optional} "{model_name}" with {domain}')
+def impl(ctx, n, active_text, model_name, domain):
+    # n is there for the english grammar, but not used
+    assert active_text in ('', 'inactive', 'active', 'possibly inactive')
     Model = model(model_name)
     ctx.search_model_name = model_name
     values = parse_domain(domain)
+    active = True
+    if active_text == 'inactive':
+        active = False
+    elif active_text == 'possibly inactive':
+        active = None
     # if the scenario specifies xmlid + other attributes in an "I
     # need" phrase then we want to look for the entry with the xmlid
     # only, and update the other attributes if we found something
     if 'xmlid' in values:
-        domain = build_search_domain(ctx, model_name, {'xmlid': values['xmlid']})
+        domain = build_search_domain(ctx, model_name,
+                                     {'xmlid': values['xmlid']},
+                                     active=active)
     else:
-        domain = build_search_domain(ctx, model_name, values)
+        domain = build_search_domain(ctx, model_name, values, active=active)
     if domain is not None:
-        ids = Model.search(domain, context={'active_test': False})
+        ids = Model.search(domain)
     else:
         ids = []
     if not ids: # nothing found
