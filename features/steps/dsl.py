@@ -84,7 +84,7 @@ def build_search_domain(ctx, obj, values, active=True):
 def parse_table_values(ctx, obj, table):
     """ Parse the values of the tables in the phrases 'And having:'
 
-    The relations supports the following options:
+    The relations support the following options:
 
     * by {field}: {value}
     * all by {field}: {value}
@@ -217,7 +217,7 @@ def impl(ctx, n, active_text, model_name, domain):
     ctx.found_items = Model.browse(ids)
 
 
-@step(u'I need a{n:optional}{active_test:optional} "{model_name}" with {domain}')
+@step(u'I need a{n:optional}{active_text:optional} "{model_name}" with {domain}')
 def impl(ctx, n, active_text, model_name, domain):
     # n is there for the english grammar, but not used
     assert active_text in ('', 'inactive', 'active', 'possibly inactive')
