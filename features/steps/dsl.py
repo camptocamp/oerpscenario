@@ -61,7 +61,7 @@ def build_search_domain(ctx, obj, values, active=True):
     search_domain = [(key, '=', value) for (key, value) in values.items()]
     if active in (False, None):
         if 'active' not in model(obj).fields():
-            puts("Searching inactive records on %s have no effect "
+            puts("Searching inactive records on %s has no effect "
                  "because it has no 'active' field." % obj)
         elif active is None:
             search_domain += ['|', ('active', '=', False),
