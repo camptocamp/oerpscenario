@@ -9,7 +9,6 @@ def parse_optional(text):
 # https://pypi.python.org/pypi/parse#custom-type-conversions
 parse_optional.pattern = r'\s?\w*\s?'
 
-# http://pythonhosted.org/behave/api.html#behave.matchers.register_type
 register_type(optional=parse_optional)
 
 
