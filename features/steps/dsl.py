@@ -143,8 +143,10 @@ def parse_table_values(ctx, obj, table):
             else:
                 method = getattr(model(relation), value)
                 value = method()
-            if value and field_type == 'many2one':
-                assert_equal(len(value), 1, msg="more than item found for %s" % key)
+            if field_type == 'many2one':
+                assert_true(value, msg="no item found for %s" % key)
+                assert_equal(len(value), 1,
+                                msg="more than item found for %s" % key)
                 value = value[0]
         elif field_type == 'integer':
             value = int(value)
