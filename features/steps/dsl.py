@@ -317,6 +317,14 @@ def impl(ctx):
 
 @step('I set the default value for "{modelname}"."{column}" to {value}')
 def impl(ctx, modelname, column, value):
+    """
+    Example:
+    Scenario: set default values for products, the list price is only set for company2
+      Given I set the default value for "product.product"."type" to 'product'
+      And I set the default value for "product.product"."cost_method" to 'average'
+      Given I am configuring the company with ref "scen.company2"
+      And I set the default value for "product.product"."list_price" to 12.4
+    """
     if hasattr(ctx, 'company_id'):
         company_id = ctx.company_id
     else:
