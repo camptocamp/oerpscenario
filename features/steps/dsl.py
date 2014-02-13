@@ -314,3 +314,13 @@ def impl(ctx, company_oid):
 @step('I delete it')
 def impl(ctx):
     ctx.found_item.unlink()
+
+@step('I set the default value for "{modelname}"."{column}" to {value}')
+def impl(ctx, modelname, column, value):
+    if hasattr(ctx, 'company_id'):
+        company_id = ctx.company_id
+    else:
+        company_id = False
+    ir_value_obj = model('ir.values')
+    value = eval(value)
+    ir_value_obj.set_default(modelname, column, value, company_id=company_id)
