@@ -56,7 +56,6 @@ def impl(ctx):
 
 @given('I uninstall the following modules')
 def impl(ctx):
-    model('ir.module.module').update_list()
     client = ctx.client
     installed_mods = client.modules(installed=True)['installed']
     to_uninstall = []
