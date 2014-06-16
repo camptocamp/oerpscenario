@@ -182,7 +182,7 @@ def impl_having(ctx):
 
 @step(u'I set the context to "{oe_context_string}"')
 def impl(ctx, oe_context_string):
-    ctx.oe_context = eval(oe_context_string)
+    ctx.oe_context = literal_eval(oe_context_string)
 
 
 def create_new_obj(ctx, model_name, values):
