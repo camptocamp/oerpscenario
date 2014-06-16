@@ -180,18 +180,25 @@ def impl_having(ctx):
         ctx.found_item.write(table_values)
 
 
+@step(u'I set the context to "{oe_context_string}"')
+def impl(ctx, oe_context_string):
+    ctx.oe_context = eval(oe_context_string)
+
+
 def create_new_obj(ctx, model_name, values):
     values = values.copy()
     xmlid = values.pop('xmlid', None)
-    record = model(model_name).create(values)
+    oe_context = getattr(ctx, 'oe_context', None)
+    record = model(model_name).create(values, context=oe_context)
     if xmlid is not None:
         ModelData = model('ir.model.data')
         module, xmlid = xmlid.split('.', 1)
-        _model_data = ModelData.create({'name': xmlid,
-                                       'model': model_name,
-                                       'res_id': record.id,
-                                       'module': module,
-                                       })
+        _model_data = ModelData.create({
+            'name': xmlid,
+            'model': model_name,
+            'res_id': record.id,
+            'module': module,
+        }, context=oe_context)
     return record
 
 
@@ -201,6 +208,7 @@ def impl(ctx, n, active_text, model_name, domain):
     assert active_text in ('', 'inactive', 'active', 'possibly inactive')
     Model = model(model_name)
     ctx.search_model_name = model_name
+    oe_context = getattr(ctx, 'oe_context', None)
     values = parse_domain(domain)
     active = True
     if active_text == 'inactive':
@@ -209,14 +217,14 @@ def impl(ctx, n, active_text, model_name, domain):
         active = None
     domain = build_search_domain(ctx, model_name, values, active=active)
     if domain is not None:
-        ids = Model.search(domain)
+        ids = Model.search(domain, context=oe_context)
     else:
         ids = []
     if len(ids) == 1:
-        ctx.found_item = Model.browse(ids[0])
+        ctx.found_item = Model.browse(ids[0], context=oe_context)
     else:
         ctx.found_item = None
-    ctx.found_items = Model.browse(ids)
+    ctx.found_items = Model.browse(ids, context=oe_context)
 
 
 @step(u'I need a{n:optional}{active_text:optional} "{model_name}" with {domain}')
