@@ -334,3 +334,7 @@ def impl(ctx, modelname, column, value):
     ir_value_obj = model('ir.values')
     value = eval(value)
     ir_value_obj.set_default(modelname, column, value, company_id=company_id)
+
+@step('I have {num_items:d} items')
+def impl(ctx, num_items):
+    assert_equal(len(ctx.found_items), num_items)
