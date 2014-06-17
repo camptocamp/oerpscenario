@@ -197,6 +197,17 @@ def create_new_obj(ctx, model_name, values):
 
 @step(u'I find a{n:optional}{active_text:optional} "{model_name}" with {domain}')
 def impl(ctx, n, active_text, model_name, domain):
+    """
+    Search with a domain in text format.
+
+    The result is stored in ctx.found_item and ctx.found_items as follows:
+        - if nothing is found, found_item = None
+          and found_items = RecordList([]), no exception is raised
+        - if one record is found, found_item = Record(id) and found_items =
+          RecordList([id])
+        - if many records are found, found_item = None and found_items =
+          RecordList(ids)
+    """
     # n is there for the english grammar, but not used
     assert active_text in ('', 'inactive', 'active', 'possibly inactive')
     Model = model(model_name)
@@ -208,15 +219,16 @@ def impl(ctx, n, active_text, model_name, domain):
     elif active_text == 'possibly inactive':
         active = None
     domain = build_search_domain(ctx, model_name, values, active=active)
-    if domain is not None:
-        ids = Model.search(domain)
-    else:
-        ids = []
-    if len(ids) == 1:
-        ctx.found_item = Model.browse(ids[0])
-    else:
+
+    if domain is None:
         ctx.found_item = None
-    ctx.found_items = Model.browse(ids)
+        ctx.found_items = erppeek.RecordList(Model, [])
+    else:
+        ctx.found_items = Model.browse(domain)
+        if len(ctx.found_items) == 1:
+            ctx.found_item = ctx.found_items[0]
+        else:
+            ctx.found_item = None
 
 
 @step(u'I need a{n:optional}{active_text:optional} "{model_name}" with {domain}')
