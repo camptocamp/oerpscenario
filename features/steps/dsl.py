@@ -180,38 +180,35 @@ def impl_having(ctx):
         ctx.found_item.write(table_values)
 
 
+@step(u'I set the context to "{oe_context_string}"')
+def impl(ctx, oe_context_string):
+    ctx.oe_context = literal_eval(oe_context_string)
+
+
 def create_new_obj(ctx, model_name, values):
     values = values.copy()
     xmlid = values.pop('xmlid', None)
-    record = model(model_name).create(values)
+    oe_context = getattr(ctx, 'oe_context', None)
+    record = model(model_name).create(values, context=oe_context)
     if xmlid is not None:
         ModelData = model('ir.model.data')
         module, xmlid = xmlid.split('.', 1)
-        _model_data = ModelData.create({'name': xmlid,
-                                       'model': model_name,
-                                       'res_id': record.id,
-                                       'module': module,
-                                       })
+        _model_data = ModelData.create({
+            'name': xmlid,
+            'model': model_name,
+            'res_id': record.id,
+            'module': module,
+        }, context=oe_context)
     return record
 
 
 @step(u'I find a{n:optional}{active_text:optional} "{model_name}" with {domain}')
 def impl(ctx, n, active_text, model_name, domain):
-    """
-    Search with a domain in text format.
-
-    The result is stored in ctx.found_item and ctx.found_items as follows:
-        - if nothing is found, found_item = None
-          and found_items = RecordList([]), no exception is raised
-        - if one record is found, found_item = Record(id) and found_items =
-          RecordList([id])
-        - if many records are found, found_item = None and found_items =
-          RecordList(ids)
-    """
     # n is there for the english grammar, but not used
     assert active_text in ('', 'inactive', 'active', 'possibly inactive')
     Model = model(model_name)
     ctx.search_model_name = model_name
+    oe_context = getattr(ctx, 'oe_context', None)
     values = parse_domain(domain)
     active = True
     if active_text == 'inactive':
@@ -224,7 +221,7 @@ def impl(ctx, n, active_text, model_name, domain):
         ctx.found_item = None
         ctx.found_items = erppeek.RecordList(Model, [])
     else:
-        ctx.found_items = Model.browse(domain)
+        ctx.found_items = Model.browse(domain, context=oe_context)
         if len(ctx.found_items) == 1:
             ctx.found_item = ctx.found_items[0]
         else:

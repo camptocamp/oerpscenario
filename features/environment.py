@@ -39,6 +39,7 @@ def before_feature(ctx, feature):
 
 # Work around https://github.com/behave/behave/issues/145
 def before_scenario(ctx, scenario):
+    ctx.oe_context = {}
     if not hasattr(ctx, 'data'):
         ctx.data = {}
 
