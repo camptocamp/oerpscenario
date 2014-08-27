@@ -1,6 +1,7 @@
 import openerp
 import csv
 import os
+from support import *
 
 @given('I execute the Python commands')
 def impl(ctx):

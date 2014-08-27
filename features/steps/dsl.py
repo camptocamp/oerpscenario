@@ -1,6 +1,6 @@
 from ast import literal_eval
 import time
-from support.tools import puts, set_trace, model
+from support.tools import puts, set_trace, model, assert_true, assert_equal
 
 
 def parse_domain(domain):
