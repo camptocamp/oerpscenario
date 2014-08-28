@@ -1,6 +1,15 @@
 from ast import literal_eval
 import time
 from support.tools import puts, set_trace, model, assert_true, assert_equal
+from behave.matchers import register_type
+
+
+def parse_optional(text):
+    return text.strip()
+# https://pypi.python.org/pypi/parse#custom-type-conversions
+parse_optional.pattern = r'\s?\w*\s?'
+
+register_type(optional=parse_optional)
 
 
 def parse_domain(domain):
@@ -22,11 +31,22 @@ def parse_domain(domain):
     return rv
 
 
-def build_search_domain(ctx, obj, values):
+def build_search_domain(ctx, obj, values, active=True):
+    """ Build a search domain as expected by `search()`
+
+    :param obj: name of the model as string
+    :param values: search values (dict of field names with their values)
+    :param active: False: only inactive records
+                   None: include inactive and active records
+                   True: only active records
+
+    """
     values = values.copy()
     xml_id = values.pop('xmlid', None)
     res_id = values.pop('id', None)
     if xml_id:
+        if 'active' in model(obj).fields():
+            active = None  # we must find a record by xmlid, even inactive
         module, name = xml_id.split('.')
         search_domain = [('module', '=', module), ('name', '=', name)]
         records = model('ir.model.data').browse(search_domain)
@@ -39,6 +59,15 @@ def build_search_domain(ctx, obj, values):
         else:
             res_id = res['res_id']
     search_domain = [(key, '=', value) for (key, value) in values.items()]
+    if active in (False, None):
+        if 'active' not in model(obj).fields():
+            puts("Searching inactive records on %s has no effect "
+                 "because it has no 'active' field." % obj)
+        elif active is None:
+            search_domain += ['|', ('active', '=', False),
+                                   ('active', '=', True)]
+        elif active is False:
+            search_domain += [('active', '=', False)]
     if res_id:
         search_domain = [('id', '=', res_id)] + search_domain
     if hasattr(ctx, 'company_id') and \
@@ -53,6 +82,21 @@ def build_search_domain(ctx, obj, values):
 
 
 def parse_table_values(ctx, obj, table):
+    """ Parse the values of the tables in the phrases 'And having:'
+
+    The relations support the following options:
+
+    * by {field}: {value}
+    * all by {field}: {value}
+    * add all by {field}: {value}
+    * inactive by {field}: {value}
+    * possibly inactive by {field}: {value}
+    * all inactive by {field}: {value}
+    * add all inactive by {field}: {value}
+    * all possibly inactive by {field}: {value}
+    * add all possibly inactive by {field}: {value}
+
+    """
     fields = model(obj).fields()
     if hasattr(table, 'headings'):
         # if we have a real table, ensure it has 2 columns
@@ -69,15 +113,26 @@ def parse_table_values(ctx, obj, table):
             value = False
         elif field_type in ('many2one', 'one2many', 'many2many'):
             relation = fields[key]['relation']
-            if value.startswith('add all by '):
+            active = True
+            if value.startswith('add all'):
                 add_mode = True
                 value = value[4:]  # fall back on "all by xxx" below
             else:
                 add_mode = False
+            if (value.startswith('inactive by ') or
+                    value.startswith('all inactive by ')):
+                active = False
+                # fall back on "by " and "all by " below
+                value = value.replace('inactive ', '', 1)
+            if (value.startswith('possibly inactive by ') or
+                    value.startswith('all possibly inactive by ')):
+                active = None
+                # fall back on "by " and "all by " below
+                value = value.replace('possibly inactive ', '', 1)
             if value.startswith('by ') or value.startswith('all by '):
                 value = value.split('by ', 1)[1]
                 values = parse_domain(value)
-                search_domain = build_search_domain(ctx, relation, values)
+                search_domain = build_search_domain(ctx, relation, values, active=active)
                 if search_domain:
                     value = model(relation).browse(search_domain).id
                     assert value, "no value found for col %s domain %s" % (key, str(search_domain))
@@ -88,8 +143,10 @@ def parse_table_values(ctx, obj, table):
             else:
                 method = getattr(model(relation), value)
                 value = method()
-            if value and field_type == 'many2one':
-                assert_equal(len(value), 1, msg="more than item found for %s" % key)
+            if field_type == 'many2one':
+                assert_true(value, msg="no item found for %s" % key)
+                assert_equal(len(value), 1,
+                                msg="more than item found for %s" % key)
                 value = value[0]
         elif field_type == 'integer':
             value = int(value)
@@ -107,6 +164,7 @@ def parse_table_values(ctx, obj, table):
 def impl_having(ctx):
     assert ctx.table, 'please supply a table of values'
     assert ctx.search_model_name, 'cannot use "having" step without a previous step setting a model'
+    assert ctx.found_item, 'No record found'
     table_values = parse_table_values(ctx, ctx.search_model_name,
                                       ctx.table)
     if isinstance(ctx.found_item, dict):
@@ -122,50 +180,75 @@ def impl_having(ctx):
         ctx.found_item.write(table_values)
 
 
+@step(u'I set the context to "{oe_context_string}"')
+def impl(ctx, oe_context_string):
+    ctx.oe_context = literal_eval(oe_context_string)
+
+
 def create_new_obj(ctx, model_name, values):
     values = values.copy()
     xmlid = values.pop('xmlid', None)
-    record = model(model_name).create(values)
+    oe_context = getattr(ctx, 'oe_context', None)
+    record = model(model_name).create(values, context=oe_context)
     if xmlid is not None:
         ModelData = model('ir.model.data')
         module, xmlid = xmlid.split('.', 1)
-        _model_data = ModelData.create({'name': xmlid,
-                                       'model': model_name,
-                                       'res_id': record.id,
-                                       'module': module,
-                                       })
+        _model_data = ModelData.create({
+            'name': xmlid,
+            'model': model_name,
+            'res_id': record.id,
+            'module': module,
+        }, context=oe_context)
     return record
 
 
-@step(u'I find a "{model_name}" with {domain}')
-def impl(ctx, model_name, domain):
+@step(u'I find a{n:optional}{active_text:optional} "{model_name}" with {domain}')
+def impl(ctx, n, active_text, model_name, domain):
+    # n is there for the english grammar, but not used
+    assert active_text in ('', 'inactive', 'active', 'possibly inactive')
     Model = model(model_name)
     ctx.search_model_name = model_name
+    oe_context = getattr(ctx, 'oe_context', None)
     values = parse_domain(domain)
-    domain = build_search_domain(ctx, model_name, values)
-    if domain is not None:
-        ids = Model.search(domain)
-    else:
-        ids = []
-    if len(ids) == 1:
-        ctx.found_item = Model.browse(ids[0])
-    else:
+    active = True
+    if active_text == 'inactive':
+        active = False
+    elif active_text == 'possibly inactive':
+        active = None
+    domain = build_search_domain(ctx, model_name, values, active=active)
+
+    if domain is None:
         ctx.found_item = None
-    ctx.found_items = Model.browse(ids)
+        ctx.found_items = erppeek.RecordList(Model, [])
+    else:
+        ctx.found_items = Model.browse(domain, context=oe_context)
+        if len(ctx.found_items) == 1:
+            ctx.found_item = ctx.found_items[0]
+        else:
+            ctx.found_item = None
 
 
-@step(u'I need a "{model_name}" with {domain}')
-def impl(ctx, model_name, domain):
+@step(u'I need a{n:optional}{active_text:optional} "{model_name}" with {domain}')
+def impl(ctx, n, active_text, model_name, domain):
+    # n is there for the english grammar, but not used
+    assert active_text in ('', 'inactive', 'active', 'possibly inactive')
     Model = model(model_name)
     ctx.search_model_name = model_name
     values = parse_domain(domain)
+    active = True
+    if active_text == 'inactive':
+        active = False
+    elif active_text == 'possibly inactive':
+        active = None
     # if the scenario specifies xmlid + other attributes in an "I
     # need" phrase then we want to look for the entry with the xmlid
     # only, and update the other attributes if we found something
     if 'xmlid' in values:
-        domain = build_search_domain(ctx, model_name, {'xmlid': values['xmlid']})
+        domain = build_search_domain(ctx, model_name,
+                                     {'xmlid': values['xmlid']},
+                                     active=active)
     else:
-        domain = build_search_domain(ctx, model_name, values)
+        domain = build_search_domain(ctx, model_name, values, active=active)
     if domain is not None:
         ids = Model.search(domain)
     else:
@@ -242,3 +325,25 @@ def impl(ctx, company_oid):
 @step('I delete it')
 def impl(ctx):
     ctx.found_item.unlink()
+
+@step('I set the default value for "{modelname}"."{column}" to {value}')
+def impl(ctx, modelname, column, value):
+    """
+    Example:
+    Scenario: set default values for products, the list price is only set for company2
+      Given I set the default value for "product.product"."type" to 'product'
+      And I set the default value for "product.product"."cost_method" to 'average'
+      Given I am configuring the company with ref "scen.company2"
+      And I set the default value for "product.product"."list_price" to 12.4
+    """
+    if hasattr(ctx, 'company_id'):
+        company_id = ctx.company_id
+    else:
+        company_id = False
+    ir_value_obj = model('ir.values')
+    value = eval(value)
+    ir_value_obj.set_default(modelname, column, value, company_id=company_id)
+
+@step('I have {num_items:d} items')
+def impl(ctx, num_items):
+    assert_equal(len(ctx.found_items), num_items)

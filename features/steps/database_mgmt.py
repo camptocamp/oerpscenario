@@ -42,4 +42,7 @@ def impl(ctx):
     admin_passwd = ctx.conf.get('admin_passwd')
     assert admin_passwd
     assert db_name
-    ctx.client.create_database(admin_passwd, db_name)
+    demo = False
+    if not ctx.conf['openerp_config'].get('without_demo'):
+        demo = True
+    ctx.client.create_database(admin_passwd, db_name, demo=demo)

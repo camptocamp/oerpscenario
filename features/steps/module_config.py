@@ -54,6 +54,17 @@ def impl(ctx):
     client.install(*to_install)
     ctx.data.setdefault('modules', set()).update(to_upgrade + to_install)
 
+@given('I uninstall the following modules')
+def impl(ctx):
+    client = ctx.client
+    installed_mods = client.modules(installed=True)['installed']
+    to_uninstall = []
+    for row in ctx.table:
+        mod_name = row['name']
+        if mod_name in installed_mods:
+            to_uninstall.append(mod_name)
+    client.uninstall(*to_uninstall)
+
 @then('my modules should have been installed and models reloaded')
 def impl(ctx):
     pass # XXX
