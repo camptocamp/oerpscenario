@@ -26,8 +26,27 @@ def patch_all():
         patch_model_Table_raw()
         formatter.formatters.register(PlainFormatter)
         formatter.formatters.register(PrettyFormatter)
+        patch_runner_load_step_definitions()
         _behave_patched = True
 
+def patch_runner_load_step_definitions():
+    """
+    Pass extra steps directories to Runner.load_step_definitions
+
+    That method has an extra_step_paths kwarg defaulting to nothing, and the
+    caller does not provide a value. We compute someting sensible from the
+    command line paths. 
+    """
+    runner.Runner._load_step_definitions = runner.Runner.load_step_definitions
+    def load_step_definitions(self):
+        extra_step_paths = []
+        for path in self.config.paths[1:]:
+            path = os.path.abspath(path)
+            path = os.path.join(path, 'steps')
+            if os.path.isdir(path):
+                extra_step_paths.append(path)
+        self._load_step_definitions(extra_step_paths)
+    runner.Runner.load_step_definitions = load_step_definitions
 
 def patch_matchers_get_matcher():
     # Detect the regex expressions
