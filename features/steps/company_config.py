@@ -4,10 +4,10 @@ import os
 
 def get_encoded_image(ctx, image_path):
     tmp_path = ctx.feature.filename.split(os.path.sep)
-    tmp_path = tmp_path[1: tmp_path.index('features')]
+    tmp_path = tmp_path[: tmp_path.index('features')]
     tmp_path.extend(['data', image_path])
     tmp_path = [str(x) for x in tmp_path]
-    path = os.path.join('/', *tmp_path)
+    path = os.path.join(*tmp_path)
     assert os.path.exists(path), "path not found %s" % path
     with open(path, "rb") as image_file:
         return base64.b64encode(image_file.read())
