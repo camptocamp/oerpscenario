@@ -38,9 +38,9 @@ def impl(ctx):
 @given('"{model_name}" is imported from CSV "{csvfile}" using delimiter "{sep}"')
 def impl(ctx, model_name, csvfile, sep=","):
     tmp_path = ctx.feature.filename.split(os.path.sep)
-    tmp_path = tmp_path[1: tmp_path.index('features')] + ['data', csvfile]
+    tmp_path = tmp_path[: tmp_path.index('features')] + ['data', csvfile]
     tmp_path = [str(x) for x in tmp_path]
-    path = os.path.join('/', *tmp_path)
+    path = os.path.join(*tmp_path)
     assert os.path.exists(path)
     data = csv.reader(open(path, 'rb'), delimiter=str(sep))
     head = data.next()
