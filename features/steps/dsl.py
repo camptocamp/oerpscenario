@@ -1,7 +1,6 @@
 from ast import literal_eval
 import time
 from support.tools import puts, set_trace, model, assert_true, assert_equal
-from behave.matchers import register_type
 from dsl_helpers import (parse_domain,
                          build_search_domain,
                          parse_table_values,

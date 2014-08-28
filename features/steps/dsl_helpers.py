@@ -1,6 +1,7 @@
 '''
 helper function for dsl manipulation
 '''
+from behave.matchers import register_type
 
 def parse_optional(text):
     return text.strip()
