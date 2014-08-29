@@ -1,5 +1,5 @@
-Version x.x.x
-=============
+Version 0.6
+===========
 
 
 This version brings OERPScenario compatibility with behave 1.2.4. 
