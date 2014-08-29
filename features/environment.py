@@ -43,14 +43,13 @@ def before_scenario(ctx, scenario):
     if not ctx.client.user and 'no_login' not in scenario.tags:
         server = ctx.conf['server']
         database = ctx.conf['db_name']
+        config = server.tools.config
         # We try to manage default login
         # even if there is a sentence to log a given user
-        # Just add options.admin_login_password in your buildout to log from config
-        admin_login_password = server.tools.config.get('admin_login_password')
-        if admin_login_password:
-            ctx.client.login('admin', admin_login_password, database=database)
-        else:
-            ctx.client.login('admin', 'admin', database=database)
+        # Just add options.admin_login_password in your buildout to log from
+        # config
+        admin_login_password = config.get('admin_login_password', 'admin')
+        ctx.client.login('admin', admin_login_password, database=database)
 
 
 def before_step(ctx, step):
