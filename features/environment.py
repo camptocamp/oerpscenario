@@ -3,8 +3,10 @@ import erppeek
 from support import tools, behave_better
 
 __all__ = []
-OPENERP_ARGS = '-c etc/openerp.cfg'
-OPENERP_ARGS += ' --logfile var/log/behave-stdout.log'
+OPENERP_ARGS = [
+    '-c', 'etc/openerp.cfg',
+    '--logfile=var/log/behave-stdout.log',
+    ]
 
 # Print readable 'Fault' errors
 tools.patch_traceback()
@@ -13,7 +15,10 @@ behave_better.patch_all()
 
 
 def before_all(ctx):
-    server = erppeek.start_openerp_services(OPENERP_ARGS)
+    if erppeek.__version__ < '1.6b1':
+        server = erppeek.start_openerp_services(' '.join(OPENERP_ARGS))
+    else:
+        server = erppeek.start_odoo_services(OPENERP_ARGS)
     database = server.tools.config['db_name']
     def _output_write(text):
         for stream in ctx.config.outputs:
