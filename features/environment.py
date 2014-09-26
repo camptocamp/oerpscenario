@@ -15,7 +15,7 @@ behave_better.patch_all()
 
 
 def before_all(ctx):
-    if erppeek.__version__ < '1.6b1':
+    if erppeek.__version__ < '1.6':
         server = erppeek.start_openerp_services(' '.join(OPENERP_ARGS))
     else:
         server = erppeek.start_odoo_services(OPENERP_ARGS)
