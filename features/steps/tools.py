@@ -1,6 +1,9 @@
 import openerp
 import csv
 import os
+import os.path as osp
+import datetime as dt
+import subprocess
 
 @given('I execute the Python commands')
 def impl(ctx):
@@ -46,3 +49,30 @@ def impl(ctx, model_name, csvfile, sep=","):
     # generator does not work
     values = [x for x in data]
     model(model_name).load(head, values)
+
+@step(u'I back up the database to "{dump_directory}"')
+def impl(ctx, dump_directory):
+    db_name = ctx.conf.get('db_name')
+    if not osp.isdir(dump_directory):
+        puts("Invalid Directory")
+        raise Exception ('Invalid Directory')
+    filename = osp.join(dump_directory,
+                        "%s_%s.dump" % (db_name,
+                                        dt.datetime.now().strftime('%Y%m%d_%H%M%S'))
+                            )
+    cmd = ['pg_dump', '--no-owner','--compress=9','--format=c',
+           '--file', filename.encode('utf-8')]
+    if ctx.conf.get('db_user'):
+        cmd += ['--username', ctx.conf.get('db_user')]
+    if ctx.conf.get('db_host'):
+        cmd += ['--host', ctx.conf.get('db_host')]
+    if ctx.conf.get('db_port'):
+        cmd += ['--port', str(ctx.conf.get('db_port'))]
+    cmd.append(db_name)
+    env = os.environ.copy()
+    if ctx.conf.get('db_password'):
+        env['PGPASSWORD'] = ctx.conf.get('db_password')
+    try:
+        output = subprocess.check_call(cmd, env=env)
+    except subprocess.CalledProcessError, exc:
+        raise Exception ("Subprocess return %s" % (output))
