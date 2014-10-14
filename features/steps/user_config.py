@@ -24,7 +24,7 @@ def impl(ctx):
     groups = model('res.groups').browse([])
     for user in ctx.found_items:
         assign_groups(user, groups)
-        
+
 
 @step(u'we assign to {users} the groups below')
 def impl(ctx, users):
@@ -46,7 +46,7 @@ def impl(ctx, users):
             assert category_ids, 'no category named %s' % categ
             condition = [
                     '&',
-                    ('name', '=', name), 
+                    ('name', '=', name),
                     ('category_id', 'in', category_ids)
                 ]
             # Take the category_id to build the domain
@@ -55,7 +55,7 @@ def impl(ctx, users):
             #   ('&',('name','=','User'), ('category_id','=',47)),
             # ]
             full_name_cond += condition
-        num_operators = len(group_full_names) - 1    
+        num_operators = len(group_full_names) - 1
         or_operators = ['|'] * num_operators
         search_cond = or_operators + full_name_cond
         groups.extend(model('res.groups').browse(search_cond))
