@@ -61,7 +61,7 @@ For more information, please refer to behave documentation:
 If you want to use **pdb** you have to set --no-capture option when launching
 behave. You also need to set the BEHAVE_DEBUG_ON_ERROR environment variable to
 "yes" to drop to the debugger on error. This is not always what you want: for
-eexample in Continuous Integration systems you might want to fail early.
+example in Continuous Integration systems you might want to fail early.
 
 Anatomy of a custom scenario folder
 ###################################
