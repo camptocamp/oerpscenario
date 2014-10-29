@@ -1,3 +1,9 @@
+Version 0.7 (unreleased)
+========================
+
+On error, only drop to the debugger if the environment variable BEHAVE_DEBUG_ON_ERROR is set.
+
+
 Version 0.6
 ===========
 
