@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+# USE: BEHAVE_DEBUG_ON_ERROR=yes     (to enable debug-on-error)
+import os
+from distutils.util import strtobool as _bool
+
 import erppeek
 from support import tools, behave_better
 
@@ -7,6 +11,9 @@ OPENERP_ARGS = [
     '-c', 'etc/openerp.cfg',
     '--logfile=var/log/behave-stdout.log',
     ]
+
+# stolen from https://pythonhosted.org/behave/tutorial.html
+BEHAVE_DEBUG_ON_ERROR = _bool(os.environ.get("BEHAVE_DEBUG_ON_ERROR", "no"))
 
 # Print readable 'Fault' errors
 tools.patch_traceback()
@@ -72,6 +79,8 @@ def after_step(ctx, laststep):
                 ctx._output_write(u'      %s\n' % (line,))
         for stream in ctx.config.outputs:
             stream.open().flush()
-    if laststep.status == 'failed' and ctx.config.stop:
+
+    # stolen from https://pythonhosted.org/behave/tutorial.html
+    if BEHAVE_DEBUG_ON_ERROR and laststep.status == 'failed':
         # Enter the interactive debugger
         tools.set_trace()
