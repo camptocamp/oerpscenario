@@ -27,6 +27,7 @@ def before_all(ctx):
     else:
         server = erppeek.start_odoo_services(OPENERP_ARGS)
     database = server.tools.config['db_name']
+
     def _output_write(text):
         for stream in ctx.config.outputs:
             stream.open().write(text)
