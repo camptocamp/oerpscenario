@@ -45,7 +45,7 @@ function create_virtualenv() {
     then
         echo "reusing existing virtualenv"
     else
-        ${virtualenv} ${options} sandbox
+        ${virtualenv} ${options} --no-site-packages sandbox
         if [ -z ${options} ]
         then
             ./sandbox/bin/pip uninstall -y setuptools
