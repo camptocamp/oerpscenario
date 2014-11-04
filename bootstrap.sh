@@ -64,7 +64,7 @@ extends = $1
 EOF
             ) > buildout.cfg
         else
-            echo "No buildout.cfg found. Please supply one or pass the name of the file to extend on the command line"
+            echo "Please create the buildout.cfg file or give the profile to use as argument, example: $ ./bootstrap.sh profiles/dev.cfg"
             exit 1
         fi
     fi
