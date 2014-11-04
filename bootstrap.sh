@@ -54,9 +54,9 @@ function create_virtualenv() {
 }
 
 function ensure_cfg(){
-    if [ ! -a buildout.cfg ]
+    if [ ! -e buildout.cfg ]
     then
-        if [ -a $1 ]
+        if [ -e $1 ]
         then
             (cat <<EOF
 [buildout]
