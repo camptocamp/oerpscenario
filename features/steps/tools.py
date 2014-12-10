@@ -53,7 +53,12 @@ def impl(ctx, model_name, csvfile, sep=","):
     head = data.next()
     # generator does not work
     values = [x for x in data]
-    model(model_name).load(head, values)
+    result = model(model_name).load(head, values)
+    if not result['ids']:
+        messages = '\n'.join('- %s' % msg for msg in result['messages'])
+        raise Exception("Failed to load file '%s' "
+                        "in '%s'. Details:\n%s" % (csvfile, model_name, messages))
+
 
 @step(u'I back up the database to "{dump_directory}"')
 def impl(ctx, dump_directory):
