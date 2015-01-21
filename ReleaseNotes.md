@@ -1,7 +1,10 @@
-Version 0.7 (unreleased)
-========================
-
-On error, only drop to the debugger if the environment variable BEHAVE_DEBUG_ON_ERROR is set.
+Version 0.7
+===========
+  1. CSV import results are Checked
+  2. Drop to pdb only when BEHAVE_DEBUG_ON_ERROR is set
+  3. Create db have a "find or create" option
+  4. Fix compatibility trouble with erppeek
+  5. Various bug fixes
 
 
 Version 0.6
