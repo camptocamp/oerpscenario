@@ -53,7 +53,7 @@ def impl(ctx, model_name, csvfile, sep=","):
     head = data.next()
     # generator does not work
     values = [x for x in data]
-    result = model(model_name).load(head, values)
+    result = model(model_name).load(head, values, ctx.oe_context)
     if not result['ids']:
         messages = '\n'.join('- %s' % msg for msg in result['messages'])
         raise Exception("Failed to load file '%s' "
