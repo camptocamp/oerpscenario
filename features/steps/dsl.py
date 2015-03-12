@@ -140,7 +140,8 @@ def impl(ctx, company_oid):
 
 @step('I delete it')
 def impl(ctx):
-    ctx.found_item.unlink()
+    if ctx.found_item:
+        ctx.found_item.unlink()
 
 @step('I set the default value for "{modelname}"."{column}" to {value}')
 def impl(ctx, modelname, column, value):
