@@ -117,14 +117,13 @@ def impl(ctx, model_name, csvfile, lang, sep=","):
                         "in '%s'. Details:\n%s" % (csvfile, model_name, messages))
 
 
-@given('"{model_name}" is imported asynchronously from CSV "{csvfile}" using delimiter "{sep}"')
-def impl(ctx, model_name, csvfile, sep=","):
+@given('"{model_name}" is imported asynchronously from CSV "{csvfile}" using delimiter "{sep}" with a priority starting at "{priority}"')
+def impl(ctx, model_name, csvfile, sep=",", priority=100):
     importer = model('base_import.import').create({
         'res_model': model_name,
         'file': _fileopen(ctx, csvfile, 'rb').read(),
         'file_name': csvfile,
         'file_type': 'csv',
-
     })
     data = csv.reader(_fileopen(ctx, csvfile, 'rb'),
                       delimiter=str(sep))
@@ -134,5 +133,7 @@ def impl(ctx, model_name, csvfile, sep=","):
         'quoting': '"',
         'separator': ',',
         'encoding': 'utf-8',
-        'use_connector': True}
+        'use_connector': True,
+        'priority': int(priority),
+    }
     model('base_import.import').do(importer.id, fields, options)
