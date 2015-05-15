@@ -57,9 +57,9 @@ def yaml_import(ctx, cr, module_name, fp, kind, mode='init'):
 
 def _fileopen(ctx, filename, mode='r'):
     tmp_path = ctx.feature.filename.split(os.path.sep)
-    tmp_path = tmp_path[1: tmp_path.index('features')] + ['data', '%s'%filename]
+    tmp_path = tmp_path[: tmp_path.index('features')] + ['data', filename]
     tmp_path = [str(x) for x in tmp_path]
-    path = os.path.join('/', *tmp_path)
+    path = os.path.join(*tmp_path)
     assert os.path.exists(path)
     return open(path, mode)
 
@@ -115,3 +115,24 @@ def impl(ctx, model_name, csvfile, lang, sep=","):
         messages = '\n'.join('- %s' % msg for msg in result['messages'])
         raise Exception("Failed to load file '%s' "
                         "in '%s'. Details:\n%s" % (csvfile, model_name, messages))
+
+
+@given('"{model_name}" is imported asynchronously from CSV "{csvfile}" using delimiter "{sep}"')
+def impl(ctx, model_name, csvfile, sep=","):
+    importer = model('base_import.import').create({
+        'res_model': model_name,
+        'file': _fileopen(ctx, csvfile, 'rb').read(),
+        'file_name': csvfile,
+        'file_type': 'csv',
+
+    })
+    data = csv.reader(_fileopen(ctx, csvfile, 'rb'),
+                      delimiter=str(sep))
+    fields = data.next()
+    options = {
+        'headers': True,
+        'quoting': '"',
+        'separator': ',',
+        'encoding': 'utf-8',
+        'use_connector': True}
+    model('base_import.import').do(importer.id, fields, options)
