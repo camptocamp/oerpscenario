@@ -5,6 +5,8 @@ import yaml
 
 import openerp
 
+from support import model
+
 #---------
 #from openerp.tools import yaml_import
 
@@ -96,3 +98,20 @@ def impl(ctx, filename):
         yaml_import(ctx, cr, module_name, fp, 'data', mode='update')
     finally:
         cr.close()
+
+@given('"{model_name}" is imported from CSV "{csvfile}" in language "{lang}"')
+def impl(ctx, model_name, csvfile, lang, sep=","):
+    tmp_path = ctx.feature.filename.split(os.path.sep)
+    tmp_path = tmp_path[: tmp_path.index('features')] + ['data', csvfile]
+    tmp_path = [str(x) for x in tmp_path]
+    path = os.path.join(*tmp_path)
+    assert os.path.exists(path)
+    data = csv.reader(open(path, 'rb'), delimiter=str(sep))
+    head = data.next()
+    # generator does not work
+    values = [x for x in data]
+    result = model(model_name).load(head, values, {'lang': lang})
+    if not result['ids']:
+        messages = '\n'.join('- %s' % msg for msg in result['messages'])
+        raise Exception("Failed to load file '%s' "
+                        "in '%s'. Details:\n%s" % (csvfile, model_name, messages))
