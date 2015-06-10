@@ -1,4 +1,5 @@
 import csv
+import itertools
 import os
 import base64
 import yaml
@@ -108,9 +109,9 @@ def impl(ctx, model_name, csvfile, lang, sep=","):
     assert os.path.exists(path)
     data = csv.reader(open(path, 'rb'), delimiter=str(sep))
     head = data.next()
-    # generator does not work
-    values = [x for x in data]
-    result = model(model_name).load(head, values, {'lang': lang})
+    data = itertools.imap(lambda row: [item.decode('utf-8') for item in row],
+                          data)
+    result = model(model_name).load(head, list(data), {'lang': lang})
     if not result['ids']:
         messages = '\n'.join('- %s' % msg for msg in result['messages'])
         raise Exception("Failed to load file '%s' "
