@@ -73,8 +73,7 @@ def impl(ctx, db_name, find_or):
 
     will skip the creation if it already exists.
     """
-    admin_passwd = ctx.conf.get('admin_passwd')
-    assert admin_passwd
+    admin_passwd = ctx.conf.get('admin_passwd') # empty for unix sockets
     raise_if_exists = find_or.strip() != 'find or'
     _create_database(ctx, admin_passwd, db_name,
                      raise_if_exists=raise_if_exists)
@@ -95,8 +94,7 @@ def impl(ctx, find_or):
     will skip the creation if it already exists.
     """
     db_name = ctx.conf.get('db_name')
-    admin_passwd = ctx.conf.get('admin_passwd')
-    assert admin_passwd
+    admin_passwd = ctx.conf.get('admin_passwd') # empty for unix sockets
     assert db_name
     demo = False
     if not ctx.conf['openerp_config'].get('without_demo'):
