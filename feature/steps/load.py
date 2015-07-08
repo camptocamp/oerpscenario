@@ -91,7 +91,14 @@ def impl(ctx, filename):
     openerp = ctx.conf['server']
     db_name = ctx.conf['db_name']
     pool = openerp.modules.registry.RegistryManager.get(db_name)
-    cr = pool.db.cursor()
+
+    if openerp.release.version_info < (8,):
+        pool = openerp.modules.registry.RegistryManager.get(db_name)
+        cr = pool.db.cursor()
+    else:
+        registry = openerp.modules.registry.RegistryManager.new(db_name)
+        cr = registry.cursor()
+
     module_name='scenario'
     fp=_fileopen(ctx, '%s.yml'%filename)
     try:
