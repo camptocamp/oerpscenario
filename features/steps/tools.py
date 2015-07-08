@@ -63,6 +63,33 @@ def impl(ctx, model_name, csvfile, sep=","):
                         "in '%s'. Details:\n%s" % (csvfile, model_name, messages))
 
 
+@given('"{model_name}" is imported from CSV "{csvfile}" with the following options')
+def impl(ctx, model_name, csvfile):
+    assert ctx.table.headings == ['name', 'value']
+
+    options = dict(ctx.table.rows)
+    tmp_path = ctx.feature.filename.split(os.path.sep)
+    tmp_path = tmp_path[: tmp_path.index('features')] + ['data', csvfile]
+    tmp_path = [str(x) for x in tmp_path]
+    path = os.path.join(*tmp_path)
+    assert os.path.exists(path)
+    sep = options.get('delimiter', ',')
+    data = csv.reader(open(path, 'rb'), delimiter=str(sep))
+    head = data.next()
+    # generator does not work
+    values = [x for x in data]
+    context = ctx.oe_context
+    if model_name == 'res.users':
+        context = dict(context or {}, no_reset_password=True)
+    if options.get('bulk') in ('True', 'true'):
+        context = dict(context or {}, bulk_mode=True)
+    result = model(model_name).load(head, values, context)
+    if not result['ids']:
+        messages = '\n'.join('- %s' % msg for msg in result['messages'])
+        raise Exception("Failed to load file '%s' "
+                        "in '%s'. Details:\n%s" % (csvfile, model_name, messages))
+
+
 @step(u'I back up the database to "{dump_directory}"')
 def impl(ctx, dump_directory):
     db_name = ctx.conf.get('db_name')
