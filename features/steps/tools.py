@@ -55,28 +55,6 @@ def impl_execute_sql(ctx):
         cr.close()
 
 
-# TODO REFACTOR and add CSV options support
-@given('"{model_name}" is imported from CSV "{csvfile}" using delimiter "{sep}"')
-def impl_import_cvs_with_delimiter(ctx, model_name, csvfile, sep=","):
-    tmp_path = ctx.feature.filename.split(os.path.sep)
-    tmp_path = tmp_path[: tmp_path.index('features')] + ['data', csvfile]
-    tmp_path = [str(x) for x in tmp_path]
-    path = os.path.join(*tmp_path)
-    assert os.path.exists(path)
-    data = csv.reader(open(path, 'rb'), delimiter=str(sep))
-    head = data.next()
-    # generator does not work
-    values = [x for x in data]
-    context = ctx.oe_context
-    if model_name == 'res.users':
-        context = dict(context or {}, no_reset_password=True)
-    result = model(model_name).load(head, values, context)
-    if not result['ids']:
-        messages = '\n'.join('- %s' % msg for msg in result['messages'])
-        raise Exception("Failed to load file '%s' "
-                        "in '%s'. Details:\n%s" %
-                        (csvfile, model_name, messages))
-
 def str2bool(s):
     if s in ('True', 'true'):
         return True
@@ -86,11 +64,30 @@ def str2bool(s):
         raise ValueError("str2bool(%r)" % s)
 
 
-@given('"{model_name}" is imported from CSV "{csvfile}" with the following options')
-def impl_import_cvs_with_options(ctx, model_name, csvfile):
-    assert ctx.table.headings == ['name', 'value']
+@given('"{model_name}" is imported from CSV "{csvfile}" using delimiter "{sep}"')
+def impl_import_csv_with_delimiter(ctx, model_name, csvfile, sep=","):
+    import_csv_with_options(ctx, model_name, csvfile,
+                            options={'delimiter': sep})
 
+
+@given('"{model_name}" is imported from CSV "{csvfile}" with the following options')
+def impl_import_csv_with_options(ctx, model_name, csvfile):
+    assert ctx.table.headings == ['name', 'value']
     options = dict(ctx.table.rows)
+    import_csv_with_options(ctx, model_name, csvfile, options=options)
+
+
+def import_csv_with_options(ctx, model_name, csvfile, options=None):
+    """ import csv with options
+
+    * handle special case to load "res.users" faster
+    by setting `no_reset_password=True` in odoo context
+
+    * currently supported options:
+      * bulk={true|false}   load data in bulk mode (need a patch to odoo)
+      * strict={true|false} verify that all rows are loaded
+    """
+
     tmp_path = ctx.feature.filename.split(os.path.sep)
     tmp_path = tmp_path[: tmp_path.index('features')] + ['data', csvfile]
     tmp_path = [str(x) for x in tmp_path]
@@ -98,10 +95,11 @@ def impl_import_cvs_with_options(ctx, model_name, csvfile):
     assert os.path.exists(path)
     sep = options.get('delimiter', ',')
     strict = str2bool(options.get('strict', 'false'))
+
     data = csv.reader(open(path, 'rb'), delimiter=str(sep))
     head = data.next()
-    # generator does not work
-    values = [x for x in data]
+    values = list(data)
+
     context = ctx.oe_context
     ctx.loaded_objets = None
     if model_name == 'res.users':
