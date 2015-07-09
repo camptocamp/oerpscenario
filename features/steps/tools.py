@@ -86,6 +86,7 @@ def import_csv_with_options(ctx, model_name, csvfile, options=None):
     * currently supported options:
       * bulk={true|false}   load data in bulk mode (need a patch to odoo)
       * strict={true|false} verify that all rows are loaded
+      * delimiter=","       choose CSV delimiter
     """
 
     tmp_path = ctx.feature.filename.split(os.path.sep)
@@ -102,6 +103,7 @@ def import_csv_with_options(ctx, model_name, csvfile, options=None):
 
     context = ctx.oe_context
     ctx.loaded_objets = None
+
     if model_name == 'res.users':
         context = dict(context or {}, no_reset_password=True)
 
