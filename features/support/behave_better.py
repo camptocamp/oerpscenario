@@ -105,7 +105,20 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
                 location = self._match.location
             self.print_step(result.status, arguments, location, True)
         if result.error_message:
-            self.stream.write(indent(result.error_message.strip(), u'      '))
+            msg = result.error_message.strip()
+            if isinstance(msg, str):
+                try:
+                    msg = msg.decode('ascii')
+                except UnicodeDecodeError:
+                    try:
+                        msg = msg.decode('utf-8')
+                    except UnicodeDecodeError:
+                        try:
+                            msg = msg.decode('latin1')
+                        except UnicodeDecodeError:
+                            msg = msg.decode('utf-8', errors='replace')
+
+            self.stream.write(indent(msg, u'      '))
             self.stream.write('\n\n')
         self.stream.flush()
 
