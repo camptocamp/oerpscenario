@@ -1,7 +1,7 @@
 from ast import literal_eval
 import time
 import erppeek
-from support.tools import puts, set_trace, model, assert_true, assert_equal
+from support.tools import puts, set_trace, model, assert_true, assert_equal, ensure_xmlid
 from dsl_helpers import (parse_domain,
                          build_search_domain,
                          parse_table_values,
@@ -9,8 +9,6 @@ from dsl_helpers import (parse_domain,
                          create_new_obj,
                          get_company_property
                          )
-
-
 
 
 @step('/^having:?$/')
@@ -30,7 +28,12 @@ def impl_having(ctx):
         ctx.found_item = create_new_obj(ctx, ctx.search_model_name, values)
 
     else:
-        ctx.found_item.write(table_values)
+        xmlid = table_values.pop('xmlid') if 'xmlid' in table_values else None
+        if xmlid:
+            item = ctx.found_item
+            ensure_xmlid(ctx.found_item, xmlid)
+        if table_values:
+            ctx.found_item.write(table_values)
 
 
 @step(u'I set the context to "{oe_context_string}"')
