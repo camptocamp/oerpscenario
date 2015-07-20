@@ -138,6 +138,50 @@ def impl(ctx, company_oid):
     company = model('res.company').get(c_domain)
     ctx.company_id = company.id
 
+@step(u'I set "{option}" to "{value}" in "{menu}" settings')
+def set_in_settings(ctx, option, value, menu):
+    """ Define value of an option in settings by name """
+    Menu = model('ir.ui.menu')
+    Field = model('ir.model.fields')
+    search_domain = [('module', '=', 'base'), ('name', '=', 'menu_config')]
+    base_menu_config_id = model('ir.model.data').get(search_domain).res_id
+    settings_menu = Menu.get(
+        [('name', '=', menu),
+         ('parent_id', '=', base_menu_config_id)])
+    if not settings_menu and menu in ('Invoicing', 'Accounting'):
+        # Try with alias name (depending on module installed)
+        if menu == 'Invoicing':
+            alias = 'Accounting'
+        elif menu == 'Accounting':
+            alias = 'Invoicing'
+        settings_menu = Menu.get(
+            [('name', '=', alias),
+             ('parent_id', '=', base_menu_config_id)])
+    assert settings_menu, "menu %s was not found" % menu
+    wiz_model = settings_menu.action.res_model
+
+    field = Field.get([('model', '=', wiz_model),
+                       ('field_description', '=', option)])
+    assert field
+    Wiz = model(wiz_model)
+    values = {}
+    if wiz_model == 'account.config.settings':
+        # Special call to onchange in case of account config
+        company = model('res.users').browse(1).company_id
+        values.update(Wiz.onchange_company_id(None, company.id)['value'])
+
+    values[field.name] = value
+    config = Wiz.create(values)
+
+    config.execute()
+
+
+@step(u'I {action} "{option}" in "{menu}" settings')
+def enable_in_settings(ctx, action, option, menu):
+    """ Enable or disable a boolean option in settings by name """
+    assert action in ('enable', 'disable')
+    set_in_settings(ctx, option, action == 'enable', menu)
+
 @step('I delete it')
 def impl(ctx):
     if ctx.found_item:
