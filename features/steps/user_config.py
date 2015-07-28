@@ -26,34 +26,26 @@ def impl(ctx):
         assign_groups(user, groups)
 
 
-@step(u'we assign to {users} the groups below')
-def impl(ctx, users):
-    # search groups by name and full name
-    group_names = [row['group_name'] for row in ctx.table]
-    group_names = list(set(group_names))
-    group_full_names = [name for name in group_names if '/' in name]
-    group_single_names = [name for name in group_names if not '/' in name]
-    ModulCategory = model('ir.module.category')
+def search_groups(names):
+    """ Search groups by name and full name """
+    names = list(set(names))
+    group_full_names = [name for name in names if '/' in name]
+    group_single_names = [name for name in names if not '/' in name]
+    ModuleCategory = model('ir.module.category')
     groups = []
-    group_full_names_category = []
     if group_full_names:
         full_name_cond = []
         for line in group_full_names:
             categ, name = line.split('/', 1)
             categ = categ.strip()
             name = name.strip()
-            category_ids = ModulCategory.search([('name', '=', categ)])
+            category_ids = ModuleCategory.search([('name', '=', categ)])
             assert category_ids, 'no category named %s' % categ
             condition = [
                     '&',
                     ('name', '=', name),
                     ('category_id', 'in', category_ids)
                 ]
-            # Take the category_id to build the domain
-            # [
-            #   ('&',('name','=','User'), ('category_id','=',40)),
-            #   ('&',('name','=','User'), ('category_id','=',47)),
-            # ]
             full_name_cond += condition
         num_operators = len(group_full_names) - 1
         or_operators = ['|'] * num_operators
@@ -63,6 +55,28 @@ def impl(ctx, users):
         single_name_cond = [('name', 'in', group_single_names)]
         # Search for single groups
         groups.extend(model('res.groups').browse(single_name_cond))
+    return groups
+
+
+@step(u'we set on the group "{group_name}" the inherited groups below')
+def impl(ctx, group_name):
+    """ Followed by a table with a column 'group_name' """
+    # search groups by name and full name
+    group = search_groups([group_name])
+    assert len(group) == 1,\
+        'Searched one group named %s, found: %s' % (group_name, group)
+    group = group[0]
+    groups = search_groups([row['group_name'] for row in ctx.table])
+    current_groups = [g.id for g in group.implied_ids]
+    group_ids = [g.id for g in groups]
+    group.implied_ids = list(set(group_ids + current_groups))
+
+
+@step(u'we assign to {users} the groups below')
+def impl(ctx, users):
+    """ Followed by a table with a column 'group_name' """
+    # search groups by name and full name
+    groups = search_groups([row['group_name'] for row in ctx.table])
     #assert_equal(len(groups), len(group_names))
     assert users in ('user', 'users')
     if users == "users":
