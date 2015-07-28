@@ -130,10 +130,11 @@ def tag_user_partners(ctx, xmlid):
     model_name, ids = ctx.loaded_objets
     obj = ref(xmlid)
     if model_name == 'res.users':
-        partners = model(model_name).browse(ids).partner_id
-    elif model_name == 'res.partner':
+        ids = [r[0] for r in model(model_name).read(ids, 'partner_id')]
+        model_name = 'res.partner'
+    if model_name == 'res.partner':
         partners = model(model_name).browse(ids)
-    partners.write({'category_id': [obj.id]})
+        partners.write({'category_id': [obj.id]})
 
 
 @step(u'I back up the database to "{dump_directory}"')
