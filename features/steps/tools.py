@@ -4,25 +4,7 @@ import os.path as osp
 import datetime as dt
 import subprocess
 from support import *
-
-
-def ref(xmlref):
-    module, xmlid = xmlref.split('.', 1)
-    model_, id_ = model('ir.model.data').get_object_reference(module, xmlid)
-    return model(model_).browse(id_)
-
-
-def get_cursor_from_context(ctx):
-    """ get an odoo cursor from behave context """
-    odoo = ctx.conf['server']
-    db_name = ctx.conf['db_name']
-    if odoo.release.version_info < (8,):
-        pool = odoo.modules.registry.RegistryManager.get(db_name)
-        cr = pool.db.cursor()
-    else:
-        registry = odoo.modules.registry.RegistryManager.new(db_name)
-        cr = registry.cursor()
-    return cr
+from support.tools import ref, get_cursor_from_context
 
 
 @given('I execute the Python commands')
@@ -77,6 +59,14 @@ def impl_import_csv_with_options(ctx, model_name, csvfile):
     import_csv_with_options(ctx, model_name, csvfile, options=options)
 
 
+def preprocess_data(ctx, model_name, header, data):
+    if model_name == 'res.partner':
+        pass
+    if model_name == 'res.users':
+        pass
+    return header, data
+
+
 def import_csv_with_options(ctx, model_name, csvfile, options=None):
     """ import csv with options
 
@@ -104,14 +94,17 @@ def import_csv_with_options(ctx, model_name, csvfile, options=None):
     context = ctx.oe_context
     ctx.loaded_objets = None
 
-    if model_name == 'res.users':
-        context = dict(context or {}, no_reset_password=True)
+    if str2bool(options.get('preprocess_data', 'false')):
+        head, values = preprocess_data(ctx, model_name, head, values)
 
+    context = dict(context or {}, no_reset_password=True)
     if options.get('bulk') in ('True', 'true'):
         context = dict(context or {}, bulk_mode=True)
 
     result = model(model_name).load(head, values, context)
+
     ids = result['ids']
+
     if not ids:
         messages = '\n'.join('- %s' % msg for msg in result['messages'])
         raise Exception("Failed to load file '%s' "

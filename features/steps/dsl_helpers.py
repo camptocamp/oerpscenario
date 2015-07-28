@@ -106,7 +106,10 @@ def parse_table_values(ctx, obj, table):
     res = {}
     for (key, value) in table:
         add_mode = False
-        field_type = fields[key]['type']
+        if key == 'xmlid':
+            field_type = 'char'
+        else:
+            field_type = fields[key]['type']
         if field_type in ('char', 'text'):
             pass
         elif value.lower() in ('false', '0', 'no', 'f', 'n', 'nil'):

@@ -49,6 +49,50 @@ def model(name):
     return ctx and ctx.client.model(name)
 
 
+def ref(xmlref):
+    module, xmlid = xmlref.split('.', 1)
+    model_, id_ = model('ir.model.data').get_object_reference(module, xmlid)
+    return model(model_).browse(id_)
+
+
+def get_xmlid(model_name, id_):
+        domain = [('model', '=', model_name),
+                  ('res_id', '=', id_)]
+
+        result = model('ir.model.data').read(domain,
+                                             ['module', 'name'])
+        if not result:
+            raise ValueError, "no xmlid found for %s,%d" % (model_name, id_)
+        return '%s.%s' % (result[0]['module'], result[0]['name'])
+
+
+def get_cursor_from_context(ctx):
+    """ get an odoo cursor from behave context """
+    odoo = ctx.conf['server']
+    db_name = ctx.conf['db_name']
+    if odoo.release.version_info < (8,):
+        pool = odoo.modules.registry.RegistryManager.get(db_name)
+        cr = pool.db.cursor()
+    else:
+        registry = odoo.modules.registry.RegistryManager.new(db_name)
+        cr = registry.cursor()
+    return cr
+
+
+def ensure_xmlid(obj, xmlid):
+    """ ensure that given odoo object `obj` have xmlid as external id """
+    module, name = xmlid.split('.')
+    check = ref(xmlid)
+    if check:
+        assert check.id == obj.id
+    else:
+        model('ir.model.data').create({'model':
+                                       obj._model._name,
+                                       'module': module,
+                                       'res_id': obj.id,
+                                       'name': name})
+
+
 def puts(*args):
     """Print the arguments, after the step is finished."""
     ctx = _get_context()
