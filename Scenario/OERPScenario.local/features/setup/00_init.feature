@@ -20,3 +20,11 @@ Feature: Parameter the new database
         | name                           |
         # oca/ocb
         | account                        |
+        | l10n_ch                        |
+        # oca/l10n-switzerland
+        | l10n_ch_bank                   |
+        | l10n_ch_payment_slip           |
+        | l10n_ch_states                 |
+        | l10n_ch_zip                    |
+        # oca/server-tools
+        | disable_openerp_online         |
