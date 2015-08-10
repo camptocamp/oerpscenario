@@ -112,26 +112,3 @@ Feature: Parameter the new database
        | email      | info@swisslux.ch               |
        | website    | www.swisslux.ch                |
        | company_id | by oid: base.main_company      |
-
-
-  @account_chart_ch
-  Scenario: Generate account chart for Swisslux SA
-    Given I have the module account installed
-    And I want to generate account chart from chart template named "Plan comptable STERCHI" with "5" digits for company "Swisslux SA"
-    When I generate the chart
-    Then accounts should be available for company "Swisslux SA"
-
-
-  @fiscalyear_ch
-    Scenario: create fiscal years
-    Given I need a "account.fiscalyear" with oid: scenario.fy2015_ch
-    And having:
-    | name       | value                     |
-    | name       | 2015                      |
-    | code       | 2015                      |
-    | date_start | 2015-01-01                |
-    | date_stop  | 2015-12-31                |
-    | company_id | by oid: base.main_company |
-    And I create monthly periods on the fiscal year with reference "scenario.fy2015_ch"
-    Then I find a "account.fiscalyear" with oid: scenario.fy2015_ch
-
