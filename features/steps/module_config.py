@@ -73,3 +73,28 @@ def impl(ctx):
 def impl(ctx):
     assert ctx.found_item
     ctx.found_item.execute()
+
+@step('I update translations for module "{name}" in the following languages')
+def impl_update_module_translations(ctx, name):
+    tlangs = model('res.lang').browse([('translatable', '=', True)])
+    codes = set([lang for (lang,) in ctx.table])
+    mods = model('ir.module.module').browse(['state = installed',
+                                             ('name', '=', name)])
+    assert_true(codes)
+    assert_less(codes, set(tlangs.code))
+    mods.button_update_translations(context={'overwrite': True})
+
+@step('I check the following translation terms')
+def impl_check_translations(ctx):
+    def check(ctx, term,  lang,  module, trans):
+        tr = model('ir.translation')
+        domain = [('src', '=', term), ('module', '=', module),
+                  ('lang', '=', lang)]
+        ids = tr.search(domain)
+        current = tr.read(ids, 'value')
+        assert len(current) == 1, "found matched translation"
+        current = current[0]
+        assert trans == current, "%s == %s" % (repr(trans),  repr(current))
+
+    for row in ctx.table:
+        check(ctx, row['term'], row['lang'], row['module'], row['translation'])
