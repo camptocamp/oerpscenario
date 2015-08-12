@@ -138,7 +138,7 @@ def impl(ctx, company_oid):
     company = model('res.company').get(c_domain)
     ctx.company_id = company.id
 
-@step(u'I set "{option}" to "{value}" in "{menu}" settings')
+@step(u'I set "{option}" to "{value}" in "{menu}" settings menu')
 def set_in_settings(ctx, option, value, menu):
     """ Define value of an option in settings by name """
     Menu = model('ir.ui.menu')
@@ -176,7 +176,7 @@ def set_in_settings(ctx, option, value, menu):
     config.execute()
 
 
-@step(u'I {action} "{option}" in "{menu}" settings')
+@step(u'I {action} "{option}" in "{menu}" settings menu')
 def enable_in_settings(ctx, action, option, menu):
     """ Enable or disable a boolean option in settings by name """
     assert action in ('enable', 'disable')
