@@ -3,7 +3,8 @@ import os
 import os.path as osp
 import datetime as dt
 import subprocess
-from support import *
+from behave import step
+from support import model, assert_true, puts
 
 
 def ref(xmlref):
@@ -25,7 +26,7 @@ def get_cursor_from_context(ctx):
     return cr
 
 
-@given('I execute the Python commands')
+@step('I execute the Python commands')
 def impl_execute_python(ctx):
     assert_true(ctx.text)
     env = globals().copy()
@@ -33,7 +34,7 @@ def impl_execute_python(ctx):
     exec ctx.text in env
 
 
-@given('I execute the SQL commands')
+@step('I execute the SQL commands')
 def impl_execute_sql(ctx):
     assert_true(ctx.text)
 
@@ -64,13 +65,13 @@ def str2bool(s):
         raise ValueError("str2bool(%r)" % s)
 
 
-@given('"{model_name}" is imported from CSV "{csvfile}" using delimiter "{sep}"')
+@step('"{model_name}" is imported from CSV "{csvfile}" using delimiter "{sep}"')
 def impl_import_csv_with_delimiter(ctx, model_name, csvfile, sep=","):
     import_csv_with_options(ctx, model_name, csvfile,
                             options={'delimiter': sep})
 
 
-@given('"{model_name}" is imported from CSV "{csvfile}" with the following options')
+@step('"{model_name}" is imported from CSV "{csvfile}" with the following options')
 def impl_import_csv_with_options(ctx, model_name, csvfile):
     assert ctx.table.headings == ['name', 'value']
     options = dict(ctx.table.rows)
