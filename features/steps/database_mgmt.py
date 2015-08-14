@@ -1,6 +1,5 @@
-import openerp
 from support import *
-
+from .dsl_helpers import openerp_needed_in_path
 
 @given('the server is up and running OpenERP {version}')
 def impl(ctx, version):
@@ -24,10 +23,9 @@ def impl(ctx, user, password):
         assert_equal(uid, 1)
     else:
         assert_greater(uid, 1)
-    # set_trace()
-    # assert_true(0)
 
 
+@openerp_needed_in_path
 def _create_database(ctx, admin_passwd, db_name, demo=False,
                      raise_if_exists=True):
     try:
