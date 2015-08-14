@@ -7,6 +7,13 @@ import ConfigParser
 import erppeek
 from support import tools, behave_better
 
+try:
+    import openerp
+    OPENERP_IN_PATH = True
+except ImportError:
+    OPENERP_IN_PATH = False
+
+
 __all__ = []
 OPENERP_ARGS = [
     '-c', 'etc/openerp.cfg',
@@ -41,11 +48,9 @@ def parse_openerp_config(config_path):
     port = options.get('xmlrpc_port', '8069')
     conf = {
         'server': "%s:%s" % (server, port),
-        'db_name': options.get('db_name'),
-        'admin_passwd': options.get('admin_passwd', 'admin'),
-        'admin_login_password': options.get('admin_login_password', 'admin'),
-        'openerp_config': options,
     }
+    conf.update(options)
+
     return conf
 
 
@@ -56,7 +61,7 @@ def before_all(ctx):
     if hasattr(ctx.config, 'server_config') and ctx.config.server_config:
         conf = parse_openerp_config(ctx.config.server_config)
         server = conf['server']
-    elif 'openerp' in sys.path or 'odoo' in sys.path:
+    elif OPENERP_IN_PATH:
         if hasattr(ctx.config, 'server_args') and ctx.config.server_args:
             openerp_args = ctx.config.server_args.split('|')
         if erppeek.__version__ < '1.6':
@@ -66,9 +71,8 @@ def before_all(ctx):
         database = server.tools.config['db_name']
         conf = {'server': server,
                 'admin_passwd': server.tools.config['admin_passwd'] or 'admin',
-                'db_name': database,
-                'openerp_config': server.tools.config,
                 }
+        conf.update(server.tools.config.options)
     else:
         raise ValueError(
             'No Odoo/OpenERP configuration file passed '
@@ -101,13 +105,14 @@ def before_scenario(ctx, scenario):
     # before trying to login in Odoo
     if not ctx.client.user and 'no_login' not in scenario.tags:
         database = ctx.conf['db_name']
-        config = ctx.conf['openerp_config']
+        config = ctx.conf
         # We try to manage default login
         # even if there is a sentence to log a given user
         # Just add options.admin_login_password in your buildout to log from
         # config
         admin_login_password = config.get('admin_login_password', 'admin')
-        ctx.client.login('admin', admin_login_password, database=database)
+        admin_login = config.get('admin_login', 'admin')
+        ctx.client.login(admin_login, admin_login_password, database=database)
 
 
 def before_step(ctx, step):
