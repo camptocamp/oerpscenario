@@ -37,8 +37,10 @@ def parse_openerp_config(config_path):
             'Configuration file is missing the options section'
         )
     options = server_config._sections['options']
+    server = options.get('server_url', 'http://localhost')
+    port = options.get('xmlrpc_port', '8069')
     conf = {
-        'server': options.get('server_url', 'http://localhost:8501'),
+        'server': "%s:%s" % (server, port),
         'db_name': options.get('db_name'),
         'admin_passwd': options.get('admin_passwd', 'admin'),
         'admin_login_password': options.get('admin_login_password', 'admin'),
