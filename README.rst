@@ -46,7 +46,7 @@ For faster result or when working with huge data OERPScenario is able to embeed 
 Installation:
 #############
 
-``pip install openerpscenario``
+``pip install oerpscenario``
 
 Usage
 #####
