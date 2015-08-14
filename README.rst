@@ -1,17 +1,17 @@
 OERPScenario - Business Driven Development (BDD) for OpenERP/Odoo
 #################################################################
 
-OERPScenario is a tool to allows Business Driven Development (BDD). It allows
-non-technical people to write real business cases, that will be tested among
-OpenERP to ensure no regressions.
+OERPScenario is a tool to allow Business Driven Development (BDD). It allows
+non-technical people to write real business cases, that will be tested in
+Odoo to ensure no regressions.
 
-OERPScenario will allow us to detect regressions from one version to another by
-running a test suites composed by scenario on a specified OpenERP server
-(directly on the customer replication instance, or just on the last stable
+OERPScenario allows to detect regressions from one version to another by
+running a test suite composed of scenarios on a specified Odoo server
+(directly on the customer replication instance, or just on the lastest stable
 release).
 
-We also include in this brand new version written in Python and based on
-Erppeek (http://erppeek.readthedocs.org/en/latest/) a complete DSL that allow
+It also includes in this brand new version written in Python and based on
+Erppeek (http://erppeek.readthedocs.org/en/latest/) a complete DSL that allows
 you to write tests at the speed of thought.
 
 This means a business specialist can write something like the following: ::
@@ -39,8 +39,9 @@ This means a business specialist can write something like the following: ::
         | product_uom     | by name: PCE                      |
         | order_id        | by oid: scenario.anglosaxon_SO013 |
 
-OERPscenario will allows you to connect to a remote or local instance using XML RPC.
-For faster result or when working with huge data OERPScenario is able to embeed an Odoo/OpenERP service. This is possible if Odoo/OpenERP is available in syspath. Using the Anybox buildout recipe in conunction with OERPScenario is a good way to achieve this
+OERPscenario allows you to connect to a remote or local instance using XMLRPC.
+For faster results or when working with huge data, OERPScenario can embed an Odoo/OpenERP service. This is possible if Odoo/OpenERP is available in syspath. Using the Anybox buildout recipe in conjunction with 
+OERPScenario is a good way to achieve this
 `http://pypi.python.org/pypi/anybox.recipe.openerp <http://pypi.python.org/pypi/anybox.recipe.openerp>`_
 
 Installation:
@@ -50,18 +51,18 @@ Installation:
 
 Usage
 #####
-Checkout you own scenario branche.
-Then run the following command ::
+
+Checkout you own scenario branch, then run the following command ::
 
   openerp_scenario  Scenario/OERPScenario.local/ -t backend -k --server-config etc/openerp.cfg
 
-This will run an enchanced version of behave. The -k option will only show executed scenario --t will launch specific scenario.
+This will run an enhanced version of behave. The `-k` option will only show executed scenario, `-t` will filter  specific scenarios from the tags.
 
 
 For more information, please refer to behave documentation:
 `http://packages.python.org/behave/ <http://packages.python.org/behave/>`_
 
-If you want to use **pdb** you have to set --no-capture option when launching ``openerp_scenario``.
+If you want to use **pdb** you have to set `--no-capture` option when launching ``openerp_scenario``.
 
 Configuration file
 ##################
