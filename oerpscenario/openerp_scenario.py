@@ -38,12 +38,8 @@ def main():
     "-c etc/openerp.cfg|--logfile=behave-stdout.log \n"
     "Only available if odoo/openerp is in sys path"
     )
-    default_features = os.path.join(os.path.dirname(__file__), 'features')
-    # we filter agruments to remove openerp_scenario.py file path
-    # if file is not run as an executable but by invoking Python
-    filtered_args = [x for x in sys.argv
-                    if not x.endswith(os.path.basename(__file__))]
-    args = tuple([default_features] + filtered_args)
+    default_features = os.path.join(os.path.dirname(__file__), '..', 'features')
+    args = tuple([default_features] + sys.argv[1:])
     # command that run behave
     __main__.main(args)
 
