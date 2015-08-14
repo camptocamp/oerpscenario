@@ -24,24 +24,28 @@ import os
 from behave import configuration
 from behave import __main__
 
-# Adding custom options to behave
-configuration.parser.add_argument(
+def main():
+    # Adding custom options to behave
+    configuration.parser.add_argument(
     '--server-config',
     help="Odoo/OpenERP server configuration file"
-)
-configuration.parser.add_argument(
+    )
+    configuration.parser.add_argument(
     '--server-args',
     help="Odoo/OpenERP arguments to use. "
     "You should provide a string of agruments "
     "separated with a pipe: \n"
     "-c etc/openerp.cfg|--logfile=behave-stdout.log \n"
     "Only available if odoo/openerp is in sys path"
-)
-default_features = os.path.join(os.path.dirname(__file__), 'features')
-# we filter agruments to remove openerp_scenario.py file path
-# if file is not run as an executable but by invoking Python
-filtered_args = [x for x in sys.argv
-                 if not x.endswith(os.path.basename(__file__))]
-args = tuple([default_features] + filtered_args)
-# command that run behave
-__main__.main(args)
+    )
+    default_features = os.path.join(os.path.dirname(__file__), 'features')
+    # we filter agruments to remove openerp_scenario.py file path
+    # if file is not run as an executable but by invoking Python
+    filtered_args = [x for x in sys.argv
+                    if not x.endswith(os.path.basename(__file__))]
+    args = tuple([default_features] + filtered_args)
+    # command that run behave
+    __main__.main(args)
+
+if __name__ == '__main__':
+    main()
