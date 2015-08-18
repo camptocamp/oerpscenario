@@ -12,7 +12,7 @@ Feature: Configure CH accounting
   @account_chart_ch
   Scenario: Generate account chart for Swisslux SA
     Given I have the module account installed
-    And I want to generate account chart from chart template named "Plan comptable STERCHI" with "5" digits for company "Swisslux SA"
+    And I want to generate account chart from chart template named "Plan comptable 2015" with "5" digits for company "Swisslux SA"
     When I generate the chart
     Then accounts should be available for company "Swisslux SA"
 
