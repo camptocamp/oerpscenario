@@ -204,7 +204,7 @@ def openerp_needed_in_path(f):
     And log a warning if not available
     """
     @wraps(f)
-    def wrapper(f):
+    def wrapper(*args, **kwargs):
         try:
             import openerp
             return f(*args, **kwargs)
