@@ -26,23 +26,35 @@ Feature: Parameter the new database
         # oca/ocb
         | account                              |
         | hr                                   |
+        | hr_contract                          |
+        | hr_expense                           |
+        | hr_holidays                          |
         | hr_timesheet                         |
         | hr_timesheet_sheet                   |
         | l10n_ch                              |
+        | purchase                             |
         | project                              |
         | sale                                 |
         | stock                                |
         # oca/account-financial-tools
         | account_credit_control               |
+        | account_compute_tax_amount           |
+        # oca/account-financial-reporting
+        | account_financial_report_webkit      |
+        | account_financial_report_webkit_xls  |
         # oca/carrier-delivery
         | delivery_carrier_label_postlogistics |
         # oca/l10n-switzerland
         | l10n_ch_bank                         |
         | l10n_ch_dta                          |
+        | l10n_ch_payment_slip                 |
         | l10n_ch_states                       |
         | l10n_ch_zip                          |
         # oca/server-tools
         | disable_openerp_online               |
+        # oca/web
+        | web_dialog_size                      |
+        | web_sheet_full_width                 |
 
   @lang
   Scenario: install lang
