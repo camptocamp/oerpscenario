@@ -55,6 +55,8 @@ Feature: Parameter the new database
         # oca/web
         | web_dialog_size                      |
         | web_sheet_full_width                 |
+        # specific-addons 
+        | specific_reports                     |
 
   @lang
   Scenario: install lang
@@ -84,7 +86,7 @@ Feature: Parameter the new database
   Given I find a "res.company" with oid: base.main_company
     And having:
        | key        | value              |
-       | name       | Swisslux SA        |
+       | name       | Swisslux AG        |
        | street     | Industriestrasse 8 |
        | street2    |                    |
        | zip        | 8618               |
@@ -95,11 +97,12 @@ Feature: Parameter the new database
        | email      | info@swisslux.ch   |
        | website    | www.swisslux.ch    |
     Given the company has the "images/company_logo.png" logo
+    Given the company has the "images/company_logo_header.png" report logo
     And the company currency is "CHF" with a rate of "1.00"
-    Given I need a "res.partner" with oid: scenario.partner_swisslux
+    Given I need a "res.partner" with oid: base.main_partner
     And having:
        | key        | value                     |
-       | name       | Swisslux SA               |
+       | name       | Swisslux AG               |
        | street     | Industriestrasse 8        |
        | street2    |                           |
        | zip        | 8618                      |
@@ -113,7 +116,7 @@ Feature: Parameter the new database
     Given I need a "res.partner" with oid: scenario.partner_swisslux_romandie
     And having:
        | key        | value                          |
-       | name       | Swisslux SA, Romandie & Tessin |
+       | name       | Swisslux SA                    |
        | street     | Chemin de la Grand Clos 17     |
        | street2    |                                |
        | zip        | 1092                           |
@@ -123,4 +126,5 @@ Feature: Parameter the new database
        | fax        | +41 21 711 23 41               |
        | email      | info@swisslux.ch               |
        | website    | www.swisslux.ch                |
+       | parent_id  | by oid: base.main_partner      |
        | company_id | by oid: base.main_company      |

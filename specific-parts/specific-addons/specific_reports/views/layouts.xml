@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <template id="report.external_layout_header">
+      <div class="header">
+        <div class="row mt0" t-att-style="'padding-top: 16px; width: 775px; background-size: 775px; background-repeat: no-repeat; background-image: url(''data:image/png;base64,%s'')' % company.report_logo">
+          <div class="col-xs-2">
+          </div>
+          <div class="col-xs-8" style="padding-left: 30px;">
+            <p>
+              <small>
+                <small>
+                Intelligente Beleuchtungstechnik<br/>
+                Gestion intelligente de l'éclairage<br/>
+                Gestione intelligente dell'illuminazione
+                </small>
+              </small>
+            </p>
+            <br/>
+          </div>
+          <div class="col-xs-2">
+            <small>
+              <small>
+                <span t-field="company.email"/><br/>
+                <span t-raw="company.website[7:]"/>
+              </small>
+            </small>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="report.external_layout_footer">
+      <div class="footer">
+        <div class="text-center">
+          <small>
+            <small>
+              <small>
+                <strong t-field="company.name"/>
+                <span t-field="company.street"/>,
+                <span t-field="company.zip"/>,
+                <span t-field="company.city"/>,
+                Tel: <span t-field="company.phone"/>
+                Fax: <span t-field="company.fax"/>
+                Technik-Hotline: 043 844 80 77,
+                <span t-field="company.email"/>,
+                <span t-raw="company.website[7:]"/>
+                <br/>
+                <t t-set="company_contacts" t-value="[p for p in company.partner_id.child_ids if p.name == 'Swisslux SA']"/>
+                <t t-if="company_contacts">
+                  <br/>
+                  <t t-set="company_sa" t-value="company_contacts[0]"/>
+                  <strong t-field="company_sa.name"/>
+                  <span t-field="company_sa.street"/>,
+                  Tél: <span t-field="company_sa.phone"/>
+                  Fax: <span t-field="company_sa.fax"/>
+                  <span t-field="company_sa.email"/>,
+                  <span t-raw="company_sa.website[7:]"/>
+                </t>
+              </small>
+            </small>
+          </small>
+        </div>
+      </div>
+    </template>
+
+    <record id="report.paperformat_euro" model="report.paperformat">
+        <field name="name">European A4</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">23</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">40</field>
+        <field name="dpi">90</field>
+    </record>
+
+  </data>
+</openerp>
