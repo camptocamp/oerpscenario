@@ -60,8 +60,8 @@ Feature: In order to test oerpscenario I use it to test itself
     | name       | value    |
     | name       | current  |
     | code       | current  |
-    | date_start | %y-01-01 |
-    | date_stop  | %y-12-31 |
+    | date_start | %Y-01-01 |
+    | date_stop  | %Y-12-31 |
 
     And I create monthly periods on the fiscal year with reference "scenario.fy1"
     Then I find a "account.fiscalyear" with oid: scenario.f1
