@@ -1,6 +1,7 @@
 '''
 helper function for dsl manipulation
 '''
+import time
 from functools import wraps
 from behave.matchers import register_type
 from support import *
