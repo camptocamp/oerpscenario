@@ -15,7 +15,7 @@ before_install:
   - sudo echo "deb http://nightly.odoo.com/8.0/nightly/deb/ ./" | sudo tee -a /etc/apt/sources.list
   - sudo apt-get update
   - sudo  apt-get install odoo
-
+  - sudo /etc/init.d/odoo --stop
 install:
   - travis_retry pip install -r requirements.txt --use-mirrors
   - python setup.py develop
