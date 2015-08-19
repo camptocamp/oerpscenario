@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 @auto_test
 Feature: In order to test oerpscenario I use it to test itself
+  have a coherent installation
+  I've automated the manual steps.
 
+  @no_login
   Scenario: Test database creation
     Given I create database from config file
 
@@ -44,8 +47,11 @@ Feature: In order to test oerpscenario I use it to test itself
     Then we assign all groups to the users
 
   Scenario: Test setup account chart
+    Given I find a "res.company" with oid: base.main_company
+    And having:
+    | key         | value                     |
+    | name        | Springfield Power Company |
     Given I have the module account installed
-    And no account set for company "YourCompany"
     And I want to generate account chart from chart template named "Plan Comptable Général (France)" with "6" digits for company "YourCompany"
 
   Scenario: Test fiscalyear and date place holder
@@ -60,21 +66,22 @@ Feature: In order to test oerpscenario I use it to test itself
     And I create monthly periods on the fiscal year with reference "scenario.fy1"
     Then I find a "account.fiscalyear" with oid: scenario.f1
 
+    @auto_test_remote
   Scenario: Test base DSL using company setting and test data folder lookup
-  Given I find a "res.company" with oid: base.main_company
+    Given I find a "res.company" with oid: base.main_company
     And having:
-         | key         | value                         |
-         | name        | Springfield Power Company     |
-         | street      | A street                      |
-         | street2     | A Street 2                    |
-         | zip         | 93310                         |
-         | city        | Springfield                   |
-         | country_id  | by code: US                   |
-         | phone       | 00 00 00 00 00                |
-         | fax         | 00 00 00 00 00                |
-         | email       | homer@simpson.dummy           |
-         | website     | camptocamp.com                |
-         | currency_id | by name: EUR and by symbol: € |
+    | key         | value                     |
+    | name        | Springfield Power Company |
+    | street      | A street                  |
+    | street2     | A Street 2                |
+    | zip         | 93310                     |
+    | city        | Springfield               |
+    | country_id  | by code: US               |
+    | phone       | 00 00 00 00 00            |
+    | fax         | 00 00 00 00 00            |
+    | email       | homer@simpson.dummy       |
+    | website     | camptocamp.com            |
+    | currency_id | by name: EUR              |
     And the company has the "images/c2c-logo.png" logo
 
 
@@ -147,12 +154,12 @@ Feature: In order to test oerpscenario I use it to test itself
     And I have 1 items
     And I delete it
 
-    Scenario: Test set context regression
-      # will set variable ctx.oe_context
+  Scenario: Test set context regression
+    # will set variable ctx.oe_context
     Given I set the context to "{'active_search': False}"
 
-    Scenario: Test Global property setup
-   Given I need a "account.account" with oid: scen.acc_bank_eur
+  Scenario: Test Global property setup
+    Given I need a "account.account" with oid: scen.acc_bank_eur
     And having:
     | name      | value            |
     | name      | EUR bank account |

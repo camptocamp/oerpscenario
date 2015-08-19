@@ -41,7 +41,7 @@ def main():
     default_features = os.path.join(os.path.dirname(__file__), '..', 'features')
     args = tuple([default_features] + sys.argv[1:])
     # command that run behave
-    __main__.main(args)
+    sys.exit(__main__.main(args))
 
 if __name__ == '__main__':
     main()

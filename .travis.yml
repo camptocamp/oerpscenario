@@ -10,9 +10,6 @@ cache:
   - pip
   - apt
 
-env:
- - REMOTE = 1
- - REMOTE = 0
 before_install:
   - sudo wget --no-check-certificate -O - https://nightly.odoo.com/odoo.key | sudo apt-key add -
   - sudo echo "deb http://nightly.odoo.com/8.0/nightly/deb/ ./" | sudo tee -a /etc/apt/sources.list
@@ -23,4 +20,7 @@ install:
   - travis_retry pip install -r requirements.txt --use-mirrors
   - python setup.py develop
 script:
-  - if [ "$REMOTE" != "1" ] ; then oerpscenario/openerp_scenario.py -k -t auto_test --server-args="-c oerpscenario/test/config/odoo.conf" ; fi
+  - pwd -P
+  - oerpscenario/openerp_scenario.py -k -t auto_test --server-args="--config=$TRAVIS_BUILD_DIR/oerpscenario/test/config/odoo.conf"
+  - (/usr/bin/odoo.py --config="$TRAVIS_BUILD_DIR/oerpscenario/test/config/odoo.conf" &)
+  - oerpscenario/openerp_scenario.py -k -t auto_test_remote --server-config="--config=$TRAVIS_BUILD_DIR/oerpscenario/test/config/oerpscenario.conf"
