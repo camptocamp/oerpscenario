@@ -17,6 +17,7 @@ before_install:
   - sudo  apt-get install odoo
   - sudo /etc/init.d/odoo stop
   - createuser -s -U postgres odoo_test
+  - sudo pip install psycogreen
 install:
   - travis_retry pip install -r requirements.txt
   - python setup.py develop
