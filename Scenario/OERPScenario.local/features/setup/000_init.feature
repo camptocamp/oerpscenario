@@ -55,6 +55,7 @@ Feature: Parameter the new database
         # oca/web
         | web_dialog_size                      |
         | web_sheet_full_width                 |
+        | web_shortcuts                        |
         # specific-addons 
         | specific_reports                     |
 
