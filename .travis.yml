@@ -23,4 +23,4 @@ script:
   - pwd -P
   - oerpscenario/openerp_scenario.py -k -t auto_test --server-args="--config=$TRAVIS_BUILD_DIR/oerpscenario/test/config/odoo.conf"
   - (/usr/bin/odoo.py --config="$TRAVIS_BUILD_DIR/oerpscenario/test/config/odoo.conf" &)
-  - oerpscenario/openerp_scenario.py -k -t auto_test_remote --server-config="--config=$TRAVIS_BUILD_DIR/oerpscenario/test/config/oerpscenario.conf"
+  - oerpscenario/openerp_scenario.py -k -t auto_test_remote --server-config "$TRAVIS_BUILD_DIR/oerpscenario/test/config/oerpscenario.conf"

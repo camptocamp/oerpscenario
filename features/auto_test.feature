@@ -52,7 +52,7 @@ Feature: In order to test oerpscenario I use it to test itself
     | key         | value                     |
     | name        | Springfield Power Company |
     Given I have the module account installed
-    And I want to generate account chart from chart template named "Plan Comptable Général (France)" with "6" digits for company "YourCompany"
+    And I want to generate account chart from chart template named "Plan Comptable Général (France)" with "6" digits for company "Springfield Power Company"
 
   Scenario: Test fiscalyear and date place holder
     Given I need a "account.fiscalyear" with oid: scenario.fy1
