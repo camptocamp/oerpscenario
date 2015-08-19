@@ -82,7 +82,7 @@ Feature: In order to test oerpscenario I use it to test itself
     | email       | homer@simpson.dummy       |
     | website     | camptocamp.com            |
     | currency_id | by name: EUR              |
-    And the company has the "images/c2c-logo.png" logo
+    And the company has the "images/c2c_logo.png" logo
 
 
   Scenario: Test sql execution
