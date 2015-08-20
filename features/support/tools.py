@@ -89,14 +89,45 @@ def set_trace():
         pdb.Pdb().set_trace(sys._getframe().f_back)
 
 
-# Expose assert* from unittest.TestCase with pep8 style names
-from unittest2 import TestCase
-ut = type('unittest', (TestCase,), {'any': any})('any')
-for oper in ('equal', 'not_equal', 'true', 'false', 'is', 'is_not', 'is_none',
-             'is_not_none', 'in', 'not_in', 'is_instance', 'not_is_instance',
-             'raises', 'almost_equal', 'not_almost_equal', 'sequence_equal',
-             'greater', 'greater_equal', 'less', 'less_equal'):
-    funcname = 'assert_' + oper
-    globals()[funcname] = getattr(ut, 'assert' + oper.title().replace('_', ''))
-    __all__.append(funcname)
-del TestCase, ut, oper, funcname
+def get_xmlid(model_name, id_):
+        domain = [('model', '=', model_name),
+                  ('res_id', '=', id_)]
+
+        result = model('ir.model.data').read(domain,
+                                             ['module', 'name'])
+        if not result:
+            raise ValueError("no xmlid found for %s,%d" % (model_name, id_))
+        return '%s.%s' % (result[0]['module'], result[0]['name'])
+
+
+def ensure_xmlid(obj, xmlid):
+    """ ensure that given odoo object `obj` have xmlid as external id """
+    module, name = xmlid.split('.')
+    check = obj.get_external_ids(ids=[obj.id])
+    if check:
+        assert len(check) == 1
+        xid = check.keys()[0]
+        assert obj == check[xid]
+    else:
+        model('ir.model.data').create({'model':
+                                       obj._model._name,
+                                       'module': module,
+                                       'res_id': obj.id,
+                                       'name': name})
+
+
+def expose_asserts():
+    """ Expose assert* from unittest.TestCase with pep8 style names """
+    from unittest2 import TestCase
+    ut = type('unittest', (TestCase,), {'any': any})('any')
+    for oper in ('equal', 'not_equal', 'true', 'false', 'is', 'is_not',
+                 'is_none', 'is_not_none', 'in', 'not_in', 'is_instance',
+                 'not_is_instance', 'raises', 'almost_equal',
+                 'not_almost_equal', 'sequence_equal',
+                 'greater', 'greater_equal', 'less', 'less_equal'):
+        funcname = 'assert_' + oper
+        globals()[funcname] = getattr(ut,
+                                      'assert' + oper.title().replace('_', ''))
+        __all__.append(funcname)
+expose_asserts()
+del expose_asserts
