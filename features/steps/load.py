@@ -78,30 +78,6 @@ def _fileopen(ctx, filename, mode='r'):
     return open(path, mode)
 
 
-@step('I load the data file "{filename}.csv" into the model "{model_name}"')
-def impl_load_cvs_into_model(ctx, model_name, filename, sep=","):
-    data = csv.reader(
-        _fileopen(ctx, '%s.csv' % filename, 'rb'), delimiter=str(sep))
-    head = []
-    skip = []  # skip columns that are not mapped
-    for index, field in enumerate(data.next()):
-        if field:
-            head.append(field)
-        else:
-            skip.append(index)
-    values = []
-    for line in data:
-        values.append(
-            [field for index, field in enumerate(line) if index not in skip])
-    rewrite = [i for i, e in enumerate(head) if e == 'id' or e.endswith('/id')]
-    if rewrite:
-        for line in iter(values):
-            for pos in rewrite:
-                if '.' not in line[pos]:
-                    line[pos] = 'scenario.' + line[pos]
-    model(model_name).load(head, values)
-
-
 @step('I load the data file "{filename}.yml"')
 def impl_load_yaml_data_file(ctx, filename):
     openerp = ctx.conf['server']
@@ -122,7 +98,6 @@ def impl_load_yaml_data_file(ctx, filename):
         yaml_import(ctx, cr, module_name, fp, 'data', mode='update')
     finally:
         cr.close()
-
 
 @step('"{model_name}" is imported from CSV "{csvfile}" in language "{lang}"')
 def impl_model_csv_import_with_locale(ctx, model_name, csvfile, lang, sep=","):
@@ -146,6 +121,12 @@ def impl_model_csv_import_with_locale(ctx, model_name, csvfile, lang, sep=","):
 @step('"{model_name}" is imported asynchronously from CSV "{csvfile}" using delimiter "{sep}" with a priority starting at "{priority}"')
 def impl_mode_csv_import_async(ctx, model_name, csvfile, sep=",",
                                priority=100):
+    """ step for async import (uses OCA module base_import_async) """
+    if not check_installed_module('base_import_async'):
+        raise Exception("This step uses the OCA module base_import_async.\n"
+                        "You can find it in the following package: "
+                        "https://github.com/OCA/connector-interface")
+
     importer = model('base_import.import').create({
         'res_model': model_name,
         'file': _fileopen(ctx, csvfile, 'rb').read(),
@@ -164,3 +145,11 @@ def impl_mode_csv_import_async(ctx, model_name, csvfile, sep=",",
         'priority': int(priority),
     }
     model('base_import.import').do(importer.id, fields, options)
+
+
+def check_installed_module(ctx, modname):
+    modinfo = ctx.client.modules(modname)
+    if not modinfo:
+        return False
+    else:
+        return modname in modinfo['installed']
