@@ -10,11 +10,11 @@
 Feature: Configure CH accounting
 
   @account_chart_ch
-  Scenario: Generate account chart for Swisslux SA
+  Scenario: Generate account chart for Swisslux AG
     Given I have the module account installed
-    And I want to generate account chart from chart template named "Plan comptable 2015" with "5" digits for company "Swisslux SA"
+    And I want to generate account chart from chart template named "Plan comptable 2015" with "5" digits for company "Swisslux AG"
     When I generate the chart
-    Then accounts should be available for company "Swisslux SA"
+    Then accounts should be available for company "Swisslux AG"
 
   @fiscalyear_ch
     Scenario: create fiscal years
@@ -30,7 +30,7 @@ Feature: Configure CH accounting
     Then I find a "account.fiscalyear" with oid: scenario.fy2015_ch
 
   @banks
-  Scenario Outline: Create bank account for Swisslux SA
+  Scenario Outline: Create bank account for Swisslux AG
     Given I am configuring the company with ref "base.main_company"
     Given I need a "account.journal" with oid: <journal_oid>
     And having:
@@ -47,7 +47,7 @@ Feature: Configure CH accounting
     And having:
       | key        | value                         |
       | journal_id | by oid: <journal_oid>         |
-      | partner_id | by name: Swisslux SA          |
+      | partner_id | by oid: base.main_partner     |
       | bank_id    | by oid: l10n_ch_bank.bank1215 |
       | bank_name  | <bank_name>                   |
       | company_id | by oid: base.main_company     |
@@ -69,7 +69,7 @@ Feature: Configure CH accounting
     Given I set global property named "<name>" for model "<model>" and field "<name>" for company with ref "base.main_company"
     And the property is related to model "account.account" using column "code" and value "<account_code>"
 
-    Examples: Defaults accouts for Swisslux CH
+    Examples: Defaults accouts for Swisslux AG
       | name                                 | model            | account_code |
       | property_account_receivable          | res.partner      |        11030 |
       | property_account_payable             | res.partner      |        20000 |
