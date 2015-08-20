@@ -57,25 +57,27 @@ def impl_execute_sql(ctx):
 
 
 def str2bool(s):
-    if s in ('True', 'true'):
+    if not s:
+        return False
+    if s in ('True', 'true', '1'):
         return True
-    elif s in ('False', 'false'):
+    elif s in ('False', 'false', '0'):
         return False
     else:
         raise ValueError("str2bool(%r)" % s)
 
 
-@step('"{model_name}" is imported from CSV "{csvfile}" using delimiter "{sep}"')
-def impl_import_csv_with_delimiter(ctx, model_name, csvfile, sep=","):
-    import_csv_with_options(ctx, model_name, csvfile,
+@step('"{model}" is imported from CSV "{csvfile}" using delimiter "{sep}"')
+def impl_import_csv_with_delimiter(ctx, model, csvfile, sep=","):
+    import_csv_with_options(ctx, model, csvfile,
                             options={'delimiter': sep})
 
 
-@step('"{model_name}" is imported from CSV "{csvfile}" with the following options')
-def impl_import_csv_with_options(ctx, model_name, csvfile):
+@step('"{model}" is imported from CSV "{csvfile}" with the following options')
+def impl_import_csv_with_options(ctx, model, csvfile):
     assert ctx.table.headings == ['name', 'value']
     options = dict(ctx.table.rows)
-    import_csv_with_options(ctx, model_name, csvfile, options=options)
+    import_csv_with_options(ctx, model, csvfile, options=options)
 
 
 def import_csv_with_options(ctx, model_name, csvfile, options=None):
@@ -108,7 +110,7 @@ def import_csv_with_options(ctx, model_name, csvfile, options=None):
     if model_name == 'res.users':
         context = dict(context or {}, no_reset_password=True)
 
-    if options.get('bulk') in ('True', 'true'):
+    if str2bool(options.get('bulk')):
         context = dict(context or {}, bulk_mode=True)
 
     result = model(model_name).load(head, values, context)
