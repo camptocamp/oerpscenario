@@ -86,6 +86,20 @@ def impl_update_module_translations(ctx, name):
 
 @step('I check the following translation terms')
 def impl_check_translations(ctx):
+    """ check translation terms
+
+ basic usage:
+
+  @setup @translation_check
+  Scenario: overwrite <mod> translations
+  Given I update translations for module "<mod>" in the following languages:
+   | lang  |
+   | fr_FR |
+  Then I check the following translation terms
+   | term            | lang  | module | translation           |
+   | Draft Quotation | fr_FR | <mod>  | Réservation brouillon |
+
+"""
     def check(ctx, term,  lang,  module, trans):
         tr = model('ir.translation')
         domain = [('src', '=', term), ('module', '=', module),
