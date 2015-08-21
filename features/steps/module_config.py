@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from support.tools import puts, set_trace, model, assert_true, assert_less
 import pprint
 if False:
