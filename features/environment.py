@@ -76,7 +76,7 @@ def before_all(ctx):
     else:
         raise ValueError(
             'No Odoo/OpenERP configuration file passed '
-            'while odoo or openerp is not available in sys path.'
+            'while odoo or openerp is not available in sys path. '
             'Please provide a value for the --server-config option'
         )
 
