@@ -12,7 +12,7 @@ Feature: Configure CH accounting
   @account_chart_ch
   Scenario: Generate account chart for Swisslux AG
     Given I have the module account installed
-    And I want to generate account chart from chart template named "Plan comptable 2015" with "5" digits for company "Swisslux AG"
+    And I want to generate account chart from chart template named "Plan comptable 2015" with "4" digits for company "Swisslux AG"
     When I generate the chart
     Then accounts should be available for company "Swisslux AG"
 
@@ -48,7 +48,7 @@ Feature: Configure CH accounting
       | key        | value                         |
       | journal_id | by oid: <journal_oid>         |
       | partner_id | by oid: base.main_partner     |
-      | bank_id    | by oid: l10n_ch_bank.bank1215 |
+      | bank       | by oid: l10n_ch_bank.bank1215 |
       | bank_name  | <bank_name>                   |
       | company_id | by oid: base.main_company     |
       | street     | Industrialstrasse 8           |
@@ -57,12 +57,11 @@ Feature: Configure CH accounting
       | country_id | by code: CH                   |
       | state      | bank                          |
       | acc_number | <iban>                        |
-      | bank_bic   | <bic>                         |
-      | active     | True                          |
+      | bank_bic   | <bic>                         |      
 
     Examples: Bank Accounts
       | journal_oid                     | journal_code | journal_name | currency | acc_code | bank_oid                     | bank_name           | iban                       | bic         |
-      | scenario.journal_service_client | XXXX         | Bank CHF     | false    | 10110    | scenario.bank_service_client | Zücher Kantonalbank | CH74 0070 0115 5000 8687 7 | ZKBKCHZZ80A |
+      | scenario.journal_service_client | XXXX         | Bank CHF     | false    | 1020     | scenario.bank_service_client | Zücher Kantonalbank | CH74 0070 0115 5000 8687 7 | ZKBKCHZZ80A |
 
   @default_accounts
   Scenario Outline: Define default accouts via properties
@@ -71,10 +70,10 @@ Feature: Configure CH accounting
 
     Examples: Defaults accouts for Swisslux AG
       | name                                 | model            | account_code |
-      | property_account_receivable          | res.partner      |        11030 |
-      | property_account_payable             | res.partner      |        20000 |
-      | property_account_expense_categ       | product.category |        42000 |
-      | property_account_income_categ        | product.category |        32000 |
-      | property_stock_valuation_account_id  | product.category |        10900 |
-      | property_stock_account_input         | product.template |        10900 |
-      | property_stock_account_output        | product.template |        10900 |
+      | property_account_receivable          | res.partner      |         1100 |
+      | property_account_payable             | res.partner      |         2000 |
+      | property_account_expense_categ       | product.category |         4200 |
+      | property_account_income_categ        | product.category |         3200 |
+      | property_stock_valuation_account_id  | product.category |         1260 |
+      | property_stock_account_input         | product.template |         1260 |
+      | property_stock_account_output        | product.template |         1260 |

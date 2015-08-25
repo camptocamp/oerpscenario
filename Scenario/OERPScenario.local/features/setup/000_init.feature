@@ -32,6 +32,7 @@ Feature: Parameter the new database
         | hr_timesheet                         |
         | hr_timesheet_sheet                   |
         | l10n_ch                              |
+        | mrp                                  |
         | purchase                             |
         | project                              |
         | sale                                 |
