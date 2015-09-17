@@ -18,7 +18,7 @@ def impl(ctx):
 
 @step('I update web.base.url with server settings')
 def impl(ctx):
-    config = ctx.conf['openerp_config']
+    config = ctx.conf
     port = config['xmlrpc_port']
     server_ip = socket.gethostbyname(socket.gethostname())
     config_param = 'http://%s:%s' % (server_ip, port)

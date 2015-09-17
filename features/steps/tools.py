@@ -1,10 +1,14 @@
-import csv
 import os
 import os.path as osp
+import logging
 import datetime as dt
 import subprocess
+import csv
 from behave import step
 from support import model, assert_true, puts
+from .dsl_helpers import openerp_needed_in_path
+
+_logger = logging.getLogger(__name__)
 
 
 def ref(xmlref):
@@ -35,6 +39,7 @@ def impl_execute_python(ctx):
 
 
 @step('I execute the SQL commands')
+@openerp_needed_in_path
 def impl_execute_sql(ctx):
     assert_true(ctx.text)
 

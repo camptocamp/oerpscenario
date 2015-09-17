@@ -3,6 +3,13 @@ import datetime
 
 @given('I create monthly periods on the fiscal year with reference "{fy_ref}"')
 def impl(ctx, fy_ref):
+    """Create monthly periods `account.period` for the given fiscal year
+    `account.fiscal.year`
+
+    :param fy_ref: fiscal year code that needs periods
+    :type fy_ref: string
+
+    """
     assert '.' in fy_ref, "please use the full reference (e.g. scenario.%s)" % fy_ref
     module, xmlid = fy_ref.split('.', 1)
     _model, id = model('ir.model.data').get_object_reference(module, xmlid)

@@ -1,0 +1,29 @@
+language: python
+
+python:
+  - "2.7"
+
+virtualenv:
+  system_site_packages: true
+
+cache:
+  - pip
+  - apt
+
+before_install:
+  - sudo wget --no-check-certificate -O - https://nightly.odoo.com/odoo.key | sudo apt-key add -
+  - sudo echo "deb http://nightly.odoo.com/8.0/nightly/deb/ ./" | sudo tee -a /etc/apt/sources.list
+  - sudo apt-get update
+  - sudo  apt-get install odoo
+  - sudo /etc/init.d/odoo stop
+  - createuser -s -U postgres odoo_test
+  - sudo pip install psycogreen
+install:
+  - travis_retry pip install -r requirements.txt
+  - python setup.py develop
+script:
+  - pwd -P
+  - oerpscenario/openerp_scenario.py -k -t auto_test --server-args="--config=$TRAVIS_BUILD_DIR/oerpscenario/test/config/odoo.conf"
+  - (/usr/bin/odoo.py --config="$TRAVIS_BUILD_DIR/oerpscenario/test/config/odoo.conf" &)
+  - sleep 2
+  - oerpscenario/openerp_scenario.py -k -t auto_test_remote --server-config "$TRAVIS_BUILD_DIR/oerpscenario/test/config/oerpscenario.conf"

@@ -1,6 +1,8 @@
 '''
 helper function for dsl manipulation
 '''
+import time
+from functools import wraps
 from behave.matchers import register_type
 from support import *
 
@@ -197,3 +199,20 @@ def get_company_property(ctx, pname, modelname, fieldname, company_oid=None):
         if company:
             ir_property.write({'company_id': company.id})
     ctx.ir_property = ir_property
+
+def openerp_needed_in_path(f):
+    """Manage openerp presence in syspath
+    And log a warning if not available
+    """
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        try:
+            import openerp
+            return f(*args, **kwargs)
+        except ImportError:
+            msg = ('openerp is not in syspath required step '
+                   'is not available')
+
+            _logger.error(msg)
+            raise ImportError(msg)
+    return wrapper

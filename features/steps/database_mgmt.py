@@ -1,6 +1,5 @@
-import openerp
 from support import *
-
+from .dsl_helpers import openerp_needed_in_path
 
 @given('the server is up and running OpenERP {version}')
 def impl(ctx, version):
@@ -24,10 +23,9 @@ def impl(ctx, user, password):
         assert_equal(uid, 1)
     else:
         assert_greater(uid, 1)
-    # set_trace()
-    # assert_true(0)
 
 
+@openerp_needed_in_path
 def _create_database(ctx, admin_passwd, db_name, demo=False,
                      raise_if_exists=True):
     try:
@@ -97,7 +95,7 @@ def impl(ctx, find_or):
     admin_passwd = ctx.conf.get('admin_passwd') # empty for unix sockets
     assert db_name
     demo = False
-    if not ctx.conf['openerp_config'].get('without_demo'):
+    if not ctx.conf.get('without_demo'):
         demo = True
     raise_if_exists = find_or.strip() != 'find or'
     _create_database(ctx, admin_passwd, db_name, demo=demo,
