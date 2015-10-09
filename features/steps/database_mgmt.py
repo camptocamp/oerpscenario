@@ -29,9 +29,11 @@ def impl(ctx, user, password):
 
 
 def _create_database(ctx, admin_passwd, db_name, demo=False,
-                     raise_if_exists=True):
+                     user_password='admin', raise_if_exists=True):
     try:
-        ctx.client.create_database(admin_passwd, db_name, demo=demo)
+        ctx.client.create_database(
+                admin_passwd, db_name, demo=demo,
+                user_password=user_password)
     except openerp.service.db.DatabaseExists:
         if raise_if_exists:
             raise
@@ -95,10 +97,12 @@ def impl(ctx, find_or):
     """
     db_name = ctx.conf.get('db_name')
     admin_passwd = ctx.conf.get('admin_passwd') # empty for unix sockets
+    admin_login_password = ctx.conf.get('admin_login_password')
     assert db_name
     demo = False
     if not ctx.conf['openerp_config'].get('without_demo'):
         demo = True
     raise_if_exists = find_or.strip() != 'find or'
     _create_database(ctx, admin_passwd, db_name, demo=demo,
+                     user_password=admin_login_password,
                      raise_if_exists=raise_if_exists)
