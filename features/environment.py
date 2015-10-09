@@ -34,11 +34,14 @@ def before_all(ctx):
     ctx._output_write = _output_write
     ctx._is_context = True
     ctx.client = erppeek.Client(server, verbose=ctx.config.verbose)
-    ctx.conf = {'server': server,
-                'admin_passwd': server.tools.config['admin_passwd'],
-                'db_name': database,
-                'openerp_config': server.tools.config,
-                }
+    ctx.conf = {
+        'server': server,
+        'admin_passwd': server.tools.config['admin_passwd'],
+        'admin_login_password': server.tools.config.get(
+            'admin_login_password', 'admin'),
+        'db_name': database,
+        'openerp_config': server.tools.config,
+        }
 
 
 def before_feature(ctx, feature):
@@ -54,15 +57,13 @@ def before_scenario(ctx, scenario):
     # this allow to do database creation and sql requests
     # before trying to login in Odoo
     if not ctx.client.user and 'no_login' not in scenario.tags:
-        server = ctx.conf['server']
-        database = ctx.conf['db_name']
-        config = server.tools.config
         # We try to manage default login
         # even if there is a sentence to log a given user
         # Just add options.admin_login_password in your buildout to log from
         # config
-        admin_login_password = config.get('admin_login_password', 'admin')
-        ctx.client.login('admin', admin_login_password, database=database)
+        database = ctx.conf['db_name']
+        user_password = ctx.conf['admin_login_password']
+        ctx.client.login('admin', user_password, database=database)
 
 
 def before_step(ctx, step):
