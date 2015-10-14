@@ -3,6 +3,8 @@ helper function for dsl manipulation
 '''
 from behave.matchers import register_type
 from support import *
+import time
+
 
 def parse_optional(text):
     return text.strip()
