@@ -27,6 +27,8 @@
  'complexity': "normal",  # easy, normal, expert
  'depends': ['base',
              'report',
+             'account',
+             'stock',
              ],
  'website': 'http://www.camptocamp.com',
  'data': [

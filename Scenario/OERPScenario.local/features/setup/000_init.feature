@@ -58,7 +58,7 @@ Feature: Parameter the new database
         #| web_sheet_full_width                 |
         #| web_shortcuts                        |
         # specific-addons
-        #| specific_reports                     |
+        | specific_reports                     |
 
   @lang
   Scenario: install lang
