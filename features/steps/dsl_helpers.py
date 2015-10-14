@@ -155,6 +155,7 @@ def parse_table_values(ctx, obj, table):
         elif field_type == 'boolean':
             value = True
         elif field_type in ('date', 'datetime') and '%' in value:
+            import time
             value = time.strftime(value)
         res[key] = value
     return res
