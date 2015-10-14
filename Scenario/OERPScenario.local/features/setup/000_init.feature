@@ -38,27 +38,27 @@ Feature: Parameter the new database
         | sale                                 |
         | stock                                |
         # oca/account-financial-tools
-        | account_credit_control               |
-        | account_compute_tax_amount           |
+        #| account_credit_control               |
+        #| account_compute_tax_amount           |
         # oca/account-financial-reporting
-        | account_financial_report_webkit      |
-        | account_financial_report_webkit_xls  |
+        #| account_financial_report_webkit      |
+        #| account_financial_report_webkit_xls  |
         # oca/carrier-delivery
-        | delivery_carrier_label_postlogistics |
+        #| delivery_carrier_label_postlogistics |
         # oca/l10n-switzerland
-        | l10n_ch_bank                         |
-        | l10n_ch_dta                          |
-        | l10n_ch_payment_slip                 |
-        | l10n_ch_states                       |
-        | l10n_ch_zip                          |
+        #| l10n_ch_bank                         |
+        #| l10n_ch_dta                          |
+        #| l10n_ch_payment_slip                 |
+        #| l10n_ch_states                       |
+        #| l10n_ch_zip                          |
         # oca/server-tools
-        | disable_openerp_online               |
+        #| disable_openerp_online               |
         # oca/web
-        | web_dialog_size                      |
-        | web_sheet_full_width                 |
-        | web_shortcuts                        |
-        # specific-addons 
-        | specific_reports                     |
+        #| web_dialog_size                      |
+        #| web_sheet_full_width                 |
+        #| web_shortcuts                        |
+        # specific-addons
+        #| specific_reports                     |
 
   @lang
   Scenario: install lang
