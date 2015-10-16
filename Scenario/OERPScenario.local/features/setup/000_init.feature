@@ -49,8 +49,8 @@ Feature: Parameter the new database
         #| l10n_ch_bank                         |
         #| l10n_ch_dta                          |
         #| l10n_ch_payment_slip                 |
-        #| l10n_ch_states                       |
-        #| l10n_ch_zip                          |
+        | l10n_ch_states                       |
+        | l10n_ch_zip                          |
         # oca/server-tools
         #| disable_openerp_online               |
         # oca/web
