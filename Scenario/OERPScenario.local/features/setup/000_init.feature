@@ -44,7 +44,7 @@ Feature: Parameter the new database
         #| account_financial_report_webkit      |
         #| account_financial_report_webkit_xls  |
         # oca/carrier-delivery
-        #| delivery_carrier_label_postlogistics |
+        | delivery_carrier_label_postlogistics |
         # oca/l10n-switzerland
         #| l10n_ch_bank                         |
         #| l10n_ch_dta                          |
