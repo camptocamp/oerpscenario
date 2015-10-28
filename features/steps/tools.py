@@ -104,26 +104,31 @@ def import_csv_with_options(ctx, model_name, csvfile, options=None):
     head = data.next()
     values = list(data)
 
-    context = ctx.oe_context
-    ctx.loaded_objets = None
+    if values:
+        context = ctx.oe_context
+        ctx.loaded_objets = None
 
-    if model_name == 'res.users':
-        context = dict(context or {}, no_reset_password=True)
+        if model_name == 'res.users':
+            context = dict(context or {}, no_reset_password=True)
 
-    if str2bool(options.get('bulk')):
-        context = dict(context or {}, bulk_mode=True)
+        if str2bool(options.get('bulk')):
+            context = dict(context or {}, bulk_mode=True)
 
-    result = model(model_name).load(head, values, context)
-    ids = result['ids']
-    if not ids:
-        messages = '\n'.join('- %s' % msg for msg in result['messages'])
-        raise Exception("Failed to load file '%s' "
-                        "in '%s'. Details:\n%s" %
-                        (csvfile, model_name, messages))
+        result = model(model_name).load(head, values, context)
+        ids = result['ids']
+        if not ids:
+            messages = '\n'.join('- %s' % msg for msg in result['messages'])
+            raise Exception("Failed to load file '%s' "
+                            "in '%s'. Details:\n%s" %
+                            (csvfile, model_name, messages))
 
-    elif strict and len(values) != len(ids):
-        raise Exception("Loaded only %d of %d rows" % (len(ids),
-                                                       len(values)))
+        elif strict and len(values) != len(ids):
+            raise Exception("Loaded only %d of %d rows" % (len(ids),
+                                                           len(values)))
+    else:
+        # valid file with header and no further lines: noop
+        ids = []
+
     ctx.loaded_objets = (model_name, ids)
 
 
