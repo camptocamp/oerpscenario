@@ -11,8 +11,7 @@
 Feature: GENERIC CHART OF ACCOUNT CREATION AND PROPERTIES SETTINGS
 
   Scenario: Ensure the db is available
-    Given the server is up and running OpenERP 7.0
-
+    Given the server is up and running OpenERP 8.0
 
   @base_finance_setup_chart
   Scenario: GENERIC CHART OF ACCOUNT CREATION

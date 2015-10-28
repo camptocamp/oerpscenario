@@ -45,8 +45,6 @@ Feature: PRODUCT CATEGORIES CREATION
           | default_code        | P1                |
           | name                | Product_1         |
           | type                | product           |
-          | procure_method      | make_to_order     |
-          | supply_method       | buy               |    
           | list_price          | 1000.0            |
           | cost_method         | average           |
           | standard_price      | 100.0             |
@@ -54,7 +52,6 @@ Feature: PRODUCT CATEGORIES CREATION
           | weight              | 0.0               |
           | volume              | 0.0               |
           | sale_delay          | 7.0               |
-          | produce_delay       | 1.0               |
           | warranty            | 0.0               |
           | uos_coeff           | 1.0               |
           | mes_type            | fixed             |
@@ -71,8 +68,6 @@ Feature: PRODUCT CATEGORIES CREATION
           | default_code    | P2                |
           | name            | Product_2         |
           | type            | product           |
-          | procure_method  | make_to_order     |
-          | supply_method   | buy               |    
           | list_price      | 500.0             |
           | cost_method     | average           |
           | standard_price  | 50.0              |
@@ -80,7 +75,6 @@ Feature: PRODUCT CATEGORIES CREATION
           | weight          | 0.0               |
           | volume          | 0.0               |
           | sale_delay      | 7.0               |
-          | produce_delay   | 1.0               |
           | warranty        | 0.0               |
           | uos_coeff       | 1.0               |
           | mes_type        | fixed             |
@@ -97,8 +91,6 @@ Feature: PRODUCT CATEGORIES CREATION
           | default_code    | P3                |
           | name            | Product_3         |
           | type            | product           |
-          | procure_method  | make_to_order     |
-          | supply_method   | buy               |    
           | list_price      | 400.0             |
           | cost_method     | average           |
           | standard_price  | 40.0              |
@@ -106,7 +98,6 @@ Feature: PRODUCT CATEGORIES CREATION
           | weight          | 0.0               |
           | volume          | 0.0               |
           | sale_delay      | 7.0               |
-          | produce_delay   | 1.0               |
           | warranty        | 0.0               |
           | uos_coeff       | 1.0               |
           | mes_type        | fixed             |
@@ -125,8 +116,6 @@ Feature: PRODUCT CATEGORIES CREATION
           | default_code    | P4                |
           | name            | Product_4         |
           | type            | product           |
-          | procure_method  | make_to_order     |
-          | supply_method   | buy               |    
           | list_price      | 800.0             |
           | cost_method     | average           |
           | standard_price  | 80.0              |
@@ -134,7 +123,6 @@ Feature: PRODUCT CATEGORIES CREATION
           | weight          | 0.0               |
           | volume          | 0.0               |
           | sale_delay      | 7.0               |
-          | produce_delay   | 1.0               |
           | warranty        | 0.0               |
           | uos_coeff       | 1.0               |
           | mes_type        | fixed             |
@@ -152,8 +140,6 @@ Feature: PRODUCT CATEGORIES CREATION
           | default_code    | P5                |
           | name            | Product_5         |
           | type            | consu             |
-          | procure_method  | make_to_order     |
-          | supply_method   | buy               |    
           | list_price      | 300.0             |
           | cost_method     | average           |
           | standard_price  | 30.0              |
@@ -161,7 +147,6 @@ Feature: PRODUCT CATEGORIES CREATION
           | weight          | 0.0               |
           | volume          | 0.0               |
           | sale_delay      | 7.0               |
-          | produce_delay   | 1.0               |
           | warranty        | 0.0               |
           | uos_coeff       | 1.0               |
           | mes_type        | fixed             |
