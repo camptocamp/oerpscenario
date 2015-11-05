@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="view_building_project_form" model="ir.ui.view">
+    <field name="name">building.project.form</field>
+    <field name="model">building.project</field>
+    <field name="arch" type="xml">
+      <form string="Building Project">
+        <sheet string="Building Project">
+          <div class="oe_button_box" name="button_box">
+            <!--<button class="oe_stat_button" type="action" name="% (account_analytic_line_action)d"-->
+              <!--icon="fa-usd"  string="Cost/Revenue" widget="statinfo"/>-->
+            <button class="oe_stat_button o_res_partner_tip_opp" type="action"
+              name="%(crm.crm_lead_opportunities)d"
+              icon="fa-star"
+              context="{'search_default_building_project_id': active_id}">
+              <div class="o_stat_info">
+                <field name="opportunity_count" widget="o_stat_value"/>
+                <span class="o_stat_text" attrs="{'invisible': [('opportunity_count', '&lt;', 2)]}"> Opportunities</span>
+                <span class="o_stat_text" attrs="{'invisible': [('opportunity_count', '&gt;', 1)]}"> Opportunity</span>
+              </div>
+            </button>
+            <button class="oe_stat_button" type="object"
+              name="action_schedule_meeting" icon="fa-calendar">
+              <div class="o_stat_info">
+                <field name="meeting_count" class="o_stat_value"/>
+                <span class="o_stat_text" attrs="{'invisible': [('meeting_count', '&lt;', 2)]}"> Meetings</span>
+                <span class="o_stat_text" attrs="{'invisible': [('meeting_count', '&gt;', 1)]}"> Meeting</span>
+              </div>
+            </button>
+          </div>
+          <div class="oe_title">
+            <label for="name" string="Building Project"/>
+            <h1>
+              <field name="name" class="oe_inline" placeholder="e.g. Building Project XYZ"/>
+            </h1>
+            <label for="project_type_id"/>
+            <field name="project_type_id"/>
+          </div>
+          <div name="project"/>
+          <group name="main">
+            <group>
+              <field name="partner_id"/>
+              <field name="user_id"/>
+            </group>
+            <group>
+              <field name="code"/>
+              <field name="tag_ids" widget="many2many_tags"/>
+              <field name="company_id"/>
+              <field name="currency_id"/>
+            </group>
+          </group>
+          <notebook colspan="4">
+            <page string="Contacts" autofocus="autofocus">
+              <field name="contact_ids" mode="kanban" context="{}">
+                <kanban>
+                  <field name="color"/>
+                  <field name="name"/>
+                  <field name="title"/>
+                  <field name="type"/>
+                  <field name="email"/>
+                  <field name="parent_id"/>
+                  <field name="is_company"/>
+                  <field name="function"/>
+                  <field name="phone"/>
+                  <field name="street"/>
+                  <field name="street2"/>
+                  <field name="zip"/>
+                  <field name="city"/>
+                  <field name="country_id"/>
+                  <field name="mobile"/>
+                  <field name="fax"/>
+                  <field name="state_id"/>
+                  <field name="image"/>
+                  <field name="lang"/>
+                  <field name="architect"/>
+                  <field name="engineer"/>
+                  <field name="electrician"/>
+                  <templates>
+                    <t t-name="kanban-box">
+                      <t t-set="color" t-value="kanban_color(record.color.raw_value)"/>
+                      <div t-att-class="color + (record.title.raw_value == 1 ? ' oe_kanban_color_alert' : '') + ' oe_kanban_global_click'">
+                        <a t-if="!read_only_mode" type="delete" class="fa fa-times pull-right"/>
+                        <div class="o_kanban_image">
+                          <img t-if="record.image.raw_value" t-att-src="'data:image/png;base64,'+record.image.raw_value"/>
+                          <t t-if="!record.image.raw_value">
+                            <img t-if="record.type.raw_value === 'delivery'" t-att-src='_s + "/base/static/src/img/truck.png"'/>
+                            <img t-if="record.type.raw_value === 'invoice'" t-att-src='_s + "/base/static/src/img/money.png"'/>
+                            <t t-if="record.type.raw_value !== 'invoice' &amp;&amp; record.type.raw_value !== 'delivery'">
+                              <img t-if="record.is_company.raw_value === true" t-att-src='_s + "/base/static/src/img/company_image.png"'/>
+                              <img t-if="record.is_company.raw_value === false" t-att-src='_s + "/base/static/src/img/avatar.png"'/>
+                            </t>
+                          </t>
+                        </div>
+                        <div class="oe_kanban_details">
+                          <field name="name"/>
+                          <div t-if="record.architect.raw_value">Architekt</div>
+                          <div t-if="record.engineer.raw_value">Planner</div>
+                          <div t-if="record.electrician.raw_value">Electrician</div>
+                          <div t-if="record.function.raw_value"><field name="function"/></div>
+                          <div t-if="record.email.raw_value"><field name="email"/></div>
+                          <div t-if="record.type.raw_value != 'contact'">
+                            <div>
+                              <field name="zip"/>
+                              <field name="city"/>
+                            </div>
+                            <field t-if="record.state_id.raw_value" name="state_id"/>
+                            <field name="country_id"/>
+                          </div>
+                          <div t-if="record.phone.raw_value">Phone: <field name="phone"/></div>
+                          <div t-if="record.mobile.raw_value">Mobile: <field name="mobile"/></div>
+                          <div t-if="record.fax.raw_value">Fax: <field name="fax"/></div>
+                        </div>
+                      </div>
+                    </t>
+                  </templates>
+                </kanban>
+                <form string="Contact / Address">
+                  <sheet>
+                    <field name="type" required="1" widget="radio" options="{'horizontal': true}"/>
+                    <hr/>
+                    <group>
+                      <group attrs="{'invisible': [('type','=', 'contact')]}">
+                        <label for="street" string="Address"/>
+                        <div>
+                          <div class="o_address_format" name="div_address">
+                            <field name="street" placeholder="Street..." class="o_address_street"/>
+                            <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                            <field name="city" placeholder="City" class="o_address_city"/>
+                            <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}' on_change="onchange_state(state_id)" context="{'country_id': country_id, 'zip': zip}"/>
+                            <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                            <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                          </div>
+                        </div>
+                      </group>
+                      <group>
+                        <field name="name" string="Contact Name" attrs="{'required' : [('type', '=', 'contact')]}"/>
+                        <field name="title" placeholder="e.g. Mr."
+                          attrs="{'invisible': [('type','&lt;&gt;', 'contact')]}"/>
+                        <field name="function" placeholder="e.g. Sales Director"
+                          attrs="{'invisible': [('type','&lt;&gt;', 'contact')]}"/>
+                        <field name="email"/>
+                        <field name="phone" widget="phone"/>
+                        <field name="mobile" widget="phone"/>
+                        <field name="comment" placeholder="internal note..."/>
+                      </group>
+                    </group>
+                    <field name="supplier" invisible="True"/>
+                    <field name="customer" invisible="True"/>
+                    <field name="lang" invisible="True"/>
+                  </sheet>
+                </form>
+              </field>
+            </page>
+            <page string="Info">
+              <group>
+                <group>
+                  <field name="build_state"/>
+                  <field name="build_type"/>
+                </group>
+                <group>
+                  <field name="building_project_tag_ids" widget="many2many_tags"/>
+                </group>
+              </group>
+            </page>
+            <page string="Address">
+              <group>
+                <group>
+                  <field name="street"/>
+                  <field name="zip"/>
+                  <field name="city"/>
+                </group>
+            </group>
+            </page>
+          </notebook>
+        </sheet>
+        <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers"/>
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_building_project_filter" model="ir.ui.view">
+    <field name="name">building.project.select</field>
+    <field name="model">building.project</field>
+    <field name="arch" type="xml">
+      <search string="Search Building Project">
+        <field name="name" string="Building Project Name"/>
+        <field name="build_state"/>
+        <field name="build_type"/>
+        <field name="building_project_tag_ids"/>
+        <!--<filter string="Open" name="Current" domain="[('state', '=','open')]"/>-->
+        <!--<filter string="Pending" name="Pending" domain="[('state', '=','pending')]"/>-->
+        <separator/>
+        <filter string="Manager" domain="[('user_id','=',uid)]"/>
+        <!--<filter string="Followed by Me" domain="[('message_is_follower','=',True)]"/>-->
+        <!--<separator/>-->
+        <!--<filter string="Important Messages" name="message_needaction" domain="[('message_needaction','=',True)]"/>-->
+        <!--<filter string="Archived" name="inactive" domain="[('active','=',False)]"/>-->
+        <!--<field name="user_id" string="Project Manager"/>-->
+        <!--<field name="partner_id" string="Contact" filter_domain="[('partner_id', 'child_of', self)]"/>-->
+        <group expand="0" string="Group By">
+          <filter string="Bauprojekt-Status" context="{'group_by':'build_state'}"/>
+          <filter string="Bauprojekt-Typ" context="{'group_by':'build_type'}"/>
+          <!--<filter string="Manager" name="Manager" context="{'group_by':'user_id'}"/>-->
+          <!--<filter string="Contact" name="Partner" context="{'group_by':'partner_id'}"/>-->
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="view_building_project" model="ir.ui.view">
+    <field name="name">building.project.tree</field>
+    <field name="model">building.project</field>
+    <field name="arch" type="xml">
+      <tree decoration-bf="'message_needaction'==True" decoration-info="'state' in ('draft','pending')" decoration-muted="'state' in ('close','cancelled')" string="Building Projects">
+        <!--<field name="sequence" widget="handle"/>-->
+        <!--<field name="message_needaction" invisible="1"/>-->
+        <field name="name" string="Building Project Name"/>
+        <field name="user_id"/>
+        <field name="build_state"/>
+        <field name="build_type"/>
+        <field name="building_project_tag_ids"/>
+        <!--<field name="state"/>-->
+      </tree>
+    </field>
+  </record>
+
+  <record id="action_view_building_project" model="ir.actions.act_window">
+    <field name="name">Building Project</field>
+    <field name="res_model">building.project</field>
+    <field name="view_type">form</field>
+    <field name="domain">[]</field>
+    <field name="view_mode">tree,form</field>
+    <field name="search_view_id" ref="view_building_project_filter"/>
+    <field name="help" type="html">
+      <p class="oe_view_nocontent_create">
+        Create a new building project.
+      </p>
+    </field>
+  </record>
+
+  <menuitem action="action_view_building_project" id="menu_view_building_project" parent="base.menu_sales" sequence="6"/>
+</odoo>

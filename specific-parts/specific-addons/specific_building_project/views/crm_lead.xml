@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <record model="ir.ui.view" id="crm_case_form_view_oppor">
+    <field name="name">Opportunities</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+    <field name="arch" type="xml">
+      <field name="partner_id" position="before">
+        <field name="building_project_id"/>
+      </field>
+    </field>
+  </record>
+
+  <!-- Opportunities Search View -->
+  <record id="view_crm_case_opportunities_filter" model="ir.ui.view">
+    <field name="name">CRM - Opportunities Search</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+    <field name="arch" type="xml">
+      <field name="name" position="attributes">
+        <attribute name="filter_domain">['|','|','|','|',('building_project_id','ilike',self),('partner_id','ilike',self),('partner_name','ilike',self),('email_from','ilike',self),('name', 'ilike', self)]</attribute>
+      </field>
+      <field name="partner_id" position="before">
+        <field name="building_project_id"/>
+      </field>
+    </field>
+  </record>
+
+</odoo>
