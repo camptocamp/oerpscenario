@@ -40,6 +40,7 @@
           <group name="main">
             <group>
               <field name="partner_id"/>
+              <field name="pricelist_id"/>
               <field name="user_id"/>
             </group>
             <group>

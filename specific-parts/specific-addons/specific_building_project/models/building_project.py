@@ -56,6 +56,11 @@ class BuildingProject(models.Model):
         string='Projekt Art'
     )
 
+    pricelist_id = fields.Many2one(
+        comodel_name='product.pricelist',
+        string='Pricelist',
+    )
+
     street = fields.Char(
         'Strasse',
         copy=False,
