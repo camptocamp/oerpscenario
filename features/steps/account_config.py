@@ -5,10 +5,8 @@ import datetime
 
 @given('I create monthly periods on the fiscal year with reference "{fy_ref}"')
 def create_periods(ctx, fy_ref):
-    assert (
-        '.' in fy_ref,
+    assert '.' in fy_ref, \
         "please use the full reference (e.g. scenario.%s)" % fy_ref
-    )
     module, xmlid = fy_ref.split('.', 1)
     _model, id = model('ir.model.data').get_object_reference(module, xmlid)
     assert _model == 'account.fiscalyear'
