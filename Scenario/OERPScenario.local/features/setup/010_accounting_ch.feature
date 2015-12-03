@@ -39,7 +39,7 @@ Feature: Configure CH accounting
       | code                      | <journal_code>            |
       | type                      | bank                      |
       | company_id                | by oid: base.main_company |
-      | currency                  | <currency>                |
+      | currency_id               | <currency>                |
       | default_debit_account_id  | by code: <acc_code>       |
       | default_credit_account_id | by code: <acc_code>       |
       | allow_date                | false                     |
@@ -57,7 +57,7 @@ Feature: Configure CH accounting
       | country_id | by code: CH                   |
       | state      | bank                          |
       | acc_number | <iban>                        |
-      | bank_bic   | <bic>                         |      
+      | bank_bic   | <bic>                         |
 
     Examples: Bank Accounts
       | journal_oid                     | journal_code | journal_name | currency | acc_code | bank_oid                     | bank_name           | iban                       | bic         |
