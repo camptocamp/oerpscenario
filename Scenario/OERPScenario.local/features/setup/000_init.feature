@@ -14,10 +14,52 @@ Feature: Parameter the new database
     Given I update the module list
     And I do not want all demo data to be loaded on install
 
-  @webkit_path
-  Scenario: SETUP WEBKIT path before running YAML tests
-    Given I need a "res.company" with oid: base.main_company
-    And I set the webkit path to "/srv/openerp/webkit_library/wkhtmltopdf-amd64"
+  @company
+  Scenario: Configure main partner and company
+  Given I find a "res.company" with oid: base.main_company
+    And having:
+       | key        | value              |
+       | name       | Swisslux AG        |
+       | street     | Industriestrasse 8 |
+       | street2    |                    |
+       | zip        | 8618               |
+       | city       | Oetwil am See      |
+       | country_id | by code: CH        |
+       | phone      | +41 43 844 80 80   |
+       | fax        | +41 43 844 80 81   |
+       | email      | info@swisslux.ch   |
+       | website    | www.swisslux.ch    |
+    Given the company has the "images/company_logo.png" logo
+    And the company currency is "CHF" with a rate of "1.00"
+    Given I need a "res.partner" with oid: base.main_partner
+    And having:
+       | key        | value                     |
+       | name       | Swisslux AG               |
+       | street     | Industriestrasse 8        |
+       | street2    |                           |
+       | zip        | 8618                      |
+       | city       | Oetwil am See             |
+       | country_id | by code: CH               |
+       | phone      | +41 43 844 80 80          |
+       | fax        | +41 43 844 80 81          |
+       | email      | info@swisslux.ch          |
+       | website    | www.swisslux.ch           |
+       | company_id | by oid: base.main_company |
+    Given I need a "res.partner" with oid: scenario.partner_swisslux_romandie
+    And having:
+       | key        | value                          |
+       | name       | Swisslux SA                    |
+       | street     | Chemin de la Grand Clos 17     |
+       | street2    |                                |
+       | zip        | 1092                           |
+       | city       | Belmont-sur-Lausanne           |
+       | country_id | by code: CH                    |
+       | phone      | +41 21 711 23 40               |
+       | fax        | +41 21 711 23 41               |
+       | email      | info@swisslux.ch               |
+       | website    | www.swisslux.ch                |
+       | parent_id  | by oid: base.main_partner      |
+       | company_id | by oid: base.main_company      |
 
   @modules
   Scenario: install modules
@@ -46,7 +88,7 @@ Feature: Parameter the new database
         # oca/carrier-delivery
         | delivery_carrier_label_postlogistics |
         # oca/l10n-switzerland
-        #| l10n_ch_bank                         |
+        | l10n_ch_bank                         |
         #| l10n_ch_dta                          |
         | l10n_ch_payment_slip                 |
         | l10n_ch_states                       |
@@ -83,51 +125,3 @@ Feature: Parameter the new database
       | key         | value    |
       | grouping    | [3,0]    |
       | date_format | %d/%m/%Y |
-
-  @company
-  Scenario: Configure main partner and company
-  Given I find a "res.company" with oid: base.main_company
-    And having:
-       | key        | value              |
-       | name       | Swisslux AG        |
-       | street     | Industriestrasse 8 |
-       | street2    |                    |
-       | zip        | 8618               |
-       | city       | Oetwil am See      |
-       | country_id | by code: CH        |
-       | phone      | +41 43 844 80 80   |
-       | fax        | +41 43 844 80 81   |
-       | email      | info@swisslux.ch   |
-       | website    | www.swisslux.ch    |
-    Given the company has the "images/company_logo.png" logo
-    Given the company has the "images/company_logo_header.png" report logo
-    And the company currency is "CHF" with a rate of "1.00"
-    Given I need a "res.partner" with oid: base.main_partner
-    And having:
-       | key        | value                     |
-       | name       | Swisslux AG               |
-       | street     | Industriestrasse 8        |
-       | street2    |                           |
-       | zip        | 8618                      |
-       | city       | Oetwil am See             |
-       | country_id | by code: CH               |
-       | phone      | +41 43 844 80 80          |
-       | fax        | +41 43 844 80 81          |
-       | email      | info@swisslux.ch          |
-       | website    | www.swisslux.ch           |
-       | company_id | by oid: base.main_company |
-    Given I need a "res.partner" with oid: scenario.partner_swisslux_romandie
-    And having:
-       | key        | value                          |
-       | name       | Swisslux SA                    |
-       | street     | Chemin de la Grand Clos 17     |
-       | street2    |                                |
-       | zip        | 1092                           |
-       | city       | Belmont-sur-Lausanne           |
-       | country_id | by code: CH                    |
-       | phone      | +41 21 711 23 40               |
-       | fax        | +41 21 711 23 41               |
-       | email      | info@swisslux.ch               |
-       | website    | www.swisslux.ch                |
-       | parent_id  | by oid: base.main_partner      |
-       | company_id | by oid: base.main_company      |
