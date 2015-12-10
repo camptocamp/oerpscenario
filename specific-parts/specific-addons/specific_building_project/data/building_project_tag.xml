@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<odoo>
+  <record model="building.project.tag" id="building_project_tag_referenz">
+    <field name="name">Referenz-Projekt</field>
+  </record>
+  <record model="building.project.tag" id="building_project_tag_minergie">
+    <field name="name">Minergie zertifiziert</field>
+  </record>
+</odoo>

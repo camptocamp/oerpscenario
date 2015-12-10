@@ -59,6 +59,7 @@ Feature: Parameter the new database
         #| web_shortcuts                        |
         # specific-addons
         | specific_reports                     |
+        | specific_building_project            |
 
   @lang
   Scenario: install lang

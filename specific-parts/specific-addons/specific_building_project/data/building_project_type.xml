@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<odoo>
+  <record model="building.project.type" id="building_project_type_office">
+    <field name="name">Büro / Verwaltung / Behörden</field>
+  </record>
+  <record model="building.project.type" id="building_project_type_public">
+    <field name="name">Öffentliche Bauten, Kultur</field>
+  </record>
+  <record model="building.project.type" id="building_project_type_house">
+    <field name="name">Wohnbauten</field>
+  </record>
+  <record model="building.project.type" id="building_project_type_industy">
+    <field name="name">Industrie und Gewerbe</field>
+  </record>
+  <record model="building.project.type" id="building_project_type_hospital">
+    <field name="name">Spitälter und Heime</field>
+  </record>
+  <record model="building.project.type" id="building_project_type_school">
+    <field name="name">Shulen und Universitäten</field>
+  </record>
+  <record model="building.project.type" id="building_project_type_mall">
+    <field name="name">Einkaufszentren</field>
+  </record>
+  <record model="building.project.type" id="building_project_type_hotel">
+    <field name="name">Gastronomie und Hotellerie</field>
+  </record>
+  <record model="building.project.type" id="building_project_type_bank">
+    <field name="name">Banken und Versicherungen</field>
+  </record>
+</odoo>
