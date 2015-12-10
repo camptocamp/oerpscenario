@@ -38,7 +38,6 @@ Feature: Configure CH accounting
       | currency_id               | <currency>                |
       | default_debit_account_id  | by code: <acc_code>       |
       | default_credit_account_id | by code: <acc_code>       |
-      | allow_date                | false                     |
     Given I need a "res.partner.bank" with oid: <bank_oid>
     And having:
       | key        | value                         |
