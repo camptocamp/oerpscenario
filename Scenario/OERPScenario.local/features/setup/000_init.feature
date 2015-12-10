@@ -30,7 +30,6 @@ Feature: Parameter the new database
        | email      | info@swisslux.ch   |
        | website    | www.swisslux.ch    |
     Given the company has the "images/company_logo.png" logo
-    And the company currency is "CHF" with a rate of "1.00"
     Given I need a "res.partner" with oid: base.main_partner
     And having:
        | key        | value                     |
