@@ -9,6 +9,13 @@
 
 Feature: Configure CH accounting
 
+  @currency
+  Scenario: Configure company currency
+  Given I find a "res.company" with oid: base.main_company
+    And having:
+      | key         | value        |
+      | currency_id | by name: CHF |
+
   @account_chart_ch
   Scenario: Generate account chart for Swisslux AG
     Given I have the module account installed
