@@ -58,10 +58,10 @@ Feature: Configure CH accounting
 
     Examples: Defaults accouts for Swisslux AG
       | name                                 | model            | account_code |
-      | property_account_receivable          | res.partner      |         1100 |
-      | property_account_payable             | res.partner      |         2000 |
-      | property_account_expense_categ       | product.category |         4200 |
-      | property_account_income_categ        | product.category |         3200 |
+      | property_account_receivable_id       | res.partner      |         1100 |
+      | property_account_payable_id          | res.partner      |         2000 |
+      | property_account_expense_categ_id    | product.category |         4200 |
+      | property_account_income_categ_id     | product.category |         3200 |
       | property_stock_valuation_account_id  | product.category |         1260 |
       | property_stock_account_input         | product.template |         1260 |
       | property_stock_account_output        | product.template |         1260 |
