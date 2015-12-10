@@ -14,12 +14,6 @@ Feature: Parameter the new database
     Given I update the module list
     And I do not want all demo data to be loaded on install
 
-  @webkit_path
-  Scenario: SETUP WEBKIT path before running YAML tests
-    Given I need a "res.company" with oid: base.main_company
-    And I set the webkit path to "/srv/openerp/webkit_library/wkhtmltopdf-amd64"
-
-
   @company
   Scenario: Configure main partner and company
   Given I find a "res.company" with oid: base.main_company
