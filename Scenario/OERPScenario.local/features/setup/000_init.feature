@@ -46,7 +46,7 @@ Feature: Parameter the new database
         # oca/carrier-delivery
         | delivery_carrier_label_postlogistics |
         # oca/l10n-switzerland
-        #| l10n_ch_bank                         |
+        | l10n_ch_bank                         |
         #| l10n_ch_dta                          |
         | l10n_ch_payment_slip                 |
         | l10n_ch_states                       |

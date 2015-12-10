@@ -40,23 +40,16 @@ Feature: Configure CH accounting
       | default_credit_account_id | by code: <acc_code>       |
     Given I need a "res.partner.bank" with oid: <bank_oid>
     And having:
-      | key        | value                         |
-      | journal_id | by oid: <journal_oid>         |
-      | partner_id | by oid: base.main_partner     |
-      | bank       | by oid: l10n_ch_bank.bank1215 |
-      | bank_name  | <bank_name>                   |
-      | company_id | by oid: base.main_company     |
-      | street     | Industrialstrasse 8           |
-      | zip        | 8618                          |
-      | city       | Oetwil am See                 |
-      | country_id | by code: CH                   |
-      | state      | bank                          |
-      | acc_number | <iban>                        |
-      | bank_bic   | <bic>                         |
+      | key        | value                              |
+      | journal_id | by oid: <journal_oid>              |
+      | partner_id | by oid: base.main_partner          |
+      | bank_id    | by oid: l10n_ch_bank.bank_730_0000 |
+      | company_id | by oid: base.main_company          |
+      | acc_number | <iban>                             |
 
     Examples: Bank Accounts
-      | journal_oid                     | journal_code | journal_name | currency | acc_code | bank_oid                     | bank_name           | iban                       | bic         |
-      | scenario.journal_service_client | XXXX         | Bank CHF     | false    | 1020     | scenario.bank_service_client | Zücher Kantonalbank | CH74 0070 0115 5000 8687 7 | ZKBKCHZZ80A |
+      | journal_oid                     | journal_code | journal_name | currency | acc_code | bank_oid                     | iban                       |
+      | scenario.journal_service_client | XXXX         | Bank CHF     | false    | 10201    | scenario.bank_service_client | CH74 0070 0115 5000 8687 7 |
 
   @default_accounts
   Scenario Outline: Define default accouts via properties
