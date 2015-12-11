@@ -1,0 +1,7 @@
+id,name,parent_id
+scenario.hr_department_ceo,CEO,
+scenario.hr_department_hr,HR,CEO
+scenario.hr_department_finanz,Finanz,CEO
+scenario.hr_department_verkauf,Verkauf,CEO
+scenario.hr_department_einkauf,Einkauf,CEO
+scenario.hr_department_logistik,Logisitk,CEO

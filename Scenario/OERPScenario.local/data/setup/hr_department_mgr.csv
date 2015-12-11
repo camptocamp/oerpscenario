@@ -1,0 +1,7 @@
+id,name,parent_id,manager_id,substitute_id
+scenario.hr_department_ceo,CEO,,Patrick Glauser,
+scenario.hr_department_hr,HR,CEO,Corinne Fröhlich,Dave Würgler
+scenario.hr_department_finanz,Finanz,CEO,Sabrina Glauser,Corinne Fröhlich
+scenario.hr_department_verkauf,Verkauf,CEO,Stefan Kull,Roger Morf
+scenario.hr_department_einkauf,Einkauf,CEO,Michael Wyss,
+scenario.hr_department_logistik,Logisitk,CEO,Michael Wyss,
