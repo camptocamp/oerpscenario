@@ -19,7 +19,7 @@
         "hr",
     ],
     "data": [
-        "views/hr_department.xml",        
+        "views/hr_department.xml",
     ],
     "demo": [
     ],
