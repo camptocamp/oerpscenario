@@ -32,7 +32,15 @@ Feature: Configure CH accounting
     #| date_stop  | 2015-12-31                |
     #| company_id | by oid: base.main_company |
 
+      
   @banks
+  Scenario: Set the CCP on the bank
+    Given I find a "res.bank" with oid: l10n_ch_bank.bank_730_0000
+    And having:
+      | key | value         |
+      | ccp | 01-200027-2   |
+  
+  @banks    
   Scenario Outline: Create bank account for Swisslux AG
     Given I am configuring the company with ref "base.main_company"
     Given I need a "account.journal" with oid: <journal_oid>
@@ -47,23 +55,27 @@ Feature: Configure CH accounting
       | default_credit_account_id | by code: <acc_code>       |
     Given I need a "res.partner.bank" with oid: <bank_oid>
     And having:
-      | key        | value                              |
-      | journal_id | by oid: <journal_oid>              |
-      | partner_id | by oid: base.main_partner          |
-      | bank_id    | by oid: l10n_ch_bank.bank_730_0000 |
-      | company_id | by oid: base.main_company          |
-      | acc_number | <iban>                             |
+      | key                 | value                                 |
+      | journal_id          | by oid: <journal_oid>                 |
+      | partner_id          | by oid: base.main_partner             |
+      | bank_id             | by oid: l10n_ch_bank.bank_730_0000    |
+      | company_id          | by oid: base.main_company             |
+      | acc_number          | <iban>                                |
+      | bvr_adherent_num    | <bvr>                                 |
+
 
     Examples: Bank Accounts
-      | journal_oid                     | journal_code | journal_name | currency | acc_code | bank_oid                     | iban                       |
-      | scenario.journal_service_client | XXXX         | Bank CHF     | false    | 10201    | scenario.bank_service_client | CH74 0070 0115 5000 8687 7 |
+      | journal_oid             | journal_code | journal_name | currency | acc_code | bank_oid        | iban                       | bvr    |
+      | scenario.journal_ZKB1   | BNK1         | ZKB (ES)     | false    | 1020     | scenario.bank_1 | CH74 0070 0115 5000 8687 7 | 933421 |
+      | scenario.journal_ZKB2   | BNK2         | ZKB          | false    | 1021     | scenario.bank_2 | CH23 0070 0115 5001 7955 7 |        |
+
 
   @default_accounts
-  Scenario Outline: Define default accouts via properties
+  Scenario Outline: Define default accounts via properties
     Given I set global property named "<name>" for model "<model>" and field "<name>" for company with ref "base.main_company"
     And the property is related to model "account.account" using column "code" and value "<account_code>"
 
-    Examples: Defaults accouts for Swisslux AG
+    Examples: Defaults accounts for Swisslux AG
       | name                                 | model            | account_code |
       | property_account_receivable_id       | res.partner      |         1100 |
       | property_account_payable_id          | res.partner      |         2000 |

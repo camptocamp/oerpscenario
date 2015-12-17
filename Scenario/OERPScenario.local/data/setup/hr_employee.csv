@@ -1,0 +1,11 @@
+id,name,work_email,department_id,gender,mobile_phone,work_phone,birthday,user_id/id,address_id,address_home_id/id
+scenario.hr_employee_rgl,René Glauser,rene.glauser@swisslux.ch,CEO,Male,+41 43 844 80 80,+41 43 844 80 80,1970-01-01,scenario.res_users_rgl,Swisslux AG,
+scenario.hr_employee_pgl,Patrick Glauser,patrick.glauser@swisslux.ch,CEO,Male,+41 43 844 80 80,+41 43 844 80 80,1970-01-01,scenario.res_users_pgl,Swisslux AG,
+scenario.hr_employee_mgl,Marcel Glauser,marcel.glauser@swisslux.ch,CEO,Male,+41 43 844 80 80,+41 43 844 80 80,1970-01-01,scenario.res_users_mgl,Swisslux AG,
+scenario.hr_employee_sgl,Sabrina Glauser,noreply@predige.ch,Finanz,Female,+41 43 844 80 80,+41 43 844 80 80,1970-01-01,scenario.res_users_sgl,Swisslux AG,
+scenario.hr_employee_cfr,Corinne Fröhlich,corinne.froehlich@swisslux.ch,HR,Female,+41 43 844 80 80,+41 43 844 80 80,1970-01-01,scenario.res_users_cfr,Swisslux AG,
+scenario.hr_employee_dwu,Dave Würgler,dave.wuergler@swisslux.ch,HR,Male,+41 43 844 80 80,+41 43 844 80 80,1970-01-01,scenario.res_users_dwu,Swisslux AG,
+scenario.hr_employee_sku,Stefan Kull,stefan.kull@swisslux.ch,Verkauf,Male,+41 43 844 80 80,+41 43 844 80 80,1970-01-01,scenario.res_users_sku,Swisslux AG,
+scenario.hr_employee_rmo,Roger Morf,roger.morf@swisslux.ch,Verkauf,Male,+41 43 844 80 80,+41 43 844 80 80,1970-01-01,scenario.res_users_rmo,Swisslux AG,
+scenario.hr_employee_mwy,Michael Wyss,michael.wyss@swisslux.ch,Einkauf,Male,+41 43 844 80 80,+41 43 844 80 80,1970-01-01,scenario.res_users_mwy,Swisslux AG,
+scenario.hr_employee_cke,Csilla Keller,csilla.keller@swisslux.ch,Logisitk,Female,+41 43 844 80 80,+41 43 844 80 80,1970-01-01,scenario.res_users_cke,Swisslux AG,
