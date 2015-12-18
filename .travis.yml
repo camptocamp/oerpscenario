@@ -5,9 +5,20 @@ language: python
 python:
   - "2.7"
 
+addons:
+  apt:
+    packages:
+      - expect-dev  # provides unbuffer utility
+      - python-lxml # because pip installation is slow
+      - python-simplejson
+      - python-serial
+      - python-yaml
+      - wkhtmltopdf # qweb reports, report_webkit
+
 cache:
   directories:
-    - ${HOME}/.eggs-cache
+    - parts
+    - eggs
 
 virtualenv:
   system_site_packages: true
@@ -16,16 +27,20 @@ before_install:
   - git config --global user.name "TravisCI"
   - git config --global user.email "travis@camptocamp.com"
 
-install:
-  - ${TRAVIS_BUILD_DIR}/bootstrap.sh profiles/travis.cfg
-  - ${TRAVIS_BUILD_DIR}/bin/buildout
+env:
+  matrix:
+    - LINT_CHECK="1"
+    - SCENARIO="1"
+  global:
+    - SCENARIO="0" TESTS="0" LINT_CHECK="0"
+    - ADDONS_DIR=${TRAVIS_BUILD_DIR}/specific-parts/specific-addons
 
-before_script:
-  - pip install -q flake8
-  - export db_name=$(grep db_name ${TRAVIS_BUILD_DIR}/etc/openerp.cfg | cut -d ' ' -f 3)
-  - export db_user=$(grep db_user ${TRAVIS_BUILD_DIR}/etc/openerp.cfg | cut -d ' ' -f 3)
-  - export db_pass=$(grep db_password ${TRAVIS_BUILD_DIR}/etc/openerp.cfg | cut -d ' ' -f 3)
-  - psql -c "CREATE USER ${db_user} WITH PASSWORD '${db_pass}' CREATEDB;" -U postgres
+install:
+  - if [ "$SCENARIO" == "1" ] ; then npm install -g less less-plugin-clean-css ; fi
+  - if [ "$SCENARIO" == "1" ] ; then ${TRAVIS_BUILD_DIR}/bootstrap.sh profiles/travis.cfg ; fi
+  - if [ "$SCENARIO" == "1" ] ; then ${TRAVIS_BUILD_DIR}/bin/buildout ; fi
+  - if [ "$LINT_CHECK" == "1" ] ; then pip install -q flake8 ; fi
 
 script:
-  - flake8 ${TRAVIS_BUILD_DIR}/specific-parts/specific-addons --exclude=__init__.py
+  - if [ "$LINT_CHECK" == "1" ] ; then flake8 ${ADDONS_DIR} --exclude=__init__.py ; fi
+  - if [ "$SCENARIO" == "1" ] ; then bin/oerpscenario -t swisslux -t setup -t ~slow ; fi
