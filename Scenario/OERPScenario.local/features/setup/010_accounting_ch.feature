@@ -21,6 +21,22 @@ Feature: Configure CH accounting
     Given I have the module account installed
     Then accounts should be available for company "Swisslux AG"
 
+ @bank_account
+  Scenario: create account 1020 and 1021
+    Given I need an "account.account" with oid: scenario.account_1020
+    And having:
+      | key          | value             |
+      | name         | 1020              |
+      | code         | 1020              |
+      | user_type_id | by name: Expenses |
+    Given I need an "account.account" with oid: scenario.account_1021
+    And having:
+      | key          | value             |
+      | name         | 1021              |
+      | code         | 1021              |
+      | user_type_id | by name: Expenses |
+
+
   #@fiscalyear_ch
   #Scenario: create fiscal years
     #Given I need a "account.fiscalyear" with oid: scenario.fy2015_ch

@@ -7,7 +7,7 @@ Feature: Parameter the new database
 
   @createdb @no_login
   Scenario: CREATE DATABASE
-    Given I create database from config file
+    Given I find or create database from config file
 
   @no_demo_data
   Scenario: deactivate demo data
