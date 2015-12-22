@@ -100,3 +100,19 @@ Feature: Configure CH accounting
       | property_stock_valuation_account_id  | product.category |         1260 |
       | property_stock_account_input         | product.template |         1260 |
       | property_stock_account_output        | product.template |         1260 |
+
+  @bvr
+  Scenario: Configure the BVR on the company
+    Given I find a "res.company" with oid: base.main_company
+    And having:
+      | key                             | value     |
+      | bvr_delta_horz                  | 0.00      |
+      | bvr_delta_vert                  | 0.00      |
+      | bvr_scan_line_horz              | 68.00     |
+      | bvr_scan_line_vert              | 245.00    |
+      | bvr_scan_line_font_size         | 11.00     |
+      | bvr_scan_line_letter_spacing    | 2.55      |
+      | bvr_add_horz                    | 10.00     |
+      | bvr_add_vert                    | 70.00     |
+      | bvr_background                  | True      |
+      | merge_mode                      | in_memory |      
