@@ -78,6 +78,9 @@ Feature: Configure CH accounting
       | company_id          | by oid: base.main_company             |
       | acc_number          | <iban>                                |
       | bvr_adherent_num    | <bvr>                                 |
+      | print_bank          | True                                  |
+      | print_account       | True                                  |
+      | print_partner       | True                                  |
 
 
     Examples: Bank Accounts
@@ -110,7 +113,7 @@ Feature: Configure CH accounting
       | bvr_delta_vert                  | 0.00      |
       | bvr_scan_line_horz              | 68.00     |
       | bvr_scan_line_vert              | 245.00    |
-      | bvr_scan_line_font_size         | 11.00     |
+      | bvr_scan_line_font_size         | 11        |
       | bvr_scan_line_letter_spacing    | 2.55      |
       | bvr_add_horz                    | 10.00     |
       | bvr_add_vert                    | 70.00     |
