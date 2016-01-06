@@ -118,4 +118,24 @@ Feature: Configure CH accounting
       | bvr_add_horz                    | 10.00     |
       | bvr_add_vert                    | 70.00     |
       | bvr_background                  | True      |
-      | merge_mode                      | in_memory |      
+      | merge_mode                      | in_memory |
+      
+
+  @account_cancel
+  Scenario Outline: Activate account cancel on all financial journals
+    Given I need a "account.journal" with oid: <journal_oid>
+    And having:
+      | key                       | value           |      
+      | update_posted             | <update_posted> |
+
+    Examples: Journals Accounts
+      | journal_oid                     | update_posted |
+      | __export__.account_journal_1    | True          |
+      | __export__.account_journal_2    | True          |
+      | __export__.account_journal_3    | True          |
+      | __export__.account_journal_4    | True          |
+      | __export__.account_journal_5    | True          |
+      | __export__.account_journal_6    | True          |
+      | __export__.account_journal_7    | True          |
+      | scenario.journal_ZKB1           | True          |
+      | scenario.journal_ZKB2           | True          |
