@@ -71,6 +71,7 @@ Feature: Parameter the new database
        | company_registry   | CHE-107.897.036       |
        | rml_header1        |                       |    
     Given the company has the "images/company_logo.png" logo
+    Given the company has the "images/company_logo_header.png" report logo
     
     Given I need a "res.partner" with oid: base.main_partner
     And having:
