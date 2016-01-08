@@ -157,8 +157,12 @@ Feature: Parameter the new database
   Scenario: setup specific logo for company reports
     Given I find a "res.company" with oid: base.main_company
     And the company has the "images/company_logo_header.png" report logo
-    
-      
+
+  @url
+  Scenario: setup url
+    Given I update web.base.url with server settings
+    Then I freeze web.base.url
+
   @version
   Scenario: setup application version
     Given I set the version of the instance to "1.0.0"
