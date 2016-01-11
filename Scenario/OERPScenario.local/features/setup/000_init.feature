@@ -133,6 +133,8 @@ Feature: Parameter the new database
         # oca/account-financial-reporting
         #| account_financial_report_webkit      |
         #| account_financial_report_webkit_xls  |
+        # oca/bank-payment
+        | account_invoice_bank_selection       |
         # oca/carrier-delivery
         | delivery_carrier_label_postlogistics |
         # oca/l10n-switzerland
