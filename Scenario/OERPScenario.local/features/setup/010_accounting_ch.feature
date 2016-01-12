@@ -61,14 +61,15 @@ Feature: Configure CH accounting
     Given I am configuring the company with ref "base.main_company"
     Given I need a "account.journal" with oid: <journal_oid>
     And having:
-      | key                       | value                     |
-      | name                      | <journal_name>            |
-      | code                      | <journal_code>            |
-      | type                      | bank                      |
-      | company_id                | by oid: base.main_company |
-      | currency_id               | <currency>                |
-      | default_debit_account_id  | by code: <acc_code>       |
-      | default_credit_account_id | by code: <acc_code>       |
+      | key                         | value                     |
+      | name                        | <journal_name>            |
+      | code                        | <journal_code>            |
+      | type                        | bank                      |
+      | company_id                  | by oid: base.main_company |
+      | currency_id                 | <currency>                |
+      | default_debit_account_id    | by code: <acc_code>       |
+      | default_credit_account_id   | by code: <acc_code>       |
+      | update_posted               | True                      |
     Given I need a "res.partner.bank" with oid: <bank_oid>
     And having:
       | key                 | value                                 |
@@ -78,7 +79,9 @@ Feature: Configure CH accounting
       | company_id          | by oid: base.main_company             |
       | acc_number          | <iban>                                |
       | bvr_adherent_num    | <bvr>                                 |
-
+      | print_bank          | True                                  |
+      | print_account       | True                                  |
+      | print_partner       | True                                  |
 
     Examples: Bank Accounts
       | journal_oid             | journal_code | journal_name | currency | acc_code | bank_oid        | iban                       | bvr    |
@@ -100,3 +103,35 @@ Feature: Configure CH accounting
       | property_stock_valuation_account_id  | product.category |         1260 |
       | property_stock_account_input         | product.template |         1260 |
       | property_stock_account_output        | product.template |         1260 |
+
+  @bvr
+  Scenario: Configure the BVR on the company
+    Given I find a "res.company" with oid: base.main_company
+    And having:
+      | key                             | value     |
+      | bvr_delta_horz                  | 0.00      |
+      | bvr_delta_vert                  | 0.00      |
+      | bvr_scan_line_horz              | 68.00     |
+      | bvr_scan_line_vert              | 245.00    |
+      | bvr_scan_line_font_size         | 11        |
+      | bvr_scan_line_letter_spacing    | 2.55      |
+      | bvr_add_horz                    | 10.00     |
+      | bvr_add_vert                    | 70.00     |
+      | bvr_background                  | True      |
+      | merge_mode                      | in_memory |
+      
+
+  @account_cancel
+  Scenario Outline: Activate account cancel on all financial journals
+    Given I need a "account.journal" with code: <journal_code>
+    And having:
+      | key                       | value           |      
+      | update_posted             | <update_posted> |
+
+    Examples: Journals Accounts
+      | journal_code    | update_posted |
+      | INV             | True          |
+      | BILL            | True          |
+      | MISC            | True          |
+      | EXCH            | True          |
+      | STJ             | True          |

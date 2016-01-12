@@ -112,6 +112,7 @@ Feature: Parameter the new database
         | name                                 |
         # oca/ocb
         | account                               |
+        | account_cancel                        |
         | hr                                    |
         | hr_appraisal                          |
         | hr_contract                           |
@@ -152,6 +153,11 @@ Feature: Parameter the new database
         | specific_hr                           |
         | specific_reports                      |
 
+  @logo
+  Scenario: setup specific logo for company reports
+    Given I find a "res.company" with oid: base.main_company
+    And the company has the "images/company_logo_header.png" report logo
+    
       
   @version
   Scenario: setup application version
