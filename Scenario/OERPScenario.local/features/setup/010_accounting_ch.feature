@@ -61,14 +61,15 @@ Feature: Configure CH accounting
     Given I am configuring the company with ref "base.main_company"
     Given I need a "account.journal" with oid: <journal_oid>
     And having:
-      | key                       | value                     |
-      | name                      | <journal_name>            |
-      | code                      | <journal_code>            |
-      | type                      | bank                      |
-      | company_id                | by oid: base.main_company |
-      | currency_id               | <currency>                |
-      | default_debit_account_id  | by code: <acc_code>       |
-      | default_credit_account_id | by code: <acc_code>       |
+      | key                         | value                     |
+      | name                        | <journal_name>            |
+      | code                        | <journal_code>            |
+      | type                        | bank                      |
+      | company_id                  | by oid: base.main_company |
+      | currency_id                 | <currency>                |
+      | default_debit_account_id    | by code: <acc_code>       |
+      | default_credit_account_id   | by code: <acc_code>       |
+      | update_posted               | True                      |
     Given I need a "res.partner.bank" with oid: <bank_oid>
     And having:
       | key                 | value                                 |
@@ -81,7 +82,6 @@ Feature: Configure CH accounting
       | print_bank          | True                                  |
       | print_account       | True                                  |
       | print_partner       | True                                  |
-
 
     Examples: Bank Accounts
       | journal_oid             | journal_code | journal_name | currency | acc_code | bank_oid        | iban                       | bvr    |
@@ -123,19 +123,15 @@ Feature: Configure CH accounting
 
   @account_cancel
   Scenario Outline: Activate account cancel on all financial journals
-    Given I need a "account.journal" with oid: <journal_oid>
+    Given I need a "account.journal" with code: <journal_code>
     And having:
       | key                       | value           |      
       | update_posted             | <update_posted> |
 
     Examples: Journals Accounts
-      | journal_oid                     | update_posted |
-      | __export__.account_journal_1    | True          |
-      | __export__.account_journal_2    | True          |
-      | __export__.account_journal_3    | True          |
-      | __export__.account_journal_4    | True          |
-      | __export__.account_journal_5    | True          |
-      | __export__.account_journal_6    | True          |
-      | __export__.account_journal_7    | True          |
-      | scenario.journal_ZKB1           | True          |
-      | scenario.journal_ZKB2           | True          |
+      | journal_code    | update_posted |
+      | INV             | True          |
+      | BILL            | True          |
+      | MISC            | True          |
+      | EXCH            | True          |
+      | STJ             | True          |
