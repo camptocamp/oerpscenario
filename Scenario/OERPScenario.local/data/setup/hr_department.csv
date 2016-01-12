@@ -1,7 +1,10 @@
 id,name,parent_id
 scenario.hr_department_ceo,CEO,
-scenario.hr_department_hr,HR,CEO
-scenario.hr_department_finanz,Finanz,CEO
-scenario.hr_department_verkauf,Verkauf,CEO
-scenario.hr_department_einkauf,Einkauf,CEO
-scenario.hr_department_logistik,Logisitk,CEO
+scenario.hr_department_hr,HR,
+scenario.hr_department_finanz,Finanz,
+scenario.hr_department_produkt,Produktmanagement,
+scenario.hr_department_marketing,Marketing,
+scenario.hr_department_verkauf,Verkauf,
+scenario.hr_department_logistik,Logisitk,
+scenario.hr_department_support,Operations-support,
+scenario.hr_department_it,IT & Infrastruktur,
