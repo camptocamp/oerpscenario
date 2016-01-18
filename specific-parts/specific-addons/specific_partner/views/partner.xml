@@ -1,0 +1,72 @@
+<openerp>
+  <data>
+    <record model="ir.ui.view" id="view_partner_form">
+      <field name="name">res.partner.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form" />
+      <field name="arch" type="xml">
+
+        <notebook position="inside">
+          <page string="Zusatzfelder Swisslux">
+            <group>
+              <group>
+                <field name="name2" attrs="{'invisible': [('is_company','=', False)]}"/>
+                <field name="partner_state"/>
+              </group>
+              <group>
+                <field name="eev_member" attrs="{'invisible': [('is_company','=', False)]}"/>
+                <field name="eev_number" attrs="{'invisible': [('eev_member','=', False)], 'required': [('eev_member','=',True)]}"/>
+                <field name="eev_alarm" attrs="{'invisible': [('eev_member','=', False)]}"/>
+              </group>
+              <group>
+                <field name="companytype" attrs="{'invisible': [('is_company','=', False)]}"/>
+                <field name="headquarter_id" attrs="{'invisible': [('is_company','=', False)]}"/>
+                <field name="partner_shipping_id" attrs="{'invisible': [('is_company','=', False)]}"/>
+                <field name="partner_invoicing_id" attrs="{'invisible': [('is_company','=', False)]}"/>
+                <field name="mailing" />
+                <field name="mailing_email" />
+                <field name="department" attrs="{'invisible': [('is_company','=', True)]}" />
+              </group>
+            </group>
+            <group string="PO Box Address">
+              <group>
+                <field name="pobox_nr" />
+                <field name="pobox_zip" />
+                <field name="pobox_city" />
+              </group>
+            </group>
+          </page>
+        </notebook>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_partner_tree">
+      <field name="name">res.partner.tree.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_tree" />
+      <field name="arch" type="xml">
+        <field name="parent_id" position="replace"/>
+        <field name="display_name" position="before">
+          <field name="ref"/>
+        </field>
+        <field name="display_name" position="after">
+          <field name="parent_id"/>
+          <field name="street"/>
+          <field name="city"/>
+        </field>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_partner_select">
+      <field name="name">res.partner.select</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_res_partner_filter" />
+      <field name="arch" type="xml">
+        <field name="name" position="after">
+          <field name="ref" string="Kundennummer" filter_domain="['|',('ref','=',self),('parent_id','ilike',self)]"/>
+        </field>
+      </field>
+    </record>
+
+  </data>
+</openerp>
