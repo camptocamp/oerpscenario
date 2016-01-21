@@ -1,12 +1,12 @@
-id,login,name,password,lang,email,country_id/id,tz
-scenario.res_users_rgl,rg,René Glauser,changeme,de_DE,rene.glauser@swisslux.ch,base.ch,Europe/Zurich
-scenario.res_users_pgl,pg,Patrick Glauser,changeme,de_DE,patrick.glauser@swisslux.ch,base.ch,Europe/Zurich
-scenario.res_users_mgl,mg,Marcel Glauser,changeme,de_DE,marcel.glauser@swisslux.ch,base.ch,Europe/Zurich
-scenario.res_users_sgl,sg,Sabrina Glauser,changeme,de_DE,noreply@predige.ch,base.ch,Europe/Zurich
-scenario.res_users_cfr,cf,Corinne Fröhlich,changeme,de_DE,corinne.froehlich@swisslux.ch,base.ch,Europe/Zurich
-scenario.res_users_dwu,dw,Dave Würgler,changeme,de_DE,dave.wuergler@swisslux.ch,base.ch,Europe/Zurich
-scenario.res_users_sku,sk,Stefan Kull,changeme,de_DE,stefan.kull@swisslux.ch,base.ch,Europe/Zurich
-scenario.res_users_rmo,rm,Roger Morf,changeme,de_DE,roger.morf@swisslux.ch,base.ch,Europe/Zurich
-scenario.res_users_mwy,mw,Michael Wyss,changeme,de_DE,michael.wyss@swisslux.ch,base.ch,Europe/Zurich
-scenario.res_users_cke,ck,Csilla Keller,changeme,de_DE,csilla.keller@swisslux.ch,base.ch,Europe/Zurich
-scenario.res_users_bsc,bs,Benno Schöb,changeme,de_DE,benno.schoeb@swisslux.ch,base.ch,Europe/Zurich
+id,login,firstname,lastname,password,lang,email,country_id/id,tz
+scenario.res_users_rgl,rg,René,Glauser,changeme,de_DE,rene.glauser@swisslux.ch,base.ch,Europe/Zurich
+scenario.res_users_pgl,pg,Patrick,Glauser,changeme,de_DE,patrick.glauser@swisslux.ch,base.ch,Europe/Zurich
+scenario.res_users_mgl,mg,Marcel,Glauser,changeme,de_DE,marcel.glauser@swisslux.ch,base.ch,Europe/Zurich
+scenario.res_users_sgl,sg,Sabrina,Glauser,changeme,de_DE,sabrina.glauser@swisslux.ch,base.ch,Europe/Zurich
+scenario.res_users_cfr,cf,Corinne,Fröhlich,changeme,de_DE,corinne.froehlich@swisslux.ch,base.ch,Europe/Zurich
+scenario.res_users_dwu,dw,Dave,Würgler,changeme,de_DE,dave.wuergler@swisslux.ch,base.ch,Europe/Zurich
+scenario.res_users_sku,sk,Stefan,Kull,changeme,de_DE,stefan.kull@swisslux.ch,base.ch,Europe/Zurich
+scenario.res_users_rmo,rm,Roger,Morf,changeme,de_DE,roger.morf@swisslux.ch,base.ch,Europe/Zurich
+scenario.res_users_mwy,mw,Michael,Wyss,changeme,de_DE,michael.wyss@swisslux.ch,base.ch,Europe/Zurich
+scenario.res_users_cke,ck,Csilla,Keller,changeme,de_DE,csilla.keller@swisslux.ch,base.ch,Europe/Zurich
+scenario.res_users_bsc,bs,Benno,Schöb,changeme,de_DE,benno.schoeb@swisslux.ch,base.ch,Europe/Zurich
