@@ -4,7 +4,7 @@
 {
     "name": "Building project ",
     "summary": "New type of analytic account",
-    "version": "8.0.1.0.0",
+    "version": "9.0.1.0.0",
     "category": "Uncategorized",
     "website": "https://odoo-community.org/",
     "author": "Camptocamp",
@@ -18,11 +18,13 @@
     "depends": [
         "analytic",
         "crm",
+        "sale",
     ],
     "data": [
         "views/calendar_event.xml",
         "views/res_partner.xml",
         "views/crm_lead.xml",
+        "views/sale_order.xml",
         "views/building_project.xml",
         "data/building_project_tag.xml",
         "data/building_project_type.xml",
