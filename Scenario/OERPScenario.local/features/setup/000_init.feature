@@ -107,7 +107,7 @@ Feature: Parameter the new database
     And the partner has the "images/company_logo.png" image
 
   @modules
-  Scenario: install modules
+  Scenario: install official modules
     Given I install the required modules with dependencies:
         | name                                 |
         # oca/ocb
@@ -128,6 +128,11 @@ Feature: Parameter the new database
         | project_issue                         |
         | sale                                  |
         | stock                                 |
+
+  @modules
+  Scenario: install OCA modules
+    Given I install the required modules with dependencies:
+        | name                                 |
         # oca/account-financial-tools
         #| account_credit_control               |
         #| account_compute_tax_amount           |
@@ -137,21 +142,26 @@ Feature: Parameter the new database
         # oca/carrier-delivery
         | delivery_carrier_label_postlogistics |
         # oca/l10n-switzerland
-        | l10n_ch_bank                          |
+        | l10n_ch_bank                         |
         #| l10n_ch_dta                          |
-        | l10n_ch_payment_slip                  |
-        | l10n_ch_states                        |
-        | l10n_ch_zip                           |
+        | l10n_ch_payment_slip                 |
+        | l10n_ch_states                       |
+        | l10n_ch_zip                          |
         # oca/server-tools
         #| disable_openerp_online               |
         # oca/web
         #| web_dialog_size                      |
         #| web_sheet_full_width                 |
         #| web_shortcuts                        |
+
+  @modules
+  Scenario: install specific modules
+    Given I install the required modules with dependencies:
+        | name                                 |
         # specific-addons
-        | specific_building_project             |
-        | specific_hr                           |
-        | specific_reports                      |
+        | specific_building_project            |
+        | specific_hr                          |
+        | specific_reports                     |
 
   @logo
   Scenario: setup specific logo for company reports
