@@ -143,6 +143,11 @@ Feature: Parameter the new database
         | account_invoice_bank_selection       |
         # oca/carrier-delivery
         | delivery_carrier_label_postlogistics |
+        # oca/department
+        | analytic_base_department             |
+        | analytic_department                  |
+        | project_department                   |
+        | project_task_department              |
         # oca/l10n-switzerland
         | l10n_ch_bank                         |
         #| l10n_ch_dta                          |
