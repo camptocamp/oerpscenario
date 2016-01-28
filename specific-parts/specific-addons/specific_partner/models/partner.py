@@ -106,6 +106,9 @@ class ResPartner(models.Model):
         'State of Partner'
     )
 
+    prospect = fields.Boolean()
+    partner = fields.Boolean()
+
     @api.model
     def create(self, vals):
         """Define customer code"""
