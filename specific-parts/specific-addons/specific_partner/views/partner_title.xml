@@ -1,0 +1,15 @@
+<openerp>
+  <data>
+    <record model="ir.ui.view" id="view_partner_title">
+      <field name="name">res.partner.title.form.inherit</field>
+      <field name="model">res.partner.title</field>
+      <field name="inherit_id" ref="base.view_partner_title_form" />
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <field name="shortcut" position="after">
+          <field name="salutation"/>
+        </field>
+      </field>
+    </record>
+  </data>
+</openerp>
