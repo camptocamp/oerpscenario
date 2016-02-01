@@ -7,3 +7,5 @@ from . import building_project_type
 from . import building_project_tag
 from . import building_project
 from . import res_partner
+from . import sale
+from . import product
