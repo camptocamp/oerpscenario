@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+      <xpath expr="//div[@class='page']" position="attributes">
+        <attribute name="style">margin-left: 25px !important;</attribute>
+      </xpath>
+    </template>
+
+  </data>
+</openerp>
