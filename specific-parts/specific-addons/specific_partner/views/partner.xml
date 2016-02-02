@@ -6,6 +6,10 @@
       <field name="inherit_id" ref="base.view_partner_form" />
       <field name="arch" type="xml">
 
+        <field name="country_id" position="after">
+          <field name="region_id" placeholder="Verkaufsregion" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+        </field>
+
         <xpath expr="//page[@name='sales_purchases']//field[@name='customer']" position="after">
           <field name="prospect"/>
           <field name="partner"/>
@@ -71,6 +75,7 @@
       <field name="arch" type="xml">
         <field name="name" position="after">
           <field name="ref" string="Kundennummer" filter_domain="['|',('ref','=',self),('parent_id','ilike',self)]"/>
+          <field name="region_id" string="Verkaufsregion"/>
         </field>
         <filter name="customer" position="after">
           <filter string="Prospect" name="prospect" domain="[('prospect','=',1), ('parent_id', '=', False)]"/>

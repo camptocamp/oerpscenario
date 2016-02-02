@@ -109,6 +109,8 @@ class ResPartner(models.Model):
     prospect = fields.Boolean()
     partner = fields.Boolean()
 
+    region_id = fields.Many2one('res.partner.region', "Verkaufsgebiet")
+
     @api.model
     def create(self, vals):
         """Define customer code"""
@@ -134,3 +136,10 @@ class ResPartner(models.Model):
             result = super(ResPartner, self).name_search(
                 name, args=args, operator=operator, limit=limit)
         return result
+
+    @api.one
+    @api.onchange('zip_id')
+    def onchange_zip_set_region_and_user(self):
+        if self.zip_id:
+            self.region_id = self.zip_id.region_id
+            self.user_id = self.zip_id.user_id

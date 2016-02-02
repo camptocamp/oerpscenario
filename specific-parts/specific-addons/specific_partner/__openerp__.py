@@ -10,11 +10,13 @@
  'website': 'http://www.swisslux.ch',
  'images': [],
  'depends': [
-     'crm', 'sale'
+     'crm', 'sale',
+     'l10n_ch_zip'
      ],
  'data': [
      'views/partner.xml',
      'views/partner_title.xml',
+     'views/better_zip.xml',
      'data/sequence.xml',
      ],
  'test': [],
