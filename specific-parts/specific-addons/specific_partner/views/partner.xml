@@ -17,6 +17,7 @@
               <group>
                 <field name="name2" attrs="{'invisible': [('is_company','=', False)]}"/>
                 <field name="partner_state"/>
+                <field name="influence"/>
               </group>
               <group>
                 <field name="eev_member" attrs="{'invisible': [('is_company','=', False)]}"/>

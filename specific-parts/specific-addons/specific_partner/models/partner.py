@@ -106,6 +106,16 @@ class ResPartner(models.Model):
         'State of Partner'
     )
 
+    influence = fields.Selection(
+        (('A', 'Stufe A'),
+         ('B', 'Stufe B'),
+         ('C', 'Stufe C'),
+         ('Z', 'Schluesselkontakt'),
+         ('ENT', 'ALT - Entscheider'),
+         ('MIT', 'ALT - Mitarbeiter'),
+         ('BEE', 'ALT - Beeinflusser')),
+        'Einfluss')
+
     prospect = fields.Boolean()
     partner = fields.Boolean()
 
