@@ -33,6 +33,9 @@
  'website': 'http://www.camptocamp.com',
  'data': [
      'views/layouts.xml',
+     'views/invoice.xml',
+     'views/sale.xml',
+     'views/templates.xml',
      'views/company.xml'],
  'demo_xml': [],
  'test': [],
