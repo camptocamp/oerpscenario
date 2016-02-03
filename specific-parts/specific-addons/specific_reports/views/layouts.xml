@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-  <data>
+  <data noupdate="1">
     <template id="external_layout_header" inherit_id="report.external_layout_header">
       <xpath expr="//div[@class='header']" position="replace">
         <div class="header">
@@ -63,12 +63,12 @@
         <field name="page_height">0</field>
         <field name="page_width">0</field>
         <field name="orientation">Portrait</field>
-        <field name="margin_top">40</field>
-        <field name="margin_bottom">10</field>
+        <field name="margin_top">25</field>
+        <field name="margin_bottom">23</field>
         <field name="margin_left">0</field>
         <field name="margin_right">0</field>
         <field name="header_line" eval="False" />
-        <field name="header_spacing">40</field>
+        <field name="header_spacing">25</field>
         <field name="dpi">90</field>
     </record>
 

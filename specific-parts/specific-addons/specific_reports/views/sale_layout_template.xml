@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="category_template" inherit_id="sale_layout.category_template">
+    <xpath expr="//td" position="attributes">
+      <attribute name="colspan">8</attribute>
+    </xpath>
+  </template>
+
+  <template id="subtotal_template" inherit_id="sale_layout.subtotal_template">
+    <xpath expr="//td" position="attributes">
+      <attribute name="colspan">8</attribute>
+    </xpath>
+  </template>
+
+  <template id="separator_template" inherit_id="sale_layout.separator_template">
+    <xpath expr="//td" position="attributes">
+      <attribute name="colspan">8</attribute>
+    </xpath>
+  </template>
+</odoo>
