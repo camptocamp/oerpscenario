@@ -138,6 +138,41 @@ def impl(ctx, company_oid):
     company = model('res.company').get(c_domain)
     ctx.company_id = company.id
 
+
+@step(u'I set "{option}" to "{value}" in "{menu_xml_id}" settings menu by xml_id')
+def set_in_settings(ctx, option, value, menu_xml_id):
+    """ Define value of an option in settings by xml_id """
+    Menu = model('ir.ui.menu')
+    Field = model('ir.model.fields')
+    module, xmlid = menu_xml_id.split('.', 1)
+    _model, id = model('ir.model.data').get_object_reference(module, xmlid)
+    settings_menu = Menu.browse(id)
+    assert settings_menu, "menu %s was not found" % menu_xml_id
+    wiz_model = settings_menu.action.res_model
+
+    field = Field.get([('model', '=', wiz_model),
+                       ('field_description', '=', option)])
+    assert field
+    Wiz = model(wiz_model)
+    values = {}
+    if wiz_model == 'account.config.settings':
+        # Special call to onchange in case of account config
+        company = model('res.users').browse(1).company_id
+        values.update(Wiz.onchange_company_id(None, company.id)['value'])
+    field_model = model(field.model)
+
+    if field_model._fields[field.name]['type'] == 'selection':
+        selection = field_model._fields[field.name]['selection']
+        for elem in selection:
+            if elem[1] == value:
+                values[field.name] = elem[0]
+    else:
+        values[field.name] = value
+    config = Wiz.create(values)
+
+    config.execute()
+
+
 @step(u'I set "{option}" to "{value}" in "{menu}" settings menu')
 def set_in_settings(ctx, option, value, menu):
     """ Define value of an option in settings by name """
