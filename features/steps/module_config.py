@@ -30,9 +30,10 @@ def impl(ctx):
     mods = model('ir.module.module').browse(['state = installed'])
     assert_true(codes)
     assert_less(codes, set(tlangs.code))
-    mods.button_update_translations()
-
-
+    if ctx.client.server_version.startswith('9'):
+        mods.update_translations()
+    else:
+        mods.button_update_translations()
 
 @given('I update the module list')
 def impl(ctx):
