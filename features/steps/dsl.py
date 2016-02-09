@@ -191,9 +191,21 @@ def set_in_settings(ctx, option, value, menu):
         assert values.get(field.name) is not False, "Value not found in selection"
     else:
         values[field.name] = value
-    # This might fail du to https://github.com/odoo/odoo/issues/10775
-    config = Wiz.create(values)
+    if ctx.conf['server'].release.major_version >= 9.0:
+        # Due to https://github.com/odoo/odoo/issues/10775 we will call default_get
+        # and replace wrong boolean values by integer
+        defaults = Wiz.default_get(Wiz.fields_get_keys())
+        for field_name, val in defaults.iteritems():
+            if val is True and field_name.startswith('group_'):
+                field = Field.get([('model', '=', wiz_model),
+                                   ('name', '=', field_name)])
+                # If it is a selection it is not a boolean
+                if field.ttype == 'selection':
+                    defaults[field_name] = 1
+        defaults.update(values)
+        values = defaults
 
+    config = Wiz.create(values)
     config.execute()
 
 
