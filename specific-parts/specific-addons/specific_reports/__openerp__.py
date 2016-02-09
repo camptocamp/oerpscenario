@@ -27,6 +27,7 @@
  'complexity': "normal",  # easy, normal, expert
  'depends': ['base',
              'report',
+             'sale',
              'account',
              'stock',
              ],
