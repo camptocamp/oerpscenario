@@ -1,24 +1,22 @@
 # -*- coding: utf-8 -*-
-@swisslux @warehouse
+@swisslux @setup @warehouse
 
 Feature:  Configure Warehouse and Logistic processes
 
   @traceability
-  Scenario: Activate Lots and Serial Numbers traceabillity
+  Scenario: Configure traceability
     Given I set "Lots and Serial Numbers" to "Track lots or serial numbers" in "Inventory" settings menu
-   
-  #Scenario: Activate Barcode Interface
-  #  Given I enable "Barcode scanner support" in "Inventory" settings menu
+    Given I enable "Barcode scanner support" in "Inventory" settings menu
     
-  #@accounting
-  #Scenario: Inventory valuation
-  #  Given I set "Inventory Valuation" to "Periodic inventory valuation (recommended)" in "Inventory" settings menu
+  @accounting
+  Scenario: Inventory valuation
+    Given I set "Inventory Valuation" to "Periodic inventory valuation (recommended)" in "Inventory" settings menu
     
-  #@location
-  #Scenario: Location & Warehouse configuration
-  #  Given I set "Multi Locations" to "Manage several locations per warehouse" in "Inventory" settings menu
-  #  Given I set "Routes" to "Advanced routing of products using rules" in "Inventory" settings menu
-  #  Given I set "Dropshipping" to "Allow suppliers to deliver directly to your customers" in "Inventory" settings menu  
+  @location
+  Scenario: Location & Warehouse configuration
+    Given I set "Multi Locations" to "Manage several locations per warehouse" in "Inventory" settings menu
+    Given I set "Routes" to "Advanced routing of products using rules" in "Inventory" settings menu
+    Given I set "Dropshipping" to "Allow suppliers to deliver directly to your customers" in "Inventory" settings menu  
     
 
   @wh_config
