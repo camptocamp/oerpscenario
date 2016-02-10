@@ -1,10 +1,10 @@
 id,name,parent_id,manager_id,substitute_id
-scenario.hr_department_ceo,CEO,,Patrick Glauser,
-scenario.hr_department_hr,HR,,Corinne Fröhlich,Dave Würgler
-scenario.hr_department_finanz,Finanz,,Sabrina Glauser,Corinne Fröhlich
+scenario.hr_department_ceo,Geschäftsleitung,,Patrick Glauser,
+scenario.hr_department_hr,Human Ressource,,Corinne Fröhlich,Dave Hunziker
+scenario.hr_department_finanz,Finanzen,,Sabrina Glauser,Corinne Fröhlich
 scenario.hr_department_produkt,Produktmanagement,,Roger Morf,
 scenario.hr_department_marketing,Marketing,,Benno Schöb,
 scenario.hr_department_verkauf,Verkauf,,Stefan Kull,Roger Morf
-scenario.hr_department_logistik,Logisitk,,Michael Wyss,
-scenario.hr_department_support,Operations-support,,Marcel Glauser,
-scenario.hr_department_it,IT & Infrastruktur,,René Glauser,
+scenario.hr_department_logistik,Logistik,,Michael Wyss,
+scenario.hr_department_support,Operations Support,,Marcel Glauser,
+scenario.hr_department_it,Operations Informatik,,René Glauser,

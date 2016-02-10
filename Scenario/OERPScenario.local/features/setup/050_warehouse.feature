@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 @swisslux @setup @warehouse
 
-Feature:  Configure Warehouse and Logistic processes
+Feature: Configure Warehouse and Logistic processes
 
   @traceability
   Scenario: Configure traceability
@@ -18,7 +18,6 @@ Feature:  Configure Warehouse and Logistic processes
     Given I set "Routes" to "Advanced routing of products using rules" in "Inventory" settings menu
     Given I set "Dropshipping" to "Allow suppliers to deliver directly to your customers" in "Inventory" settings menu  
     
-
   @wh_config
   Scenario: Configure main warehouse
     Given I find a "stock.warehouse" with oid: stock.warehouse0

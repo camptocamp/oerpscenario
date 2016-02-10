@@ -1,0 +1,79 @@
+id,name,active,default_code,categ_id:id,purchase_ok,sale_ok,can_be_expensed,list_price,standard_price,property_account_expense_id,supplier_taxes_id,property_account_income_id,taxes_id,type,state,uom_id:id
+scenario.exp_product_0001,Benzin ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0002,Benzin mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0003,Verpflegung ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0004,Verpflegung mit MWST 2.5 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 2.5% sur invest. et autres ch. (Incl. TR),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0005,Verpflegung mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,draft,product.product_uom_unit
+scenario.exp_product_0006,Verpflegung mit Mitarbeiter ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0007,Verpflegung mit Mitarbeiter mit MWST 2.5 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 2.5% sur invest. et autres ch. (Incl. TR),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0008,Verpflegung mit Mitarbeiter mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0009,Verpflegung mit Kunde ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0010,Verpflegung mit Kunde mit MWST 2.5 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 2.5% sur invest. et autres ch. (Incl. TR),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0011,Verpflegung mit Kunde mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0012,Verpflegung mit Lieferant ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0013,Verpflegung mit Lieferant mit MWST 2.5 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 2.5% sur invest. et autres ch. (Incl. TR),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0014,Verpflegung mit Lieferant mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0015,Trinkgeld ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0016,ÖV ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0017,ÖV mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0018,Parkgebühr ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0019,Parkgebühr mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0020,Unterhalt Auto ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0021,Unterhalt Auto mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0022,Verkehrsabgaben ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0023,Hotelübernachtung ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0024,Hotelübernachtung mit MWST 3.8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 3.8% sur invest. et autres ch. (Incl. TS),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0025,Hotelübernachtung mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0026,Firmen-Events ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0027,Firmen-Events mit MWST 2.5 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 2.5% sur invest. et autres ch. (Incl. TR),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0028,Firmen-Events mit MWST 3.8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0029,Firmen-Events mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0030,Kundengeschenke/Reklameartikel ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0031,Kundengeschenke/Reklameartikel mit MWST 2.5 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 2.5% sur invest. et autres ch. (Incl. TR),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0032,Kundengeschenke/Reklameartikel mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0033,Sonstige Werbespesen ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0034,Sonstige Werbespesen mit MWST 2.5 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 2.5% sur invest. et autres ch. (Incl. TR),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0035,Sonstige Werbespesen mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0036,Privat MGL ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0037,Privat RGL ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0038,Privat PGL ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0039,Privat SKU ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0040,Privat MWY ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0041,Privat RMO ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0042,Privat BSC ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0043,Privat RHU ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0044,Privat DLA ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0045,Privat MKA ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0046,Privat MSE ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0047,Privat MLE ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0048,Privat SGI ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0049,Porti ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0050,Porti mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0051,EDV Zubehör ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0052,EDV Zubehör mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0053,Büromaterial mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0054,Software/Bücher/Drucksachen ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0055,Software/Bücher/Drucksachen mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0056,Einkauf v/Hilfsmaterial ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0057,Einkauf v/Hilfsmaterial mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0058,Ausbildungsmaterial ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0059,Ausbildungsmaterial mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0060,Büroeinrichtung Divers ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0061,Büroeinrichtung Divers mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0062,Messen ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0063,Messen mit MWST 2.5 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 2.5% sur invest. et autres ch. (Incl. TR),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0064,Messen mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0065,Reinigungsmaterial ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0066,Reinigungsmaterial mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0067,Übrige Büro und Verwaltungsaufwand ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0068,Übrige Büro und Verwaltungsaufwand mit MWST 2.5 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 2.5% sur invest. et autres ch. (Incl. TR),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0069,Übrige Büro und Verwatlungsaufwand mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0070,Personalausbildung ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0071,Personalausbildung  mit MWST 2.5 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 2.5% sur invest. et autres ch. (Incl. TR),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0072,Personalausbildung  mit MWST 3.8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 3.8% sur invest. et autres ch. (Incl. TS),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0073,Personalausbildung  mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0074,Geschenk Personal ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
+scenario.exp_product_0075,Geschenk Personal mit MWST 2.5 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 2.5% sur invest. et autres ch. (Incl. TR),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0076,Geschenk Personal  mit MWST 3.8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 3.8% sur invest. et autres ch. (Incl. TS),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0077,Geschenk Personal  mit MWST 8 %,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,TVA 8.0% sur invest. et autres ch. (Incl. TN),,,product,sellable,product.product_uom_unit
+scenario.exp_product_0078,Kartengebühr ohne MWST,TRUE,,hr_expense.cat_expense,False,False,True,0,0,4200,,,,product,sellable,product.product_uom_unit
