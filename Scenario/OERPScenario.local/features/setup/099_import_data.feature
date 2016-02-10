@@ -36,9 +36,9 @@ Feature: configure products
       | user_type_id | by name: Expenses |
 
 
-  @csv @regions
-  Scenario: import specific regions
-    Given "res.partner.region" is imported from CSV "setup/res_partner_region.csv" using delimiter ","
+#  @csv @regions
+#  Scenario: import specific regions
+#    Given "res.partner.region" is imported from CSV "setup/res_partner_region.csv" using delimiter ","
 
   @csv @products
   Scenario: import some products
