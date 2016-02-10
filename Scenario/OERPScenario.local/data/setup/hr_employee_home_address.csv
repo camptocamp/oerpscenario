@@ -1,0 +1,30 @@
+id,lastname,firstname,function,street,street2,zip,city,country_id/id,customer,supplier,lang,phone,mobile
+scenario.res_partner_sbe,Belser,Stefan,Design,Tramstrasse 34B,,8707,Uetikon am See,base.ch,False,False,de_DE,438435352,788357015
+scenario.res_partner_mbl,Bleisch,Martin,Technik,Eschenstrasse 9,,8636,Wald ZH,base.ch,False,False,de_DE,552461981,787609065
+scenario.res_partner_fbo,Bolliger,Fabian,Kundenberater Innendienst,Oberer Gubel 1,,8645,Jona,base.ch,False,False,de_DE,,792565031
+scenario.res_partner_sda,Dadò,Sveva,Publishing,Goethestrasse 11,,8712,Stäfa,base.ch,False,False,de_DE,,765179314
+scenario.res_partner_cfr,Fröhlich,Corinne,Lohnbuchhaltung,Rietwisstrasse 7,,8634,Hombrechtikon,base.ch,False,False,de_DE,552445309,794637627
+scenario.res_partner_fge,Gergis,Farhad,Administration,Winterthurerstrasse 430,,8051,Zürich,base.ch,False,False,de_DE,,078 830 46 30
+scenario.res_partner_sgi,Gianini,Stefano,Kundenberater Tessin,Via Emigrazione,,6702,Claro,base.ch,False,False,de_DE,091 863 32 39,079 270 19 73
+scenario.res_partner_mgl,Glauser,Marcel,Bereichsleiter,Höhenstrasse 17,,8620,Wetzikon ZH,base.ch,False,False,de_DE,043 928 03 41,763301146
+scenario.res_partner_pgl,Glauser,Patrick,Geschäftsführer,Langacherstrasse 16a,,8127,Forch,base.ch,False,False,de_DE,445770499,764399393
+scenario.res_partner_rgl,Glauser,René,Bereichsleiter,Eggenbergstrasse 16,,8127,Aesch bei Maur,base.ch,False,False,de_DE,449419229,792220544
+scenario.res_partner_sgl,Glauser,Sabrina,Buchhaltung,Tobelstrasse 3b,,8127,Forch,base.ch,False,False,de_DE,449419229,787322425
+scenario.res_partner_kgo,Götte,Karl,Spedition,Farlifangstrasse 22,,8126,Zumikon,base.ch,False,False,de_DE,449180674,
+scenario.res_partner_yhi,Hiu,Yoong Teck,Produktion,Gossauerstrasse 2,,8618,Oetwil am See,base.ch,False,False,de_DE,,+41 76 805 01 11
+scenario.res_partner_mho,Horvath,Michael,Projektleiter,,,8405,Winterthur,base.ch,False,False,de_DE,,
+scenario.res_partner_rhu,Hug,Roger,Kundenberater Deutschschweiz,Gewerbestrasse 18,,8155,Niederhasli,base.ch,False,False,de_DE,,079 599 75 11
+scenario.res_partner_dwu,Hunziker,Dave,Administration,Langacherstr. 16a,,8127,Forch,base.ch,False,False,de_DE,,079 957 46 59
+scenario.res_partner_mka,Käser,Matthias,Kundenberater Deutschschweiz,Sunnige Hof 44,,8051,Zürich,base.ch,False,False,de_DE,433216676,079 284 58 12
+scenario.res_partner_cke,Keller,Csilla,Einkauf,Aronenweg 15,,8618,Oetwil am See,base.ch,False,False,de_DE,449290872,797564770
+scenario.res_partner_sku,Kull,Stefan,Bereichsleiter,Regensdorferstrasse 7,,8155,Niederhasli,base.ch,False,False,de_DE,043 4110620,079 518 33 94
+scenario.res_partner_dla,Lanz,Dominik,Kundenberater Deutschschweiz,Bodenackerstrasse 3,,8912,Obfelden,base.ch,False,False,de_DE,447600024,076 584 94 04
+scenario.res_partner_mle,Lehmann,Michael,Kundenberater Deutschschweiz,Schmittenweg 19,,3436,Zollbrück,base.ch,False,False,de_DE,,079 299 82 22
+scenario.res_partner_dme,Mezenen,Daniel,Administration,In der Müseren 8,,8118,Pfaffhausen,base.ch,False,False,de_DE,043 355 51 54,079 248 27 42
+scenario.res_partner_rmo,Morf,Roger,Bereichsleiter,Tannenbergstrasse 50,,8625,Gossau ZH,base.ch,False,False,de_DE,,+41 79 540 11 43
+scenario.res_partner_msc,Schneider,Mischa,Kundenberater Innendienst,Florastrasse 2,,9500,Wil SG,base.ch,False,False,de_DE,,
+scenario.res_partner_bsc,Schöb,Benno,Bereichsleiter,Felsbergstrasse 21,,8625,Gossau ZH,base.ch,False,False,de_DE,,076 433 95 48
+scenario.res_partner_mse,Serra,Michael,Conseiller clientèle Romandie / Tessin,Les Charmilles 38,,1623,Semsales,base.ch,False,False,de_DE,794870636,078 612 20 00
+scenario.res_partner_swe,Weber,Stefan,Bereichsleiter,Guldistudstrasse 24,,8632,Tann,base.ch,False,False,de_DE,552401411,764066162
+scenario.res_partner_mwy,Wyss,Michael,Technische Redaktion,Uster West 24,,8610,Uster,base.ch,False,False,de_DE,,765840356
+scenario.res_partner_vzu,Zullino,Valentina,,,,,,,,,,,
