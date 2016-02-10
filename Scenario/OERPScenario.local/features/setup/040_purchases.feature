@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-###############################################################################
-#
-#    oerpscenario, openerp functional tests
-#    copyright 2015 camptocamp sa
-#
-##############################################################################
 @swisslux @setup @purchases
 
 Feature: Configure Purchases
