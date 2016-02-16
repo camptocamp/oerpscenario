@@ -168,12 +168,13 @@ Feature: Parameter the new database
   @modules
   Scenario: install specific modules
     Given I install the required modules with dependencies:
-        | name                                  |
+        | name                      |
         # specific-addons
-        | specific_building_project             |
-        | specific_hr                           |
-        | specific_product                      |
-        | specific_reports                      |
+        | specific_building_project |
+        | specific_hr               |
+        | specific_partner          |
+        | specific_product          |
+        | specific_reports          |
 
   @logo
   Scenario: setup specific logo for company reports
