@@ -7,4 +7,4 @@ from openerp import fields, models
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    em_ref = fields.Char("EM-Nummer", help="Elektro-Material nummer")
+    e_nr = fields.Char("E-Nr")
