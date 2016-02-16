@@ -10,7 +10,8 @@ Feature: Configure Sales
   @sales_quotations
   Scenario: Configure Quotations & sales
     Given I set "Addresses" to "Display 3 fields on sales orders: customer, invoice address, delivery address" in "Sales" settings menu    
-    #Given I set "Sale Price" to "Advanced pricing based on formula" in "Sales" settings menu
+    Given I enable "Use pricelists to adapt your price per customers" in "Sales" settings menu
+    Given I enable "Show pricelists to customers" in "Sales" settings menu
     Given I set "Order Routing" to "Choose specific routes on sales order lines (advanced)" in "Sales" settings menu
  
   @default_tax
