@@ -1,0 +1,11 @@
+id,active,note,name,line_ids/value,line_ids/days
+scenario.account_payment_term_30dn,True,30 Tage netto,30 Tage netto,balance,30
+scenario.account_payment_term_30dn10d2s,True,"10 Tage 2% Skonto, 30 Tage netto","10 Tage 2% Skonto, 30 Tage netto",balance,30
+scenario.account_payment_term_30dn10d3s,True,"10 Tage 3% Skonto, 30 Tage netto","10 Tage 3% Skonto, 30 Tage netto",balance,30
+scenario.account_payment_term_60dn30d2s,True,"30 Tage 2% Skonto, 60 Tage netto","30 Tage 2% Skonto, 60 Tage netto",balance,60
+scenario.account_payment_term_60dn30d3s,True,"30 Tage 3% Skonto, 60 Tage netto","30 Tage 3% Skonto, 60 Tage netto",balance,60
+scenario.account_payment_term_60dn40d3s,True,"40 Tage 3% Skonto, 60 Tage netto","40 Tage 3% Skonto, 60 Tage netto",balance,60
+scenario.account_payment_term_60dn45d3s,True,"45 Tage 3% Skonto, 60 Tage netto","45 Tage 3% Skonto, 60 Tage netto",balance,60
+scenario.account_payment_term_00dnnn,True,Nachnahme,Nachnahme,balance,0
+scenario.account_payment_term_00dnvz,True,Vorauszahlung,Vorauszahlung,balance,0
+scenario.account_payment_term_eev,True,zahlbar an eev-Zentrale,zahlbar an eev-Zentrale,balance,0
