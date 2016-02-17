@@ -1,0 +1,70 @@
+id,ref,lastname,firstname,zip,pobox_city,pobox_nr,pobox_zip,street,street2,category_id/id,is_company,eev_number,eev_member,influence,eev_alarm
+slx_dataimport.partner_133391,133391,2D-Elektro GmbH,,8604,,,,Industriestrasse 27,,scenario.partner_category_6,True,0,False,,False
+slx_dataimport.partnercontact_-2142734674,142798,Durante,Damiano,8604,,,,Industriestrasse 27,,,False,0,False,,False
+slx_dataimport.partnercontact_-2142676662,142797,Passaseo,,8604,,,,Industriestrasse 27,,,False,0,False,,False
+__export__.res_partner_4642,143840,Test,Test,8604,,,,Industriestrasse 27,,,False,,False,,False
+slx_dataimport.partner_15833,15833,3A Technology & Management AG,,8212,,,,Badische Bahnhofstr. 16,,scenario.partner_category_6,True,0,False,,False
+slx_dataimport.partnercontact_-2144270095,143522,Kropf,Martin,8212,,,,Badische Bahnhofstr. 16,,,False,0,False,,False
+slx_dataimport.partner_132199,132199,3D-Tool GmbH & Co. KG,,69469,,,,Im Steiles 23/1,,,True,0,False,,False
+slx_dataimport.partner_11991,11991,3-Plan Haustechnik AG,,8280,,,,Konstanzerstr. 20,,scenario.partner_category_10,True,0,False,,False
+slx_dataimport.partnercontact_-2143025358,142099,Novakovic,Franco,8280,,,,Konstanzerstr. 20,,,False,0,False,B,False
+slx_dataimport.partnercontact_-2143519501,142100,Stevanon,Sandro,8280,,,,Konstanzerstr. 20,,,False,0,False,B,False
+slx_dataimport.partner_16006,16006,3se-gmbh,,8353,,,,Gebäudeautomation,Aadorfstrasse 21,"scenario.partner_category_6,scenario.partner_category_30,scenario.partner_category_10",True,0,False,,False
+slx_dataimport.partnercontact_-2144272773,143552,Morf,Hans-Ulrich,8353,,,,Gebäudeautomation,Aadorfstrasse 21,,False,0,False,,False
+slx_dataimport.partner_133240,133240,A ACO AG,,6162,,,,Bahnhofstrasse 42,,scenario.partner_category_2,True,0,False,,False
+slx_dataimport.partner_12075,12075,Aare Electric AG,,3074,,,,Grossweidweg 9,,scenario.partner_category_6,True,0,False,,False
+slx_dataimport.partnercontact_-2142502023,142118,Roth,,3074,,,,Grossweidweg 9,,,False,0,False,,False
+slx_dataimport.partner_13697,13697,Aare Elektroplan AG,,4600,,,,Inhaber H.P. Pfäffli,Aarauerstr. 180,scenario.partner_category_10,True,0,False,,False
+slx_dataimport.partnercontact_-2142604890,143040,Schmitter,Reto ,4600,,,,Inhaber H.P. Pfäffli,Aarauerstr. 180,,False,0,False,,False
+slx_dataimport.partner_131573,131573,ABB Schweiz AG,,5400,,,,Power Systems,Brown Boveri Strasse 6,scenario.partner_category_31,True,0,False,,False
+slx_dataimport.partner_21147,21147,ABC Elektrotechnik AG,,3123,,,,Schaltanlagen- + Steuerungsbau,Hühnerhubelstrasse 62,scenario.partner_category_2,True,0,False,,False
+slx_dataimport.partner_10022,10022,ABC HausTech AG,,8952,,,,Elektroinstallationen,Rütistrasse 18,scenario.partner_category_6,True,0,False,,False
+slx_dataimport.partnercontact_-2144282255,141186,Fichter,Wolfgang,8952,,,,Elektroinstallationen,Rütistrasse 18,,False,0,False,,False
+slx_dataimport.partner_133247,133247,A bis Z Elektroanlagen,,9204,,,,Gartenstrasse 11,,scenario.partner_category_6,True,0,False,,False
+slx_dataimport.partner_131982,131982,abw elektro gmbh,,9000,,,,Oberstr. 116a,,scenario.partner_category_6,True,0,False,,False
+slx_dataimport.partner_132850,132850,a-cab GmbH,,4052,,,,Reinacherstrasse 82,,scenario.partner_category_6,True,0,False,,False
+slx_dataimport.partner_131424,131424,Accu-Doc AG,,4055,,,,Missionsstr. 15b,,,True,0,False,,False
+slx_dataimport.partner_12134,12134,AC-DC Elektro GmbH,,8330,,,,Witzbergstrasse 24,,scenario.partner_category_6,True,8378,True,,False
+slx_dataimport.partnercontact_-2142804612,142134,Imfeld,Roland,8330,,,,Witzbergstrasse 24,,,False,0,False,B,False
+slx_dataimport.partnercontact_-2144272409,142135,Mattes,,8330,,,,Witzbergstrasse 24,,,False,0,False,,False
+slx_dataimport.partner_14071,14071,ACE Projects AG,,3076,,,,Industriestrasse 25,,scenario.partner_category_10,True,0,False,,False
+slx_dataimport.partnercontact_-2142516682,143156,Gugger,,3076,,,,Industriestrasse 25,,,False,0,False,,False
+slx_dataimport.partner_15103,15103,Ackermann Fritz ,,8889,,,,Elektro- TV- Telefon-Inst.,Oberer Höhenrain 1,scenario.partner_category_6,True,7324,True,,False
+slx_dataimport.partnercontact_-2142489450,143464,Ackermann,,8889,,,,Elektro- TV- Telefon-Inst.,Oberer Höhenrain 1,,False,0,False,,False
+slx_dataimport.partnercontact_-2144280421,143465,Ackermann,Fritz,8889,,,,Elektro- TV- Telefon-Inst.,Oberer Höhenrain 1,,False,0,False,C,False
+slx_dataimport.partner_17157,17157,Actemium Schweiz AG,,4053,Basel,,4002,Wien-Strasse 2,,"scenario.partner_category_30,scenario.partner_category_10,scenario.partner_category_15",True,0,False,,False
+slx_dataimport.partnercontact_-2142445545,143630,Brunner,Christian ,4053,,,,Wien-Strasse 2,,,False,0,False,,False
+slx_dataimport.partnercontact_-2143566705,143633,Marinas,Carlos,4053,,,,Wien-Strasse 2,,,False,0,False,,False
+slx_dataimport.partnercontact_-2143214181,143632,Sabbadi,,4053,,,,Wien-Strasse 2,,,False,0,False,,False
+slx_dataimport.partnercontact_-2142603859,143631,Venzin,Oliver,4053,,,,Wien-Strasse 2,,,False,0,False,,False
+slx_dataimport.partner_131479,131479,ACTS Stiftung,,8005,,,,c/o ICF Zürich,Hardstrasse 219,,True,0,False,,False
+slx_dataimport.partnercontact_-2143307468,142517,Zindel,Thomas,8005,,,,c/o ICF Zürich,Hardstrasse 219,,False,0,False,,False
+slx_dataimport.partner_11226,11226,A. Curchod S.A.,,1880,,,,Rue Centrale 3,,scenario.partner_category_6,True,1014,True,,False
+slx_dataimport.partner_13304,13304,Adiutec AG,,8032,,,,Merkurstrasse 45,,scenario.partner_category_10,True,0,False,,False
+slx_dataimport.partner_11034,11034,Adoubs SA,,2900,,1016,2900,chemin des Vauches 7 ,,scenario.partner_category_6,True,2067,True,,False
+slx_dataimport.partnercontact_-2142520439,141681,Gissinger,,2900,,,,chemin des Vauches 7 ,,,False,0,False,,False
+slx_dataimport.partner_133722,133722,Advens AG,,4052,,,,St. Jakobs-Strasse 200,,scenario.partner_category_10,True,0,False,,False
+slx_dataimport.partnercontact_-2142515947,142893,Kohli,Philippe,4052,,,,St. Jakobs-Strasse 200,,,False,0,False,,False
+slx_dataimport.partner_131897,131897,Aebersold Elektro GmbH,,3613,,,,Mittelstrasse 21,,scenario.partner_category_6,True,0,False,,False
+slx_dataimport.partner_10673,10673,Aerni Elektro AG,,3008,Bern 5,212,3000,Elektrische Anlagen,Weissensteinstr. 33,scenario.partner_category_6,True,3001,True,,False
+slx_dataimport.partnercontact_-2143230595,141562,Baumgartner,Remo,3008,,,,Elektrische Anlagen,Weissensteinstr. 33,,False,0,False,,False
+slx_dataimport.partnercontact_-2144285425,141565,Groppo,,3008,,,,Elektrische Anlagen,Weissensteinstr. 33,,False,0,False,,False
+slx_dataimport.partnercontact_-2143340085,141563,Sommer,Marco,3008,,,,Elektrische Anlagen,Weissensteinstr. 33,,False,0,False,B,False
+slx_dataimport.partnercontact_-2142744587,141561,Teuscher ,Thomas ,3008,,,,Elektrische Anlagen,Weissensteinstr. 33,,False,0,False,B,False
+slx_dataimport.partnercontact_-2144285613,141566,Zingg,Philipp,3008,,,,Elektrische Anlagen,Weissensteinstr. 33,,False,0,False,,False
+slx_dataimport.partner_15547,15547,Aeschimann Elektro AG,,3812,,,,"ARGE Aeschimann, Seiler, Wyler",Kirchweg 3,scenario.partner_category_6,True,3813,True,,False
+slx_dataimport.partnercontact_-2142958494,143480,Cataldi,,3812,,,,"ARGE Aeschimann, Seiler, Wyler",Kirchweg 3,,False,0,False,,False
+slx_dataimport.partnercontact_-2144272269,143481,Trolliet,Kurt,3812,,,,"ARGE Aeschimann, Seiler, Wyler",Kirchweg 3,,False,0,False,,False
+slx_dataimport.partner_15768,15768,AGP INSTALLATIONS PRIOLO,,2105,,75,,Miéville 11,,scenario.partner_category_6,True,2131,True,,False
+slx_dataimport.partner_17100,17100,AGS Allgemeine Gewerbeschule Basel,,4005,,,,Vogelsangstrasse 15,,scenario.partner_category_13,True,0,False,,False
+slx_dataimport.partnercontact_-2143130757,143621,Zanfrini,Marco,4005,,,,Vogelsangstrasse 15,,,False,0,False,,False
+slx_dataimport.partner_15950,15950,AHB elektro ag,,3800,,,,Geissgasse 3,,scenario.partner_category_6,True,3702,True,,False
+slx_dataimport.partnercontact_-2144273299,143545,Hebeisen,Werner,3800,,,,Geissgasse 3,,,False,0,False,,False
+slx_dataimport.partnercontact_-2142429413,143544,Lock,Sebastian ,3800,,,,Geissgasse 3,,,False,0,False,,False
+slx_dataimport.partner_14777,14777,A.Hegger+P.Disch,,7000,,,,Elektroplanung,Felsenaustrasse 25,scenario.partner_category_10,True,0,False,,False
+slx_dataimport.partnercontact_-2142643034,143429,Oberlin,Christian,7000,,,,Elektroplanung,Felsenaustrasse 25,,False,0,False,,False
+slx_dataimport.partner_13658,13658,Aicher De Martin Zweng AG,,4053,,,,Münchensteinerstrasse 127,,scenario.partner_category_10,True,0,False,,False
+slx_dataimport.partnercontact_-2144156843,143032,Winkler,Urs,4053,,,,Münchensteinerstrasse 127,,,False,0,False,,False
+slx_dataimport.partner_133017,133017,aizo GmbH,,35578,,,,Garbenheimerstr. 38,,scenario.partner_category_11,True,0,False,,False
+slx_dataimport.partnercontact_-2142980476,142726,Debus,Dirk,35578,,,,Garbenheimerstr. 38,,,False,0,False,,False
+slx_dataimport.partnercontact_-2142967933,142725,Hofmann,Christoph,35578,,,,Garbenheimerstr. 38,,,False,0,False,,False
