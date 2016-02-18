@@ -109,7 +109,7 @@ Feature: Parameter the new database
   @modules
   Scenario: install official modules
     Given I install the required modules with dependencies:
-        | name                                 |
+        | name                                  |
         # oca/ocb
         | account                               |
         | account_cancel                        |
@@ -128,11 +128,13 @@ Feature: Parameter the new database
         | project_issue                         |
         | sale                                  |
         | stock                                 |
+        # enterprise
+        | account_reports_followup              |
 
   @modules
   Scenario: install OCA modules
     Given I install the required modules with dependencies:
-        | name                                 |
+        | name                                  |
         # oca/account-financial-tools
         #| account_credit_control               |
         #| account_compute_tax_amount           |
@@ -140,20 +142,20 @@ Feature: Parameter the new database
         #| account_financial_report_webkit      |
         #| account_financial_report_webkit_xls  |
         # oca/bank-payment
-        | account_invoice_bank_selection       |
+        | account_invoice_bank_selection        |
         # oca/carrier-delivery
-        | delivery_carrier_label_postlogistics |
+        | delivery_carrier_label_postlogistics  |
         # oca/department
-        | analytic_base_department             |
-        | analytic_department                  |
-        | project_department                   |
-        | project_task_department              |
+        | analytic_base_department              |
+        | analytic_department                   |
+        | project_department                    |
+        | project_task_department               |
         # oca/l10n-switzerland
-        | l10n_ch_bank                         |
+        | l10n_ch_bank                          |
         #| l10n_ch_dta                          |
-        | l10n_ch_payment_slip                 |
-        | l10n_ch_states                       |
-        | l10n_ch_zip                          |
+        | l10n_ch_payment_slip                  |
+        | l10n_ch_states                        |
+        | l10n_ch_zip                           |
         # oca/partner-contact
         | partner_firstname                     |
         # oca/server-tools
@@ -166,12 +168,12 @@ Feature: Parameter the new database
   @modules
   Scenario: install specific modules
     Given I install the required modules with dependencies:
-        | name                                 |
+        | name                                  |
         # specific-addons
-        | specific_building_project            |
-        | specific_hr                          |
-        | specific_product                     |
-        | specific_reports                     |
+        | specific_building_project             |
+        | specific_hr                           |
+        | specific_product                      |
+        | specific_reports                      |
 
   @logo
   Scenario: setup specific logo for company reports
