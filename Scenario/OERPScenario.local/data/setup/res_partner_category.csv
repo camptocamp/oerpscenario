@@ -1,0 +1,32 @@
+id,parent_id:id,name,active
+scenario.partner_category_1,,Adressen & Kontakte,TRUE
+scenario.partner_category_2,scenario.partner_category_1,Bauherr (Firmen / Öffentlich),TRUE
+scenario.partner_category_3,scenario.partner_category_1,Bauherr (Privat),TRUE
+scenario.partner_category_4,scenario.partner_category_1,Grosshandel / Handel / Produzent - Elektro (divers),TRUE
+scenario.partner_category_5,scenario.partner_category_1,Grosshandel - Elektro (ELDAS),TRUE
+scenario.partner_category_6,scenario.partner_category_1,Installateur (Elektro)*,TRUE
+scenario.partner_category_7,scenario.partner_category_1,Installateur (HLKS),TRUE
+scenario.partner_category_8,scenario.partner_category_1,Leuchtenhersteller,TRUE
+scenario.partner_category_9,scenario.partner_category_1,Planer / Ingenieur (Architekt),TRUE
+scenario.partner_category_10,scenario.partner_category_1,Planer / Ingenieur (Elektro)*,TRUE
+scenario.partner_category_11,scenario.partner_category_1,Planer / Ingenieur (HLKS),TRUE
+scenario.partner_category_12,scenario.partner_category_1,Planer / Ingenieur (Licht),TRUE
+scenario.partner_category_13,scenario.partner_category_1,Schulen / Ausbildungsstätten / Verbände - Elektro,TRUE
+scenario.partner_category_14,,Firmengruppe,TRUE
+scenario.partner_category_15,scenario.partner_category_14,ABB / ETAVIS,TRUE
+scenario.partner_category_16,scenario.partner_category_14,Atel,TRUE
+scenario.partner_category_17,scenario.partner_category_14,Baumann Koelliker,TRUE
+scenario.partner_category_18,scenario.partner_category_14,BKW ISP,TRUE
+scenario.partner_category_19,scenario.partner_category_14,Burkhalter,TRUE
+scenario.partner_category_20,scenario.partner_category_14,Elektrobaer-Group,TRUE
+scenario.partner_category_21,scenario.partner_category_14,Eltop EKZ,TRUE
+scenario.partner_category_22,scenario.partner_category_14,EM,TRUE
+scenario.partner_category_23,scenario.partner_category_14,Frey + Cie,TRUE
+scenario.partner_category_24,scenario.partner_category_14,Otto Fischer,TRUE
+scenario.partner_category_25,scenario.partner_category_14,Saesseli,TRUE
+scenario.partner_category_26,scenario.partner_category_14,Schibli,TRUE
+scenario.partner_category_27,scenario.partner_category_14,Sonepar Group,TRUE
+scenario.partner_category_28,scenario.partner_category_14,Winterhalter + Fenner,TRUE
+scenario.partner_category_29,scenario.partner_category_14,Ziegler,TRUE
+scenario.partner_category_30,scenario.partner_category_1,KNX-Swiss Partner,TRUE
+scenario.partner_category_31,scenario.partner_category_1,Mitbewerber,TRUE
