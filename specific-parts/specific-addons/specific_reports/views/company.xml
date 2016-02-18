@@ -7,7 +7,7 @@
       <field name="model">res.company</field>
       <field name="inherit_id" ref="base.view_company_form"/>
       <field name="arch" type="xml">
-        <xpath expr="//page[@name='report']/group[@string='Configuration']">
+        <xpath expr="//page[@name='report']/group" position="inside">
           <field name="report_logo" widget="image"/>
         </xpath>
         <xpath expr="//page[@name='report']" position="after">
