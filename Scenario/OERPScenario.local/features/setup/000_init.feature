@@ -113,7 +113,6 @@ Feature: Parameter the new database
         # oca/ocb
         | account                               |
         | account_cancel                        |
-        | account_reports_followup              |
         | hr                                    |
         | hr_appraisal                          |
         | hr_contract                           |
@@ -129,6 +128,8 @@ Feature: Parameter the new database
         | project_issue                         |
         | sale                                  |
         | stock                                 |
+        # enterprise
+        | account_reports_followup              |
 
   @modules
   Scenario: install OCA modules
