@@ -46,7 +46,7 @@
               </small>
             </small>
           </div>
-          <div class="col-xs-12" style="text-decoration: underline; padding-left: 0">
+          <div class="col-xs-12" style="text-decoration: underline; padding-left: 0px;">
             <span t-field="doc.company_id.name"/>, <span t-field="doc.company_id.street"/>, <span t-field="doc.company_id.zip"/> <span t-field="doc.company_id.city"/>
           </div>
         </small>
@@ -60,7 +60,7 @@
               </strong>
               <strong t-field="doc.client_order_ref"/>
             </div>
-            <div class="col-xs-6" style="padding-left: 0">
+            <div class="col-xs-6" style="padding-left: 0px;">
               <div t-if="doc.customer_contact_id" class="col-xs-12">
                   Contact:
                   <span t-field="doc.customer_contact_id"/>
