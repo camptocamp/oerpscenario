@@ -31,6 +31,7 @@
              'account',
              'stock',
              'delivery',
+             'specific_product',
              'specific_customer_contact',
              ],
  'website': 'http://www.camptocamp.com',

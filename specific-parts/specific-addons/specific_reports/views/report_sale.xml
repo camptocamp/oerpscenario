@@ -137,11 +137,20 @@
             <span groups="product.group_uom" t-field="l.product_uom"/>
           </td>
           <td>
-            TBD num article
-            <!--<span  t-field="l."/>-->
+            <t t-if="l.product_id.e_nr">
+              <span  t-field="l.product_id.e_nr"/>
+            </t>
+            <t t-if="not l.product_id.e_nr">
+              <span  t-field="l.product_id.default_code"/>
+            </t>
           </td>
           <td>
-            <span  t-field="l.name"/>
+            <t t-if="l.product_id">
+              <span  t-field="l.product_id.name"/>
+            </t>
+            <t t-if="not l.product_id">
+              <span  t-field="l.name"/>
+            </t>
           </td>
           <td class="text-right">
             <span t-field="l.price_unit"/>
