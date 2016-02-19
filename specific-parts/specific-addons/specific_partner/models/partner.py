@@ -15,7 +15,7 @@ class ResPartner(models.Model):
         res = super(ResPartner, self)._display_name_compute(name, args)
         for rec in self:
             if rec.ref:
-                res[rec.id] = '{} ({})'.format(res[rec.id], rec.ref)
+                res[rec.id] = u'{} ({})'.format(res[rec.id], rec.ref)
         return res
 
     # Add ref in triggers in base code
