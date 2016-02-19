@@ -55,7 +55,9 @@
         </div>
       </xpath>
     </template>
+  </data>
 
+  <data>
     <record id="report.paperformat_euro" model="report.paperformat">
         <field name="name">European A4</field>
         <field name="default" eval="True" />
