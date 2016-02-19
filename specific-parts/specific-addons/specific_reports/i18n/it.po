@@ -35,8 +35,16 @@ msgstr "Tel:"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
-msgid "Official in charge"
-msgstr "Il vostro responsabile"
+msgid "<br/>\n"
+"                <br/>\n"
+"                <strong>\n"
+"                  Official in charge\n"
+"                </strong>"
+msgstr "<br/>\n"
+"                <br/>\n"
+"                <strong>\n"
+"                  Il vostro reponsabile\n"
+"                </strong>"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
@@ -56,14 +64,47 @@ msgid "<small>\n"
 msgstr ""
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
-msgid "Your client manager"
-msgstr "Il vostro consulente"
+#: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
+msgid "<span>\n"
+"              Disc.(%)\n"
+"            </span>"
+msgstr "<span>\n"
+"              Disc.(%)\n"
+"            </span>"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
-msgid "Your Reference:"
+msgid "<strong>\n"
+"                  Your client manager\n"
+"                </strong>"
+msgstr "<strong>\n"
+"                  Il vostro consulente\n"
+"                </strong>"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "<strong>\n"
+"                Your Reference:\n"
+"              </strong>"
+msgstr "<strong>\n"
+"                Votre réference :\n"
+"              </strong>"
+
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Client number:"
+msgstr "No. de client :"
+
+#. module: specific_reports
+#: model:ir.model.fields,field_description:specific_reports.field_sale_order_client_order_descr
+msgid "Description de la commande"
 msgstr ""
+
+#. module: specific_reports
+#: model:ir.model,name:specific_reports.model_res_company
+msgid "Companies"
+msgstr "Compagnies"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
@@ -71,14 +112,14 @@ msgid "Contact:"
 msgstr "Vostro contatto:"
 
 #. module: specific_reports
-#: model:ir.model,name:specific_reports.model_res_company
-msgid "Companies"
-msgstr ""
-
-#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Date Ordered:"
 msgstr "Data:"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Delivery Address:"
+msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
@@ -92,7 +133,11 @@ msgid "Description"
 msgstr "Descrizione"
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
+#: model:ir.model.fields,help:specific_reports.field_sale_order_client_order_descr
+msgid "Description of how the order was made"
+msgstr ""
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Disc.(%)"
 msgstr "%"
@@ -103,24 +148,9 @@ msgid "Fax:"
 msgstr "Fax:"
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
-msgid "Your order:\n"
-msgstr "Vostro ordinazione:\n"
-
-#. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
-msgid "Client number:"
-msgstr "No del cliente:"
-
-#. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
-msgid "Term of delivery:\n"
-msgstr "Term. consegna:\n"
-
-#. module: specific_reports
 #: model:ir.model.fields,help:specific_reports.field_res_company_report_logo
 msgid "Logo shown in reports"
-msgstr "Logo affiché dans le rapport"
+msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
@@ -167,8 +197,25 @@ msgid "Quotation Date:"
 msgstr "Data:"
 
 #. module: specific_reports
+#: model:ir.model.fields,field_description:specific_reports.field_product_template_receipt_checklist
+#: model:ir.model.fields,field_description:specific_reports.field_res_company_receipt_checklist
+msgid "Receipt checklist"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.product_template_form_view
+#: model:ir.ui.view,arch_db:specific_reports.view_company_form
+msgid "Reception"
+msgstr ""
+
+#. module: specific_reports
 #: model:ir.model.fields,field_description:specific_reports.field_res_company_report_logo
 msgid "Report logo"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.model,name:specific_reports.model_sale_order
+msgid "Sales Order"
 msgstr ""
 
 #. module: specific_reports
@@ -182,14 +229,19 @@ msgid "Subtotal"
 msgstr "Sub-totale"
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
-msgid "TBD num article"
-msgstr ""
-
-#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
 msgid "Technik-Hotline: 043 844 80 77,"
 msgstr ""
+
+#. module: specific_reports
+#: model:ir.model.fields,field_description:specific_reports.field_sale_order_delivery_term
+msgid "Term of delivery"
+msgstr "Term. consegna"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Term of delivery:"
+msgstr "Term. consegna:"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
@@ -201,4 +253,10 @@ msgstr "Totale"
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Unit Price"
 msgstr "Brutto"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Your order:\n"
+msgstr "Votre commande :\n"
+
 
