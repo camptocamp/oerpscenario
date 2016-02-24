@@ -110,11 +110,10 @@ Feature: Parameter the new database
   Scenario: install official modules
     Given I install the required modules with dependencies:
         | name                                  |
-        # oca/ocb
+        # community
         | account                               |
         | account_cancel                        |
         | hr                                    |
-        | hr_appraisal                          |
         | hr_contract                           |
         | hr_expense                            |
         | hr_holidays                           |
@@ -128,8 +127,11 @@ Feature: Parameter the new database
         | project_issue                         |
         | sale                                  |
         | stock                                 |
+        | warning                               |
         # enterprise
         | account_reports_followup              |
+        | hr_appraisal                          |
+        
 
   @modules
   Scenario: install OCA modules
