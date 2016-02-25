@@ -22,19 +22,19 @@ Feature: Configure CH accounting
       | key          | value                        |
       | name         | CCP 84-001285-1              |
       | code         | 1010                         |
-      | user_type_id | by name: Expenses            |
+      | user_type_id | by name: Bank and Cash       |
     Given I need an "account.account" with oid: scenario.account_1020
     And having:
       | key          | value                        |
       | name         | ZKB CH7400700115500086877    |
       | code         | 1020                         |
-      | user_type_id | by name: Expenses            |
+      | user_type_id | by name: Bank and Cash       |
     Given I need an "account.account" with oid: scenario.account_1021
     And having:
       | key          | value                        |
       | name         | ZKB CH2300700115500179557    |
       | code         | 1021                         |
-      | user_type_id | by name: Expenses            |
+      | user_type_id | by name: Bank and Cash       |
 
   @banks
   Scenario: Set the CCP on the bank
