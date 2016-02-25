@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 @swisslux @setup @accounting
 
-Feature: Configure CH accounting
+Feature: Configure accounting
 
   @currency
   Scenario: Configure company currency
@@ -14,6 +14,20 @@ Feature: Configure CH accounting
   Scenario: Generate account chart for Swisslux AG
     Given I have the module account installed
     Then accounts should be available for company "Swisslux AG"
+
+  @banks_del
+  Scenario: Remove default Bank and Cash accounts
+    Given I find a "account.account" with name: Bank
+    And I delete it
+    Given I find a "account.account" with name: Cash
+    And I delete it
+
+  @journal_del
+  Scenario: Remove default Bank and Cash journals
+    Given I find a "account.journal" with name: Bank
+    And I delete it
+    Given I find a "account.journal" with name: Cash
+    And I delete it
 
   @bank_account
   Scenario: create account 1010, 1020 and 1021
@@ -75,13 +89,6 @@ Feature: Configure CH accounting
       | scenario.journal_POCH   | POCH         | Postfinance  | false    | 1010     | scenario.bank_1 | l10n_ch_bank.bank_9000_0000 | 84-001285-1                |        |
       | scenario.journal_ZKB1   | BNK1         | ZKB (ES)     | false    | 1020     | scenario.bank_2 | l10n_ch_bank.bank_730_0000  | CH74 0070 0115 5000 8687 7 | 933421 |
       | scenario.journal_ZKB2   | BNK2         | ZKB          | false    | 1021     | scenario.bank_3 | l10n_ch_bank.bank_730_0000  | CH23 0070 0115 5001 7955 7 |        |
-
-  @journal
-  Scenario: Remove default Bank and Cash journals
-    Given I find a "account.journal" with name: Bank
-    And I delete it
-    Given I find a "account.journal" with name: Cash
-    And I delete it
     
   @journal
   Scenario Outline: create new financial journal
