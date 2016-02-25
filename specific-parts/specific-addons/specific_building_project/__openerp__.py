@@ -28,6 +28,7 @@
         "views/building_project.xml",
         "data/building_project_tag.xml",
         "data/building_project_type.xml",
+        "security/ir.model.access.csv"
     ],
     "demo": [
     ],
