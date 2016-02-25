@@ -30,25 +30,19 @@ Feature: Configure accounting
     And I delete it
 
   @bank_account
-  Scenario: create account 1010, 1020 and 1021
-    Given I need an "account.account" with oid: scenario.account_1010
+  Scenario Outline: Create account for Swisslux bank
+    Given I need a "account.account" with oid: <account_oid>
     And having:
-      | key          | value                        |
-      | name         | CCP 84-001285-1              |
-      | code         | 1010                         |
-      | user_type_id | by name: Bank and Cash       |
-    Given I need an "account.account" with oid: scenario.account_1020
-    And having:
-      | key          | value                        |
-      | name         | ZKB CH7400700115500086877    |
-      | code         | 1020                         |
-      | user_type_id | by name: Bank and Cash       |
-    Given I need an "account.account" with oid: scenario.account_1021
-    And having:
-      | key          | value                        |
-      | name         | ZKB CH2300700115500179557    |
-      | code         | 1021                         |
-      | user_type_id | by name: Bank and Cash       |
+      | key             | value                 |
+      | name            | <account_name>        |
+      | code            | <account_code>        |
+      | user_type_id    | by name: <user_type>  |
+
+    Examples: Bank Accounts
+      | account_oid             | account_name              | account_code  | user_type |
+      | scenario.account_1010   | CCP 84-001285-1           | 1010          | Expenses  |
+      | scenario.account_1020   | ZKB CH7400700115500086877 | 1020          | Expenses  |
+      | scenario.account_1021   | ZKB CH2300700115500179557 | 1021          | Expenses  |
 
   @banks
   Scenario: Set the CCP on the bank
