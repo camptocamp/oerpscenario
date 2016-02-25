@@ -90,10 +90,13 @@ Feature: Configure CH accounting
       | scenario.journal_ZKB2   | BNK2         | ZKB          | false    | 1021     | scenario.bank_3 | l10n_ch_bank.bank_730_0000  | CH23 0070 0115 5001 7955 7 |        |
 
   @journal
-  Scenario: Reove default Bank and Cash journals
-    Given I find a "res.company" with oid: base.main_company
+  Scenario: Remove default Bank and Cash journals
+    Given I find a "account.journal" with name: Bank
+    And I delete it
+    Given I find a "account.journal" with name: Cash
+    And I delete it
     
-  @journal_fin
+  @journal
   Scenario Outline: create new financial journal
     Given I need a "account.journal" with oid: <journal_oid>
     And having:
