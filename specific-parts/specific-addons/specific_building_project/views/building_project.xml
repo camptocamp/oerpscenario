@@ -40,7 +40,6 @@
           <group name="main">
             <group>
               <field name="partner_id"/>
-              <field name="pricelist_id"/>
               <field name="user_id"/>
             </group>
             <group>
@@ -51,7 +50,15 @@
             </group>
           </group>
           <notebook colspan="4">
-            <page string="Contacts" autofocus="autofocus">
+            <page string="Customers" autofocus="autofocus">
+              <field name="customer_discount_ids">
+                <tree editable="bottom">
+                  <field name="partner_id"/>
+                  <field name="pricelist_id"/>
+                </tree>
+              </field>
+            </page>
+            <page string="Contacts">
               <field name="contact_ids" mode="kanban" context="{}">
                 <kanban>
                   <field name="color"/>

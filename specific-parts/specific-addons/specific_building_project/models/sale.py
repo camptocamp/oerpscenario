@@ -13,13 +13,17 @@ class SaleOrder(models.Model):
         comodel_name='product.pricelist'
     )
 
-    @api.one
-    @api.depends('project_id')
+    @api.depends('project_id', 'partner_id')
     def _get_project_pricelist(self):
-        if self.project_id:
+        for rec in self:
+            if not rec.project_id or not rec.partner_id:
+                continue
             build_project = self.env['building.project'].search(
-                [('analytic_account_id', '=', self.project_id.id)])
-            self.project_pricelist_id = build_project.pricelist_id
+                [('analytic_account_id', '=', rec.project_id.id)])
+            discounts = [pl for pl in build_project.customer_discount_ids
+                         if pl.partner_id == rec.partner_id]
+            pricelist = discounts[0].pricelist_id if discounts else False
+            rec.project_pricelist_id = pricelist
 
     @api.multi
     def button_update_unit_prices(self):

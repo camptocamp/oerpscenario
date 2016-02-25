@@ -6,6 +6,7 @@ from . import crm_lead
 from . import building_project_type
 from . import building_project_tag
 from . import building_project
+from . import building_project_pricelist
 from . import res_partner
 from . import sale
 from . import product
