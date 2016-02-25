@@ -113,6 +113,7 @@ Feature: Parameter the new database
         # oca/ocb
         | account                               |
         | account_cancel                        |
+        | account_budget                        |
         | hr                                    |
         | hr_appraisal                          |
         | hr_contract                           |
