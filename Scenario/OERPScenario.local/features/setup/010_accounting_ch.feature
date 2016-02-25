@@ -19,22 +19,22 @@ Feature: Configure CH accounting
   Scenario: create account 1010, 1020 and 1021
     Given I need an "account.account" with oid: scenario.account_1010
     And having:
-      | key          | value             |
-      | name         | 1010              |
-      | code         | 1010              |
-      | user_type_id | by name: Expenses |
+      | key          | value                        |
+      | name         | CCP 84-001285-1              |
+      | code         | 1010                         |
+      | user_type_id | by name: Expenses            |
     Given I need an "account.account" with oid: scenario.account_1020
     And having:
-      | key          | value             |
-      | name         | 1020              |
-      | code         | 1020              |
-      | user_type_id | by name: Expenses |
+      | key          | value                        |
+      | name         | ZKB CH7400700115500086877    |
+      | code         | 1020                         |
+      | user_type_id | by name: Expenses            |
     Given I need an "account.account" with oid: scenario.account_1021
     And having:
-      | key          | value             |
-      | name         | 1021              |
-      | code         | 1021              |
-      | user_type_id | by name: Expenses |
+      | key          | value                        |
+      | name         | ZKB CH2300700115500179557    |
+      | code         | 1021                         |
+      | user_type_id | by name: Expenses            |
 
 
   #@fiscalyear_ch
@@ -72,22 +72,22 @@ Feature: Configure CH accounting
       | update_posted               | True                      |
     Given I need a "res.partner.bank" with oid: <bank_oid>
     And having:
-      | key                 | value                                 |
-      | journal_id          | by oid: <journal_oid>                 |
-      | partner_id          | by oid: base.main_partner             |
-      | bank_id             | by oid: l10n_ch_bank.bank_730_0000    |
-      | company_id          | by oid: base.main_company             |
-      | acc_number          | <iban>                                |
-      | bvr_adherent_num    | <bvr>                                 |
-      | print_bank          | True                                  |
-      | print_account       | True                                  |
-      | print_partner       | True                                  |
+      | key                 | value                     |
+      | journal_id          | by oid: <journal_oid>     |
+      | partner_id          | by oid: base.main_partner |
+      | bank_id             | by oid: <l10n_ch_bank_id> |
+      | company_id          | by oid: base.main_company |
+      | acc_number          | <account_nr>              |
+      | bvr_adherent_num    | <bvr>                     |
+      | print_bank          | True                      |
+      | print_account       | True                      |
+      | print_partner       | True                      |
 
     Examples: Bank Accounts
-      | journal_oid             | journal_code | journal_name | currency | acc_code | bank_oid        | iban                       | bvr    |
-      | scenario.journal_POCH   | POCH         | Postfinance  | false    | 1010     | scenario.bank_1 | 84-001285-1                |        |
-      | scenario.journal_ZKB1   | BNK1         | ZKB (ES)     | false    | 1020     | scenario.bank_2 | CH74 0070 0115 5000 8687 7 | 933421 |
-      | scenario.journal_ZKB2   | BNK2         | ZKB          | false    | 1021     | scenario.bank_3 | CH23 0070 0115 5001 7955 7 |        |
+      | journal_oid             | journal_code | journal_name | currency | acc_code | bank_oid        | l10n_ch_bank_id             | account_nr                       | bvr    |
+      | scenario.journal_POCH   | POCH         | Postfinance  | false    | 1010     | scenario.bank_1 | l10n_ch_bank.bank_9000_0000 | 84-001285-1                |        |
+      | scenario.journal_ZKB1   | BNK1         | ZKB (ES)     | false    | 1020     | scenario.bank_2 | l10n_ch_bank.bank_730_0000  | CH74 0070 0115 5000 8687 7 | 933421 |
+      | scenario.journal_ZKB2   | BNK2         | ZKB          | false    | 1021     | scenario.bank_3 | l10n_ch_bank.bank_730_0000  | CH23 0070 0115 5001 7955 7 |        |
 
 
   @default_accounts
