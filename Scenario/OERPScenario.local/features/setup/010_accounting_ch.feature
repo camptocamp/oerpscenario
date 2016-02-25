@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-###############################################################################
-#
-#    OERPScenario, OpenERP Functional Tests
-#    Copyright 2015 Camptocamp SA
-#
-##############################################################################
 @swisslux @setup @accounting
 
 Feature: Configure CH accounting
@@ -22,7 +16,13 @@ Feature: Configure CH accounting
     Then accounts should be available for company "Swisslux AG"
 
  @bank_account
-  Scenario: create account 1020 and 1021
+  Scenario: create account 1010, 1020 and 1021
+    Given I need an "account.account" with oid: scenario.account_1010
+    And having:
+      | key          | value             |
+      | name         | 1010              |
+      | code         | 1010              |
+      | user_type_id | by name: Expenses |
     Given I need an "account.account" with oid: scenario.account_1020
     And having:
       | key          | value             |
@@ -42,10 +42,10 @@ Feature: Configure CH accounting
     #Given I need a "account.fiscalyear" with oid: scenario.fy2015_ch
     #And having:
     #| name       | value                     |
-    #| name       | 2015                      |
-    #| code       | 2015                      |
-    #| date_start | 2015-01-01                |
-    #| date_stop  | 2015-12-31                |
+    #| name       | 2016                      |
+    #| code       | 2016                      |
+    #| date_start | 2016-01-01                |
+    #| date_stop  | 2016-12-31                |
     #| company_id | by oid: base.main_company |
 
       
@@ -85,8 +85,9 @@ Feature: Configure CH accounting
 
     Examples: Bank Accounts
       | journal_oid             | journal_code | journal_name | currency | acc_code | bank_oid        | iban                       | bvr    |
-      | scenario.journal_ZKB1   | BNK1         | ZKB (ES)     | false    | 1020     | scenario.bank_1 | CH74 0070 0115 5000 8687 7 | 933421 |
-      | scenario.journal_ZKB2   | BNK2         | ZKB          | false    | 1021     | scenario.bank_2 | CH23 0070 0115 5001 7955 7 |        |
+      | scenario.journal_POCH   | POCH         | Postfinance  | false    | 1010     | scenario.bank_1 | 84-001285-1                |        |
+      | scenario.journal_ZKB1   | BNK1         | ZKB (ES)     | false    | 1020     | scenario.bank_2 | CH74 0070 0115 5000 8687 7 | 933421 |
+      | scenario.journal_ZKB2   | BNK2         | ZKB          | false    | 1021     | scenario.bank_3 | CH23 0070 0115 5001 7955 7 |        |
 
 
   @default_accounts
