@@ -8,6 +8,16 @@ from openerp.tools import frozendict
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+    # As for a single building project only one sale order will be selected
+    # we want to filter sale orders of type building project
+    statistics_include = fields.Boolean(
+        "Include in statistics",
+        default=True,
+        help="Flag field to deduplicate sale order for the same building "
+             "project in statistics. By default the first sale order for a "
+             "building project will be flagged."
+    )
+
     project_pricelist_id = fields.Many2one(
         compute='_get_project_pricelist',
         comodel_name='product.pricelist'
@@ -20,6 +30,15 @@ class SaleOrder(models.Model):
             build_project = self.env['building.project'].search(
                 [('analytic_account_id', '=', self.project_id.id)])
             self.project_pricelist_id = build_project.pricelist_id
+
+    @api.onchange('project_id')
+    def _set_statics_include(self):
+        """ Try to set only one sale order per building project
+
+        When setting a project we check if there is already a project included
+        in statistics.
+        """
+        self.statistics_include = not self.project_id
 
     @api.multi
     def button_update_unit_prices(self):
