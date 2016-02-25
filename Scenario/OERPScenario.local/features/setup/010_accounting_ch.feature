@@ -72,18 +72,24 @@ Feature: Configure accounting
       | partner_id          | by oid: base.main_partner |
       | bank_id             | by oid: <l10n_ch_bank_id> |
       | company_id          | by oid: base.main_company |
-      | acc_number          | <account_nr>              |
-      | bvr_adherent_num    | <bvr>                     |
-      | print_bank          | True                      |
-      | print_account       | True                      |
-      | print_partner       | True                      |
+      | acc_number          | <account_nr>              |      
 
     Examples: Bank Accounts
-      | journal_oid             | journal_code | journal_name | currency | acc_code | bank_oid        | l10n_ch_bank_id             | account_nr                 | bvr    |
-      | scenario.journal_POCH   | POCH         | Postfinance  | false    | 1010     | scenario.bank_1 | l10n_ch_bank.bank_9000_0000 | 84-001285-1                |        |
-      | scenario.journal_ZKB1   | BNK1         | ZKB (ES)     | false    | 1020     | scenario.bank_2 | l10n_ch_bank.bank_730_0000  | CH74 0070 0115 5000 8687 7 | 933421 |
-      | scenario.journal_ZKB2   | BNK2         | ZKB          | false    | 1021     | scenario.bank_3 | l10n_ch_bank.bank_730_0000  | CH23 0070 0115 5001 7955 7 |        |
-    
+      | journal_oid             | journal_code | journal_name | currency | acc_code | bank_oid        | l10n_ch_bank_id             | account_nr                 |
+      | scenario.journal_POCH   | POCH         | Postfinance  | false    | 1010     | scenario.bank_1 | l10n_ch_bank.bank_9000_0000 | 84-001285-1                |
+      | scenario.journal_ZKB1   | BNK1         | ZKB (ES)     | false    | 1020     | scenario.bank_2 | l10n_ch_bank.bank_730_0000  | CH74 0070 0115 5000 8687 7 |
+      | scenario.journal_ZKB2   | BNK2         | ZKB          | false    | 1021     | scenario.bank_3 | l10n_ch_bank.bank_730_0000  | CH23 0070 0115 5001 7955 7 |
+  
+  @banks
+  Scenario: configure BVR on the right bank
+    Given I find a "res.partner.bank" with oid: scenario.bank_2
+    And having:
+      | key                 | value     |
+      | bvr_adherent_num    | 933421    |
+      | print_bank          | True      |
+      | print_account       | True      |
+      | print_partner       | True      |
+
   @journal
   Scenario Outline: create new financial journal
     Given I need a "account.journal" with oid: <journal_oid>
