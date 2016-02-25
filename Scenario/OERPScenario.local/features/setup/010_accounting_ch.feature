@@ -36,19 +36,6 @@ Feature: Configure CH accounting
       | code         | 1021                         |
       | user_type_id | by name: Expenses            |
 
-
-  #@fiscalyear_ch
-  #Scenario: create fiscal years
-    #Given I need a "account.fiscalyear" with oid: scenario.fy2015_ch
-    #And having:
-    #| name       | value                     |
-    #| name       | 2016                      |
-    #| code       | 2016                      |
-    #| date_start | 2016-01-01                |
-    #| date_stop  | 2016-12-31                |
-    #| company_id | by oid: base.main_company |
-
-      
   @banks
   Scenario: Set the CCP on the bank
     Given I find a "res.bank" with oid: l10n_ch_bank.bank_730_0000
