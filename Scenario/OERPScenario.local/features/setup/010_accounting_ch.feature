@@ -15,7 +15,7 @@ Feature: Configure CH accounting
     Given I have the module account installed
     Then accounts should be available for company "Swisslux AG"
 
- @bank_account
+  @bank_account
   Scenario: create account 1010, 1020 and 1021
     Given I need an "account.account" with oid: scenario.account_1010
     And having:
@@ -84,12 +84,33 @@ Feature: Configure CH accounting
       | print_partner       | True                      |
 
     Examples: Bank Accounts
-      | journal_oid             | journal_code | journal_name | currency | acc_code | bank_oid        | l10n_ch_bank_id             | account_nr                       | bvr    |
+      | journal_oid             | journal_code | journal_name | currency | acc_code | bank_oid        | l10n_ch_bank_id             | account_nr                 | bvr    |
       | scenario.journal_POCH   | POCH         | Postfinance  | false    | 1010     | scenario.bank_1 | l10n_ch_bank.bank_9000_0000 | 84-001285-1                |        |
       | scenario.journal_ZKB1   | BNK1         | ZKB (ES)     | false    | 1020     | scenario.bank_2 | l10n_ch_bank.bank_730_0000  | CH74 0070 0115 5000 8687 7 | 933421 |
       | scenario.journal_ZKB2   | BNK2         | ZKB          | false    | 1021     | scenario.bank_3 | l10n_ch_bank.bank_730_0000  | CH23 0070 0115 5001 7955 7 |        |
 
+  @journal
+  Scenario: Reove default Bank and Cash journals
+    Given I find a "res.company" with oid: base.main_company
+    
+  @journal_fin
+  Scenario Outline: create new financial journal
+    Given I need a "account.journal" with oid: <journal_oid>
+    And having:
+      | key                         | value                     |
+      | name                        | <journal_name>            |
+      | code                        | <journal_code>            |
+      | type                        | <journal_type>            |
+      | company_id                  | by oid: base.main_company |
+      | currency_id                 | <currency>                |      
+      | update_posted               | True                      |
 
+    Examples: Financial Journals
+      | journal_oid             | journal_name  | journal_code  | journal_type  | currency |
+      | scenario.expense_journal| Expenses      | EXP           | purchase      | false    |
+      | scenario.wage_journal   | Wage          | WAGE          | purchase      | false    |
+     
+  
   @default_accounts
   Scenario Outline: Define default accounts via properties
     Given I set global property named "<name>" for model "<model>" and field "<name>" for company with ref "base.main_company"
