@@ -45,8 +45,8 @@
             <group>
               <field name="code"/>
               <field name="tag_ids" widget="many2many_tags"/>
-              <field name="company_id"/>
-              <field name="currency_id"/>
+              <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+              <field name="currency_id" groups="base.group_multi_company"/>
             </group>
           </group>
           <notebook colspan="4">
