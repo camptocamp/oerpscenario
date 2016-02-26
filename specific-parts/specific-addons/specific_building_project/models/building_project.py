@@ -174,6 +174,7 @@ class BuildingProject(models.Model):
         res['context'] = {
             'search_default_project_id': self.analytic_account_id.id,
             'default_project_id': self.analytic_account_id.id,
+            'statistics_include_hide': False,
         }
         res['domain'] = []
         return res
