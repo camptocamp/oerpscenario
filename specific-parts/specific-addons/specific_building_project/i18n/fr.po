@@ -1,19 +1,21 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* specific_building_project
+# 	* specific_building_project
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-25 13:40+0000\n"
-"PO-Revision-Date: 2016-02-25 13:40+0000\n"
+"POT-Creation-Date: 2016-02-26 12:37+0000\n"
+"PO-Revision-Date: 2016-02-26 13:39+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"X-Generator: Poedit 1.7.5\n"
 
 #. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_meeting_count
@@ -26,23 +28,49 @@ msgid "# Opportunity"
 msgstr "# Opportunity"
 
 #. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_sale_order_count
+msgid "# Sales Order"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_order_form
 msgid "(update prices by applying pricelist)"
 msgstr "(update prices by applying pricelist)"
 
 #. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
-msgid "<span class=\"o_stat_text\" attrs=\"{'invisible': [('meeting_count', '&lt;', 2)]}\"> Meetings</span>\n"
-"                <span class=\"o_stat_text\" attrs=\"{'invisible': [('meeting_count', '&gt;', 1)]}\"> Meeting</span>"
-msgstr "<span class=\"o_stat_text\" attrs=\"{'invisible': [('meeting_count', '&lt;', 2)]}\"> Meetings</span>\n"
-"                <span class=\"o_stat_text\" attrs=\"{'invisible': [('meeting_count', '&gt;', 1)]}\"> Meeting</span>"
+msgid ""
+"<span class=\"o_stat_text\" attrs=\"{'invisible': [('meeting_count', '&lt;', "
+"2)]}\"> Meetings</span>\n"
+"                <span class=\"o_stat_text\" attrs=\"{'invisible': "
+"[('meeting_count', '&gt;', 1)]}\"> Meeting</span>"
+msgstr ""
+"<span class=\"o_stat_text\" attrs=\"{'invisible': [('meeting_count', '&lt;', "
+"2)]}\"> Meetings</span>\n"
+"                <span class=\"o_stat_text\" attrs=\"{'invisible': "
+"[('meeting_count', '&gt;', 1)]}\"> Meeting</span>"
 
 #. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
-msgid "<span class=\"o_stat_text\" attrs=\"{'invisible': [('opportunity_count', '&lt;', 2)]}\"> Opportunities</span>\n"
-"                <span class=\"o_stat_text\" attrs=\"{'invisible': [('opportunity_count', '&gt;', 1)]}\"> Opportunity</span>"
-msgstr "<span class=\"o_stat_text\" attrs=\"{'invisible': [('opportunity_count', '&lt;', 2)]}\"> Opportunities</span>\n"
-"                <span class=\"o_stat_text\" attrs=\"{'invisible': [('opportunity_count', '&gt;', 1)]}\"> Opportunity</span>"
+msgid ""
+"<span class=\"o_stat_text\" attrs=\"{'invisible': [('opportunity_count', "
+"'&lt;', 2)]}\"> Opportunities</span>\n"
+"                <span class=\"o_stat_text\" attrs=\"{'invisible': "
+"[('opportunity_count', '&gt;', 1)]}\"> Opportunity</span>"
+msgstr ""
+"<span class=\"o_stat_text\" attrs=\"{'invisible': [('opportunity_count', "
+"'&lt;', 2)]}\"> Opportunities</span>\n"
+"                <span class=\"o_stat_text\" attrs=\"{'invisible': "
+"[('opportunity_count', '&gt;', 1)]}\"> Opportunity</span>"
+
+#. module: specific_building_project
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
+msgid ""
+"<span class=\"o_stat_text\" attrs=\"{'invisible': [('sale_order_count', "
+"'&lt;', 2)]}\"> Sales orders</span>\n"
+"              <span class=\"o_stat_text\" attrs=\"{'invisible': "
+"[('sale_order_count', '&gt;', 1)]}\"> Sales order</span>"
+msgstr ""
 
 #. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_name
@@ -140,12 +168,14 @@ msgstr "Building Projects"
 #. module: specific_building_project
 #: model:ir.model.fields,help:specific_building_project.field_building_project_use_issues
 msgid "Check this box to manage customer activities through this project"
-msgstr "Cochez cette case pour gérer les activités des clients à travers ce projet"
+msgstr ""
+"Cochez cette case pour gérer les activités des clients à travers ce projet"
 
 #. module: specific_building_project
 #: model:ir.model.fields,help:specific_building_project.field_building_project_use_tasks
 msgid "Check this box to manage internal activities through this project"
-msgstr "Cochez cette case pour gérer les activités internes à travers ce projet"
+msgstr ""
+"Cochez cette case pour gérer les activités internes à travers ce projet"
 
 #. module: specific_building_project
 #: model:ir.model.fields,help:specific_building_project.field_building_project_use_timesheets
@@ -290,6 +320,14 @@ msgid "Fax:"
 msgstr "Fax :"
 
 #. module: specific_building_project
+#: model:ir.model.fields,help:specific_building_project.field_sale_order_statistics_include
+msgid ""
+"Flag field to deduplicate sale order for the same building project in "
+"statistics. By default the first sale order for a building project will be "
+"flagged."
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_message_follower_ids
 msgid "Followers"
 msgstr "Abonnés"
@@ -331,6 +369,11 @@ msgstr "Si coché, de nouveaux messages demandent votre attention."
 #: model:ir.model.fields,help:specific_building_project.field_building_project_message_needaction
 msgid "If checked, new messages require your attention."
 msgstr "si elle est cochée, de nouveaux messages requièrent votre attention."
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_sale_order_statistics_include
+msgid "Include in statistics"
+msgstr "Inclure dans statistiques"
 
 #. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
@@ -512,6 +555,11 @@ msgid "Sales Order Line"
 msgstr "Ligne de commande de vente"
 
 #. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_sale_order_ids
+msgid "Sales orders"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_filter
 msgid "Search Building Project"
 msgstr "Search Building Project"
@@ -646,4 +694,3 @@ msgstr "note interne..."
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_project_count
 msgid "unknown"
 msgstr "inconnu"
-

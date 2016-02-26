@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-25 13:33+0000\n"
-"PO-Revision-Date: 2016-02-25 13:33+0000\n"
+"POT-Creation-Date: 2016-02-26 12:37+0000\n"
+"PO-Revision-Date: 2016-02-26 12:37+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,11 @@ msgid "# Opportunity"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_sale_order_count
+msgid "# Sales Order"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_order_form
 msgid "(update prices by applying pricelist)"
 msgstr ""
@@ -40,6 +45,12 @@ msgstr ""
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
 msgid "<span class=\"o_stat_text\" attrs=\"{'invisible': [('opportunity_count', '&lt;', 2)]}\"> Opportunities</span>\n"
 "                <span class=\"o_stat_text\" attrs=\"{'invisible': [('opportunity_count', '&gt;', 1)]}\"> Opportunity</span>"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
+msgid "<span class=\"o_stat_text\" attrs=\"{'invisible': [('sale_order_count', '&lt;', 2)]}\"> Sales orders</span>\n"
+"              <span class=\"o_stat_text\" attrs=\"{'invisible': [('sale_order_count', '&gt;', 1)]}\"> Sales order</span>"
 msgstr ""
 
 #. module: specific_building_project
@@ -288,6 +299,11 @@ msgid "Fax:"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model.fields,help:specific_building_project.field_sale_order_statistics_include
+msgid "Flag field to deduplicate sale order for the same building project in statistics. By default the first sale order for a building project will be flagged."
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_message_follower_ids
 msgid "Followers"
 msgstr ""
@@ -328,6 +344,11 @@ msgstr ""
 #. module: specific_building_project
 #: model:ir.model.fields,help:specific_building_project.field_building_project_message_needaction
 msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_sale_order_statistics_include
+msgid "Include in statistics"
 msgstr ""
 
 #. module: specific_building_project
@@ -507,6 +528,11 @@ msgstr ""
 #. module: specific_building_project
 #: model:ir.model,name:specific_building_project.model_sale_order_line
 msgid "Sales Order Line"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_sale_order_ids
+msgid "Sales orders"
 msgstr ""
 
 #. module: specific_building_project
