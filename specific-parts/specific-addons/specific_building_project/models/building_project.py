@@ -75,6 +75,17 @@ class BuildingProject(models.Model):
         copy=False,
     )
 
+    sale_order_ids = fields.One2many(
+        comodel_name='sale.order',
+        string="Sales orders",
+        compute='_get_sale_orders',
+        copy=False,
+    )
+    sale_order_count = fields.Integer(
+        compute='_sale_order_count',
+        string="# Sales Order"
+    )
+
     opportunity_ids = fields.One2many(
         comodel_name='crm.lead',
         string="Opportunities",
@@ -84,7 +95,6 @@ class BuildingProject(models.Model):
     )
     opportunity_count = fields.Integer(
         compute='_opportunity_count',
-        comodel_name='crm.lead',
         string="# Opportunity"
     )
 
@@ -100,7 +110,6 @@ class BuildingProject(models.Model):
     # )
     meeting_count = fields.Integer(
         compute='_meeting_count',
-        comodel_name='crm.meeting',
         string="# Meetings"
     )
 
@@ -109,17 +118,34 @@ class BuildingProject(models.Model):
     #    """ List all meetings aggregated from opportunities """
     #    self.meeting_ids = self.opportunity_ids.mapped('meeting_ids')
 
-    @api.one
+    @api.depends('analytic_account_id')
+    def _get_sale_orders(self):
+        """ List all sale order linked to this project.
+        We do this as reverse many2one is on analytic account
+        """
+        for rec in self:
+            self.sale_order_ids = self.env['sale.order'].search(
+                [('project_id', '=', self.analytic_account_id.id)])
+
+    @api.depends('opportunity_ids')
+    def _sale_order_count(self):
+        """ Count aggregated sale orders """
+        for rec in self:
+            self.sale_order_count = len(self.sale_order_ids)
+
     @api.depends('opportunity_ids')
     def _opportunity_count(self):
         """ Count aggregated meeting from opportunities """
-        self.opportunity_count = len(self.opportunity_ids.ids)
+        for rec in self:
+            rec.opportunity_count = len(rec.opportunity_ids.ids)
 
-    @api.one
     @api.depends('opportunity_ids.meeting_count')
     def _meeting_count(self):
         """ Count aggregated meeting from opportunities """
-        self.meeting_count = sum(self.opportunity_ids.mapped('meeting_count'))
+        for rec in self:
+            rec.meeting_count = sum(
+                rec.opportunity_ids.mapped('meeting_count')
+            )
 
     @api.multi
     def action_schedule_meeting(self):
@@ -134,4 +160,20 @@ class BuildingProject(models.Model):
             'search_default_building_project_id': self.id,
             # 'search_default_opportunity_id': self.opportunity_ids.ids,
         }
+        return res
+
+    @api.multi
+    def action_sale_orders(self):
+        """
+        Open sale order tree view
+        :return dict: dictionary value for created Meeting view
+        """
+        res = self.env['ir.actions.act_window'].for_xml_id(
+            'sale', 'action_orders')
+
+        res['context'] = {
+            'search_default_project_id': self.analytic_account_id.id,
+            'default_project_id': self.analytic_account_id.id,
+        }
+        res['domain'] = []
         return res

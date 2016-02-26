@@ -9,6 +9,14 @@
           <div class="oe_button_box" name="button_box">
             <!--<button class="oe_stat_button" type="action" name="% (account_analytic_line_action)d"-->
               <!--icon="fa-usd"  string="Cost/Revenue" widget="statinfo"/>-->
+            <button class="oe_stat_button" type="object"
+              name="action_sale_orders"
+              icon="fa-usd"
+              context="{'search_default_building_project_id': active_id}">
+              <field name="sale_order_count" widget="o_stat_value"/>
+              <span class="o_stat_text" attrs="{'invisible': [('sale_order_count', '&lt;', 2)]}"> Sales orders</span>
+              <span class="o_stat_text" attrs="{'invisible': [('sale_order_count', '&gt;', 1)]}"> Sales order</span>
+            </button>
             <button class="oe_stat_button o_res_partner_tip_opp" type="action"
               name="%(crm.crm_lead_opportunities)d"
               icon="fa-star"
