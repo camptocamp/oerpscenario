@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_building_project_all,building.project all,model_building_project,base.group_user,1,1,1,1
+
+access_building_project_pricelist_all,building.project.pricelist all,model_building_project_pricelist,base.group_user,1,1,1,1
+
+access_building_project_tag_all,building.project.tag all,model_building_project_tag,base.group_user,1,1,1,1
+
+access_building_project_type_all,building.project.type all,model_building_project_type,base.group_user,1,1,1,1

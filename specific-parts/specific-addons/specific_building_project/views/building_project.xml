@@ -40,18 +40,25 @@
           <group name="main">
             <group>
               <field name="partner_id"/>
-              <field name="pricelist_id"/>
               <field name="user_id"/>
             </group>
             <group>
               <field name="code"/>
               <field name="tag_ids" widget="many2many_tags"/>
-              <field name="company_id"/>
-              <field name="currency_id"/>
+              <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+              <field name="currency_id" groups="base.group_multi_company"/>
             </group>
           </group>
           <notebook colspan="4">
-            <page string="Contacts" autofocus="autofocus">
+            <page string="Customers" autofocus="autofocus">
+              <field name="customer_discount_ids">
+                <tree editable="bottom">
+                  <field name="partner_id"/>
+                  <field name="pricelist_id"/>
+                </tree>
+              </field>
+            </page>
+            <page string="Contacts">
               <field name="contact_ids" mode="kanban" context="{}">
                 <kanban>
                   <field name="color"/>

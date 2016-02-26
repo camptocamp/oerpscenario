@@ -27,7 +27,7 @@ class TestSalePricelist(common.TransactionCase):
         )
 
     def test_project_discount_pricelist(self):
-        self.project.pricelist_id = self.pricelist50
+        self.project_pl.pricelist_id = self.pricelist50
         self.sale.project_id = self.project.analytic_account_id
         self.sale.button_update_unit_prices()
         self.assertAlmostEqual(
@@ -36,8 +36,8 @@ class TestSalePricelist(common.TransactionCase):
         )
 
     def test_both_discount_pricelist(self):
+        self.project_pl.pricelist_id = self.pricelist50
         self.sale.pricelist_id = self.pricelist40
-        self.project.pricelist_id = self.pricelist50
         self.sale.project_id = self.project.analytic_account_id
         self.sale.button_update_unit_prices()
         self.assertAlmostEqual(
@@ -50,8 +50,9 @@ class TestSalePricelist(common.TransactionCase):
 
         product = self.env.ref('product.product_product_57')
         self.listprice = product.list_price
+        self.partner_id = self.ref('base.res_partner_12')
         self.sale = self.env['sale.order'].create({
-            'partner_id': self.ref('base.res_partner_12'),
+            'partner_id': self.partner_id,
             'order_line': [(0, 0, {
                 'product_id': product.id,
                 'product_uom': product.uom_id.id,
@@ -76,4 +77,8 @@ class TestSalePricelist(common.TransactionCase):
 
         self.project = self.env['building.project'].create({
             'name': 'Building Project',
+        })
+        self.project_pl = self.env['building.project.pricelist'].create({
+            'building_project_id': self.project.id,
+            'partner_id': self.partner_id,
         })
