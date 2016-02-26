@@ -1,0 +1,386 @@
+id,sale_warn,sale_warn_msg,use_parent_address,street,supplier,city,user_id,zip,title,function,country_id/id,company_id,parent_id/id,type,email,is_company,website,lang,fax,street2,phone,ref,active,tz,customer,credit_limit,mobile,opt_out,notify_email,property_payment_term_id/id,property_account_receivable_id,property_account_payable_id,property_stock_supplier/id,category_id/id,name2,eev_member,eev_number,eev_alarm,region_id/id,pobox_nr,pobox_zip,pobox_city,companytype,headquarter_id/id,mailing_email,mailing,department,lastname,firstname,partner_invoicing_id/id,influence,partner_state
+partner_1000,no-message,,FALSE,,false,Oetwil am See,rhu,8618,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,,,,1000,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,,,FALSE,0,FALSE,slx_region_-2144060038,,,,,,,0,,Bauherr / Interessent privat (Deutsch),,,,
+partner_10001,no-message,,FALSE,Elektrounternehmung,false,Wohlen AG,mle,5610,,,base.ch,Swisslux AG,,contact,info@jostwohlen.ch,TRUE,,de_DE,+41 56 618 77 70,Bremgarterstrasse 62,+41 56 618 77 77,10001,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_30,scenario.partner_category_6",,TRUE,5100,FALSE,slx_region_-2144060050,,,,,,,0,,Jost Wohlen AG,,,,
+partner_10003,no-message,,FALSE,Elektro - Fachgeschäft,false,Thalwil,dla,8800,,,base.ch,Swisslux AG,,contact,info@elektro-abderhalden.ch,TRUE,www.elektro-abderhalden.ch,de_DE,+41 44 7200433,Gotthardstrasse 45,+41 44 7200453,10003,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8001,FALSE,slx_region_-2144060016,,,,,,1,0,,E. Abderhalden,,,,
+partner_10013,no-message,,FALSE,Elektrotechnik,false,Arlesheim,rhu,4144,,,base.ch,Swisslux AG,,contact,info@pevogmbh.ch,TRUE,,de_DE,+41 61 702 00 21,Baselstrasse 10a,+41 61 702 00 22,10013,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_10,scenario.partner_category_6",,TRUE,4196,FALSE,slx_region_-2144060030,,,,,,1,0,,PEVO GmbH,,,,
+partner_1002,no-message,,FALSE,,false,Oetwil am See,mse,8618,,,base.ch,Swisslux AG,,contact,,TRUE,,fr_FR,,,,1002,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,,,FALSE,0,FALSE,slx_region_-2144060041,,,,,,,0,,Bauherr / Interessent privat (Franz.),,,,
+partner_10026,warning,"Adress\'e4nderung telefonisch Frau Leemann vom 06.03.03:
+ Umgezogen von Freiestrasse 13 nach Quellenstrasse 2 in Uster
+ACHTUNG !!!!!! Hat \'fcber Winterhalter und Fenner einmal ein RC-plus aus Deutschland (Kremser) zum Austausch retourniert !!!!!!!!!! (LS 2044614, 19.02.04)
+ ACHTUNG !!!!!! Hat \'fcber Otto-Fischer am 24.01.07 einen PD2 360 AP MAster (6N06) in Verpackung eines PD4-RC/M-AP aus Frankreich retourniert.....
+
+
+
+
+",FALSE,Uster West 8,false,Uster,rhu,8610,,,base.ch,Swisslux AG,,contact,uster@schibli.com,TRUE,,de_DE,+41 43 399 22 24,,+41 43 399 22 22,10026,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8610,TRUE,slx_region_-2144060038,,,,,,,1,,Hans K. Schibli AG,,,,ST1
+partner_10027,no-message,,FALSE,Impianti elettrici e telecomunicazioni,false,Losone,sgi,6616,,,base.ch,Swisslux AG,,contact,info@forneraelettricita.ch,TRUE,,it_IT,+41 91 7919192,via Municipio 4,+41 91 7919191,10027,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,6144,FALSE,slx_region_-2144060020,1064,,,,,1,0,,Fornera Elettricità,,,,
+partner_10029,warning,"
+Achtung: Zahlungen pr\'fcfen!
+
+
+
+
+",FALSE,Zwillikerstrasse 1,false,Affoltern am Albis,dla,8910,,,base.ch,Swisslux AG,,contact,info@langelektro.ch,TRUE,,de_DE,+41 44 7600583,,+41 44 7618282,10029,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2144060021,,,,,,1,1,,Elektro Dölf Lang GmbH,,,,
+partner_10038,no-message,,FALSE,Neudorfstrasse 2,false,Römerswil LU,mle,6027,,,base.ch,Swisslux AG,,contact,info@elektro-studer.ch,TRUE,www.elektro-studer.ch,de_DE,+41 41 910 50 10,,+41 41 910 15 10,10038,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_10,scenario.partner_category_6",,TRUE,6241,FALSE,slx_region_-2144060042,,,,,,1,1,,Studer Erwin Elektro AG,,,,
+partner_10041,warning,"
+Lieferadresse: Casella postale 83\b0
+
+\lang2055 Geh\'f6rt der Etavis-Gruppe
+
+Auftragsrabatte: 20 % +
+ab Fr. \tab 2'000\tab 1 %
+ab Fr. \tab 5'000 \tab 2 %
+ab Fr. \tab 10'000 \tab 3 %
+ab Fr. \tab 20'000 \tab 4 %
+ab Fr. \tab 30'000\tab 5 %
+ab Fr. \tab 40'000\tab 6 %
+ab Fr. \tab 50'000\tab 7 %\lang1031
+
+
+
+
+",FALSE,Via Boschina 5,false,Pregassona,sgi,6963,,,base.ch,Swisslux AG,,contact,lugano@etavis.ch,TRUE,,it_IT,+41 91 973 31 10,,+41 91 973 31 11,10041,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn45d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_15,scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060019,,,,,,1,0,,ETAVIS Elettro-Impianti SA,,,,
+partner_10045,warning,"
+Geh\'f6rt der Etavis-Gruppe
+
+Auftragsrabatte: 20 % +
+ab Fr. \tab 2'000\tab 1 %
+ab Fr. \tab 5'000 \tab 2 %
+ab Fr. \tab 10'000 \tab 3 %
+ab Fr. \tab 20'000 \tab 4 %
+ab Fr. \tab 30'000\tab 5 %
+ab Fr. \tab 40'000\tab 6 %
+ab Fr. \tab 50'000\tab 7 %\lang1031
+
+
+
+
+",FALSE,Breitenstrasse 15,false,Altendorf,dla,8852,,,base.ch,Swisslux AG,,contact,altendorf@etavis.ch,TRUE,,de_DE,+41 55 451 56 55,,+41 55 451 56 56,10045,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn45d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_15,scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060006,,,,,,,0,,ETAVIS AG,,,,
+partner_10049,warning,"
+Geh\'f6rt der Etavis-Gruppe
+
+Auftragsrabatte: 20 % +
+ab Fr. \tab 2'000\tab 1 %
+ab Fr. \tab 5'000 \tab 2 %
+ab Fr. \tab 10'000 \tab 3 %
+ab Fr. \tab 20'000 \tab 4 %
+ab Fr. \tab 30'000\tab 5 %
+ab Fr. \tab 40'000\tab 6 %
+ab Fr. \tab 50'000\tab 7 %\lang1031
+
+
+
+
+",FALSE,Fröschenweidstrasse 6,false,Winterthur,rhu,8404,,,base.ch,Swisslux AG,,contact,winterthur@etavis.ch,TRUE,,de_DE,+41 52 235 00 01,,+41 52 235 00 00,10049,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn45d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_15,scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144059995,3198,8404,,,,1,0,,ETAVIS AG,,,,
+partner_10051,warning,"
+Geh\'f6rt der Etavis-Gruppe
+
+Auftragsrabatte: 20 % +
+ab Fr. \tab 2'000\tab 1 %
+ab Fr. \tab 5'000 \tab 2 %
+ab Fr. \tab 10'000 \tab 3 %
+ab Fr. \tab 20'000 \tab 4 %
+ab Fr. \tab 30'000\tab 5 %
+ab Fr. \tab 40'000\tab 6 %
+ab Fr. \tab 50'000\tab 7 %\lang1031
+
+
+
+
+",FALSE,Frachtstrasse / Fracht Ost 2-737,false,Flughafen ZH-Kloten,rhu,8058,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 43 816 57 43,,+41 43 816 57 37,10051,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn45d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_15,scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060003,13,8058,,,,,0,,ETAVIS AG,,,,
+partner_10052,warning,"
+Geh\'f6rt der Etavis-Gruppe
+
+Auftragsrabatte: 20 % +
+ab Fr. \tab 2'000\tab 1 %
+ab Fr. \tab 5'000 \tab 2 %
+ab Fr. \tab 10'000 \tab 3 %
+ab Fr. \tab 20'000 \tab 4 %
+ab Fr. \tab 30'000\tab 5 %
+ab Fr. \tab 40'000\tab 6 %
+ab Fr. \tab 50'000\tab 7 %\lang1031
+
+
+
+
+",FALSE,Zürcherstrasse 350,false,Frauenfeld,mka,8500,,,base.ch,Swisslux AG,,contact,frauenfeld@etavis.ch,TRUE,,de_DE,+41 52 723 22 01,,+41 52 723 22 00,10052,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn45d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_15,scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2142967384,,,,,,1,1,,ETAVIS AG,,,,
+partner_10054,warning,"
+Geh\'f6rt der Etavis-Gruppe
+
+Auftragsrabatte: 20 % +
+ab Fr. \tab 2'000\tab 1 %
+ab Fr. \tab 5'000 \tab 2 %
+ab Fr. \tab 10'000 \tab 3 %
+ab Fr. \tab 20'000 \tab 4 %
+ab Fr. \tab 30'000\tab 5 %
+ab Fr. \tab 40'000\tab 6 %
+ab Fr. \tab 50'000\tab 7 %\lang1031
+
+
+
+
+",FALSE,Poststrasse 11,false,Herisau,mka,9100,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 71 3523263,,+41 71 3511251,10054,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn45d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_15,scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2142967379,,,,,,,0,,ETAVIS Grossenbacher AG,,,,
+partner_10056,warning,"
+Geh\'f6rt der Etavis-Gruppe
+
+Auftragsrabatte: 20 % +
+ab Fr. \tab 2'000\tab 1 %
+ab Fr. \tab 5'000 \tab 2 %
+ab Fr. \tab 10'000 \tab 3 %
+ab Fr. \tab 20'000 \tab 4 %
+ab Fr. \tab 30'000\tab 5 %
+ab Fr. \tab 40'000\tab 6 %
+ab Fr. \tab 50'000\tab 7 %\lang1031
+
+
+
+
+",FALSE,Löwenstrasse 59,false,Rorschach,mka,9400,,,base.ch,Swisslux AG,,contact,rorschach@etavis.ch,TRUE,,de_DE,+41 71 8441975,,+41 71 8441974,10056,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn45d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_15,scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2142967386,,9401,,,,1,1,,ETAVIS Grossenbacher AG,,,,
+partner_10058,warning,"
+Geh\'f6rt der Etavis-Gruppe
+
+Auftragsrabatte: 20 % +
+ab Fr. \tab 2'000\tab 1 %
+ab Fr. \tab 5'000 \tab 2 %
+ab Fr. \tab 10'000 \tab 3 %
+ab Fr. \tab 20'000 \tab 4 %
+ab Fr. \tab 30'000\tab 5 %
+ab Fr. \tab 40'000\tab 6 %
+ab Fr. \tab 50'000\tab 7 %\lang1031\fs16
+
+
+
+
+",FALSE,Maurerweg 12,false,Biel/Bienne,mle,2503,,,base.ch,Swisslux AG,,contact,biel@etavis.ch,TRUE,,de_DE,+41 32 366 22 66,,+41 32 366 22 11,10058,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn45d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_10,scenario.partner_category_15,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060043,,,,,,1,0,,ETAVIS JAG JAKOB AG,,,,
+partner_10059,warning,"
+ACHTUNG: PAKETPOST GEHT AN WIENSTRASSE 1, 4053 BASEL\b0
+
+\lang2055\fs17 Geh\'f6rt der Etavis-Gruppe
+
+Auftragsrabatte: 20 % +
+ab Fr. \tab 2'000\tab 1 %
+ab Fr. \tab 5'000 \tab 2 %
+ab Fr. \tab 10'000 \tab 3 %
+ab Fr. \tab 20'000 \tab 4 %
+ab Fr. \tab 30'000\tab 5 %
+ab Fr. \tab 40'000\tab 6 %
+ab Fr. \tab 50'000\tab 7 %\lang1031\fs16
+
+WICHTIG: Immer PSP Nummer verlangen da die Rechnung sonst zur\'fcckkommt!!
+
+
+
+",FALSE,Wienstrasse 2,false,Basel,rhu,4053,,,base.ch,Swisslux AG,,contact,basel@etavis.ch,TRUE,www.kriegel.ch,de_DE,+41 61 316 63 63,,+41 61 316 60 60,10059,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn45d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_15,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060004,3445,4002,,,,,1,,ETAVIS KRIEGEL + SCHAFFNER AG,,,,ST1
+partner_10061,warning,"
+Geh\'f6rt der Etavis-Gruppe
+
+Auftragsrabatte: 20 % +
+ab Fr. \tab 2'000\tab 1 %
+ab Fr. \tab 5'000 \tab 2 %
+ab Fr. \tab 10'000 \tab 3 %
+ab Fr. \tab 20'000 \tab 4 %
+ab Fr. \tab 30'000\tab 5 %
+ab Fr. \tab 40'000\tab 6 %
+ab Fr. \tab 50'000\tab 7 %\lang1031\fs16
+
+
+
+
+",FALSE,Fabrikstrasse 19,false,Buchs SG,mka,9470,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,,,+41 81 7503333,10061,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn45d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_15,scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2142967386,348,9471,Buchs SG 1,,,,1,,ETAVIS Grossenbacher AG,,,,
+partner_10063,no-message,,FALSE,Badenerstrasse 329,false,Zürich,dla,8040,,,base.ch,Swisslux AG,,contact,installation@baumann-koelliker.ch,TRUE,www.baumannkoelliker.ch,de_DE,+41 44 497 37 95,,+41 44 497 37 37,10063,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_17,scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060003,,,,,,,1,,Baumann Koelliker AG,,,,
+partner_10065,no-message,,FALSE,Metzgergasse 2,false,Bremgarten AG,dla,5620,,,base.ch,Swisslux AG,,contact,info@fuxag.ch,TRUE,,de_DE,+41 56 6336668,,+41 56 6336667,10065,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,5622,FALSE,slx_region_-2144060050,,,,,,1,1,,Elektro Fux AG,,,,
+partner_10067,no-message,,FALSE,Kappelenring 69,false,Hinterkappelen,mle,3032,,,base.ch,Swisslux AG,,contact,gfeller@gfeller.ch,TRUE,www.gfeller.ch,de_DE,+41 31 998 55 69,,+41 31 998 55 66,10067,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,3028,FALSE,slx_region_-2144060013,,,,,,1,1,,Gfeller Elektro AG,,,,
+partner_10071,no-message,,FALSE,Wiesenstrasse 26,false,Aarau,mle,5000,,,base.ch,Swisslux AG,,contact,aarau@hhm.ch,TRUE,,de_DE,+41 62 837 87 97,,+41 62 837 87 87,10071,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_10,,FALSE,0,FALSE,slx_region_-2144060050,,5001,,,,1,0,,HEFTI. HESS. MARTIGNONI. Aarau AG,,,,
+partner_10074,no-message,,FALSE,Telecom,false,Engelburg,mka,9032,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 71 2771113,Tannenbergstrasse 5,+41 71 2771111,10074,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,9697,FALSE,slx_region_-2142967379,,,,,,,0,,HPH Hardegger AG,,,,
+partner_10075,no-message,,FALSE,Liebensteinstrasse 6,false,Zürich,dla,8047,,,base.ch,Swisslux AG,,contact,info@elektrogrob.ch,TRUE,,de_DE,+41 44 4062829,,+41 44 4062828,10075,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8387,FALSE,slx_region_-2144060003,,,,,,,0,,Grob & Co Elektro AG,,,,
+partner_10077,no-message,,FALSE,Schlossstrasse 124,false,Bern,mle,3008,,,base.ch,Swisslux AG,,contact,info@elektro-zenger.ch,TRUE,http://www.elektro-zenger.ch,de_DE,+41 31 3811105,,+41 31 3812260,10077,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,3022,FALSE,slx_region_-2144060013,,,,,,1,0,,Otto Zenger AG,,,,
+partner_10079,no-message,,FALSE,Rte des Emonets 1,false,St-Maurice,mse,1890,,,base.ch,Swisslux AG,,contact,amon@bluewin.ch,TRUE,,fr_FR,+41 24 485 33 66,,+41 24 485 17 79,10079,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,1890,FALSE,slx_region_-2144060001,,,,,,0,0,,Monnay Electricité SA,,,,ST1
+partner_10083,no-message,,FALSE,Industriestrasse 9,false,Stäfa,rhu,8712,,,base.ch,Swisslux AG,,contact,staefa@bernauer.ch,TRUE,www.bernauer.ch,de_DE,+41 44 928 12 01,,+41 44 928 12 12,10083,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060016,,,,,,1,1,,Bernauer AG,,,,ST1
+partner_10088,no-message,,FALSE,Romanshornerstrasse 2,false,Kreuzlingen,mka,8280,,,base.ch,Swisslux AG,,contact,info@arber.ch,TRUE,www.arber.ch,de_DE,+41 71 686 80 58,,+41 71 686 80 50,10088,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn30d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_19,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2142967384,,8280,,headquarter,,1,1,,Elektro Arber AG,,,,
+partner_10094,no-message,,FALSE,Dorfstrasse 37,false,Würenlos,rhu,5436,,,base.ch,Swisslux AG,,contact,info@moeckel-guenter.ch,TRUE,www.moeckel-guenter.ch,de_DE,+41 56 436 80 01,,+41 56 436 80 00,10094,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,5436,FALSE,slx_region_-2144060050,,,,,,1,0,,Möckel + Günter Elektro AG,,,,ST5
+partner_10102,no-message,,FALSE,Elektro - Telecom,false,Uster,rhu,8610,,,base.ch,Swisslux AG,,contact,info@kellenberger-huber.ch,TRUE,www.kellenberger-huber.ch,de_DE,+41 44 943 70 07,Strickstrasse 3,+41 44 943 70 00,10102,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,4630,FALSE,slx_region_-2144060038,1113,8610,Uster,,,,0,,Kellenberger + Huber AG,,,,
+partner_10104,no-message,,FALSE,Burgstrasse 28,false,Attinghausen,dla,6468,,,base.ch,Swisslux AG,,contact,uri@schibli.com,TRUE,www.schibli.com,de_DE,+41 41 872 03 05,,+41 41 872 03 03,10104,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_26,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2142967387,,6468,Attinghausen,,,,0,,Schibli Elektrotechnik AG,,,,
+partner_10107,no-message,,FALSE,Riedstrasse 11,false,Cham,dla,6330,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 41 7484050,,+41 41 7484040,10107,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2144060039,5345,6330,,,,,1,,Speri + Bütler AG,,,,
+partner_10108,warning,"
+Geh\'f6rt der Etavis-Gruppe
+
+Auftragsrabatte: 20 % +
+ab Fr. \tab 2'000\tab 1 %
+ab Fr. \tab 5'000 \tab 2 %
+ab Fr. \tab 10'000 \tab 3 %
+ab Fr. \tab 20'000 \tab 4 %
+ab Fr. \tab 30'000\tab 5 %
+ab Fr. \tab 40'000\tab 6 %
+ab Fr. \tab 50'000\tab 7 %\lang1031
+
+
+
+
+",FALSE,Oststrasse 25,false,St. Gallen,mka,9000,,,base.ch,Swisslux AG,,contact,st.gallen@etavis.ch,TRUE,,de_DE,+41 71 243 62 37,,+41 71 243 66 44,10108,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn45d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_10,scenario.partner_category_15,scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2142967379,253,9006,,,,0,0,,ETAVIS Grossenbacher AG,,,,
+partner_10115,no-message,,FALSE,Gewerbestrasse 1,false,Winterthur,rhu,8404,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 52 245 16 40,,+41 52 245 16 45,10115,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144059995,,,,,,,1,,swisspro AG,,,,
+partner_10117,warning,"
+Alle Direktbestellungen durch Atel-Filialen m\'fcssen nach R\'fccksprache mit einem Grossisten derer Wahl abgewickelt werden. Gem. Vereinbarung zwischen PGL und Hrn. Baumann, Atel St. Gallen vom 06.05.04
+
+
+
+
+",FALSE,Kornstrasse 7,false,Buchs SG,mka,9470,,,base.ch,Swisslux AG,,contact,info.buchs@alpiq.com,TRUE,www.alpiq-intec.ch,de_DE,+41 81 7500355,,+41 81 7500350,10117,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_16,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2142967386,,,,,,,1,,Alpiq InTec Ost AG,,,,ST6
+partner_10120,no-message,,FALSE,Untere Stallstrasse 8,false,Thusis,mka,7430,,,base.ch,Swisslux AG,,contact,info@elektrobanzer.ch,TRUE,www.elektrobanzer.ch,de_DE,+41 81 6321015,,+41 81 6321010,10120,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,7001,FALSE,slx_region_-2144060040,162,7430,Thusis,,,,0,,Elektro Banzer AG,,,,
+partner_10121,no-message,,FALSE,Installations électriques,false,Porrentruy,mse,2900,,,base.ch,Swisslux AG,,contact,installation@f-haenni.ch,TRUE,www.f-haenni.ch,fr_FR,+41 32 466 44 93,Rue du Temple 3,+41 32 466 14 55,10121,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,2901,FALSE,slx_region_-2144059996,,,,,,1,0,,Frédéric Hänni S.A,,,,ST6
+partner_10124,no-message,,FALSE,Tödistrasse 4,false,Tuggen,dla,8856,,,base.ch,Swisslux AG,,contact,,TRUE,www.tulux.ch,de_DE,+41 55 465 60 32,,+41 55 465 60 00,10124,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn10d3s,1100,2000,stock.stock_location_suppliers,scenario.partner_category_8,,FALSE,0,FALSE,slx_region_-2144060006,,,,,,,1,,Tulux AG,,,,
+partner_10127,no-message,,FALSE,Am Schrägen Weg 9,false,Vaduz,mka,9490,,,base.ch,Swisslux AG,,contact,info@ospeltelektro.com,TRUE,,de_DE,,,+423 2361870,10127,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2142967386,1521,9490,,,,1,0,,Ospelt Elektro-Telekom AG,,,,
+partner_10128,no-message,,FALSE,Elektrische Anlagen,false,Gipf-Oberfrick,rhu,5073,,,base.ch,Swisslux AG,,contact,info@rickenbach-elektro.ch,TRUE,,de_DE,+41 62 8656079,Landstrasse 31,+41 62 8656070,10128,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,5048,FALSE,slx_region_-2144060050,,,,,,1,0,,Alois Rickenbach AG,,,,
+partner_10133,warning,"Geh\'f6rt der Etavis-Gruppe
+
+Auftragsrabatte: 20 % +
+ab Fr. \tab 2'000\tab 1 %
+ab Fr. \tab 5'000 \tab 2 %
+ab Fr. \tab 10'000 \tab 3 %
+ab Fr. \tab 20'000 \tab 4 %
+ab Fr. \tab 30'000\tab 5 %
+ab Fr. \tab 40'000\tab 6 %
+ab Fr. \tab 50'000\tab 7 %\lang1031
+
+
+
+
+",FALSE,Kehlstrasse 61b,false,Baden,rhu,5401,,,base.ch,Swisslux AG,,contact,Baden@etavis.ch,TRUE,,de_DE,+41 56 466 66 60,,+41 56 200 92 00,10133,true,Europe/Zurich,true,3000,+41 58 5852233,TRUE,none,scenario.account_payment_term_60dn45d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_15,scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060050,,,,,,1,0,,ETAVIS AG,,,,
+partner_10134,no-message,,FALSE,Hauptstrasse 29,false,Oberdorf BL,rhu,4436,,,base.ch,Swisslux AG,,contact,info@elektropeyer.ch,TRUE,www.elektropeyer.ch,de_DE,+41 61 9659655,,+41 61 9659650,10134,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,4436,FALSE,slx_region_-2144060030,,,,,,1,0,,Elektro Peyer AG,,,,
+partner_10139,no-message,,FALSE,Lauenenstrasse 48,false,Gstaad,mle,3780,,,base.ch,Swisslux AG,,contact,isp-gstaad@ispag.ch,TRUE,www.ispag.ch,de_DE,+41 33 7484850,,+41 33 7484848,10139,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_18,scenario.partner_category_6",,TRUE,3276,FALSE,slx_region_-2144060046,,,,,,1,0,,BKW ISP AG,,,,
+partner_10143,no-message,,FALSE,Elektrotechnische-Anlagen GmbH,false,Winterthur,rhu,8406,,,base.ch,Swisslux AG,,contact,info@elprojekt.ch,TRUE,www.elprojekt.ch,de_DE,+41 52 2225810,Steigstrasse 26,+41 52 2225822,10143,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8520,TRUE,slx_region_-2144059995,,,,,,,0,,Elprojekt,,,,
+partner_10148,no-message,,FALSE,Fabrikstrasse 6a,false,Utzenstorf,mle,3427,,,base.ch,Swisslux AG,,contact,info@ispag.ch,TRUE,,de_DE,+41 32 6664220,,+41 32 6664210,10148,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_18,scenario.partner_category_6",,TRUE,4228,FALSE,slx_region_-2144060047,,,,,,,1,,BKW ISP AG,,,,
+partner_10149,no-message,,FALSE,Dällenbach 196,false,Gümmenen,mle,3205,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 31 751 39 48,,+41 31 751 01 48,10149,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_18,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060013,,,,,,,0,,BKW ISP AG,,,,
+partner_10154,no-message,,FALSE,Im Ifang 12,false,Effretikon,rhu,8307,,,base.ch,Swisslux AG,,contact,bundrag@bluewin.ch,TRUE,,de_DE,+41 52 3434170,,+41 52 3553515,10154,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8361,FALSE,slx_region_-2144060038,,,,,,1,0,,Berlinghoff & Rast AG,,,,
+partner_10161,no-message,,FALSE,Grundeystrasse 42,false,Innertkirchen,mle,3862,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 33 9712090,,+41 33 9712076,10161,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_18,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060046,,,,,,,0,,BKW ISP AG,,,,
+partner_10172,no-message,,FALSE,Funtenenstrasse 1,false,Meiringen,mle,3860,,,base.ch,Swisslux AG,,contact,info@egger-enertech.ch,TRUE,www.egger-enertech.ch,de_DE,+41 33 972 54 58,,+41 33 972 54 54,10172,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,3172,FALSE,slx_region_-2144060046,282,3860,,,,1,0,,Egger Enertech AG,,,,
+partner_10177,no-message,,FALSE,Bertiswilstrasse 26,false,Rothenburg,dla,6023,,,base.ch,Swisslux AG,,contact,elektro@weibel-sommer.ch,TRUE,www.weibel-sommer.ch,de_DE,+41 41 2891009,,+41 41 2891000,10177,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_23,scenario.partner_category_6",,TRUE,6258,FALSE,slx_region_-2144060042,,,,,,1,0,,Weibel + Sommer Elektro Telecom AG,,,,
+partner_10178,no-message,,FALSE,Säntisstrasse 10,false,Dietlikon,rhu,8305,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 44 8058085,,+41 44 8058080,10178,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8241,FALSE,slx_region_-2144060038,,,,,,,0,,Elektro Lang,,,,
+partner_10180,no-message,,FALSE,Landstrasse 66,false,Wettingen,rhu,5430,,,base.ch,Swisslux AG,,contact,wettingen@elinag-elektro.ch,TRUE,,de_DE,+41 56 4265328,,+41 56 4262626,10180,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,,,TRUE,5084,FALSE,slx_region_-2144060050,,,,,,,0,,ELINAG,,,,
+partner_10181,no-message,,FALSE,Hardstrasse 77,false,Neuenhof,rhu,5432,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 56 4062017,,+41 56 4061617,10181,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,5200,FALSE,slx_region_-2144060050,,,,,,,1,,ELINAG,,,,
+partner_10182,no-message,,FALSE,Service de l'énergie,false,Genève,mse,1204,,,base.ch,Swisslux AG,,contact,ene@ville-ge.ch,TRUE,www.ville-geneve.ch,fr_FR,+41 22 418 58 51,Rue du Tir 3,+41 22 418 58 50,10182,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_10,,FALSE,0,FALSE,slx_region_-2144060041,,,,,,1,0,,Ville de Genève,,,,ST6
+partner_10186,no-message,,FALSE,Industriestrasse 19 - 21,false,Otelfingen,rhu,8112,,,base.ch,Swisslux AG,,contact,info@kmiag.ch,TRUE,,de_DE,+41 44 8847255,,+41 44 8447258,10186,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2144059992,,,,,,1,1,,K + M Installationen AG,,,,
+partner_10191,no-message,,FALSE,Hauptstrasse 67,false,Niedergösgen,mle,5013,,,base.ch,Swisslux AG,,contact,vonarx@elektroag.ch,TRUE,,de_DE,+41 62 8493865,,+41 62 8491919,10191,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2144060050,,,,,,1,0,,Elektro von Arx,,,,
+partner_10195,warning,"Geh\'f6rt der Etavis-Gruppe
+
+Auftragsrabatte: 20 % +
+ab Fr. \tab 2'000\tab 1 %
+ab Fr. \tab 5'000 \tab 2 %
+ab Fr. \tab 10'000 \tab 3 %
+ab Fr. \tab 20'000 \tab 4 %
+ab Fr. \tab 30'000\tab 5 %
+ab Fr. \tab 40'000\tab 6 %
+ab Fr. \tab 50'000\tab 7 %\lang1031
+\f1
+Nur Lieferadresse! Rechnungsadresse immer Hauptsitz
+
+Rechnungsadresse=ETAVIS Beutler AG, Burgdorf (13207)
+",FALSE,Rüegsaustrasse 2,false,Hasle-Rüegsau,mle,3415,,,base.ch,Swisslux AG,,contact,h-r@etavis.ch,TRUE,www.etavis.ch,de_DE,+41 34 460 11 15,,+41 34 460 11 11,10195,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn45d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_15,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060047,,,,branch,,1,0,,ETAVIS Beutler AG,,,,
+partner_10207,warning,"
+EM verrechnen
+ 
+ Achtung spez. Konditionen wie Burkhalter f\'fcr ARGE Elektro Hotel Carlton , St. Moritz, 28% + 20%
+
+
+
+
+",FALSE,Via Mezdi 2,false,St. Moritz,mka,7500,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 81 8373230,,+41 81 8373232,10207,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,7028,FALSE,slx_region_-2144060040,,,,,,,0,,Pomatti AG,,,,
+partner_10213,warning,"
+Alle Direktbestellungen durch Atel-Filialen m\'fcssen nach R\'fccksprache mit einem Grossisten derer Wahl abgewickelt werden. Gem. Vereinbarung zwischen PGL und Hrn. Baumann, Atel St. Gallen vom 06.05.04
+
+
+
+
+",FALSE,Bernstrasse 41,false,Rothrist,mle,4852,,,base.ch,Swisslux AG,,contact,info.rothrist@alpiq.com,TRUE,www.alpiq-intec.ch,de_DE,,,+41 62 7852211,10213,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_16,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060005,,,,,,,0,,Alpiq InTec West AG,,,,ST6
+partner_10223,no-message,,FALSE,Oberbergweg 10,false,Brienz,mle,3855,,,base.ch,Swisslux AG,,contact,info@elektro-bachmann.ch,TRUE,,de_DE,+41 33 9511502,,+41 33 9511586,10223,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,3800,FALSE,slx_region_-2144060046,,,,,,1,0,,Elektro Bachmann AG,,,,
+partner_10224,warning,"Geb\'e4udeleittechnik
+
+
+
+
+
+",FALSE,Elektrische Unternehmungen,false,Weinfelden,mka,8570,,,base.ch,Swisslux AG,,contact,info@elhag.ch,TRUE,www.elhag.ch,de_DE,+41 71 626 56 59,Amriswilerstrasse 155,+41 71 626 56 56,10224,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2142967384,,,,,,1,1,,Ellenbroek Hugentobler AG,,,,
+partner_10226,no-message,,FALSE,Chilerai 10,false,Wangen ZH,rhu,8602,,,base.ch,Swisslux AG,,contact,elektrofischer@swissonline.ch,TRUE,,de_DE,+41 44 8212007,,+41 44 8881595,10226,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2144060038,,,,,,,0,,Elektro Fischer,,,,
+partner_10231,no-message,,FALSE,Geschäftsstelle Ebikon,false,Ebikon,dla,6030,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 41 442 03 71,Schlösslistrasse 8,+41 41 442 03 70,10231,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,6022,FALSE,slx_region_-2144060049,1151,6031,,,,,0,,CKW Conex AG / Luzern,,,,
+partner_10232,no-message,,FALSE,Licht + Design,false,Zürich,dla,8006,,,base.ch,Swisslux AG,,contact,info@staehlin-ag.ch,TRUE,www.staehlin-ag.ch,de_DE,+41 44 362 66 20,Bolleystrasse 1,+41 44 362 66 77,10232,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8281,FALSE,slx_region_-2144060003,,,,,,,1,,Elektro-Stählin AG,,,,
+partner_10243,no-message,,FALSE,Elektro + Telcom,false,Wollerau,dla,8832,,,base.ch,Swisslux AG,,contact,info@hiestand-elektro.ch,TRUE,,de_DE,+41 44 787 30 21,Hänggiwiesstrasse 3,+41 44 787 30 20,10243,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8069,FALSE,slx_region_-2144060006,324,8832,,,,1,0,,Max Hiestand  AG,,,,
+partner_10245,no-message,,FALSE,Mühlemattstrasse 25,false,Oberwil BL,rhu,4104,,,base.ch,Swisslux AG,,contact,info@elektro-gutzwiller.ch,TRUE,,de_DE,+41 61 4061007,,+41 61 4061010,10245,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn30d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_19,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060030,315,4104,,headquarter,,1,0,,Elektro Gutzwiller AG,,,,
+partner_10248,warning,"
+Bei Retouren \'fcberpr\'fcfen, ob Ger\'e4te aus Deutschland kommen!
+
+
+
+
+",FALSE,Wilerstrasse  75,false,Gossau SG,mka,9200,,,base.ch,Swisslux AG,,contact,office-go@hubermonsch.ch,TRUE,www.hubermonsch.ch,de_DE,+41 71 388 77 88,,+41 71 388 77 66,10248,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_30,scenario.partner_category_6",,TRUE,9212,FALSE,slx_region_-2142967379,,,,,,1,0,,Huber + Monsch AG,,,,
+partner_10249,no-message,,FALSE,Krebsriedgasse 18,false,Altdorf UR,dla,6460,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 41 871 00 73,,+41 41 870 73 00,10249,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_10,,FALSE,0,FALSE,slx_region_-2142967387,,,,,,,0,,Elektro-Planung R. Mettler AG,,,,
+partner_10254,no-message,,FALSE,Bahnhofstrasse 23,false,Wangs,mka,7323,,,base.ch,Swisslux AG,,contact,elektropizol@elektro-pizol.ch,TRUE,www.elektro-pizol.ch,de_DE,+41 81 7236792,,+41 81 7237766,10254,true,Europe/Zurich,true,50000,,TRUE,none,scenario.account_payment_term_60dn30d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_19,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2142967386,,,,,,,1,,Elektro Pizol AG,,,,
+partner_10255,no-message,,FALSE,Poststrasse 2,false,Bassersdorf,rhu,8303,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 44 836 48 06,,+41 44 836 48 49,10255,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8321,FALSE,slx_region_-2144060038,,8303,,,,,0,,Elektro Neuhaus AG,,,,
+partner_10258,no-message,,FALSE,Spinnereistrasse 29,false,Rapperswil SG,rhu,8640,,,base.ch,Swisslux AG,,contact,rapperswil@bernauer.ch,TRUE,,de_DE,+41 55 2208021,,0844 80 50 50,10258,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060016,,,,,,1,0,,Bernauer AG,,,,
+partner_10260,warning,"
+Achtung Lieferadresse : Obergrundstrasse 98
+                                      6005 Luzern
+
+
+
+
+",FALSE,Hirschengraben 33,false,Luzern,dla,6002,,,base.ch,Swisslux AG,,contact,info@ckwconex.ch,TRUE,ckwconex.ch,de_DE,+41 41 249 54 22,,+41 41 249 54 11,10260,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,6256,FALSE,slx_region_-2144060049,,6000,Luzern,,,1,1,,CKW Conex AG Hauptsitz,,,,
+partner_10265,no-message,,FALSE,Chemin de la Zyma 2,false,Prangins,mse,1197,,,base.ch,Swisslux AG,,contact,,TRUE,,fr_FR,+41 22 9943390,,+41 22 9943399,10265,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,1260,FALSE,slx_region_-2144060037,96,,,,,,0,,KM-DUC Electricité SA,,,,ST1
+partner_10266,no-message,,FALSE,Bahnhofstrasse 3,false,Fehraltorf,rhu,8320,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,,,+41 43 3773322,10266,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2144060038,,,,,,,0,,Corrodi + Keller AG,,,,
+partner_10272,no-message,,FALSE,Elektro + Telekommunikation,false,Olten,mle,4600,,,base.ch,Swisslux AG,,contact,kaeser@bako.ch,TRUE,,de_DE,+41 62 2056070,Gheidgraben 4,+41 62 2056060,10272,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_17,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060005,,4603,,,,1,0,,Käser AG,,,,
+partner_10273,no-message,,FALSE,Elektro + Telekommunikation,false,Rheinfelden,rhu,4310,,,base.ch,Swisslux AG,,contact,ruther@bako.ch,TRUE,www.ruther.ch,de_DE,+41 61 8369967,Magdenerstrasse 2,+41 61 8369966,10273,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_17,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060030,,4310,,,,1,0,,Ruther AG,,,,
+partner_10281,no-message,,FALSE,Alpenblickstrasse 2,false,Uster,rhu,8610,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 43 333 20 21,,+41 43 333 20 20,10281,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8612,FALSE,slx_region_-2144060038,,,,,,,0,,CW Elektro Windmeier GmbH,,,,
+partner_10283,warning,"
+Zahlungen kontrollieren
+
+
+
+
+",FALSE,Altmannsteinstrasse 39,false,Höri,rhu,8181,,,base.ch,Swisslux AG,,contact,info@goetz-elektro.ch,TRUE,,de_DE,+41 44 864 82 80,,+41 44 864 82 82,10283,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2144059992,,,,,,1,0,,Götz Elektro AG,,,,
+partner_10287,no-message,,FALSE,Tössfeldstrasse 39,false,Winterthur,rhu,8406,,,base.ch,Swisslux AG,,contact,info@altermatt-elektroag.ch,TRUE,,de_DE,+41 52 2021065,,+41 52 2021043,10287,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8493,FALSE,slx_region_-2144059995,,,,,,1,0,,Altermatt Elektro AG,,,,
+partner_10288,warning,"Nur Rechnungsadresse! Nicht an die Adresse liefern!!
+
+
+
+
+",FALSE,Süesswinkel 7,false,Luzern,dla,6004,,,base.ch,Swisslux AG,,contact,,TRUE,www.freycie.ch,de_DE,+41 41 2282895,,+41 41 2282930,10288,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn10d2s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_23,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060049,2769,6002,,,,,0,,Frey + Cie Elektro AG,,,,
+partner_10292,no-message,,FALSE,Geschäftsstelle Willisau,false,Willisau,mle,6130,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 41 9710501,Menznauerstrasse 29 ,+41 41 9710500,10292,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,6272,FALSE,slx_region_-2144060042,,,,,,,0,,CKW Conex AG / Luzern,,,,
+partner_10293,no-message,,FALSE,Promenadenstrasse 22,false,Bad Zurzach,rhu,5330,,,base.ch,Swisslux AG,,contact,info@schweizer-partner.ch,TRUE,,de_DE,+41 56 265 00 01,,+41 56 265 00 00,10293,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,5330,FALSE,slx_region_-2144060050,,,,,,1,0,,Schweizer & Partner AG,,,,
+partner_10297,no-message,,FALSE,Zürcherstrasse 263,false,Frauenfeld,mka,8500,,,base.ch,Swisslux AG,,contact,info@elmueller.ch,TRUE,www.elmueller.ch,de_DE,+41 52 7221152,,+41 52 7221171,10297,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8227,FALSE,slx_region_-2142967384,,,,,,,0,,Elektrofachgeschäft Müller AG,,,,
+partner_10301,no-message,,FALSE,Dürntnerstrasse 3,false,Hinwil,rhu,8340,,,base.ch,Swisslux AG,,contact,deboni-elektro@bluewin.ch,TRUE,,de_DE,+41 44 9383830,,+41 44 9383838,10301,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8285,FALSE,slx_region_-2144060038,,,,,,1,1,,De Boni Elektro AG,,,,
+partner_10304,no-message,,FALSE,Schwerzistrasse 37,false,Freienbach,dla,8807,,,base.ch,Swisslux AG,,contact,marketing@ewh.ch,TRUE,www.ewh.ch,de_DE,+41 55 415 31 00,,+41 55 415 31 11,10304,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8029,FALSE,slx_region_-2144060006,447,8807,,,,,1,,EW Höfe AG,,,,
+partner_10305,no-message,,FALSE,Zugerstrasse 56,false,Horgen,dla,8810,,,base.ch,Swisslux AG,,contact,info@elektro-zuerichsee.ch,TRUE,www.elektro-zuerichsee.ch,de_DE,+41 44 725 50 83,,+41 44 725 50 82,10305,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_60dn30d3s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_19,scenario.partner_category_6",,TRUE,8813,TRUE,slx_region_-2144060016,,,,,,1,0,,Elektro Zürichsee AG,,,,
+partner_10310,no-message,,FALSE,Installationen u. Reparaturen,false,Ostermundigen 1,mle,3072,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 31 9322917,,+41 31 9311414,10310,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2144060013,,3072,,,,,0,,Badertscher + Co AG,,,,
+partner_10313,no-message,,FALSE,Hohlstrasse 345,false,Zürich,dla,8004,,,base.ch,Swisslux AG,,contact,bieri.elektro@bluewin.ch,TRUE,,de_DE,+41 44 4010406,,+41 44 4010311,10313,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2144060003,,,,,,,0,,Bieri Elektro-Anlagen AG,,,,
+partner_10327,warning,"Achtung: Rechnungsadresse 17563
+",FALSE,Bahnhofstrasse 8,false,Sissach,rhu,4450,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 61 9769099,,+41 61 9769090,10327,false,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_16,scenario.partner_category_6",,TRUE,4065,TRUE,slx_region_-2144060030,,,,branch,,,1,,Schwarz + Partner AG *Filiale gestrichen!*,,,,
+partner_10328,warning,"Auskunft Zahlungen: 041 210 52 52
+Keine Lieferungen unter Bestellwert CHF 200 ausl\'f6sen !!! oder bei Bedarf einfach einen PD3 AP  dazulegen !!!!!
+
+
+
+
+",FALSE,Zugerstrasse 9,false,Ebikon,dla,6030,,,base.ch,Swisslux AG,,contact,info@telpro.ch,TRUE,,de_DE,+41 41 445 70 69,,+41 41 445 70 60,10328,true,Europe/Zurich,true,10000,,TRUE,none,scenario.account_payment_term_60dn30d3s,1100,2000,stock.stock_location_suppliers,scenario.partner_category_4,,FALSE,0,FALSE,slx_region_-2144060049,1525,6031,,,,,0,,TELPRO AG,,,,
+partner_10331,no-message,,FALSE,Junkergasse 10,false,Höri,rhu,8181,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 44 8623133,,+41 44 8623131,10331,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2144059992,,,,,,,1,,Support Elektro Stefan Schmid,,,,
+partner_10342,warning,"
+{\rtf1\deff0\nouicompat\splytwnine\htmautsp\plain\ql\f1\fs20\cf1\plain\ql
+
+
+
+",FALSE,Blutzwis 9,false,Kindhausen,rhu,8604,,,base.ch,Swisslux AG,,contact,info@elektrorichi.ch,TRUE,www.elektrorichi.ch,de_DE,+41 44 9974748,,+41 44 9974747,10342,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2144060038,,,,,,1,0,,Elektro Richi,,,,
+partner_10343,no-message,,FALSE,Wengelacher 1,false,Matten b. Interlaken,mle,3800,,,base.ch,Swisslux AG,,contact,info@frey-interlaken.ch,TRUE,,de_DE,+41 33 8210335,,+41 33 8210330,10343,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn10d2s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_23,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060046,,,,,,,1,,Frey + Cie Elektro AG,,,,
+partner_10354,warning,"Nur Lieferadresse, Rechnung mit Kunde Nr. 133692 verrechnen!
+",FALSE,Eltop,false,Russikon,rhu,8332,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 58 3594819,Kirchgasse 3,+41 58 3594810,10354,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn10d2s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_21,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060038,30,8332,,,,,1,,Elektrizitätswerke des Kt. Zürich,,,,ST7
+partner_10364,warning,"
+Nur Lieferadresse, Rechnung mit Kunde Nr. 133692 verrechnen!\lang1031\f1\fs16
+
+
+
+
+",FALSE,Eltop Installationsgruppe Ost,false,Wetzikon ZH,rhu,8623,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+ 41 58 359 74 80,Stationsstrasse 15,+ 41 58 359 71 11,10364,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn10d2s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_21,scenario.partner_category_30,scenario.partner_category_6",,FALSE,0,FALSE,slx_region_-2144060038,781,8623,,,,,1,,Elektrizitätswerke des Kt. Zürich,,,,
+partner_10365,warning,"Bahnhofstrasse 5 = Nur RG Adresse!!!
+*******************************
+Lieferadresse: Werkstrasse 1
+************************
+",FALSE,Bahnhofstrasse 5,false,Walenstadt,mka,8880,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,+41 81 736 41 80,,+41 81 736 41 41,10365,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2142967382,158,8880,,,,,1,,Elektrizitäts- und Wasserwerk,,,,
+partner_10366,no-message,,FALSE,Albisriederstr. 281,false,Zürich,dla,8047,,,base.ch,Swisslux AG,,contact,elektro@ruckstuhlag.ch,TRUE,,de_DE,,,+41 44 4930000,10366,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8314,FALSE,slx_region_-2144060003,,,,,,0,0,,Ruckstuhl Elektro AG,,,,
+partner_10369,no-message,,FALSE,Ebni 482,false,Grub AR,mka,9035,,,base.ch,Swisslux AG,,contact,info@elektrohochreutener.ch,TRUE,,de_DE,+41 71 891 22 75,,+41 71 891 22 20,10369,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,FALSE,0,FALSE,slx_region_-2142967379,,,,,,1,0,,Hochreutener Elektro AG,,,,
+partner_10370,no-message,,FALSE,Rietstrasse 38,false,Zollikon,rhu,8702,,,base.ch,Swisslux AG,,contact,info@be-electric.ch,TRUE,www.be-electric.ch,de_DE,+41 44 387 10 38,,+41 44 387 10 30,10370,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8278,FALSE,slx_region_-2144060016,,,,,,1,1,,BE electric AG,,,,

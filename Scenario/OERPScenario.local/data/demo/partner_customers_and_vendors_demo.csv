@@ -1,0 +1,58 @@
+id,sale_warn,sale_warn_msg,use_parent_address,street,supplier,city,user_id,zip,title,function,country_id/id,company_id,parent_id/id,type,email,is_company,website,lang,fax,street2,phone,ref,active,tz,customer,credit_limit,mobile,opt_out,notify_email,property_payment_term_id/id,property_supplier_payment_term_id/id,property_account_receivable_id,property_account_payable_id,property_stock_supplier/id,category_id/id,name2,eev_member,eev_number,eev_alarm,region_id/id,pobox_nr,pobox_zip,pobox_city,companytype,headquarter_id/id,mailing_email,mailing,department,lastname,firstname,partner_invoicing_id/id,influence,partner_state
+partner_10367,warning,"
+Nur Lieferadresse, Rechnung mit Kunde Nr. 133692 verrechnen!\lang1031\f1
+
+
+
+
+",FALSE,Dreikönigsstrasse 18,true,Zürich,dla,8022,,,base.ch,Swisslux AG,,contact,info@ekz.ch,TRUE,,de_DE,,,+41 58 3595111,10367,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn10d2s,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_10,scenario.partner_category_21,scenario.partner_category_6",,FALSE,,FALSE,slx_region_-2144060003,2254,8022,,,,,1,,Elektrizitätswerke des Kt. Zürich,,,,
+partner_10425,warning,"{\rtf1\deff0\nouicompat\splytwnine\htmautsp\plain\ql\f1\fs17\cf1\plain\ql\f1\fs17\cf1\plain\ql{\lang2055\langfe2055\f1\fs17Shop-LogAchtung: bei Gutschriften jeweils Skonto-Abzug manuell vornehmen !!!
+
+
+
+",FALSE,Heinrichstrasse 200,true,Zürich,dla,8005,,,base.ch,Swisslux AG,,contact,em-zh@elektro-material.ch,TRUE,www.elektro-material.ch,de_DE,+41 44 278 12 91,,+41 44 278 11 11,10425,true,Europe/Zurich,true,300000,+41 44 2781241,TRUE,none,scenario.account_payment_term_60dn30d3s,scenario.account_payment_term_60dn30d2s,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_22,scenario.partner_category_5",,FALSE,,FALSE,slx_region_-2144060003,,8031,,,,1,0,,Elektro-Material AG,,,,
+partner_12851,no-message,,FALSE,Werkstrasse 7,true,Grüningen,rhu,8627,,,base.ch,Swisslux AG,,contact,elektro@kunzag.ch,TRUE,,de_DE,+41 44 9354030,,+41 44 9352442,12851,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_eev,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_6,,TRUE,8627,FALSE,slx_region_-2144060038,,,,,,1,1,,Edwin Kunz AG,,,,
+partner_13025,warning,{\rtf1\deff0\nouicompat\splytwnine\htmautsp\plain\ql{\field{\fldrslt{\lang2055\langfe2055\u,FALSE,Bernstrasse 89,true,Dietikon 2,rhu,8953,,,base.ch,Swisslux AG,,contact,,TRUE,,de_DE,,,+41 44 743 43 43,13025,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_2,,FALSE,,FALSE,slx_region_-2144060021,,8953,,,,,0,,Confiserie Sprüngli AG,,,,
+partner_131559,warning,{\rtf1\deff0\nouicompat\splytwnine\htmautsp\plain\ql{\lang2055\,FALSE,Brandstrasse 33,true,Schlieren,rhu,8952,,,base.ch,Swisslux AG,,contact,salesorders@digitalstrom.com,TRUE,,de_DE,+41 44 445 99 01,,+41 44 445 99 00,131559,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_11,,FALSE,,FALSE,slx_region_-2144060021,,,,,,,0,,digitalSTROM AG,,,,
+partner_132379,no-message,,FALSE,Industriestr. 19,true,Bergdietikon,rhu,8962,,,base.ch,Swisslux AG,,contact,,TRUE,www.tesa.ch/www.tesa.com,de_DE,+41 44 7412672,,+41 44 7443111,132379,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_2,,FALSE,,FALSE,slx_region_-2144060021,,,,,,,0,,Tesa Tape Schweiz AG,,,,
+partner_132486,no-message,,FALSE,Wilerstrasse 73,true,Gossau SG,mka,9200,,,base.ch,Swisslux AG,,contact,info@astra-led.ch,TRUE,www.astra-led.ch,de_DE,,,+41 71 388 30 20,132486,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_8,,FALSE,,FALSE,slx_region_-2142967379,,,,,,1,0,,Astra LED GmbH,,,,
+partner_132497,no-message,,FALSE,Asylstrasse 24,true,Uster,rhu,8610,,,base.ch,Swisslux AG,,contact,,TRUE,www.wagerenhof.ch,de_DE,,,+41 44 9051311,132497,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,,,FALSE,,FALSE,slx_region_-2144060038,,,,,,,0,,Stiftung Wagerenhof,,,,
+partner_132503,no-message,,FALSE,(vorm. OpenERP SA),true,Grand-Rosière,,1367,,,base.be,Swisslux AG,,contact,,TRUE,www.openerp.com/,fr_FR,,"Chaussée de Namur, 40",+32 81 813700,132503,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,,1100,2000,stock.stock_location_suppliers,,,FALSE,,FALSE,slx_region_-2143786434,,,,,,,0,,Odoo SA,,,,
+partner_133459,no-message,,FALSE,Wilerstrasse 73,true,Gossau SG,mka,9200,,,base.ch,Swisslux AG,,contact,kontakt@hsi-ag.ch,TRUE,www.hsi-ag.ch,de_DE,,,+41 71 845 65 65,133459,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,,,FALSE,,FALSE,slx_region_-2142967386,,,,,,,0,,HSi Elektronik AG,,,,
+partner_133639,no-message,,FALSE,Selnaustrasse 32,true,Zürich,,8022,,,base.ch,Swisslux AG,,contact,beglaubigung@zhk.ch,TRUE,,de_DE,,,+41 44 217 40 40,133639,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,,,FALSE,,FALSE,,,,,,,,0,,Zürcher Handelskammer,,,,
+partner_13650,no-message,,FALSE,Obere Allmeind 2,true,Ennenda,mka,8755,,,base.ch,Swisslux AG,,contact,vertrieb.schweiz@tridonic.com,TRUE,www.tridonicatco.ch,de_DE,+41 55 645 47 40,,+41 55 645 47 47,13650,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_4,,FALSE,,FALSE,slx_region_-2142967382,,,,,,,0,,Tridonic AG,,,,
+partner_13698,warning,"
+Leuchtenhersteller 25% auf Netto bei Selbereinbau
+
+ACHTUNG Zahlungen pr\'fcfen!\f1\fs17
+
+
+
+
+",FALSE,St. Gallerstrasse 49,true,Herisau,mka,9100,,,base.ch,Swisslux AG,,contact,,TRUE,www.fluora.ch,de_DE,+41 71 353 07 07,,+41 71 353 06 06,13698,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,scenario.partner_category_8,,FALSE,,FALSE,slx_region_-2142967379,224,9101,,,,,0,,Fluora Leuchten AG,,,,
+partner_90000,warning,"UPS Sendung nach HW Kundennr: WW6849
+
+
+
+
+
+",FALSE,40 Shek Pai Wan Road,true,Hong Kong,rgl,Aberdeen,,,base.cn,Swisslux AG,,contact,hugewin@netvigator.com,TRUE,,en_US,+852 28141914,,+852 28730305,90000,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,scenario.account_payment_term_00dnvz,1100,2000,stock.stock_location_suppliers,,,FALSE,,FALSE,slx_region_-2143786434,,,,,,1,0,,Huge Win Company Limited,,,,
+partner_90001,warning,"{\rtf1\ansi\ansicpg1252\deff0\deflang2055
+\viewkind4\uc1\f0\fs20
+
+
+
+
+",FALSE,Gerberstrasse 33,true,Lindlar,,51789,,,base.de,Swisslux AG,,contact,info@beg.de,TRUE,www.beg-luxomat.com,de_DE,+49 2266 90121510,,+49 2266 901210,90001,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,,1100,2000,stock.stock_location_suppliers,,,FALSE,,FALSE,slx_region_-2143786434,,,,,,,0,,B.E.G. Brück Electronic GmbH,,,,
+partner_90029,warning,"
+Achtung: Minimum Halogenlampen ab 100 St\'fcck CHF 3.40 pro Artikel
+ Achtung: Minimum PL-Leuchtmittel 10 Stk. pro Artikel
+ 
+ Bestellwert ab Netto CHF 150.00 Porto frei!\f1\fs17 
+
+
+
+
+",FALSE,EM Elevite Lichtkompetenzzentrum,true,Spreitenbach,rhu,8957,,,base.ch,Swisslux AG,,contact,info@elevite.ch,TRUE,www.elevite.ch,de_DE,0800 60 70 80,Fegistrasse 9,+41 56 419 70 70,90029,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_60dn30d3s,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,"scenario.partner_category_22,scenario.partner_category_5",,FALSE,,FALSE,slx_region_-2144060021,,,,,,,0,,elevite AG,,,,
+partner_90160,no-message,,FALSE,Magdeburger Strasse 3,true,Rethen,rgl,30880,,,base.de,Swisslux AG,,contact,info@lcn.de,TRUE,www.lcn.de,de_DE,+49 5066 998899,,+49 5066 9980,90160,true,Europe/Zurich,true,0,,TRUE,none,scenario.account_payment_term_30dn,,1100,2000,stock.stock_location_suppliers,,,FALSE,,FALSE,slx_region_-2143786434,,,,,,,0,,ISSENDORFF Mikroelektronik GmbH,,,,
+partner_90423,no-message,,FALSE,,true,Giubiasco,sgi,6512,,,base.ch,Swisslux AG,,contact,info@elettroespo.ch,TRUE,www.elettroespo.ch,it_IT,+41 91 850 05 39,,+41 91 850 05 35,90423,true,Europe/Zurich,true,3000,,TRUE,none,scenario.account_payment_term_30dn,scenario.account_payment_term_30dn,1100,2000,stock.stock_location_suppliers,,,FALSE,,FALSE,slx_region_-2144060029,Casella postale 842,6500,,,,,0,,Elettroespo Sagl,,,,
