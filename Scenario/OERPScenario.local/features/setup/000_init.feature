@@ -113,6 +113,7 @@ Feature: Parameter the new database
         # community
         | account                               |
         | account_cancel                        |
+        | account_budget                        |
         | hr                                    |
         | hr_contract                           |
         | hr_expense                            |

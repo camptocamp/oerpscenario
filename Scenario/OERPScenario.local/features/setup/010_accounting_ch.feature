@@ -1,13 +1,7 @@
 # -*- coding: utf-8 -*-
-###############################################################################
-#
-#    OERPScenario, OpenERP Functional Tests
-#    Copyright 2015 Camptocamp SA
-#
-##############################################################################
 @swisslux @setup @accounting
 
-Feature: Configure CH accounting
+Feature: Configure accounting
 
   @currency
   Scenario: Configure company currency
@@ -21,34 +15,35 @@ Feature: Configure CH accounting
     Given I have the module account installed
     Then accounts should be available for company "Swisslux AG"
 
- @bank_account
-  Scenario: create account 1020 and 1021
-    Given I need an "account.account" with oid: scenario.account_1020
+  @banks_del
+  Scenario: Remove default Bank and Cash accounts
+    Given I find a "account.account" with name: Bank
+    And I delete it
+    Given I find a "account.account" with name: Cash
+    And I delete it
+
+  @journal_del
+  Scenario: Remove default Bank and Cash journals
+    Given I find a "account.journal" with name: Bank
+    And I delete it
+    Given I find a "account.journal" with name: Cash
+    And I delete it
+
+  @bank_account
+  Scenario Outline: Create account for Swisslux bank
+    Given I need a "account.account" with oid: <account_oid>
     And having:
-      | key          | value             |
-      | name         | 1020              |
-      | code         | 1020              |
-      | user_type_id | by name: Expenses |
-    Given I need an "account.account" with oid: scenario.account_1021
-    And having:
-      | key          | value             |
-      | name         | 1021              |
-      | code         | 1021              |
-      | user_type_id | by name: Expenses |
+      | key             | value                 |
+      | name            | <account_name>        |
+      | code            | <account_code>        |
+      | user_type_id    | by name: <user_type>  |
 
+    Examples: Bank Accounts
+      | account_oid             | account_name              | account_code  | user_type |
+      | scenario.account_1010   | CCP 84-001285-1           | 1010          | Expenses  |
+      | scenario.account_1020   | ZKB CH7400700115500086877 | 1020          | Expenses  |
+      | scenario.account_1021   | ZKB CH2300700115500179557 | 1021          | Expenses  |
 
-  #@fiscalyear_ch
-  #Scenario: create fiscal years
-    #Given I need a "account.fiscalyear" with oid: scenario.fy2015_ch
-    #And having:
-    #| name       | value                     |
-    #| name       | 2015                      |
-    #| code       | 2015                      |
-    #| date_start | 2015-01-01                |
-    #| date_stop  | 2015-12-31                |
-    #| company_id | by oid: base.main_company |
-
-      
   @banks
   Scenario: Set the CCP on the bank
     Given I find a "res.bank" with oid: l10n_ch_bank.bank_730_0000
@@ -72,23 +67,47 @@ Feature: Configure CH accounting
       | update_posted               | True                      |
     Given I need a "res.partner.bank" with oid: <bank_oid>
     And having:
-      | key                 | value                                 |
-      | journal_id          | by oid: <journal_oid>                 |
-      | partner_id          | by oid: base.main_partner             |
-      | bank_id             | by oid: l10n_ch_bank.bank_730_0000    |
-      | company_id          | by oid: base.main_company             |
-      | acc_number          | <iban>                                |
-      | bvr_adherent_num    | <bvr>                                 |
-      | print_bank          | True                                  |
-      | print_account       | True                                  |
-      | print_partner       | True                                  |
+      | key                 | value                     |
+      | journal_id          | by oid: <journal_oid>     |
+      | partner_id          | by oid: base.main_partner |
+      | bank_id             | by oid: <l10n_ch_bank_id> |
+      | company_id          | by oid: base.main_company |
+      | acc_number          | <account_nr>              |      
 
     Examples: Bank Accounts
-      | journal_oid             | journal_code | journal_name | currency | acc_code | bank_oid        | iban                       | bvr    |
-      | scenario.journal_ZKB1   | BNK1         | ZKB (ES)     | false    | 1020     | scenario.bank_1 | CH74 0070 0115 5000 8687 7 | 933421 |
-      | scenario.journal_ZKB2   | BNK2         | ZKB          | false    | 1021     | scenario.bank_2 | CH23 0070 0115 5001 7955 7 |        |
+      | journal_oid             | journal_code | journal_name | currency | acc_code | bank_oid        | l10n_ch_bank_id             | account_nr                 |
+      | scenario.journal_POCH   | POCH         | Postfinance  | false    | 1010     | scenario.bank_1 | l10n_ch_bank.bank_9000_0000 | 84-001285-1                |
+      | scenario.journal_ZKB1   | BNK1         | ZKB (ES)     | false    | 1020     | scenario.bank_2 | l10n_ch_bank.bank_730_0000  | CH74 0070 0115 5000 8687 7 |
+      | scenario.journal_ZKB2   | BNK2         | ZKB          | false    | 1021     | scenario.bank_3 | l10n_ch_bank.bank_730_0000  | CH23 0070 0115 5001 7955 7 |
+  
+  @banks
+  Scenario: configure BVR on the right bank
+    Given I find a "res.partner.bank" with oid: scenario.bank_2
+    And having:
+      | key                 | value     |
+      | bvr_adherent_num    | 933421    |
+      | print_bank          | True      |
+      | print_account       | True      |
+      | print_partner       | True      |
 
+  @journal
+  Scenario Outline: create new financial journal
+    Given I need a "account.journal" with oid: <journal_oid>
+    And having:
+      | key                         | value                     |
+      | name                        | <journal_name>            |
+      | code                        | <journal_code>            |
+      | type                        | <journal_type>            |
+      | company_id                  | by oid: base.main_company |
+      | currency_id                 | <currency>                |      
+      | update_posted               | True                      |
 
+    Examples: Financial Journals
+      | journal_oid             | journal_name  | journal_code  | journal_type  | currency |
+      | scenario.expense_journal| Expenses      | EXP           | purchase      | false    |
+      | scenario.wage_journal   | Wage          | WAGE          | purchase      | false    |
+     
+  
   @default_accounts
   Scenario Outline: Define default accounts via properties
     Given I set global property named "<name>" for model "<model>" and field "<name>" for company with ref "base.main_company"
