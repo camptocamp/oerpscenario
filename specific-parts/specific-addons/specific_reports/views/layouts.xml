@@ -4,7 +4,7 @@
     <template id="external_layout_header" inherit_id="report.external_layout_header">
       <xpath expr="//div[@class='header']" position="replace">
         <div class="header">
-          <div class="row mt0" t-att-style="'padding-top: 16px; width: 830px; background-size: 830px; background-repeat: no-repeat; background-image: url(''data:image/png;base64,%s'')' % company.report_logo">
+          <div class="row mt0" t-att-style="'padding-top: 16px; width: 930px; background-size: 930px; background-repeat: no-repeat; background-image: url(''data:image/png;base64,%s'')' % company.report_logo">
             <div class="col-xs-2">
             </div>
             <div class="col-xs-8" style="padding-left: 30px;">
