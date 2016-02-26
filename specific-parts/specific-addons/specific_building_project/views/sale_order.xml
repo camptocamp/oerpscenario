@@ -8,6 +8,7 @@
     <field name="arch" type="xml">
       <xpath expr="//field[@name='project_id']" position="after">
         <field name="project_pricelist_id"/>
+        <field name="statistics_include" attrs="{'invisible': [('project_id', '=', False)]}"/>
       </xpath>
 
       <field name="amount_untaxed" position="before">
@@ -16,6 +17,17 @@
             states="draft,sent" string="(update prices by applying pricelist)" type="object" class="oe_right oe_link oe_edit_only"/>
       </field>
 
+    </field>
+  </record>
+
+  <record id="view_order_tree" model="ir.ui.view">
+    <field name="name">sale.order.tree</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_tree"/>
+    <field name="arch" type="xml">
+      <field name="invoice_status" position="after">
+        <field name="statistics_include" invisible="context.get('show_statistics_include')"/>
+      </field>
     </field>
   </record>
 
