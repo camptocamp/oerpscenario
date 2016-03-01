@@ -123,6 +123,7 @@ Feature: Parameter the new database
         | hr_timesheet_sheet                    |
         | l10n_ch                               |
         | mrp                                   |
+        | mrp_byproduct                         |
         | purchase                              |
         | project                               |
         | project_issue                         |
