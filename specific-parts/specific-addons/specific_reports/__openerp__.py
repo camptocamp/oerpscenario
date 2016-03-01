@@ -21,8 +21,8 @@
 {'name': 'Swisslux Reports Customization',
  'summary': 'Layouts',
  'version': '1.0',
- 'author': 'Camptocamp SA',
- 'maintainer': 'Camptocamp SA',
+ 'author': 'Camptocamp',
+ 'maintainer': 'Camptocamp',
  'category': 'Reports',
  'complexity': "normal",  # easy, normal, expert
  'depends': ['base',
