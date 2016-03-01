@@ -2,7 +2,7 @@
 #
 #
 #    Author: Yannick Vaucher
-#    Copyright 2015 Camptocamp SA
+#    Copyright 2016 Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -18,11 +18,11 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #
-{'name': 'Swisslux Report Customisation',
+{'name': 'Swisslux Reports Customization',
  'summary': 'Layouts',
  'version': '1.0',
- 'author': 'Camptocamp',
- 'maintainer': 'Camptocamp',
+ 'author': 'Camptocamp SA',
+ 'maintainer': 'Camptocamp SA',
  'category': 'Reports',
  'complexity': "normal",  # easy, normal, expert
  'depends': ['base',
