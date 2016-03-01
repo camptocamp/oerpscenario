@@ -3,8 +3,8 @@
 # © 2016 Yannick Vaucher (Camptocamp)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {'name': 'Specific - Partner',
- 'version': '9.0.1.0',
- 'author': 'Camptocamp SA',
+ 'version': '1.0',
+ 'author': 'Camptocamp',
  'license': 'AGPL-3',
  'category': 'Swisslux Modules',
  'website': 'http://www.swisslux.ch',
