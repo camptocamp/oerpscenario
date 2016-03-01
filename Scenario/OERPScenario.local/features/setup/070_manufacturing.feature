@@ -3,6 +3,6 @@
 
 Feature: Configure manufacturing
 
-  @settings
+  @routings
   Scenario: Configure general settings
     Given I set "Routings" to "Manage production by work orders" in "Manufacturing" settings menu    
