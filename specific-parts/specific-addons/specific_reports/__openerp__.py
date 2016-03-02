@@ -20,7 +20,7 @@
 #
 {'name': 'Swisslux Reports Customization',
  'summary': 'Layouts',
- 'version': '1.0',
+ 'version': '9.0.1.0.0',
  'author': 'Camptocamp',
  'maintainer': 'Camptocamp',
  'category': 'Reports',

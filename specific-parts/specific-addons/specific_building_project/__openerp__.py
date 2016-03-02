@@ -4,7 +4,7 @@
 {
     "name": "Building project ",
     "summary": "New type of analytic account",
-    "version": "1.0",
+    "version": "9.0.1.0.0",
     "category": "Swisslux Modules",
     "website": "https://odoo-community.org/",
     "author": "Camptocamp",
