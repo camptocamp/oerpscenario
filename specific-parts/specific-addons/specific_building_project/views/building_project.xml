@@ -47,16 +47,13 @@
           <div name="project"/>
           <group name="main">
             <group>
-              <field name="partner_id"/>
-              <field name="user_id"/>
-			  <field name="date_start" />
+              <field name="code" />
+              <field name="user_id" />
+			  <field name="building_project_tag_ids" widget="many2many_tags"/>
             </group>
             <group>
-              <field name="code"/>
-			  <field name="building_project_tag_ids" widget="many2many_tags"/>
-              <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
-              <field name="currency_id" groups="base.group_multi_company"/>
-			  <field name="date_end" />
+              <field name="date_start" />
+              <field name="date_end" />
             </group>
           </group>
           <notebook colspan="4">
