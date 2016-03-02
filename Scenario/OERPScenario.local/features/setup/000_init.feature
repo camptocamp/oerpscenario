@@ -114,6 +114,7 @@ Feature: Parameter the new database
         | account                               |
         | account_cancel                        |
         | account_budget                        |
+        | account_extra_reports                 |
         | hr                                    |
         | hr_contract                           |
         | hr_expense                            |
