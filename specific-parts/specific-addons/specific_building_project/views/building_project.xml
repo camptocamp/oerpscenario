@@ -49,12 +49,14 @@
             <group>
               <field name="partner_id"/>
               <field name="user_id"/>
+			  <field name="date_start" />
             </group>
             <group>
               <field name="code"/>
               <field name="tag_ids" widget="many2many_tags"/>
               <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
               <field name="currency_id" groups="base.group_multi_company"/>
+			  <field name="date" />
             </group>
           </group>
           <notebook colspan="4">
