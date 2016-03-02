@@ -22,3 +22,7 @@ Feature: Import demo data
   @demo_product
   Scenario: import some products
     Given "product.product" is imported from CSV "demo/product_demo.csv" using delimiter ","
+    
+  @demo_bauprojekt
+  Scenario: import some bauprojekt
+    Given "building.project" is imported from CSV "demo/bauprojekt_demo.csv" using delimiter ","
