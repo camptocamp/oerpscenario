@@ -29,7 +29,7 @@ class BuildingProject(models.Model):
         domain=['|', '|', ('architect', '=', True), ('engineer', '=', True),
                 ('electrician', '=', True)],
         copy=False,
-        help="Envolved partners (Architect, Ingineer, Electrician)"
+        help="Envolved partners (Architect, Engineer, Electrician)"
     )
 
     build_state = fields.Selection(
