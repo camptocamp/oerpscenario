@@ -20,6 +20,14 @@
             states="draft,sent" string="(update prices by applying pricelist)" type="object" class="oe_right oe_link oe_edit_only"/>
       </field>
 
+      <xpath expr="//field[@name='order_line']/form//field[@name='price_unit']" position="attributes">
+        <attribute name="readonly">True</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="attributes">
+        <attribute name="readonly">True</attribute>
+      </xpath>
+
     </field>
   </record>
 
