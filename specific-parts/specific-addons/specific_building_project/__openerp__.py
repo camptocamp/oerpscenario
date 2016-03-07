@@ -19,6 +19,7 @@
         "analytic",
         "crm",
         "sale",
+        "sale_crm",
     ],
     "data": [
         "views/calendar_event.xml",

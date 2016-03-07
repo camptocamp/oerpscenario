@@ -12,6 +12,13 @@ class CRMLead(models.Model):
         string="Building Project",
     )
 
+    # field to set default project_id on new quotations
+    project_id = fields.Many2one(
+        comodel_name='account.analytic.account',
+        related='building_project_id.analytic_account_id',
+        string="Building Project's analytic account",
+    )
+
     # XXX on create and write, if building_project_id is defined, add the
     # partner of the opportunity to the building_project
     @api.model
