@@ -49,7 +49,7 @@
             <group>
               <field name="code" />
               <field name="user_id" />
-			  <field name="building_project_tag_ids" widget="many2many_tags"/>
+              <field name="building_project_tag_ids" widget="many2many_tags"/>
             </group>
             <group>
               <field name="date_start" />
