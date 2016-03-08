@@ -6,4 +6,4 @@
 Building Project
 ================
 
-This module define a Bau Project for Swisslux
+This module define a "Bauprojekt" for Swisslux

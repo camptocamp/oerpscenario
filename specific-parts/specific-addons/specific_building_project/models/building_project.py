@@ -13,8 +13,8 @@ class BuildingProject(models.Model):
     date_start = fields.Date(
         'Start Date'
     )
-    date = fields.Date(
-        'Expiration Date',
+    date_end = fields.Date(
+        'End Date',
         index=True,
         track_visibility='onchange'
     )
@@ -29,7 +29,7 @@ class BuildingProject(models.Model):
         domain=['|', '|', ('architect', '=', True), ('engineer', '=', True),
                 ('electrician', '=', True)],
         copy=False,
-        help="Envolved partners (Architect, Ingineer, Electrician)"
+        help="Envolved partners (Architect, Engineer, Electrician)"
     )
 
     build_state = fields.Selection(
