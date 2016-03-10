@@ -30,5 +30,5 @@ def impl(ctx, url, port):
     _create_or_update_param('web.base.url', config_param)
 
 @step('I update web.base.url with full url "{url}"')
-def impl(ctx, url, port):
+def impl(ctx, url):
     _create_or_update_param('web.base.url', url)
