@@ -4,7 +4,7 @@
 
     <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
       <xpath expr="//div[@class='page']" position="attributes">
-        <attribute name="style">margin-left: 25px !important;</attribute>
+        <attribute name="style">margin-left: 60px !important;</attribute>
       </xpath>
       <xpath expr="//div[@class='row']/div" position="replace"/>
       <xpath expr="//div[@class='row']/div/div[@t-field='doc.partner_id']/.." position="attributes">
@@ -12,6 +12,16 @@
       </xpath>
 
       <xpath expr="//div[@class='row']" position="before">
+        <style type="text/css">
+          h2{
+          font-weight: bold;
+          font-size: 18px;
+          }
+          #informations{
+          padding-bottom: 12px;
+          margin-bottom: 12px;
+          }
+        </style>
         <small>
           <div class="col-xs-12" style="text-align: right;">
             <small>
@@ -48,10 +58,14 @@
           </div>
           <div class="col-xs-12" style="text-decoration: underline; padding-left: 0px;">
             <span t-field="doc.company_id.name"/>, <span t-field="doc.company_id.street"/>, <span t-field="doc.company_id.zip"/> <span t-field="doc.company_id.city"/>
+            <br/>
+            <br/>
           </div>
+
         </small>
       </xpath>
 
+      <!-- Partner Informations -->
       <xpath expr="//div[@id='informations']" position="replace">
         <div class="row mt32 mb32" id="informations">
             <div t-if="doc.client_order_ref" class="col-xs-12">
@@ -73,20 +87,28 @@
                   Client number:
                   <span t-field="doc.partner_id.ref"/>
               </div>
-              <div name="payment_term" t-if="doc.payment_term_id" class="col-xs-12">
+              <div name="payment_term" t-if="doc.payment_term_id" class="col-xs-12 hidden">
                   Payment Term:
                   <span t-field="doc.payment_term_id"/>
+              </div>
+              <div class="col-xs-12" t-if="doc.validity_date">
+                  Validity:
+                  <span t-field="doc.validity_date"/>
               </div>
             </div>
             <div class="col-xs-6">
               <div t-if="doc.date_order" class="col-xs-12">
                   <t t-if="doc.state not in ['draft','sent']">Date Ordered:</t>
                   <t t-if="doc.state in ['draft','sent']">Quotation Date:</t>
-                  <span t-field="doc.date_order"/>
+                  <span t-field="doc.date_order" t-field-options='{"format":"dd.MM.yyyy"}'/> <!-- Attendtion, ne sera plus formatté selon la langue du destinataire -->
               </div>
               <div t-if="doc.delivery_term" class="col-xs-12">
                   Term of delivery:
-                  <span t-field="doc.delivery_term"/>
+                  <span/>
+              </div>
+              <div t-if="not doc.delivery_term" class="col-xs-12">
+                  Term of delivery:
+                  <span>nach Absprache</span>
               </div>
               <div t-if="doc.carrier_id" class="col-xs-12">
                   Delivery Method:
@@ -116,8 +138,23 @@
         </tr>
       </xpath>
 
+<!--       <xpath expr="//div/h2" position="replace">
+                    <h4>
+                <span t-if="doc.state not in ['draft','sent']">Order # </span>
+                <span t-if="doc.state in ['draft','sent']">Quotation # </span>
+                <span t-field="doc.name"/>
+            </h4>
+      </xpath> -->
+
     </template>
 
+    <template id="report_partner_informations">
+      <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
+        <div class="page">
+        </div>
+    </template>
+
+    <!-- Sale line -->
     <template id="report_sale_layouted" inherit_id="sale_layout.report_sale_layouted">
 
       <xpath expr="//t[@t-as='l']/tr" position="replace">
@@ -168,10 +205,12 @@
         </tr>
       </xpath>
 
+      <!-- SO Line table description -->
       <xpath expr="//t[@t-as='p']//thead/tr" position="replace">
         <tr>
           <th>Pos.</th>
           <th class="text-right">Quantity</th>
+          <th>UOM</th>
           <th>Product Num.</th>
           <th>Description</th>
           <th class="text-right">Unit Price</th>
