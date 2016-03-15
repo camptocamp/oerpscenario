@@ -14,53 +14,64 @@
       <xpath expr="//div[@class='row']" position="before">
         <style type="text/css">
           h2{
-          font-weight: bold;
-          font-size: 18px;
+              font-weight: bold;
+              font-size: 18px;
           }
           #informations{
-          padding-bottom: 12px;
-          margin-bottom: 12px;
+              padding-bottom: 12px;
+              margin-bottom: 12px;
+          }
+          .page{
+              margin-right: 25px !important;
+          }
+          .address{
+              position: fixed;
+              left: 175px;
           }
         </style>
+        <!-- Informations contact on top of page -->
         <small>
-          <div class="col-xs-12" style="text-align: right;">
-            <small>
+          <div class="row">
+            <div class="col-xs-12" style="text-align: right;">
               <small>
-                <strong>
-                  Your client manager
-                </strong> <span t-field="doc.user_id"/><br/>
-                Tel:
-                <t t-if="doc.user_id.phone">
-                  <span t-field="doc.user_id.phone"/>
-                </t>
-                <t t-if="not doc.user_id.phone">
-                  &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                  &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                </t>
-                <br/>
-                <span t-field="doc.user_id.email"/><br/>
-                <br/>
-                <strong>
-                  Official in charge
-                </strong> <span t-field="doc.env.user.name"/><br/>
-                Tel:
-                <t t-if="doc.env.user.phone">
-                  <span t-field="doc.env.user.phone"/>
-                </t>
-                <t t-if="not doc.env.user.phone">
-                  &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                  &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                </t>
-                <br/>
-                <span t-field="doc.env.user.email"/><br/>
+                <small>
+                  <strong>
+                    Your client manager
+                  </strong> <span t-field="doc.user_id"/><br/>
+                  Tel:
+                  <t t-if="doc.user_id.phone">
+                    <span t-field="doc.user_id.phone"/>
+                  </t>
+                  <t t-if="not doc.user_id.phone">
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                  </t>
+                  <br/>
+                  <span t-field="doc.user_id.email"/><br/>
+                  <br/>
+                  <strong>
+                    Official in charge
+                  </strong> <span t-field="doc.env.user.name"/><br/>
+                  Tel:
+                  <t t-if="doc.env.user.phone">
+                    <span t-field="doc.env.user.phone"/>
+                  </t>
+                  <t t-if="not doc.env.user.phone">
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                  </t>
+                  <br/>
+                  <span t-field="doc.env.user.email"/><br/>
+                </small>
               </small>
-            </small>
+            </div>
           </div>
           <div class="col-xs-12" style="text-decoration: underline; padding-left: 0px;">
             <span t-field="doc.company_id.name"/>, <span t-field="doc.company_id.street"/>, <span t-field="doc.company_id.zip"/> <span t-field="doc.company_id.city"/>
             <br/>
             <br/>
           </div>
+<!--           <div t-field="doc.partner_id" t-field-options='{"widget:" "contact", "fields":["address", "name"]}' /> -->
 
         </small>
       </xpath>
@@ -68,50 +79,54 @@
       <!-- Partner Informations -->
       <xpath expr="//div[@id='informations']" position="replace">
         <div class="row mt32 mb32" id="informations">
-            <div t-if="doc.client_order_ref" class="col-xs-12">
-              <strong>
-                Your Reference:
-              </strong>
-              <strong t-field="doc.client_order_ref"/>
+            <div t-if="doc.client_order_ref" class="col-xs-6">
+                <strong>
+                  Your Reference:
+                </strong>
+                <strong t-field="doc.client_order_ref"/>
             </div>
+            <div class="col-xs-7"></div>
             <div class="col-xs-6" style="padding-left: 0px;">
               <div t-if="doc.customer_contact_id" class="col-xs-12">
                   Contact:
-                  <span t-field="doc.customer_contact_id"/>
+                  <span class="address" t-field="doc.customer_contact_id"/>
               </div>
               <div t-if="doc.client_order_descr" class="col-xs-12">
                   Your order:
-                  <span t-field="doc.client_order_descr"/>
+                  <span class="address" t-field="doc.client_order_descr"/>
               </div>
               <div class="col-xs-12">
                   Client number:
-                  <span t-field="doc.partner_id.ref"/>
+                  <span class="address" t-field="doc.partner_id.ref"/>
               </div>
               <div name="payment_term" t-if="doc.payment_term_id" class="col-xs-12 hidden">
                   Payment Term:
-                  <span t-field="doc.payment_term_id"/>
+                  <span class="address" t-field="doc.payment_term_id"/>
               </div>
               <div class="col-xs-12" t-if="doc.validity_date">
                   Validity:
-                  <span t-field="doc.validity_date"/>
+                  <span class="address" t-field="doc.validity_date"/>
               </div>
             </div>
             <div class="col-xs-6">
               <div t-if="doc.date_order" class="col-xs-12">
-                  <t t-if="doc.state not in ['draft','sent']">Date Ordered:</t>
-                  <t t-if="doc.state in ['draft','sent']">Quotation Date:</t>
+                  <t t-if="doc.state not in ['draft','sent']">
+                    <span class="col-xs-5">Date Ordered:</span>
+                  </t>
+                  <t class="col-xs-5" t-if="doc.state in ['draft','sent']">
+                    <span class="col-xs-5">Quotation Date:</span>
+                  </t>
                   <span t-field="doc.date_order" t-field-options='{"format":"dd.MM.yyyy"}'/> <!-- Attendtion, ne sera plus formatté selon la langue du destinataire -->
               </div>
               <div t-if="doc.delivery_term" class="col-xs-12">
-                  Term of delivery:
-                  <span/>
+                  <span class="col-xs-5">Term of delivery:</span>
               </div>
               <div t-if="not doc.delivery_term" class="col-xs-12">
-                  Term of delivery:
+                  <span class="col-xs-5">Term of delivery:</span>
                   <span>nach Absprache</span>
               </div>
               <div t-if="doc.carrier_id" class="col-xs-12">
-                  Delivery Method:
+                  <span class="col-xs-5">Delivery Method:</span>
                   <span t-field="doc.carrier_id"/>
               </div>
             </div>
@@ -169,7 +184,7 @@
               <span t-raw="int(l.product_uom_qty or 0)"/>
             </t>
             <t t-if="l.product_uom != doc.env.ref('product.product_uom_unit')">
-              <span t-field="l.product_uom_qty"/>
+              <span t-raw="round(l.product_uom_qty, 2)"/>
             </t>
             <span groups="product.group_uom" t-field="l.product_uom"/>
           </td>
