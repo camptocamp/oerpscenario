@@ -4,8 +4,79 @@
 
     <template id="report_invoice_document" inherit_id="account.report_invoice_document">
       <xpath expr="//div[@class='page']" position="attributes">
-        <attribute name="style">margin-left: 25px !important;</attribute>
+        <attribute name="style">margin-left: 60px !important;</attribute>
       </xpath>
+
+<!--       <xpath expr="//div[@class='row']/div" position="replace"/>
+      <xpath expr="//div[@class='row']/div/div[@t-field='o.partner_id']/.." position="attributes">
+        <attribute name="class">col-xs-6</attribute>
+      </xpath> -->
+
+      <xpath expr="//div[@class='row']" position="before">
+        <style type="text/css">
+          h2{
+              font-weight: bold;
+              font-size: 18px;
+          }
+          #informations{
+              padding-bottom: 12px;
+              margin-bottom: 12px;
+          }
+          .page{
+              margin-right: 25px !important;
+          }
+          .address{
+              position: fixed;
+              left: 175px;
+          }
+        </style>
+        <!-- Informations contact on top of page -->
+        <small>
+          <div class="row">
+            <div class="col-xs-12" style="text-align: right;">
+              <small>
+                <small>
+                  <strong>
+                    Your client manager
+                  </strong> <span t-field="o.user_id"/><br/>
+                  Tel:
+                  <t t-if="o.user_id.phone">
+                    <span t-field="o.user_id.phone"/>
+                  </t>
+                  <t t-if="not o.user_id.phone">
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                  </t>
+                  <br/>
+                  <span t-field="o.user_id.email"/><br/>
+                  <br/>
+                  <strong>
+                    Official in charge
+                  </strong> <span t-field="o.env.user.name"/><br/>
+                  Tel:
+                  <t t-if="o.env.user.phone">
+                    <span t-field="o.env.user.phone"/>
+                  </t>
+                  <t t-if="not o.env.user.phone">
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                  </t>
+                  <br/>
+                  <span t-field="o.env.user.email"/><br/>
+                </small>
+              </small>
+            </div>
+          </div>
+          <div class="col-xs-12" style="text-decoration: underline; padding-left: 0px;">
+            <span t-field="o.company_id.name"/>, <span t-field="o.company_id.street"/>, <span t-field="o.company_id.zip"/> <span t-field="o.company_id.city"/>
+            <br/>
+            <br/>
+          </div>
+<!--           <div t-field="o.partner_id" t-field-options='{"widget:" "contact", "fields":["address", "name"]}' /> -->
+
+        </small>
+      </xpath>
+
     </template>
 
   </data>
