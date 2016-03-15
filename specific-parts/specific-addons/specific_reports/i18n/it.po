@@ -1,0 +1,262 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* specific_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-18 16:27+0000\n"
+"PO-Revision-Date: 2016-02-18 16:27+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\n"
+"                  &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
+msgid ",\n"
+"                    Tél:"
+msgstr "Tél:"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
+msgid ",\n"
+"                  Tel:"
+msgstr "Tel:"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "<br/>\n"
+"                <br/>\n"
+"                <strong>\n"
+"                  Official in charge\n"
+"                </strong>"
+msgstr "<br/>\n"
+"                <br/>\n"
+"                <strong>\n"
+"                  Il vostro reponsabile\n"
+"                </strong>"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "<br/>\n"
+"                Tel:"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.external_layout_header
+msgid "<small>\n"
+"                  <small>\n"
+"                  Intelligente Beleuchtungstechnik<br/>\n"
+"                  Gestion intelligente de l'éclairage<br/>\n"
+"                  Gestione intelligente dell'illuminazione\n"
+"                  </small>\n"
+"                </small>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
+msgid "<span>\n"
+"              Disc.(%)\n"
+"            </span>"
+msgstr "<span>\n"
+"              Disc.(%)\n"
+"            </span>"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "<strong>\n"
+"                  Your client manager\n"
+"                </strong>"
+msgstr "<strong>\n"
+"                  Il vostro consulente\n"
+"                </strong>"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "<strong>\n"
+"                Your Reference:\n"
+"              </strong>"
+msgstr "<strong>\n"
+"                Votre réference :\n"
+"              </strong>"
+
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Client number:"
+msgstr "No. de client :"
+
+#. module: specific_reports
+#: model:ir.model.fields,field_description:specific_reports.field_sale_order_client_order_descr
+msgid "Description de la commande"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.model,name:specific_reports.model_res_company
+msgid "Companies"
+msgstr "Compagnies"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Contact:"
+msgstr "Vostro contatto:"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Date Ordered:"
+msgstr "Data:"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Delivery Address:"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Delivery Method:"
+msgstr "Spedizione:"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Description"
+msgstr "Descrizione"
+
+#. module: specific_reports
+#: model:ir.model.fields,help:specific_reports.field_sale_order_client_order_descr
+msgid "Description of how the order was made"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Disc.(%)"
+msgstr "%"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
+msgid "Fax:"
+msgstr "Fax:"
+
+#. module: specific_reports
+#: model:ir.model.fields,help:specific_reports.field_res_company_report_logo
+msgid "Logo shown in reports"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Net"
+msgstr "Netto"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Payment Term:"
+msgstr "Condizioni:"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Pos."
+msgstr "Pos."
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
+msgid "Price"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Product Num."
+msgstr "No articolo"
+
+#. module: specific_reports
+#: model:ir.model,name:specific_reports.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Quantity"
+msgstr "Qte"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Quotation Date:"
+msgstr "Data:"
+
+#. module: specific_reports
+#: model:ir.model.fields,field_description:specific_reports.field_product_template_receipt_checklist
+#: model:ir.model.fields,field_description:specific_reports.field_res_company_receipt_checklist
+msgid "Receipt checklist"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.product_template_form_view
+#: model:ir.ui.view,arch_db:specific_reports.view_company_form
+msgid "Reception"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.model.fields,field_description:specific_reports.field_res_company_report_logo
+msgid "Report logo"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.model,name:specific_reports.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.model,name:specific_reports.model_sale_order_line
+msgid "Sales Order Line"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.model.fields,field_description:specific_reports.field_sale_order_line_price_unit_discount
+msgid "Subtotal"
+msgstr "Sub-totale"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
+msgid "Technik-Hotline: 043 844 80 77,"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.model.fields,field_description:specific_reports.field_sale_order_delivery_term
+msgid "Term of delivery"
+msgstr "Term. consegna"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Term of delivery:"
+msgstr "Term. consegna:"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Total"
+msgstr "Totale"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Unit Price"
+msgstr "Brutto"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Your order:\n"
+msgstr "Votre commande :\n"
+
+

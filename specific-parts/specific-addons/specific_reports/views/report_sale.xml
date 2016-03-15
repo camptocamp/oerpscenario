@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+      <xpath expr="//div[@class='page']" position="attributes">
+        <attribute name="style">margin-left: 60px !important;</attribute>
+      </xpath>
+      <xpath expr="//div[@class='row']/div" position="replace"/>
+      <xpath expr="//div[@class='row']/div/div[@t-field='doc.partner_id']/.." position="attributes">
+        <attribute name="class">col-xs-6</attribute>
+      </xpath>
+
+      <xpath expr="//div[@class='row']" position="before">
+        <style type="text/css">
+          h2{
+              font-weight: bold;
+              font-size: 18px;
+          }
+          #informations{
+              padding-bottom: 12px;
+              margin-bottom: 12px;
+          }
+          .page{
+              margin-right: 25px !important;
+          }
+          .address{
+              position: fixed;
+              left: 175px;
+          }
+        </style>
+        <!-- Informations contact on top of page -->
+        <small>
+          <div class="row">
+            <div class="col-xs-12" style="text-align: right;">
+              <small>
+                <small>
+                  <strong>
+                    Your client manager
+                  </strong> <span t-field="doc.user_id"/><br/>
+                  Tel:
+                  <t t-if="doc.user_id.phone">
+                    <span t-field="doc.user_id.phone"/>
+                  </t>
+                  <t t-if="not doc.user_id.phone">
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                  </t>
+                  <br/>
+                  <span t-field="doc.user_id.email"/><br/>
+                  <br/>
+                  <strong>
+                    Official in charge
+                  </strong> <span t-field="doc.env.user.name"/><br/>
+                  Tel:
+                  <t t-if="doc.env.user.phone">
+                    <span t-field="doc.env.user.phone"/>
+                  </t>
+                  <t t-if="not doc.env.user.phone">
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                  </t>
+                  <br/>
+                  <span t-field="doc.env.user.email"/><br/>
+                </small>
+              </small>
+            </div>
+          </div>
+          <div class="col-xs-12" style="text-decoration: underline; padding-left: 0px;">
+            <span t-field="doc.company_id.name"/>, <span t-field="doc.company_id.street"/>, <span t-field="doc.company_id.zip"/> <span t-field="doc.company_id.city"/>
+            <br/>
+            <br/>
+          </div>
+<!--           <div t-field="doc.partner_id" t-field-options='{"widget:" "contact", "fields":["address", "name"]}' /> -->
+
+        </small>
+      </xpath>
+
+      <!-- Partner Informations -->
+      <xpath expr="//div[@id='informations']" position="replace">
+        <div class="row mt32 mb32" id="informations">
+            <div t-if="doc.client_order_ref" class="col-xs-6">
+                <strong>
+                  Your Reference:
+                </strong>
+                <strong t-field="doc.client_order_ref"/>
+            </div>
+            <div class="col-xs-7"></div>
+            <div class="col-xs-6" style="padding-left: 0px;">
+              <div t-if="doc.customer_contact_id" class="col-xs-12">
+                  Contact:
+                  <span class="address" t-field="doc.customer_contact_id"/>
+              </div>
+              <div t-if="doc.client_order_descr" class="col-xs-12">
+                  Your order:
+                  <span class="address" t-field="doc.client_order_descr"/>
+              </div>
+              <div class="col-xs-12">
+                  Client number:
+                  <span class="address" t-field="doc.partner_id.ref"/>
+              </div>
+              <div name="payment_term" t-if="doc.payment_term_id" class="col-xs-12 hidden">
+                  Payment Term:
+                  <span class="address" t-field="doc.payment_term_id"/>
+              </div>
+              <div class="col-xs-12" t-if="doc.validity_date">
+                  Validity:
+                  <span class="address" t-field="doc.validity_date"/>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div t-if="doc.date_order" class="col-xs-12">
+                  <t t-if="doc.state not in ['draft','sent']">
+                    <span class="col-xs-5">Date Ordered:</span>
+                  </t>
+                  <t class="col-xs-5" t-if="doc.state in ['draft','sent']">
+                    <span class="col-xs-5">Quotation Date:</span>
+                  </t>
+                  <span t-field="doc.date_order" t-field-options='{"format":"dd.MM.yyyy"}'/> <!-- Attendtion, ne sera plus formatté selon la langue du destinataire -->
+              </div>
+              <div t-if="doc.delivery_term" class="col-xs-12">
+                  <span class="col-xs-5">Term of delivery:</span>
+              </div>
+              <div t-if="not doc.delivery_term" class="col-xs-12">
+                  <span class="col-xs-5">Term of delivery:</span>
+                  <span>nach Absprache</span>
+              </div>
+              <div t-if="doc.carrier_id" class="col-xs-12">
+                  <span class="col-xs-5">Delivery Method:</span>
+                  <span t-field="doc.carrier_id"/>
+              </div>
+            </div>
+            <div t-if="doc.partner_shipping_id and doc.partner_shipping_id != doc.partner_id" class="col-xs-12">
+              <div class="col-xs-12">
+                  Delivery Address:
+                  <span t-field="doc.partner_shipping_id"/>
+              </div>
+            </div>
+        </div>
+        <t t-set="line_counter" t-value="0"/>
+      </xpath>
+
+      <xpath expr="//thead/tr" position="replace">
+        <tr>
+          <th>Pos.</th>
+          <th class="text-right">Quantity</th>
+          <th>Product Num.</th>
+          <th>Description</th>
+          <th class="text-right">Unit Price</th>
+          <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Disc.(%)</th>
+          <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Net</th>
+          <th class="text-right">Total</th>
+        </tr>
+      </xpath>
+
+<!--       <xpath expr="//div/h2" position="replace">
+                    <h4>
+                <span t-if="doc.state not in ['draft','sent']">Order # </span>
+                <span t-if="doc.state in ['draft','sent']">Quotation # </span>
+                <span t-field="doc.name"/>
+            </h4>
+      </xpath> -->
+
+    </template>
+
+    <template id="report_partner_informations">
+      <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
+        <div class="page">
+        </div>
+    </template>
+
+    <!-- Sale line -->
+    <template id="report_sale_layouted" inherit_id="sale_layout.report_sale_layouted">
+
+      <xpath expr="//t[@t-as='l']/tr" position="replace">
+        <tr>
+          <td>
+            <t t-set="line_counter" t-value="line_counter + 1"/>
+            <span t-raw="line_counter"/>
+          </td>
+          <td class="text-right">
+            <!-- hide decimals if unit of mesure is unit -->
+            <t t-if="l.product_uom == doc.env.ref('product.product_uom_unit')">
+              <span t-raw="int(l.product_uom_qty or 0)"/>
+            </t>
+            <t t-if="l.product_uom != doc.env.ref('product.product_uom_unit')">
+              <span t-raw="round(l.product_uom_qty, 2)"/>
+            </t>
+            <span groups="product.group_uom" t-field="l.product_uom"/>
+          </td>
+          <td>
+            <t t-if="l.product_id.e_nr">
+              <span  t-field="l.product_id.e_nr"/>
+            </t>
+            <t t-if="not l.product_id.e_nr">
+              <span  t-field="l.product_id.default_code"/>
+            </t>
+          </td>
+          <td>
+            <t t-if="l.product_id">
+              <span  t-field="l.product_id.name"/>
+            </t>
+            <t t-if="not l.product_id">
+              <span  t-field="l.name"/>
+            </t>
+          </td>
+          <td class="text-right">
+            <span t-field="l.price_unit"/>
+          </td>
+          <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+            <span t-field="l.discount"/>
+          </td>
+          <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+            <span t-field="l.price_unit_discount"/>
+          </td>
+          <td class="text-right">
+            <span t-field="l.price_subtotal"
+              t-field-options='{"widget": "monetary", "display_currency": "doc.pricelist_id.currency_id"}'/>
+          </td>
+        </tr>
+      </xpath>
+
+      <!-- SO Line table description -->
+      <xpath expr="//t[@t-as='p']//thead/tr" position="replace">
+        <tr>
+          <th>Pos.</th>
+          <th class="text-right">Quantity</th>
+          <th>UOM</th>
+          <th>Product Num.</th>
+          <th>Description</th>
+          <th class="text-right">Unit Price</th>
+          <th t-if="display_discount" groups="sale.group_discount_per_so_line" class="text-right">
+            <span>
+              Disc.(%)
+            </span>
+          </th>
+          <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Net</th>
+          <th class="text-right">Price</th>
+        </tr>
+      </xpath>
+
+    </template>
+
+  </data>
+</openerp>
