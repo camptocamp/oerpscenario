@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # © 2015 Yannick Vaucher (Camptocamp)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-from openerp import models, fields, api
+from openerp import models, fields, api, _
 
 
 class CRMLead(models.Model):
@@ -34,3 +34,25 @@ class CRMLead(models.Model):
         if self.building_project_id and self.partner_id:
             self.building_project_id.contact_ids |= self.partner_id
         return res
+
+    @api.multi
+    def quotation_new_wholesaler(self):
+        wiz_ctx = self.env.context.copy()
+        wiz_ctx.update({
+            'active_model': self._name,
+            'active_ids': self.ids,
+            'active_id': self.id,
+        })
+
+        wiz_model = self.env['create.opportunity.quotation']
+        wiz = wiz_model.with_context(wiz_ctx).create({})
+        return {
+            'name': _('New Quotation'),
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'create.opportunity.quotation',
+            'target': 'new',
+            'res_id': wiz.id,
+            'context': self.env.context
+        }
