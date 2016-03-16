@@ -9,6 +9,11 @@ from openerp import api, fields, models
 class SaleOrder(models.Model):
     _inherit = 'account.invoice'
 
+    client_order_ref = fields.Char(
+        "Client order reference",
+        help="Reference for the client"
+    )
+
     client_order_descr = fields.Char(
         "Client order description",
         help="Description of how the order was made"

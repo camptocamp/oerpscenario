@@ -87,9 +87,9 @@
             </div>
             <div class="col-xs-7"></div>
             <div class="col-xs-6" style="padding-left: 0px;">
-              <div t-if="o.customer_contact_id" class="col-xs-12">
+              <div t-if="o.partner_id" class="col-xs-12">
                   Contact:
-                  <span class="address" t-field="o.customer_contact_id"/>
+                  <span class="address" t-field="o.partner_id"/>
               </div>
               <div t-if="o.client_order_descr" class="col-xs-12">
                   Your order:
@@ -103,20 +103,13 @@
                   Payment Term:
                   <span class="address" t-field="o.payment_term_id"/>
               </div>
-              <div class="col-xs-12" t-if="o.validity_date">
-                  Validity:
-                  <span class="address" t-field="o.validity_date"/>
-              </div>
             </div>
             <div class="col-xs-6">
-              <div t-if="o.date_order" class="col-xs-12">
-                  <t t-if="o.state not in ['draft','sent']">
-                    <span class="col-xs-5">Date Ordered:</span>
-                  </t>
+              <div t-if="o.date_invoice" class="col-xs-12">
                   <t class="col-xs-5" t-if="o.state in ['draft','sent']">
-                    <span class="col-xs-5">Quotation Date:</span>
+                    <span class="col-xs-5">Date:</span>
                   </t>
-                  <span t-field="o.date_order" t-field-options='{"format":"dd.MM.yyyy"}'/> <!-- Attendtion, ne sera plus formatté selon la langue du destinataire -->
+                  <span t-field="o.date_invoice" t-field-options='{"format":"dd.MM.yyyy"}'/> <!-- Attendtion, ne sera plus formatté selon la langue du destinataire -->
               </div>
               <div t-if="o.delivery_term" class="col-xs-12">
                   <span class="col-xs-5">Term of delivery:</span>
@@ -125,17 +118,17 @@
                   <span class="col-xs-5">Term of delivery:</span>
                   <span>nach Absprache</span>
               </div>
-              <div t-if="o.carrier_id" class="col-xs-12">
+<!--               <div t-if="o.carrier_id" class="col-xs-12">
                   <span class="col-xs-5">Delivery Method:</span>
                   <span t-field="o.carrier_id"/>
-              </div>
+              </div> -->
             </div>
-            <div t-if="o.partner_shipping_id and o.partner_shipping_id != o.partner_id" class="col-xs-12">
+<!--             <div t-if="o.partner_shipping_id and o.partner_shipping_id != o.partner_id" class="col-xs-12">
               <div class="col-xs-12">
                   Delivery Address:
                   <span t-field="o.partner_shipping_id"/>
               </div>
-            </div>
+            </div> -->
         </div>
         <t t-set="line_counter" t-value="0"/>
       </xpath>
