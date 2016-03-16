@@ -18,6 +18,7 @@
      'views/partner_title.xml',
      'views/better_zip.xml',
      'data/sequence.xml',
+     'security/ir.model.access.csv'
      ],
  'test': [],
  'installable': True,
