@@ -19,6 +19,7 @@ class SaleOrder(models.Model):
     )
 
     project_pricelist_id = fields.Many2one(
+        string='Pricelist',
         compute='_get_project_pricelist',
         comodel_name='product.pricelist'
     )
