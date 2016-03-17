@@ -170,6 +170,7 @@
               <group>
                 <group>
                   <field name="build_state"/>
+                  <field name="build_progress"/>
                 </group>
                 <group>
                   <field name="build_type"/>
@@ -203,6 +204,7 @@
         <field name="name" string="Building Project Name"/>
         <field name="build_state"/>
         <field name="build_type"/>
+        <field name="build_progress"/>
         <field name="building_project_tag_ids"/>
         <!--<filter string="Open" name="Current" domain="[('state', '=','open')]"/>-->
         <!--<filter string="Pending" name="Pending" domain="[('state', '=','pending')]"/>-->
@@ -217,6 +219,7 @@
         <group expand="0" string="Group By">
           <filter string="Bauprojekt-Status" context="{'group_by':'build_state'}"/>
           <filter string="Bauprojekt-Typ" context="{'group_by':'build_type'}"/>
+          <filter string="Bauprojekt-Fortschritt" context="{'group_by':'build_progress'}"/>
           <!--<filter string="Manager" name="Manager" context="{'group_by':'user_id'}"/>-->
           <!--<filter string="Contact" name="Partner" context="{'group_by':'partner_id'}"/>-->
         </group>
@@ -235,6 +238,7 @@
         <field name="user_id"/>
         <field name="build_state"/>
         <field name="build_type"/>
+        <field name="build_progress"/>
         <field name="building_project_tag_ids"/>
         <!--<field name="state"/>-->
       </tree>
