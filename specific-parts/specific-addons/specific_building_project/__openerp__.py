@@ -20,6 +20,7 @@
         "crm",
         "sale",
         "sale_crm",
+        "specific_partner",
     ],
     "data": [
         "views/calendar_event.xml",

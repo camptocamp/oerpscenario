@@ -140,10 +140,15 @@
                           <div class="o_address_format" name="div_address">
                             <field name="street" placeholder="Street..." class="o_address_street"/>
                             <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                            <field name="zip_id"
+                              options="{'create_name_field': 'city', 'no_open': True, 'no_create': True}"
+                              placeholder="City completion"
+                              class="oe_edit_only" />
                             <field name="city" placeholder="City" class="o_address_city"/>
                             <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}' on_change="onchange_state(state_id)" context="{'country_id': country_id, 'zip': zip}"/>
                             <field name="zip" placeholder="ZIP" class="o_address_zip"/>
                             <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                            <field name="region_id" placeholder="Region..."/>
                           </div>
                         </div>
                       </group>
@@ -179,9 +184,16 @@
             <page string="Address">
               <group>
                 <group>
-                  <field name="street"/>
-                  <field name="zip"/>
-                  <field name="city"/>
+                  <field name="street" placeholder="Street..." class="o_address_street"/>
+                  <field name="zip_id"
+                    options="{'create_name_field': 'city', 'no_open': True, 'no_create': True}"
+                    placeholder="City completion"
+                    class="oe_edit_only" />
+                  <field name="city" placeholder="City" class="o_address_city"/>
+                  <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}' context="{'country_id': country_id, 'zip': zip}"/>
+                  <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                  <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                  <field name="region_id" placeholder="Region..."/>
                 </group>
             </group>
             </page>
