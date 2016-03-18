@@ -206,6 +206,10 @@ class BuildingProject(models.Model):
         res['context'] = {
             'search_default_building_project_id': self.id,
         }
+        cal_view = self.env.ref(
+            'specific_building_project.view_calendar_event_calendar')
+        res['view_id'] = cal_view.id
+        res['views'] = [(cal_view.id, 'calendar')]
         return res
 
     @api.multi
@@ -222,6 +226,10 @@ class BuildingProject(models.Model):
             'search_default_building_project_id': self.id,
             'search_default_phonecall': True,
         }
+        cal_view = self.env.ref(
+            'specific_building_project.view_calendar_event_calendar')
+        res['view_id'] = cal_view.id
+        res['views'] = [(cal_view.id, 'calendar')]
         return res
 
     @api.multi

@@ -13,4 +13,17 @@
     </field>
   </record>
 
+  <!-- create a view to prevent creation -->
+  <record model="ir.ui.view" id="view_calendar_event_calendar">
+    <field name="name">Meeting</field>
+    <field name="model">calendar.event</field>
+    <field name="priority" eval="3"/>
+    <field name="inherit_id" ref="calendar.view_calendar_event_calendar"/>
+    <field name="arch" type="xml">
+      <xpath expr="/calendar" position="attributes">
+        <attribute name="quick_add">false</attribute>
+      </xpath>
+    </field>
+  </record>
+
 </odoo>
