@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record model="ir.ui.view" id="create_opportunity_quotation_form_view">
+    <field name="name">create.opportunity.quotation.form</field>
+    <field name="model">create.opportunity.quotation</field>
+    <field name="arch" type="xml">
+      <form string="New Quotation">
+        <group>
+          <field name="wholesaler_id"/>
+          <field name="building_project_customer_ids" invisible="1"/>
+        </group>
+        <footer>
+          <button name="create_new_quotation" type="object" string="Create" class="oe_highlight"/>
+          <button string="Cancel" special="cancel"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+</odoo>

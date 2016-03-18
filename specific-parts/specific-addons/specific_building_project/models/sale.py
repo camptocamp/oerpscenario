@@ -19,8 +19,15 @@ class SaleOrder(models.Model):
     )
 
     project_pricelist_id = fields.Many2one(
+        string='Pricelist',
         compute='_get_project_pricelist',
         comodel_name='product.pricelist'
+    )
+
+    business_provider_id = fields.Many2one(
+        string="Business provider",
+        comodel_name='res.partner',
+        domain=[('is_company', '=', True)],
     )
 
     @api.depends('project_id', 'partner_id')

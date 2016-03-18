@@ -6,6 +6,9 @@
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
+      <xpath expr="//field[@name='project_id']" position="before">
+        <field name="business_provider_id"/>
+      </xpath>
       <xpath expr="//field[@name='project_id']" position="after">
         <field name="project_pricelist_id"/>
         <field name="statistics_include" attrs="{'invisible': [('project_id', '=', False)]}"/>
