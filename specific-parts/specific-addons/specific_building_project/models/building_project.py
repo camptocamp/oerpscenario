@@ -47,6 +47,15 @@ class BuildingProject(models.Model):
          ('renovation', 'Renovation')),
         'Bauprojekt-Typ'
     )
+    build_progress = fields.Selection(
+        [('strategic_planning', 'Strategische Plannung'),
+         ('preliminary', 'Vorprojekt'),
+         ('configuration', 'Projektierung'),
+         ('announcement', 'Ausschreibung'),
+         ('realisation', 'Realisierung'),
+         ('management', 'Bewirtschaftung')],
+        "Fortschritt nach sia"
+    )
     building_project_tag_ids = fields.Many2many(
         comodel_name='building.project.tag',
         string='Projekt Tags'
