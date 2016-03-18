@@ -54,8 +54,7 @@ class BuildingProject(models.Model):
          ('announcement', 'Ausschreibung'),
          ('realisation', 'Realisierung'),
          ('management', 'Bewirtschaftung')],
-        "Bauprojekt-Fortschritt",
-        help="Baufortschritt nach sia"
+        "Fortschritt nach sia"
     )
     building_project_tag_ids = fields.Many2many(
         comodel_name='building.project.tag',
