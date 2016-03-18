@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # © 2015 Swisslux AG
-# © 2015 Yannick Vaucher (Camptocamp)
+# © 2015-2016 Yannick Vaucher (Camptocamp)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp import models, fields, api
 
@@ -83,6 +83,18 @@ class BuildingProject(models.Model):
         'Ort',
         copy=False,
     )
+    state_id = fields.Many2one(
+        'res.country.state',
+        'State',
+        ondelete='restrict'
+    )
+    country_id = fields.Many2one(
+        'res.country',
+        'Country',
+        ondelete='restrict'
+    )
+    region_id = fields.Many2one('res.partner.region', "Verkaufsgebiet")
+    zip_id = fields.Many2one('res.better.zip', 'City/Location')
 
     sale_order_ids = fields.One2many(
         comodel_name='sale.order',
@@ -155,6 +167,16 @@ class BuildingProject(models.Model):
             rec.meeting_count = sum(
                 rec.opportunity_ids.mapped('meeting_count')
             )
+
+    @api.onchange('zip_id')
+    def onchange_zip_id(self):
+        for rec in self:
+            if rec.zip_id:
+                rec.zip = rec.zip_id.name
+                rec.city = rec.zip_id.city
+                rec.state_id = rec.zip_id.state_id
+                rec.country_id = rec.zip_id.country_id
+                rec.region_id = rec.zip_id.region_id
 
     @api.multi
     def action_schedule_meeting(self):
