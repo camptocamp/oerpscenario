@@ -8,5 +8,6 @@ from . import building_project_tag
 from . import building_project
 from . import building_project_pricelist
 from . import res_partner
+from . import res_users
 from . import sale
 from . import product

@@ -30,7 +30,8 @@
         "wizards/create_opportunity_quotation_view.xml",
         "data/building_project_tag.xml",
         "data/building_project_type.xml",
-        "security/ir.model.access.csv"
+        "security/ir.model.access.csv",
+        "security/account_analytic_account.xml"
     ],
     "demo": [
     ],
