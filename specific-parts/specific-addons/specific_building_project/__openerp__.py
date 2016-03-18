@@ -29,6 +29,7 @@
         "views/sale_order.xml",
         "views/building_project.xml",
         "wizards/create_opportunity_quotation_view.xml",
+        "data/calendar_event_type.xml",
         "data/building_project_tag.xml",
         "data/building_project_type.xml",
         "security/ir.model.access.csv",

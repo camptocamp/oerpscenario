@@ -119,28 +119,24 @@ class BuildingProject(models.Model):
         string="# Opportunity"
     )
 
-    # phonecall_ids = fields.One2many(
-    #     compute='_aggregate_meetings_and_phoncalls',
-    #     comodel_name='crm.phonecall',
-    #     string='Phonecalls'
-    # )
-    # meeting_ids = fields.One2many(
-    #     compute='_aggregate_meetings',
-    #     comodel_name='crm.meeting',
-    #     string="Meetings"
-    # )
+    phonecall_ids = fields.One2many(
+        compute='_aggregate_phonecall_meetings',
+        comodel_name='crm.phonecall',
+        string='Phonecalls'
+    )
     meeting_count = fields.Integer(
         compute='_meeting_count',
         string="# Meetings"
     )
 
+    phonecall_count = fields.Integer(
+        compute='_phonecall_count',
+        string="# Phonecalls",
+    )
+
     doc_count = fields.Integer(
         compute='_get_attached_docs', string="Number of documents attached",
     )
-    # @api.one
-    # def _aggregate_meetings(self):
-    #    """ List all meetings aggregated from opportunities """
-    #    self.meeting_ids = self.opportunity_ids.mapped('meeting_ids')
 
     @api.depends('analytic_account_id')
     def _get_sale_orders(self):
@@ -169,6 +165,14 @@ class BuildingProject(models.Model):
         for rec in self:
             rec.meeting_count = sum(
                 rec.opportunity_ids.mapped('meeting_count')
+            )
+
+    @api.depends('opportunity_ids.phonecall_count')
+    def _phonecall_count(self):
+        """ Count aggregated phonecall from opportunities """
+        for rec in self:
+            rec.phonecall_count = sum(
+                rec.opportunity_ids.mapped('phonecall_count')
             )
 
     @api.onchange('zip_id')
@@ -201,7 +205,22 @@ class BuildingProject(models.Model):
 
         res['context'] = {
             'search_default_building_project_id': self.id,
-            # 'search_default_opportunity_id': self.opportunity_ids.ids,
+        }
+        return res
+
+    @api.multi
+    def action_schedule_phonecall(self):
+        """
+        Open meeting's calendar view to schedule meeting on current opportunity
+        filter on event of type phonecall
+        :return dict: dictionary value for created Meeting view
+        """
+        res = self.env['ir.actions.act_window'].for_xml_id(
+            'calendar', 'action_calendar_event')
+
+        res['context'] = {
+            'search_default_building_project_id': self.id,
+            'search_default_phonecall': True,
         }
         return res
 

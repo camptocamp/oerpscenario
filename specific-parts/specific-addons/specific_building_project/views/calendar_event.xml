@@ -8,6 +8,7 @@
     <field name="arch" type="xml">
       <xpath expr="//field[@name='user_id']" position="after">
         <field name="building_project_id"/>
+        <filter name="phonecall" string="Phonecalls" domain="[('categ_ids', 'in', [%(specific_building_project.event_type_phonecall)d])]"/>
       </xpath>
     </field>
   </record>
