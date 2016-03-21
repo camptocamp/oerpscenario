@@ -118,7 +118,7 @@ class PrettyFormatter(formatter.pretty.PrettyFormatter):
                         except UnicodeDecodeError:
                             msg = msg.decode('utf-8', errors='replace')
             indented = indent(msg, u'      ')
-            self.stream.write(indented.encode('utf-8', errors='replace'))
+            self.stream.write(indented)
             self.stream.write('\n\n')
         self.stream.flush()
 
