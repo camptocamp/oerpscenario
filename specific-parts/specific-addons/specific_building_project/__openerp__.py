@@ -23,15 +23,15 @@
         "specific_partner",
     ],
     "data": [
+        "data/calendar_event_type.xml",
+        "data/building_project_tag.xml",
+        "data/building_project_type.xml",
         "views/calendar_event.xml",
         "views/res_partner.xml",
         "views/crm_lead.xml",
         "views/sale_order.xml",
         "views/building_project.xml",
         "wizards/create_opportunity_quotation_view.xml",
-        "data/calendar_event_type.xml",
-        "data/building_project_tag.xml",
-        "data/building_project_type.xml",
         "security/ir.model.access.csv",
         "security/account_analytic_account.xml"
     ],
