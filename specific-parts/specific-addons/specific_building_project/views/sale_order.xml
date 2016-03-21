@@ -20,12 +20,38 @@
             states="draft,sent" string="(update prices by applying pricelist)" type="object" class="oe_right oe_link oe_edit_only"/>
       </field>
 
+      <!-- Replace price_unit and discount by a readonly field
+           It is needed to keep the base fields as invisible so they are still writable with onchanges -->
       <xpath expr="//field[@name='order_line']/form//field[@name='price_unit']" position="attributes">
-        <attribute name="readonly">True</attribute>
+        <attribute name="invisible">True</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='order_line']/form//field[@name='price_unit']" position="after">
+        <field name="price_unit_readonly"/>
       </xpath>
 
       <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="attributes">
-        <attribute name="readonly">True</attribute>
+        <attribute name="invisible">True</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="after">
+        <field name="price_unit_readonly"/>
+      </xpath>
+
+      <xpath expr="//field[@name='order_line']/form//field[@name='discount']" position="attributes">
+        <attribute name="invisible">True</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='order_line']/form//field[@name='discount']" position="after">
+        <field name="discount_readonly"/>
+      </xpath>
+
+      <xpath expr="//field[@name='order_line']/tree//field[@name='discount']" position="attributes">
+        <attribute name="invisible">True</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='order_line']/tree//field[@name='discount']" position="after">
+        <field name="discount_readonly"/>
       </xpath>
 
     </field>

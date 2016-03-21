@@ -62,6 +62,16 @@ class SaleOrder(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
+    price_unit_readonly = fields.Float(
+        string='Unit Price',
+        related='price_unit',
+        readonly=True)
+
+    discount_readonly = fields.Float(
+        string='Discount (%)',
+        related='discount',
+        readonly=True)
+
     @api.onchange('product_uom', 'product_uom_qty')
     def product_uom_change(self):
         """ Alter context of onchange to trigger computation
