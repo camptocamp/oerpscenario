@@ -19,6 +19,21 @@ class CRMLead(models.Model):
         string="Building Project's analytic account",
     )
 
+    phonecall_count = fields.Integer(
+        compute='_phonecall_count',
+        string="# Phonecalls"
+    )
+
+    def _phonecall_count(self):
+        type_phonecall = self.env.ref(
+            'specific_building_project.event_type_phonecall'
+        )
+        for rec in self:
+            self.phonecall_count = self.env['calendar.event'].search_count(
+                [('opportunity_id', '=', rec.id),
+                 ('categ_ids', 'in', [type_phonecall.id])]
+            )
+
     # XXX on create and write, if building_project_id is defined, add the
     # partner of the opportunity to the building_project
     @api.model
@@ -33,6 +48,22 @@ class CRMLead(models.Model):
         res = super(CRMLead, self).write(vals)
         if self.building_project_id and self.partner_id:
             self.building_project_id.contact_ids |= self.partner_id
+        return res
+
+    @api.multi
+    def action_schedule_phonecall(self):
+        """
+        Open meeting's calendar view to schedule meeting on current opportunity
+        filter on event of type phonecall
+        :return dict: dictionary value for created Meeting view
+        """
+        res = self.env['ir.actions.act_window'].for_xml_id(
+            'calendar', 'action_calendar_event')
+
+        res['context'] = {
+            'search_default_opportunity_id': self.id,
+            'search_default_phonecall': True,
+        }
         return res
 
     @api.multi

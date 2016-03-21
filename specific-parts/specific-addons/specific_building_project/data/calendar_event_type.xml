@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<odoo>
+  <record model="calendar.event.type" id="event_type_phonecall">
+    <field name="name">Phonecall</field>
+  </record>
+</odoo>
