@@ -66,6 +66,10 @@
               <field name="date_start" />
               <field name="date_end" />
             </group>
+            <group>
+              <field name="expected_amount" />
+              <field name="probability" />
+            </group>
           </group>
           <notebook colspan="4">
             <page string="Customers" autofocus="autofocus">
