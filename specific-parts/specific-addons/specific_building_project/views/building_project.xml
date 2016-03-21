@@ -6,7 +6,7 @@
     <field name="arch" type="xml">
       <form string="Building Project">
         <header>
-          <field name="build_state" widget="statusbar"/>
+          <field name="build_state" widget="statusbar" clickable="True"/>
         </header>
         <sheet string="Building Project">
           <div class="oe_button_box" name="button_box">

@@ -39,7 +39,9 @@ class BuildingProject(models.Model):
          ('submission', 'Submission'),
          ('done', 'abgeschlossen'),
          ('unknown', 'Unbekannt')),
-        'Bauprojekt-Status'
+        'Bauprojekt-Status',
+        required=True,
+        default='project',
     )
     build_type = fields.Selection(
         (('new', 'Neubau'),
