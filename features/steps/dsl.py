@@ -140,23 +140,34 @@ def impl(ctx, company_oid):
 
 @step(u'I set "{option}" to "{value}" in "{menu}" settings menu')
 def set_in_settings(ctx, option, value, menu):
-    """ Define value of an option in settings by name """
+    """ Define value of an option in settings by name
+    :param menu: 8.0: Menu name or xmlid
+                 9.0: base menu name or full path or xmlid
+    """
     Menu = model('ir.ui.menu')
     Field = model('ir.model.fields')
-    search_domain = [('module', '=', 'base'), ('name', '=', 'menu_config')]
-    base_menu_config_id = model('ir.model.data').get(search_domain).res_id
-    settings_menu = Menu.get(
-        [('name', '=', menu),
-         ('parent_id', '=', base_menu_config_id)])
-    if not settings_menu and menu in ('Invoicing', 'Accounting'):
-        # Try with alias name (depending on module installed)
-        if menu == 'Invoicing':
-            alias = 'Accounting'
-        elif menu == 'Accounting':
-            alias = 'Invoicing'
-        settings_menu = Menu.get(
-            [('name', '=', alias),
-             ('parent_id', '=', base_menu_config_id)])
+    if menu.startswith('oid:'):
+        settings_menu = Menu.get(menu[4:])
+    elif 'Accounting' in menu or 'Invoicing' in menu:
+        settings_menu = Menu.get('account.menu_account_config')
+    else:
+        if ctx.conf['server'].release.major_version >= 9.0:
+            # search by full path or compose full path
+            # but we need to loop on menu as full path is not stored
+            # thus not searchable
+            if not '/' in menu:
+                menu = menu + '/Configuration/Settings'
+            domain = [('name', '=', menu.split('/')[-1])]
+            menus = Menu.browse(domain)
+            for m in menus:
+                if m.complete_name == menu:
+                    settings_menu = m
+                    break
+        else:
+            base_menu_config = Menu.get('base.menu_config')
+            settings_menu = Menu.get(
+                [('name', '=', menu),
+                 ('parent_id', '=', base_menu_config.id)])
     assert settings_menu, "menu %s was not found" % menu
     wiz_model = settings_menu.action.res_model
 
@@ -170,9 +181,31 @@ def set_in_settings(ctx, option, value, menu):
         company = model('res.users').browse(1).company_id
         values.update(Wiz.onchange_company_id(None, company.id)['value'])
 
-    values[field.name] = value
-    config = Wiz.create(values)
+    field_model = model(field.model)
+    if field_model._fields[field.name]['type'] == 'selection':
+        selection = field_model._fields[field.name]['selection']
+        for elem in selection:
+            if elem[1] == value:
+                values[field.name] = elem[0]
+                break
+        assert values.get(field.name) is not False, "Value not found in selection"
+    else:
+        values[field.name] = value
+    if ctx.conf['server'].release.major_version >= 9.0:
+        # Due to https://github.com/odoo/odoo/issues/10775 we will call default_get
+        # and replace wrong boolean values by integer
+        defaults = Wiz.default_get(Wiz.fields_get_keys())
+        for field_name, val in defaults.iteritems():
+            if val is True and field_name.startswith('group_'):
+                field = Field.get([('model', '=', wiz_model),
+                                   ('name', '=', field_name)])
+                # If it is a selection it is not a boolean
+                if field.ttype == 'selection':
+                    defaults[field_name] = 1
+        defaults.update(values)
+        values = defaults
 
+    config = Wiz.create(values)
     config.execute()
 
 
