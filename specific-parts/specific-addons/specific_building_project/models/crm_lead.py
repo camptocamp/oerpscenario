@@ -29,7 +29,7 @@ class CRMLead(models.Model):
             'specific_building_project.event_type_phonecall'
         )
         for rec in self:
-            self.phonecall_count = self.env['calendar.event'].search_count(
+            rec.phonecall_count = self.env['calendar.event'].search_count(
                 [('opportunity_id', '=', rec.id),
                  ('categ_ids', 'in', [type_phonecall.id])]
             )
