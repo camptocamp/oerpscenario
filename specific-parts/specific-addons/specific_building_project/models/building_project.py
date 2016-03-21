@@ -2,7 +2,7 @@
 # © 2015 Swisslux AG
 # © 2015-2016 Yannick Vaucher (Camptocamp)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-from openerp import models, fields, api
+from openerp import api, fields, models, _
 
 
 class BuildingProject(models.Model):
@@ -134,6 +134,9 @@ class BuildingProject(models.Model):
         string="# Meetings"
     )
 
+    doc_count = fields.Integer(
+        compute='_get_attached_docs', string="Number of documents attached",
+    )
     # @api.one
     # def _aggregate_meetings(self):
     #    """ List all meetings aggregated from opportunities """
@@ -179,6 +182,15 @@ class BuildingProject(models.Model):
                 rec.region_id = rec.zip_id.region_id
 
     @api.multi
+    def _get_attached_docs(self):
+        attachment_model = self.env['ir.attachment']
+        for rec in self:
+            project_attachments = attachment_model.search_count(
+                [('res_model', '=', 'building.project'),
+                 ('res_id', '=', rec.id)])
+            rec.doc_count = project_attachments
+
+    @api.multi
     def action_schedule_meeting(self):
         """
         Open meeting's calendar view to schedule meeting on current opportunity
@@ -209,3 +221,26 @@ class BuildingProject(models.Model):
         }
         res['domain'] = []
         return res
+
+    @api.multi
+    def attachment_tree_view(self):
+        self.ensure_one()
+        domain = [('res_model', '=', 'building.project'),
+                  ('res_id', 'in', self.ids)]
+        return {
+            'name': _('Attachments'),
+            'domain': domain,
+            'res_model': 'ir.attachment',
+            'type': 'ir.actions.act_window',
+            'view_id': False,
+            'view_mode': 'kanban,tree,form',
+            'view_type': 'form',
+            'help': _(
+                '''<p class="oe_view_nocontent_create">
+                   Documents are attached to the tasks and issues of your
+                   project.</p><p>Send messages or log internal notes with
+                   attachments to link documents to your project.</p>'''),
+            'limit': 80,
+            'context': "{'default_res_model': '%s','default_res_id': %d}" % (
+                self._name, self.id)
+        }
