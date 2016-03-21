@@ -33,16 +33,18 @@ class BuildingProject(models.Model):
     )
 
     build_state = fields.Selection(
-        (('projet', 'Projekt'),
-         ('request', 'Gesuch'),
-         ('confirmed', 'Bewilligt'),
+        [('acquisition', 'Akquise'),
          ('submission', 'Submission'),
-         ('done', 'abgeschlossen'),
-         ('unknown', 'Unbekannt')),
+         ('offer', 'Offerte'),
+         ('positive', 'Realisation Positiv'),
+         ('active', 'Aftersales aktiv'),
+         ('closed', 'abgeschlossen'),
+         ('lost', 'Auftrag verloren')],
         'Bauprojekt-Status',
         required=True,
-        default='project',
+        default='acquisition',
     )
+
     build_type = fields.Selection(
         (('new', 'Neubau'),
          ('conversion', 'Umbau'),
