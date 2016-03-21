@@ -126,6 +126,7 @@ Feature: Parameter the new database
         | mrp                                   |
         | mrp_byproduct                         |
         | purchase                              |
+        | product_visible_discount              |
         | project                               |
         | project_issue                         |
         | sale                                  |
@@ -134,7 +135,7 @@ Feature: Parameter the new database
         # enterprise
         | account_reports_followup              |
         | hr_appraisal                          |
-        
+
 
   @modules
   Scenario: install OCA modules
