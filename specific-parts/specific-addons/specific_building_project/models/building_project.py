@@ -138,6 +138,8 @@ class BuildingProject(models.Model):
         compute='_get_attached_docs', string="Number of documents attached",
     )
 
+    color = fields.Integer('Color Index')
+
     @api.depends('analytic_account_id')
     def _get_sale_orders(self):
         """ List all sale order linked to this project.
@@ -236,7 +238,7 @@ class BuildingProject(models.Model):
     def action_sale_orders(self):
         """
         Open sale order tree view
-        :return dict: dictionary value for created Meeting view
+        :return dict: dictionary value for created sale order view
         """
         res = self.env['ir.actions.act_window'].for_xml_id(
             'sale', 'action_orders')
@@ -245,6 +247,22 @@ class BuildingProject(models.Model):
             'search_default_project_id': self.analytic_account_id.id,
             'default_project_id': self.analytic_account_id.id,
             'statistics_include_hide': False,
+        }
+        res['domain'] = []
+        return res
+
+    @api.multi
+    def action_opportunities(self):
+        """
+        Open opportunities view
+        :return dict: dictionary value for created opportunity view
+        """
+        res = self.env['ir.actions.act_window'].for_xml_id(
+            'crm', 'crm_lead_opportunities')
+
+        res['context'] = {
+            'search_default_building_project_id': self.id,
+            'default_project_id': self.id,
         }
         res['domain'] = []
         return res
