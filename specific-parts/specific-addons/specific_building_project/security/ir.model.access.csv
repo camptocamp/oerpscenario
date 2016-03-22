@@ -6,3 +6,5 @@ access_building_project_pricelist_all,building.project.pricelist all,model_build
 access_building_project_tag_all,building.project.tag all,model_building_project_tag,base.group_user,1,1,1,1
 
 access_building_project_type_all,building.project.type all,model_building_project_type,base.group_user,1,1,1,1
+
+access_building_project_stage,building.project.stage all,model_building_project_stage,base.group_user,1,1,1,1

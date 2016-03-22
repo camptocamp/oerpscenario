@@ -32,17 +32,16 @@ class BuildingProject(models.Model):
         help="Envolved partners (Architect, Engineer, Electrician)"
     )
 
-    build_state = fields.Selection(
-        [('acquisition', 'Akquise'),
-         ('submission', 'Submission'),
-         ('offer', 'Offerte'),
-         ('positive', 'Realisation Positiv'),
-         ('active', 'Aftersales aktiv'),
-         ('closed', 'abgeschlossen'),
-         ('lost', 'Auftrag verloren')],
-        'Bauprojekt-Status',
+    @api.multi
+    def _get_default_stage_id(self):
+        """ Gives default stage_id """
+        return self.env['building.project.stage'].search([], limit=1)
+
+    stage_id = fields.Many2one(
+        comodel_name='building.project.stage',
+        string="Stage",
         required=True,
-        default='acquisition',
+        default=_get_default_stage_id
     )
 
     build_type = fields.Selection(
@@ -199,6 +198,30 @@ class BuildingProject(models.Model):
                 [('res_model', '=', 'building.project'),
                  ('res_id', '=', rec.id)])
             rec.doc_count = project_attachments
+
+    @api.multi
+    def _read_group_stage_ids(self, domain, read_group_order=None,
+                              access_rights_uid=None):
+        """ Read group customization in order to display all the states in the
+            kanban view, even if they are empty
+        """
+        stage_obj = self.env['building.project.stage']
+        order = stage_obj._order
+        access_rights_uid = access_rights_uid or self.env.uid
+        if read_group_order == 'stage_id desc':
+            order = '%s desc' % order
+        stage_ids = stage_obj._search(
+            [], order=order, access_rights_uid=access_rights_uid
+        )
+        stages = stage_obj.browse(stage_ids)
+        result = [stage.name_get()[0] for stage in stages]
+
+        fold = {}
+        for stage in stages:
+            fold[stage.id] = stage.fold or False
+        return result, fold
+
+    _group_by_full = {'stage_id': _read_group_stage_ids}
 
     @api.multi
     def action_schedule_meeting(self):

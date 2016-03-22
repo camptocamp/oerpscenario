@@ -6,7 +6,7 @@
     <field name="arch" type="xml">
       <form string="Building Project">
         <header>
-          <field name="build_state" widget="statusbar" clickable="True"/>
+          <field name="stage_id" widget="statusbar" clickable="True"/>
         </header>
         <sheet string="Building Project">
           <div class="oe_button_box" name="button_box">
@@ -223,11 +223,11 @@
     <field name="name">building.project.kanban</field>
     <field name="model">building.project</field>
     <field name="arch" type="xml">
-      <kanban class="oe_background_grey o_kanban_dashboard o_project_kanban">
+      <kanban class="oe_background_grey o_kanban_dashboard o_project_kanban" default_group_by="stage_id">
         <field name="name"/>
         <field name="date_start"/>
         <field name="date_end"/>
-        <field name="build_state"/>
+        <field name="stage_id"/>
         <field name="user_id"/>
         <field name="color"/>
         <field name="opportunity_count"/>
@@ -302,7 +302,7 @@
     <field name="arch" type="xml">
       <search string="Search Building Project">
         <field name="name" string="Building Project Name"/>
-        <field name="build_state"/>
+        <field name="stage_id"/>
         <field name="build_type"/>
         <field name="build_progress"/>
         <field name="building_project_tag_ids"/>
@@ -317,7 +317,7 @@
         <!--<field name="user_id" string="Project Manager"/>-->
         <!--<field name="partner_id" string="Contact" filter_domain="[('partner_id', 'child_of', self)]"/>-->
         <group expand="0" string="Group By">
-          <filter string="Bauprojekt-Status" context="{'group_by':'build_state'}"/>
+          <filter string="Bauprojekt-Status" context="{'group_by':'stage_id'}"/>
           <filter string="Bauprojekt-Typ" context="{'group_by':'build_type'}"/>
           <filter string="Bauprojekt-Fortschritt" context="{'group_by':'build_progress'}"/>
           <!--<filter string="Manager" name="Manager" context="{'group_by':'user_id'}"/>-->
@@ -336,7 +336,7 @@
         <!--<field name="message_needaction" invisible="1"/>-->
         <field name="name" string="Building Project Name"/>
         <field name="user_id"/>
-        <field name="build_state"/>
+        <field name="stage_id"/>
         <field name="build_type"/>
         <field name="build_progress"/>
         <field name="building_project_tag_ids"/>

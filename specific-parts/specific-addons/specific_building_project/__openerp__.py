@@ -26,6 +26,7 @@
         "data/calendar_event_type.xml",
         "data/building_project_tag.xml",
         "data/building_project_type.xml",
+        "data/building_project_stage.xml",
         "views/calendar_event.xml",
         "views/res_partner.xml",
         "views/crm_lead.xml",
