@@ -9,6 +9,20 @@ class BuildingProject(models.Model):
 
     _name = 'building.project'
     _inherits = {'account.analytic.account': "analytic_account_id"}
+    _rec_name = 'display_name'
+
+    display_name = fields.Char(
+        compute='_compute_display_name'
+    )
+
+    @api.multi
+    @api.depends('name', 'business_area')     # this definition is recursive
+    def _compute_display_name(self):
+        if self.business_area:
+            business_area = self.business_area.upper()
+            self.display_name = ' - '.join([business_area, self.name])
+        else:
+            self.display_name = self.name
 
     date_start = fields.Date(
         'Start Date'
@@ -56,6 +70,12 @@ class BuildingProject(models.Model):
          ('management', 'Bewirtschaftung')],
         "Fortschritt nach sia"
     )
+    business_area = fields.Selection(
+        [('pir', "PIR"),
+         ('il', "IL")],
+        string=u"Geschäftsfeld",
+    )
+
     building_project_tag_ids = fields.Many2many(
         comodel_name='building.project.tag',
         string='Projekt Tags'
