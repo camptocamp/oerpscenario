@@ -32,15 +32,18 @@ class BuildingProject(models.Model):
         help="Envolved partners (Architect, Engineer, Electrician)"
     )
 
-    build_state = fields.Selection(
-        (('projet', 'Projekt'),
-         ('request', 'Gesuch'),
-         ('confirmed', 'Bewilligt'),
-         ('submission', 'Submission'),
-         ('done', 'abgeschlossen'),
-         ('unknown', 'Unbekannt')),
-        'Bauprojekt-Status'
+    @api.multi
+    def _get_default_stage_id(self):
+        """ Gives default stage_id """
+        return self.env['building.project.stage'].search([], limit=1)
+
+    stage_id = fields.Many2one(
+        comodel_name='building.project.stage',
+        string="Stage",
+        required=True,
+        default=_get_default_stage_id
     )
+
     build_type = fields.Selection(
         (('new', 'Neubau'),
          ('conversion', 'Umbau'),
@@ -138,6 +141,8 @@ class BuildingProject(models.Model):
         compute='_get_attached_docs', string="Number of documents attached",
     )
 
+    color = fields.Integer('Color Index')
+
     @api.depends('analytic_account_id')
     def _get_sale_orders(self):
         """ List all sale order linked to this project.
@@ -195,6 +200,30 @@ class BuildingProject(models.Model):
             rec.doc_count = project_attachments
 
     @api.multi
+    def _read_group_stage_ids(self, domain, read_group_order=None,
+                              access_rights_uid=None):
+        """ Read group customization in order to display all the states in the
+            kanban view, even if they are empty
+        """
+        stage_obj = self.env['building.project.stage']
+        order = stage_obj._order
+        access_rights_uid = access_rights_uid or self.env.uid
+        if read_group_order == 'stage_id desc':
+            order = '%s desc' % order
+        stage_ids = stage_obj._search(
+            [], order=order, access_rights_uid=access_rights_uid
+        )
+        stages = stage_obj.browse(stage_ids)
+        result = [stage.name_get()[0] for stage in stages]
+
+        fold = {}
+        for stage in stages:
+            fold[stage.id] = stage.fold or False
+        return result, fold
+
+    _group_by_full = {'stage_id': _read_group_stage_ids}
+
+    @api.multi
     def action_schedule_meeting(self):
         """
         Open meeting's calendar view to schedule meeting on current opportunity
@@ -236,7 +265,7 @@ class BuildingProject(models.Model):
     def action_sale_orders(self):
         """
         Open sale order tree view
-        :return dict: dictionary value for created Meeting view
+        :return dict: dictionary value for created sale order view
         """
         res = self.env['ir.actions.act_window'].for_xml_id(
             'sale', 'action_orders')
@@ -245,6 +274,22 @@ class BuildingProject(models.Model):
             'search_default_project_id': self.analytic_account_id.id,
             'default_project_id': self.analytic_account_id.id,
             'statistics_include_hide': False,
+        }
+        res['domain'] = []
+        return res
+
+    @api.multi
+    def action_opportunities(self):
+        """
+        Open opportunities view
+        :return dict: dictionary value for created opportunity view
+        """
+        res = self.env['ir.actions.act_window'].for_xml_id(
+            'crm', 'crm_lead_opportunities')
+
+        res['context'] = {
+            'search_default_building_project_id': self.id,
+            'default_project_id': self.id,
         }
         res['domain'] = []
         return res

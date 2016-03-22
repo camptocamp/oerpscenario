@@ -5,30 +5,31 @@
     <field name="model">building.project</field>
     <field name="arch" type="xml">
       <form string="Building Project">
+        <header>
+          <field name="stage_id" widget="statusbar" clickable="True"/>
+        </header>
         <sheet string="Building Project">
           <div class="oe_button_box" name="button_box">
             <!--<button class="oe_stat_button" type="action" name="% (account_analytic_line_action)d"-->
               <!--icon="fa-usd"  string="Cost/Revenue" widget="statinfo"/>-->
-            <button  class="oe_stat_button" name="attachment_tree_view"  type="object" icon="fa-files-o">
-                <field string="Documents" name="doc_count" widget="statinfo"/>
-            </button>
-            <button class="oe_stat_button" type="object"
-              name="action_sale_orders"
-              icon="fa-usd"
-              context="{'search_default_building_project_id': active_id}">
-              <field name="sale_order_count" widget="o_stat_value"/>
-              <span class="o_stat_text" attrs="{'invisible': [('sale_order_count', '&lt;', 2)]}"> Sales orders</span>
-              <span class="o_stat_text" attrs="{'invisible': [('sale_order_count', '&gt;', 1)]}"> Sales order</span>
-            </button>
-            <button class="oe_stat_button o_res_partner_tip_opp" type="action"
-              name="%(crm.crm_lead_opportunities)d"
-              icon="fa-star"
-              context="{'search_default_building_project_id': active_id}">
+            <button class="oe_stat_button o_res_partner_tip_opp" type="object"
+              name="action_opportunities"
+              icon="fa-star">
               <div class="o_stat_info">
                 <field name="opportunity_count" widget="o_stat_value"/>
                 <span class="o_stat_text" attrs="{'invisible': [('opportunity_count', '&lt;', 2)]}"> Opportunities</span>
                 <span class="o_stat_text" attrs="{'invisible': [('opportunity_count', '&gt;', 1)]}"> Opportunity</span>
               </div>
+            </button>
+            <button class="oe_stat_button" type="object"
+              name="action_sale_orders"
+              icon="fa-usd">
+              <field name="sale_order_count" widget="o_stat_value"/>
+              <span class="o_stat_text" attrs="{'invisible': [('sale_order_count', '&lt;', 2)]}"> Sales orders</span>
+              <span class="o_stat_text" attrs="{'invisible': [('sale_order_count', '&gt;', 1)]}"> Sales order</span>
+            </button>
+            <button  class="oe_stat_button" name="attachment_tree_view"  type="object" icon="fa-files-o">
+                <field string="Documents" name="doc_count" widget="statinfo"/>
             </button>
             <button class="oe_stat_button" type="object"
               name="action_schedule_meeting" icon="fa-calendar">
@@ -185,7 +186,6 @@
             <page string="Info">
               <group>
                 <group>
-                  <field name="build_state"/>
                   <field name="build_progress"/>
                 </group>
                 <group>
@@ -219,13 +219,90 @@
     </field>
   </record>
 
+  <record id="view_building_project_kanban" model="ir.ui.view">
+    <field name="name">building.project.kanban</field>
+    <field name="model">building.project</field>
+    <field name="arch" type="xml">
+      <kanban class="oe_background_grey o_kanban_dashboard o_project_kanban" default_group_by="stage_id">
+        <field name="name"/>
+        <field name="date_start"/>
+        <field name="date_end"/>
+        <field name="stage_id"/>
+        <field name="user_id"/>
+        <field name="color"/>
+        <field name="opportunity_count"/>
+        <field name="sale_order_count"/>
+        <field name="meeting_count"/>
+        <field name="phonecall_count"/>
+        <field name="doc_count"/>
+        <templates>
+          <t t-name="kanban-box">
+            <div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click">
+              <div class="o_project_kanban_main">
+                <div class="o_kanban_card_content o_visible">
+                  <div class="o_kanban_primary_left">
+                    <div class="o_primary">
+                      <span><i class="fa fa-building"/> <t t-esc="record.name.value"/></span>
+                    </div>
+                    <div>
+                      <span t-if="record.date_start.raw_value and record.date_end.raw_value">
+                        <i class="fa fa-calendar"/> <t t-esc="record.date_start.value"/>
+                        <i class="fa fa-angle-double-right"/> <t t-esc="record.date_end.value"/>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="o_kanban_card_manage_pane o_invisible">
+                  <div class="o_kanban_card_manage_section o_kanban_manage_reports">
+                    <div>
+                      <a name="action_sale_orders" type="object">Opportunities</a>
+                    </div>
+                  </div>
+                  <div t-if="widget.editable" class="o_project_kanban_colorpicker">
+                    <ul class="oe_kanban_colorpicker" data-field="color"/>
+                  </div>
+                </div>
+                <div class="o_project_kanban_manage">
+                  <a class="o_kanban_manage_toggle_button" href="#">More <i class="fa fa-caret-down"/></a>
+                </div>
+              </div>
+
+              <div class="o_project_kanban_boxes">
+                <a name="action_opportunities" class="o_project_kanban_box" type="object">
+                  <span class="o_value"><i class="fa fa-star"/> <t t-esc="record.opportunity_count.raw_value"/></span>
+                  <span class="o_label">Opportunities</span>
+                </a>
+                <a name="action_sale_orders" class="o_project_kanban_box" type="object">
+                  <span class="o_value"><i class="fa fa-usd"/> <t t-esc="record.sale_order_count.raw_value"/></span>
+                  <span class="o_label">Sales orders</span>
+                </a>
+                <a t-if="record.doc_count.raw_value" class="o_project_kanban_box" name="attachment_tree_view" type="object">
+                  <span class="o_value"><i class="fa fa-files-o"/> <t t-esc="record.doc_count.value"/></span>
+                  <span class="o_label">Documents</span>
+                </a>
+                <a t-if="record.meeting_count.raw_value" class="o_project_kanban_box" name="action_schedule_meeting" type="object">
+                  <span class="o_value"><i class="fa fa-calendar"/> <t t-esc="record.meeting_count.value"/></span>
+                  <span class="o_label">Meetings</span>
+                </a>
+                <a t-if="record.phonecall_count.raw_value" class="o_project_kanban_box" name="action_schedule_phonecall" type="object">
+                  <span class="o_value"><i class="fa fa-phone"/> <t t-esc="record.phonecall_count.value"/></span>
+                  <span class="o_label">Phonecalls</span>
+                </a>
+              </div>
+            </div>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
+
   <record id="view_building_project_filter" model="ir.ui.view">
     <field name="name">building.project.select</field>
     <field name="model">building.project</field>
     <field name="arch" type="xml">
       <search string="Search Building Project">
         <field name="name" string="Building Project Name"/>
-        <field name="build_state"/>
+        <field name="stage_id"/>
         <field name="build_type"/>
         <field name="build_progress"/>
         <field name="building_project_tag_ids"/>
@@ -240,7 +317,7 @@
         <!--<field name="user_id" string="Project Manager"/>-->
         <!--<field name="partner_id" string="Contact" filter_domain="[('partner_id', 'child_of', self)]"/>-->
         <group expand="0" string="Group By">
-          <filter string="Bauprojekt-Status" context="{'group_by':'build_state'}"/>
+          <filter string="Bauprojekt-Status" context="{'group_by':'stage_id'}"/>
           <filter string="Bauprojekt-Typ" context="{'group_by':'build_type'}"/>
           <filter string="Bauprojekt-Fortschritt" context="{'group_by':'build_progress'}"/>
           <!--<filter string="Manager" name="Manager" context="{'group_by':'user_id'}"/>-->
@@ -259,7 +336,7 @@
         <!--<field name="message_needaction" invisible="1"/>-->
         <field name="name" string="Building Project Name"/>
         <field name="user_id"/>
-        <field name="build_state"/>
+        <field name="stage_id"/>
         <field name="build_type"/>
         <field name="build_progress"/>
         <field name="building_project_tag_ids"/>
@@ -273,7 +350,7 @@
     <field name="res_model">building.project</field>
     <field name="view_type">form</field>
     <field name="domain">[]</field>
-    <field name="view_mode">tree,form</field>
+    <field name="view_mode">kanban,tree,form</field>
     <field name="search_view_id" ref="view_building_project_filter"/>
     <field name="help" type="html">
       <p class="oe_view_nocontent_create">
