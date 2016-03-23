@@ -31,7 +31,7 @@ def impl(ctx):
     assert_true(codes)
     assert_less(codes, set(tlangs.code))
     if ctx.client.server_version.startswith('9'):
-        mods.update_translations()
+        mods.update_translations(None, {'overwrite': True})
     else:
         mods.button_update_translations()
 
