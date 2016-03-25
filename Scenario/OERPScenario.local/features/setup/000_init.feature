@@ -172,6 +172,8 @@ Feature: Parameter the new database
         #| web_shortcuts                        |
         # oca/stock-logistics-warehouse
         | stock_available_mrp                   |
+        # oca/manufacture
+        | mrp_bom_dismantling                   |
 
   @modules
   Scenario: install specific modules
