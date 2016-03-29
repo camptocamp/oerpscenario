@@ -151,7 +151,7 @@ def set_in_settings(ctx, option, value, menu):
     elif 'Accounting' in menu or 'Invoicing' in menu:
         settings_menu = Menu.get('account.menu_account_config')
     else:
-        if ctx.conf['server'].release.major_version >= 9.0:
+        if ctx.conf['server'].release.major_version >= '9.0':
             # search by full path or compose full path
             # but we need to loop on menu as full path is not stored
             # thus not searchable
@@ -191,7 +191,7 @@ def set_in_settings(ctx, option, value, menu):
         assert values.get(field.name) is not False, "Value not found in selection"
     else:
         values[field.name] = value
-    if ctx.conf['server'].release.major_version >= 9.0:
+    if ctx.conf['server'].release.major_version >= '9.0':
         # Due to https://github.com/odoo/odoo/issues/10775 we will call default_get
         # and replace wrong boolean values by integer
         defaults = Wiz.default_get(Wiz.fields_get_keys())
