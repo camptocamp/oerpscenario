@@ -170,6 +170,10 @@ Feature: Parameter the new database
         #| web_dialog_size                      |
         #| web_sheet_full_width                 |
         #| web_shortcuts                        |
+        # oca/stock-logistics-warehouse
+        | stock_available_mrp                   |
+        # oca/manufacture
+        | mrp_bom_dismantling                   |
 
   @modules
   Scenario: install specific modules
