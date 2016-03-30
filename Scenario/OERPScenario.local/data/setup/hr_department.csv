@@ -1,10 +1,10 @@
 id,name,parent_id
-scenario.hr_department_ceo,Geschäftsleitung,
-scenario.hr_department_hr,Human Ressource,
-scenario.hr_department_finanz,Finanzen,
-scenario.hr_department_produkt,Produktmanagement,
-scenario.hr_department_marketing,Marketing,
-scenario.hr_department_verkauf,Verkauf,
-scenario.hr_department_logistik,Logistik,
-scenario.hr_department_support,Operations Support,
-scenario.hr_department_it,Operations Informatik,
+scenario.hr_department_slx,Swisslux,
+scenario.hr_department_hr,Human Ressource,Swisslux
+scenario.hr_department_finanz,Finanzen,Swisslux
+scenario.hr_department_produkt,Produktmanagement,Swisslux
+scenario.hr_department_marketing,Marketing,Swisslux
+scenario.hr_department_verkauf,Verkauf,Swisslux
+scenario.hr_department_logistik,Logistik,Swisslux
+scenario.hr_department_support,Operations Support,Swisslux
+scenario.hr_department_it,Operations Informatik,Swisslux

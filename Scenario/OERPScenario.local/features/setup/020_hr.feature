@@ -44,10 +44,7 @@ Feature: configure users, departments and employees
   @csv @employee  
   Scenario: import employees
     Given "hr.employee" is imported from CSV "setup/hr_employee.csv" using delimiter ","
-    
-#  Scenario: update partner informations for employees
-#    Given "res.partner" is imported from CSV "setup/hr_employee_partner.csv" using delimiter ","
-  
+
   @csv @dpt_mgr
   Scenario: import departments manager
     Given "hr.department" is imported from CSV "setup/hr_department_mgr.csv" using delimiter ","  
