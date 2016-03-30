@@ -1,0 +1,9 @@
+id,name,implied_ids/id
+scenario.group_slx_base,SLX Base,"base.group_user,project.group_project_user,project.group_tasks_work_on_tasks,base.group_survey_user,base.group_partner_manager"
+scenario.group_slx_sales,SLX Verkauf,"base.group_sale_salesman_all_leads,base.group_sale_salesman,product.group_sale_pricelist,sale.group_delivery_invoice_address,analytic.group_analytic_accounting,sale.group_analytic_accounting,account.group_account_invoice,base.group_sale_manager,base.group_multi_currency,product.group_sale_pricelist"
+scenario.group_slx_rh,SLX RH,"base.group_survey_manager,base.group_hr_manager"
+scenario.group_slx_logistik,SLX Logistik,stock.group_stock_manager
+scenario.group_slx_projekt,SLX Projekt,"analytic.group_analytic_accounting,project.group_project_manager"
+scenario.group_slx_einkauf,SLX Einkauf,"analytic.group_analytic_accounting,purchase.group_analytic_accounting,account.group_account_invoice"
+scenario.group_slx_finanz,SLX Finanz,"analytic.group_analytic_accounting,account.group_account_manager"
+scenario.group_slx_fertigung,SLX Fertigung,mrp.group_mrp_routings
