@@ -1,0 +1,11 @@
+.build_activity {
+    margin-bottom: 20px;
+}
+.stars {
+    text-align: left;
+}
+
+.colored-stars {
+    text-align: left;
+    color: #FACC2E;
+}

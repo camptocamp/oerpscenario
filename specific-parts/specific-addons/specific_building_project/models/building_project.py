@@ -77,6 +77,15 @@ class BuildingProject(models.Model):
         [('pir', "PIR"),
          ('il', "IL")],
         string=u"Geschäftsfeld",
+    )
+
+    build_activity = fields.Selection(
+        [('active', 'activ'),
+         ('passive', 'nicht aktiv begleitet'),
+         ('inactive', 'nicht mehr aktiv begleitet')],
+        "Aktivität",
+        default='active'
+    )
 
     building_project_tag_ids = fields.Many2many(
         comodel_name='building.project.tag',
