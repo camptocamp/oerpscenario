@@ -38,6 +38,12 @@
           <div class="text-center">
             <small>
               <small>
+                <ul class="list-inline text-right">
+                  <li>Page:</li>
+                  <li><span class="page"/></li>
+                  <li>/</li>
+                  <li><span class="topage"/></li>
+                </ul>
                 <small>
                   <strong t-field="company.name"/>
                   <span t-field="company.street"/>,

@@ -211,11 +211,10 @@
             <span t-field="l.discount"/>
           </td>
           <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
-            <span t-field="l.price_unit_discount"/>
+            <span t-field="l.price_unit_discount" t-field-options='{"widget": "False"}'/>
           </td>
           <td class="text-right">
-            <span t-field="l.price_subtotal"
-              t-field-options='{"widget": "monetary", "display_currency": "doc.pricelist_id.currency_id"}'/>
+            <span t-field="l.price_subtotal" t-field-options='{"widget": "False"}'/>
           </td>
         </tr>
       </xpath>
