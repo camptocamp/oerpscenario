@@ -116,7 +116,7 @@
                   <t class="col-xs-5" t-if="doc.state in ['draft','sent']">
                     <span class="col-xs-5">Quotation Date:</span>
                   </t>
-                  <span t-field="doc.date_order" t-field-options='{"widget":"date"}'/> <!-- Attendtion, ne sera plus formatté selon la langue du destinataire -->
+                  <span t-field="doc.date_order" t-field-options='{"widget":"date"}'/>
               </div>
               <div t-if="doc.delivery_term" class="col-xs-12">
                   <span class="col-xs-5">Term of delivery:</span>

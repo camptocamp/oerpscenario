@@ -109,7 +109,7 @@
                   <t class="col-xs-5" t-if="o.state in ['draft','sent']">
                     <span class="col-xs-5">Date:</span>
                   </t>
-                  <span t-field="o.date_invoice" t-field-options='{"format":"dd.MM.yyyy"}'/> <!-- Warning. Override the formatting based on user's language -->
+                  <span t-field="o.date_invoice" t-field-options='{"widget":"date"}'/>
               </div>
               <div t-if="o.delivery_term" class="col-xs-12">
                   <span class="col-xs-5">Term of delivery:</span>
@@ -131,6 +131,85 @@
             </div> -->
         </div>
         <t t-set="line_counter" t-value="0"/>
+      </xpath>
+
+            <!-- Payment term at the end of the document -->
+      <xpath expr="//p[@t-if='o.payment_term_id']" position="replace">
+        <p t-if="o.payment_term_id.note">
+          Payment term:
+          <span t-field="o.payment_term_id.note" string="Payment term:"/>
+        </p>
+        <p t-if="not o.payment_term_id and o.partner_id.property_payment_term_id">
+          <span t-field="o.partner_id.property_payment_term_id.note" string="Payment term:"/>
+        </p>
+      </xpath>
+
+    </template>
+
+    <!-- Invoice Line-->
+    <template id="report_invoice_layouted" inherit_id="sale_layout.report_invoice_layouted">
+
+      <xpath expr="//t[@t-as='l']/tr" position="replace">
+        <tr>
+          <td>
+            <t t-set="line_counter" t-value="line_counter + 1"/>
+            <span t-raw="line_counter"/>
+          </td>
+          <td class="text-right">
+            <!-- hide decimals if unit of mesure is unit -->
+
+            <t t-if="l.uom_id">
+              <span t-field="l.quantity"/>
+            </t>
+            <span groups="product.group_uom" t-field="l.uom_id"/>
+          </td>
+          <td>
+            <t t-if="l.product_id.e_nr">
+              <span  t-field="l.product_id.e_nr"/>
+            </t>
+            <t t-if="not l.product_id.e_nr">
+              <span  t-field="l.product_id.default_code"/>
+            </t>
+          </td>
+          <td>
+            <t t-if="l.product_id">
+              <span  t-field="l.product_id.name"/>
+            </t>
+            <t t-if="not l.product_id">
+              <span  t-field="l.name"/>
+            </t>
+          </td>
+          <td class="text-right">
+            <span t-field="l.price_unit"/>
+          </td>
+          <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+            <span t-field="l.discount"/>
+          </td>
+          <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+            <span t-field="l.price_unit_discount" t-field-options='{"widget": "False"}'/>
+          </td>
+          <td class="text-right">
+            <span t-field="l.price_subtotal" t-field-options='{"widget": "False"}'/>
+          </td>
+        </tr>
+      </xpath>
+
+      <!-- INV Line table description -->
+      <xpath expr="//thead/tr" position="replace">
+        <tr>
+          <th>Pos.</th>
+          <th class="text-right">Quantity</th>
+          <th>Product Num.</th>
+          <th>Description</th>
+          <th class="text-right">Unit Price</th>
+          <th t-if="display_discount" groups="sale.group_discount_per_so_line" class="text-right">
+            <span>
+              Disc.(%)
+            </span>
+          </th>
+          <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Net</th>
+          <th class="text-right">Price</th>
+        </tr>
       </xpath>
 
     </template>
