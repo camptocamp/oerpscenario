@@ -14,11 +14,13 @@
      'l10n_ch_zip'
      ],
  'data': [
+     'security/ir.model.access.csv',
      'views/partner.xml',
      'views/partner_title.xml',
      'views/better_zip.xml',
      'data/sequence.xml',
-     'security/ir.model.access.csv'
+     'data/res.partner.region.csv',
+     'data/res.better.zip.csv',
      ],
  'test': [],
  'installable': True,
