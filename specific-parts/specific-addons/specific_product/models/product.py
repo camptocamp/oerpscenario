@@ -18,15 +18,17 @@ class ProductProduct(models.Model):
     def name_search(self, name, args=None, operator='ilike', limit=100):
         """ Allow to search by E-Nr """
         args = args or []
-        domain = []
-        result = None
+
         result = super(ProductProduct, self).name_search(
             name, args=args, operator=operator, limit=limit)
-        limit = limit - len(result)
-        if limit > 1:
+
+        if limit is not None:
+            limit -= len(result)
+
+        if limit is None or limit > 1:
             domain = [('e_nr', '=ilike', name + '%')]
             if operator in expression.NEGATIVE_TERM_OPERATORS:
                 domain = ['&'] + domain
-            partners = self.search(domain + args, limit=limit)
-            result.extend(partners.name_get())
+            products = self.search(domain + args, limit=limit)
+            result.extend(products.name_get())
         return result
