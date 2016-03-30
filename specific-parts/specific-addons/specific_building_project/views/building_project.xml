@@ -53,8 +53,14 @@
             <h1>
               <field name="name" class="oe_inline" placeholder="e.g. Building Project XYZ"/>
             </h1>
-            <label for="project_type_id"/>
-            <field name="project_type_id"/>
+            <div>
+              <label for="business_area"/>
+              <field name="business_area"/>
+            </div>
+            <div>
+              <label for="project_type_id"/>
+              <field name="project_type_id"/>
+            </div>
           </div>
           <div name="project"/>
           <group name="main">
@@ -306,6 +312,7 @@
         <field name="build_type"/>
         <field name="build_progress"/>
         <field name="building_project_tag_ids"/>
+        <field name="business_area"/>
         <!--<filter string="Open" name="Current" domain="[('state', '=','open')]"/>-->
         <!--<filter string="Pending" name="Pending" domain="[('state', '=','pending')]"/>-->
         <separator/>
@@ -320,6 +327,7 @@
           <filter string="Bauprojekt-Status" context="{'group_by':'stage_id'}"/>
           <filter string="Bauprojekt-Typ" context="{'group_by':'build_type'}"/>
           <filter string="Bauprojekt-Fortschritt" context="{'group_by':'build_progress'}"/>
+          <filter string="Geschäftsfeld" context="{'group_by':'business_area'}"/>
           <!--<filter string="Manager" name="Manager" context="{'group_by':'user_id'}"/>-->
           <!--<filter string="Contact" name="Partner" context="{'group_by':'partner_id'}"/>-->
         </group>
@@ -332,15 +340,14 @@
     <field name="model">building.project</field>
     <field name="arch" type="xml">
       <tree decoration-bf="'message_needaction'==True" decoration-info="'state' in ('draft','pending')" decoration-muted="'state' in ('close','cancelled')" string="Building Projects">
-        <!--<field name="sequence" widget="handle"/>-->
         <!--<field name="message_needaction" invisible="1"/>-->
+        <field name="business_area"/>
         <field name="name" string="Building Project Name"/>
         <field name="user_id"/>
         <field name="stage_id"/>
         <field name="build_type"/>
         <field name="build_progress"/>
         <field name="building_project_tag_ids"/>
-        <!--<field name="state"/>-->
       </tree>
     </field>
   </record>
