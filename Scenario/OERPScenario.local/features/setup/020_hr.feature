@@ -18,12 +18,20 @@ Feature: configure users, departments and employees
       | key         | value         |
       | tz          | Europe/Zurich |
   
+  @department
+  Scenario: delete default department
+    Given I find a "hr.department" with name: Administration
+    And I delete it
+    Given I find a "hr.department" with name: Sales
+    And I delete it
+  
   @csv @department
   Scenario: import departments
     Given "hr.department" is imported from CSV "setup/hr_department.csv" using delimiter ","
     
-#  Scenario: import groups
-#    Given "res.groups" is imported from CSV "setup/res_groups.csv" using delimiter ","
+  @csv @groups
+  Scenario: import groups
+    Given "res.groups" is imported from CSV "setup/res_groups.csv" using delimiter ","
   
   @csv @users  
   Scenario: import users
@@ -36,10 +44,7 @@ Feature: configure users, departments and employees
   @csv @employee  
   Scenario: import employees
     Given "hr.employee" is imported from CSV "setup/hr_employee.csv" using delimiter ","
-    
-#  Scenario: update partner informations for employees
-#    Given "res.partner" is imported from CSV "setup/hr_employee_partner.csv" using delimiter ","
-  
+
   @csv @dpt_mgr
   Scenario: import departments manager
     Given "hr.department" is imported from CSV "setup/hr_department_mgr.csv" using delimiter ","  
