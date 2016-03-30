@@ -116,7 +116,7 @@
                   <t class="col-xs-5" t-if="doc.state in ['draft','sent']">
                     <span class="col-xs-5">Quotation Date:</span>
                   </t>
-                  <span t-field="doc.date_order" t-field-options='{"format":"dd.MM.yyyy"}'/> <!-- Attendtion, ne sera plus formatté selon la langue du destinataire -->
+                  <span t-field="doc.date_order" t-field-options='{"widget":"date"}'/> <!-- Attendtion, ne sera plus formatté selon la langue du destinataire -->
               </div>
               <div t-if="doc.delivery_term" class="col-xs-12">
                   <span class="col-xs-5">Term of delivery:</span>
@@ -160,6 +160,16 @@
                 <span t-field="doc.name"/>
             </h4>
       </xpath> -->
+      <xpath expr="//p[@t-if='doc.payment_term_id.note']" position="replace">
+        <p t-if="doc.payment_term_id.note">
+          Payment term:
+          <span t-field="doc.payment_term_id.note" string="Payment term:"/>
+        </p>
+        <p t-if="not doc.payment_term_id and doc.partner_id.property_payment_term_id">
+          <span t-field="doc.partner_id.property_payment_term_id.note" string="Payment term:"/>
+        </p>
+      </xpath>
+
 
     </template>
 

@@ -25,25 +25,3 @@ class SaleOrder(models.Model):
     # TODO remplire les nouveaux champs à la création d'une invoice
     # faire un lien avec les Sale.order => les champs de descriptions qui
     # n'existent pas
-
-
-class SaleOrderLine(models.Model):
-    _inherit = 'sale.order.line'
-
-    price_unit_discount = fields.Monetary(
-        compute='_compute_price_discount', string='Subtotal',
-        readonly=True
-    )
-
-    @api.multi
-    @api.depends('price_unit', 'discount')
-    def _compute_price_discount(self):
-        self.ensure_one()
-        if self.discount:
-            if self.discount == 100:
-                discount = 0.0
-            else:
-                discount = 1 - self.discount / 100.0
-            self.price_unit_discount = self.price_unit * discount
-        else:
-            self.price_unit_discount = self.price_unit
