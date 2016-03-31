@@ -107,13 +107,16 @@ class ResPartner(models.Model):
     )
 
     influence = fields.Selection(
-        (('A', 'Stufe A'),
-         ('B', 'Stufe B'),
-         ('C', 'Stufe C'),
-         ('Z', 'Schluesselkontakt'),
-         ('ENT', 'ALT - Entscheider'),
-         ('MIT', 'ALT - Mitarbeiter'),
-         ('BEE', 'ALT - Beeinflusser')),
+        [('installer_a', 'Installateur A'),
+         ('installer_b', 'Installateur B'),
+         ('installer_c', 'Installateur C'),
+         ('planer_a', 'Planer A'),
+         ('planer_b', 'Planer B'),
+         ('planer_c', 'Planer C'),
+         ('wholesale_a', 'Grosshandel A'),
+         ('wholesale_b', 'Grosshandel B'),
+         ('wholesale_c', 'Grosshandel C'),
+         ('key_contact', 'Schluesselkontakt')],
         'Einfluss')
 
     region_id = fields.Many2one('res.partner.region', "Verkaufsgebiet")
