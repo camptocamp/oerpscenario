@@ -37,6 +37,18 @@ class BuildingProject(models.Model):
         'Project Manager'
     )
 
+    expected_amount = fields.Float(
+        "erwarteter Umsatz",
+    )
+
+    probability = fields.Selection(
+        [(25, '25%'),
+         (50, '50%'),
+         (75, '75%'),
+         (100, '100%')],
+        string="Wahrscheinlichkeit",
+    )
+
     contact_ids = fields.Many2many(
         comodel_name='res.partner',
         string='Contacts',
