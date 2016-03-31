@@ -3,6 +3,14 @@
 
 Feature: Manage product informations
 
+  @product_uom
+  Scenario: rename basis uom
+    Given I find an "product.uom" with oid: product.product_uom_unit
+    And having:
+      | key     | value |
+      | name    | pce   |
+  # TODO: add phrase to update the translation (Stk, pce, pzo)
+  
   @product_taxes
   Scenario: create taxes
     Given I need an "account.tax" with oid: scenario.tax_vrg_700180
@@ -30,8 +38,3 @@ Feature: Manage product informations
       | name         | 6622              |
       | code         | 6622              |
       | user_type_id | by name: Expenses |
-
-
-  @csv @product_categories
-  Scenario: import product categories
-    Given "product.category" is imported from CSV "setup/product.category.csv" using delimiter ","
