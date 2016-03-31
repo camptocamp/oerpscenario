@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- Bundle for Rating Widget (in assets common to be used in website modules) -->
+        <template id="assets_common" inherit_id="web.assets_common" name="Rating common assets">
+            <xpath expr='.' position="inside">
+                <link href="/specific_building_project/static/src/css/build_activity.css" rel="stylesheet"/>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>

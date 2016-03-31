@@ -32,6 +32,7 @@
         "views/crm_lead.xml",
         "views/sale_order.xml",
         "views/building_project.xml",
+        'views/building_project_template.xml',
         "wizards/create_opportunity_quotation_view.xml",
         "security/ir.model.access.csv",
         "security/account_analytic_account.xml"

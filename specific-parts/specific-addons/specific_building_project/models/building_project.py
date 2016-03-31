@@ -91,6 +91,14 @@ class BuildingProject(models.Model):
         string=u"Geschäftsfeld",
     )
 
+    build_activity = fields.Selection(
+        [('active', 'activ'),
+         ('passive', 'nicht aktiv begleitet'),
+         ('inactive', 'nicht mehr aktiv begleitet')],
+        "Aktivität",
+        default='active'
+    )
+
     building_project_tag_ids = fields.Many2many(
         comodel_name='building.project.tag',
         string='Projekt Tags'
@@ -181,14 +189,14 @@ class BuildingProject(models.Model):
         We do this as reverse many2one is on analytic account
         """
         for rec in self:
-            self.sale_order_ids = self.env['sale.order'].search(
-                [('project_id', '=', self.analytic_account_id.id)])
+            rec.sale_order_ids = self.env['sale.order'].search(
+                [('project_id', '=', rec.analytic_account_id.id)])
 
     @api.depends('opportunity_ids')
     def _sale_order_count(self):
         """ Count aggregated sale orders """
         for rec in self:
-            self.sale_order_count = len(self.sale_order_ids)
+            rec.sale_order_count = len(rec.sale_order_ids)
 
     @api.depends('opportunity_ids')
     def _opportunity_count(self):

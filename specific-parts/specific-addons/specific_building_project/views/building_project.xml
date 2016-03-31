@@ -70,6 +70,7 @@
               <field name="building_project_tag_ids" widget="many2many_tags"/>
             </group>
             <group>
+              <field name="build_activity"/>
               <field name="date_start" />
               <field name="date_end" />
             </group>
@@ -240,6 +241,7 @@
         <field name="stage_id"/>
         <field name="user_id"/>
         <field name="color"/>
+        <field name="build_activity"/>
         <field name="opportunity_count"/>
         <field name="sale_order_count"/>
         <field name="meeting_count"/>
@@ -252,6 +254,20 @@
                 <div class="o_kanban_card_content o_visible">
                   <div class="o_kanban_primary_left">
                     <div class="o_primary">
+                      <div class="build_activity">
+                        <span t-if="record.build_activity.raw_value == 'active'">
+                          <i class="fa fa-star fa-2x colored-stars"/>
+                        </span>
+                        <span t-if="record.build_activity.raw_value == 'passive'">
+                          <span class="fa-stack">
+                            <i class="fa fa-star-o fa-stack-2x stars"/>
+                            <i class="fa fa-star-half fa-stack-2x colored-stars"/>
+                          </span>
+                        </span>
+                        <span t-if="record.build_activity.raw_value == 'inactive'">
+                          <i class="fa fa-star-o fa-2x"/>
+                        </span>
+                      </div>
                       <span><i class="fa fa-building"/> <t t-esc="record.name.value"/></span>
                     </div>
                     <div>
@@ -317,6 +333,7 @@
         <field name="build_progress"/>
         <field name="building_project_tag_ids"/>
         <field name="business_area"/>
+        <field name="build_activity"/>
         <!--<filter string="Open" name="Current" domain="[('state', '=','open')]"/>-->
         <!--<filter string="Pending" name="Pending" domain="[('state', '=','pending')]"/>-->
         <separator/>
@@ -352,6 +369,7 @@
         <field name="build_type"/>
         <field name="build_progress"/>
         <field name="building_project_tag_ids"/>
+        <field name="build_activity" invisible="True"/>
       </tree>
     </field>
   </record>
