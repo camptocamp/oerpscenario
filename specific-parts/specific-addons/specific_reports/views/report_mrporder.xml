@@ -4,7 +4,7 @@
         <template id="report_mrporder" inherit_id="mrp.report_mrporder">
 
             <!-- Change title for dismantling BoM -->
-            <xpath expr="//h2[contains(., 'Production Order #')]" position="replace">
+            <xpath expr="//span[@t-field='o.name']/parent::h2" position="replace">
                 <h2 t-if="o.bom_id.dismantling">Dismantling Order # :
                     <span t-field="o.name"/>
                 </h2>
