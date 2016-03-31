@@ -25,10 +25,10 @@ class BuildingProject(models.Model):
             self.display_name = self.name
 
     date_start = fields.Date(
-        'Start Date'
+        'erwarteter Lieferstart'
     )
     date_end = fields.Date(
-        'End Date',
+        'erwartetes Lieferende',
         index=True,
         track_visibility='onchange'
     )
