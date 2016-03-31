@@ -15,14 +15,16 @@ Feature: Manage product informations
   Scenario: create taxes
     Given I need an "account.tax" with oid: scenario.tax_vrg_700180
     And having:
-      | key    | value           |
-      | name   | Taxe VRG 700180 |
-      | amount | 999             |
+      | key         | value             |
+      | name        | Taxe VRG 700180   |
+      | amount_type | Fixed             |
+      | amount      | 0.18              |
     Given I need an "account.tax" with oid: scenario.tax_vrg_700200
     And having:
-      | key    | value           |
-      | name   | Taxe VRG 700200 |
-      | amount | 999             |
+      | key         | value             |
+      | name        | Taxe VRG 700200   |
+      | amount_type | Fixed             |
+      | amount      | 0.20              |
 
   @product_account
   Scenario: create account 4620 and 6622
