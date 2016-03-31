@@ -33,6 +33,7 @@
              'delivery',
              'specific_product',
              'specific_customer_contact',
+             'mrp_bom_dismantling',
              ],
  'website': 'http://www.camptocamp.com',
  'data': [
