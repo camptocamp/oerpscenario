@@ -110,9 +110,6 @@
                   <field name="state_id"/>
                   <field name="image"/>
                   <field name="lang"/>
-                  <field name="architect"/>
-                  <field name="engineer"/>
-                  <field name="electrician"/>
                   <templates>
                     <t t-name="kanban-box">
                       <t t-set="color" t-value="kanban_color(record.color.raw_value)"/>
@@ -131,9 +128,6 @@
                         </div>
                         <div class="oe_kanban_details">
                           <field name="name"/>
-                          <div t-if="record.architect.raw_value">Architekt</div>
-                          <div t-if="record.engineer.raw_value">Planner</div>
-                          <div t-if="record.electrician.raw_value">Electrician</div>
                           <div t-if="record.function.raw_value"><field name="function"/></div>
                           <div t-if="record.email.raw_value"><field name="email"/></div>
                           <div t-if="record.type.raw_value != 'contact'">
