@@ -17,6 +17,7 @@
     },
     "depends": [
         "analytic",
+        "hr",
         "crm",
         "sale",
         "sale_crm",
