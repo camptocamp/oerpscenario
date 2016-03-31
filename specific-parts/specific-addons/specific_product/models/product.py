@@ -89,22 +89,34 @@ class ProductProduct(models.Model):
 
     @api.model
     def name_search(self, name, args=None, operator='ilike', limit=100):
-        """ Allow to search by E-Nr """
+        """ Allow to search by E-Nr or internal ref """
         args = args or []
+        filter_known = []
 
-        result = super(ProductProduct, self).name_search(
-            name, args=args, operator=operator, limit=limit)
+        if name:
+            products = self.browse()
+            for search_field in ['e_nr', 'default_code']:
+                if limit is None or limit > 1:
+                    domain = [(search_field, '=ilike', name + '%')]
+                    if operator in expression.NEGATIVE_TERM_OPERATORS:
+                        domain = ['&'] + domain
+                    domain = filter_known + domain
+                    recs = self.search(domain + args, limit=limit)
+                    if limit is not None:
+                        limit -= len(recs)
+                    products |= recs
+                    if products:
+                        filter_known = [('id', 'not in', products.ids)]
 
-        if limit is not None:
-            limit -= len(result)
+        name_result = super(ProductProduct, self).name_search(
+            name, args=filter_known + args, operator=operator, limit=limit)
 
-        if limit is None or limit > 1:
-            domain = [('e_nr', '=ilike', name + '%')]
-            if operator in expression.NEGATIVE_TERM_OPERATORS:
-                domain = ['&'] + domain
-            products = self.search(domain + args, limit=limit)
-            result.extend(products.name_get())
-        return result
+        if products:
+            result = products.name_get()
+            name_result = name_result
+            result.extend(name_result)
+            return result
+        return name_result
 
     @api.multi
     def action_transit_move(self):
