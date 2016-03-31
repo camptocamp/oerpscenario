@@ -92,7 +92,7 @@ class BuildingProject(models.Model):
     )
 
     build_activity = fields.Selection(
-        [('active', 'activ'),
+        [('active', 'activ begleitet'),
          ('passive', 'nicht aktiv begleitet'),
          ('inactive', 'nicht mehr aktiv begleitet')],
         "Aktivität",
