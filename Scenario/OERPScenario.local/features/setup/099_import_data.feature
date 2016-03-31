@@ -5,7 +5,11 @@ Feature: import master data
 
   @csv @regions
   Scenario: import specific regions
-    Given "res.partner.region" is imported from CSV "setup/res_partner_region.csv" using delimiter ","
+    Given "res.partner.region" is imported from CSV "setup/res.partner.region.csv" using delimiter ","
+
+  @csv @zip
+  Scenario: import specific regions
+    Given "res.better.zip" is imported from CSV "setup/res.better.zip.csv" using delimiter ","
 
   @csv @product_categories
   Scenario: import product categories
