@@ -17,13 +17,13 @@ Feature: Manage product informations
     And having:
       | key         | value             |
       | name        | Taxe VRG 700180   |
-      | amount_type | Fixed             |
+      | amount_type | fixed             |
       | amount      | 0.18              |
     Given I need an "account.tax" with oid: scenario.tax_vrg_700200
     And having:
       | key         | value             |
       | name        | Taxe VRG 700200   |
-      | amount_type | Fixed             |
+      | amount_type | fixed             |
       | amount      | 0.20              |
 
   @product_account
