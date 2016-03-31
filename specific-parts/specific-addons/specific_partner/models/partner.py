@@ -96,14 +96,11 @@ class ResPartner(models.Model):
 
     department = fields.Char('Department')
     partner_state = fields.Selection(
-        (('ST1', 'qualifiziert'),
-         ('ST2', 'potentieller Partner'),
-         ('ST3', 'Kontaktpflege aktuell'),
-         ('ST4', 'aktiv begleitet'),
-         ('ST5', 'nicht mehr aktiv begleitet'),
-         ('ST6', 'positiv'),
-         ('ST7', 'komplett')),
-        'State of Partner'
+        [('qualified', 'qualifiziert'),
+         ('potential_partner', 'potenzieller Partner'),
+         ('active', 'aktiv begleitet'),
+         ],
+        'Partnerstatus'
     )
 
     influence = fields.Selection(
