@@ -116,9 +116,6 @@ class ResPartner(models.Model):
          ('BEE', 'ALT - Beeinflusser')),
         'Einfluss')
 
-    prospect = fields.Boolean()
-    partner = fields.Boolean()
-
     region_id = fields.Many2one('res.partner.region', "Verkaufsgebiet")
 
     @api.model

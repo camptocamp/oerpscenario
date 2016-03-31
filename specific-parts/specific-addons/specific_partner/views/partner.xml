@@ -10,11 +10,6 @@
           <field name="region_id" placeholder="Verkaufsregion" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
         </field>
 
-        <xpath expr="//page[@name='sales_purchases']//field[@name='customer']" position="after">
-          <field name="prospect"/>
-          <field name="partner"/>
-        </xpath>
-
         <notebook position="inside">
           <page string="Zusatzfelder Swisslux">
             <group>
@@ -58,8 +53,6 @@
         <field name="parent_id" position="replace"/>
         <field name="display_name" position="before">
           <field name="ref"/>
-          <field name="prospect" invisible="True"/>
-          <field name="partner" invisible="True"/>
         </field>
         <field name="display_name" position="after">
           <field name="parent_id"/>
@@ -78,10 +71,6 @@
           <field name="ref" string="Kundennummer" filter_domain="['|',('ref','=',self),('parent_id','ilike',self)]"/>
           <field name="region_id" string="Verkaufsregion"/>
         </field>
-        <filter name="customer" position="after">
-          <filter string="Prospect" name="prospect" domain="[('prospect','=',1), ('parent_id', '=', False)]"/>
-          <filter string="Partner" name="partner" domain="[('partner','=',1), ('parent_id', '=', False)]"/>
-        </filter>
       </field>
     </record>
 
