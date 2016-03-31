@@ -79,11 +79,11 @@
       <!-- References of Invoice before InvoiceLines -->
       <xpath expr="//div[@class='row mt32 mb32']" position="replace">
         <div class="row mt32 mb32" id="informations">
-            <div t-if="o.reference" class="col-xs-6" name="reference">
+            <div t-if="o.name" class="col-xs-6" name="reference">
                 <strong>
                   Your Reference:
                 </strong>
-                <strong t-field="o.reference"/>
+                <strong t-field="o.name"/>
             </div>
             <div class="col-xs-7"></div>
             <div class="col-xs-6" style="padding-left: 0px;">
@@ -106,11 +106,19 @@
             </div>
             <div class="col-xs-6">
               <div t-if="o.date_invoice" class="col-xs-12">
-                  <t class="col-xs-5" t-if="o.state in ['draft','sent']">
-                    <span class="col-xs-5">Date:</span>
-                  </t>
+                  <span class="col-xs-5">Date:</span>
                   <span t-field="o.date_invoice" t-field-options='{"widget":"date"}'/>
               </div>
+            <!-- Not working-->
+               <div t-if="o.date_invoice" class="col-xs-12">
+                  <span class="col-xs-5">Delivery number:</span>
+                  <span t-field="o.date_invoice" t-field-options='{"widget":"date"}'/>
+              </div>
+               <div t-if="o.date_invoice" class="col-xs-12">
+                  <span class="col-xs-5">Delivery date:</span>
+                  <span t-field="o.date_invoice" t-field-options='{"widget":"date"}'/>
+              </div>
+            <!-- End not working -->
               <div t-if="o.delivery_term" class="col-xs-12">
                   <span class="col-xs-5">Term of delivery:</span>
               </div>

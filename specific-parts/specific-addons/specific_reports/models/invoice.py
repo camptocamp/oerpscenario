@@ -4,9 +4,7 @@
 from openerp import api, fields, models
 
 
-# WIP
-
-class SaleOrder(models.Model):
+class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
     client_order_ref = fields.Char(
