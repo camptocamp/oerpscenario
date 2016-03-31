@@ -7,17 +7,17 @@ Feature: Configure Warehouse and Logistic processes
   Scenario: Configure traceability
     Given I set "Lots and Serial Numbers" to "Track lots or serial numbers" in "Inventory" settings menu
     Given I enable "Barcode scanner support" in "Inventory" settings menu
-    
+
   @accounting
   Scenario: Inventory valuation
     Given I set "Inventory Valuation" to "Periodic inventory valuation (recommended)" in "Inventory" settings menu
-    
+
   @location
   Scenario: Location & Warehouse configuration
     Given I set "Multi Locations" to "Manage several locations per warehouse" in "Inventory" settings menu
     Given I set "Routes" to "Advanced routing of products using rules" in "Inventory" settings menu
-    Given I set "Dropshipping" to "Allow suppliers to deliver directly to your customers" in "Inventory" settings menu  
-    
+    Given I set "Dropshipping" to "Allow suppliers to deliver directly to your customers" in "Inventory" settings menu
+
   @wh_config
   Scenario: Configure main warehouse
     Given I find a "stock.warehouse" with oid: stock.warehouse0
@@ -25,7 +25,7 @@ Feature: Configure Warehouse and Logistic processes
       | key             | value         |
       | reception_steps | three_steps   |
       | delivery_steps  | ship_only     |
-      
+
   @transit_location
   Scenario: Configure dedicated transit location for supplier in China
     Given I need an "stock.location" with oid: scenario.location_transit_cn
@@ -37,7 +37,7 @@ Feature: Configure Warehouse and Logistic processes
       | active          | True                                      |
       | return_location | False                                     |
       | scrap_location  | False                                     |
-      
+
   @picking_type
   Scenario: Configure dedicated picking type to receive goods from transit location
     Given I need an "stock.picking.type" with oid: scenario.picking_type_receive_cn
@@ -49,7 +49,7 @@ Feature: Configure Warehouse and Logistic processes
       | sequence_id                 | by name: Swisslux AG Sequence in      |
       | warehouse_id                | by oid: stock.warehouse0              |
       | return_picking_type_id      | by oid: stock.picking_type_out        |
-      
+
    @push_rules
    Scenario: Add a global push rule to receive goods from transit location
      Given I need an "stock.location.path" with oid: scenario.location_path_transit_to_slx
@@ -62,4 +62,25 @@ Feature: Configure Warehouse and Logistic processes
       | auto                | manual                                |
       | picking_type_id     | by oid: stock.picking_type_in         |
       | delay               | 60                                    |
-      
+
+  @reception_text_company
+  Scenario: set default company reception text
+    Given I execute the SQL commands
+    """;
+    update res_company set receipt_checklist = '
+    Logistik:
+    _____ Anleitung Deutsch
+    _____ Anleitung Franz.
+    _____ Anleitung Ital.
+    _____ Verpackung
+    _____ Lieferumfang
+    _____ Funktionstest
+
+    Technik:
+    Produktenews: JA / NEIN
+    Visum: ____________________________';
+    """
+
+  @csv @reception_text_article_default
+  Scenario: import products for ir_values
+    Given "ir.values" is imported from CSV "setup/ir_values.csv" using delimiter ","
