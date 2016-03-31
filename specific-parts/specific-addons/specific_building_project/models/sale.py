@@ -20,7 +20,6 @@ class SaleOrder(models.Model):
 
     project_pricelist_id = fields.Many2one(
         string='Pricelist',
-        compute='_get_project_pricelist',
         comodel_name='product.pricelist'
     )
 
@@ -30,18 +29,6 @@ class SaleOrder(models.Model):
         domain=[('is_company', '=', True)],
     )
 
-    @api.depends('project_id', 'partner_id')
-    def _get_project_pricelist(self):
-        for rec in self:
-            if not rec.project_id or not rec.partner_id:
-                continue
-            build_project = self.env['building.project'].search(
-                [('analytic_account_id', '=', rec.project_id.id)])
-            discounts = [pl for pl in build_project.customer_discount_ids
-                         if pl.partner_id == rec.partner_id]
-            pricelist = discounts[0].pricelist_id if discounts else False
-            rec.project_pricelist_id = pricelist
-
     @api.onchange('project_id')
     def _set_statics_include(self):
         """ Try to set only one sale order per building project
@@ -50,6 +37,52 @@ class SaleOrder(models.Model):
         in statistics.
         """
         self.statistics_include = not self.project_id
+
+    @api.onchange('project_id', 'partner_id')
+    def _set_project_pricelist(self):
+        if self.project_id or not self.partner_id:
+            build_project = self.env['building.project'].search(
+                [('analytic_account_id', '=', self.project_id.id)])
+            discounts = [pl for pl in build_project.customer_discount_ids
+                         if pl.partner_id == self.partner_id]
+            pricelist = discounts[0].pricelist_id if discounts else False
+            self.project_pricelist_id = pricelist
+
+    @api.model
+    def _update_build_project_discounts(self, project_id, partner_id,
+                                        project_pricelist_id):
+        """ If a pricelist is set we check if a pricelist for the customer for
+        this project is defined. If it doesn't exist, create one.
+        Otherwise do nothing.
+        """
+        if project_id and project_pricelist_id:
+            build_project = self.env['building.project'].search(
+                [('analytic_account_id', '=', project_id)])
+            project_pl = self.env['building.project.pricelist'].search(
+                [('building_project_id', '=', build_project.id),
+                 ('partner_id', '=', partner_id)])
+            if not project_pl:
+                self.env['building.project.pricelist'].create({
+                    'building_project_id': build_project.id,
+                    'partner_id': partner_id,
+                    'pricelist_id': project_pricelist_id})
+
+    @api.model
+    def create(self, vals):
+        self._update_build_project_discounts(
+            vals.get('project_id'), vals.get('partner_id'),
+            vals.get('project_pricelist_id'))
+        return super(SaleOrder, self).create(vals)
+
+    @api.multi
+    def write(self, vals):
+        project_id = vals.get('project_id') or self.project_id.id
+        partner_id = vals.get('partner_id') or self.partner_id.id
+        self._update_build_project_discounts(
+            project_id, partner_id,
+            vals.get('project_pricelist_id'))
+
+        return super(SaleOrder, self).write(vals)
 
     @api.multi
     def button_update_unit_prices(self):
