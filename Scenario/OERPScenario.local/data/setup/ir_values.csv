@@ -1,0 +1,11 @@
+id,name,model,value_unpickle,key,key2
+scenario.product_reception_value,receipt_checklist,product.template,"Technik (DRINGEND):
+Lieferumfang Logistik:
+
+Label aussen
+
+Label innen
+
+Anleitungen D+F
+
+Merkblatt V5.0",default,

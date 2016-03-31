@@ -80,27 +80,7 @@ Feature: Configure Warehouse and Logistic processes
     Produktenews: JA / NEIN
     Visum: ____________________________';
     """
-  @reception_text_article_default
-  Scenario: set default product reception text
-    Given I need an "ir.values" with oid: scenario.product_reception_value
-    And having:
-      | key                 | value                                 |
-      | name                | receipt checklist                     |
-      | value               | def                                   |
-      | model               | product.template                      |
 
-    Given I execute the SQL commands
-    """;
-    update ir_values set value = '
-    Technik (DRINGEND):
-    Lieferumfang Logistik:
-
-    Label aussen
-
-    Labal innen
-
-    Anleitungen D+F
-
-    Merkblatt V5.0'
-    WHERE  name = 'receipt checklist';
-    """
+  @csv @reception_text_article_default
+  Scenario: import products for ir_values
+    Given "ir.values" is imported from CSV "setup/ir_values.csv" using delimiter ","
