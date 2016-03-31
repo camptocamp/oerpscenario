@@ -80,12 +80,18 @@ Feature: Configure Warehouse and Logistic processes
     Produktenews: JA / NEIN
     Visum: ____________________________';
     """
-
-  @reception_text_product
+  @reception_text_article_default
   Scenario: set default product reception text
+    Given I need an "ir.values" with oid: scenario.product_reception_value
+    And having:
+      | key                 | value                                 |
+      | name                | receipt checklist                     |
+      | value               | def                                   |
+      | model               | product.template                      |
+
     Given I execute the SQL commands
     """;
-    update product_template set receipt_checklist = '
+    update ir_values set value = '
     Technik (DRINGEND):
     Lieferumfang Logistik:
 
@@ -95,5 +101,6 @@ Feature: Configure Warehouse and Logistic processes
 
     Anleitungen D+F
 
-    Merkblatt V5.0';
+    Merkblatt V5.0'
+    WHERE  name = 'receipt checklist';
     """
