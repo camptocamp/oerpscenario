@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-@swisslux @setup @import @slow
+@swisslux @setup @import
 
 Feature: import master data
 
@@ -7,14 +7,18 @@ Feature: import master data
   Scenario: import specific regions
     Given "res.partner.region" is imported from CSV "setup/res_partner_region.csv" using delimiter ","
 
-  @csv @products @slow
-  Scenario: import products
-    Given "product.product" is imported from CSV "setup/product.product.csv" using delimiter ","
-
-  @csv @product_expenses @slow
+  @csv @product_categories
+  Scenario: import product categories
+    Given "product.category" is imported from CSV "setup/product.category.csv" using delimiter ","
+    
+  @csv @product_expenses
   Scenario: import products for expenses
     Given "product.product" is imported from CSV "setup/product_expenses.csv" using delimiter ","
 
+  @csv @products @slow
+  Scenario: import products
+    Given "product.product" is imported from CSV "setup/product.product.csv" using delimiter ","
+  
   @update_reception_text_product @product
   Scenario: set default product reception text
     Given I execute the SQL commands
