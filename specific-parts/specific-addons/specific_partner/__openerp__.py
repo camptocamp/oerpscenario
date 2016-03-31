@@ -19,8 +19,6 @@
      'views/partner_title.xml',
      'views/better_zip.xml',
      'data/sequence.xml',
-     'data/res.partner.region.csv',
-     'data/res.better.zip.csv',
      ],
  'test': [],
  'installable': True,
