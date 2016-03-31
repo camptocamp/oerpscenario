@@ -99,9 +99,9 @@
                   Client number:
                   <span class="address" t-field="o.partner_id.ref"/>
               </div>
-              <div name="payment_term" t-if="o.payment_term_id" class="col-xs-12 hidden">
-                  Payment Term:
-                  <span class="address" t-field="o.payment_term_id"/>
+              <div name="payment_term" t-if="o.company_id.vat" class="col-xs-12">
+                  VAT number:
+                  <span class="address" t-field="o.company_id.vat"/>
               </div>
             </div>
             <div class="col-xs-6">
