@@ -40,8 +40,6 @@ class BuildingProject(models.Model):
     contact_ids = fields.Many2many(
         comodel_name='res.partner',
         string='Contacts',
-        domain=['|', '|', ('architect', '=', True), ('engineer', '=', True),
-                ('electrician', '=', True)],
         copy=False,
         help="Envolved partners (Architect, Engineer, Electrician)"
     )
