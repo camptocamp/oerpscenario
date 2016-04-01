@@ -54,3 +54,7 @@ Feature: import master data
   @csv @suppliers_contacts @slow
   Scenario: import specific suppliers contacts
     Given "res.partner" is imported from CSV "setup/supplierscontact.csv" using delimiter ","
+
+  @csv @supplierinfo @slow
+  Scenario: import specific supplierinfo
+    Given "product.supplierinfo" is imported from CSV "setup/product.supplierinfo.csv" using delimiter ","
