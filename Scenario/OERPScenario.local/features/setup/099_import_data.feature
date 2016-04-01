@@ -40,6 +40,17 @@ Feature: import master data
     Merkblatt V5.0';
     """
 
+  @partner_title
+  Scenario: add Department title
+    Given I need a "res.partner.title" with oid: scenario.partner_title_department
+      And having:
+        | key  | value     |
+        | name | Department |
+
   @csv @suppliers
   Scenario: import specific suppliers
     Given "res.partner" is imported from CSV "setup/suppliers.csv" using delimiter ","
+
+  @csv @suppliers_contacts @slow
+  Scenario: import specific suppliers contacts
+    Given "res.partner" is imported from CSV "setup/supplierscontact.csv" using delimiter ","
