@@ -14,7 +14,7 @@ Feature: import master data
   @csv @product_categories
   Scenario: import product categories
     Given "product.category" is imported from CSV "setup/product.category.csv" using delimiter ","
-    
+
   @csv @product_expenses
   Scenario: import products for expenses
     Given "product.product" is imported from CSV "setup/product_expenses.csv" using delimiter ","
@@ -22,7 +22,7 @@ Feature: import master data
   @csv @products @slow
   Scenario: import products
     Given "product.product" is imported from CSV "setup/product.product.csv" using delimiter ","
-  
+
   @update_reception_text_product @product
   Scenario: set default product reception text
     Given I execute the SQL commands
@@ -39,3 +39,7 @@ Feature: import master data
 
     Merkblatt V5.0';
     """
+
+  @csv @suppliers
+  Scenario: import specific suppliers
+    Given "res.partner" is imported from CSV "setup/suppliers.csv" using delimiter ","
