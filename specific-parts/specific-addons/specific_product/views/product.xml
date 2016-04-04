@@ -9,4 +9,49 @@
       </field>
     </field>
   </record>
+
+  <!-- Add the transit quantity in the product.template form -->
+  <record id="product_template_form_view_transit" model="ir.ui.view">
+    <field name="name">Transit quantity on product template form</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="stock.product_template_form_view_procurement_button"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='qty_available']/ancestor::button" position="after">
+          <button type="object" name="action_transit_move"
+                  attrs="{'invisible':[('type', '!=', 'product')]}"
+                  class="oe_stat_button" icon="fa-building-o">
+            <div class="o_form_field o_stat_info">
+              <field name="transit_qty"
+                     widget="statinfo" nolabel="1"/>
+              <span class="o_stat_text">Transit</span>
+            </div>
+          </button>
+        </xpath>
+      </data>
+    </field>
+  </record>
+
+  <!-- Add the transit quantity in the product.product form -->
+  <record id="product_product_form_view_transit" model="ir.ui.view">
+    <field name="name">Transit quantity on product form</field>
+    <field name="model">product.product</field>
+    <field name="inherit_id" ref="stock.product_form_view_procurement_button"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='qty_available']/ancestor::button" position="after">
+          <button type="object" name="action_transit_move"
+                  attrs="{'invisible':[('type', '!=', 'product')]}"
+                  class="oe_stat_button" icon="fa-building-o">
+            <div class="o_form_field o_stat_info">
+              <field name="transit_qty"
+                     widget="statinfo" nolabel="1"/>
+              <span class="o_stat_text">Transit</span>
+            </div>
+          </button>
+        </xpath>
+      </data>
+    </field>
+  </record>
+
 </odoo>
