@@ -67,6 +67,14 @@ Feature: import master data
   Scenario: import specific pricelist items
     Given "product.pricelist.item" is imported from CSV "setup/product.pricelist.item.csv" using delimiter ","
 
-  @csv @orderpoint
+  @csv @orderpoint @slow
   Scenario: import specific orderpoint
     Given "stock.warehouse.orderpoint" is imported from CSV "setup/stock.warehouse.orderpoint.csv" using delimiter ","
+
+  @csv @bom @slow
+  Scenario: import specific bom
+    Given "mrp.bom" is imported from CSV "setup/mrp.bom.csv" using delimiter ","
+
+  @csv @bomlines @slow
+  Scenario: import specific bom
+    Given "mrp.bom.line" is imported from CSV "setup/mrp.bom.line.csv" using delimiter ","
