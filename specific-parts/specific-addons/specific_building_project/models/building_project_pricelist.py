@@ -11,6 +11,7 @@ class BuildingProjectPricelist(models.Model):
 
     partner_id = fields.Many2one(
         comodel_name='res.partner',
+        domain=[('is_company', '=', True)],
         string='Customer',
         required=True,
     )

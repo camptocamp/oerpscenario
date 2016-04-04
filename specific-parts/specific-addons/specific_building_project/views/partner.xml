@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+  <record model="ir.ui.view" id="view_partner_form">
+    <field name="name">res.partner.form.inherit</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form" />
+    <field name="arch" type="xml">
+
+      <notebook position="inside">
+        <page string="Bauprojekts" attrs="{'invisible': [('is_company', '=', False)]}">
+          <field name="building_project_ids"/>
+        </page>
+      </notebook>
+
+    </field>
+  </record>
+</odoo>

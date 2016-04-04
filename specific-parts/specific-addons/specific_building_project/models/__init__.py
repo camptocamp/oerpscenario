@@ -11,3 +11,4 @@ from . import building_project_pricelist
 from . import res_users
 from . import sale
 from . import product
+from . import partner
