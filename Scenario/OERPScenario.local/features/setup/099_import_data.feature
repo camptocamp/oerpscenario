@@ -78,3 +78,7 @@ Feature: import master data
   @csv @bomlines @slow
   Scenario: import specific bom
     Given "mrp.bom.line" is imported from CSV "setup/mrp.bom.line.csv" using delimiter ","
+
+  @csv @building_projects @slow
+  Scenario: import specific bom
+    Given "building.project" is imported from CSV "setup/building.project.csv" using delimiter ","
