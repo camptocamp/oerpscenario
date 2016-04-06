@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<odoo>
+    <!-- Form view -->
+    <record id="view_hr_timesheet_sheet_activity_form" model="ir.ui.view">
+        <field name="name">hr.timesheet.sheet.activity.form</field>
+        <field name="model">hr.timesheet.sheet.activity</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_title">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <separator colspan="4" string="Allowed departments"/>
+                <field name="department_ids" nolabel="1" colspan="4"/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view -->
+    <record id="view_hr_timesheet_sheet_activity_tree" model="ir.ui.view">
+        <field name="name">hr.timesheet.sheet.activity.tree</field>
+        <field name="model">hr.timesheet.sheet.activity</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="department_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record model="ir.actions.act_window" id="action_hr_timesheet_sheet_activity_view">
+        <field name="name">HR timesheet activities</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.timesheet.sheet.activity</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="hr_timesheet_sheet_activity_menu" name="Timesheet Activities"
+              parent="hr_timesheet.menu_hr_timesheet_config" sequence="100"
+              action="action_hr_timesheet_sheet_activity_view"/>
+</odoo>

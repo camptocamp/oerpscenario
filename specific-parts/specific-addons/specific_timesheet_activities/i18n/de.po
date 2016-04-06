@@ -1,0 +1,77 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* hr_timesheet_department_activities
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-06 08:33+0000\n"
+"PO-Revision-Date: 2016-04-06 08:33+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_timesheet_department_activities
+#: model:ir.ui.view,arch_db:hr_timesheet_department_activities.view_hr_timesheet_sheet_activity_form
+msgid "Allowed departments"
+msgstr "Abteilungen"
+
+#. module: hr_timesheet_department_activities
+#: model:ir.model,name:hr_timesheet_department_activities.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Analytischer Buchungssatz"
+
+#. module: hr_timesheet_department_activities
+#: model:ir.model.fields,field_description:hr_timesheet_department_activities.field_hr_timesheet_sheet_activity_create_uid
+msgid "Created by"
+msgstr "Angelegt von"
+
+#. module: hr_timesheet_department_activities
+#: model:ir.model.fields,field_description:hr_timesheet_department_activities.field_hr_timesheet_sheet_activity_create_date
+msgid "Created on"
+msgstr "Angelegt am"
+
+#. module: hr_timesheet_department_activities
+#: model:ir.model,name:hr_timesheet_department_activities.model_hr_department
+msgid "HR Department"
+msgstr "Personalabteilung"
+
+#. module: hr_timesheet_department_activities
+#: model:ir.actions.act_window,name:hr_timesheet_department_activities.action_hr_timesheet_sheet_activity_view
+msgid "HR timesheet activities"
+msgstr "HR timesheet activities"
+
+#. module: hr_timesheet_department_activities
+#: model:ir.model.fields,field_description:hr_timesheet_department_activities.field_hr_timesheet_sheet_activity_write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert durch"
+
+#. module: hr_timesheet_department_activities
+#: model:ir.model.fields,field_description:hr_timesheet_department_activities.field_hr_timesheet_sheet_activity_write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: hr_timesheet_department_activities
+#: model:ir.ui.menu,name:hr_timesheet_department_activities.hr_timesheet_sheet_activity_menu
+msgid "Timesheet Activities"
+msgstr "Zeiterfassung Aktivitäten"
+
+#. module: hr_timesheet_department_activities
+#: model:ir.model.fields,field_description:hr_timesheet_department_activities.field_hr_department_timesheet_activity_ids
+msgid "Timesheet activities"
+msgstr "Zeiterfassungsaktivitäten"
+
+#. module: hr_timesheet_department_activities
+#: model:ir.model.fields,field_description:hr_timesheet_department_activities.field_account_analytic_line_user_department_id
+msgid "User department id"
+msgstr "User department id"
+
+#. module: hr_timesheet_department_activities
+#: model:ir.model,name:hr_timesheet_department_activities.model_hr_timesheet_sheet_activity
+msgid "hr.timesheet.sheet.activity"
+msgstr "hr.timesheet.sheet.activity"
+

@@ -69,9 +69,9 @@ Feature: Parameter the new database
        | website            | www.swisslux.ch       |
        | vat                | CHE-107.897.036 MWST  |
        | company_registry   | CHE-107.897.036       |
-       | rml_header1        |                       |    
+       | rml_header1        |                       |
     Given the company has the "images/company_logo.png" logo
-    
+
     Given I need a "res.partner" with oid: base.main_partner
     And having:
        | key        | value                     |
@@ -178,13 +178,14 @@ Feature: Parameter the new database
   @modules
   Scenario: install specific modules
     Given I install the required modules with dependencies:
-        | name                      |
+        | name                          |
         # specific-addons
-        | specific_building_project |
-        | specific_hr               |
-        | specific_partner          |
-        | specific_product          |
-        | specific_reports          |
+        | specific_building_project     |
+        | specific_hr                   |
+        | specific_partner              |
+        | specific_product              |
+        | specific_reports              |
+        | specific_timesheet_activities |
 
   @logo
   Scenario: setup specific logo for company reports
