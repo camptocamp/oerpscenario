@@ -186,6 +186,13 @@ Feature: Parameter the new database
         | specific_product          |
         | specific_reports          |
 
+  @force_translations
+  Scenario: Force lang translations
+    Given I update the module list
+    When I update the following languages
+         | lang  |
+         | de_DE |
+
   @logo
   Scenario: setup specific logo for company reports
     Given I find a "res.company" with oid: base.main_company
