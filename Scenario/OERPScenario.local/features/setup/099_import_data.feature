@@ -33,7 +33,7 @@ Feature: import master data
 
     Label aussen
 
-    Labal innen
+    Label innen
 
     Anleitungen D+F
 
