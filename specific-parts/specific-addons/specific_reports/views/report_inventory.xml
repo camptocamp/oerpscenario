@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="report_delivery_document_custom" inherit_id="stock.report_delivery_document">
+
+        <!-- Stylesheet -->
+        <xpath expr="//div[@class='row']" position="before">
+            <style type="text/css">
+                .upright{
+                    text-align: right !important;
+                }
+                .address{
+                    font-weight: bold;
+                }
+                .line{
+                    margin: 0px 30px 0px 30px;
+                    border-style: solid;
+                    border-width: 1px;
+                }
+            </style>
+        </xpath>
+
+        <!-- Address on top of document -->
+        <xpath expr="//div[@class='page']/div[@class='row'] " position="replace">
+            <div class="col-xs-6 address">
+                <span t-field="o.company_id.name"/>, <span t-field="o.company_id.zip"/> <span t-field="o.company_id.city"/>
+            </div>
+            <div class="col-xs-3">
+                Datum: <span t-esc='time.strftime("%d/%m/%Y")'/><br/>
+                Mitarbeiter: <br/>
+                RG/LS-Nr:<br/>
+                Lieferant: blablabla<br/>
+                Seite: <br/>
+            </div>
+            <div class="col-xs-3">
+                ______________<br/>
+                ______________<br/>
+                ______________<br/>
+                ______________<br/>
+                ______________<br/>
+            </div>
+            <h2>
+                <span t-field="o.name"/>
+            </h2>
+        </xpath>
+
+        <!-- Suppression of the title-->
+        <xpath expr="//h2" position="replace"/>
+
+        <!-- <xpath expr -->
+
+        <xpath expr="//table[@class='table table-condensed mt48'][2]" position="replace">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Art-Nr.<br/>
+                            E-No.<br/>
+                            Art.Date</th>
+                        <th>Bezeichnung Liferantenbezeichnung Inhalt</th>
+                        <th>Bestellmenge<br/>
+                            Gelifert<br/>
+                            Liefermenge<br/>
+                            Rückstand
+                        </th>
+                        <th>Bemerkungen<br/>
+                            Zu veranlassen
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="o.pack_operation_ids" t-as="pack_operation">
+                        <td><span t-field="pack_operation.product_id"/>
+                        <t t-if="not pack_operation.product_id and pack_operation.package_id">
+                            <span  t-field="pack_operation.package_id"/>
+                        </t>
+                        </td>
+                        <td>
+                            <span t-field="pack_operation.product_id.name"/><br/>
+                            Logistik:<br/>
+                            ____ Anleitung Deutsch<br/>
+                            ____ Anleitung Franz.<br/>
+                            ____ Anleitung Ital.<br/>
+                            ____ Verpackung<br/>
+                            ____ Lieferumfang<br/>
+                            ____ Funktiontest<br/>
+                            <br/>
+                            Technik:<br/>
+                            Produktenew: JA / NEIN<br/>
+                            Visum: ________________<br/>
+                        </td>
+                        <td>
+                            <span t-field="pack_operation.product_qty"/><span t-field="pack_operation.product_uom_id"/><br/>
+                        0.00<br/>
+                        <br/>
+                        ________<br/>
+                        ________<br/>
+                        </td>
+                        <td>
+                            <span t-field="pack_operation.product_id.receipt_checklist"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </xpath>
+
+    </template>
+
+</odoo>

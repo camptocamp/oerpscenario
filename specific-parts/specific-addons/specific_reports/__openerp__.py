@@ -46,6 +46,7 @@
      'views/company.xml',
      'views/report_sale.xml',
      'views/report_mrporder.xml',
+     'views/report_inventory.xml',
      ],
  'demo_xml': [],
  'test': [],
