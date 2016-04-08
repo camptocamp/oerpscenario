@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="report_mrporder" inherit_id="mrp.report_mrporder">
+
+            <!-- Change title for dismantling BoM -->
+            <xpath expr="//span[@t-field='o.name']/parent::h2" position="replace">
+                <h2 t-if="o.bom_id.dismantling">Dismantling Order # :
+                    <span t-field="o.name"/>
+                </h2>
+                <h2 t-if="not o.bom_id.dismantling">Production Order # :
+                    <span t-field="o.name"/>
+                </h2>
+            </xpath>
+
+            <!-- Display products list table if we have produces products or products to produce -->
+            <xpath expr="//table[@t-if='o.move_lines or o.move_lines2']" position="attributes">
+                <t t-if="o.bom_id.dismantling">
+                    <attribute name="t-if">o.move_lines or o.move_lines2 or o.move_created_ids or o.move_created_ids2
+                    </attribute>
+                    <attribute name="id">mrporder_products</attribute>
+                </t>
+            </xpath>
+
+            <xpath expr="//table[@id='mrporder_products']/tbody" position="inside">
+                <t t-if="o.bom_id.dismantling">
+
+                    <!-- Add Products to Produce list-->
+                    <t t-if="o.move_created_ids">
+                        <tr>
+                            <td colspan="4" style="padding-top: 15px !important;">
+                                <strong>Products to Produce</strong>
+                            </td>
+                        </tr>
+                        <tr t-foreach="o.move_created_ids" t-as="line">
+                            <td>
+                                <span t-field="line.product_id.code"/>
+                                <span t-field="line.product_id.name"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="line.product_uom_qty"/>
+                                <span t-field="line.product_uom.name" groups="product.group_uom"/>
+                            </td>
+                            <td class="text-center" groups="stock.group_locations">
+                                <span t-field="line.location_id.name"/>
+                            </td>
+                            <td class="text-center" groups="stock.group_locations">
+                                <span t-field="line.location_dest_id.name"/>
+                            </td>
+                        </tr>
+                    </t>
+
+                    <!-- Add Produced Products list-->
+                    <t t-if="o.move_created_ids2">
+                        <tr>
+                            <td colspan="4" style="padding-top: 15px !important;">
+                                <strong>Produced Products</strong>
+                            </td>
+                        </tr>
+                        <tr t-foreach="o.move_created_ids2" t-as="line2">
+                            <td>
+                                <span t-field="line2.product_id.code"/>
+                                <span t-field="line2.product_id.name"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="line2.product_uom_qty"/>
+                                <span t-field="line2.product_uom.name"/>
+                            </td>
+                            <td class="text-center" groups="stock.group_locations">
+                                <span t-field="line2.location_id.name"/>
+                            </td>
+                            <td class="text-center" groups="stock.group_locations">
+                                <span t-field="line2.location_dest_id.name"/>
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+            </xpath>
+
+            <!-- Add padding on existing sections  -->
+            <xpath expr="//table[@id='mrporder_products']/tbody/t[@t-if='o.move_lines']/tr/td"
+                   position="attributes">
+                <t t-if="o.bom_id.dismantling">
+                    <attribute name="style">padding-top: 15px !important;</attribute>
+                </t>
+            </xpath>
+            <xpath expr="//table[@id='mrporder_products']/tbody/t[@t-if='o.move_lines2']/tr/td"
+                   position="attributes">
+                <t t-if="o.bom_id.dismantling">
+                    <attribute name="style">padding-top: 15px !important;</attribute>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</openerp>

@@ -33,6 +33,7 @@
              'delivery',
              'specific_product',
              'specific_customer_contact',
+             'mrp_bom_dismantling',
              ],
  'website': 'http://www.camptocamp.com',
  'data': [
@@ -44,6 +45,7 @@
      'views/templates.xml',
      'views/company.xml',
      'views/report_sale.xml',
+     'views/report_mrporder.xml',
      ],
  'demo_xml': [],
  'test': [],
