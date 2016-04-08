@@ -1,0 +1,14 @@
+<odoo>
+    <!-- Add activity on  account analytic line tree view. -->
+    <record id="view_hr_timesheet_line_tree" model="ir.ui.view">
+        <field name="name">hr_timesheet.add.activity.line</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="unit_amount" position="after">
+                <field name="user_department_id" invisible="1"/>
+                <field name="activity_id" domain="[('department_ids.id', '=', user_department_id)]" options="{'no_create': True}"/>
+            </field>
+        </field>
+    </record>
+</odoo>

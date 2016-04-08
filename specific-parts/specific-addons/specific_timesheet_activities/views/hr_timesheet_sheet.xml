@@ -1,0 +1,15 @@
+<odoo>
+    <!-- Add activity on timesheet form view -->
+    <record id="view_hr_analytic_timesheet_add_activity_tree" model="ir.ui.view">
+        <field name="name">hr.timesheet.add.activity.tree</field>
+        <field name="model">hr_timesheet_sheet.sheet</field>
+        <field name="inherit_id" ref="hr_timesheet_sheet.hr_timesheet_sheet_form"/>
+        <field name="priority" eval="200"/>
+        <field name="arch" type="xml">
+            <field name="unit_amount" position="after">
+                <field name="user_department_id" invisible="1"/>
+                <field name="activity_id" domain="[('department_ids.id', '=', user_department_id)]" options="{'no_create': True}"/>
+            </field>
+        </field>
+    </record>
+</odoo>
