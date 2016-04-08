@@ -1,0 +1,22 @@
+id,currency_id:id,name,active,company_id:id,discount_policy
+product.list0,base.CHF,Public Pricelist,TRUE,,without_discount
+purchase.list0,base.CHF,Default Purchase Pricelist,TRUE,,without_discount
+scenario.productpricelist_netto_28,base.CHF,netto (28%),TRUE,base.main_company,without_discount
+scenario.productpricelist_gh_28_35,base.CHF,Grosshandel (28+35%),TRUE,base.main_company,without_discount
+scenario.productpricelist_schulen_28_50,base.CHF,Schulen (28+50%),TRUE,base.main_company,without_discount
+scenario.productpricelist_eigen_28_50,base.CHF,Eigenverbrauch (28+50%),TRUE,base.main_company,without_discount
+scenario.productpricelist_gh_28_33,base.CHF,Grosshandel (28+33%),TRUE,base.main_company,without_discount
+scenario.productpricelist_gh_28_30,base.CHF,Grosshandel (28+30%),TRUE,base.main_company,without_discount
+scenario.productpricelist_leuchten_28_25,base.CHF,Leuchtenhersteller (28+25%),TRUE,base.main_company,without_discount
+scenario.productpricelist_netto_28_15,base.CHF,netto-netto (28+15%),TRUE,base.main_company,without_discount
+scenario.productpricelist_netto_28_20,base.CHF,netto-netto (28+20%),TRUE,base.main_company,without_discount
+scenario.productpricelist_netto_28_10,base.CHF,netto-netto (28+10%),TRUE,base.main_company,without_discount
+scenario.productpricelist_netto_28_5,base.CHF,netto-netto (28+5%),TRUE,base.main_company,without_discount
+scenario.productpricelist_burkhalter_28_20,base.CHF,Burkhalter (28+20%),TRUE,base.main_company,without_discount
+scenario.productpricelist_eltop_28_15,base.CHF,Eltop EKZ (28+15%),TRUE,base.main_company,without_discount
+scenario.productpricelist_etavis_28_20,base.CHF,Etavis (28+20%),TRUE,base.main_company,without_discount
+scenario.productpricelist_oberholzer_28_20,base.CHF,Oberholzer (28+20% spezial),TRUE,base.main_company,without_discount
+scenario.productpricelist_ek_hugewin,base.USD,Einkauf von HugeWin,TRUE,base.main_company,without_discount
+scenario.productpricelist_vk_hugewin,base.USD,Verkauf an HugeWin,TRUE,base.main_company,without_discount
+scenario.productpricelist_ek_beg,base.EUR,Einkauf von BEG,TRUE,base.main_company,without_discount
+scenario.productpricelist_vk_beg,base.EUR,Verkauf an BEG,TRUE,base.main_company,without_discount

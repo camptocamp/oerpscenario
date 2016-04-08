@@ -27,6 +27,7 @@ scenario.product_category_R0_091,"Muster/Werbematerial/Drucksachen",scenario.pro
 scenario.product_category_R0_092,"Schulungen/Veranstaltungen",scenario.product_category_R0,4200,3200,4200,4200,1200
 scenario.product_category_R0_093,"Dienstleistungen",scenario.product_category_R0,4200,3200,4200,4200,1200
 scenario.product_category_R0_099,"Lost & Found",scenario.product_category_R0,4200,3200,4200,4200,1200
+scenario.product_category_R0_101,"Intelligente Leuchte",scenario.product_category_R0,4200,3200,4200,4200,1200
 scenario.product_category_R201_001,"Bewegungsmelder",scenario.product_category_R201,4200,3200,4200,4200,1200
 scenario.product_category_R201_002,"Präsenzmelder",scenario.product_category_R201,4200,3200,4200,4200,1200
 scenario.product_category_R201_009,"IR-Fernbedienung",scenario.product_category_R201,4200,3200,4200,4200,1200
