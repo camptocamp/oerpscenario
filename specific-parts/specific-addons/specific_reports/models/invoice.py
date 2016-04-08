@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # © 2016 Yannick Vaucher (Camptocamp)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-from openerp import api, fields, models
+from openerp import fields, models
 
 
 class AccountInvoice(models.Model):
@@ -23,6 +23,7 @@ class AccountInvoice(models.Model):
     # TODO remplire les nouveaux champs à la création d'une invoice
     # faire un lien avec les Sale.order => les champs de descriptions qui
     # n'existent pas
+
 
 class InvoiceOrderLine(models.Model):
     _inherit = 'account.invoice.line'
