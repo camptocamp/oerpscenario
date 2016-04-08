@@ -31,6 +31,7 @@
         "views/calendar_event.xml",
         "views/crm_lead.xml",
         "views/sale_order.xml",
+        "views/partner.xml",
         "views/building_project.xml",
         'views/building_project_template.xml',
         "wizards/create_opportunity_quotation_view.xml",
