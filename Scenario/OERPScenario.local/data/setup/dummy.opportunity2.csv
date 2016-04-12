@@ -1,0 +1,572 @@
+id,building_project_id:id,name
+scenario.crm_lead_dummy_calls1,scenario.buildingproject_-2144261280,Dummy opportunity for Projekt ist zurückgestellt worden bis Mai 2016
+scenario.crm_lead_dummy_calls2,scenario.buildingproject_-2144053652,Dummy opportunity for Termin für Support vor Ort vereinbart
+scenario.crm_lead_dummy_calls3,scenario.buildingproject_-2144050051,Dummy opportunity for Probleme mit BWM in Nebenraum
+scenario.crm_lead_dummy_calls4,scenario.buildingproject_-2143932499,Dummy opportunity for Immer wieder Melderausfälle
+scenario.crm_lead_dummy_calls5,scenario.buildingproject_-2143853753,Dummy opportunity for Rückruf zu ELPA 3 Problem
+scenario.crm_lead_dummy_calls6,scenario.buildingproject_-2143818842,"Dummy opportunity for Rücksprache, Bedarf"
+scenario.crm_lead_dummy_calls7,scenario.buildingproject_-2143788893,Dummy opportunity for Termin für Support vor Ort koordinieren
+scenario.crm_lead_dummy_calls8,scenario.buildingproject_-2143696032,Dummy opportunity for Hat Bedarf im Hotel Chedi
+scenario.crm_lead_dummy_calls9,scenario.buildingproject_-2143638393,Dummy opportunity for Telefonische Planungsberatung
+scenario.crm_lead_dummy_calls10,scenario.buildingproject_-2143473891,Dummy opportunity for Direktlieferung OK? JA > EM-Kdnr 918051
+scenario.crm_lead_dummy_calls11,scenario.buildingproject_-2143444940,Dummy opportunity for Bestellung auslösen
+scenario.crm_lead_dummy_calls12,scenario.buildingproject_-2143411418,"Dummy opportunity for Regus, Bahnhofstr. 100"
+scenario.crm_lead_dummy_calls13,scenario.buildingproject_-2143349839,Dummy opportunity for Besprechung Vergütung Umtriebsentschädigung
+scenario.crm_lead_dummy_calls14,scenario.buildingproject_-2143196749,Dummy opportunity for Div. Abklärungen 
+scenario.crm_lead_dummy_calls15,scenario.buildingproject_-2143162591,Dummy opportunity for Hat Bedarf für das EG + noch eine andere Kommission
+scenario.crm_lead_dummy_calls16,scenario.buildingproject_-2143119430,Dummy opportunity for Stand Melderausfälle ZKB
+scenario.crm_lead_dummy_calls17,scenario.buildingproject_-2143069792,Dummy opportunity for Stand Objekt
+scenario.crm_lead_dummy_calls18,scenario.buildingproject_-2143041320,Dummy opportunity for Info betr. V4/V5
+scenario.crm_lead_dummy_calls19,scenario.buildingproject_-2143039875,Dummy opportunity for Muster für Aquila Pratteln
+scenario.crm_lead_dummy_calls20,scenario.buildingproject_-2143012383,Dummy opportunity for Meldertypen Pestalozzi-Schulhaus
+scenario.crm_lead_dummy_calls21,scenario.buildingproject_-2143005067,Dummy opportunity for Probleme mit Lichtsteuerung in Aula
+scenario.crm_lead_dummy_calls22,scenario.buildingproject_-2143003456,Dummy opportunity for Anfrage Migros-PiR Melder / IL-Broschüre überbringen
+scenario.crm_lead_dummy_calls23,scenario.buildingproject_-2142987737,Dummy opportunity for Termin in KW40 abstimmen
+scenario.crm_lead_dummy_calls24,scenario.buildingproject_-2142960765,Dummy opportunity for Besprechung Melderretouren
+scenario.crm_lead_dummy_calls25,scenario.buildingproject_-2142955395,Dummy opportunity for Stand Objekt/Abklärung Melderbedarf
+scenario.crm_lead_dummy_calls26,scenario.buildingproject_-2142924037,Dummy opportunity for Terminabstimmung
+scenario.crm_lead_dummy_calls27,scenario.buildingproject_-2142904764,Dummy opportunity for Termin für Projektberatung vereinbaren
+scenario.crm_lead_dummy_calls28,scenario.buildingproject_-2142845937,Dummy opportunity for Fehlschaltungen mit PD2 S 180 NUP M1C (Aussenbereich)
+scenario.crm_lead_dummy_calls29,scenario.buildingproject_-2142832158,Dummy opportunity for Kontaktaufnahme mit Massimo Sibillia
+scenario.crm_lead_dummy_calls30,scenario.buildingproject_-2142831448,Dummy opportunity for Weitere Schritte festlegen
+scenario.crm_lead_dummy_calls31,scenario.buildingproject_-2142804144,Dummy opportunity for Besprechung Naturmuseum --> Auftrag erhalten
+scenario.crm_lead_dummy_calls32,scenario.buildingproject_-2142785101,Dummy opportunity for Stand zweier Projekte  nachfassen
+scenario.crm_lead_dummy_calls33,scenario.buildingproject_-2142781986,Dummy opportunity for Sieht gut aus
+scenario.crm_lead_dummy_calls34,scenario.buildingproject_-2142772592,Dummy opportunity for Braucht Rat für eine Dali Lösung
+scenario.crm_lead_dummy_calls35,scenario.buildingproject_-2142767544,Dummy opportunity for Probleme im Bahnhof Malans mit PM
+scenario.crm_lead_dummy_calls36,scenario.buildingproject_-2142760130,Dummy opportunity for Nachfrage Offertanfrage
+scenario.crm_lead_dummy_calls37,scenario.buildingproject_-2142748016,Dummy opportunity for FRIBOURG - Adolphe Merkle Institute
+scenario.crm_lead_dummy_calls38,scenario.buildingproject_-2142746960,Dummy opportunity for Musterlieferung/RG 2116094
+scenario.crm_lead_dummy_calls39,scenario.buildingproject_-2142745528,Dummy opportunity for Projekt erfolgreich abgeschlossen
+scenario.crm_lead_dummy_calls40,scenario.buildingproject_-2142741984,Dummy opportunity for Was für Melder KNX ?
+scenario.crm_lead_dummy_calls41,scenario.buildingproject_-2142737600,Dummy opportunity for Bestellung gem. Offerte 2114103
+scenario.crm_lead_dummy_calls42,scenario.buildingproject_-2142735025,Dummy opportunity for Frage zu Bedarfsübersicht
+scenario.crm_lead_dummy_calls43,scenario.buildingproject_-2142733749,"Dummy opportunity for Bedarf: Neubau Büro, Grundausbau"
+scenario.crm_lead_dummy_calls44,scenario.buildingproject_-2142722192,Dummy opportunity for Frage zu Wandmeldern
+scenario.crm_lead_dummy_calls45,scenario.buildingproject_-2142718224,Dummy opportunity for Termin für IBN DALI-Melder vereinbaren
+scenario.crm_lead_dummy_calls46,scenario.buildingproject_-2142706697,"Dummy opportunity for Nachfassen, falls betreffend Schulhaus Igis nichts mehr gehört"
+scenario.crm_lead_dummy_calls47,scenario.buildingproject_-2142703260,Dummy opportunity for Nachfrage Objekt
+scenario.crm_lead_dummy_calls48,scenario.buildingproject_-2142700657,Dummy opportunity for Will noch mehr TK's
+scenario.crm_lead_dummy_calls49,scenario.buildingproject_-2142685690,Dummy opportunity for Besprechung Bestellung Kiga Ruggell
+scenario.crm_lead_dummy_calls50,scenario.buildingproject_-2142673229,Dummy opportunity for Nachfrage Offerte
+scenario.crm_lead_dummy_calls51,scenario.buildingproject_-2142669566,Dummy opportunity for Nachfrage Projekt 
+scenario.crm_lead_dummy_calls52,scenario.buildingproject_-2142665201,Dummy opportunity for Abschluss Nutritec --> Termin für Präsentation IL-Control vereinbaren
+scenario.crm_lead_dummy_calls53,scenario.buildingproject_-2142661290,"Dummy opportunity for Direktlieferung+Kdnr für Elektrobaer ZH, Apfelbaumstr. 15 OK? JA, W+F Kdnr 106189"
+scenario.crm_lead_dummy_calls54,scenario.buildingproject_-2142657180,Dummy opportunity for Unterstützung anbieten
+scenario.crm_lead_dummy_calls55,scenario.buildingproject_-2142655038,Dummy opportunity for Weiter Fehlschaltungen (Dauerlicht)
+scenario.crm_lead_dummy_calls56,scenario.buildingproject_-2142635962,Dummy opportunity for Probleme mit PIR
+scenario.crm_lead_dummy_calls57,scenario.buildingproject_-2142634323,Dummy opportunity for Feedback aus der Sitzung abholen
+scenario.crm_lead_dummy_calls58,scenario.buildingproject_-2142619333,Dummy opportunity for Auftrag hat Bernauer AG 
+scenario.crm_lead_dummy_calls59,scenario.buildingproject_-2142615123,Dummy opportunity for Combox / abklärung Musterlieferung Roosstr.8
+scenario.crm_lead_dummy_calls60,scenario.buildingproject_-2142612641,Dummy opportunity for Nahchfrage Projekt 
+scenario.crm_lead_dummy_calls61,scenario.buildingproject_-2142608747,Dummy opportunity for Médiathéque Sion
+scenario.crm_lead_dummy_calls62,scenario.buildingproject_-2142607166,Dummy opportunity for Neue Offerte erstellen (gem.alter OF 2117175)
+scenario.crm_lead_dummy_calls63,scenario.buildingproject_-2142604665,"Dummy opportunity for Nicht erreicht, mache ein Mail"
+scenario.crm_lead_dummy_calls64,scenario.buildingproject_-2142604212,Dummy opportunity for 2. Etappe geht los!
+scenario.crm_lead_dummy_calls65,scenario.buildingproject_-2142604030,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls66,scenario.buildingproject_-2142602740,Dummy opportunity for Anfrage kostenlose Melder 
+scenario.crm_lead_dummy_calls67,scenario.buildingproject_-2142600475,Dummy opportunity for Objekt nachfassen
+scenario.crm_lead_dummy_calls68,scenario.buildingproject_-2142600453,Dummy opportunity for Besprechung Entschädigung
+scenario.crm_lead_dummy_calls69,scenario.buildingproject_-2142598320,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls70,scenario.buildingproject_-2142596535,Dummy opportunity for Termin für Support vor Ort vereinbaren 
+scenario.crm_lead_dummy_calls71,scenario.buildingproject_-2142594849,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls72,scenario.buildingproject_-2142591400,"Dummy opportunity for Bestellung Komm. 110479.001 Bergwelt, Grindelwald"
+scenario.crm_lead_dummy_calls73,scenario.buildingproject_-2142591115,"Dummy opportunity for Rückmeldung, dass Stückzahlen nicht stimmen"
+scenario.crm_lead_dummy_calls74,scenario.buildingproject_-2142587693,Dummy opportunity for Termin gekänzelt
+scenario.crm_lead_dummy_calls75,scenario.buildingproject_-2142587637,Dummy opportunity for Hat er Offerte erhalten?
+scenario.crm_lead_dummy_calls76,scenario.buildingproject_-2142581049,Dummy opportunity for Hatte unsere Melder erfolgreich eingesetzt
+scenario.crm_lead_dummy_calls77,scenario.buildingproject_-2142578846,Dummy opportunity for Objekt Nachfassen
+scenario.crm_lead_dummy_calls78,scenario.buildingproject_-2142578165,Dummy opportunity for Nachrage IL 
+scenario.crm_lead_dummy_calls79,scenario.buildingproject_-2142564717,Dummy opportunity for Offertnachbearbeitung ( Haus C + D) in Aussicht
+scenario.crm_lead_dummy_calls80,scenario.buildingproject_-2142564688,Dummy opportunity for Offertnachbearbeitung Melder über GH bezogen
+scenario.crm_lead_dummy_calls81,scenario.buildingproject_-2142564604,Dummy opportunity for Bläsi + Heuried punktuell nachfassen
+scenario.crm_lead_dummy_calls82,scenario.buildingproject_-2142562375,Dummy opportunity for Objektnachfassen 
+scenario.crm_lead_dummy_calls83,scenario.buildingproject_-2142559863,Dummy opportunity for Objekt nachgefasst / Nachfragen betreffend PL-Weiterbilkdung IBW Chur
+scenario.crm_lead_dummy_calls84,scenario.buildingproject_-2142555619,Dummy opportunity for Nachfassen betreffend WÜB Verdin (IL-Projekt)
+scenario.crm_lead_dummy_calls85,scenario.buildingproject_-2142555196,Dummy opportunity for Frage zu Preise für lackierte Melder
+scenario.crm_lead_dummy_calls86,scenario.buildingproject_-2142553311,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls87,scenario.buildingproject_-2142552417,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls88,scenario.buildingproject_-2142552307,Dummy opportunity for soum LEG
+scenario.crm_lead_dummy_calls89,scenario.buildingproject_-2142550874,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls90,scenario.buildingproject_-2142550871,Dummy opportunity for Steinel war ausgeschrieben und wurde von Bauherrschaft auch abgesegnet -- IL kommt nicht
+scenario.crm_lead_dummy_calls91,scenario.buildingproject_-2142547946,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls92,scenario.buildingproject_-2142545766,"Dummy opportunity for Nachfassen betreffend Wiesenstrasse, Balgach --> IS eingeplant?"
+scenario.crm_lead_dummy_calls93,scenario.buildingproject_-2142545246,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls94,scenario.buildingproject_-2142543709,Dummy opportunity for Termin für Präsentation neues IL-Konzept vereinbart
+scenario.crm_lead_dummy_calls95,scenario.buildingproject_-2142542408,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls96,scenario.buildingproject_-2142541173,"Dummy opportunity for Direktlieferung OK für Elektro Annen, Cham (Kdnr 13340)? OK > EM-Kdnr 101380"
+scenario.crm_lead_dummy_calls97,scenario.buildingproject_-2142540908,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls98,scenario.buildingproject_-2142536700,Dummy opportunity for Bestellung Eigenbedarf Mattenrain
+scenario.crm_lead_dummy_calls99,scenario.buildingproject_-2142536222,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls100,scenario.buildingproject_-2142535769,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls101,scenario.buildingproject_-2142535637,Dummy opportunity for IL kommt im Schlosswingert nicht --> Architekt möchte andere Leuchte --> Termin mit Sandro vereinbart
+scenario.crm_lead_dummy_calls102,scenario.buildingproject_-2142535274,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls103,scenario.buildingproject_-2142534961,Dummy opportunity for Tobias scheint den Auftrag zu haben (siehe Termin v.08.07. mit Koni) konnte aber Tobias nicht erreichen -> Mail
+scenario.crm_lead_dummy_calls104,scenario.buildingproject_-2142533607,Dummy opportunity for Nachfrage Offerte
+scenario.crm_lead_dummy_calls105,scenario.buildingproject_-2142530874,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls106,scenario.buildingproject_-2142529734,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls107,scenario.buildingproject_-2142529057,Dummy opportunity for Offertnachbearbeitung / nicht erhalten
+scenario.crm_lead_dummy_calls108,scenario.buildingproject_-2142526181,Dummy opportunity for Abklären Offertanfrage
+scenario.crm_lead_dummy_calls109,scenario.buildingproject_-2142525262,Dummy opportunity for Termin Kontaktpflege vereinbart
+scenario.crm_lead_dummy_calls110,scenario.buildingproject_-2142524691,Dummy opportunity for IS-Projekte nachfassen
+scenario.crm_lead_dummy_calls111,scenario.buildingproject_-2142524365,Dummy opportunity for Stand nachfragen
+scenario.crm_lead_dummy_calls112,scenario.buildingproject_-2142519494,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls113,scenario.buildingproject_-2142517604,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls114,scenario.buildingproject_-2142515925,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls115,scenario.buildingproject_-2142514496,Dummy opportunity for realisiert? mit uns? abgeschlossen?
+scenario.crm_lead_dummy_calls116,scenario.buildingproject_-2142513413,Dummy opportunity for Offerte über EM Heiden
+scenario.crm_lead_dummy_calls117,scenario.buildingproject_-2142512779,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls118,scenario.buildingproject_-2142511467,Dummy opportunity for Objekt nachgefasst --> telefonisch nicht erreicht
+scenario.crm_lead_dummy_calls119,scenario.buildingproject_-2142509741,Dummy opportunity for Objektnachbearbeitung
+scenario.crm_lead_dummy_calls120,scenario.buildingproject_-2142507652,Dummy opportunity for Nachbearbeitung Offerte
+scenario.crm_lead_dummy_calls121,scenario.buildingproject_-2142507586,Dummy opportunity for Telefonische Planungsberatung
+scenario.crm_lead_dummy_calls122,scenario.buildingproject_-2142506248,Dummy opportunity for Offerte nicht machen 
+scenario.crm_lead_dummy_calls123,scenario.buildingproject_-2142506203,Dummy opportunity for Nachfrage Offerte
+scenario.crm_lead_dummy_calls124,scenario.buildingproject_-2142506201,Dummy opportunity for Zeitplan / Liefertermin erfragen
+scenario.crm_lead_dummy_calls125,scenario.buildingproject_-2142506192,Dummy opportunity for Aktuelle Neuheiten aus dem Projekt Zwicky
+scenario.crm_lead_dummy_calls126,scenario.buildingproject_-2142505290,Dummy opportunity for Info betr. Werkhof Waldau --> Bestellung Duo für Jack
+scenario.crm_lead_dummy_calls127,scenario.buildingproject_-2142502582,Dummy opportunity for Projekte in Hergiswil nachfassen
+scenario.crm_lead_dummy_calls128,scenario.buildingproject_-2142502403,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls129,scenario.buildingproject_-2142499584,Dummy opportunity for Haben Auftrag definitiv erhalten!
+scenario.crm_lead_dummy_calls130,scenario.buildingproject_-2142492819,Dummy opportunity for Terminafrage 
+scenario.crm_lead_dummy_calls131,scenario.buildingproject_-2142492566,Dummy opportunity for Besprechung Verdrahtung PD9 Schulhaus Altnau
+scenario.crm_lead_dummy_calls132,scenario.buildingproject_-2142490075,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls133,scenario.buildingproject_-2142490045,Dummy opportunity for Diverse Objekte nachfassen
+scenario.crm_lead_dummy_calls134,scenario.buildingproject_-2142490041,Dummy opportunity for Projekte nachfassen
+scenario.crm_lead_dummy_calls135,scenario.buildingproject_-2142486630,Dummy opportunity for info an  Alexandre Gavar
+scenario.crm_lead_dummy_calls136,scenario.buildingproject_-2142486568,Dummy opportunity for Frau Gubelmann richtet ihm einen Rückruf aus
+scenario.crm_lead_dummy_calls137,scenario.buildingproject_-2142485399,Dummy opportunity for Telefonische Planungsberatung
+scenario.crm_lead_dummy_calls138,scenario.buildingproject_-2142483971,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls139,scenario.buildingproject_-2142482178,Dummy opportunity for Offertnachbearbeitung / Auftrag erhalten Swisslux
+scenario.crm_lead_dummy_calls140,scenario.buildingproject_-2142481339,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls141,scenario.buildingproject_-2142479602,Dummy opportunity for Bestellung gem. Offerte 2119244
+scenario.crm_lead_dummy_calls142,scenario.buildingproject_-2142479371,Dummy opportunity for Rückfrage: Stand Ifang > weitere Projekte
+scenario.crm_lead_dummy_calls143,scenario.buildingproject_-2142478564,Dummy opportunity for Objekte nachgefasst
+scenario.crm_lead_dummy_calls144,scenario.buildingproject_-2142478474,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls145,scenario.buildingproject_-2142478466,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls146,scenario.buildingproject_-2142478343,Dummy opportunity for Andreas Bucher ist abwesend
+scenario.crm_lead_dummy_calls147,scenario.buildingproject_-2142473870,Dummy opportunity for Stand Feldbreite
+scenario.crm_lead_dummy_calls148,scenario.buildingproject_-2142473444,Dummy opportunity for Nachfassen betreffend Offerte falls nichts gehört
+scenario.crm_lead_dummy_calls149,scenario.buildingproject_-2142471881,Dummy opportunity for info an Crédit Suisse Monnaie
+scenario.crm_lead_dummy_calls150,scenario.buildingproject_-2142469428,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls151,scenario.buildingproject_-2142468366,Dummy opportunity for Offertnachbearbeitung (noch nicht aktuell)
+scenario.crm_lead_dummy_calls152,scenario.buildingproject_-2142468227,Dummy opportunity for Weitere Schritte anstehend?
+scenario.crm_lead_dummy_calls153,scenario.buildingproject_-2142465200,Dummy opportunity for Wieder drei Leuchten die nicht richtig funktionieren
+scenario.crm_lead_dummy_calls154,scenario.buildingproject_-2142464865,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls155,scenario.buildingproject_-2142464074,Dummy opportunity for Projekt nachfassen
+scenario.crm_lead_dummy_calls156,scenario.buildingproject_-2142463764,Dummy opportunity for kein Master-Slave möglich - IS parallel schalten?
+scenario.crm_lead_dummy_calls157,scenario.buildingproject_-2142461645,Dummy opportunity for Offertnachbearbeitung (nächster Schritt Planungsberatung im Oktober)
+scenario.crm_lead_dummy_calls158,scenario.buildingproject_-2142455718,Dummy opportunity for Planungsberatung zuerst Tel. und nun doch noch auf Baustelle
+scenario.crm_lead_dummy_calls159,scenario.buildingproject_-2142451783,Dummy opportunity for Weitere Info betr. PIR Planung
+scenario.crm_lead_dummy_calls160,scenario.buildingproject_-2142451708,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls161,scenario.buildingproject_-2142450653,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls162,scenario.buildingproject_-2142450644,Dummy opportunity for Abklärung Muster
+scenario.crm_lead_dummy_calls163,scenario.buildingproject_-2142450005,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls164,scenario.buildingproject_-2142448874,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls165,scenario.buildingproject_-2142447674,Dummy opportunity for Nachgefasst Notstromanlage
+scenario.crm_lead_dummy_calls166,scenario.buildingproject_-2142447145,Dummy opportunity for Termin für Objektberatung vereinbart
+scenario.crm_lead_dummy_calls167,scenario.buildingproject_-2142446899,"Dummy opportunity for Musterlieferung Komm. Gesamtsanierung und Harmosanpassungen, Petersschulhaus, Basel"
+scenario.crm_lead_dummy_calls168,scenario.buildingproject_-2142446857,Dummy opportunity for Wie ist es verlaufen?
+scenario.crm_lead_dummy_calls169,scenario.buildingproject_-2142446097,"Dummy opportunity for Entscheid nachfassen, was war das Kriterium"
+scenario.crm_lead_dummy_calls170,scenario.buildingproject_-2142442509,Dummy opportunity for Wo liegt das Projekt
+scenario.crm_lead_dummy_calls171,scenario.buildingproject_-2142441181,"Dummy opportunity for Findet DALI cool, darum auch die IL-Control"
+scenario.crm_lead_dummy_calls172,scenario.buildingproject_-2142440297,Dummy opportunity for Wie ist er unterwegs?
+scenario.crm_lead_dummy_calls173,scenario.buildingproject_-2142440123,Dummy opportunity for Besprechung Beleuchtungssteuerung mit KNX
+scenario.crm_lead_dummy_calls174,scenario.buildingproject_-2142440116,Dummy opportunity for Objekt nachfassen
+scenario.crm_lead_dummy_calls175,scenario.buildingproject_-2142439488,Dummy opportunity for Offerte nachfassen
+scenario.crm_lead_dummy_calls176,scenario.buildingproject_-2142438469,Dummy opportunity for Objekt nachfassen
+scenario.crm_lead_dummy_calls177,scenario.buildingproject_-2142438084,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls178,scenario.buildingproject_-2142438018,Dummy opportunity for Nachfrage IL Projekt 
+scenario.crm_lead_dummy_calls179,scenario.buildingproject_-2142437359,Dummy opportunity for Stand erfragen
+scenario.crm_lead_dummy_calls180,scenario.buildingproject_-2142437004,Dummy opportunity for Offerte für Biozentrum via W+F Wallisellen
+scenario.crm_lead_dummy_calls181,scenario.buildingproject_-2142436439,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls182,scenario.buildingproject_-2142435104,Dummy opportunity for Nach Bewegungsmelder nachfragen
+scenario.crm_lead_dummy_calls183,scenario.buildingproject_-2142432850,Dummy opportunity for Roger möchte noch die Planung überarbeiten
+scenario.crm_lead_dummy_calls184,scenario.buildingproject_-2142431795,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls185,scenario.buildingproject_-2142431298,Dummy opportunity for Offerte für Pilotprojekt MFH Bahnhofstrasse Märstetten
+scenario.crm_lead_dummy_calls186,scenario.buildingproject_-2142431294,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls187,scenario.buildingproject_-2142430483,Dummy opportunity for Braucht Rat in der EH
+scenario.crm_lead_dummy_calls188,scenario.buildingproject_-2142428522,Dummy opportunity for Weiteregehende Aktivitäten sicherstellen
+scenario.crm_lead_dummy_calls189,scenario.buildingproject_-2142428508,Dummy opportunity for Bauherr richtig qualifizieren
+scenario.crm_lead_dummy_calls190,scenario.buildingproject_-2142428503,Dummy opportunity for WüB Reiden nachfassen
+scenario.crm_lead_dummy_calls191,scenario.buildingproject_-2142428501,Dummy opportunity for Ist das Projekt schon reif? Hat sich etwas ergeben wo man genau hinschauen kann?
+scenario.crm_lead_dummy_calls192,scenario.buildingproject_-2142428330,Dummy opportunity for Weitere Schritte griffbereit?
+scenario.crm_lead_dummy_calls193,scenario.buildingproject_-2142426229,Dummy opportunity for Nachgefasst 111037.001 / Sonnenblick NB Terrassenwohnungen Balterswil
+scenario.crm_lead_dummy_calls194,scenario.buildingproject_-2142425634,Dummy opportunity for Nachbearbeitung Objekt
+scenario.crm_lead_dummy_calls195,scenario.buildingproject_-2142424302,Dummy opportunity for Fragt nach den korrekten Typen und Preisen nach / IL Projekt leider negativ
+scenario.crm_lead_dummy_calls196,scenario.buildingproject_-2142423331,Dummy opportunity for Objekt Wohnüberbauung Südwest Olten 
+scenario.crm_lead_dummy_calls197,scenario.buildingproject_-2142422372,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls198,scenario.buildingproject_-2142421480,Dummy opportunity for Planungsberatung nachfassen
+scenario.crm_lead_dummy_calls199,scenario.buildingproject_-2142421403,Dummy opportunity for Sollte um 10.30 uhr zurück sein
+scenario.crm_lead_dummy_calls200,scenario.buildingproject_-2142421058,"Dummy opportunity for Kein Pilotprojekt möglich WÜB Dättnauerstrasse 133-165, Dättnau "
+scenario.crm_lead_dummy_calls201,scenario.buildingproject_-2142419705,Dummy opportunity for info an Objekt
+scenario.crm_lead_dummy_calls202,scenario.buildingproject_-2142419154,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls203,scenario.buildingproject_-2142418479,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls204,scenario.buildingproject_-2142418191,Dummy opportunity for Bauprojekte nachgefasst
+scenario.crm_lead_dummy_calls205,scenario.buildingproject_-2142418189,Dummy opportunity for Besprechung Planungsberatung
+scenario.crm_lead_dummy_calls206,scenario.buildingproject_-2142418185,Dummy opportunity for Termin für Präsentation des neuen IL-Konzeptes vereinbaren
+scenario.crm_lead_dummy_calls207,scenario.buildingproject_-2142416995,Dummy opportunity for Pilotprojekte nachfassen
+scenario.crm_lead_dummy_calls208,scenario.buildingproject_-2142415308,Dummy opportunity for Telefonische Planungsberatung
+scenario.crm_lead_dummy_calls209,scenario.buildingproject_-2142415212,Dummy opportunity for Nachfrage Projekt Altersheim 
+scenario.crm_lead_dummy_calls210,scenario.buildingproject_-2142414987,Dummy opportunity for Nachgefasst Schulhaus Bottmingen
+scenario.crm_lead_dummy_calls211,scenario.buildingproject_-2142413854,Dummy opportunity for Entscheidungs von Projekt
+scenario.crm_lead_dummy_calls212,scenario.buildingproject_-2142413496,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls213,scenario.buildingproject_-2142412281,Dummy opportunity for Termin für IBN Dornacherhof koordinieren
+scenario.crm_lead_dummy_calls214,scenario.buildingproject_-2142412083,Dummy opportunity for Programmierung Leuchten
+scenario.crm_lead_dummy_calls215,scenario.buildingproject_-2142411275,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls216,scenario.buildingproject_-2142410571,Dummy opportunity for Wo sind wir ?
+scenario.crm_lead_dummy_calls217,scenario.buildingproject_-2142409726,Dummy opportunity for Telefonische Produktberatung
+scenario.crm_lead_dummy_calls218,scenario.buildingproject_-2142409491,Dummy opportunity for Migros Zuzwil mögliches IL-Projekt?
+scenario.crm_lead_dummy_calls219,scenario.buildingproject_-2142409226,Dummy opportunity for Nachfrage Objekt
+scenario.crm_lead_dummy_calls220,scenario.buildingproject_-2142408574,Dummy opportunity for Nachfrage IL Projekt
+scenario.crm_lead_dummy_calls221,scenario.buildingproject_-2142407825,Dummy opportunity for Besprechung Konditionen Spezialofferte Lagerbestellung
+scenario.crm_lead_dummy_calls222,scenario.buildingproject_-2142407429,Dummy opportunity for Projekt abgeschlossen
+scenario.crm_lead_dummy_calls223,scenario.buildingproject_-2142406010,Dummy opportunity for Objekt nachfassen --> mit rhu absprechen
+scenario.crm_lead_dummy_calls224,scenario.buildingproject_-2142406001,Dummy opportunity for Kaputte IL angekommen. 
+scenario.crm_lead_dummy_calls225,scenario.buildingproject_-2142405995,Dummy opportunity for Pilotprojekt Auftrag verloren. 
+scenario.crm_lead_dummy_calls226,scenario.buildingproject_-2142405891,Dummy opportunity for Erneut Nachfassen (Preis)
+scenario.crm_lead_dummy_calls227,scenario.buildingproject_-2142405588,Dummy opportunity for Nachgefasst 
+scenario.crm_lead_dummy_calls228,scenario.buildingproject_-2142405576,Dummy opportunity for IL-Controll vorstellen
+scenario.crm_lead_dummy_calls229,scenario.buildingproject_-2142405564,Dummy opportunity for neue IL vorstellen
+scenario.crm_lead_dummy_calls230,scenario.buildingproject_-2142401412,Dummy opportunity for Wie ist die Bausitzung betr. IL-Konzept verlaufen?
+scenario.crm_lead_dummy_calls231,scenario.buildingproject_-2142399175,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls232,scenario.buildingproject_-2142398464,Dummy opportunity for Nachfrage Offerte
+scenario.crm_lead_dummy_calls233,scenario.buildingproject_-2142397869,Dummy opportunity for Kontaktaufnahme für Ersatztermin Glarner
+scenario.crm_lead_dummy_calls234,scenario.buildingproject_-2142396719,Dummy opportunity for Nachrage Offerten
+scenario.crm_lead_dummy_calls235,scenario.buildingproject_-2142396691,Dummy opportunity for erneuter Bedarf
+scenario.crm_lead_dummy_calls236,scenario.buildingproject_-2142396211,Dummy opportunity for Preisanfrage für IL-Control
+scenario.crm_lead_dummy_calls237,scenario.buildingproject_-2142395502,Dummy opportunity for Wir sind noch im Rennen!
+scenario.crm_lead_dummy_calls238,scenario.buildingproject_-2142394571,Dummy opportunity for Der IS Nachweis hat noch Zeit
+scenario.crm_lead_dummy_calls239,scenario.buildingproject_-2142394440,Dummy opportunity for Hat Budget für SH Halden erhalten
+scenario.crm_lead_dummy_calls240,scenario.buildingproject_-2142393429,Dummy opportunity for Besprechung Melderplatzierung / Abdeckmöglichkeiten / Offerte
+scenario.crm_lead_dummy_calls241,scenario.buildingproject_-2142393405,"Dummy opportunity for Anfrage betreffend Konditionen Novartis St-Johann WSJ-383, Umbau 7.OG"
+scenario.crm_lead_dummy_calls242,scenario.buildingproject_-2142393348,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls243,scenario.buildingproject_-2142392806,Dummy opportunity for Frage betreffend IBN der weiteren Leuchten HPV
+scenario.crm_lead_dummy_calls244,scenario.buildingproject_-2142391853,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls245,scenario.buildingproject_-2142391225,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls246,scenario.buildingproject_-2142390420,Dummy opportunity for Nachfrage IL in Objekt. 
+scenario.crm_lead_dummy_calls247,scenario.buildingproject_-2142390382,Dummy opportunity for Offertanfrage Objekt Credit Suisse Liestal
+scenario.crm_lead_dummy_calls248,scenario.buildingproject_-2142390165,Dummy opportunity for Offerte 2119465 kopieren
+scenario.crm_lead_dummy_calls249,scenario.buildingproject_-2142389482,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls250,scenario.buildingproject_-2142387951,Dummy opportunity for Hat ein IL-Proj.
+scenario.crm_lead_dummy_calls251,scenario.buildingproject_-2142387880,Dummy opportunity for Bauherr?
+scenario.crm_lead_dummy_calls252,scenario.buildingproject_-2142387680,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls253,scenario.buildingproject_-2142387007,Dummy opportunity for Objekt nachfassen
+scenario.crm_lead_dummy_calls254,scenario.buildingproject_-2142384577,Dummy opportunity for Objekt Escherpark nachgefasst 
+scenario.crm_lead_dummy_calls255,scenario.buildingproject_-2142384238,Dummy opportunity for sofort-Nachfassung
+scenario.crm_lead_dummy_calls256,scenario.buildingproject_-2142382743,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls257,scenario.buildingproject_-2142381255,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls258,scenario.buildingproject_-2142379805,Dummy opportunity for Melder in den Klassenzimmern Sandgrube (Anfrage Musterlieferung)
+scenario.crm_lead_dummy_calls259,scenario.buildingproject_-2142379277,Dummy opportunity for Offertnachbearbeitung (nicht erreicht)
+scenario.crm_lead_dummy_calls260,scenario.buildingproject_-2142379075,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls261,scenario.buildingproject_-2142378216,Dummy opportunity for IL Proj. nachfassen
+scenario.crm_lead_dummy_calls262,scenario.buildingproject_-2142376862,Dummy opportunity for Nachfrage Objekt
+scenario.crm_lead_dummy_calls263,scenario.buildingproject_-2142375900,Dummy opportunity for IL Pilotprojekt nachgefasst 
+scenario.crm_lead_dummy_calls264,scenario.buildingproject_-2142375897,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls265,scenario.buildingproject_-2142375818,Dummy opportunity for Objekt Camenzind wurde mit EB-Leuchten ausgeführt und abgesetzten Meldern
+scenario.crm_lead_dummy_calls266,scenario.buildingproject_-2142375681,Dummy opportunity for Planungsgrundlagen
+scenario.crm_lead_dummy_calls267,scenario.buildingproject_-2142375011,Dummy opportunity for IL1- Control vorstellen
+scenario.crm_lead_dummy_calls268,scenario.buildingproject_-2142373917,Dummy opportunity for Hat den Auftrag (Planung) verloren
+scenario.crm_lead_dummy_calls269,scenario.buildingproject_-2142373910,Dummy opportunity for Eigenartige Merkmale IL-Control-Steuerung
+scenario.crm_lead_dummy_calls270,scenario.buildingproject_-2142373905,Dummy opportunity for Kein Pilotprojekt
+scenario.crm_lead_dummy_calls271,scenario.buildingproject_-2142373423,Dummy opportunity for Nachfrage Objekte
+scenario.crm_lead_dummy_calls272,scenario.buildingproject_-2142373417,Dummy opportunity for Deteilbesprechung Objekt 
+scenario.crm_lead_dummy_calls273,scenario.buildingproject_-2142373073,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls274,scenario.buildingproject_-2142371938,Dummy opportunity for Bestellung anhand Offerte 2118501 
+scenario.crm_lead_dummy_calls275,scenario.buildingproject_-2142371881,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls276,scenario.buildingproject_-2142370408,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls277,scenario.buildingproject_-2142370238,Dummy opportunity for Nachfrage Ausschreibung
+scenario.crm_lead_dummy_calls278,scenario.buildingproject_-2142368673,"Dummy opportunity for Offerte 2118491, längere Gültigkeit?"
+scenario.crm_lead_dummy_calls279,scenario.buildingproject_-2142367875,Dummy opportunity for Installateur Campus Schwarzsee
+scenario.crm_lead_dummy_calls280,scenario.buildingproject_-2142367309,Dummy opportunity for Hat positiven Bescheid signalisiert
+scenario.crm_lead_dummy_calls281,scenario.buildingproject_-2142364321,"Dummy opportunity for Reklamation betr. Bestellung EBGA-37026 Pos 10,40 und 50"
+scenario.crm_lead_dummy_calls282,scenario.buildingproject_-2142364198,Dummy opportunity for Planungsberatung 
+scenario.crm_lead_dummy_calls283,scenario.buildingproject_-2142363662,Dummy opportunity for Hat Offerte nicht bekommen 
+scenario.crm_lead_dummy_calls284,scenario.buildingproject_-2142363394,Dummy opportunity for Projektnachbearbeitung
+scenario.crm_lead_dummy_calls285,scenario.buildingproject_-2142362622,"Dummy opportunity for Nachgefasst Objekt Unterer Rheinweg 104, Basel "
+scenario.crm_lead_dummy_calls286,scenario.buildingproject_-2142361724,Dummy opportunity for Termin organisieren
+scenario.crm_lead_dummy_calls287,scenario.buildingproject_-2142360960,Dummy opportunity for Rücksprache betr. Planungsvorschlag
+scenario.crm_lead_dummy_calls288,scenario.buildingproject_-2142360577,Dummy opportunity for Objekt nachfassen
+scenario.crm_lead_dummy_calls289,scenario.buildingproject_-2142359808,Dummy opportunity for Stand Projekt --> weitere Schritte
+scenario.crm_lead_dummy_calls290,scenario.buildingproject_-2142359752,Dummy opportunity for Anfrage für Objektberatung
+scenario.crm_lead_dummy_calls291,scenario.buildingproject_-2142359558,Dummy opportunity for Nachfassen
+scenario.crm_lead_dummy_calls292,scenario.buildingproject_-2142358463,Dummy opportunity for Projekt ist noch weit weit weg
+scenario.crm_lead_dummy_calls293,scenario.buildingproject_-2142357814,Dummy opportunity for Ecoquartier Jonction
+scenario.crm_lead_dummy_calls294,scenario.buildingproject_-2142357247,Dummy opportunity for Info an Objekt St Augustin
+scenario.crm_lead_dummy_calls295,scenario.buildingproject_-2142356530,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls296,scenario.buildingproject_-2142355680,Dummy opportunity for Wo liegt das Projekt ?
+scenario.crm_lead_dummy_calls297,scenario.buildingproject_-2142353911,Dummy opportunity for wo liegt das Prjekt
+scenario.crm_lead_dummy_calls298,scenario.buildingproject_-2142353691,Dummy opportunity for Telefonische Planungsberatung
+scenario.crm_lead_dummy_calls299,scenario.buildingproject_-2142352905,Dummy opportunity for Stand Projekt 
+scenario.crm_lead_dummy_calls300,scenario.buildingproject_-2142352760,"Dummy opportunity for Keine neue Offerte Bäumliackerstrasse, 8552 Felben-Wellhausen "
+scenario.crm_lead_dummy_calls301,scenario.buildingproject_-2142352715,Dummy opportunity for Offertanfrage A.1338.110666/Alder und Eisenhut Ebnat Kappel 
+scenario.crm_lead_dummy_calls302,scenario.buildingproject_-2142352686,Dummy opportunity for Nachgefasst
+scenario.crm_lead_dummy_calls303,scenario.buildingproject_-2142352640,Dummy opportunity for Offerte 
+scenario.crm_lead_dummy_calls304,scenario.buildingproject_-2142350433,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls305,scenario.buildingproject_-2142350160,Dummy opportunity for Nachfassen Offerte
+scenario.crm_lead_dummy_calls306,scenario.buildingproject_-2142350019,Dummy opportunity for Nachgefasst wegen Plänen
+scenario.crm_lead_dummy_calls307,scenario.buildingproject_-2142350008,Dummy opportunity for Abklärung Planungsberatung
+scenario.crm_lead_dummy_calls308,scenario.buildingproject_-2142349547,Dummy opportunity for Besprechung Besichtigungstermin Homoos
+scenario.crm_lead_dummy_calls309,scenario.buildingproject_-2142348196,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls310,scenario.buildingproject_-2142346807,Dummy opportunity for Info an der Objekt
+scenario.crm_lead_dummy_calls311,scenario.buildingproject_-2142346498,Dummy opportunity for Termin auf Baustelle vereinbaren 
+scenario.crm_lead_dummy_calls312,scenario.buildingproject_-2142346146,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls313,scenario.buildingproject_-2142345913,Dummy opportunity for Rücksprache wegen Notstromanlage
+scenario.crm_lead_dummy_calls314,scenario.buildingproject_-2142343679,"Dummy opportunity for offerte über Electro Plast Mayrin, Objekt Chantier Cargill"
+scenario.crm_lead_dummy_calls315,scenario.buildingproject_-2142343631,Dummy opportunity for Offerte über Winterhalter Fenner St.Gallen 
+scenario.crm_lead_dummy_calls316,scenario.buildingproject_-2142343616,Dummy opportunity for info an objekt
+scenario.crm_lead_dummy_calls317,scenario.buildingproject_-2142343577,Dummy opportunity for Abklärungen Planungsberatung Do it & Garden Pfungen
+scenario.crm_lead_dummy_calls318,scenario.buildingproject_-2142343530,"Dummy opportunity for Terminplanung anstossen, falls nichts mehr gehört"
+scenario.crm_lead_dummy_calls319,scenario.buildingproject_-2142342703,Dummy opportunity for Nachfrage Objektberatung Furrer AG / Offerte erstellen
+scenario.crm_lead_dummy_calls320,scenario.buildingproject_-2142341843,Dummy opportunity for Dringende Offertanfrage via Otto Fischer
+scenario.crm_lead_dummy_calls321,scenario.buildingproject_-2142341061,Dummy opportunity for Mitteilung Liefertermin Brück
+scenario.crm_lead_dummy_calls322,scenario.buildingproject_-2142340685,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls323,scenario.buildingproject_-2142339195,Dummy opportunity for SLX eingesetzt ?
+scenario.crm_lead_dummy_calls324,scenario.buildingproject_-2142337329,Dummy opportunity for Submission Bürgerspital Solothurn (ca. 1200 KNX Melder)
+scenario.crm_lead_dummy_calls325,scenario.buildingproject_-2142336686,Dummy opportunity for Konditionen Offerte 2121964
+scenario.crm_lead_dummy_calls326,scenario.buildingproject_-2142336573,"Dummy opportunity for 2 Lieferungen für die Offerte Offerte 2119304, Schulhaus Reigoldswil"
+scenario.crm_lead_dummy_calls327,scenario.buildingproject_-2142336539,Dummy opportunity for Möchte Muster + Offerte für PD9 DALI
+scenario.crm_lead_dummy_calls328,scenario.buildingproject_-2142336467,Dummy opportunity for Stand abfragen
+scenario.crm_lead_dummy_calls329,scenario.buildingproject_-2142336033,Dummy opportunity for Termin für Objektberatungen vereinbaren (NFA Ineltec)
+scenario.crm_lead_dummy_calls330,scenario.buildingproject_-2142334198,Dummy opportunity for Offerte nachfassen
+scenario.crm_lead_dummy_calls331,scenario.buildingproject_-2142334116,Dummy opportunity for Verfügbarkeit PD2 MAX AP Trio DALI
+scenario.crm_lead_dummy_calls332,scenario.buildingproject_-2142333484,Dummy opportunity for Leider erfolgloses Wiederaufgreifen
+scenario.crm_lead_dummy_calls333,scenario.buildingproject_-2142330851,Dummy opportunity for korrigierte Offerte über W+F Horgen
+scenario.crm_lead_dummy_calls334,scenario.buildingproject_-2142330841,Dummy opportunity for Preisangabe für Ausschreibung
+scenario.crm_lead_dummy_calls335,scenario.buildingproject_-2142328184,Dummy opportunity for Objektaqkuise (209 ABB KNX-Melder in Ausschreibung)
+scenario.crm_lead_dummy_calls336,scenario.buildingproject_-2142327857,Dummy opportunity for Nachfassen der beiden IL-Projekte
+scenario.crm_lead_dummy_calls337,scenario.buildingproject_-2142323912,Dummy opportunity for Besprechung Einbau PD9 und Verdrahtung
+scenario.crm_lead_dummy_calls338,scenario.buildingproject_-2142323065,Dummy opportunity for Melder bestellt
+scenario.crm_lead_dummy_calls339,scenario.buildingproject_-2142321858,Dummy opportunity for Hat heute keine Zeit zum Telefonieren ;-)
+scenario.crm_lead_dummy_calls340,scenario.buildingproject_-2142321388,Dummy opportunity for Kontaktaufnahme
+scenario.crm_lead_dummy_calls341,scenario.buildingproject_-2142320452,Dummy opportunity for Nachfassen
+scenario.crm_lead_dummy_calls342,scenario.buildingproject_-2142320450,Dummy opportunity for Projekt/Stand/Auszählung Leuchten hinterfragen
+scenario.crm_lead_dummy_calls343,scenario.buildingproject_-2142318858,Dummy opportunity for Nachfassen in KW 34
+scenario.crm_lead_dummy_calls344,scenario.buildingproject_-2142318836,Dummy opportunity for Objekt nachgefasst 
+scenario.crm_lead_dummy_calls345,scenario.buildingproject_-2142317460,Dummy opportunity for Wo liegt das Projekt ?
+scenario.crm_lead_dummy_calls346,scenario.buildingproject_-2142316044,Dummy opportunity for Auf Preisübergang am 01.07.15 aufmerksam machen
+scenario.crm_lead_dummy_calls347,scenario.buildingproject_-2142314204,Dummy opportunity for Hat evtl. ein PD11 Projekt
+scenario.crm_lead_dummy_calls348,scenario.buildingproject_-2142314102,Dummy opportunity for Möchte eine Objekteberatung in einem Schulhaus
+scenario.crm_lead_dummy_calls349,scenario.buildingproject_-2142313158,Dummy opportunity for Interesse an PD9 in Stehleuchten
+scenario.crm_lead_dummy_calls350,scenario.buildingproject_-2142312124,Dummy opportunity for Projekt ?
+scenario.crm_lead_dummy_calls351,scenario.buildingproject_-2142312027,Dummy opportunity for wo sind wir ?
+scenario.crm_lead_dummy_calls352,scenario.buildingproject_-2142310775,Dummy opportunity for Technische Auskunft BWM für Tiefgarage / Aquisition Kunde und Bauprojekt
+scenario.crm_lead_dummy_calls353,scenario.buildingproject_-2142309580,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls354,scenario.buildingproject_-2142309515,Dummy opportunity for Objektnachbearbeitung
+scenario.crm_lead_dummy_calls355,scenario.buildingproject_-2142308746,Dummy opportunity for Termin verschieben
+scenario.crm_lead_dummy_calls356,scenario.buildingproject_-2142308721,Dummy opportunity for Terminanfrage 
+scenario.crm_lead_dummy_calls357,scenario.buildingproject_-2142308694,Dummy opportunity for Offerte nachfassen
+scenario.crm_lead_dummy_calls358,scenario.buildingproject_-2142308440,Dummy opportunity for Pläne wieder nicht erhalten
+scenario.crm_lead_dummy_calls359,scenario.buildingproject_-2142307941,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls360,scenario.buildingproject_-2142307839,Dummy opportunity for Unklarheiten betreffend Offerte
+scenario.crm_lead_dummy_calls361,scenario.buildingproject_-2142307037,Dummy opportunity for Offertnachbearbeitung 
+scenario.crm_lead_dummy_calls362,scenario.buildingproject_-2142306142,Dummy opportunity for Akqisition Bauprojekt
+scenario.crm_lead_dummy_calls363,scenario.buildingproject_-2142303884,Dummy opportunity for Nachfrage Projekt
+scenario.crm_lead_dummy_calls364,scenario.buildingproject_-2142301796,Dummy opportunity for Frage zur Programmierung an DALI Schnittstelle
+scenario.crm_lead_dummy_calls365,scenario.buildingproject_-2142301286,Dummy opportunity for Rückruf Planungsberatung
+scenario.crm_lead_dummy_calls366,scenario.buildingproject_-2142300403,Dummy opportunity for Nachfrage alles Io?
+scenario.crm_lead_dummy_calls367,scenario.buildingproject_-2142299101,"Dummy opportunity for Wollten bestellen, aber OF hatte keine Offerte"
+scenario.crm_lead_dummy_calls368,scenario.buildingproject_-2142299057,Dummy opportunity for Offertnachbearbeitung (Offerte und Bestellung folgt)
+scenario.crm_lead_dummy_calls369,scenario.buildingproject_-2142298509,Dummy opportunity for Objekte
+scenario.crm_lead_dummy_calls370,scenario.buildingproject_-2142298462,Dummy opportunity for Wo liegt das Projekt
+scenario.crm_lead_dummy_calls371,scenario.buildingproject_-2142298459,Dummy opportunity for Kontaktaufnahme
+scenario.crm_lead_dummy_calls372,scenario.buildingproject_-2142297597,Dummy opportunity for Objekt MFH Posstrasse nachgefasst 
+scenario.crm_lead_dummy_calls373,scenario.buildingproject_-2142295821,Dummy opportunity for Bauprojekte nachgefasst
+scenario.crm_lead_dummy_calls374,scenario.buildingproject_-2142295403,Dummy opportunity for Zuschlag für PIR erhalten
+scenario.crm_lead_dummy_calls375,scenario.buildingproject_-2142294872,Dummy opportunity for Offertnachbearbeitung (noch offen)
+scenario.crm_lead_dummy_calls376,scenario.buildingproject_-2142293930,Dummy opportunity for Positionierung PD2 Max UP
+scenario.crm_lead_dummy_calls377,scenario.buildingproject_-2142293515,Dummy opportunity for Offerte Züblin 
+scenario.crm_lead_dummy_calls378,scenario.buildingproject_-2142290178,Dummy opportunity for Objekt nachgefasst 
+scenario.crm_lead_dummy_calls379,scenario.buildingproject_-2142290075,Dummy opportunity for Allenfalls Pilotprojekt
+scenario.crm_lead_dummy_calls380,scenario.buildingproject_-2142289069,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls381,scenario.buildingproject_-2142287097,Dummy opportunity for Nachbestellung Schulhaus Birsfelden 
+scenario.crm_lead_dummy_calls382,scenario.buildingproject_-2142284937,Dummy opportunity for Pilotprojekt nachfassen: Ist am KNX Programmieren
+scenario.crm_lead_dummy_calls383,scenario.buildingproject_-2142283951,Dummy opportunity for Nachfrage Offerte
+scenario.crm_lead_dummy_calls384,scenario.buildingproject_-2142283106,Dummy opportunity for Bestellung gem. Offerte 2120814 (Nachlieferung)
+scenario.crm_lead_dummy_calls385,scenario.buildingproject_-2142282484,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls386,scenario.buildingproject_-2142282418,Dummy opportunity for Offerttnachbearbeitung 
+scenario.crm_lead_dummy_calls387,scenario.buildingproject_-2142282175,Dummy opportunity for Bestellung gem. Offerte 2120846
+scenario.crm_lead_dummy_calls388,scenario.buildingproject_-2142278028,Dummy opportunity for Offernachbearbeitung (noch offen)
+scenario.crm_lead_dummy_calls389,scenario.buildingproject_-2142272810,Dummy opportunity for Offertanfrage 
+scenario.crm_lead_dummy_calls390,scenario.buildingproject_-2142270881,Dummy opportunity for Nachfrage Musterlieferung 
+scenario.crm_lead_dummy_calls391,scenario.buildingproject_-2142270849,Dummy opportunity for Objekt nachgefasst 
+scenario.crm_lead_dummy_calls392,scenario.buildingproject_-2142270771,Dummy opportunity for Objekte nachfassen
+scenario.crm_lead_dummy_calls393,scenario.buildingproject_-2142270587,Dummy opportunity for Objekt nachgefasst --> Auftrag erhalten --> Offerte über W+F wenn Mengengerüst erhalten
+scenario.crm_lead_dummy_calls394,scenario.buildingproject_-2142262245,Dummy opportunity for Mengengerüst für GH aufbereiten
+scenario.crm_lead_dummy_calls395,scenario.buildingproject_-2142244797,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls396,scenario.buildingproject_-2142233729,Dummy opportunity for Frage zu Bestellung 3060543 Umbau Spitalgasse
+scenario.crm_lead_dummy_calls397,scenario.buildingproject_-2142233619,Dummy opportunity for Objektakquise
+scenario.crm_lead_dummy_calls398,scenario.buildingproject_-2142231788,Dummy opportunity for Objekt nachfassen
+scenario.crm_lead_dummy_calls399,scenario.buildingproject_-2142231612,Dummy opportunity for Möchte eine Offerte
+scenario.crm_lead_dummy_calls400,scenario.buildingproject_-2142231530,Dummy opportunity for Weitere erklärung für das Objekt
+scenario.crm_lead_dummy_calls401,scenario.buildingproject_-2142230582,"Dummy opportunity for Objekt Bildungszentrum Uster, Berufsschulsstr. 1, 8610 Uster nachgefasst "
+scenario.crm_lead_dummy_calls402,scenario.buildingproject_-2142230528,Dummy opportunity for Objekt Oberzil
+scenario.crm_lead_dummy_calls403,scenario.buildingproject_-2142230420,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls404,scenario.buildingproject_-2142227666,Dummy opportunity for Offerte nachfassen
+scenario.crm_lead_dummy_calls405,scenario.buildingproject_-2142225549,Dummy opportunity for Abklärung Offertanfrage
+scenario.crm_lead_dummy_calls406,scenario.buildingproject_-2142225310,Dummy opportunity for Planungsberatung
+scenario.crm_lead_dummy_calls407,scenario.buildingproject_-2142224889,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls408,scenario.buildingproject_-2142224777,Dummy opportunity for Hat die Störung nicht beheben können
+scenario.crm_lead_dummy_calls409,scenario.buildingproject_-2142224702,"Dummy opportunity for Hat die Offerte von OF, Beerli -> Preis ist zu hoch"
+scenario.crm_lead_dummy_calls410,scenario.buildingproject_-2142224558,Dummy opportunity for Termin für Begehung Burriweg vereinbaren
+scenario.crm_lead_dummy_calls411,scenario.buildingproject_-2142223656,Dummy opportunity for Stand abfragen
+scenario.crm_lead_dummy_calls412,scenario.buildingproject_-2142221952,Dummy opportunity for Besprechung Offerte 
+scenario.crm_lead_dummy_calls413,scenario.buildingproject_-2142220095,Dummy opportunity for Nachfrage Offerte
+scenario.crm_lead_dummy_calls414,scenario.buildingproject_-2142219904,Dummy opportunity for Projektakquisition
+scenario.crm_lead_dummy_calls415,scenario.buildingproject_-2142218429,Dummy opportunity for dringende Offertanfrage Objekt 2 MFH Berg
+scenario.crm_lead_dummy_calls416,scenario.buildingproject_-2142218167,Dummy opportunity for Bei Sigi nachfragen
+scenario.crm_lead_dummy_calls417,scenario.buildingproject_-2142218079,Dummy opportunity for Haben den Auftrag nicht erhalten
+scenario.crm_lead_dummy_calls418,scenario.buildingproject_-2142217384,Dummy opportunity for Muster Retour / Bescheid über das Projekt
+scenario.crm_lead_dummy_calls419,scenario.buildingproject_-2142215831,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls420,scenario.buildingproject_-2142215812,Dummy opportunity for Projekt nachgefasst 
+scenario.crm_lead_dummy_calls421,scenario.buildingproject_-2142215370,Dummy opportunity for Nachfrage Planungsberatung
+scenario.crm_lead_dummy_calls422,scenario.buildingproject_-2142213825,Dummy opportunity for Nachfrage Offerte
+scenario.crm_lead_dummy_calls423,scenario.buildingproject_-2142213109,Dummy opportunity for Konditionen/Rabattierung (NFA Ineltec)
+scenario.crm_lead_dummy_calls424,scenario.buildingproject_-2142212280,Dummy opportunity for Planungsberatung 
+scenario.crm_lead_dummy_calls425,scenario.buildingproject_-2142211871,Dummy opportunity for Projekt nachgefasst
+scenario.crm_lead_dummy_calls426,scenario.buildingproject_-2142210678,Dummy opportunity for Nachfrage betreffend Ausschreibung
+scenario.crm_lead_dummy_calls427,scenario.buildingproject_-2142210439,Dummy opportunity for Beleuchtung Brüderhofweg
+scenario.crm_lead_dummy_calls428,scenario.buildingproject_-2142210306,Dummy opportunity for IL Projekt nachfassen
+scenario.crm_lead_dummy_calls429,scenario.buildingproject_-2142210111,"Dummy opportunity for DLA Idee: Wie ist es mit der EB-Lösung der IL? (RU35 oder RE35, bzw. LU120 oder LE120"
+scenario.crm_lead_dummy_calls430,scenario.buildingproject_-2142204874,Dummy opportunity for Offertnachbearbeitung (noch keine Baubewilligung)
+scenario.crm_lead_dummy_calls431,scenario.buildingproject_-2142204842,Dummy opportunity for Kontaktaufnahme Planungsberatung
+scenario.crm_lead_dummy_calls432,scenario.buildingproject_-2142204059,Dummy opportunity for Termin nochmals abholen: ist i.O.
+scenario.crm_lead_dummy_calls433,scenario.buildingproject_-2142203518,Dummy opportunity for Entscheider qualifizieren Neubau Inselspital
+scenario.crm_lead_dummy_calls434,scenario.buildingproject_-2142203505,Dummy opportunity for Kontaktinfo Bauprojekt Kohlistieg Riehen
+scenario.crm_lead_dummy_calls435,scenario.buildingproject_-2142193344,Dummy opportunity for Besprechung Planungsberatung
+scenario.crm_lead_dummy_calls436,scenario.buildingproject_-2142188216,"Dummy opportunity for Leider nichts geworden, kein Budget für dieses Projekt + nicht verhältnismässig betr. Objekt"
+scenario.crm_lead_dummy_calls437,scenario.buildingproject_-2142187820,Dummy opportunity for Situation ?
+scenario.crm_lead_dummy_calls438,scenario.buildingproject_-2142182666,Dummy opportunity for Objektakquisition
+scenario.crm_lead_dummy_calls439,scenario.buildingproject_-2142181603,Dummy opportunity for Möchte ein Projekt mit IL ausrüsten
+scenario.crm_lead_dummy_calls440,scenario.buildingproject_-2142181520,Dummy opportunity for Bestellt ?
+scenario.crm_lead_dummy_calls441,scenario.buildingproject_-2142181278,Dummy opportunity for Objektakquisition (NFA Ineltec)
+scenario.crm_lead_dummy_calls442,scenario.buildingproject_-2142181097,Dummy opportunity for Bestellung telefonisch -> IL's + Besprechung Bedarf 2016
+scenario.crm_lead_dummy_calls443,scenario.buildingproject_-2142181078,Dummy opportunity for Nicht erreicht - Combox mit Bitte zum Rückruf
+scenario.crm_lead_dummy_calls444,scenario.buildingproject_-2142180405,Dummy opportunity for Stand Schweighof
+scenario.crm_lead_dummy_calls445,scenario.buildingproject_-2142179213,Dummy opportunity for Installation DALI-Melder in Hohldecke
+scenario.crm_lead_dummy_calls446,scenario.buildingproject_-2142177819,Dummy opportunity for Offertnachbearbeitung (Zuschlag erhalten)
+scenario.crm_lead_dummy_calls447,scenario.buildingproject_-2142175498,Dummy opportunity for Objekt nachfassen (Ist im Urlaub bis Dienstag KW 45 )
+scenario.crm_lead_dummy_calls448,scenario.buildingproject_-2142175339,"Dummy opportunity for Planungsberatung MFH Schutzmühle, 9330 St.Margrehten"
+scenario.crm_lead_dummy_calls449,scenario.buildingproject_-2142174684,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls450,scenario.buildingproject_-2142174621,Dummy opportunity for Termin mit Architekt 
+scenario.crm_lead_dummy_calls451,scenario.buildingproject_-2142174582,Dummy opportunity for Info an Projekt
+scenario.crm_lead_dummy_calls452,scenario.buildingproject_-2142174258,Dummy opportunity for Stand nachfragen: Wieder nicht erreicht
+scenario.crm_lead_dummy_calls453,scenario.buildingproject_-2142174075,Dummy opportunity for Objekt nachfassen
+scenario.crm_lead_dummy_calls454,scenario.buildingproject_-2142174010,Dummy opportunity for Objekte nachgefasst
+scenario.crm_lead_dummy_calls455,scenario.buildingproject_-2142174007,Dummy opportunity for Stand Werkof Scuol / Hobosensor auswerten
+scenario.crm_lead_dummy_calls456,scenario.buildingproject_-2142173748,Dummy opportunity for Offerte Kommission Marra
+scenario.crm_lead_dummy_calls457,scenario.buildingproject_-2142173617,Dummy opportunity for Abklärung zu Schaltung Treppenhaus
+scenario.crm_lead_dummy_calls458,scenario.buildingproject_-2142173332,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls459,scenario.buildingproject_-2142171764,Dummy opportunity for Objektakquise MFH Felben
+scenario.crm_lead_dummy_calls460,scenario.buildingproject_-2142171599,Dummy opportunity for Info an Objekt
+scenario.crm_lead_dummy_calls461,scenario.buildingproject_-2142171274,Dummy opportunity for Offertnachbearbeitung (nicht erreicht)
+scenario.crm_lead_dummy_calls462,scenario.buildingproject_-2142171159,"Dummy opportunity for Offerte Objekt MFH Maturtweg, Grabs"
+scenario.crm_lead_dummy_calls463,scenario.buildingproject_-2142170438,Dummy opportunity for Nacgfrage Objekt 
+scenario.crm_lead_dummy_calls464,scenario.buildingproject_-2142170237,Dummy opportunity for Offertnachbearbeitung (noch nicht aktuell)
+scenario.crm_lead_dummy_calls465,scenario.buildingproject_-2142168453,Dummy opportunity for 3. Bestellung Lichthof 
+scenario.crm_lead_dummy_calls466,scenario.buildingproject_-2142168378,Dummy opportunity for Technische Frage zur Planungsberatung (wird realisiert)
+scenario.crm_lead_dummy_calls467,scenario.buildingproject_-2142167223,Dummy opportunity for Objekt Silbergrube nachgefasst. 
+scenario.crm_lead_dummy_calls468,scenario.buildingproject_-2142167160,Dummy opportunity for Trio-DALI Melder hat evtl. falsche SW
+scenario.crm_lead_dummy_calls469,scenario.buildingproject_-2142165129,Dummy opportunity for Projekt Bumotec und Luxit ?
+scenario.crm_lead_dummy_calls470,scenario.buildingproject_-2142164907,Dummy opportunity for Planungsberatung (MKA ist informiert)
+scenario.crm_lead_dummy_calls471,scenario.buildingproject_-2142164734,Dummy opportunity for Projekt ?
+scenario.crm_lead_dummy_calls472,scenario.buildingproject_-2142164625,Dummy opportunity for Objekt nachgefasst / Termin für Kontaktpflege vereinbart
+scenario.crm_lead_dummy_calls473,scenario.buildingproject_-2142163697,Dummy opportunity for Rückmeldung betreffend Anbindung von ILC an KNX
+scenario.crm_lead_dummy_calls474,scenario.buildingproject_-2142163262,Dummy opportunity for Objekt nachfassen
+scenario.crm_lead_dummy_calls475,scenario.buildingproject_-2142162603,Dummy opportunity for Muster: Sind noch nicht retourniert (Farbdeckel)
+scenario.crm_lead_dummy_calls476,scenario.buildingproject_-2142159608,Dummy opportunity for IL Projekt aus Leads Ineltec
+scenario.crm_lead_dummy_calls477,scenario.buildingproject_-2142159360,Dummy opportunity for Termin zusammen mit RHU für Besprechung WBG Eigengrund vereinbaren
+scenario.crm_lead_dummy_calls478,scenario.buildingproject_-2142157472,Dummy opportunity for Info an Projekt
+scenario.crm_lead_dummy_calls479,scenario.buildingproject_-2142156300,Dummy opportunity for Offerte
+scenario.crm_lead_dummy_calls480,scenario.buildingproject_-2142156186,Dummy opportunity for Info an Onjekt
+scenario.crm_lead_dummy_calls481,scenario.buildingproject_-2142154759,"Dummy opportunity for Hat ein Projekt, wo er gerne die IL drin hat"
+scenario.crm_lead_dummy_calls482,scenario.buildingproject_-2142153582,Dummy opportunity for Auftraggeber (Bank) hat sich für das DS-System entschieden
+scenario.crm_lead_dummy_calls483,scenario.buildingproject_-2142152960,Dummy opportunity for Termin mit Planer vorort
+scenario.crm_lead_dummy_calls484,scenario.buildingproject_-2142150641,Dummy opportunity for Nachfrage bezüglich Offerte
+scenario.crm_lead_dummy_calls485,scenario.buildingproject_-2142150472,Dummy opportunity for IL-Control nochmals vorstellen
+scenario.crm_lead_dummy_calls486,scenario.buildingproject_-2142149038,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls487,scenario.buildingproject_-2142148636,Dummy opportunity for Nachfrage Projekt 
+scenario.crm_lead_dummy_calls488,scenario.buildingproject_-2142148419,Dummy opportunity for Stand abklären
+scenario.crm_lead_dummy_calls489,scenario.buildingproject_-2142148227,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls490,scenario.buildingproject_-2142142951,Dummy opportunity for Bauprojekt Bodenacker qualifizieren > Konzept vorstellen
+scenario.crm_lead_dummy_calls491,scenario.buildingproject_-2142141977,Dummy opportunity for Offerte
+scenario.crm_lead_dummy_calls492,scenario.buildingproject_-2142141716,Dummy opportunity for Offertnachbearbeitung (Auftrag verloren)
+scenario.crm_lead_dummy_calls493,scenario.buildingproject_-2142141538,Dummy opportunity for Objekt nachbearbeiten
+scenario.crm_lead_dummy_calls494,scenario.buildingproject_-2142140566,Dummy opportunity for Möchte auch noch mitrechnen
+scenario.crm_lead_dummy_calls495,scenario.buildingproject_-2142139706,Dummy opportunity for Objekt nachfassen
+scenario.crm_lead_dummy_calls496,scenario.buildingproject_-2142137764,Dummy opportunity for Objektnachbearbeitung (Urlaubsabwesenheit)
+scenario.crm_lead_dummy_calls497,scenario.buildingproject_-2142136549,Dummy opportunity for Objekt Grosspeter Tower nachgefasst.
+scenario.crm_lead_dummy_calls498,scenario.buildingproject_-2142136173,Dummy opportunity for Nachfrage Objekt 
+scenario.crm_lead_dummy_calls499,scenario.buildingproject_-2142134910,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls500,scenario.buildingproject_-2142134890,Dummy opportunity for Wünscht Offertkopie
+scenario.crm_lead_dummy_calls501,scenario.buildingproject_-2142134552,Dummy opportunity for Nachgefasst Letzihof
+scenario.crm_lead_dummy_calls502,scenario.buildingproject_-2142134091,Dummy opportunity for Objekte nachgefasst
+scenario.crm_lead_dummy_calls503,scenario.buildingproject_-2142130530,Dummy opportunity for Anpassung Offerte
+scenario.crm_lead_dummy_calls504,scenario.buildingproject_-2142130061,Dummy opportunity for Planungsberatung
+scenario.crm_lead_dummy_calls505,scenario.buildingproject_-2142129223,Dummy opportunity for Info SH Scherzingen / Termin für Kontaktpflege vereinbart
+scenario.crm_lead_dummy_calls506,scenario.buildingproject_-2142129216,Dummy opportunity for Kontakt mit Aeberli informieren
+scenario.crm_lead_dummy_calls507,scenario.buildingproject_-2142128503,Dummy opportunity for Offertanfrage Objekt: Schulhaus Melchtal
+scenario.crm_lead_dummy_calls508,scenario.buildingproject_-2142128420,Dummy opportunity for Sucht den Slave vom Max und die AP-Version
+scenario.crm_lead_dummy_calls509,scenario.buildingproject_-2142128186,Dummy opportunity for Abklärung Wohnüberbauung ABZ Oerlikon 1 
+scenario.crm_lead_dummy_calls510,scenario.buildingproject_-2142127769,Dummy opportunity for IL-C Konzept
+scenario.crm_lead_dummy_calls511,scenario.buildingproject_-2142127195,Dummy opportunity for Info an Projekt
+scenario.crm_lead_dummy_calls512,scenario.buildingproject_-2142126937,Dummy opportunity for Balkenleuchte mit IL-C / neues Bauprojekt mit IL1
+scenario.crm_lead_dummy_calls513,scenario.buildingproject_-2142124047,Dummy opportunity for Hat Bearf
+scenario.crm_lead_dummy_calls514,scenario.buildingproject_-2142122110,Dummy opportunity for Duo-Melder für Nasszelle mit 2 separaten Lichtgruppen
+scenario.crm_lead_dummy_calls515,scenario.buildingproject_-2142120784,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls516,scenario.buildingproject_-2142119945,Dummy opportunity for Leuchte Defekt
+scenario.crm_lead_dummy_calls517,scenario.buildingproject_-2142116058,Dummy opportunity for Offertanfrage
+scenario.crm_lead_dummy_calls518,scenario.buildingproject_-2142093977,Dummy opportunity for Offertanfrage Wesley Haus Basel
+scenario.crm_lead_dummy_calls519,scenario.buildingproject_-2142092811,Dummy opportunity for IL-Konzept in Teamsitzung
+scenario.crm_lead_dummy_calls520,scenario.buildingproject_-2142092793,Dummy opportunity for Möchte keine STEINEL Leuchte
+scenario.crm_lead_dummy_calls521,scenario.buildingproject_-2142091742,Dummy opportunity for Projekt mit 50'000.-  KNX-Melder wird Züblin machen
+scenario.crm_lead_dummy_calls522,scenario.buildingproject_-2142091697,Dummy opportunity for Nachfrage Offerte 
+scenario.crm_lead_dummy_calls523,scenario.buildingproject_-2142089884,Dummy opportunity for Abklärungen Planungsberatung
+scenario.crm_lead_dummy_calls524,scenario.buildingproject_-2142086360,Dummy opportunity for Abklärung Offertanfrage
+scenario.crm_lead_dummy_calls525,scenario.buildingproject_-2142083721,Dummy opportunity for Offertnachbearbeitung 
+scenario.crm_lead_dummy_calls526,scenario.buildingproject_-2142081100,Dummy opportunity for Anfrage Objektberatung
+scenario.crm_lead_dummy_calls527,scenario.buildingproject_-2142079792,Dummy opportunity for Konditionen OF 2124175
+scenario.crm_lead_dummy_calls528,scenario.buildingproject_-2142079019,Dummy opportunity for Offerte nachgefasst
+scenario.crm_lead_dummy_calls529,scenario.buildingproject_-2142078227,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls530,scenario.buildingproject_-2142078139,Dummy opportunity for Offerte aufgleisen
+scenario.crm_lead_dummy_calls531,scenario.buildingproject_-2142074689,Dummy opportunity for weitere Schritte zu Bestellung 
+scenario.crm_lead_dummy_calls532,scenario.buildingproject_-2142074559,Dummy opportunity for Einsatz Einbaudosen ?
+scenario.crm_lead_dummy_calls533,scenario.buildingproject_-2142070473,Dummy opportunity for Telefonische Beratung 
+scenario.crm_lead_dummy_calls534,scenario.buildingproject_-2142068135,Dummy opportunity for Möchte Offerte
+scenario.crm_lead_dummy_calls535,scenario.buildingproject_-2142067664,Dummy opportunity for Muster im Fokus halten
+scenario.crm_lead_dummy_calls536,scenario.buildingproject_-2142066662,Dummy opportunity for Besprechung Planungsberatung
+scenario.crm_lead_dummy_calls537,scenario.buildingproject_-2142066657,Dummy opportunity for Info an Projekt
+scenario.crm_lead_dummy_calls538,scenario.buildingproject_-2142065700,Dummy opportunity for Projekt ?
+scenario.crm_lead_dummy_calls539,scenario.buildingproject_-2142065162,Dummy opportunity for Objektakquisition
+scenario.crm_lead_dummy_calls540,scenario.buildingproject_-2142065080,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls541,scenario.buildingproject_-2142065069,Dummy opportunity for Objekt nachgefasst
+scenario.crm_lead_dummy_calls542,scenario.buildingproject_-2142064937,Dummy opportunity for Alles io Objekt?
+scenario.crm_lead_dummy_calls543,scenario.buildingproject_-2142063911,Dummy opportunity for Möchte einen Preis für eine Korridorbeleuchtung
+scenario.crm_lead_dummy_calls544,scenario.buildingproject_-2142061243,Dummy opportunity for Planungsberatung Infos
+scenario.crm_lead_dummy_calls545,scenario.buildingproject_-2142058901,Dummy opportunity for Abklärung Planungsberatung
+scenario.crm_lead_dummy_calls546,scenario.buildingproject_-2142055011,Dummy opportunity for Termin für Konzeptbesprechung vereinbaren
+scenario.crm_lead_dummy_calls547,scenario.buildingproject_-2142050426,Dummy opportunity for Projektnachbearbeitung
+scenario.crm_lead_dummy_calls548,scenario.buildingproject_-2142050252,Dummy opportunity for Bestellung nachgefasst 
+scenario.crm_lead_dummy_calls549,scenario.buildingproject_-2142049007,Dummy opportunity for dringende Offertanfrage
+scenario.crm_lead_dummy_calls550,scenario.buildingproject_-2142048144,Dummy opportunity for Termin für Planungsberatung vereinbart
+scenario.crm_lead_dummy_calls551,scenario.buildingproject_-2142045586,Dummy opportunity for Inhalt der Offerte kurz prüfen (OF-6815095)
+scenario.crm_lead_dummy_calls552,scenario.buildingproject_-2142041759,Dummy opportunity for Offertnachbearbeitung
+scenario.crm_lead_dummy_calls553,scenario.buildingproject_-2142040780,Dummy opportunity for Nach IL Konzept beim Bauherr: Weitere Etappen nachfassen
+scenario.crm_lead_dummy_calls554,scenario.buildingproject_-2142038597,Dummy opportunity for Bestellung
+scenario.crm_lead_dummy_calls555,scenario.buildingproject_-2142038338,Dummy opportunity for Ist noch nicht soweit
+scenario.crm_lead_dummy_calls556,scenario.buildingproject_-2142038336,Dummy opportunity for Bondini Urdorf - was ist hier der Stand
+scenario.crm_lead_dummy_calls557,scenario.buildingproject_-2142038318,Dummy opportunity for Unterstützung anbieten
+scenario.crm_lead_dummy_calls558,scenario.buildingproject_-2142037354,Dummy opportunity for Offertanfrage
+scenario.crm_lead_dummy_calls559,scenario.buildingproject_-2142034841,Dummy opportunity for Bestellung 
+scenario.crm_lead_dummy_calls560,scenario.buildingproject_-2142031824,Dummy opportunity for Projekt ?
+scenario.crm_lead_dummy_calls561,scenario.buildingproject_-2142031560,Dummy opportunity for Nachfrage Objekt 
+scenario.crm_lead_dummy_calls562,scenario.buildingproject_-2142030426,Dummy opportunity for Besprechung Offerte und Planungsberatung
+scenario.crm_lead_dummy_calls563,scenario.buildingproject_-2142029814,Dummy opportunity for Offerte für Devisierung (Noldi ist in den Ferien bis KW05)
+scenario.crm_lead_dummy_calls564,scenario.buildingproject_-2142027736,Dummy opportunity for Qualifizieren: Bauprojekt Ankenbüel in Zumikon
+scenario.crm_lead_dummy_calls565,scenario.buildingproject_-2142027561,Dummy opportunity for Casada Fadail
+scenario.crm_lead_dummy_calls566,scenario.buildingproject_-2142025227,"Dummy opportunity for Fragen, ob SLX statt Pirios (KNX) in Frage kommt"
+scenario.crm_lead_dummy_calls567,scenario.buildingproject_-2142024587,Dummy opportunity for Offertanfrage 
+scenario.crm_lead_dummy_calls568,scenario.buildingproject_-2142024176,Dummy opportunity for Ist noch offen
+scenario.crm_lead_dummy_calls569,scenario.buildingproject_-2142023326,Dummy opportunity for Leuchtenkonzept austauschen
+scenario.crm_lead_dummy_calls570,scenario.buildingproject_-2142020697,Dummy opportunity for Evtl. Spezleuchte für Syngenta Basel?
+scenario.crm_lead_dummy_calls571,scenario.buildingproject_-2142018766,Dummy opportunity for Abklärung Planungsberatung Beringen/Herisau

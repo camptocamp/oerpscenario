@@ -1,0 +1,297 @@
+id,building_project_id:id,name
+scenario.crm_lead_dummy1,scenario.buildingproject_-2142127573,Dummy opportunity for Weitere Beratung ( 2e Etape )
+scenario.crm_lead_dummy2,scenario.buildingproject_-2142019769,Dummy opportunity for Bedarfsaufnahme
+scenario.crm_lead_dummy3,scenario.buildingproject_-2142174010,Dummy opportunity for Hobosensor auswerten
+scenario.crm_lead_dummy4,scenario.buildingproject_-2142320452,Dummy opportunity for Fehler in Pilotprojekten
+scenario.crm_lead_dummy5,scenario.buildingproject_-2142020697,Dummy opportunity for Martin Durrer HHM Swisslux Astra LED
+scenario.crm_lead_dummy6,scenario.buildingproject_-2142447145,Dummy opportunity for Support vor Ort
+scenario.crm_lead_dummy7,scenario.buildingproject_-2142025227,Dummy opportunity for Planungsberatung Mobile
+scenario.crm_lead_dummy8,scenario.buildingproject_-2142055011,Dummy opportunity for Besprechung Beleuchtungskonzept KSGR
+scenario.crm_lead_dummy9,scenario.buildingproject_-2142308746,Dummy opportunity for IL-C vorstellen Konzept + Leuchte bemustern
+scenario.crm_lead_dummy10,scenario.buildingproject_-2142349547,Dummy opportunity for Support vor Ort
+scenario.crm_lead_dummy11,scenario.buildingproject_-2142030426,Dummy opportunity for Besprechung + Bemusterung IL-C
+scenario.crm_lead_dummy12,scenario.buildingproject_-2142031560,Dummy opportunity for Sämtliche KNX Melder mit Dongle vorbereiten
+scenario.crm_lead_dummy13,scenario.buildingproject_-2142067664,Dummy opportunity for Leuchte überbringen
+scenario.crm_lead_dummy14,scenario.buildingproject_-2142262245,Dummy opportunity for Planerbesuch / Objekteberatung
+scenario.crm_lead_dummy15,scenario.buildingproject_-2142553311,Dummy opportunity for Melder aufnehmen
+scenario.crm_lead_dummy16,scenario.buildingproject_-2142401049,Dummy opportunity for Support vor Ort
+scenario.crm_lead_dummy17,scenario.buildingproject_-2142298462,Dummy opportunity for Support vorort
+scenario.crm_lead_dummy18,scenario.buildingproject_-2142037354,"Dummy opportunity for Kontaktaufbau, Präsentation IL-C"
+scenario.crm_lead_dummy19,scenario.buildingproject_-2142024242,Dummy opportunity for Beratung vor Ort 
+scenario.crm_lead_dummy20,scenario.buildingproject_-2142409491,Dummy opportunity for Kontaktpflege / gemeinsamer Znüni
+scenario.crm_lead_dummy21,scenario.buildingproject_-2142387680,Dummy opportunity for Beratung vor Ort 
+scenario.crm_lead_dummy22,scenario.buildingproject_-2142142951,Dummy opportunity for IL-C Konzept aufzeigen
+scenario.crm_lead_dummy23,scenario.buildingproject_-2143450581,Dummy opportunity for Support vor Ort: Kinderhort Ilgen
+scenario.crm_lead_dummy24,scenario.buildingproject_-2142290178,Dummy opportunity for Objektberatung und Kontaktpflege 
+scenario.crm_lead_dummy25,scenario.buildingproject_-2142164625,Dummy opportunity for Kontaktpflege / gemeinsamer Znüni
+scenario.crm_lead_dummy26,scenario.buildingproject_-2142821607,"Dummy opportunity for Kontaktpflege, Offerten 2014 / 2015"
+scenario.crm_lead_dummy27,scenario.buildingproject_-2142048144,Dummy opportunity for Objektbesprechung
+scenario.crm_lead_dummy28,scenario.buildingproject_-2142604665,Dummy opportunity for Kontaktplege / Weihnachtsbesuch
+scenario.crm_lead_dummy29,scenario.buildingproject_-2142224558,Dummy opportunity for Znüni
+scenario.crm_lead_dummy30,scenario.buildingproject_-2142203505,Dummy opportunity for Swisslux Leuchten
+scenario.crm_lead_dummy31,scenario.buildingproject_-2142057842,Dummy opportunity for Kontaktpflege / gemeinsames Mittagessen
+scenario.crm_lead_dummy32,scenario.buildingproject_-2142181078,Dummy opportunity for Weihnachtsbesuch
+scenario.crm_lead_dummy33,scenario.buildingproject_-2142418191,Dummy opportunity for Weihnachtsbesuch
+scenario.crm_lead_dummy34,scenario.buildingproject_-2142387880,Dummy opportunity for Weihnachtsbesuch
+scenario.crm_lead_dummy35,scenario.buildingproject_-2142074555,Dummy opportunity for Inbetrisbsnahme IL Projekt
+scenario.crm_lead_dummy36,scenario.buildingproject_-2142217384,Dummy opportunity for Besprechung Stand Objekt / Abholung der Muster
+scenario.crm_lead_dummy37,scenario.buildingproject_-2142064937,Dummy opportunity for Bedarfsaufnahme
+scenario.crm_lead_dummy38,scenario.buildingproject_-2142600475,Dummy opportunity for Objektberatung
+scenario.crm_lead_dummy39,scenario.buildingproject_-2142065700,Dummy opportunity for projekt IL
+scenario.crm_lead_dummy40,scenario.buildingproject_-2142455718,Dummy opportunity for Planungsberatung: konventionelle PiR's einplanen
+scenario.crm_lead_dummy41,scenario.buildingproject_-2142038338,Dummy opportunity for Weihnachtsznüni
+scenario.crm_lead_dummy42,scenario.buildingproject_-2142341061,Dummy opportunity for Support vor Ort LON
+scenario.crm_lead_dummy43,scenario.buildingproject_-2142505290,Dummy opportunity for IBN Beleuchtungssteuerung Bürotrakt Werkhof Waldau
+scenario.crm_lead_dummy44,scenario.buildingproject_-2142067683,Dummy opportunity for IL-Konzept vorstellen: Bauherr + Planer
+scenario.crm_lead_dummy45,scenario.buildingproject_-2142068135,Dummy opportunity for IL-Konzept vorstellen
+scenario.crm_lead_dummy46,scenario.buildingproject_-2142337329,Dummy opportunity for Weihnachtsbesuch
+scenario.crm_lead_dummy47,scenario.buildingproject_-2142149579,Dummy opportunity for Pläne checken 
+scenario.crm_lead_dummy48,scenario.buildingproject_-2142086937,Dummy opportunity for Support vorort
+scenario.crm_lead_dummy49,scenario.buildingproject_-2142064936,Dummy opportunity for IL Beratung
+scenario.crm_lead_dummy50,scenario.buildingproject_-2142634323,"Dummy opportunity for Weihnachtsbesuch, Geschenkübergabe"
+scenario.crm_lead_dummy51,scenario.buildingproject_-2142126937,Dummy opportunity for Mittagessen Restaurant Freihof
+scenario.crm_lead_dummy52,scenario.buildingproject_-2143349839,Dummy opportunity for Weihnachtsbesuch / gemeinsamer Znüni
+scenario.crm_lead_dummy53,scenario.buildingproject_-2142363662,Dummy opportunity for Hilfe bei der Inbetriebnahme Winterthur
+scenario.crm_lead_dummy54,scenario.buildingproject_-2142282484,Dummy opportunity for Weihnahtsbesuch
+scenario.crm_lead_dummy55,scenario.buildingproject_-2142063961,Dummy opportunity for Objektberatung vor Ort
+scenario.crm_lead_dummy56,scenario.buildingproject_-2142733749,Dummy opportunity for Bedarfsaufnahme PiR
+scenario.crm_lead_dummy57,scenario.buildingproject_-2142270587,Dummy opportunity for Objektberatung
+scenario.crm_lead_dummy58,scenario.buildingproject_-2142074559,Dummy opportunity for IL Projekt
+scenario.crm_lead_dummy59,scenario.buildingproject_-2142091697,Dummy opportunity for Weihnachtsbesuch
+scenario.crm_lead_dummy60,scenario.buildingproject_-2142450653,"Dummy opportunity for Objekte nachfassen, Weihnachtsbesuch"
+scenario.crm_lead_dummy61,scenario.buildingproject_-2142174007,Dummy opportunity for Weihnachtsbesuch / Planungsberatung
+scenario.crm_lead_dummy62,scenario.buildingproject_-2142525262,Dummy opportunity for Weihnachtsbesuch / Bauprojekt Tandem
+scenario.crm_lead_dummy63,scenario.buildingproject_-2142218968,Dummy opportunity for Besprechung Dorfstrasse 23/Endjahresbesuch
+scenario.crm_lead_dummy64,scenario.buildingproject_-2142078139,Dummy opportunity for Planungsberatung Beleuchtung Kinderspital
+scenario.crm_lead_dummy65,scenario.buildingproject_-2142150472,Dummy opportunity for Kontaktpflege und IL vorstellen 
+scenario.crm_lead_dummy66,scenario.buildingproject_-2143005067,Dummy opportunity for Support vor Ort
+scenario.crm_lead_dummy67,scenario.buildingproject_-2142373910,Dummy opportunity for Support: INB der neuen TRIOs
+scenario.crm_lead_dummy68,scenario.buildingproject_-2142162901,Dummy opportunity for Beratung vorort
+scenario.crm_lead_dummy69,scenario.buildingproject_-2142119973,Dummy opportunity for Weihnachtsbesuch 
+scenario.crm_lead_dummy70,scenario.buildingproject_-2142087992,Dummy opportunity for Objektberatung Lagerbeleuchtung EM Heiden
+scenario.crm_lead_dummy71,scenario.buildingproject_-2142074689,Dummy opportunity for Objektberatung vor Ort Grossbaustelle im Geelig in Gebenstorf
+scenario.crm_lead_dummy72,scenario.buildingproject_-2142159360,Dummy opportunity for Evaluation IL-Control für Liegenschaften WBG Eigengrund 
+scenario.crm_lead_dummy73,scenario.buildingproject_-2142157472,Dummy opportunity for Info an Objekten
+scenario.crm_lead_dummy74,scenario.buildingproject_-2142655038,Dummy opportunity for Support vor Ort
+scenario.crm_lead_dummy75,scenario.buildingproject_-2142128835,Dummy opportunity for Koordination und Melderwahl definitiv
+scenario.crm_lead_dummy76,scenario.buildingproject_-2142066683,Dummy opportunity for Kontaktpflege / Znüni für alle PL an PL-Sitzung
+scenario.crm_lead_dummy77,scenario.buildingproject_-2142116058,Dummy opportunity for Musterleuchte überbringen
+scenario.crm_lead_dummy78,scenario.buildingproject_-2142379075,Dummy opportunity for Objektberatung
+scenario.crm_lead_dummy79,scenario.buildingproject_-2142119945,Dummy opportunity for Beratung vorort
+scenario.crm_lead_dummy80,scenario.buildingproject_-2142440297,Dummy opportunity for Planungsberatung im Baubüro
+scenario.crm_lead_dummy81,scenario.buildingproject_-2142079792,Dummy opportunity for Objektberatung vor Ort 
+scenario.crm_lead_dummy82,scenario.buildingproject_-2142123512,Dummy opportunity for Beratung vor Ort
+scenario.crm_lead_dummy83,scenario.buildingproject_-2142129223,Dummy opportunity for Kontaktpflege
+scenario.crm_lead_dummy84,scenario.buildingproject_-2142124047,Dummy opportunity for Bedarfsermittlung / DALI Steuerung
+scenario.crm_lead_dummy85,scenario.buildingproject_-2142124170,Dummy opportunity for Objektberatung
+scenario.crm_lead_dummy86,scenario.buildingproject_-2142128420,Dummy opportunity for FOTOS VOM MAX MACHEN -> M. Moser braucht es für den Architekten
+scenario.crm_lead_dummy87,scenario.buildingproject_-2142152960,Dummy opportunity for Objektberatung IL
+scenario.crm_lead_dummy88,scenario.buildingproject_-2142306142,Dummy opportunity for Kontaktpflege / Konzeptbesprechung
+scenario.crm_lead_dummy89,scenario.buildingproject_-2142134091,Dummy opportunity for Planungsberatung Schulhaus Berg
+scenario.crm_lead_dummy90,scenario.buildingproject_-2142148636,Dummy opportunity for Inbetriebnahme Objekt
+scenario.crm_lead_dummy91,scenario.buildingproject_-2142224777,Dummy opportunity for Support vor Ort
+scenario.crm_lead_dummy92,scenario.buildingproject_-2142308721,Dummy opportunity for Beratung Aussenbeleuchtung
+scenario.crm_lead_dummy93,scenario.buildingproject_-2142428508,"Dummy opportunity for Besprechung Mengengerüst, Konzept- und Preisgestaltung der Intelligenten Leuchte"
+scenario.crm_lead_dummy94,scenario.buildingproject_-2142134910,Dummy opportunity for Kontaktpflege
+scenario.crm_lead_dummy95,scenario.buildingproject_-2142685690,Dummy opportunity for Support vor Ort
+scenario.crm_lead_dummy96,scenario.buildingproject_-2142134890,Dummy opportunity for Kontaktpflege / gemeinsamer Znüni
+scenario.crm_lead_dummy97,scenario.buildingproject_-2142127766,Dummy opportunity for Begehung IL > Konzept aufzeigen
+scenario.crm_lead_dummy98,scenario.buildingproject_-2142735025,Dummy opportunity for Objektberatung vor Ort Windisch weitere Etappe 
+scenario.crm_lead_dummy99,scenario.buildingproject_-2142136311,Dummy opportunity for Planungsberatung
+scenario.crm_lead_dummy100,scenario.buildingproject_-2142401412,Dummy opportunity for Weitere Möglichkeiten der IL vorstellen
+scenario.crm_lead_dummy101,scenario.buildingproject_-2142478343,Dummy opportunity for Support vor Ort
+scenario.crm_lead_dummy102,scenario.buildingproject_-2142173332,Dummy opportunity for Mittagessen
+scenario.crm_lead_dummy103,scenario.buildingproject_-2142225310,"Dummy opportunity for Kontaktpflege, Neubau Schäfer anschauen"
+scenario.crm_lead_dummy104,scenario.buildingproject_-2142140566,"Dummy opportunity for Objektberatung vor Ort Eichstrasse 17, 8610 Uster"
+scenario.crm_lead_dummy105,scenario.buildingproject_-2142168453,Dummy opportunity for Objektberatung Lichthof Uster Terminvorschlag
+scenario.crm_lead_dummy106,scenario.buildingproject_-2142412083,Dummy opportunity for Besprechung Übersteuerungsmöglichkeit für Beleuchtung
+scenario.crm_lead_dummy107,scenario.buildingproject_-2142424302,"Dummy opportunity for Objekteberatung: neue Etappe, schwierige Anforderungen"
+scenario.crm_lead_dummy108,scenario.buildingproject_-2142204842,"Dummy opportunity for Planungsberatung, Begehung, weiteres Vorgehen des Konzepts"
+scenario.crm_lead_dummy109,scenario.buildingproject_-2142148419,"Dummy opportunity for Znüni bringen, IL Control vorstellen"
+scenario.crm_lead_dummy110,scenario.buildingproject_-2142162603,Dummy opportunity for Bedarfsaufnahme PiR
+scenario.crm_lead_dummy111,scenario.buildingproject_-2142295811,Dummy opportunity for Objektberatung
+scenario.crm_lead_dummy112,scenario.buildingproject_-2142230265,Dummy opportunity for IBN Korridorbeleuchtung Kantonsspital Chur (DALI)
+scenario.crm_lead_dummy113,scenario.buildingproject_-2142165129,Dummy opportunity for Beratung vorort
+scenario.crm_lead_dummy114,scenario.buildingproject_-2142221952,"Dummy opportunity for Diverse Details besprechen, bestellen "
+scenario.crm_lead_dummy115,scenario.buildingproject_-2142174069,Dummy opportunity for Schulung IL-Control/PIR alle PL
+scenario.crm_lead_dummy116,scenario.buildingproject_-2142139706,Dummy opportunity for Präsentation IL-Control/PIR-Sortiment (NFA Ineltec)
+scenario.crm_lead_dummy117,scenario.buildingproject_-2143788893,Dummy opportunity for Support vor Ort (2 Schulhäuser Stadt SG)
+scenario.crm_lead_dummy118,scenario.buildingproject_-2142167610,"Dummy opportunity for KA, IL-Konzept zeigen. "
+scenario.crm_lead_dummy119,scenario.buildingproject_-2142596535,Dummy opportunity for Support vor Ort (Nachjustierung IL-Control)
+scenario.crm_lead_dummy120,scenario.buildingproject_-2142375011,Dummy opportunity for nächsten Schritte besprechen
+scenario.crm_lead_dummy121,scenario.buildingproject_-2142163697,Dummy opportunity for Installation Datenlogger HBA Kanton St.Gallen (NFA Ineltec)
+scenario.crm_lead_dummy122,scenario.buildingproject_-2142181097,Dummy opportunity for Konzeptbesprechung IL-Control
+scenario.crm_lead_dummy123,scenario.buildingproject_-2142175334,Dummy opportunity for Kontaktaufbau
+scenario.crm_lead_dummy124,scenario.buildingproject_-2142295616,Dummy opportunity for Planungsberatung diverse Projekte / gemeinsamer Znüni (NFA Ineltec)
+scenario.crm_lead_dummy125,scenario.buildingproject_-2142170438,"Dummy opportunity for IL Projekt besprechen, Mittagessen--> NA Ineltec"
+scenario.crm_lead_dummy126,scenario.buildingproject_-2142182666,Dummy opportunity for Planungsberatung
+scenario.crm_lead_dummy127,scenario.buildingproject_-2142506248,Dummy opportunity for Beratung vor Ort Edenstrasse 
+scenario.crm_lead_dummy128,scenario.buildingproject_-2142478564,Dummy opportunity for Kontaktaufbau / Präsentation IL-Control
+scenario.crm_lead_dummy129,scenario.buildingproject_-2142392806,Dummy opportunity for Support vor Ort
+scenario.crm_lead_dummy130,scenario.buildingproject_-2142204059,Dummy opportunity for Besprechung IL-Konzept im Projekt Neubau MFH Am Aawasser
+scenario.crm_lead_dummy131,scenario.buildingproject_-2142180405,Dummy opportunity for Besuch nach Ineltec
+scenario.crm_lead_dummy132,scenario.buildingproject_-2142168695,Dummy opportunity for Objektberatung vor Ort / LEAD aus INELTEC 2015
+scenario.crm_lead_dummy133,scenario.buildingproject_-2142210111,Dummy opportunity for Planungsberatung IL
+scenario.crm_lead_dummy134,scenario.buildingproject_-2142210439,Dummy opportunity for Aqk. MFH Wohnüberbauung bei Fussballplatz
+scenario.crm_lead_dummy135,scenario.buildingproject_-2142174684,Dummy opportunity for Objektberatung vor Ort 
+scenario.crm_lead_dummy136,scenario.buildingproject_-2142181520,Dummy opportunity for Objektberatung
+scenario.crm_lead_dummy137,scenario.buildingproject_-2142153582,Dummy opportunity for IL1 aufzeigen
+scenario.crm_lead_dummy138,scenario.buildingproject_-2142187691,Dummy opportunity for Objektberatung vor Ort 
+scenario.crm_lead_dummy139,scenario.buildingproject_-2143291195,Dummy opportunity for Techn. Support 
+scenario.crm_lead_dummy140,scenario.buildingproject_-2142722192,Dummy opportunity for Begehung Treppenhaus (Notausgang)
+scenario.crm_lead_dummy141,scenario.buildingproject_-2142486630,Dummy opportunity for Objektberatung 
+scenario.crm_lead_dummy142,scenario.buildingproject_-2142541173,Dummy opportunity for KNX-Melder mit eigenartigen Schaltungen
+scenario.crm_lead_dummy143,scenario.buildingproject_-2142233619,Dummy opportunity for Besprechung Beleuchtungskonzept Umbau Radiologie
+scenario.crm_lead_dummy144,scenario.buildingproject_-2142490075,"Dummy opportunity for Besprechung Beleuchtungskonzept Justushof, Flums"
+scenario.crm_lead_dummy145,scenario.buildingproject_-2144053652,Dummy opportunity for Support vor Ort (Wasser in KNX Melder)
+scenario.crm_lead_dummy146,scenario.buildingproject_-2142405576,Dummy opportunity for IL-Control vorstellen
+scenario.crm_lead_dummy147,scenario.buildingproject_-2142323912,Dummy opportunity for Support vor Ort (Fehlschaltungen IL1)
+scenario.crm_lead_dummy148,scenario.buildingproject_-2142220710,Dummy opportunity for IL1: Bedarfsaufnahme mit der Stadt Zürich (Objekt in Schwammendingen)
+scenario.crm_lead_dummy149,scenario.buildingproject_-2142375681,Dummy opportunity for Planungsberatung
+scenario.crm_lead_dummy150,scenario.buildingproject_-2142490041,Dummy opportunity for Kontaktpflege / Projekte abgleichen
+scenario.crm_lead_dummy151,scenario.buildingproject_-2142336539,Dummy opportunity for TK's überbringen
+scenario.crm_lead_dummy152,scenario.buildingproject_-2143411418,Dummy opportunity for Support mit IR-PD Mini
+scenario.crm_lead_dummy153,scenario.buildingproject_-2142373917,"Dummy opportunity for IL-Konzept aufzeigen, Bsp.Planung im Tiergarten vornehmen"
+scenario.crm_lead_dummy154,scenario.buildingproject_-2142231788,Dummy opportunity for Objektberatung/Offerte
+scenario.crm_lead_dummy155,scenario.buildingproject_-2142231612,Dummy opportunity for Bedarfsaufnahme
+scenario.crm_lead_dummy156,scenario.buildingproject_-2142600453,Dummy opportunity for Planungsberatung intern
+scenario.crm_lead_dummy157,scenario.buildingproject_-2142591115,Dummy opportunity for Besprechung Weiterführung potentielle IL-Projekte / Übergabe Musterleuchte
+scenario.crm_lead_dummy158,scenario.buildingproject_-2142357644,Dummy opportunity for Betriebsprobleme
+scenario.crm_lead_dummy159,scenario.buildingproject_-2142405891,Dummy opportunity for IS- IL- etc. vorstellen (Abt. Planung EWA)
+scenario.crm_lead_dummy160,scenario.buildingproject_-2142280540,Dummy opportunity for Support vorort
+scenario.crm_lead_dummy161,scenario.buildingproject_-2142468227,Dummy opportunity for IL-Controll: Neue Steurungsmöglichkeiten aufzeigen > Achtung  IS Projekt auch verfolgen
+scenario.crm_lead_dummy162,scenario.buildingproject_-2142231604,Dummy opportunity for Präsentation IL-Control / KNX-Palette
+scenario.crm_lead_dummy163,scenario.buildingproject_-2142270881,Dummy opportunity for Planungsberatung
+scenario.crm_lead_dummy164,scenario.buildingproject_-2142412281,Dummy opportunity for IBN Dornacherhof (IL-Pilotprojekt)
+scenario.crm_lead_dummy165,scenario.buildingproject_-2142346498,Dummy opportunity for Objektberatung
+scenario.crm_lead_dummy166,scenario.buildingproject_-2142904764,"Dummy opportunity for Trio DALI, Funktion sicherstellen / MAX Slave abholen"
+scenario.crm_lead_dummy167,scenario.buildingproject_-2143003456,"Dummy opportunity for Planungsberatung Suurstoffi, Korridor S41, 4. OG"
+scenario.crm_lead_dummy168,scenario.buildingproject_-2142280543,Dummy opportunity for Beratung vorort
+scenario.crm_lead_dummy169,scenario.buildingproject_-2142284937,Dummy opportunity for Planungsberatung Ford-Garage Auto Iten
+scenario.crm_lead_dummy170,scenario.buildingproject_-2142924037,Dummy opportunity for Pläne anschauen --> Fokus prinzipiell / IL-Control vorstellen
+scenario.crm_lead_dummy171,scenario.buildingproject_-2142293515,Dummy opportunity for Objektberatung 
+scenario.crm_lead_dummy172,scenario.buildingproject_-2142287097,Dummy opportunity for Beratung vor Ort 
+scenario.crm_lead_dummy173,scenario.buildingproject_-2142742093,Dummy opportunity for Beratung vor Ort 
+scenario.crm_lead_dummy174,scenario.buildingproject_-2142635962,Dummy opportunity for Techn. Support 
+scenario.crm_lead_dummy175,scenario.buildingproject_-2142334116,Dummy opportunity for INB Trio Dali
+scenario.crm_lead_dummy176,scenario.buildingproject_-2142384577,Dummy opportunity for Kontaktaufbau: IL Control vorstellen
+scenario.crm_lead_dummy177,scenario.buildingproject_-2142506201,Dummy opportunity for Architekt: IL- Konzept vorstellen
+scenario.crm_lead_dummy178,scenario.buildingproject_-2142336033,Dummy opportunity for Kontaktpflege / Projektakquisition
+scenario.crm_lead_dummy179,scenario.buildingproject_-2142298459,Dummy opportunity for Kontaktausbau
+scenario.crm_lead_dummy180,scenario.buildingproject_-2142299101,Dummy opportunity for B-aufnahme
+scenario.crm_lead_dummy181,scenario.buildingproject_-2142432850,Dummy opportunity for INB
+scenario.crm_lead_dummy182,scenario.buildingproject_-2142295611,Dummy opportunity for IBN IL-Control Amtshaus St.Gallen
+scenario.crm_lead_dummy183,scenario.buildingproject_-2142785101,Dummy opportunity for Bedarfsaufanahme Speich-Areal
+scenario.crm_lead_dummy184,scenario.buildingproject_-2142301796,Dummy opportunity for Bedarfsaufnahme Landolt-Areal
+scenario.crm_lead_dummy185,scenario.buildingproject_-2142767544,Dummy opportunity for Support vor Ort
+scenario.crm_lead_dummy186,scenario.buildingproject_-2142414987,Dummy opportunity for IL-Muster abholen. 
+scenario.crm_lead_dummy187,scenario.buildingproject_-2142492566,Dummy opportunity for IBN Musterzimmer Schulhaus Altnau
+scenario.crm_lead_dummy188,scenario.buildingproject_-2142339195,Dummy opportunity for Support vorort für IBS
+scenario.crm_lead_dummy189,scenario.buildingproject_-2142413854,Dummy opportunity for Inbetriebsnahme IL Control Pilotprojekt IL Control
+scenario.crm_lead_dummy190,scenario.buildingproject_-2142540908,Dummy opportunity for Präsentation IL-Control / gemeinsamer Znüni
+scenario.crm_lead_dummy191,scenario.buildingproject_-2142476790,Dummy opportunity for Platzierung Melder
+scenario.crm_lead_dummy192,scenario.buildingproject_-2142307839,Dummy opportunity for Planungsberatung intern
+scenario.crm_lead_dummy193,scenario.buildingproject_-2142300403,Dummy opportunity for Objektberatung UBS
+scenario.crm_lead_dummy194,scenario.buildingproject_-2142534961,Dummy opportunity for TKs abgeben
+scenario.crm_lead_dummy195,scenario.buildingproject_-2142350433,"Dummy opportunity for Diverse Fragen zu prgrammerung klären, TK. IL"
+scenario.crm_lead_dummy196,scenario.buildingproject_-2142336573,Dummy opportunity for Techsupport vor Ort Schulhaus Reigoldswil 
+scenario.crm_lead_dummy197,scenario.buildingproject_-2142406001,Dummy opportunity for 3x IL austauschen 
+scenario.crm_lead_dummy198,scenario.buildingproject_-2142312124,Dummy opportunity for Objektberatung
+scenario.crm_lead_dummy199,scenario.buildingproject_-2142378216,"Dummy opportunity for Erstkontakt, IL-Projekt absichern"
+scenario.crm_lead_dummy200,scenario.buildingproject_-2142406010,Dummy opportunity for Präsentation IL-Control / Besprechung Objekt Nelkenpark
+scenario.crm_lead_dummy201,scenario.buildingproject_-2142303438,Dummy opportunity for Beratung vor Ort. 
+scenario.crm_lead_dummy202,scenario.buildingproject_-2142303565,Dummy opportunity for Objektberatung Sanierung Hauptsitz Imlpenia
+scenario.crm_lead_dummy203,scenario.buildingproject_-2142314102,Dummy opportunity for Objekteberatung
+scenario.crm_lead_dummy204,scenario.buildingproject_-2142564604,Dummy opportunity for INB (Grundeinstellungen)
+scenario.crm_lead_dummy205,scenario.buildingproject_-2142464074,Dummy opportunity for IL1 für Pilotprojekt überbringen
+scenario.crm_lead_dummy206,scenario.buildingproject_-2142316044,Dummy opportunity for Bedarfsübersicht
+scenario.crm_lead_dummy207,scenario.buildingproject_-2142323259,Dummy opportunity for Inbetriebsnahme und defekte Melder austauschen
+scenario.crm_lead_dummy208,scenario.buildingproject_-2142367309,Dummy opportunity for Erstkontakt zum Kontaktaufbau
+scenario.crm_lead_dummy209,scenario.buildingproject_-2142310775,Dummy opportunity for Präsentation IL-Control
+scenario.crm_lead_dummy210,scenario.buildingproject_-2142391853,Dummy opportunity for Support vor Ort
+scenario.crm_lead_dummy211,scenario.buildingproject_-2142327857,Dummy opportunity for IL-Controll vorstellen 
+scenario.crm_lead_dummy212,scenario.buildingproject_-2142321388,Dummy opportunity for Planungsberatung
+scenario.crm_lead_dummy213,scenario.buildingproject_-2143638393,Dummy opportunity for Planungsberatung intern
+scenario.crm_lead_dummy214,scenario.buildingproject_-2142308694,Dummy opportunity for Planungsberatung IL
+scenario.crm_lead_dummy215,scenario.buildingproject_-2142321858,Dummy opportunity for Projektberatung IL
+scenario.crm_lead_dummy216,scenario.buildingproject_-2142395502,Dummy opportunity for Infotermin 2
+scenario.crm_lead_dummy217,scenario.buildingproject_-2142405564,"Dummy opportunity for IL Control, System vorstellen"
+scenario.crm_lead_dummy218,scenario.buildingproject_-2142781986,Dummy opportunity for Planungsberatung
+scenario.crm_lead_dummy219,scenario.buildingproject_-2142396211,Dummy opportunity for Planungsberatung intern
+scenario.crm_lead_dummy220,scenario.buildingproject_-2142343530,Dummy opportunity for Planungsberatung intern
+scenario.crm_lead_dummy221,scenario.buildingproject_-2142323963,Dummy opportunity for IL aufzeigen
+scenario.crm_lead_dummy222,scenario.buildingproject_-2142352640,Dummy opportunity for IS in Eigentumswhg als Option aufzeigen
+scenario.crm_lead_dummy223,scenario.buildingproject_-2142343631,Dummy opportunity for Präsentation IL-Konzept
+scenario.crm_lead_dummy224,scenario.buildingproject_-2142479602,Dummy opportunity for Terminvorschlag Beratung vor Ort Schulhaus Oberwiesen
+scenario.crm_lead_dummy225,scenario.buildingproject_-2142421058,Dummy opportunity for Beratung vor Ort
+scenario.crm_lead_dummy226,scenario.buildingproject_-2143119430,Dummy opportunity for Support vor Ort (KNX-Parametrierung)
+scenario.crm_lead_dummy227,scenario.buildingproject_-2142343616,Dummy opportunity for Erste Kontakt
+scenario.crm_lead_dummy228,scenario.buildingproject_-2142352760,Dummy opportunity for Beratung vor Ort / Objekt Obertor ansprechen 
+scenario.crm_lead_dummy229,scenario.buildingproject_-2142346807,Dummy opportunity for Erste Kontakt
+scenario.crm_lead_dummy230,scenario.buildingproject_-2142710744,Dummy opportunity for Tech Support Dali 
+scenario.crm_lead_dummy231,scenario.buildingproject_-2142332274,Dummy opportunity for Monteuerenschulung gemeinsam mit Ruedi Sutter
+scenario.crm_lead_dummy232,scenario.buildingproject_-2142657180,Dummy opportunity for Partner-Ausbau: IL-Controll vorstellen
+scenario.crm_lead_dummy233,scenario.buildingproject_-2142329353,Dummy opportunity for Erstkontakt
+scenario.crm_lead_dummy234,scenario.buildingproject_-2142350019,Dummy opportunity for Präsentation IL-Konzept
+scenario.crm_lead_dummy235,scenario.buildingproject_-2142465200,"Dummy opportunity for IL in Oldtimer anschauen, neues IL Konzept"
+scenario.crm_lead_dummy236,scenario.buildingproject_-2142397869,Dummy opportunity for IL-Controll vorstellen
+scenario.crm_lead_dummy237,scenario.buildingproject_-2142360577,Dummy opportunity for Objektberatung / Planungsberatung
+scenario.crm_lead_dummy238,scenario.buildingproject_-2142602740,"Dummy opportunity for Melder vorbei bringen, Kontaktpflege"
+scenario.crm_lead_dummy239,scenario.buildingproject_-2142700657,Dummy opportunity for Besprechung Einsparpotential
+scenario.crm_lead_dummy240,scenario.buildingproject_-2142379173,Dummy opportunity for rasche Besuch vorort
+scenario.crm_lead_dummy241,scenario.buildingproject_-2142359752,Dummy opportunity for Objektberatung
+scenario.crm_lead_dummy242,scenario.buildingproject_-2142373417,Dummy opportunity for Detailbesprechung auf Objekt 
+scenario.crm_lead_dummy243,scenario.buildingproject_-2142450644,"Dummy opportunity for IL-Controll, IS aufzeigen"
+scenario.crm_lead_dummy244,scenario.buildingproject_-2142379805,"Dummy opportunity for Terminvorschlag: PD11 zeigen, und Fragen zu KNX klären. "
+scenario.crm_lead_dummy245,scenario.buildingproject_-2142463764,Dummy opportunity for Auswertung IS-Projekt Sömmerli / Display abholen
+scenario.crm_lead_dummy246,scenario.buildingproject_-2142359808,Dummy opportunity for Objektberatung
+scenario.crm_lead_dummy247,scenario.buildingproject_-2142370238,Dummy opportunity for IL Konzept vorstellen 
+scenario.crm_lead_dummy248,scenario.buildingproject_-2142372385,Dummy opportunity for Präsentation IL-Konzept
+scenario.crm_lead_dummy249,scenario.buildingproject_-2142615123,Dummy opportunity for IL-Controll vorstellen
+scenario.crm_lead_dummy250,scenario.buildingproject_-2142375818,Dummy opportunity for Infotermin
+scenario.crm_lead_dummy251,scenario.buildingproject_-2142845937,Dummy opportunity for Präsentation IL-Control
+scenario.crm_lead_dummy252,scenario.buildingproject_-2142373423,Dummy opportunity for Kontaktaufbau / Besprechung Thematik Migros
+scenario.crm_lead_dummy253,scenario.buildingproject_-2142378185,Dummy opportunity for Projekteaufnahme
+scenario.crm_lead_dummy254,scenario.buildingproject_-2142545766,Dummy opportunity for Kontaktaufbau / Neuheiten / Projekte
+scenario.crm_lead_dummy255,scenario.buildingproject_-2142381171,Dummy opportunity for neue IL (-Controll) zeigen
+scenario.crm_lead_dummy256,scenario.buildingproject_-2142390165,Dummy opportunity for Neue Il Steuerung vorstellen 
+scenario.crm_lead_dummy257,scenario.buildingproject_-2142473444,Dummy opportunity for Test Muster Einbaugehäuse HSB
+scenario.crm_lead_dummy258,scenario.buildingproject_-2142396691,Dummy opportunity for Bedarfsaufnahme Teil 2
+scenario.crm_lead_dummy259,scenario.buildingproject_-2142438469,Dummy opportunity for Präsentation IL-Konzept / Planungsberatung
+scenario.crm_lead_dummy260,scenario.buildingproject_-2142718224,Dummy opportunity for IBN DALI-Melder Hanfland
+scenario.crm_lead_dummy261,scenario.buildingproject_-2142418189,Dummy opportunity for Planungsberatung
+scenario.crm_lead_dummy262,scenario.buildingproject_-2142438084,Dummy opportunity for Präsentation IL-Konzept
+scenario.crm_lead_dummy263,scenario.buildingproject_-2142737600,Dummy opportunity for Rstlichen DALI Melder Programmieren
+scenario.crm_lead_dummy264,scenario.buildingproject_-2142502580,Dummy opportunity for neue IL zeigen
+scenario.crm_lead_dummy265,scenario.buildingproject_-2142955395,Dummy opportunity for Kontaktaufbau / Präsentation Produkte und Dienstleistungen
+scenario.crm_lead_dummy266,scenario.buildingproject_-2143853753,Dummy opportunity for Support vorort
+scenario.crm_lead_dummy267,scenario.buildingproject_-2142536700,Dummy opportunity for IBN IL1 / Präsenzmelder Werkhof Mattenrain
+scenario.crm_lead_dummy268,scenario.buildingproject_-2142482328,Dummy opportunity for IL Konzept vorstellen
+scenario.crm_lead_dummy269,scenario.buildingproject_-2142418185,Dummy opportunity for Präsentation IL-Konzept in PL-Sitzung
+scenario.crm_lead_dummy270,scenario.buildingproject_-2142676434,Dummy opportunity for Projekt Campus Richemont diskutiert
+scenario.crm_lead_dummy271,scenario.buildingproject_-2142415749,Dummy opportunity for Bedarfsaufnahme
+scenario.crm_lead_dummy272,scenario.buildingproject_-2142415212,Dummy opportunity for IL Konzept vorstellen 
+scenario.crm_lead_dummy273,scenario.buildingproject_-2142960765,Dummy opportunity for Besprechung Melderretouren
+scenario.crm_lead_dummy274,scenario.buildingproject_-2142676353,Dummy opportunity for Besprechung möglicher IL-Projekte (pot. IL-Pilotprojekt)
+scenario.crm_lead_dummy275,scenario.buildingproject_-2142415308,Dummy opportunity for Präsentation IL-Konzept
+scenario.crm_lead_dummy276,scenario.buildingproject_-2142526183,Dummy opportunity for neue IL vorstellen
+scenario.crm_lead_dummy277,scenario.buildingproject_-2142413496,Dummy opportunity for Präsentation IL-Konzept
+scenario.crm_lead_dummy278,scenario.buildingproject_-2142411275,Dummy opportunity for Präsentation neues IL-Konzept
+scenario.crm_lead_dummy279,scenario.buildingproject_-2142419154,Dummy opportunity for Planungsberatung intern
+scenario.crm_lead_dummy280,scenario.buildingproject_-2142040780,Dummy opportunity for IL-Konzept vorstellen: 2. Etappe im Südwest Olten denkbar
+scenario.crm_lead_dummy281,scenario.buildingproject_-2142421480,Dummy opportunity for Planungsberatung
+scenario.crm_lead_dummy282,scenario.buildingproject_-2142604212,Dummy opportunity for Melder auswchseln
+scenario.crm_lead_dummy283,scenario.buildingproject_-2142224702,Dummy opportunity for Projektleitersitzung
+scenario.crm_lead_dummy284,scenario.buildingproject_-2142451783,Dummy opportunity for Planung fortsetzen
+scenario.crm_lead_dummy285,scenario.buildingproject_-2142422372,Dummy opportunity for Bedarfsaufnahme
+scenario.crm_lead_dummy286,scenario.buildingproject_-2142428330,Dummy opportunity for Projektleitersitzung / Präsentation IL
+scenario.crm_lead_dummy287,scenario.buildingproject_-2142408574,Dummy opportunity for IL Konzept vorstellen 
+scenario.crm_lead_dummy288,scenario.buildingproject_-2142430483,Dummy opportunity for Bedarf EH
+scenario.crm_lead_dummy289,scenario.buildingproject_-2142535637,Dummy opportunity for Präsentation IL-Konzept
+scenario.crm_lead_dummy290,scenario.buildingproject_-2142439488,Dummy opportunity for Besprechung Pläne / Konzept
+scenario.crm_lead_dummy291,scenario.buildingproject_-2142431298,Dummy opportunity for Präsentation IL-Konzept
+scenario.crm_lead_dummy292,scenario.buildingproject_-2142665201,Dummy opportunity for Kontaktpflege / Präsentation IL-Konzept
+scenario.crm_lead_dummy293,scenario.buildingproject_-2142432845,"Dummy opportunity for Planungsberatung, Begehung, Bedarfsaufnahme: 2 Projekte"
+scenario.crm_lead_dummy294,scenario.buildingproject_-2142492537,Dummy opportunity for Melderinbetriebnahme 
+scenario.crm_lead_dummy295,scenario.buildingproject_-2142448874,Dummy opportunity for Besprechung Planungskonzpet Daheim
+scenario.crm_lead_dummy296,scenario.buildingproject_-2142437004,Dummy opportunity for Infotermin

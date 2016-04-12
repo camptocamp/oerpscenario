@@ -30,3 +30,12 @@ scenario.res_users_ish,ish,Shtanaj,Ilir,changeme,de_DE,,base.ch,Europe/Zurich,sc
 scenario.res_users_rwa,rwa,Wälchli,Roman,changeme,de_DE,,base.ch,Europe/Zurich,scenario.group_slx_base
 scenario.res_users_swe,swe,Weber,Stefan,changeme,de_DE,stefan.weber@swisslux.ch,base.ch,Europe/Zurich,scenario.group_slx_base
 scenario.res_users_vzu,vzu,Zullino,Valentina,changeme,de_DE,valentina.zullino@swisslux.ch,base.ch,Europe/Zurich,scenario.group_slx_base
+scenario.res_users_bla,bla,Langenegger,Bruno,changeme,de_DE,,base.ch,Europe/Zurich,
+scenario.res_users_mca,mca,Careddu,Massimo,changeme,de_DE,,base.ch,Europe/Zurich,
+scenario.res_users_cmu,cmu,Müller,Christoph,changeme,de_DE,christoph.mueller@swisslux.ch,base.ch,Europe/Zurich,
+scenario.res_users_pwi,pwi,Wietlisbach,Patrick,changeme,de_DE,,base.ch,Europe/Zurich,
+scenario.res_users_snu,snu,Mohammed Nure,Saad,changeme,de_DE,saad.nure@swisslux.ch,base.ch,Europe/Zurich,
+scenario.res_users_sfi,sfi,Fischer,Sandra,changeme,de_DE,,base.ch,Europe/Zurich,
+scenario.res_users_nem,nem,Emge,Nina,changeme,de_DE,nina.emge@swisslux.ch,base.ch,Europe/Zurich,
+scenario.res_users_oru,oru,Rüegg,Oliver,changeme,de_DE,oliver.rueegg@swisslux.ch,base.ch,Europe/Zurich,
+scenario.res_users_afo,afo,Förster,Alan,changeme,de_DE,alan.foerster@swisslux.ch,base.ch,Europe/Zurich,

@@ -78,3 +78,23 @@ Feature: import master data
   @csv @bomlines @slow
   Scenario: import specific bom
     Given "mrp.bom.line" is imported from CSV "setup/mrp.bom.line.csv" using delimiter ","
+
+  @csv @building_projects @slow
+  Scenario: import specific building projects
+    Given "building.project" is imported from CSV "setup/building.project.csv" using delimiter ","
+
+  @csv @meetings @dummy_opportunities @slow
+  Scenario: import dummy opportunities to link meetings to building projects
+    Given "crm.lead" is imported from CSV "setup/dummy.opportunity.csv" using delimiter ","
+
+  @csv @meetings @slow
+  Scenario: import specific meetings
+    Given "calendar.event" is imported from CSV "setup/crm.meeting.csv" using delimiter ","
+
+  @csv @phonecalls @dummy_opportunities4calls @slow
+  Scenario: import dummy opportunities to link meetings to building projects
+    Given "crm.lead" is imported from CSV "setup/dummy.opportunity2.csv" using delimiter ","
+
+  @csv @phonecalls @slow
+  Scenario: import specific meetings
+    Given "calendar.event" is imported from CSV "setup/crm.phonecall.csv" using delimiter ","
