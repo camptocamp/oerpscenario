@@ -1,4 +1,4 @@
-id,product_id:id,name:id,min_qty,product_name,product_code,delay,sequence
+id,product_tmpl_id:id,name:id,min_qty,product_name,product_code,delay,sequence
 scenario.supplierinfo_972,scenario.product_141729,scenario.partner_10425,1,Befestigungsplatte 1x1 Feller 77x77mm,376163000,7,2
 scenario.supplierinfo_988,scenario.product_141730,scenario.partner_10425,1,BP KAL,376163003,7,2
 scenario.supplierinfo_987,scenario.product_141738,scenario.partner_10425,1,APG KAL/W,283910003,7,2
