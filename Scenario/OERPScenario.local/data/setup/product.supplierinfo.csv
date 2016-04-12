@@ -1,4 +1,4 @@
-id,product_tmpl_id:id,name:id,min_qty,product_name,product_code,delay,sequence
+id,product_id:id,name:id,min_qty,product_name,product_code,delay,sequence
 scenario.supplierinfo_972,scenario.product_141729,scenario.partner_10425,1,Befestigungsplatte 1x1 Feller 77x77mm,376163000,7,2
 scenario.supplierinfo_988,scenario.product_141730,scenario.partner_10425,1,BP KAL,376163003,7,2
 scenario.supplierinfo_987,scenario.product_141738,scenario.partner_10425,1,APG KAL/W,283910003,7,2
@@ -42,7 +42,7 @@ scenario.supplierinfo_1917,scenario.product_142884,scenario.partner_13698,1,IL1-
 scenario.supplierinfo_1918,scenario.product_142885,scenario.partner_13698,1,IL1-Halteplättchen zu Federverschluss,77.041002,7,2
 scenario.supplierinfo_1919,scenario.product_142886,scenario.partner_13698,1,IL1-Haltebolzen zu Federverschluss L=22mm,77.000001,7,2
 scenario.supplierinfo_1920,scenario.product_142887,scenario.partner_13698,1,IL1-Erdzunge,94.115004,7,2
-scenario.supplierinfo_1921,scenario.product_142888,scenario.partner_13698,1,IL1-Erdungsverbindung,2063.015,7,2
+scenario.supplierinfo_1921,scenario.product_142888,scenario.partner_13698,1,IL1-Erdungsverbindung,002063.0150,7,2
 scenario.supplierinfo_1922,scenario.product_142889,scenario.partner_13698,1,IL1-Geräteschraube M4 x 6,75.510406,7,2
 scenario.supplierinfo_1923,scenario.product_142890,scenario.partner_13698,1,IL1-Einsatz,F00576,7,2
 scenario.supplierinfo_1924,scenario.product_142891,scenario.partner_13698,1,IL1-Geräteträger,F00577,7,2
@@ -51,7 +51,7 @@ scenario.supplierinfo_1926,scenario.product_142893,scenario.partner_13698,1,IL1-
 scenario.supplierinfo_1927,scenario.product_142894,scenario.partner_13698,1,IL1-Zylinderschraube Selbstschneidend M3 x 16,75.500314,7,2
 scenario.supplierinfo_1928,scenario.product_142895,scenario.partner_13698,1,IL1-Distanznocken Kunststoff / Höhe 10mm,77.010015,7,2
 scenario.supplierinfo_1929,scenario.product_142896,scenario.partner_13698,1,IL1-Kunststoffscheibe,76.870003,7,2
-scenario.supplierinfo_1930,scenario.product_142897,scenario.partner_13698,1,IL1-Erdverbindung,1610.009,7,2
+scenario.supplierinfo_1930,scenario.product_142897,scenario.partner_13698,1,IL1-Erdverbindung,001610.0090,7,2
 scenario.supplierinfo_1931,scenario.product_142898,scenario.partner_13698,1,IL1-Zylinderschraube Selbstschneidend M3 x 8,75.500308,7,2
 scenario.supplierinfo_1932,scenario.product_142899,scenario.partner_13698,1,IL1-Zylinderschraube Selbstschneidend M3 x 8IL1-F,75.322103,7,2
 scenario.supplierinfo_1933,scenario.product_142900,scenario.partner_13698,1,IL1-Fächerscheibe M4,75.322104,7,2
@@ -667,7 +667,7 @@ scenario.supplierinfo_165,scenario.product_141105,scenario.partner_90003,1,Krist
 scenario.supplierinfo_179,scenario.product_141213,scenario.partner_90029,1,300T3Q/P117mm-230V/300W/R7s,494382,7,2
 scenario.supplierinfo_180,scenario.product_141214,scenario.partner_90029,1,Halogenlampe Plusline 500T3Q/P117mm-230V/500W/R7s,494399,7,2
 scenario.supplierinfo_276,scenario.product_141310,scenario.partner_90029,1,1000T3Q/P189mm,494344,7,2
-scenario.supplierinfo_108,scenario.product_141273,scenario.partner_90029,1,150T3Q/78mm-230V/150W/R7s,58348,7,2
+scenario.supplierinfo_108,scenario.product_141273,scenario.partner_90029,1,150T3Q/78mm-230V/150W/R7s,058348,7,2
 scenario.supplierinfo_11,scenario.product_141259,scenario.partner_90029,1,PLC18/840/4P-G24q-2,927905608453,7,2
 scenario.supplierinfo_13,scenario.product_141260,scenario.partner_90029,1,PLC26/840/4P-G24q-3,623362,7,2
 scenario.supplierinfo_12,scenario.product_141261,scenario.partner_90029,1,PLC18/830/4P-G24q-2,927905608353,7,2
@@ -758,7 +758,7 @@ scenario.supplierinfo_580,scenario.product_141700,scenario.partner_90160,1,Anste
 scenario.supplierinfo_582,scenario.product_141701,scenario.partner_90160,1,Sensor-Modul für die Hutschiene 2 TE,LCN - SHS,7,2
 scenario.supplierinfo_583,scenario.product_141702,scenario.partner_90160,1,Konverter 230V Dimmsignal -> 0-10V Schnittstelle,LCN - AO1R,7,2
 scenario.supplierinfo_1063,scenario.product_142268,scenario.partner_90160,1,"Glas-Taster, 4fach",LCN - GT4D,7,2
-scenario.supplierinfo_251,scenario.product_141387,scenario.partner_90216,1,"Tagungsmappe A4, schwarz",4473.1,7,2
+scenario.supplierinfo_251,scenario.product_141387,scenario.partner_90216,1,"Tagungsmappe A4, schwarz",4473.10,7,2
 scenario.supplierinfo_259,scenario.product_141398,scenario.partner_90233,1,"PGU-CD1002-22E, Toray Optical Fiber Cord, U-Grade",500057,7,2
 scenario.supplierinfo_354,scenario.product_141478,scenario.partner_90233,1,"902-KH001-TA250, TOCP255",539295,7,2
 scenario.supplierinfo_355,scenario.product_141479,scenario.partner_90233,1,"902-SS001-T255K, TOCP 255K",523361,7,2
