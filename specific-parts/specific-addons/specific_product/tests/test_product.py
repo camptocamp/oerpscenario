@@ -17,7 +17,7 @@ class TestProduct(TransactionCase):
 
         self.product_model.create({
             'name': 'Unittest P1',
-            'e_nr': 'fake_enr1',
+            'e_nr': 'fake_enr1_unittest',
             'default_code': 'default_code_1'})
         self.product_model.create({
             'name': 'P2',
@@ -30,7 +30,7 @@ class TestProduct(TransactionCase):
         self.assertEqual(2,
                          len(self.product_model.name_search('default_code')))
         # Only one result should show up by record
-        self.assertEqual(1, len(self.product_model.name_search('1')))
+        self.assertEqual(1, len(self.product_model.name_search('unittest')))
         # Test with limit=None to highlight name_search little bug
         self.product_model.name_search('unittest_enr', limit=None)
 
