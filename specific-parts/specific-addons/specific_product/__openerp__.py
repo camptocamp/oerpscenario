@@ -9,11 +9,13 @@
  'website': 'http://www.swisslux.ch',
  'images': [],
  'depends': [
+     'purchase',
      'product',
      'stock'
      ],
  'data': [
      'views/product.xml',
+     'views/purchase_order.xml',
      ],
  'test': [],
  'installable': True,
