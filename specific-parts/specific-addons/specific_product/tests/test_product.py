@@ -10,6 +10,7 @@ class TestProduct(TransactionCase):
         self.product_model = self.env['product.product']
 
         self.loc_stock = self.browse_ref('stock.stock_location_stock')
+        self.loc_input = self.browse_ref('stock.stock_location_company')
         self.loc_suppliers = self.browse_ref('stock.stock_location_suppliers')
         self.loc_transit = self.browse_ref('scenario.location_transit_cn')
 
@@ -72,9 +73,10 @@ class TestProduct(TransactionCase):
         })
         check_quantities(p1, 5, 8, 0)
 
-        # Transit move (but default state='draft')
-        transit_move = self.env['stock.move'].create({
+        # Transit move but not yet on boat
+        self.env['stock.move'].create({
             'name': 'Test transit move',
+            'state': 'confirmed',
             'product_id': p1.id,
             'product_uom_qty': 10.0,
             'product_uom': p1.uom_id.id,
@@ -83,9 +85,20 @@ class TestProduct(TransactionCase):
         })
         check_quantities(p1, 5, 8, 0)
 
+        # Transit move (but default state='draft')
+        transit_move = self.env['stock.move'].create({
+            'name': 'Test transit move',
+            'product_id': p1.id,
+            'product_uom_qty': 10.0,
+            'product_uom': p1.uom_id.id,
+            'location_id': self.loc_transit.id,
+            'location_dest_id': self.loc_input.id,
+        })
+        check_quantities(p1, 5, 8, 0)
+
         transit_move.state = 'confirmed'
         p1.refresh()
-        check_quantities(p1, 5, 8, 10)
+        check_quantities(p1, 5, 18, 10)
 
     def test_action_transit_move(self):
         p1 = self.product_model.create({'name': 'Unittest P1'})
