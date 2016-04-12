@@ -72,7 +72,7 @@ class ProductProduct(models.Model):
         domain = None
         if transit_loc:
             domain = [
-                ('state', 'not in', ('done', 'cancel', 'draft')),
+                ('state', 'not in', ('done', 'cancel', 'draft', 'waiting')),
                 ('location_id', '=', transit_loc.id)
             ]
 
