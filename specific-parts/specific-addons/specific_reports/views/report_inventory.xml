@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <report
+        string="Delivery Slip In"
+        id="specific_reports.report_delivery_document_in"
+        model="stock.picking"
+        report_type="qweb-pdf"
+        name="specific_reports.report_deliveryslip_in"
+        file="specific_reports.report_deliveryslip_in"
+    />
+
+
+    <template id="report_delivery_document_incoming" inherit_id="stock.report_delivery_document" primary="True">
+            <!-- Stylesheet -->
+            <xpath expr="//div[@class='row']" position="before">
+                <style type="text/css">
+                    .upright{
+                        text-align: right !important;
+                    }
+                    .address{
+                        font-weight: bold;
+                    }
+                    .line{
+                        margin: 0px 30px 0px 30px;
+                        border-style: solid;
+                        border-width: 1px;
+                    }
+                </style>
+            </xpath>
+
+            <!-- Address on top of document -->
+            <xpath expr="//div[@class='page']/div[@class='row'] " position="replace">
+                <t t-if="o.picking_type_id.code == 'incoming'">
+                    <div class="col-xs-6 address">
+                        <span t-field="o.company_id.name"/>, <span t-field="o.company_id.zip"/> <span t-field="o.company_id.city"/>
+                    </div>
+                    <div class="col-xs-3">
+                        Datum : <br/>
+                        Mitarbeiter :<br/>
+                        RG/LS-Nr :<br/>
+                        Lieferant :<br/>
+                        Seite : <br/>
+                    </div>
+                    <div class="col-xs-3">
+                        <span t-esc='time.strftime("%d/%m/%Y")'/><br/>
+                        ______________<br/>
+                        ______________<br/>
+                        <span t-esc="o.partner_id.name"/><br/>
+                        <br/>
+                    </div>
+                    <h2>
+                        <span t-field="o.name"/>
+                    </h2>
+                </t>
+                <t t-if="o.picking_type_id.code == 'outgoing'">
+
+                </t>
+            </xpath>
+
+            <!-- Suppression of the title-->
+            <xpath expr="//h2" position="replace"/>
+
+            <!-- <xpath expr -->
+            <xpath expr="//table[@class='table table-condensed mt48']" position="replace">
+                <t t-if="o.picking_type_id.code == 'incoming'">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Art-Nr.<br/>
+                                    E-No.<br/>
+                                    Art.Date</th>
+                                <th>Bezeichnung Liferantenbezeichnung Inhalt</th>
+                                <th>Bestellmenge<br/>
+                                    Gelifert<br/>
+                                    Liefermenge<br/>
+                                    Rückstand
+                                </th>
+                                <th>Bemerkungen<br/>
+                                    Zu veranlassen
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="o.pack_operation_ids">
+                                <tr t-foreach="o.move_lines" t-as="pack_operation">
+                                    <td><span t-field="pack_operation.product_id.default_code"/><br/>
+                                    <t t-if="not pack_operation.product_id and pack_operation.package_id">
+                                        <span  t-field="pack_operation.package_id"/><br/>
+                                    </t>
+                                    <span t-field="pack_operation.product_id.e_nr"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="pack_operation.product_id.name"/><br/>
+                                        Logistik:<br/>
+                                        ____ Anleitung Deutsch<br/>
+                                        ____ Anleitung Franz.<br/>
+                                        ____ Anleitung Ital.<br/>
+                                        ____ Verpackung<br/>
+                                        ____ Lieferumfang<br/>
+                                        ____ Funktiontest<br/>
+                                        <br/>
+                                        Technik:<br/>
+                                        Produktenew: JA / NEIN<br/>
+                                        Visum: ________________<br/>
+                                    </td>
+                                    <td>
+                                        <span t-field="pack_operation.product_qty"/><span t-field="pack_operation.product_uom"/><br/>
+                                    0.00<br/>
+                                    <br/>
+                                    ________<br/>
+                                    ________<br/>
+                                    </td>
+                                    <td>
+                                        <span t-field="pack_operation.product_id.receipt_checklist"/>
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-if="not o.pack_operation_ids">
+                                <tr t-foreach="o.move_lines" t-as="pack_operation">
+                                    <td><span t-field="pack_operation.product_id.default_code"/><br/>
+                                    <t t-if="not pack_operation.product_id and pack_operation.package_id">
+                                        <span  t-field="pack_operation.package_id"/><br/>
+                                    </t>
+                                    <span t-field="pack_operation.product_id.e_nr"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="pack_operation.product_id.name"/><br/>
+                                        Logistik:<br/>
+                                        ____ Anleitung Deutsch<br/>
+                                        ____ Anleitung Franz.<br/>
+                                        ____ Anleitung Ital.<br/>
+                                        ____ Verpackung<br/>
+                                        ____ Lieferumfang<br/>
+                                        ____ Funktiontest<br/>
+                                        <br/>
+                                        Technik:<br/>
+                                        Produktenew: JA / NEIN<br/>
+                                        Visum: ________________<br/>
+                                    </td>
+                                    <td>
+                                        <span t-field="pack_operation.product_qty"/><span t-field="pack_operation.product_uom"/><br/>
+                                    0.00<br/>
+                                    <br/>
+                                    ________<br/>
+                                    ________<br/>
+                                    </td>
+                                    <td>
+                                        <span t-field="pack_operation.product_id.receipt_checklist"/>
+                                    </td>
+                                </tr>
+                            </t> <!-- IF no pack_operation_ids-->
+                        </tbody>
+                    </table>
+                </t> <!-- IF incoming-->
+
+                <t t-if="o.picking_type_id.code == 'outgoing'">
+                    TOTO
+                </t>
+
+            </xpath>
+
+    </template>
+
+    <template id="report_deliveryslip_in">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="specific_reports.report_delivery_document_incoming" t-lang="o.partner_id.lang"/>
+        </t>
+    </template>
+
+</odoo>

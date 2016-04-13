@@ -92,9 +92,9 @@ class ProductProduct(models.Model):
         """ Allow to search by E-Nr or internal ref """
         args = args or []
         filter_known = []
-
+        products = self.browse()
         if name:
-            products = self.browse()
+
             for search_field in ['e_nr', 'default_code']:
                 if limit is None or limit > 1:
                     domain = [(search_field, '=ilike', name + '%')]
