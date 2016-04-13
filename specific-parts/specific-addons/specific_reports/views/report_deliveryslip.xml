@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<!--     <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">TOREPLACE</field>
+        <field name="model">TOREPLACE</field>
+        <field name="inherit_id" ref="TOREPLACE">TOREPLACE</field>
+        <field name="arch" type="xml">
+
+
+
+        </field>
+    </record> -->
+
+
+    <template id="report_delivery_document" inherit_id="stock.report_document">
+
+      <xpath expr="//div[@class='page']" position="attributes">
+        <attribute name="style">margin-left: 60px !important;</attribute>
+      </xpath>
+
+      <!-- Put address on left side for letter -->
+      <xpath expr="//div[@class='row']/div/address[@t-field='o.partner_id']/.." position="attributes">
+        <attribute name="class">col-xs-6</attribute>
+      </xpath>
+
+      <xpath expr="//div[@class='row']" position="before">
+        <style type="text/css">
+          h2{
+              font-weight: bold;
+              font-size: 18px;
+          }
+          #informations{
+              padding-bottom: 12px;
+              margin-bottom: 12px;
+          }
+          .page{
+              margin-right: 25px !important;
+          }
+          .address{
+              position: fixed;
+              left: 175px;
+          }
+        </style>
+
+        <small>
+          <div class="row">
+            <div class="col-xs-12" style="text-align: right;">
+              <small>
+                <small>
+                  <strong>
+                    Your client manager
+                  </strong> <span t-field="o.user_id"/><br/>
+                  Tel:
+                  <t t-if="o.user_id.phone">
+                    <span t-field="o.user_id.phone"/>
+                  </t>
+                  <t t-if="not o.user_id.phone">
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                  </t>
+                  <br/>
+                  <span t-field="o.user_id.email"/><br/>
+                  <br/>
+                  <strong>
+                    Official in charge
+                  </strong> <span t-field="o.env.user.name"/><br/>
+                  Tel:
+                  <t t-if="o.env.user.phone">
+                    <span t-field="o.env.user.phone"/>
+                  </t>
+                  <t t-if="not o.env.user.phone">
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                  </t>
+                  <br/>
+                  <span t-field="o.env.user.email"/><br/>
+                </small>
+              </small>
+            </div>
+          </div>
+          <!-- Underline address of swisslux -->
+          <div class="col-xs-12" style="text-decoration: underline; padding-left: 0px;">
+            <span t-field="o.company_id.name"/>, <span t-field="o.company_id.street"/>, <span t-field="o.company_id.zip"/> <span t-field="o.company_id.city"/>
+            <br/>
+            <br/>
+          </div>
+        </small>
+
+      </xpath>
+
+    </template>
+
+    <template id="report_deliveryslip" inherit_id="stock.report_deliveryslip">
+      <t t-foreach="docs" t-as="o">
+        <t t-call="report_delivery_document" t-lang="o.partner_id.lang"/>
+      </t>
+    </template>
+
+</odoo>

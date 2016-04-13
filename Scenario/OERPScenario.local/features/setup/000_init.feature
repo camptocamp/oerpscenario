@@ -207,3 +207,12 @@ Feature: Parameter the new database
   @version
   Scenario: setup application version
     Given I set the version of the instance to "1.0.0"
+
+  @address
+  Scenario: set good address format
+    Given I execute the SQL commands
+    """;
+    update res_country set address_format = '%(street)s
+    %(street2)s
+    %(country_code)s-%(zip)s %(city)s' where code like 'CH';
+    """
