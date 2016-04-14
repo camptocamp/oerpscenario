@@ -8,5 +8,6 @@ Feature: upgrade to 9.0.1
     Given I update the module list
     Given I install the required modules with dependencies:
       | name                       |
+      | project                    |
       | specific_building_project  |
     Then my modules should have been installed and models reloaded
