@@ -12,6 +12,14 @@ Feature: upgrade to 9.0.1
       | specific_building_project  |
     Then my modules should have been installed and models reloaded
 
+  @bom_setting
+  Scenario: setup of bom dismantling
+    Given I need a "ir.config_parameter" with key: mrp.bom.dismantling.product_choice
+    And having:
+      | key   | value                              |
+      | key   | mrp.bom.dismantling.product_choice |
+      | value | 1                                  |
+
   @version
   Scenario: setup application version
     Given I set the version of the instance to "9.0.1"
