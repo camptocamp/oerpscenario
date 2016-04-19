@@ -29,6 +29,7 @@
                     h2{
                       font-weight: bold;
                       font-size: 18px;
+                      margin-bottom: 0px;
                     }
                     #informations{
                       padding-bottom: 12px;
@@ -36,10 +37,19 @@
                     }
                     .page{
                       margin-right: 25px !important;
-                      margin-left: 25px !important;
+                      margin-left: 60px !important;
+                    }
+                    #addressout{
+                      margin-top: 35px;
+                    }
+                    #padding{
+                      margin-bottom: 5px;
                     }
                 </style>
             </xpath>
+            <!-- Throwing away unuseful table & Title -->
+            <xpath expr="//h2" position="replace"> </xpath>
+            <xpath expr="//table[@class='table table-condensed']" position="replace"> </xpath>
 
             <!-- Address on top of document -->
             <xpath expr="//div[@class='page']/div[@class='row'] " position="replace">
@@ -73,17 +83,17 @@
                                 <small>
                                   <strong>
                                     Your client manager
-                                  </strong> <!-- <span t-field="o.user_id"/><br/>
+                                  </strong> <span t-field="o.sale_id.user_id"/><br/>
                                   Tel:
-                                  <t t-if="o.user_id.phone">
-                                    <span t-field="o.user_id.phone"/>
+                                  <t t-if="o.sale_id.user_id.phone">
+                                    <span t-field="o.sale_id.user_id.phone"/>
                                   </t>
-                                  <t t-if="not o.user_id.phone">
+                                  <t t-if="not o.sale_id.user_id.phone">
                                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
                                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                                  </t> -->
+                                  </t>
                                   <br/>
-                <!--                   <span t-field="o.user_id.email"/><br/> -->
+                                  <span t-field="o.sale_id.user_id.email"/><br/>
                                   <br/>
                                   <strong>
                                     Official in charge
@@ -103,7 +113,7 @@
                             </div>
                           </div>
                     </small>
-                    <div class="row col-xs-6">
+                    <div class="row col-xs-6" id="addressout">
                         <div t-if="o.partner_id" name="partner_header">
                             <div t-field="o.partner_id"
                                t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
@@ -111,11 +121,12 @@
                     </div>
                     <div class="row col-xs-12"><br/><br/></div>
                     <div class="row mt32 mb32" id="informations">
-                        <div t-if="o.name" class="col-xs-6" name="reference">
+                        <div t-if="o.sale_id.client_order_ref" class="col-xs-6" name="reference" id="padding">
+                            <h2 t-if="o.name"><span t-field="o.name"/></h2>
                             <strong>
-                              Delivery:
+                              Your reference:
                             </strong>
-                            <strong t-field="o.name"/>
+                            <strong t-field="o.sale_id.client_order_ref"/>
                         </div>
                         <div class="col-xs-7"></div>
                         <div class="col-xs-6" style="padding-left: 0px;">
@@ -131,10 +142,6 @@
                               Client number:
                               <span class="address" t-field="o.partner_id.ref"/>
                           </div>
-            <!--               <div name="payment_term" t-if="o.company_id.vat" class="col-xs-12">
-                              VAT number:
-                              <span class="address" t-field="o.company_id.vat"/>
-                          </div> -->
                         </div>
                         <div class="col-xs-6">
                           <div t-if="o.min_date" class="col-xs-12">
@@ -154,12 +161,7 @@
                 </t><!-- IF outgoing-->
             </xpath>
 
-            <!-- Suppression of the title-->
-            <xpath expr="//h2" position="replace"/>
-
-
-
-            <!-- <xpath expr -->
+            <!-- Table part -->
             <xpath expr="//table[@class='table table-condensed mt48']" position="replace">
                 <t t-if="o.picking_type_id.code == 'incoming'">
                     <table class="table table-bordered">
@@ -257,7 +259,6 @@
                         <tr>
                           <th>Pos.</th>
                           <th>Menge</th>
-                          <th>Einh.</th>
                           <th>E-No.<br/>Artikel-Nr.</th>
                           <th>Bezeichnung</th>
                         </tr>
@@ -276,11 +277,6 @@
                                 </t>
                             </td>
                             <td>
-                                <t t-if="m.product_uom">
-                                    <span t-field="m.product_uom"/>
-                                </t>
-                            </td>
-                            <td>
                                 <t t-if="m.product_id.e_nr">
                                   <span  t-field="m.product_id.e_nr"/>
                                 </t>
@@ -292,7 +288,14 @@
                                   <span  t-field="m.product_id.default_code"/>
                                 </t>
                             </td>
-                            <td>description</td>
+                            <td>
+                                <t t-if="m.product_id">
+                                  <span  t-field="m.product_id.name"/>
+                                </t>
+                                <t t-if="not m.product_id">
+                                  <span  t-field="m.name"/>
+                                </t>
+                            </td>
                         </tr>
 
                     </table>
