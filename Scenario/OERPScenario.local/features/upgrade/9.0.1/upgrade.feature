@@ -11,3 +11,7 @@ Feature: upgrade to 9.0.1
       | project                    |
       | specific_building_project  |
     Then my modules should have been installed and models reloaded
+
+  @version
+  Scenario: setup application version
+    Given I set the version of the instance to "9.0.1"
