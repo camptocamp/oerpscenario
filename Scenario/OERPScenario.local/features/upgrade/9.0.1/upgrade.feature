@@ -11,6 +11,7 @@ Feature: upgrade to 9.0.1
       | project                    |
       | specific_building_project  |
       | specific_stock             |
+      | specific_reports           |
     Then my modules should have been installed and models reloaded
 
   @bom_setting

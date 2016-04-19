@@ -14,80 +14,127 @@
             </xpath>
 
             <!-- Display products list table if we have produces products or products to produce -->
-            <xpath expr="//table[@t-if='o.move_lines or o.move_lines2']" position="attributes">
-                <t t-if="o.bom_id.dismantling">
-                    <attribute name="t-if">o.move_lines or o.move_lines2 or o.move_created_ids or o.move_created_ids2
-                    </attribute>
-                    <attribute name="id">mrporder_products</attribute>
-                </t>
-            </xpath>
-
-            <xpath expr="//table[@id='mrporder_products']/tbody" position="inside">
-                <t t-if="o.bom_id.dismantling">
-
-                    <!-- Add Products to Produce list-->
-                    <t t-if="o.move_created_ids">
+            <xpath expr="//table[@t-if='o.move_lines or o.move_lines2']" position="replace">
+                <table class="table table-condensed" t-if="o.move_lines or o.move_lines2">
+                    <thead>
                         <tr>
-                            <td colspan="4" style="padding-top: 15px !important;">
-                                <strong>Products to Produce</strong>
-                            </td>
+                            <th>
+                                <strong>Product</strong>
+                            </th>
+                            <th class="text-right">
+                                <strong>Quantity</strong>
+                            </th>
+                            <th class="text-center" groups="stock.group_locations">
+                                <strong>Source Location</strong>
+                            </th>
                         </tr>
-                        <tr t-foreach="o.move_created_ids" t-as="line">
-                            <td>
-                                <span t-field="line.product_id.code"/>
-                                <span t-field="line.product_id.name"/>
-                            </td>
-                            <td class="text-right">
-                                <span t-field="line.product_uom_qty"/>
-                                <span t-field="line.product_uom.name" groups="product.group_uom"/>
-                            </td>
-                            <td class="text-center" groups="stock.group_locations">
-                                <span t-field="line.location_id.name"/>
-                            </td>
-                            <td class="text-center" groups="stock.group_locations">
-                                <span t-field="line.location_dest_id.name"/>
-                            </td>
-                        </tr>
-                    </t>
+                    </thead>
+                    <tbody>
+                        <t t-if="o.move_lines">
+                            <tr>
+                                <td colspan="4" style="padding-top: 15px !important;">
+                                    <strong>Products to Consume</strong>
+                                </td>
+                            </tr>
+                            <tr t-foreach="o.move_lines" t-as="line">
+                                <td>
+                                    <span t-field="line.product_id.code"/>
+                                    <span t-field="line.product_id.name"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="line.product_uom_qty"/>
+                                    <span t-field="line.product_uom.name" groups="product.group_uom"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-field="line.product_id.description_picking"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <t t-if="o.move_lines2">
+                            <tr>
+                                <td colspan="4" style="padding-top: 15px !important;">
+                                    <strong>Consumed Products</strong>
+                                </td>
+                            </tr>
+                            <tr t-foreach="o.move_lines2" t-as="line2">
+                                <td>
+                                    <span t-field="line2.product_id.code"/>
+                                    <span t-field="line2.product_id.name"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="line2.product_uom_qty"/>
+                                    <span t-field="line2.product_uom.name"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-field="line2.product_id.description_picking"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
 
-                    <!-- Add Produced Products list-->
-                    <t t-if="o.move_created_ids2">
-                        <tr>
-                            <td colspan="4" style="padding-top: 15px !important;">
-                                <strong>Produced Products</strong>
-                            </td>
-                        </tr>
-                        <tr t-foreach="o.move_created_ids2" t-as="line2">
-                            <td>
-                                <span t-field="line2.product_id.code"/>
-                                <span t-field="line2.product_id.name"/>
-                            </td>
-                            <td class="text-right">
-                                <span t-field="line2.product_uom_qty"/>
-                                <span t-field="line2.product_uom.name"/>
-                            </td>
-                            <td class="text-center" groups="stock.group_locations">
-                                <span t-field="line2.location_id.name"/>
-                            </td>
-                            <td class="text-center" groups="stock.group_locations">
-                                <span t-field="line2.location_dest_id.name"/>
-                            </td>
-                        </tr>
-                    </t>
-                </t>
-            </xpath>
+                <t t-if="o.bom_id.dismantling">
+                    <table class="table table-condensed" t-if="o.move_created_ids or o.move_created_ids2">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <strong>Product</strong>
+                                </th>
+                                <th class="text-right">
+                                    <strong>Quantity</strong>
+                                </th>
+                                <th class="text-center" groups="stock.group_locations">
+                                    <strong>Destination Location</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Add Products to Produce list-->
+                            <t t-if="o.move_created_ids">
+                                <tr>
+                                    <td colspan="4" style="padding-top: 15px !important;">
+                                        <strong>Products to Produce</strong>
+                                    </td>
+                                </tr>
+                                <tr t-foreach="o.move_created_ids" t-as="line">
+                                    <td>
+                                        <span t-field="line.product_id.code"/>
+                                        <span t-field="line.product_id.name"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="line.product_uom_qty"/>
+                                        <span t-field="line.product_uom.name" groups="product.group_uom"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-field="line.product_id.description_picking"/>
+                                    </td>
+                                </tr>
+                            </t>
 
-            <!-- Add padding on existing sections  -->
-            <xpath expr="//table[@id='mrporder_products']/tbody/t[@t-if='o.move_lines']/tr/td"
-                   position="attributes">
-                <t t-if="o.bom_id.dismantling">
-                    <attribute name="style">padding-top: 15px !important;</attribute>
-                </t>
-            </xpath>
-            <xpath expr="//table[@id='mrporder_products']/tbody/t[@t-if='o.move_lines2']/tr/td"
-                   position="attributes">
-                <t t-if="o.bom_id.dismantling">
-                    <attribute name="style">padding-top: 15px !important;</attribute>
+                            <!-- Add Produced Products list-->
+                            <t t-if="o.move_created_ids2">
+                                <tr>
+                                    <td colspan="4" style="padding-top: 15px !important;">
+                                        <strong>Produced Products</strong>
+                                    </td>
+                                </tr>
+                                <tr t-foreach="o.move_created_ids2" t-as="line2">
+                                    <td>
+                                        <span t-field="line2.product_id.code"/>
+                                        <span t-field="line2.product_id.name"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="line2.product_uom_qty"/>
+                                        <span t-field="line2.product_uom.name"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-field="line2.product_id.description_picking"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
                 </t>
             </xpath>
         </template>
