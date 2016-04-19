@@ -10,6 +10,7 @@ Feature: upgrade to 9.0.1
       | name                       |
       | project                    |
       | specific_building_project  |
+      | specific_stock             |
     Then my modules should have been installed and models reloaded
 
   @version
