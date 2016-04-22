@@ -1,0 +1,334 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* specific_partner
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-22 11:34+0000\n"
+"PO-Revision-Date: 2016-04-22 11:34+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: specific_partner
+#: selection:res.partner,mailing:0
+msgid "1 Exemplar"
+msgstr "1 Exemplar"
+
+#. module: specific_partner
+#: selection:res.partner,mailing:0
+msgid "10 Exemplare"
+msgstr "10 Exemplare"
+
+#. module: specific_partner
+#: selection:res.partner,mailing:0
+msgid "100 Exemplare"
+msgstr "100 Exemplare"
+
+#. module: specific_partner
+#: selection:res.partner,mailing:0
+msgid "25 Exemplare"
+msgstr "25 Exemplare"
+
+#. module: specific_partner
+#: selection:res.partner,mailing:0
+msgid "5 Exemplare"
+msgstr "5 Exemplare"
+
+#. module: specific_partner
+#: selection:res.partner,mailing:0
+msgid "50 Exemplare"
+msgstr "50 Exemplare"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_name2
+msgid "Additional name"
+msgstr "Additional name"
+
+#. module: specific_partner
+#: model:ir.model,name:specific_partner.model_res_better_zip
+msgid "City/locations completion object"
+msgstr "City/locations completion object"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_region_create_uid
+msgid "Created by"
+msgstr "Angelegt von"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_region_create_date
+msgid "Created on"
+msgstr "Angelegt am"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_department
+msgid "Department"
+msgstr "Abteilung"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_region_display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_mailing
+msgid "Dokuversand"
+msgstr "Dokuversand"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_mailing_email
+msgid "E-Mail Newsletter"
+msgstr "E-Mail Newsletter"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_eev_number
+msgid "EEV Nr."
+msgstr "EEV Nr."
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_eev_member
+msgid "EEV-Mitglied"
+msgstr "EEV-Mitglied"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_eori_number
+msgid "EORI number"
+msgstr "EORI-Nr"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_influence
+msgid "Einfluss"
+msgstr "Einfluss"
+
+#. module: specific_partner
+#: selection:res.partner,companytype:0
+msgid "Filiale"
+msgstr "Filiale"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_companytype
+msgid "Firmen Typ"
+msgstr "Firmen Typ"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_region_name
+msgid "Gebietname"
+msgstr "Gebietname"
+
+#. module: specific_partner
+#: model:ir.ui.view,arch_db:specific_partner.better_zip_form
+msgid "Gebietszuweisung"
+msgstr "Gebietszuweisung"
+
+#. module: specific_partner
+#: selection:res.partner,influence:0
+msgid "Grosshandel A"
+msgstr "Grosshandel A"
+
+#. module: specific_partner
+#: selection:res.partner,influence:0
+msgid "Grosshandel B"
+msgstr "Grosshandel B"
+
+#. module: specific_partner
+#: selection:res.partner,influence:0
+msgid "Grosshandel C"
+msgstr "Grosshandel C"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_eev_alarm
+msgid "Haftungsablehnung"
+msgstr "Haftungsablehnung"
+
+#. module: specific_partner
+#: selection:res.partner,companytype:0
+msgid "Hauptsitz"
+msgstr "Hauptsitz"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_headquarter_id
+msgid "Headquarter"
+msgstr "Headquarter"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_region_id_7821
+msgid "ID"
+msgstr "ID"
+
+#. module: specific_partner
+#: selection:res.partner,influence:0
+msgid "Installateur A"
+msgstr "Installateur A"
+
+#. module: specific_partner
+#: selection:res.partner,influence:0
+msgid "Installateur B"
+msgstr "Installateur B"
+
+#. module: specific_partner
+#: selection:res.partner,influence:0
+msgid "Installateur C"
+msgstr "Installateur C"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_partner_invoicing_id
+msgid "Invoicing Partner"
+msgstr "Invoicing Partner"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_better_zip_user_id
+msgid "Kundenberater"
+msgstr "Kundenberater"
+
+#. module: specific_partner
+#: model:ir.ui.view,arch_db:specific_partner.view_partner_select
+msgid "Kundennummer"
+msgstr "Kundennummer"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_region___last_update
+msgid "Last Modified on"
+msgstr "Zuletzt geändert am"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_region_write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert durch"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_region_write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: specific_partner
+#: model:ir.ui.view,arch_db:specific_partner.view_partner_form
+msgid "PO Box Address"
+msgstr "PO Box Address"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_pobox_city
+msgid "PO Box City"
+msgstr "PO Box City"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_pobox_nr
+msgid "PO Box Nr"
+msgstr "PO Box Nr"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_pobox_zip
+msgid "PO Box Zip"
+msgstr "PO Box Zip"
+
+#. module: specific_partner
+#: model:ir.model,name:specific_partner.model_res_partner
+msgid "Partner"
+msgstr "Partner"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_partner_state
+msgid "Partnerstatus"
+msgstr "Partnerstatus"
+
+#. module: specific_partner
+#: selection:res.partner,influence:0
+msgid "Planer A"
+msgstr "Planer A"
+
+#. module: specific_partner
+#: selection:res.partner,influence:0
+msgid "Planer B"
+msgstr "Planer B"
+
+#. module: specific_partner
+#: selection:res.partner,influence:0
+msgid "Planer C"
+msgstr "Planer C"
+
+#. module: specific_partner
+#: model:ir.model,name:specific_partner.model_sale_order
+msgid "Sales Order"
+msgstr "Verkaufsauftrag"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_title_salutation
+msgid "Salutation"
+msgstr "Salutation"
+
+#. module: specific_partner
+#: selection:res.partner,influence:0
+msgid "Schluesselkontakt"
+msgstr "Schluesselkontakt"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_partner_shipping_id
+msgid "Shipping Partner"
+msgstr "Shipping Partner"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_parent_category_id
+msgid "Tags parent"
+msgstr "Tags parent"
+
+#. module: specific_partner
+#: model:ir.model.fields,field_description:specific_partner.field_res_better_zip_region_id
+#: model:ir.model.fields,field_description:specific_partner.field_res_partner_region_id
+msgid "Verkaufsgebiet"
+msgstr "Verkaufsgebiet"
+
+#. module: specific_partner
+#: model:ir.ui.view,arch_db:specific_partner.view_partner_form
+#: model:ir.ui.view,arch_db:specific_partner.view_partner_select
+msgid "Verkaufsregion"
+msgstr "Verkaufsregion"
+
+#. module: specific_partner
+#: model:ir.ui.view,arch_db:specific_partner.view_partner_form
+msgid "Zusatzfelder Swisslux"
+msgstr "Zusatzfelder Swisslux"
+
+#. module: specific_partner
+#: selection:res.partner,mailing_email:0
+msgid "abmelden"
+msgstr "abmelden"
+
+#. module: specific_partner
+#: selection:res.partner,partner_state:0
+msgid "aktiv begleitet"
+msgstr "aktiv begleitet"
+
+#. module: specific_partner
+#: selection:res.partner,mailing_email:0
+msgid "anmelden"
+msgstr "anmelden"
+
+#. module: specific_partner
+#: selection:res.partner,mailing:0
+msgid "keine Dokus"
+msgstr "keine Dokus"
+
+#. module: specific_partner
+#: selection:res.partner,partner_state:0
+msgid "potenzieller Partner"
+msgstr "potenzieller Partner"
+
+#. module: specific_partner
+#: selection:res.partner,partner_state:0
+msgid "qualifiziert"
+msgstr "qualifiziert"
+
+#. module: specific_partner
+#: model:ir.model,name:specific_partner.model_res_partner_region
+msgid "res.partner.region"
+msgstr "res.partner.region"
+
+#. module: specific_partner
+#: model:ir.model,name:specific_partner.model_res_partner_title
+msgid "res.partner.title"
+msgstr "res.partner.title"
+
