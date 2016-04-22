@@ -1,4 +1,6 @@
 # -*- coding: utf8 -*-
+from psycopg2 import IntegrityError
+
 from openerp.tests import TransactionCase
 from openerp.tests.common import at_install, post_install
 
@@ -135,3 +137,22 @@ class TestProduct(TransactionCase):
         p1 = self.product_model.create({'name': 'Unittest P1'})
         self.assertIsNotNone(p1.default_code)
         self.assertGreaterEqual(int(p1.default_code), 161001)
+   
+    def test_uniq_enr(self):
+        self.product_model.create(
+            {'name': 'Unittest P1', 'e_nr': 'abc'}
+        )
+
+        self.product_model.create(
+            {'name': 'Unittest P2', 'e_nr': 'def'}
+        )
+
+        self.product_model.create(
+            {'name': 'Unittest P3', 'e_nr': ''}
+        )
+
+        with self.assertRaises(IntegrityError):
+            self.product_model.create(
+                {'name': 'Unittest P4', 'e_nr': 'abc'}
+            )
+

@@ -36,6 +36,11 @@ class ProductTemplate(models.Model):
         string='Manual Code'
     )
 
+    _sql_constraints = [
+        ('e_nr_unique', 'unique(e_nr)',
+         'E-Nr should be unique'),
+    ]
+
     @api.depends('virtual_available')
     def _get_transit_qty(self):
         """Compute the quantity of product that is in transit.
