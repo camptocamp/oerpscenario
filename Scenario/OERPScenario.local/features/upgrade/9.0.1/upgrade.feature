@@ -26,9 +26,11 @@ Feature: upgrade to 9.0.1
   Scenario: update products
     Given "product.product" is imported from CSV "setup/product.product.csv" using delimiter ","
 
+  @slow
   Scenario: update specific orderpoint
     Given "stock.warehouse.orderpoint" is imported from CSV "setup/stock.warehouse.orderpoint.csv" using delimiter ","
 
+  @slow
   Scenario: import specific supplierinfo
     Given "product.supplierinfo" is imported from CSV "setup/product.supplierinfo.csv" using delimiter ","
 
