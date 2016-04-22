@@ -2,6 +2,12 @@
 
 Feature: upgrade to 9.0.2
 
+  @noupdate_report_template
+  Scenario: make report template updatable
+    Given I execute the SQL commands
+    """;
+    update ir_model_data set noupdate='f' where name like 'external_layout_header' and module like 'specific_reports';
+
   Scenario: upgrade application version
 
     Given I update the module list
