@@ -129,6 +129,7 @@ Feature: Parameter the new database
         | product_visible_discount              |
         | project                               |
         | project_issue                         |
+        | report_intrastat                      |
         | sale                                  |
         | stock                                 |
         | warning                               |
