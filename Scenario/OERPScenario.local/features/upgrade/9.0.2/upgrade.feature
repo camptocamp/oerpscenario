@@ -13,16 +13,11 @@ Feature: upgrade to 9.0.2
 
     Given I update the module list
     Given I install the required modules with dependencies:
-<<<<<<< HEAD
       | name                       |
       | specific_reports           |
       | specific_product           |
       | report_intrastat           |
-=======
-      | name                        |
-      | report_intrastat            |
-      | | stock_split_picking       |
->>>>>>> Install stock_split_picking
+      | stock_split_picking        |
     Then my modules should have been installed and models reloaded
 
   @ts_activity
@@ -32,6 +27,10 @@ Feature: upgrade to 9.0.2
   @project
   Scenario: setup default projects
     Given "project.project" is imported from CSV "setup/project.csv" using delimiter ","
+
+  @analytic_account
+  Scenario: setup global analytic account
+    Given "account.analytic.account" is imported from CSV "setup/analytic_account.csv" using delimiter ","
 
   @version
   Scenario: setup application version
