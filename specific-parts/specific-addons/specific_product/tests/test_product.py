@@ -130,3 +130,8 @@ class TestProduct(TransactionCase):
         # Check that product_template action return same result
         self.assertEqual(transit_view,
                          p1.product_tmpl_id.action_transit_move())
+
+    def test_default_code_sequence(self):
+        p1 = self.product_model.create({'name': 'Unittest P1'})
+        self.assertIsNotNone(p1.default_code)
+        self.assertGreaterEqual(int(p1.default_code), 161001)

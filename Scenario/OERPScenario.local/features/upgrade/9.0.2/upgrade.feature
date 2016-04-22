@@ -8,12 +8,14 @@ Feature: upgrade to 9.0.2
     """;
     update ir_model_data set noupdate='f' where name like 'external_layout_header' and module like 'specific_reports';
     """
+
   Scenario: upgrade application version
 
     Given I update the module list
     Given I install the required modules with dependencies:
       | name                       |
       | specific_reports           |
+      | specific_product           |
     Then my modules should have been installed and models reloaded
 
   @version

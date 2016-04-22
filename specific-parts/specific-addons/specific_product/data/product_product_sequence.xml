@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="product_product_sequence" model="ir.sequence">
+            <field name="name">Product default code</field>
+            <field name="code">product.product</field>
+            <field eval="161001" name="number_next" />
+            <field eval="6" name="padding" />
+        </record>
+    </data>
+</odoo>
