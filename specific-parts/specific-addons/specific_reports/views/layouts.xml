@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-  <data noupdate="1">
+  <data>
     <template id="external_layout_header" inherit_id="report.external_layout_header">
       <xpath expr="//div[@class='header']" position="replace">
         <div class="header">
@@ -19,7 +19,7 @@
               </p>
               <br/>
             </div>
-            <div class="col-xs-2">
+            <div class="col-xs-2 text-center">
               <small>
                 <small>
                   <span t-field="company.email"/><br/>
@@ -38,10 +38,6 @@
           <div class="text-center">
             <small>
               <small>
-                <ul class="list-inline text-right">
-                  <li>Page:</li>
-                  <li><span class="page"/>/<span class="topage"/></li>
-                </ul>
                 <small>
                   <strong t-field="company.name"/>
                   <span t-field="company.street"/>,
@@ -52,6 +48,10 @@
                   Technik-Hotline: 043 844 80 77,
                   <span t-field="company.email"/>,
                   <span t-raw="company.website[7:]"/>
+                  <span class="text-right">
+                    <span> &amp;nbsp;&amp;nbsp;&amp;nbsp; Page:</span>
+                    <span class="page"/>/<span class="topage"/>
+                  </span>
                 </small>
               </small>
             </small>
