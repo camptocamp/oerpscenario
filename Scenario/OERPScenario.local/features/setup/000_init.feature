@@ -173,6 +173,8 @@ Feature: Parameter the new database
         #| web_shortcuts                        |
         # oca/stock-logistics-warehouse
         | stock_available_mrp                   |
+        # oca/stock-logistics-workflow
+        | stock_split_picking                   |
         # oca/manufacture
         | mrp_bom_dismantling                   |
 
