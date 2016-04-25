@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_class_user,product.class.user,model_product_class,base.group_user,1,0,0,0
+access_product_class_sale_manager,product.class salemanager,model_product_class,base.group_sale_manager,1,1,1,1
+access_product_harmsys_code_user,product.harmsys.code.user,model_product_harmsys_code,base.group_user,1,0,0,0
+access_product_harmsys_code_sale_manager,product.harmsys.code salemanager,model_product_harmsys_code,base.group_sale_manager,1,1,1,1
+access_product_manual_code_user,product.manual.code.user,model_product_manual_code,base.group_user,1,0,0,0
+access_product_manual_code_sale_manager,product.manual.code salemanager,model_product_manual_code,base.group_sale_manager,1,1,1,1
+access_product_color_code_user,product.color.code.user,model_product_color_code,base.group_user,1,0,0,0
+access_product_color_code_sale_manager,product.color.code salemanager,model_product_color_code,base.group_sale_manager,1,1,1,1
