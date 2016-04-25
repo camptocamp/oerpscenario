@@ -129,6 +129,7 @@ Feature: Parameter the new database
         | product_visible_discount              |
         | project                               |
         | project_issue                         |
+        | report_intrastat                      |
         | sale                                  |
         | stock                                 |
         | warning                               |
@@ -172,6 +173,8 @@ Feature: Parameter the new database
         #| web_shortcuts                        |
         # oca/stock-logistics-warehouse
         | stock_available_mrp                   |
+        # oca/stock-logistics-workflow
+        | stock_split_picking                   |
         # oca/manufacture
         | mrp_bom_dismantling                   |
 
@@ -204,10 +207,6 @@ Feature: Parameter the new database
     Given I update web.base.url with server settings
     Then I freeze web.base.url
 
-  @version
-  Scenario: setup application version
-    Given I set the version of the instance to "1.0.0"
-
   @address
   Scenario: set good address format
     Given I execute the SQL commands
@@ -216,3 +215,7 @@ Feature: Parameter the new database
     %(street2)s
     %(country_code)s-%(zip)s %(city)s' where code like 'CH';
     """
+
+  @version
+  Scenario: setup application version
+    Given I set the version of the instance to "1.0.0"    

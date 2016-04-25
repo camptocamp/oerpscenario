@@ -1,5 +1,5 @@
+# -*- coding: utf-8 -*-
 @upgrade_from_9.0.1
-
 Feature: upgrade to 9.0.2
 
   @noupdate_report_template
@@ -16,7 +16,21 @@ Feature: upgrade to 9.0.2
       | name                       |
       | specific_reports           |
       | specific_product           |
+      | report_intrastat           |
+      | stock_split_picking        |
     Then my modules should have been installed and models reloaded
+
+  @ts_activity
+  Scenario: setup timesheet activities
+    Given "hr.timesheet.sheet.activity" is imported from CSV "setup/hr_timesheet_activity.csv" using delimiter ","
+    
+  @project
+  Scenario: setup default projects
+    Given "project.project" is imported from CSV "setup/project.csv" using delimiter ","
+
+  @analytic_account
+  Scenario: setup global analytic account
+    Given "account.analytic.account" is imported from CSV "setup/analytic_account.csv" using delimiter ","
 
   @version
   Scenario: setup application version
