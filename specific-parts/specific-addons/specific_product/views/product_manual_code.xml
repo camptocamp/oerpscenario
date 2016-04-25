@@ -1,0 +1,16 @@
+<odoo>
+    <!-- Product manual code form -->
+    <record id="product_manual_code_form_view" model="ir.ui.view">
+        <field name="name">product.manual.code.form</field>
+        <field name="model">product.manual.code</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_title">
+                    <h1>
+                        <field name="name" placeholder="Manual Code"/>
+                    </h1>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

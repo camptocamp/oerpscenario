@@ -1,0 +1,16 @@
+<odoo>
+    <!-- Product color code form -->
+    <record id="product_color_code_form_view" model="ir.ui.view">
+        <field name="name">product.color.code.form</field>
+        <field name="model">product.color.code</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="feller_name"/>
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

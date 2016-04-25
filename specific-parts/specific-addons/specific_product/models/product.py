@@ -19,6 +19,23 @@ class ProductTemplate(models.Model):
         string='Transit'
     )
 
+    product_class = fields.Many2one('product.class', string='Product Class')
+
+    color_code = fields.Many2one(
+        'product.color.code',
+        string='Color Code NCS/RAL'
+    )
+
+    harmsys_code = fields.Many2one(
+        'product.harmsys.code',
+        string='Harmonized System Code'
+    )
+
+    manual_code = fields.Many2one(
+        'product.manual.code',
+        string='Manual Code'
+    )
+
     @api.depends('virtual_available')
     def _get_transit_qty(self):
         """Compute the quantity of product that is in transit.
