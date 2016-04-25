@@ -14,6 +14,7 @@
      'stock'
      ],
  'data': [
+     'data/product_product_sequence.xml',
      'views/product.xml',
      'views/purchase_order.xml',
      ],
