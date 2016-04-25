@@ -218,7 +218,10 @@
             <span t-field="l.price_unit"/>
           </td>
           <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
-            <span t-field="l.discount"/>
+            <span t-field="l.order_id.pricelist_id.item_ids.price_discount"/><br/>
+            <t t-if="l.order_id.project_pricelist_id.item_ids.price_discount">
+              <span t-field="l.order_id.project_pricelist_id.item_ids.price_discount"/>
+            </t>
           </td>
           <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
             <span t-field="l.price_unit_discount" t-field-options='{"widget": "False"}'/>
