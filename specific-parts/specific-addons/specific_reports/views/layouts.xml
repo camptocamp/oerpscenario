@@ -39,6 +39,10 @@
             <small>
               <small>
                 <small>
+                  <div class="text-right" style="margin-right:25px !important">
+                    <span>Page:</span>
+                    <span class="page"/>/<span class="topage"/>
+                  </div>
                   <strong t-field="company.name"/>
                   <span t-field="company.street"/>,
                   <span t-field="company.zip"/>,
@@ -48,10 +52,6 @@
                   Technik-Hotline: 043 844 80 77,
                   <span t-field="company.email"/>,
                   <span t-raw="company.website[7:]"/>
-                  <span class="text-right">
-                    <span> &amp;nbsp;&amp;nbsp;&amp;nbsp; Page:</span>
-                    <span class="page"/>/<span class="topage"/>
-                  </span>
                 </small>
               </small>
             </small>
