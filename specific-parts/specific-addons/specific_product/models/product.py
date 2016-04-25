@@ -9,7 +9,12 @@ from openerp.osv import expression
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    default_code = fields.Char(readonly=True)
+    default_code = fields.Char(
+        default=lambda self: self.env['ir.sequence'].next_by_code(
+            'product.product'
+        ),
+	readonly=True
+    )
 
     e_nr = fields.Char("E-Nr")
 
@@ -79,7 +84,13 @@ class ProductTemplate(models.Model):
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
-    default_code = fields.Char(readonly=True, required=True)
+    default_code = fields.Char(
+        readonly=True,
+        required=True,
+        default=lambda self: self.env['ir.sequence'].next_by_code(
+            'product.product'
+        )
+    )
 
     transit_qty = fields.Float(
         compute='_get_transit_qty',

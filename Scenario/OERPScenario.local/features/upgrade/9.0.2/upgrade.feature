@@ -18,6 +18,7 @@ Feature: upgrade to 9.0.2
       | specific_product           |
       | report_intrastat           |
       | stock_split_picking        |
+      | specific_partner           |
     Then my modules should have been installed and models reloaded
 
   @ts_activity
