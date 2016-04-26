@@ -19,7 +19,7 @@
               </p>
               <br/>
             </div>
-            <div class="col-xs-2 text-center">
+            <div class="col-xs-2 text-center" name="company_address">
               <small>
                 <small>
                   <span t-field="company.email"/><br/>
