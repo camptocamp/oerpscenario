@@ -1,0 +1,24 @@
+id,code,name,feller_name
+scenario.product_colorcode_NCSS0500Nmatt,NCS S-0500-N matt,Hellgrau matt,Hellgrau matt
+scenario.product_colorcode_NCSS2010Y30Rmatt,NCS S-2010-Y30R matt,Beige,Beige
+scenario.product_colorcode_NCSS2500Nmatt,NCS S-2500-N matt,Hellgrau matt,Hellgrau matt
+scenario.product_colorcode_NCSS3010Y10R,NCS S-3010-Y10R,Beige,Beige
+scenario.product_colorcode_NCSS3010Y10Rmatt,NCS S-3010-Y10R matt,Beige matt,Beige matt
+scenario.product_colorcode_NCSS6500N,NCS S-6500-N,Dunkelgrau,Dunkelgrau
+scenario.product_colorcode_NCSS6500Nmatt,NCS S-6500-N matt,Dunkelgrau matt,Dunkelgrau matt
+scenario.product_colorcode_NCSS7010Y30matt,NCS S 7010-Y30 matt,Braun matt,Braun matt
+scenario.product_colorcode_NCSS7010Y30R,NCS S 7010-Y30R,Braun,Braun
+scenario.product_colorcode_NCSS7010Y30Rmatt,NCS S 7010-Y30R matt,Braun R matt,Braun R matt
+scenario.product_colorcode_NCSS7010Y30Rmatt,NCS S-7010-Y30R matt,Braun R matt,Braun R matt
+scenario.product_colorcode_NCSS9000Nmatt,NCS-S-9000-N matt,Schwarz matt,Schwarz matt
+scenario.product_colorcode_RAL7024matt,RAL 7024 matt,Graphitgrau,Graphitgrau
+scenario.product_colorcode_RAL7035matt,RAL 7035 matt,Lichtgrau,Lichtgrau
+scenario.product_colorcode_RAL8014matt,RAL 8014 matt,Sepiabraun matt,Sepiabraun matt
+scenario.product_colorcode_RAL9003glanz,RAL 9003 glanz,Signalweiss glanz,Signalweiss glanz
+scenario.product_colorcode_RAL9003matt,RAL 9003 matt,Signalweiss matt,Signalweiss matt
+scenario.product_colorcode_RAL9005,RAL 9005,Tiefschwarz,Tiefschwarz
+scenario.product_colorcode_RAL9005glanz,RAL 9005 glanz,Tiefschwarz glanz,Tiefschwarz glanz
+scenario.product_colorcode_RAL9005matt,RAL 9005 matt,Tiefschwarz matt,Tiefschwarz matt
+scenario.product_colorcode_RAL9006matt,RAL 9006 matt,Weissaluminium matt,Weissaluminium matt
+scenario.product_colorcode_RAL9010,RAL 9010,Reinweiss,Reinweiss
+scenario.product_colorcode_RAL9010matt,RAL 9010 matt,Reinweiss matt,Reinweiss matt

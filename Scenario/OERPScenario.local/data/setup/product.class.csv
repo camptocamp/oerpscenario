@@ -1,0 +1,29 @@
+id,name
+scenario.productclass_001,Decken-Aufputz (AP)
+scenario.productclass_002,Decken-Aufputz Nass (NAP)
+scenario.productclass_003,Decken-Unterputz (UP)
+scenario.productclass_004,Decken-Unterputz Nass (NUP)
+scenario.productclass_005,Decken-Einbau (EB)
+scenario.productclass_006,Decken-Einbau Nass (NEB)
+scenario.productclass_007,Wand-Unterputz (UP)
+scenario.productclass_008,Wand-Unterputz Nass (NUP)
+scenario.productclass_009,Wand-Aufputz (AP)
+scenario.productclass_010,Wand-Aufputz Nass (NAP)
+scenario.productclass_011,AP-Rahmen (AP)
+scenario.productclass_012,AP-Rahmen Nass (NAP)
+scenario.productclass_013,Aufclipbar auf T5/T8 Leuchtstofflampen
+scenario.productclass_014,Einbau in Leuchten / Abzweigdosen
+scenario.productclass_015,Reiheneinbaugeräte (REG)
+scenario.productclass_016,Mobil / keine ortsfeste Montage
+scenario.productclass_017,Einsatz (N)
+scenario.productclass_018,Einsatz mit BefPlatte (NM)
+scenario.productclass_019,Einsatz mit AdaptSet (C)
+scenario.productclass_020,Einsatz mit AdaptSet und BefPlatte (CM)
+scenario.productclass_021,Abdeckrahmen / Adapter
+scenario.productclass_022,Abdeckmaterial (Clips/Kleber etc.)
+scenario.productclass_023,Ersatzteil / Reparatur / Diverse
+scenario.productclass_024,Decken-/Geräte-Einbau (EB)
+scenario.productclass_025,Decken-/Geräte-Einbau Nass (NEB)
+scenario.productclass_026,Pendelmontage
+scenario.productclass_090,andere
+scenario.productclass_099,Lost & Found
