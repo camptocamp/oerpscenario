@@ -1,3 +1,41 @@
+Version 0.9
+===========
+
+Fixes
+--
+
+* unicode handling of errors
+* Fixed signature issue on phrase `I update web.base.url with full url "{url}"`
+* Fixed an always passing check in phrase `I create monthly periods on the fiscal year with reference "{fy_ref}"`
+
+
+Improvements
+--
+
+* Add a new phrase to force translations
+* Adapt phrase to use settings menu wizards in v9, it now accept base menu name, full path name or xml id as parameter
+
+Version 0.8
+===========
+
+Fixes
+--
+
+* CSV import is now done using context
+* Do not try to delete already deleted objects with sentence "I delete it"
+* Do not fail when db password is empty 
+
+Improvements
+--
+
+* A new phrase to add implied_ids on res.groups
+* Change some tools step decorators (sql query, python code and csv import) to be able to call them with other step keyword than Given
+* 4 new phrases to set web.base.url and freeze it
+* Improve database creation to set admin login password from config file
+* 2 new phrases to set options in settings menus
+* Multiple improvements in CSV import in perf and new phrases to set various options.
+* tolerate csv with header and no further lines
+
 Version 0.7
 ===========
   1. CSV import results are Checked
