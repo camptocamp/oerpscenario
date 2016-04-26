@@ -137,7 +137,7 @@ class TestProduct(TransactionCase):
         p1 = self.product_model.create({'name': 'Unittest P1'})
         self.assertIsNotNone(p1.default_code)
         self.assertGreaterEqual(int(p1.default_code), 161001)
-   
+
     def test_uniq_enr(self):
         self.product_model.create(
             {'name': 'Unittest P1', 'e_nr': 'abc'}
@@ -155,4 +155,3 @@ class TestProduct(TransactionCase):
             self.product_model.create(
                 {'name': 'Unittest P4', 'e_nr': 'abc'}
             )
-
