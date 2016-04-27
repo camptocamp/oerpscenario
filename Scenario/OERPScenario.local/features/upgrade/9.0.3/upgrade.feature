@@ -6,6 +6,7 @@ Feature: upgrade to 9.0.3
     Given I update the module list
     Given I install the required modules with dependencies:
       | name                       |
+      | specific_building_project  |
       | specific_reports           |
       | specific_stock             |
       | specific_timesheet         |
