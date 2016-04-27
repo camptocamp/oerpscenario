@@ -3,12 +3,23 @@
 
 Feature: Configure accounting
 
-  @currency
+  @company_currency
   Scenario: Configure company currency
   Given I find a "res.company" with oid: base.main_company
     And having:
       | key         | value        |
       | currency_id | by name: CHF |
+
+  @currencies
+  Scenario: Add currencies
+  Given I find an inactive "res.currency" with name: HKD
+    And having:
+      | key    | value |
+      | active | True  |
+
+  @activate_multicurrency
+  Scenario: Configure multicurrency
+    Given I enable "Allow multi currencies" in "Accounting" settings menu
 
   @account_chart_ch
   Scenario: Generate account chart for Swisslux AG
