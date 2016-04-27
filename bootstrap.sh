@@ -73,7 +73,7 @@ EOF
 function bootstrap() {
     create_virtualenv
     ensure_cfg $1
-    sandbox/bin/python bootstrap.py --setuptools-version=20.9.0
+    sandbox/bin/python bootstrap.py 
 }
 
 
