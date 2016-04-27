@@ -1,0 +1,12 @@
+<odoo>
+    <template id="report_stock_inventory" inherit_id="stock.report_inventory">
+        <xpath expr="//span[@t-field='line.location_id']/ancestor::table/thead/tr/th[3]" position="after">
+            <th><strong>Description on picking</strong></th>
+        </xpath>
+
+        <xpath expr="//span[@t-field='line.location_id']/ancestor::tr/td[3]" position="after">
+            <td><span t-field="line.description_picking"/></td>
+        </xpath>
+
+    </template>
+</odoo>
