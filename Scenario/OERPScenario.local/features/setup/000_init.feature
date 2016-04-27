@@ -189,6 +189,7 @@ Feature: Parameter the new database
         | specific_product              |
         | specific_reports              |
         | specific_stock                |
+        | specific_timesheet            |
         | specific_timesheet_activities |
 
   @force_translations
