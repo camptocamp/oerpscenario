@@ -12,12 +12,15 @@ Feature: upgrade to 9.0.3
       | specific_timesheet         |
     Then my modules should have been installed and models reloaded
   
-  @product_informations
+  @product_informations 
   Scenario: setup new fields for product
     Given "product.class" is imported from CSV "setup/product.class.csv" using delimiter ","
     Given "product.color.code" is imported from CSV "setup/product.colorcode.csv" using delimiter ","
     Given "product.harmsys.code" is imported from CSV "setup/product.harmsyscode.csv" using delimiter ","
     Given "product.manual.code" is imported from CSV "setup/product.manualcode.csv" using delimiter ","
+
+  @product_informations @slow
+  Scenario: slow setup new fields for produt
     Given "product.supplierinfo" is imported from CSV "setup/product.supplierinfo.csv" using delimiter ","
   
   @slow @product
