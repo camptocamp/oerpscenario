@@ -186,6 +186,9 @@
                                         ____ Anleitung Deutsch<br/>
                                         ____ Anleitung Franz.<br/>
                                         ____ Anleitung Ital.<br/>
+                                        <t t-if="pack_operation.product_id.manual_code">
+                                        ____ <span t-field="pack_operation.product_id.manual_code"/>
+                                        </t>
                                         ____ Verpackung<br/>
                                         ____ Lieferumfang<br/>
                                         ____ Funktiontest<br/>
@@ -220,6 +223,9 @@
                                         ____ Anleitung Deutsch<br/>
                                         ____ Anleitung Franz.<br/>
                                         ____ Anleitung Ital.<br/>
+                                        <t t-if="pack_operation.product_id.manual_code">
+                                        ____ <span t-field="pack_operation.product_id.manual_code"/>
+                                        </t>
                                         ____ Verpackung<br/>
                                         ____ Lieferumfang<br/>
                                         ____ Funktiontest<br/>
