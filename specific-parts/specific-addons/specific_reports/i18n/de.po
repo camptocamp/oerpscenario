@@ -553,3 +553,8 @@ msgid "Your order:"
 msgstr "Ihre Bestellung:\n"
 ""
 
+#. module: account
+#: model:ir.ui.view,arch_db:account.invoice_form
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "PRO-FORMA"
+msgstr "PRO-FORMA Rechnung"
