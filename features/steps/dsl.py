@@ -43,16 +43,19 @@ def impl(ctx, oe_context_string):
 @step(u'I find a{n:optional}{active_text:optional} "{model_name}" with {domain}')
 def impl(ctx, n, active_text, model_name, domain):
     # n is there for the english grammar, but not used
-    assert active_text in ('', 'inactive', 'active', 'possibly inactive')
+    # n can be 'possibly' of 'possibly inactive'
+    assert n != 'possibly' or active_text == 'inactive'
+    assert active_text in ('', 'inactive', 'active')
     Model = model(model_name)
     ctx.search_model_name = model_name
     oe_context = getattr(ctx, 'oe_context', None)
     values = parse_domain(domain)
     active = True
     if active_text == 'inactive':
-        active = False
-    elif active_text == 'possibly inactive':
-        active = None
+        if n == 'possibly':
+            active = None
+        else:
+            active = False
     domain = build_search_domain(ctx, model_name, values, active=active)
 
     if domain is None:
