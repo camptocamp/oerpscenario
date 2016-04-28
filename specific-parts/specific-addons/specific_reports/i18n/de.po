@@ -173,7 +173,8 @@ msgstr "<span class=\"col-xs-5\">Liefer-Datum:</span>"
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<span class=\"col-xs-5\">Term of delivery:</span>\n"
 "                  <span>nach Absprache</span>"
-msgstr ""
+msgstr "<span class=\"col-xs-5\">Liefer-Datum:</span>\n"
+"                  <span>nach Absprache</span>"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_layouted
@@ -364,7 +365,7 @@ msgstr ""
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Disc.(%)"
-msgstr "Rabatt (%)"
+msgstr "%"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_mrporder
@@ -520,7 +521,7 @@ msgstr "Lieferfrist"
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Total"
-msgstr "Gesamtbetrag"
+msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
