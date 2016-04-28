@@ -173,7 +173,7 @@ msgstr "<span class=\"col-xs-5\">Liefer-Datum:</span>"
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<span class=\"col-xs-5\">Term of delivery:</span>\n"
 "                  <span>nach Absprache</span>"
-msgstr "<span class=\"col-xs-5\">Liefer-Datum:</span>\n"
+msgstr "<span class=\"col-xs-5\">LieFbestfer-Datum:</span>\n"
 "                  <span>nach Absprache</span>"
 
 #. module: specific_reports
@@ -462,7 +462,7 @@ msgstr "Fertigungsauftrag #:"
 #: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Quantity"
-msgstr "Anzahl"
+msgstr "Menge"
 
 #. module: specific_reports
 #: model:ir.model.fields,field_description:specific_reports.field_product_template_receipt_checklist
@@ -538,7 +538,7 @@ msgstr "Preis pro Einheit"
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
 msgid "VAT number:"
-msgstr ""
+msgstr "u. MWSt-Nr:"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
