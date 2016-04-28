@@ -5,11 +5,11 @@ Feature: Configure Sales
 
   @sales_products
   Scenario: Configure Quotations & sales
-    Given I set "Default Invoicing" to "Invoice delivered quantities" in "Sales" settings menu    
- 
+    Given I set "Default Invoicing" to "Invoice delivered quantities" in "Sales" settings menu
+
   @sales_quotations
   Scenario: Configure Quotations & sales
-    Given I set "Addresses" to "Display 3 fields on sales orders: customer, invoice address, delivery address" in "Sales" settings menu    
+    Given I set "Addresses" to "Display 3 fields on sales orders: customer, invoice address, delivery address" in "Sales" settings menu
     Given I enable "Use pricelists to adapt your price per customers" in "Sales" settings menu
     Given I enable "Show pricelists to customers" in "Sales" settings menu
     Given I set "Order Routing" to "Choose specific routes on sales order lines (advanced)" in "Sales" settings menu
@@ -26,3 +26,9 @@ Feature: Configure Sales
      | default_sale_tax_id  | by name: TVA due a 8.0% (TN)  |
     Then execute the setup
 
+  @sales_pricelist
+  Scenario: Enable base pricelist
+    Given I execute the SQL commands
+    """;
+    update sale_config_settings set sale_pricelist_setting = 'formula';
+    """
