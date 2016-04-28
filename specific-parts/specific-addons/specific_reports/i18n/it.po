@@ -159,6 +159,12 @@ msgid "Net"
 msgstr "Netto"
 
 #. module: specific_reports
+#: code:addons/specific_reports/models/l10n_ch_payment_slip.py:21
+#, python-format
+msgid "Payment slip related to invoice %s"
+msgstr "Polizza di versamento fattura n. %s"
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Payment Term:"
 msgstr "Condizioni:"
