@@ -35,6 +35,20 @@ Feature: upgrade to 9.0.3
         | active | True  |
     Given I enable "Allow multi currencies" in "Accounting" settings menu
 
+  @sales_products
+  Scenario: Configure Quotation & sales
+    Given I execute the SQL commands
+      """;
+      update sale_config_settings set group_uom=1;
+      """
+
+  @sales_pricelist
+  Scenario: Enable base pricelist
+    Given I execute the SQL commands
+    """;
+    update sale_config_settings set sale_pricelist_setting = 'formula';
+    """
+
   @version
   Scenario: setup application version
     Given I set the version of the instance to "9.0.3"
