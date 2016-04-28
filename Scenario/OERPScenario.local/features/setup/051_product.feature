@@ -10,7 +10,11 @@ Feature: Manage product informations
       | key     | value |
       | name    | pce   |
   # TODO: add phrase to update the translation (Stk, pce, pzo)
-  
+    Given I execute the SQL commands
+    """;
+    update sale_config_settings set group_uom=1;
+    """
+
   @product_taxes
   Scenario: create taxes
     Given I need an "account.tax" with oid: scenario.tax_vrg_700180

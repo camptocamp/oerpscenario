@@ -1,0 +1,7 @@
+id,project_ids/id,partner_id/id,department_id/id,account_type,tag_ids/id,use_tasks,use_timesheets,name
+scenario.generic_analytic_account_01,,,,Active,,False,True,Weiterbildung
+scenario.generic_analytic_account_02,,,,Active,,False,True,Ferien
+scenario.generic_analytic_account_03,,,,Active,,False,True,Krankheit
+scenario.generic_analytic_account_04,,,,Active,,False,True,Unfall
+scenario.generic_analytic_account_05,,,,Active,,False,True,Militär/Zivildienst
+scenario.generic_analytic_account_06,,,,Active,,False,True,Teamarbeit / Koordination /  MA Führung

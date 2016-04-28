@@ -46,6 +46,8 @@ class ResPartner(models.Model):
     )
     name2 = fields.Char('Additional name')
 
+    eori_number = fields.Char("EORI number")
+
     # EEV infos
     eev_member = fields.Boolean('EEV-Mitglied')
     eev_number = fields.Char('EEV Nr.')

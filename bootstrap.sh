@@ -73,7 +73,7 @@ EOF
 function bootstrap() {
     create_virtualenv
     ensure_cfg $1
-    sandbox/bin/python bootstrap.py
+    sandbox/bin/python bootstrap.py 
 }
 
 

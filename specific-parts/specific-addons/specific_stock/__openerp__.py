@@ -13,6 +13,8 @@
         'stock'
     ],
     'data': [
+        'report/stock_inventory.xml',
+        'views/stock_inventory.xml',
         'views/stock_picking.xml',
     ],
     'test': [],

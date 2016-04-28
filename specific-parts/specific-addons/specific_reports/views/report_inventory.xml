@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <report
-        string="Delivery Slip In"
-        id="specific_reports.report_delivery_document_in"
-        model="stock.picking"
-        report_type="qweb-pdf"
-        name="specific_reports.report_deliveryslip_in"
-        file="specific_reports.report_deliveryslip_in"
-    />
-
-
-    <template id="report_delivery_document_incoming" inherit_id="stock.report_delivery_document" primary="True">
+    <template id="report_delivery_document_in_out" inherit_id="stock.report_delivery_document">
             <!-- Stylesheet -->
             <xpath expr="//div[@class='row']" position="before">
                 <style type="text/css">
@@ -196,6 +186,9 @@
                                         ____ Anleitung Deutsch<br/>
                                         ____ Anleitung Franz.<br/>
                                         ____ Anleitung Ital.<br/>
+                                        <t t-if="pack_operation.product_id.manual_code">
+                                        ____ <span t-field="pack_operation.product_id.manual_code"/>
+                                        </t>
                                         ____ Verpackung<br/>
                                         ____ Lieferumfang<br/>
                                         ____ Funktiontest<br/>
@@ -230,6 +223,9 @@
                                         ____ Anleitung Deutsch<br/>
                                         ____ Anleitung Franz.<br/>
                                         ____ Anleitung Ital.<br/>
+                                        <t t-if="pack_operation.product_id.manual_code">
+                                        ____ <span t-field="pack_operation.product_id.manual_code"/>
+                                        </t>
                                         ____ Verpackung<br/>
                                         ____ Lieferumfang<br/>
                                         ____ Funktiontest<br/>
@@ -302,12 +298,6 @@
                 </t><!-- IF outgoing -->
             </xpath>
 
-    </template>
-
-    <template id="report_deliveryslip_in">
-        <t t-foreach="docs" t-as="o">
-            <t t-call="specific_reports.report_delivery_document_incoming" t-lang="o.partner_id.lang"/>
-        </t>
     </template>
 
 </odoo>

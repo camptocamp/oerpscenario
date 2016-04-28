@@ -1,0 +1,32 @@
+id,name,department_id/id,account_type,use_tasks,use_timesheets,user_id/id
+scenario.project_it_001,IS - ERP,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
+scenario.project_it_002,IS - PIM,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
+scenario.project_it_003,IS - RTS,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
+scenario.project_it_004,IS - MS Office-Tools,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
+scenario.project_it_005,IS - Internet,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
+scenario.project_it_006,IT - Telefonie,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
+scenario.project_it_007,IT - Arbeitsplatz,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
+scenario.project_it_008,IT - Basisinfrastruktur,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
+scenario.project_it_009,IT - Security,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
+scenario.project_it_010,Nst - Spezialanwendungen,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
+scenario.project_it_011,Nst - Spezialzubehör,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
+scenario.project_it_012,Nst - Mobile-Computing,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
+scenario.project_it_013,Nst - Technologie-Überwachung,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
+scenario.project_os_001,A - Bedienungsanleitungen I,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
+scenario.project_os_002,A - Bedienungsanleitungen II,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
+scenario.project_os_003,"A - Kampagnen (Inserate und feste PDFs, PRs)",scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
+scenario.project_os_004,A - Pressebeiträge,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
+scenario.project_os_005,A - Taschenkatalog,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
+scenario.project_os_006,A - Prospekte,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
+scenario.project_os_007,A - Flyer,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
+scenario.project_os_008,"A - Standarddrucksachen (Briefschaften, Mailings, Verkaufsunterlagen)",scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
+scenario.project_os_009,"A - Spezialprojekte (Give-Aways, Werbetechnik, Unterlagen)",scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
+scenario.project_os_010,B - Internetauftritt,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
+scenario.project_os_011,B - Automatisierte Erzeugnisse,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
+scenario.project_os_012,C - Administration OS,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
+scenario.project_slx_001,SLX - ERP,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl
+scenario.project_slx_002,SLX - PIM,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl
+scenario.project_slx_003,SLX - TRS,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl
+scenario.project_slx_004,SLX - Ausbau Büro/Lager,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl
+scenario.project_slx_005,SLX - VOIP 2017,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl
+scenario.project_slx_006,SLX - Rechenzentrum 2018,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl
