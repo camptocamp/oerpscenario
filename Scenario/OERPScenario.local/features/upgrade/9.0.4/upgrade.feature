@@ -32,14 +32,7 @@ Feature: upgrade to 9.0.4
     When I update the following languages
          | lang  |
          | de_DE |
-  @uom
-  Scenario: update UOM translations
-    Given I execute the SQL commands
-    """;
-    UPDATE ir_translation SET value='Stk' WHERE src like 'Unit' AND lang like 'de_DE' AND module like 'product';
-    UPDATE ir_translation SET value='Pce' WHERE src like 'Unit' AND lang like 'fr_FR' AND module like 'product';
-    UPDATE ir_translation SET value='Pzo' WHERE src like 'Unit' AND lang like 'it_IT' AND module like 'product';
-    """
-
+         | fr_FR |
+         | it_IT |
 
     Then I set the version of the instance to "9.0.4"
