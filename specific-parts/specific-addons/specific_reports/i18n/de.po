@@ -558,3 +558,8 @@ msgstr "Ihre Bestellung:\n"
 #: model:ir.ui.view,arch_db:account.report_invoice_document
 msgid "PRO-FORMA"
 msgstr "PRO-FORMA Rechnung"
+
+#. module: report_intrastat
+#: model:ir.ui.view,arch_db:report_intrastat.report_intrastatinvoice_document
+msgid "PRO-FORMA"
+msgstr "PRO-FORMA Rechnung"
