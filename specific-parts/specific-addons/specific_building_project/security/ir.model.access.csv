@@ -1,10 +1,20 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_building_project_all,building.project all,model_building_project,base.group_user,1,1,1,1
+access_building_project_all,building.project all,model_building_project,base.group_user,1,0,0,0
 
-access_building_project_pricelist_all,building.project.pricelist all,model_building_project_pricelist,base.group_user,1,1,1,1
+access_building_project_pricelist_all,building.project.pricelist all,model_building_project_pricelist,base.group_user,1,0,0,0
 
-access_building_project_tag_all,building.project.tag all,model_building_project_tag,base.group_user,1,1,1,1
+access_building_project_tag_all,building.project.tag all,model_building_project_tag,base.group_user,1,0,0,0
 
-access_building_project_type_all,building.project.type all,model_building_project_type,base.group_user,1,1,1,1
+access_building_project_type_all,building.project.type all,model_building_project_type,base.group_user,1,0,0,0
 
-access_building_project_stage,building.project.stage all,model_building_project_stage,base.group_user,1,1,1,1
+access_building_project_stage,building.project.stage all,model_building_project_stage,base.group_user,1,0,0,0
+
+access_building_project_manager,building.project manager,model_building_project,base.group_sale_manager,1,1,1,1
+
+access_building_project_pricelist_manager,building.project.pricelist manager,model_building_project_pricelist,base.group_sale_manager,1,1,1,1
+
+access_building_project_tag_manager,building.project.tag manager,model_building_project_tag,base.group_sale_manager,1,1,1,1
+
+access_building_project_type_manager,building.project.type manager,model_building_project_type,base.group_sale_manager,1,1,1,1
+
+access_building_project_stage_manager,building.project.stage manager,model_building_project_stage,base.group_sale_manager,1,1,1,1
