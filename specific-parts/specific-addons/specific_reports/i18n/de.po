@@ -173,7 +173,7 @@ msgstr "<span class=\"col-xs-5\">Liefer-Datum:</span>"
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<span class=\"col-xs-5\">Term of delivery:</span>\n"
 "                  <span>nach Absprache</span>"
-msgstr "<span class=\"col-xs-5\">LieFbestfer-Datum:</span>\n"
+msgstr "<span class=\"col-xs-5\">Lieferfrist:</span>\n"
 "                  <span>nach Absprache</span>"
 
 #. module: specific_reports
@@ -551,7 +551,6 @@ msgstr "Gültigkeit:"
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Your order:"
 msgstr "Ihre Bestellung:\n"
-""
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.invoice_form
