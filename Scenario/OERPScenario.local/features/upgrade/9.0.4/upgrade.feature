@@ -14,3 +14,10 @@ Feature: upgrade to 9.0.4
       | bvr_scan_line_horz | 0.00 |
       | bvr_scan_line_vert | 0.00 |
     Then I set the version of the instance to "9.0.4"
+
+  @force_translations @slow
+  Scenario: Force lang translations
+    Given I update the module list
+    When I update the following languages
+         | lang  |
+         | de_DE |
