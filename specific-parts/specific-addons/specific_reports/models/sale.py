@@ -17,8 +17,8 @@ class SaleOrder(models.Model):
 
     @api.multi
     def action_invoice_create(self):
-        import pdb; pdb.set_trace()
-        invoice = super(SaleOrder, self).action_invoice_create(grouped=False, final=False)
+        invoice = super(SaleOrder, self).action_invoice_create(grouped=False, 
+                                                               final=False)
         inv_obj = self.env['account.invoice'].browse(invoice)
         inv_obj.client_order_descr = self.client_order_descr
         return invoice
