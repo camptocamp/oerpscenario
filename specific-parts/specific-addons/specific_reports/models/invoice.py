@@ -20,10 +20,6 @@ class AccountInvoice(models.Model):
         "Term of delivery",
     )
 
-    # TODO remplire les nouveaux champs à la création d'une invoice
-    # faire un lien avec les Sale.order => les champs de descriptions qui
-    # n'existent pas
-
 
 class InvoiceOrderLine(models.Model):
     _inherit = 'account.invoice.line'

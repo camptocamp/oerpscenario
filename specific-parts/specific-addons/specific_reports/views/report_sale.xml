@@ -37,10 +37,10 @@
                 <small>
                   <strong>
                     Your client manager
-                  </strong> <span t-field="doc.user_id"/><br/>
+                  </strong> <span t-field="doc.user_id.partner_id"/><br/>
                   Tel:
                   <t t-if="doc.user_id.phone">
-                    <span t-field="doc.user_id.phone"/>
+                    <span t-field="doc.user_id."/>
                   </t>
                   <t t-if="not doc.user_id.phone">
                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
@@ -86,10 +86,10 @@
                 <strong t-field="doc.client_order_ref"/>
             </div>
             <div class="col-xs-7"></div>
-            <div class="col-xs-6" style="padding-left: 0px;">
-              <div t-if="doc.customer_contact_id" class="col-xs-12">
+            <div class="col-xs-6" style="padding-left: 0px; margin-left: 0px">
+              <div t-if="doc.customer_contact_id" class="col-xs-12" style="paddin-left 0px;">
                   <span class="col-xs-5">Contact:</span>
-                  <span class="address" t-field="doc.customer_contact_id"/>
+                  <span class="address" t-field="doc.customer_contact_id.name"/>
               </div>
               <div t-if="doc.client_order_descr" class="col-xs-12">
                   <span class="col-xs-5">Your order:</span>
