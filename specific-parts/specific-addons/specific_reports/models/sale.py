@@ -21,7 +21,7 @@ class SaleOrder(models.Model):
                                                                final=False)
         inv_obj = self.env['account.invoice'].browse(invoice)
         inv_obj.client_order_descr = self.client_order_descr
-        return invoice
+        return inv_obj
 
 
 class SaleOrderLine(models.Model):
