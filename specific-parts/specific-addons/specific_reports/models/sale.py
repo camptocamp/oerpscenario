@@ -23,7 +23,6 @@ class SaleOrder(models.Model):
         inv_obj.client_order_descr = self.client_order_descr
         return inv_obj
 
-
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
