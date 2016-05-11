@@ -230,6 +230,7 @@
     <field name="arch" type="xml">
       <kanban class="oe_background_grey o_kanban_dashboard o_project_kanban" default_group_by="stage_id">
         <field name="name"/>
+        <field name="expected_amount"/>
         <field name="date_start"/>
         <field name="date_end"/>
         <field name="stage_id"/>
@@ -269,6 +270,9 @@
                         <i class="fa fa-calendar"/> <t t-esc="record.date_start.value"/>
                         <i class="fa fa-angle-double-right"/> <t t-esc="record.date_end.value"/>
                       </span>
+                    </div>
+                    <div t-if="record.expected_amount.raw_value">
+                      <span><t t-esc="record.expected_amount.value"/> CHF</span>
                     </div>
                   </div>
                 </div>
