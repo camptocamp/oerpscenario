@@ -10,12 +10,10 @@ class SaleAdvancePaymentInv(models.TransientModel):
     _inherit = "sale.advance.payment.inv"
 
 
-    def action_invoice_create(self):
-        import pdb; pdb.set_trace()
+    # def action_invoice_create(self):
 
     @api.multi
     def _create_invoice(self, order, so_line, amount):
-        import pdb; pdb.set_trace()
         """ Add client_order_descr while creating invoice
         """
         invoice = super(SaleAdvancePaymentInv, self)._create_invoice(
