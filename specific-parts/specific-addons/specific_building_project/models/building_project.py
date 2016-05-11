@@ -24,6 +24,10 @@ class BuildingProject(models.Model):
         else:
             self.display_name = self.name
 
+    analytic_account_id = fields.Many2one(
+        'account.analytic.account',
+        required=True
+    )
     date_start = fields.Date(
         'erwarteter Lieferstart'
     )

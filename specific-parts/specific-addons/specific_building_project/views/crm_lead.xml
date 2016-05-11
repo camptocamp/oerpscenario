@@ -10,8 +10,7 @@
         <attribute name="context">
           {'search_default_partner_id': partner_id,
            'default_partner_id': partner_id,
-           'default_team_id': team_id,
-           'default_building_project_id': project_id}
+           'default_team_id': team_id}
          </attribute>
          <attribute name="attrs">{'invisible': ['|', ('probability', '=', 0), ('building_project_id', '!=', False)]}</attribute>
       </xpath>
@@ -19,8 +18,7 @@
         <attribute name="context">
           {'search_default_partner_id': partner_id,
            'default_partner_id': partner_id,
-           'default_team_id': team_id,
-           'default_project_id': project_id}
+           'default_team_id': team_id}
          </attribute>
          <attribute name="attrs">{'invisible': ['|', ('probability', '>', 0), ('building_project_id', '!=', False)]}</attribute>
       </xpath>
@@ -28,10 +26,12 @@
         <button attrs="{'invisible': ['|', ('probability', '=', 0), ('building_project_id', '=', False)]}" string="New Quotation" name="quotation_new_wholesaler" type="object" class="oe_highlight"
             context="{'search_default_partner_id': partner_id,
                       'default_partner_id': partner_id,
+                      'default_building_project_id': building_project_id,
                       'default_team_id': team_id}"/>
         <button attrs="{'invisible': ['|', ('probability', '>', 0), ('building_project_id', '=', False)]}" string="New Quotation" name="quotation_new_wholesaler" type="object"
             context="{'search_default_partner_id': partner_id,
                       'default_partner_id': partner_id,
+                      'default_building_project_id': building_project_id,
                       'default_team_id': team_id}"/>
       </xpath>
 

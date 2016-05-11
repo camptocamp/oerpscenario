@@ -37,14 +37,20 @@ class CreateOpportunityQuotation(models.TransientModel):
 
     @api.multi
     def create_new_quotation(self):
-        act_dict = self.env['ir.actions.act_window'].for_xml_id(
+        env = self.env
+        act_dict = env['ir.actions.act_window'].for_xml_id(
             'sale_crm', 'sale_action_quotations_new'
         )
         act_dict['context'] = self.env.context.copy()
-        lead_partner_id = self.env.context.get('default_partner_id')
+        lead_partner_id = env.context.get('default_partner_id')
+        # get aa of building project as it is what SO expects in project_id
+        building_project_id = env.context.get('default_building_project_id')
+        building_project = env['building.project'].browse(building_project_id)
+        aa = building_project.analytic_account_id
         act_dict['context'].update({
             'default_business_provider_id': lead_partner_id,
             'default_partner_id': self.wholesaler_id.id,
+            'default_project_id': aa.id,
         })
 
         return act_dict
