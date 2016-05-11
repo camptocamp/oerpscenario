@@ -40,8 +40,8 @@
                     Your client manager
                   </strong> <span t-field="o.user_id"/><br/>
                   Tel:
-                  <t t-if="o.user_id.phone">
-                    <span t-field="o.user_id.phone"/>
+                  <t t-if="o.user_id">
+                    <span t-field="o.get_employee_from_user(o.user_id).work_phone"/>
                   </t>
                   <t t-if="not o.user_id.phone">
                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
@@ -54,10 +54,10 @@
                     Official in charge
                   </strong> <span t-field="o.env.user.name"/><br/>
                   Tel:
-                  <t t-if="o.env.user.phone">
-                    <span t-field="o.env.user.phone"/>
+                  <t t-if="o.env.user">
+                    <span t-field="o.get_employee_from_user(o.env.user).work_phone"/>
                   </t>
-                  <t t-if="not o.env.user.phone">
+                  <t t-if="not o.env.user">
                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
                   </t>
@@ -190,12 +190,16 @@
           <td class="text-right">
             <span t-field="l.price_unit"/>
           </td>
-          <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
-            <span t-field="l.discount"/>
+         <!--  <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+            <t t-foreach="l.discount" t-as="d">
+              <span t-field="d.discount"/>
+            </t>
           </td>
           <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
-            <span t-field="l.price_unit_discount" t-field-options='{"widget": "False"}'/>
-          </td>
+            <t t-foreach="l.price_unit_discount" t-as="d">
+              <span t-field="d.price_unit_discount" t-field-options='{"widget": "False"}'/>
+            </t>
+          </td> -->
           <td class="text-right">
             <span t-field="l.price_subtotal" t-field-options='{"widget": "False"}'/>
           </td>

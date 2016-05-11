@@ -17,11 +17,19 @@ class SaleOrder(models.Model):
 
     @api.multi
     def action_invoice_create(self):
-        invoice = super(SaleOrder, self).action_invoice_create(grouped=False, 
+        invoice = super(SaleOrder, self).action_invoice_create(grouped=False,
                                                                final=False)
         inv_obj = self.env['account.invoice'].browse(invoice)
         inv_obj.client_order_descr = self.client_order_descr
         return inv_obj
+
+    @api.multi
+    def get_employee_from_user(self, user_id):
+        self.ensure_one()
+        resource = self.env['resource.resource'].search([('user_id', '=', user_id.id)])
+        hr_employee = self.env['hr.employee'].search([('resource_id', '=', resource.id)])
+
+        return hr_employee
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
