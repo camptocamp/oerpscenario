@@ -26,10 +26,13 @@ class SaleOrder(models.Model):
     @api.multi
     def get_employee_from_user(self, user_id):
         self.ensure_one()
-        resource = self.env['resource.resource'].search([('user_id', '=', user_id.id)])
-        hr_employee = self.env['hr.employee'].search([('resource_id', '=', resource.id)])
+        resource = self.env['resource.resource'].search(
+            [('user_id', '=', user_id.id)])
+        hr_employee = self.env['hr.employee'].search(
+            [('resource_id', '=', resource.id)])
 
         return hr_employee
+
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'

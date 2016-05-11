@@ -9,9 +9,6 @@ from openerp import api, models
 class SaleAdvancePaymentInv(models.TransientModel):
     _inherit = "sale.advance.payment.inv"
 
-
-    # def action_invoice_create(self):
-
     @api.multi
     def _create_invoice(self, order, so_line, amount):
         """ Add client_order_descr while creating invoice
@@ -21,11 +18,9 @@ class SaleAdvancePaymentInv(models.TransientModel):
             so_line,
             amount)
 
-        # invoice['client_order_ref'] = order.client_order_ref
         invoice['client_order_descr'] = order.client_order_descr
         return invoice
 
     @api.multi
     def create_invoices(self):
-        # import pdb; pdb.set_trace()
         return super(SaleAdvancePaymentInv, self).create_invoices()
