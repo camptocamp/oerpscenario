@@ -49,8 +49,9 @@ class BuildingProject(models.Model):
         string="Wahrscheinlichkeit",
     )
 
-    contact_ids = fields.Many2many(
-        comodel_name='res.partner',
+    contact_ids = fields.One2many(
+        comodel_name='res.partner.role',
+        inverse_name='building_project_id',
         string='Contacts',
         copy=False,
         help="Envolved partners (Architect, Engineer, Electrician)"
