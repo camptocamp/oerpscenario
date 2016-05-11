@@ -8,6 +8,7 @@ Feature: upgrade to 9.0.4
       | name                       |
       | specific_building_project  |
       | specific_reports           |
+      | specific_account           |
     Then my modules should have been installed and models reloaded
     Given I find a "res.company" with oid: base.main_company
     And having:
