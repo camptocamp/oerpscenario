@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-16 13:50+0000\n"
-"PO-Revision-Date: 2016-03-16 13:50+0000\n"
+"POT-Creation-Date: 2016-05-02 07:31+0000\n"
+"PO-Revision-Date: 2016-05-02 07:31+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,12 @@ msgid "# Opportunity"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_phonecall_count
+#: model:ir.model.fields,field_description:specific_building_project.field_crm_lead_phonecall_count
+msgid "# Phonecalls"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_sale_order_count
 msgid "# Sales Order"
 msgstr ""
@@ -33,6 +39,60 @@ msgstr ""
 #. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_order_form
 msgid "(update prices by applying pricelist)"
+msgstr ""
+
+#. module: specific_building_project
+#: selection:building.project,probability:0
+msgid "100%"
+msgstr ""
+
+#. module: specific_building_project
+#: selection:building.project,probability:0
+msgid "25%"
+msgstr ""
+
+#. module: specific_building_project
+#: selection:building.project,probability:0
+msgid "50%"
+msgstr ""
+
+#. module: specific_building_project
+#: selection:building.project,probability:0
+msgid "75%"
+msgstr ""
+
+#. module: specific_building_project
+#: code:addons/specific_building_project/models/building_project.py:348
+#, python-format
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"                   Documents are attached to the tasks and issues of your\n"
+"                   project.</p><p>Send messages or log internal notes with\n"
+"                   attachments to link documents to your project.</p>"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_kanban
+msgid "<span class=\"o_label\">Documents</span>"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_kanban
+msgid "<span class=\"o_label\">Meetings</span>"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_kanban
+msgid "<span class=\"o_label\">Opportunities</span>"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_kanban
+msgid "<span class=\"o_label\">Phonecalls</span>"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_kanban
+msgid "<span class=\"o_label\">Sales orders</span>"
 msgstr ""
 
 #. module: specific_building_project
@@ -49,8 +109,25 @@ msgstr ""
 
 #. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
+msgid "<span class=\"o_stat_text\" attrs=\"{'invisible': [('phonecall_count', '&lt;', 2)]}\"> Phonecalls</span>\n"
+"                <span class=\"o_stat_text\" attrs=\"{'invisible': [('phonecall_count', '&gt;', 1)]}\"> Phonecall</span>"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.ui.view,arch_db:specific_building_project.crm_case_form_view_oppor
+msgid "<span class=\"o_stat_text\" attrs=\"{'invisible': [('phonecall_count', '&lt;', 2)]}\"> Phonecalls</span>\n"
+"            <span class=\"o_stat_text\" attrs=\"{'invisible': [('phonecall_count', '&gt;', 1)]}\"> Phonecall</span>"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
 msgid "<span class=\"o_stat_text\" attrs=\"{'invisible': [('sale_order_count', '&lt;', 2)]}\"> Sales orders</span>\n"
 "              <span class=\"o_stat_text\" attrs=\"{'invisible': [('sale_order_count', '&gt;', 1)]}\"> Sales order</span>"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_name
+msgid "Account Name"
 msgstr ""
 
 #. module: specific_building_project
@@ -59,13 +136,18 @@ msgid "Action Needed"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_name2
+msgid "Additional name"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
 msgid "Address"
 msgstr ""
 
 #. module: specific_building_project
-#: model:ir.model.fields,field_description:specific_building_project.field_building_project_name
-msgid "Analytic Account"
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_build_activity
+msgid "Aktivität"
 msgstr ""
 
 #. module: specific_building_project
@@ -74,13 +156,14 @@ msgid "Analytic Lines"
 msgstr ""
 
 #. module: specific_building_project
-#: model:ir.model.fields,field_description:specific_building_project.field_res_partner_architect
-msgid "Architect"
+#: code:addons/specific_building_project/models/building_project.py:341
+#, python-format
+msgid "Attachments"
 msgstr ""
 
 #. module: specific_building_project
-#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
-msgid "Architekt"
+#: selection:building.project,build_progress:0
+msgid "Ausschreibung"
 msgstr ""
 
 #. module: specific_building_project
@@ -94,12 +177,17 @@ msgid "Balance"
 msgstr ""
 
 #. module: specific_building_project
-#: model:ir.ui.view,arch_db:specific_building_project.view_partner_form
+#: model:ir.model.fields,field_description:specific_building_project.field_res_partner_building_project_ids
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_building_project_ids
 msgid "Bauprojekt"
 msgstr ""
 
 #. module: specific_building_project
-#: model:ir.model.fields,field_description:specific_building_project.field_building_project_build_state
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_filter
+msgid "Bauprojekt-Fortschritt"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_filter
 msgid "Bauprojekt-Status"
 msgstr ""
@@ -111,8 +199,18 @@ msgid "Bauprojekt-Typ"
 msgstr ""
 
 #. module: specific_building_project
-#: selection:building.project,build_state:0
-msgid "Bewilligt"
+#: model:ir.ui.view,arch_db:specific_building_project.view_partner_form
+msgid "Bauprojekts"
+msgstr ""
+
+#. module: specific_building_project
+#: selection:building.project,build_progress:0
+msgid "Bewirtschaftung"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_crossovered_budget_line
+msgid "Budget Lines"
 msgstr ""
 
 #. module: specific_building_project
@@ -162,13 +260,48 @@ msgid "Cancel"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model.fields,help:specific_building_project.field_building_project_use_issues
+msgid "Check this box to manage customer activities through this project"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,help:specific_building_project.field_building_project_use_tasks
+msgid "Check this box to manage internal activities through this project"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,help:specific_building_project.field_building_project_use_timesheets
+msgid "Check this field if this project manages timesheets"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
 msgid "City"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
+msgid "City completion"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_zip_id
+msgid "City/Location"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_color
+msgid "Color Index"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_company_id
 msgid "Company"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_company_uom_id
+msgid "Company UOM"
 msgstr ""
 
 #. module: specific_building_project
@@ -188,6 +321,7 @@ msgid "Contacts"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_country_id
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
 msgid "Country"
 msgstr ""
@@ -205,6 +339,7 @@ msgstr ""
 #. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_create_uid
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_pricelist_create_uid
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_stage_create_uid
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_tag_create_uid
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_type_create_uid
 #: model:ir.model.fields,field_description:specific_building_project.field_create_opportunity_quotation_create_uid
@@ -214,6 +349,7 @@ msgstr ""
 #. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_create_date
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_pricelist_create_date
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_stage_create_date
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_tag_create_date
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_type_create_date
 #: model:ir.model.fields,field_description:specific_building_project.field_create_opportunity_quotation_create_date
@@ -257,8 +393,19 @@ msgid "Debit"
 msgstr ""
 
 #. module: specific_building_project
-#: model:ir.model.fields,field_description:specific_building_project.field_building_project_display_name
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_department_id
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_department
+msgid "Department"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_department_id
+msgid "Department id"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_pricelist_display_name
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_stage_display_name
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_tag_display_name
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_type_display_name
 #: model:ir.model.fields,field_description:specific_building_project.field_create_opportunity_quotation_display_name
@@ -266,19 +413,43 @@ msgid "Display Name"
 msgstr ""
 
 #. module: specific_building_project
-#: model:ir.model.fields,field_description:specific_building_project.field_res_partner_electrician
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_display_name
+msgid "Display name"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
-msgid "Electrician"
+msgid "Documents"
 msgstr ""
 
 #. module: specific_building_project
-#: model:ir.model.fields,field_description:specific_building_project.field_building_project_date_end
-msgid "End Date"
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_mailing
+msgid "Dokuversand"
 msgstr ""
 
 #. module: specific_building_project
-#: model:ir.model.fields,field_description:specific_building_project.field_res_partner_engineer
-msgid "Engineer"
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_mailing_email
+msgid "E-Mail Newsletter"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_eev_number
+msgid "EEV Nr."
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_eev_member
+msgid "EEV-Mitglied"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_eori_number
+msgid "EORI number"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_influence
+msgid "Einfluss"
 msgstr ""
 
 #. module: specific_building_project
@@ -297,8 +468,18 @@ msgid "Fax:"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_companytype
+msgid "Firmen Typ"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.model.fields,help:specific_building_project.field_sale_order_statistics_include
 msgid "Flag field to deduplicate sale order for the same building project in statistics. By default the first sale order for a building project will be flagged."
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_stage_fold
+msgid "Fold project in kanban?"
 msgstr ""
 
 #. module: specific_building_project
@@ -317,8 +498,14 @@ msgid "Followers (Partners)"
 msgstr ""
 
 #. module: specific_building_project
-#: selection:building.project,build_state:0
-msgid "Gesuch"
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_build_progress
+msgid "Fortschritt nach sia"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_business_area
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_filter
+msgid "Geschäftsfeld"
 msgstr ""
 
 #. module: specific_building_project
@@ -327,12 +514,33 @@ msgid "Group By"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model,name:specific_building_project.model_hr_department
+msgid "HR Department"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_eev_alarm
+msgid "Haftungsablehnung"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_headquarter_id
+msgid "Headquarter"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_id
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_pricelist_id
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_stage_id
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_tag_id
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_type_id
 #: model:ir.model.fields,field_description:specific_building_project.field_create_opportunity_quotation_id
 msgid "ID"
+msgstr ""
+
+#. module: specific_building_project
+#: selection:building.project,business_area:0
+msgid "IL"
 msgstr ""
 
 #. module: specific_building_project
@@ -356,8 +564,18 @@ msgid "Info"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_partner_invoicing_id
+msgid "Invoicing Partner"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_message_is_follower
 msgid "Is Follower"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_use_issues
+msgid "Issues"
 msgstr ""
 
 #. module: specific_building_project
@@ -368,6 +586,7 @@ msgstr ""
 #. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project___last_update
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_pricelist___last_update
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_stage___last_update
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_tag___last_update
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_type___last_update
 #: model:ir.model.fields,field_description:specific_building_project.field_create_opportunity_quotation___last_update
@@ -376,6 +595,7 @@ msgstr ""
 
 #. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_pricelist_write_uid
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_stage_write_uid
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_tag_write_uid
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_type_write_uid
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_write_uid
@@ -385,6 +605,7 @@ msgstr ""
 
 #. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_pricelist_write_date
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_stage_write_date
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_tag_write_date
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_type_write_date
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_write_date
@@ -418,12 +639,22 @@ msgid "Mobile:"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_kanban
+msgid "More <i class=\"fa fa-caret-down\"/>"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_stage_name
+msgid "Name"
+msgstr ""
+
+#. module: specific_building_project
 #: selection:building.project,build_type:0
 msgid "Neubau"
 msgstr ""
 
 #. module: specific_building_project
-#: code:addons/specific_building_project/models/crm_lead.py:50
+#: code:addons/specific_building_project/models/crm_lead.py:81
 #: model:ir.ui.view,arch_db:specific_building_project.create_opportunity_quotation_form_view
 #: model:ir.ui.view,arch_db:specific_building_project.crm_case_form_view_oppor
 #, python-format
@@ -433,6 +664,11 @@ msgstr ""
 #. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_message_needaction_counter
 msgid "Number of Actions"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_doc_count
+msgid "Number of documents attached"
 msgstr ""
 
 #. module: specific_building_project
@@ -446,7 +682,13 @@ msgid "Number of unread messages"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_sale_order_project_pricelist_id
+msgid "Object Discount"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_opportunity_ids
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_kanban
 msgid "Opportunities"
 msgstr ""
 
@@ -456,8 +698,28 @@ msgid "Ort"
 msgstr ""
 
 #. module: specific_building_project
+#: selection:building.project,business_area:0
+msgid "PIR"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_zip
 msgid "PLZ"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_pobox_city
+msgid "PO Box City"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_pobox_nr
+msgid "PO Box Nr"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_pobox_zip
+msgid "PO Box Zip"
 msgstr ""
 
 #. module: specific_building_project
@@ -466,18 +728,23 @@ msgid "Partner"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_partner_state
+msgid "Partnerstatus"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
 msgid "Phone:"
 msgstr ""
 
 #. module: specific_building_project
-#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
-msgid "Planner"
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_phonecall_ids
+#: model:ir.ui.view,arch_db:specific_building_project.view_crm_meeting_search
+msgid "Phonecalls"
 msgstr ""
 
 #. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_pricelist_pricelist_id
-#: model:ir.model.fields,field_description:specific_building_project.field_sale_order_project_pricelist_id
 msgid "Pricelist"
 msgstr ""
 
@@ -497,8 +764,8 @@ msgid "Project Manager"
 msgstr ""
 
 #. module: specific_building_project
-#: selection:building.project,build_state:0
-msgid "Projekt"
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_project_ids
+msgid "Projects"
 msgstr ""
 
 #. module: specific_building_project
@@ -512,8 +779,23 @@ msgid "Projekt Tags"
 msgstr ""
 
 #. module: specific_building_project
+#: selection:building.project,build_progress:0
+msgid "Projektierung"
+msgstr ""
+
+#. module: specific_building_project
+#: selection:building.project,build_progress:0
+msgid "Realisierung"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_code
 msgid "Reference"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
+msgid "Region..."
 msgstr ""
 
 #. module: specific_building_project
@@ -542,12 +824,23 @@ msgid "Search Building Project"
 msgstr ""
 
 #. module: specific_building_project
-#: model:ir.model.fields,field_description:specific_building_project.field_building_project_date_start
-msgid "Start Date"
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_stage_sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_partner_shipping_id
+msgid "Shipping Partner"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_stage_id_7906
+msgid "Stage"
 msgstr ""
 
 #. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_account_type
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_state_id
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
 msgid "State"
 msgstr ""
@@ -555,6 +848,11 @@ msgstr ""
 #. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_building_project_street
 msgid "Strasse"
+msgstr ""
+
+#. module: specific_building_project
+#: selection:building.project,build_progress:0
+msgid "Strategische Plannung"
 msgstr ""
 
 #. module: specific_building_project
@@ -568,13 +866,18 @@ msgid "Street..."
 msgstr ""
 
 #. module: specific_building_project
-#: selection:building.project,build_state:0
-msgid "Submission"
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_tag_ids
+msgid "Tags"
 msgstr ""
 
 #. module: specific_building_project
-#: model:ir.model.fields,field_description:specific_building_project.field_building_project_tag_ids
-msgid "Tags"
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_parent_category_id
+msgid "Tags parent"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_use_tasks
+msgid "Tasks"
 msgstr ""
 
 #. module: specific_building_project
@@ -588,13 +891,18 @@ msgid "The discount must be unique per partner in building project!"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_use_timesheets
+msgid "Timesheets"
+msgstr ""
+
+#. module: specific_building_project
 #: selection:building.project,build_type:0
 msgid "Umbau"
 msgstr ""
 
 #. module: specific_building_project
-#: selection:building.project,build_state:0
-msgid "Unbekannt"
+#: model:ir.model.fields,field_description:specific_building_project.field_sale_order_line_price_unit_readonly
+msgid "Unit Price"
 msgstr ""
 
 #. module: specific_building_project
@@ -608,8 +916,28 @@ msgid "Unread Messages Counter"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model,name:specific_building_project.model_res_users
+msgid "Users"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_region_id
+#: model:ir.model.fields,field_description:specific_building_project.field_res_users_region_id
+msgid "Verkaufsgebiet"
+msgstr ""
+
+#. module: specific_building_project
+#: selection:building.project,build_progress:0
+msgid "Vorprojekt"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_probability
+msgid "Wahrscheinlichkeit"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.model.fields,field_description:specific_building_project.field_create_opportunity_quotation_wholesaler_id
-#: model:ir.model.fields,field_description:specific_building_project.field_res_partner_wholesaler
 msgid "Wholesaler"
 msgstr ""
 
@@ -624,8 +952,8 @@ msgid "ZIP"
 msgstr ""
 
 #. module: specific_building_project
-#: selection:building.project,build_state:0
-msgid "abgeschlossen"
+#: selection:building.project,build_activity:0
+msgid "activ begleitet"
 msgstr ""
 
 #. module: specific_building_project
@@ -636,6 +964,11 @@ msgstr ""
 #. module: specific_building_project
 #: model:ir.model,name:specific_building_project.model_building_project_pricelist
 msgid "building.project.pricelist"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model,name:specific_building_project.model_building_project_stage
+msgid "building.project.stage"
 msgstr ""
 
 #. module: specific_building_project
@@ -669,7 +1002,37 @@ msgid "e.g. Sales Director"
 msgstr ""
 
 #. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_date_start
+msgid "erwarteter Lieferstart"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_expected_amount
+msgid "erwarteter Umsatz"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_date_end
+msgid "erwartetes Lieferende"
+msgstr ""
+
+#. module: specific_building_project
 #: model:ir.ui.view,arch_db:specific_building_project.view_building_project_form
 msgid "internal note..."
+msgstr ""
+
+#. module: specific_building_project
+#: selection:building.project,build_activity:0
+msgid "nicht aktiv begleitet"
+msgstr ""
+
+#. module: specific_building_project
+#: selection:building.project,build_activity:0
+msgid "nicht mehr aktiv begleitet"
+msgstr ""
+
+#. module: specific_building_project
+#: model:ir.model.fields,field_description:specific_building_project.field_building_project_project_count
+msgid "unknown"
 msgstr ""
 
