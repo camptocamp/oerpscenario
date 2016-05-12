@@ -96,7 +96,7 @@
                   <span class="address" t-field="doc.client_order_descr"/>
               </div>
               <div class="col-xs-12">
-                  <span class="col-xs-5">tutu:</span>
+                  <span class="col-xs-5">Client number:</span>
                   <span class="address" t-field="doc.partner_id.ref"/>
               </div>
               <div name="payment_term" t-if="doc.payment_term_id" class="col-xs-12 hidden">
