@@ -59,10 +59,9 @@ class SaleOrderLine(models.Model):
         else:
             self.price_unit_discount = self.price_unit
 
-
     @api.depends('order_id.project_pricelist_id',
-        'order_id.pricelist_id',
-        'product_id')
+                 'order_id.pricelist_id',
+                 'product_id')
     def compute_discount(self):
         for rec in self:
             product = rec.product_id.with_context(
