@@ -155,7 +155,7 @@ Feature: Configure accounting
       | bvr_scan_line_vert              | 0.00      |
       | bvr_scan_line_font_size         | 11        |
       | bvr_scan_line_letter_spacing    | 2.55      |
-      | bvr_add_horz                    | 0.27      |
+      | bvr_add_horz                    | 0.10      |
       | bvr_add_vert                    | 0.00      |
       | bvr_background                  | True      |
       | merge_mode                      | in_memory |

@@ -25,6 +25,7 @@ Feature: upgrade to 9.0.4
       | key                | value |
       | bvr_scan_line_horz | 0.00  |
       | bvr_scan_line_vert | 0.00  |
+      | bvr_add_horz       | 0.10  |
 
   @force_translations @slow
   Scenario: Force lang translations
