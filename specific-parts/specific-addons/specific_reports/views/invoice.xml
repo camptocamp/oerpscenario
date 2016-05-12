@@ -182,6 +182,9 @@
           <td>
             <t t-if="l.product_id">
               <span  t-field="l.product_id.name"/>
+              <t t-if="l.product_id.description_sale">
+               <br/><span t-field="l.product_id.description_sale"/>
+              </t>
             </t>
             <t t-if="not l.product_id">
               <span  t-field="l.name"/>
