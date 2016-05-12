@@ -42,6 +42,11 @@ class SaleOrderLine(models.Model):
         readonly=True
     )
 
+    project_discount = fields.Float(compute='compute_discount',
+                                    string='Public Discount')
+    public_discount = fields.Float(compute='compute_discount',
+                                   string='Public Discount')
+
     @api.one
     @api.depends('price_unit', 'discount')
     def _compute_price_discount(self):
@@ -53,3 +58,28 @@ class SaleOrderLine(models.Model):
             self.price_unit_discount = self.price_unit * discount
         else:
             self.price_unit_discount = self.price_unit
+
+
+    @api.depends('order_id.project_pricelist_id',
+        'order_id.pricelist_id',
+        'product_id')
+    def compute_discount(self):
+        for rec in self:
+            product = rec.product_id.with_context(
+                lang=rec.order_id.partner_id.lang,
+                partner=rec.order_id.partner_id.id,
+                quantity=rec.product_uom_qty,
+                date=rec.order_id.date_order,
+                pricelist=rec.order_id.pricelist_id.id,
+                uom=rec.product_uom.id
+            )
+            base_price = rec.price_unit
+            public_price = product.price
+            product = product.with_context(
+                project_pricelist=rec.order_id.project_pricelist_id.id)
+            final_price = product.price
+
+            if public_price:
+                rec.project_discount = (1 - final_price / public_price) * 100
+            if base_price:
+                rec.public_discount = (1 - public_price / base_price) * 100
