@@ -45,11 +45,11 @@
                   </div>
                   <strong t-field="company.name"/>
                   <span t-field="company.street"/>,
-                  <span t-field="company.zip"/>,
-                  <span t-field="company.city"/>,
+                  <span t-field="company.zip"/>
+                  <span t-field="company.city"/>,&amp;nbsp;
                   Tel: <span t-field="company.phone"/>
                   Fax: <span t-field="company.fax"/>
-                  Technik-Hotline: 043 844 80 77,
+                  Technik-Hotline: +41 43 844 80 77,
                   <span t-field="company.email"/>,
                   <span t-raw="company.website[7:]"/>
                 </small>

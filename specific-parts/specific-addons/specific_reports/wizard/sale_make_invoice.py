@@ -18,6 +18,9 @@ class SaleAdvancePaymentInv(models.TransientModel):
             so_line,
             amount)
 
-        # invoice['client_order_ref'] = order.client_order_ref
         invoice['client_order_descr'] = order.client_order_descr
         return invoice
+
+    @api.multi
+    def create_invoices(self):
+        return super(SaleAdvancePaymentInv, self).create_invoices()

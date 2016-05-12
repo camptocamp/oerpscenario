@@ -265,4 +265,7 @@ msgstr "Brutto"
 msgid "Your order:\n"
 msgstr "Votre commande :\n"
 
-
+#. module: product
+#: model:product.uom,name:product.product_uom_unit
+msgid "Unit(s)"
+msgstr "Pzo"

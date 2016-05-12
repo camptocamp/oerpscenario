@@ -37,12 +37,12 @@
                 <small>
                   <strong>
                     Your client manager
-                  </strong> <span t-field="doc.user_id"/><br/>
+                  </strong> <span t-field="doc.user_id.partner_id"/><br/>
                   Tel:
-                  <t t-if="doc.user_id.phone">
-                    <span t-field="doc.user_id.phone"/>
+                  <t t-if="doc.user_id">
+                    <span t-field="doc.get_employee_from_user(doc.user_id).work_phone"/>
                   </t>
-                  <t t-if="not doc.user_id.phone">
+                  <t t-if="not doc.user_id">
                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
                   </t>
@@ -53,10 +53,10 @@
                     Official in charge
                   </strong> <span t-field="doc.env.user.name"/><br/>
                   Tel:
-                  <t t-if="doc.env.user.phone">
-                    <span t-field="doc.env.user.phone"/>
+                  <t t-if="doc.env.user">
+                    <span t-field="doc.get_employee_from_user(doc.env.user).work_phone"/>
                   </t>
-                  <t t-if="not doc.env.user.phone">
+                  <t t-if="not doc.env.user">
                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
                   </t>
@@ -86,25 +86,25 @@
                 <strong t-field="doc.client_order_ref"/>
             </div>
             <div class="col-xs-7"></div>
-            <div class="col-xs-6" style="padding-left: 0px;">
-              <div t-if="doc.customer_contact_id" class="col-xs-12">
-                  Contact:
-                  <span class="address" t-field="doc.customer_contact_id"/>
+            <div class="col-xs-6" style="padding-left: 0px; margin-left: 0px">
+              <div t-if="doc.customer_contact_id" class="col-xs-12" style="paddin-left 0px;">
+                  <span class="col-xs-5">Contact:</span>
+                  <span class="address" t-field="doc.customer_contact_id.name"/>
               </div>
               <div t-if="doc.client_order_descr" class="col-xs-12">
-                  Your order:
+                  <span class="col-xs-5">Your order:</span>
                   <span class="address" t-field="doc.client_order_descr"/>
               </div>
               <div class="col-xs-12">
-                  Client number:
+                  <span class="col-xs-5">Client number:</span>
                   <span class="address" t-field="doc.partner_id.ref"/>
               </div>
               <div name="payment_term" t-if="doc.payment_term_id" class="col-xs-12 hidden">
-                  Payment Term:
+                  <span class="col-xs-5">Payment Term:</span>
                   <span class="address" t-field="doc.payment_term_id"/>
               </div>
               <div class="col-xs-12" t-if="doc.validity_date">
-                  Validity:
+                  <span class="col-xs-5">Validity:</span>
                   <span class="address" t-field="doc.validity_date"/>
               </div>
             </div>
@@ -222,16 +222,16 @@
             <span t-field="l.price_unit"/>
           </td>
           <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
-            <span t-field="l.order_id.pricelist_id.item_ids.price_discount"/><br/>
-            <t t-if="l.order_id.project_pricelist_id.item_ids.price_discount">
-              <span t-field="l.order_id.project_pricelist_id.item_ids.price_discount"/>
+            <span t-field="l.public_discount"/><br/>
+            <t t-if="l.order_id.project_pricelist_id">
+              <span t-field="l.project_discount"/>
             </t>
           </td>
           <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
-            <span t-field="l.price_unit_discount" t-field-options='{"widget": "False"}'/>
+            <span t-field="l.price_unit_discount" t-field-options='{"widget": "monetary"}'/>
           </td>
           <td class="text-right">
-            <span t-field="l.price_subtotal" t-field-options='{"widget": "False"}'/>
+            <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary"}'/>
           </td>
         </tr>
       </xpath>
