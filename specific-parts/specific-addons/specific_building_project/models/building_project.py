@@ -24,6 +24,10 @@ class BuildingProject(models.Model):
         else:
             self.display_name = self.name
 
+    analytic_account_id = fields.Many2one(
+        'account.analytic.account',
+        required=True
+    )
     date_start = fields.Date(
         'erwarteter Lieferstart'
     )
@@ -49,8 +53,9 @@ class BuildingProject(models.Model):
         string="Wahrscheinlichkeit",
     )
 
-    contact_ids = fields.Many2many(
-        comodel_name='res.partner',
+    contact_ids = fields.One2many(
+        comodel_name='res.partner.role',
+        inverse_name='building_project_id',
         string='Contacts',
         copy=False,
         help="Envolved partners (Architect, Engineer, Electrician)"

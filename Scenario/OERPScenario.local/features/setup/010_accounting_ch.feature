@@ -83,14 +83,14 @@ Feature: Configure accounting
       | partner_id          | by oid: base.main_partner |
       | bank_id             | by oid: <l10n_ch_bank_id> |
       | company_id          | by oid: base.main_company |
-      | acc_number          | <account_nr>              |      
+      | acc_number          | <account_nr>              |
 
     Examples: Bank Accounts
       | journal_oid             | journal_code | journal_name | currency | acc_code | bank_oid        | l10n_ch_bank_id             | account_nr                 |
       | scenario.journal_POCH   | POCH         | Postfinance  | false    | 1010     | scenario.bank_1 | l10n_ch_bank.bank_9000_0000 | 84-001285-1                |
       | scenario.journal_ZKB1   | BNK1         | ZKB (ES)     | false    | 1020     | scenario.bank_2 | l10n_ch_bank.bank_730_0000  | CH74 0070 0115 5000 8687 7 |
       | scenario.journal_ZKB2   | BNK2         | ZKB          | false    | 1021     | scenario.bank_3 | l10n_ch_bank.bank_730_0000  | CH23 0070 0115 5001 7955 7 |
-  
+
   @banks
   Scenario: configure BVR on the right bank
     Given I find a "res.partner.bank" with oid: scenario.bank_2
@@ -101,6 +101,16 @@ Feature: Configure accounting
       | print_account       | True      |
       | print_partner       | True      |
 
+  @bank_invoice
+  Scenario: configure which bank account is set on customer invoices
+    Given I need a "invoice.bank.rule" with oid: scenario.invoice_bank_rule_swiss
+    And having:
+      | key             | value                     |
+      | name            | Bank for swiss customers  |
+      | partner_bank_id | by oid: scenario.bank_2   |
+      | country_id      | by code: CH               |
+      | company_id      | by oid: base.main_company |
+
   @journal
   Scenario Outline: create new financial journal
     Given I need a "account.journal" with oid: <journal_oid>
@@ -110,15 +120,15 @@ Feature: Configure accounting
       | code                        | <journal_code>            |
       | type                        | <journal_type>            |
       | company_id                  | by oid: base.main_company |
-      | currency_id                 | <currency>                |      
+      | currency_id                 | <currency>                |
       | update_posted               | True                      |
 
     Examples: Financial Journals
       | journal_oid             | journal_name  | journal_code  | journal_type  | currency |
       | scenario.expense_journal| Expenses      | EXP           | purchase      | false    |
       | scenario.wage_journal   | Wage          | WAGE          | purchase      | false    |
-     
-  
+
+
   @default_accounts
   Scenario Outline: Define default accounts via properties
     Given I set global property named "<name>" for model "<model>" and field "<name>" for company with ref "base.main_company"
@@ -141,8 +151,8 @@ Feature: Configure accounting
       | key                             | value     |
       | bvr_delta_horz                  | 0.00      |
       | bvr_delta_vert                  | 0.00      |
-      | bvr_scan_line_horz              | 68.00     |
-      | bvr_scan_line_vert              | 245.00    |
+      | bvr_scan_line_horz              | 0.00      |
+      | bvr_scan_line_vert              | 0.00      |
       | bvr_scan_line_font_size         | 11        |
       | bvr_scan_line_letter_spacing    | 2.55      |
       | bvr_add_horz                    | 0.27      |
@@ -154,7 +164,7 @@ Feature: Configure accounting
   Scenario Outline: Activate account cancel on all financial journals
     Given I need a "account.journal" with code: <journal_code>
     And having:
-      | key                       | value           |      
+      | key                       | value           |
       | update_posted             | <update_posted> |
 
     Examples: Journals Accounts

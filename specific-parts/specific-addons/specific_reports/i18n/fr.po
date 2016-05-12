@@ -159,6 +159,12 @@ msgid "Net"
 msgstr "Net"
 
 #. module: specific_reports
+#: code:addons/specific_reports/models/l10n_ch_payment_slip.py:21
+#, python-format
+msgid "Payment slip related to invoice %s"
+msgstr "Bulletin relatif à la facture %s"
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Payment Term:"
 msgstr "Conditions :"
@@ -259,4 +265,7 @@ msgstr "Brut"
 msgid "Your order:\n"
 msgstr "Votre commande :\n"
 
-
+#. module: product
+#: model:product.uom,name:product.product_uom_unit
+msgid "Unit(s)"
+msgstr "Pce"

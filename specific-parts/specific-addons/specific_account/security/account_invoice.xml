@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<odoo>
+  <record model="ir.rule" id="rule_purchase_invoice_department_only_for_billing">
+    <field name="active" eval="1" />
+    <field name="domain_force">['|', ('type', 'not in', ('in_invoice', 'in_refund')), ('create_uid.department_id.id', '=', user.department_id.id)]</field>
+    <field name="model_id" ref="account.model_account_invoice" />
+    <field eval="[(4,ref('account.group_account_invoice'))]" name="groups"/>
+    <field name="name">Billing users can see only invoice created by a member of their department.</field>
+    <field name="perm_create" eval="0" />
+    <field name="perm_read" eval="1" />
+    <field name="perm_unlink" eval="0" />
+    <field name="perm_write" eval="0" />
+  </record>
+  <record model="ir.rule" id="rule_purchase_invoice_no_department_restriction">
+    <field name="active" eval="1" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="model_id" ref="account.model_account_invoice" />
+    <field eval="[(4,ref('account.group_account_user'))]" name="groups"/>
+    <field name="name">Accountant and adviser doesn't have department visibility restriction for invoice.</field>
+    <field name="perm_create" eval="0" />
+    <field name="perm_read" eval="1" />
+    <field name="perm_unlink" eval="0" />
+    <field name="perm_write" eval="0" />
+  </record>
+</odoo>
