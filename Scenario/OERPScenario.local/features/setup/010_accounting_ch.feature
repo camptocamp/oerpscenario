@@ -101,6 +101,16 @@ Feature: Configure accounting
       | print_account       | True      |
       | print_partner       | True      |
 
+  @bank_invoice
+  Scenario: configure which bank account is set on customer invoices
+    Given I need a "invoice.bank.rule" with oid: scenario.invoice_bank_rule_swiss
+    And having:
+      | key             | value                     |
+      | name            | Bank for swiss customers  |
+      | partner_bank_id | by oid: scenario.bank_2   |
+      | country_id      | by code: CH               |
+      | company_id      | by oid: base.main_company |
+
   @journal
   Scenario Outline: create new financial journal
     Given I need a "account.journal" with oid: <journal_oid>

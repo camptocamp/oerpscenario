@@ -185,6 +185,7 @@ Feature: Parameter the new database
         # specific-addons
         | specific_building_project     |
         | specific_hr                   |
+        | specific_invoice              |
         | specific_partner              |
         | specific_product              |
         | specific_reports              |
