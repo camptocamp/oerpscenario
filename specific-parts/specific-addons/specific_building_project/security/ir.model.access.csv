@@ -9,6 +9,8 @@ access_building_project_type_all,building.project.type all,model_building_projec
 
 access_building_project_stage,building.project.stage all,model_building_project_stage,base.group_user,1,0,0,0
 
+access_res_partner_role_all,res.partner.role all,model_res_partner_role,base.group_sale_manager,1,0,0,0
+
 access_building_project_manager,building.project manager,model_building_project,base.group_sale_manager,1,1,1,1
 
 access_building_project_pricelist_manager,building.project.pricelist manager,model_building_project_pricelist,base.group_sale_manager,1,1,1,1
@@ -18,3 +20,5 @@ access_building_project_tag_manager,building.project.tag manager,model_building_
 access_building_project_type_manager,building.project.type manager,model_building_project_type,base.group_sale_manager,1,1,1,1
 
 access_building_project_stage_manager,building.project.stage manager,model_building_project_stage,base.group_sale_manager,1,1,1,1
+
+access_res_partner_role_manager,res.partner.role manager,model_res_partner_role,base.group_sale_manager,1,1,1,1
