@@ -165,7 +165,6 @@
                                     Art.Date</th>
                                 <th>Bezeichnung Liferantenbezeichnung Inhalt</th>
                                 <th>Bestellmenge<br/>
-                                    Gelifert<br/>
                                     Liefermenge<br/>
                                     Rückstand
                                 </th>
@@ -197,7 +196,6 @@
                                     </td>
                                     <td>
                                         <span t-field="pack_operation.product_qty"/> <span t-field="pack_operation.product_uom"/><br/>
-                                    0.00<br/>
                                     <br/>
                                     ________<br/>
                                     ________<br/>
@@ -229,7 +227,6 @@
                                     </td>
                                     <td>
                                         <span t-field="pack_operation.product_qty"/> <span t-field="pack_operation.product_uom"/><br/>
-                                    0.00<br/>
                                     <br/>
                                     ________<br/>
                                     ________<br/>
