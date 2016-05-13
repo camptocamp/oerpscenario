@@ -192,7 +192,7 @@ msgstr "<span class=\"col-xs-5\">Datum:</span>"
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<span class=\"col-xs-5\">Term of delivery:</span>"
-msgstr "<span class=\"col-xs-5\">Liefer-Datum:</span>"
+msgstr "<span class=\"col-xs-5\">Lieferfrist:</span>"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
