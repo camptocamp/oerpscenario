@@ -41,6 +41,8 @@
             <xpath expr="//h2" position="replace"> </xpath>
             <xpath expr="//table[@class='table table-condensed']" position="replace"> </xpath>
 
+            <xpath expr="//table[@class='table table-condensed mt48']" position="replace"> </xpath>
+
             <!-- Address on top of document -->
             <xpath expr="//div[@class='page']/div[@class='row'] " position="replace">
                 <t t-if="o.picking_type_id.code == 'incoming'">
@@ -52,16 +54,15 @@
                         Mitarbeiter :<br/>
                         RG/LS-Nr :<br/>
                         Lieferant :<br/>
-                        Seite : <br/>
                     </div>
                     <div class="col-xs-3">
-                        <span t-esc='time.strftime("%d/%m/%Y")'/><br/>
+                        <span t-esc='time.strftime("%d.%m.%Y")'/><br/>
                         ______________<br/>
                         ______________<br/>
                         <span t-esc="o.partner_id.name"/><br/>
                         <br/>
                     </div>
-                    <h2>
+                    <h2 class="mb16">
                         <span t-field="o.name"/>
                     </h2>
                 </t><!-- IF incoming-->
@@ -183,24 +184,26 @@
                                     <span t-field="pack_operation.product_id.e_nr"/>
                                     </td>
                                     <td>
-                                        <span t-field="pack_operation.product_id.name"/><br/>
+                                        <span t-field="pack_operation.product_id.name"/>
+                                        <br/>
                                         Logistik:<br/>
-                                        ____ Anleitung Deutsch<br/>
+<!--                                         ____ Anleitung Deutsch<br/>
                                         ____ Anleitung Franz.<br/>
-                                        ____ Anleitung Ital.<br/>
+                                        ____ Anleitung Ital.<br/> -->
                                         <t t-if="pack_operation.product_id.manual_code">
-                                        ____ Manual-Code: <span t-field="pack_operation.product_id.manual_code"/><br/>
+                                        _____ Manual-Code: <span t-field="pack_operation.product_id.manual_code"/><br/>
                                         </t>
-                                        ____ Verpackung<br/>
+                                        <span t-field="o.company_id.receipt_checklist"/><br/>
+                                       <!--  ____ Verpackung<br/>
                                         ____ Lieferumfang<br/>
                                         ____ Funktiontest<br/>
                                         <br/>
                                         Technik:<br/>
                                         Produktenew: JA / NEIN<br/>
-                                        Visum: ________________<br/>
+                                        Visum: ________________<br/> -->
                                     </td>
                                     <td>
-                                        <span t-field="pack_operation.product_qty"/><span t-field="pack_operation.product_uom"/><br/>
+                                        <span t-field="pack_operation.product_qty"/> <span t-field="pack_operation.product_uom"/><br/>
                                     0.00<br/>
                                     <br/>
                                     ________<br/>
@@ -220,24 +223,26 @@
                                     <span t-field="pack_operation.product_id.e_nr"/>
                                     </td>
                                     <td>
-                                        <span t-field="pack_operation.product_id.name"/><br/>
+                                        <span t-field="pack_operation.product_id.name"/>
+                                        <br/>
                                         Logistik:<br/>
-                                        ____ Anleitung Deutsch<br/>
+<!--                                         ____ Anleitung Deutsch<br/>
                                         ____ Anleitung Franz.<br/>
-                                        ____ Anleitung Ital.<br/>
+                                        ____ Anleitung Ital.<br/> -->
                                         <t t-if="pack_operation.product_id.manual_code">
-                                        ____ Manual-Code:<span t-field="pack_operation.product_id.manual_code"/><br/>
+                                        _____ Manual-Code: <span t-field="pack_operation.product_id.manual_code"/><br/>
                                         </t>
-                                        ____ Verpackung<br/>
+                                        <span t-field="o.company_id.receipt_checklist"/><br/>
+                                       <!--  ____ Verpackung<br/>
                                         ____ Lieferumfang<br/>
                                         ____ Funktiontest<br/>
                                         <br/>
                                         Technik:<br/>
                                         Produktenew: JA / NEIN<br/>
-                                        Visum: ________________<br/>
+                                        Visum: ________________<br/> -->
                                     </td>
                                     <td>
-                                        <span t-field="pack_operation.product_qty"/><span t-field="pack_operation.product_uom"/><br/>
+                                        <span t-field="pack_operation.product_qty"/> <span t-field="pack_operation.product_uom"/><br/>
                                     0.00<br/>
                                     <br/>
                                     ________<br/>
