@@ -119,6 +119,7 @@
               </div>
               <div t-if="doc.delivery_term" class="col-xs-12">
                   <span class="col-xs-5">Term of delivery:</span>
+                  <span t-field="doc.delivery_term"/>
               </div>
               <div t-if="not doc.delivery_term" class="col-xs-12">
                   <span class="col-xs-5">Term of delivery:</span>
