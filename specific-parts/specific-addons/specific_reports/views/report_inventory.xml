@@ -185,22 +185,15 @@
                                     </td>
                                     <td>
                                         <span t-field="pack_operation.product_id.name"/>
+                                        <t t-if="pack_operation.product_id.description_sale">
+                                          <span t-field="pack_operation.product_id.description_sale"/>
+                                        </t>
                                         <br/>
                                         Logistik:<br/>
-<!--                                         ____ Anleitung Deutsch<br/>
-                                        ____ Anleitung Franz.<br/>
-                                        ____ Anleitung Ital.<br/> -->
                                         <t t-if="pack_operation.product_id.manual_code">
                                         _____ Manual-Code: <span t-field="pack_operation.product_id.manual_code"/><br/>
                                         </t>
                                         <span t-field="o.company_id.receipt_checklist"/><br/>
-                                       <!--  ____ Verpackung<br/>
-                                        ____ Lieferumfang<br/>
-                                        ____ Funktiontest<br/>
-                                        <br/>
-                                        Technik:<br/>
-                                        Produktenew: JA / NEIN<br/>
-                                        Visum: ________________<br/> -->
                                     </td>
                                     <td>
                                         <span t-field="pack_operation.product_qty"/> <span t-field="pack_operation.product_uom"/><br/>
@@ -223,23 +216,16 @@
                                     <span t-field="pack_operation.product_id.e_nr"/>
                                     </td>
                                     <td>
-                                        <span t-field="pack_operation.product_id.name"/>
+                                        <span t-field="pack_operation.product_id.name"/><br/>
+                                        <t t-if="pack_operation.product_id.description_sale">
+                                          <span t-field="pack_operation.product_id.description_sale"/>
+                                        </t>
                                         <br/>
                                         Logistik:<br/>
-<!--                                         ____ Anleitung Deutsch<br/>
-                                        ____ Anleitung Franz.<br/>
-                                        ____ Anleitung Ital.<br/> -->
                                         <t t-if="pack_operation.product_id.manual_code">
                                         _____ Manual-Code: <span t-field="pack_operation.product_id.manual_code"/><br/>
                                         </t>
                                         <span t-field="o.company_id.receipt_checklist"/><br/>
-                                       <!--  ____ Verpackung<br/>
-                                        ____ Lieferumfang<br/>
-                                        ____ Funktiontest<br/>
-                                        <br/>
-                                        Technik:<br/>
-                                        Produktenew: JA / NEIN<br/>
-                                        Visum: ________________<br/> -->
                                     </td>
                                     <td>
                                         <span t-field="pack_operation.product_qty"/> <span t-field="pack_operation.product_uom"/><br/>
