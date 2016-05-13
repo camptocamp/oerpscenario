@@ -69,7 +69,6 @@
             <br/>
             <br/>
           </div>
-<!--           <div t-field="doc.partner_id" t-field-options='{"widget:" "contact", "fields":["address", "name"]}' /> -->
 
         </small>
       </xpath>
@@ -153,13 +152,6 @@
         </tr>
       </xpath>
 
-<!--       <xpath expr="//div/h2" position="replace">
-                    <h4>
-                <span t-if="doc.state not in ['draft','sent']">Order # </span>
-                <span t-if="doc.state in ['draft','sent']">Quotation # </span>
-                <span t-field="doc.name"/>
-            </h4>
-      </xpath> -->
       <xpath expr="//p[@t-if='doc.payment_term_id.note']" position="replace">
         <p t-if="doc.payment_term_id.note">
           Payment term:
