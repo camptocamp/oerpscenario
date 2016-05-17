@@ -63,7 +63,7 @@
                         <br/>
                     </div>
                     <h2 class="mb16">
-                        <span t-field="o.name"/> <span t-field="o.location_dest_id"/>
+                        <span t-field="o.name"/>
                     </h2>
                 </t><!-- IF incoming-->
                 <t t-if="o.picking_type_id.code == 'outgoing'">
