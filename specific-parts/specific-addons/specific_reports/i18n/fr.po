@@ -269,8 +269,3 @@ msgstr "Brut"
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Your order:\n"
 msgstr "Votre commande :\n"
-
-#. module: product
-#: model:product.uom,name:product.product_uom_unit
-msgid "Unit(s)"
-msgstr "Pce"
