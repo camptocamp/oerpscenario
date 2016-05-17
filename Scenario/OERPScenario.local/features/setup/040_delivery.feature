@@ -69,3 +69,26 @@ Feature: Configure the deliveries
     | scenario.carrier_option_post_pri_1      | scenario.carrier_post_pri      | PRI    |
     | scenario.carrier_option_post_moon_1     | scenario.carrier_post_moon     | SEM    |
     | scenario.carrier_option_post_lighting_1 | scenario.carrier_post_lighting | SKB    |
+
+  @ups_carrier
+  Scenario: Create UPS partner
+    Given I need a "res.partner" with oid: scenario.partner_ups
+    And having:
+      | name | value |
+      | name | UPS   |
+
+  @other_delivery_methods
+  Scenario Outline: Create a delivery method
+    Given I need a "delivery.carrier" with oid: <oid>
+    And having:
+      | name       | value                        |
+      | name       | <name>                       |
+      | partner_id | by oid: <carrier>            |
+
+  Examples:
+    | oid                                | name              | carrier              |
+    | scenario.carrier_ups_express       | UPS Express       | scenario.partner_ups |
+    | scenario.carrier_ups_express_plus  | UPS Express Plus  | scenario.partner_ups |
+    | scenario.carrier_ups_express_saver | UPS Express Saver | scenario.partner_ups |
+    | scenario.carrier_slx_take_away     | Abgeholt          | base.main_partner    |
+    | scenario.carrier_slx_brought       | Überbracht        | base.main_partner    |
