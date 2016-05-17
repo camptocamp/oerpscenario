@@ -17,9 +17,10 @@
         </t>
         <t t-if="o.partner_id.eev_member and not o.partner_id.eev_alarm">
           <div class="col-xs-6">
-            <address t-field="o.partner_id" t-field-options='{"widget": "contact", "fields": ["address","name"], "no_marker":true}'/>
-<!--             <span t-field="o.get_eev('scenario.partner_90424')"/>
- -->          </div>
+            <span t-field="o.env.ref('scenario.partner_90424').name"/><br/>
+            <span t-field="o.env.ref('scenario.partner_90424').street"/><br/>
+            <span t-field="o.env.ref('scenario.partner_90424').country_id.code"/>-<span t-field="o.env.ref('scenario.partner_90424').zip"/> <span t-field="o.env.ref('scenario.partner_90424').city"/><br/>
+          </div>
           <div class="col-xs-5">
               <address t-field="o.partner_id"
                   t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />

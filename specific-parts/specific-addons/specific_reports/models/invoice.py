@@ -39,12 +39,6 @@ class AccountInvoice(models.Model):
 
         return hr_employee
 
-    def get_eev(self, xmlid):
-        import pdb; pdb.set_trace()
-        partner = self.env['res.partner'].search(
-            [('xmlid')])
-        return partner
-
 
 class InvoiceOrderLine(models.Model):
     _inherit = 'account.invoice.line'
