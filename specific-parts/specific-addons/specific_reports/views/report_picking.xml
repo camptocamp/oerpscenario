@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="report_picking_location" inherit_id="stock.report_picking">
+
+        <xpath expr="//span[@t-field='pack_operation.location_id']" position="replace">
+            <span t-field="pack_operation.product_id.description_picking"/>
+        </xpath>
+
+    </template>
+</odoo>
