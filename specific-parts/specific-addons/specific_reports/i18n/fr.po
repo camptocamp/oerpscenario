@@ -192,6 +192,11 @@ msgid "Product Template"
 msgstr ""
 
 #. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "Purchase Order #"
+msgstr "Commande #"
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Quantity"

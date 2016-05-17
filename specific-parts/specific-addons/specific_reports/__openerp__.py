@@ -45,6 +45,7 @@
      'views/templates.xml',
      'views/company.xml',
      'views/report_sale.xml',
+     'views/report_purchase.xml',
      'views/report_mrporder.xml',
      'views/report_inventory.xml',
      ],

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- remove 'Confirmation' from purchase order subject -->
+  <template id="report_purchaseorder_document" inherit_id="purchase.report_purchaseorder_document">
+    <xpath expr="//h2[contains(@t-if, 'o.state != ')]" position="replace">
+      <h2 t-if="o.state != 'draft'">Purchase Order #<span t-field="o.name"/></h2>
+    </xpath>
+  </template>
+</odoo>
+
