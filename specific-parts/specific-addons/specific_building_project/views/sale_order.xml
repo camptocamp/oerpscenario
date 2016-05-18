@@ -50,6 +50,9 @@
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.view_order_tree"/>
     <field name="arch" type="xml">
+      <field name="partner_id" position="before">
+        <field name="business_provider_id"/>
+      </field>
       <field name="invoice_status" position="after">
         <field name="statistics_include" invisible="context.get('statistics_include_hide', True)"/>
       </field>
@@ -64,6 +67,17 @@
       <filter name="customer" position="after">
         <filter name="group_state" string="Status" domain="[]" context="{'group_by':'state'}"/>
       </filter>
+    </field>
+  </record>
+
+  <record id="view_quotation_tree" model="ir.ui.view">
+    <field name="name">sale.order.tree</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_quotation_tree"/>
+    <field name="arch" type="xml">
+      <field name="partner_id" position="before">
+        <field name="business_provider_id"/>
+      </field>
     </field>
   </record>
 
