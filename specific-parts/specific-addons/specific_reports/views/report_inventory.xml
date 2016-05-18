@@ -8,7 +8,7 @@
                     .upright{
                         text-align: right !important;
                     }
-                    .address{
+                    .bold{
                         font-weight: bold;
                     }
                     .line{
@@ -35,6 +35,13 @@
                     #padding{
                       margin-bottom: 5px;
                     }
+                    .address{
+                      position: fixed;
+                      left: 186px;
+                    }
+                    pl-0{
+                      padding-left: 0px;
+                    }
                 </style>
             </xpath>
             <!-- Throwing away unuseful table & Title -->
@@ -46,7 +53,7 @@
             <!-- Address on top of document -->
             <xpath expr="//div[@class='page']/div[@class='row'] " position="replace">
                 <t t-if="o.picking_type_id.code == 'incoming'">
-                    <div class="col-xs-6 address">
+                    <div class="col-xs-6 bold">
                         <span t-field="o.company_id.name"/>, <span t-field="o.company_id.zip"/> <span t-field="o.company_id.city"/>
                     </div>
                     <div class="col-xs-3">
@@ -76,14 +83,13 @@
                                     Your client manager
                                   </strong> <span t-field="o.sale_id.user_id"/><br/>
                                   Tel:
-                                  <t t-if="o.sale_id.user_id.phone">
-                                    <span t-field="o.sale_id.user_id.phone"/>
+                                  <t t-if="o.get_employee_from_user()">
+                                    <span t-field="o.get_employee_from_user().work_phone"/><br/>
                                   </t>
                                   <t t-if="not o.sale_id.user_id.phone">
                                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<br/>
                                   </t>
-                                  <br/>
                                   <span t-field="o.sale_id.user_id.email"/><br/>
                                   <br/>
                                   <strong>
@@ -91,13 +97,12 @@
                                   </strong> <span t-field="o.env.user.name"/><br/>
                                   Tel:
                                   <t t-if="o.env.user.phone">
-                                    <span t-field="o.env.user.phone"/>
+                                    <span t-field="o.get_employee_from_user(o.env.user).work_phone"/><br/>
                                   </t>
                                   <t t-if="not o.env.user.phone">
                                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<br/>
                                   </t>
-                                  <br/>
                                   <span t-field="o.env.user.email"/><br/>
                                 </small>
                               </small>
@@ -122,17 +127,16 @@
                         <div class="col-xs-7"></div>
                         <div class="col-xs-6" style="padding-left: 0px;">
                           <div t-if="o.partner_id" class="col-xs-12">
-                              Contact:
+                            <span class="col-xs-5 pl-0">Contact:</span>
                               <span class="address" t-field="o.partner_id"/>
                           </div>
                           <div t-if="o.sale_id.client_order_contact_type" class="col-xs-12">
-                              Your order:
-                              <span class="address">
-                                <span t-field="o.sale_id.client_order_contact_type"/><t t-if="o.sale_id.client_order_date">, <span t-field="o.sale_id.client_order_date"/></t>
+                              <span class="col-xs-5 pl-0">Your order:</span>
+                                <span class="address" t-field="o.sale_id.client_order_contact_type"/><t t-if="o.sale_id.client_order_date">, <span class="address" t-field="o.sale_id.client_order_date"/></t>
                               </span>
                           </div>
                           <div class="col-xs-12">
-                              Client number:
+                              <span class="col-xs-5 pl-0">Client number:</span>
                               <span class="address" t-field="o.partner_id.ref"/>
                           </div>
                         </div>
