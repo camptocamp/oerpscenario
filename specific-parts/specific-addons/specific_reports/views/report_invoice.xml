@@ -159,10 +159,11 @@
             <span t-raw="line_counter"/>
           </td>
           <td class="text-right">
-            <!-- hide decimals if unit of mesure is unit -->
-
-            <t t-if="l.uom_id">
-              <span t-field="l.quantity"/>
+            <t t-if="l.uom_id == o.env.ref('product.product_uom_unit')">
+              <span t-raw="int(l.quantity or 0)"/>
+            </t>
+            <t t-if="l.uom_id != o.env.ref('product.product_uom_unit')">
+              <span t-raw="round(l.quantity, 2)"/>
             </t>
             <span groups="product.group_uom" t-field="l.uom_id"/>
           </td>
