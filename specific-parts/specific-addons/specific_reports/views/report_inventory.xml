@@ -263,10 +263,13 @@
                             </td>
 
                             <td>
-                                <t t-if="m.product_uom_qty">
-                                    <span t-field="m.product_uom_qty"/>
-                                    <span t-field="m.product_uom"/>
+                                <t t-if="m.product_uom_qty == o.env.ref('product.product_uom_unit')">
+                                  <span t-raw="int(m.product_uom_qty or 0)"/>
                                 </t>
+                                <t t-if="m.product_uom_qty != o.env.ref('product.product_uom_unit')">
+                                  <span t-raw="round(m.product_uom_qty, 2)"/>
+                                </t>
+                                <span t-field="m.product_uom"/>
                             </td>
                             <td>
                                 <t t-if="m.product_id.e_nr">
