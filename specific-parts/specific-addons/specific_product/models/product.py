@@ -11,7 +11,7 @@ class ProductTemplate(models.Model):
 
     default_code = fields.Char(readonly=True)
 
-    e_nr = fields.Char("E-Nr")
+    e_nr = fields.Char("E-Nr", copy=False)
 
     transit_qty = fields.Float(
         compute='_get_transit_qty',
