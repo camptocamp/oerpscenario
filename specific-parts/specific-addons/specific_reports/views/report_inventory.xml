@@ -94,7 +94,7 @@
                                   </strong> <span t-field="o.env.user.name"/><br/>
                                   Tel:
                                   <t t-if="o.env.user.phone">
-                                    <span t-field="o.sale_id.get_employee_from_user(o.env.user).work_phone"/><br/>
+                                    <span t-field="o.get_employee_from_user(o.env.user).work_phone"/><br/>
                                   </t>
                                   <t t-if="not o.env.user.phone">
                                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
