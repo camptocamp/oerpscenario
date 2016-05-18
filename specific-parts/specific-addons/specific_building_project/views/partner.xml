@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <odoo>
+  <record id="sale.act_res_partner_2_sale_order" model="ir.actions.act_window">
+    <field name="context">{'search_default_partner_id': active_id, 'show_sale': True, 'search_default_group_state': 1}</field>
+  </record>
+
   <record model="ir.ui.view" id="view_partner_form">
     <field name="name">res.partner.form.inherit</field>
     <field name="model">res.partner</field>
