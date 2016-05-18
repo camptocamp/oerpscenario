@@ -195,8 +195,8 @@
                                         </t>
                                         <br/>
                                         Logistik:<br/>
-                                        <t t-if="pack_operation.product_id.manual_code">
-                                        _____ Manual-Code: <span t-field="pack_operation.product_id.manual_code"/><br/>
+                                        <t t-if="pack_operation.product_id.product_tmpl_id.manual_code">
+                                        _____ Manual-Code: <span t-field="pack_operation.product_id.product_tmpl_id.manual_code"/><br/>
                                         </t>
                                         <span t-field="o.company_id.receipt_checklist"/><br/>
                                     </td>
@@ -226,8 +226,8 @@
                                         </t>
                                         <br/>
                                         Logistik:<br/>
-                                        <t t-if="pack_operation.product_id.manual_code">
-                                        _____ Manual-Code: <span t-field="pack_operation.product_id.manual_code"/><br/>
+                                        <t t-if="pack_operation.product_id.product_tmpl_id.manual_code">
+                                        _____ Manual-Code: <span t-field="pack_operation.product_id.product_tmpl_id.manual_code"/><br/>
                                         </t>
                                         <span t-field="o.company_id.receipt_checklist"/><br/>
                                     </td>
