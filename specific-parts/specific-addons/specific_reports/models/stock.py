@@ -9,10 +9,9 @@ class StockPicking(models.Model):
 
     @api.multi
     def get_employee_from_user(self, user_id=None):
-        import pdb; pdb.set_trace()
         so = self.env['sale.order'].search([('name','=', self.origin)])
         if not user_id:
-            hr_employee = so.get_employee_from_user(self.env.user)
-        else:
             hr_employee = so.get_employee_from_user(so.user_id)
+        else:
+            hr_employee = so.get_employee_from_user(user_id)
         return hr_employee
