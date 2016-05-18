@@ -91,9 +91,11 @@
                   <span class="col-xs-5">Contact:</span>
                   <span class="address" t-field="doc.customer_contact_id.name"/>
               </div>
-              <div t-if="doc.client_order_descr" class="col-xs-12">
+              <div t-if="doc.client_order_contact_type" class="col-xs-12">
                   <span class="col-xs-5">Your order:</span>
-                  <span class="address" t-field="doc.client_order_descr"/>
+                  <span class="address">
+                    <span t-field="doc.client_order_contact_type"/><t t-if="doc.client_order_date">, <span t-field="doc.client_order_date"/></t>
+                  </span>
               </div>
               <div class="col-xs-12">
                   <span class="col-xs-5">Client number:</span>

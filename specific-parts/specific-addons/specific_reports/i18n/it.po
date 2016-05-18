@@ -97,7 +97,7 @@ msgid "Client number:"
 msgstr "No. de client :"
 
 #. module: specific_reports
-#: model:ir.model.fields,field_description:specific_reports.field_sale_order_client_order_descr
+#: model:ir.model.fields,field_description:specific_reports.field_sale_order_client_order_contact_type
 msgid "Description de la commande"
 msgstr ""
 
@@ -133,7 +133,7 @@ msgid "Description"
 msgstr "Descrizione"
 
 #. module: specific_reports
-#: model:ir.model.fields,help:specific_reports.field_sale_order_client_order_descr
+#: model:ir.model.fields,help:specific_reports.field_sale_order_client_order_contact_type
 msgid "Description of how the order was made"
 msgstr ""
 

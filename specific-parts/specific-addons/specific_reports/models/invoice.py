@@ -12,9 +12,18 @@ class AccountInvoice(models.Model):
         help="Reference for the client"
     )
 
-    client_order_descr = fields.Char(
-        "Client order description",
+    client_order_contact_type = fields.Selection(
+        [('email', 'Per E-Mail'),
+         ('in_person', 'Persönlich'),
+         ('post', 'Per Post'),
+         ('tel', 'Per Telefon'),
+         ('stand', 'Messestand')],
+        "Client order contact type",
         help="Description of how the order was made"
+    )
+    client_order_date = fields.Date(
+        "Client order date",
+        help="When the order was made"
     )
     delivery_term = fields.Date(
         "Term of delivery",

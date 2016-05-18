@@ -8,7 +8,8 @@
       <field name="inherit_id" ref="sale.view_order_form"/>
       <field name="arch" type="xml">
         <field name="client_order_ref" position="after">
-          <field name="client_order_descr"/>
+          <field name="client_order_contact_type"/>
+          <field name="client_order_date"/>
         </field>
         <xpath expr="//div[@name='carrier_selection']" position="after">
           <field name="delivery_term"/>

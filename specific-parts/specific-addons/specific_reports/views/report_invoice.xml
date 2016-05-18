@@ -91,9 +91,11 @@
                   Contact:
                   <span class="address" t-field="o.partner_id"/>
               </div>
-              <div t-if="o.client_order_descr" class="col-xs-12">
+              <div t-if="o.client_order_contact_type" class="col-xs-12">
                   Your order:
-                  <span class="address" t-field="o.client_order_descr"/>
+                  <span class="address">
+                    <span t-field="o.client_order_contact_type"/><t t-if="o.client_order_date">, <span t-field="o.client_order_date"/></t>
+                  </span>
               </div>
               <div class="col-xs-12">
                   Client number:
