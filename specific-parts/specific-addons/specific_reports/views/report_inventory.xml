@@ -135,7 +135,6 @@
                           <div t-if="o.sale_id.client_order_contact_type" class="col-xs-12" style="padding-left: 0px;">
                               <span class="col-xs-5 pl-0">Your order:</span>
                                 <span class="address" t-field="o.sale_id.client_order_contact_type"/><t t-if="o.sale_id.client_order_date">, <span class="address" t-field="o.sale_id.client_order_date"/></t>
-                              </span>
                           </div>
                           <div class="col-xs-12" style="padding-left: 0px;">
                               <span class="col-xs-5">Client number:</span>
