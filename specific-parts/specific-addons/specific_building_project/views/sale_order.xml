@@ -52,4 +52,15 @@
     </field>
   </record>
 
+  <record id="view_sales_order_filter" model="ir.ui.view">
+    <field name="name">sale.order.list.select</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+    <field name="arch" type="xml">
+      <filter name="customer" position="after">
+        <filter name="group_state" string="Status" domain="[]" context="{'group_by':'state'}"/>
+      </filter>
+    </field>
+  </record>
+
 </odoo>
