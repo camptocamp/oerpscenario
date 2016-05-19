@@ -46,13 +46,18 @@ class InvoiceOrderLine(models.Model):
     price_unit_discount = fields.Monetary(
         compute='_compute_price_discount', string='Subtotal', readonly=True
     )
+    project_discount = fields.Float(string='Public Discount')
+    public_discount = fields.Float(string='Public Discount')
 
+    @api.multi
     def _compute_price_discount(self):
-        if self.discount:
-            if self.discount == 100:
-                discount = 0.0
+        for rec in self:
+            if rec.discount:
+                if rec.discount == 100:
+                    discount = 0.0
+                else:
+                    discount = 1 - rec.discount / 100.0
+                rec.price_unit_discount = rec.price_unit * discount
             else:
-                discount = 1 - self.discount / 100.0
-            self.price_unit_discount = self.price_unit * discount
-        else:
-            self.price_unit_discount = self.price_unit
+                rec.price_unit_discount = rec.price_unit
+        return self

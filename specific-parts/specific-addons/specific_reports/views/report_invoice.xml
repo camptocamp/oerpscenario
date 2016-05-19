@@ -189,16 +189,13 @@
           <td class="text-right">
             <span t-field="l.price_unit"/>
           </td>
-         <!--  <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
-            <t t-foreach="l.discount" t-as="d">
-              <span t-field="d.discount"/>
-            </t>
-          </td>
           <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
-            <t t-foreach="l.price_unit_discount" t-as="d">
-              <span t-field="d.price_unit_discount" t-field-options='{"widget": "False"}'/>
-            </t>
-          </td> -->
+            <span t-field="l.project_discount"/>
+            <span t-field="l.public_discount"/>
+          </td>
+          <td>
+            <span t-field="l.price_unit_discount"/>
+          </td>
           <td class="text-right">
             <span t-field="l.price_subtotal" t-field-options='{"widget": "False"}'/>
           </td>
