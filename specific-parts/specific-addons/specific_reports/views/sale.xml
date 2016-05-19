@@ -14,6 +14,10 @@
         <xpath expr="//div[@name='carrier_selection']" position="after">
           <field name="delivery_term"/>
         </xpath>
+<!--         <xpath expr="//div[@name='discount']" position="after">
+            <field name="project_discount" groups="sale.group_disount_per_so_line"/>
+            <field name="public_discount" groups="sale.group_disount_per_so_line"/>
+        </xpath> --> <!-- TOTO Add the discount fields in base view -->
       </field>
     </record>
 

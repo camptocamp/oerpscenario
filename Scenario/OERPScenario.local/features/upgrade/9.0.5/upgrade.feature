@@ -7,6 +7,7 @@ Feature: upgrade to 9.0.5
     Given I install the required modules with dependencies:
       | name                       |
       | specific_product           |
+<<<<<<< HEAD
       | specific_translations      |
       | specific_reports           |
     Then my modules should have been installed and models reloaded
@@ -74,4 +75,6 @@ Feature: upgrade to 9.0.5
       When I update the following languages
            | lang  |
            | de_DE |
+           | fr_FR |
+           | it_IT |
     Then I set the version of the instance to "9.0.5"

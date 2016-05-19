@@ -93,3 +93,12 @@ class SaleOrderLine(models.Model):
                 rec.project_discount = (1 - final_price / public_price) * 100
             if base_price:
                 rec.public_discount = (1 - public_price / base_price) * 100
+
+    @api.multi
+    def _prepare_invoice_line(self, qty):
+        for rec in self:
+            inv_line = super(SaleOrderLine, rec)._prepare_invoice_line(qty)
+
+            inv_line['project_discount'] = rec.project_discount
+            inv_line['public_discount'] = rec.public_discount
+        return inv_line
