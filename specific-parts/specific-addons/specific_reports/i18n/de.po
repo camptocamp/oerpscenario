@@ -309,8 +309,8 @@ msgid "Client number:"
 msgstr "Kundennummer:"
 
 #. module: specific_reports
-#: model:ir.model.fields,field_description:specific_reports.field_account_invoice_client_order_descr
-#: model:ir.model.fields,field_description:specific_reports.field_sale_order_client_order_descr
+#: model:ir.model.fields,field_description:specific_reports.field_account_invoice_client_order_contact_type
+#: model:ir.model.fields,field_description:specific_reports.field_sale_order_client_order_contact_type
 msgid "Client order description"
 msgstr "Kundenbestellung"
 
@@ -357,8 +357,8 @@ msgid "Description"
 msgstr "Beschreibung"
 
 #. module: specific_reports
-#: model:ir.model.fields,help:specific_reports.field_account_invoice_client_order_descr
-#: model:ir.model.fields,help:specific_reports.field_sale_order_client_order_descr
+#: model:ir.model.fields,help:specific_reports.field_account_invoice_client_order_contact_type
+#: model:ir.model.fields,help:specific_reports.field_sale_order_client_order_contact_type
 msgid "Description of how the order was made"
 msgstr ""
 

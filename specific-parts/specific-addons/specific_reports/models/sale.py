@@ -7,21 +7,32 @@ from openerp import api, fields, models
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    client_order_descr = fields.Char(
-        "Client order description",
+    client_order_contact_type = fields.Selection(
+        [('email', 'Per E-Mail'),
+         ('in_person', 'Persönlich'),
+         ('post', 'Per Post'),
+         ('tel', 'Per Telefon'),
+         ('stand', 'Messestand')],
+        "Client order contact type",
         help="Description of how the order was made"
+    )
+    client_order_date = fields.Date(
+        "Client order date",
+        help="When the order was made"
     )
     delivery_term = fields.Date(
         "Term of delivery",
     )
 
     @api.multi
-    def action_invoice_create(self):
-        invoice = super(SaleOrder, self).action_invoice_create(grouped=False,
-                                                               final=False)
-        inv_obj = self.env['account.invoice'].browse(invoice)
-        inv_obj.client_order_descr = self.client_order_descr
-        return inv_obj
+    def action_invoice_create(self, grouped=False, final=False):
+        invoice_ids = super(SaleOrder, self).action_invoice_create(
+            grouped=grouped, final=final)
+        invoices = self.env['account.invoice'].browse(invoice_ids)
+        for rec in invoices:
+            rec.client_order_contact_type = self.client_order_contact_type
+            rec.client_order_date = self.client_order_date
+        return invoice_ids
 
     @api.multi
     def get_employee_from_user(self, user_id):

@@ -11,14 +11,15 @@ class SaleAdvancePaymentInv(models.TransientModel):
 
     @api.multi
     def _create_invoice(self, order, so_line, amount):
-        """ Add client_order_descr while creating invoice
+        """ Add client_order_contact_type while creating invoice
         """
         invoice = super(SaleAdvancePaymentInv, self)._create_invoice(
             order,
             so_line,
             amount)
 
-        invoice['client_order_descr'] = order.client_order_descr
+        invoice['client_order_contact_type'] = order.client_order_contact_type
+        invoice['client_order_date'] = order.client_order_date
         return invoice
 
     @api.multi
