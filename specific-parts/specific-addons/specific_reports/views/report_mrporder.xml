@@ -13,6 +13,34 @@
                 </h2>
             </xpath>
 
+            <!-- Change-->
+            <xpath expr="//div[@class='page']/div[@class='row mt32 mb32'][1]" position="replace">
+                <div class="row mt32 mb32">
+                    <div class="col-xs-3">
+                        <strong>Source Document:</strong><br/>
+                        <span t-field="o.origin"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Product:</strong><br/>
+                        <span t-esc="o.product_id.name_get()[0][1]"/><br/>
+                        <t t-if="o.product_id.product_tmpl_id.color_code">
+                            Color Code: <span t-field="o.product_id.product_tmpl_id.color_code"/>
+                        </t>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Quantity:</strong><br/>
+                        <span t-field="o.product_qty"/>
+                        <span t-field="o.product_uom.name" groups="product.group_uom"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Routing:</strong><br/>
+                        <t t-if="o.routing_id">
+                            <span t-field="o.routing_id"/>
+                        </t>
+                    </div>
+                </div>
+            </xpath>
+
             <!-- Display products list table if we have produces products or products to produce -->
             <xpath expr="//table[@t-if='o.move_lines or o.move_lines2']" position="replace">
                 <table class="table table-condensed" t-if="o.move_lines or o.move_lines2">
