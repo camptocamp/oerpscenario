@@ -26,7 +26,7 @@
           }
           .address{
               position: fixed;
-              left: 175px;
+              left: 186px;
           }
         </style>
         <!-- Informations contact on top of page -->
@@ -40,13 +40,12 @@
                   </strong> <span t-field="doc.user_id.partner_id"/><br/>
                   Tel:
                   <t t-if="doc.user_id">
-                    <span t-field="doc.get_employee_from_user(doc.user_id).work_phone"/>
+                    <span t-field="doc.get_employee_from_user(doc.user_id).work_phone"/><br/>
                   </t>
                   <t t-if="not doc.user_id">
                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<br/>
                   </t>
-                  <br/>
                   <span t-field="doc.user_id.email"/><br/>
                   <br/>
                   <strong>
@@ -54,13 +53,12 @@
                   </strong> <span t-field="doc.env.user.name"/><br/>
                   Tel:
                   <t t-if="doc.env.user">
-                    <span t-field="doc.get_employee_from_user(doc.env.user).work_phone"/>
+                    <span t-field="doc.get_employee_from_user(doc.env.user).work_phone"/><br/>
                   </t>
                   <t t-if="not doc.env.user">
                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<br/>
                   </t>
-                  <br/>
                   <span t-field="doc.env.user.email"/><br/>
                 </small>
               </small>
@@ -71,7 +69,6 @@
             <br/>
             <br/>
           </div>
-<!--           <div t-field="doc.partner_id" t-field-options='{"widget:" "contact", "fields":["address", "name"]}' /> -->
 
         </small>
       </xpath>
@@ -79,33 +76,33 @@
       <!-- Partner Informations -->
       <xpath expr="//div[@id='informations']" position="replace">
         <div class="row mt32 mb32" id="informations">
-            <div t-if="doc.client_order_ref" class="col-xs-6">
-                <strong>
-                  Your Reference:
-                </strong>
-                <strong t-field="doc.client_order_ref"/>
+            <div class="col-xs-6" style="padding-left: 0px; margin-left: 0px">
+              <div t-if="doc.client_order_ref" class="col-xs-12" style="padding-left: 0px;">
+                  <span class="col-xs-5"><strong>Your Reference:</strong></span>
+                  <span class="address"> <strong t-field="doc.client_order_ref"/></span>
+              </div>
             </div>
             <div class="col-xs-7"></div>
             <div class="col-xs-6" style="padding-left: 0px; margin-left: 0px">
-              <div t-if="doc.customer_contact_id" class="col-xs-12" style="paddin-left 0px;">
+              <div t-if="doc.customer_contact_id" class="col-xs-12" style="padding-left: 0px;">
                   <span class="col-xs-5">Contact:</span>
                   <span class="address" t-field="doc.customer_contact_id.name"/>
               </div>
-              <div t-if="doc.client_order_contact_type" class="col-xs-12">
+              <div t-if="doc.client_order_contact_type" class="col-xs-12" style="padding-left: 0px;">
                   <span class="col-xs-5">Your order:</span>
                   <span class="address">
                     <span t-field="doc.client_order_contact_type"/><t t-if="doc.client_order_date">, <span t-field="doc.client_order_date"/></t>
                   </span>
               </div>
-              <div class="col-xs-12">
+              <div class="col-xs-12" style="padding-left: 0px;">
                   <span class="col-xs-5">Client number:</span>
                   <span class="address" t-field="doc.partner_id.ref"/>
               </div>
-              <div name="payment_term" t-if="doc.payment_term_id" class="col-xs-12 hidden">
+              <div name="payment_term" t-if="doc.payment_term_id" class="col-xs-12 hidden " style="padding-left: 0px;">
                   <span class="col-xs-5">Payment Term:</span>
                   <span class="address" t-field="doc.payment_term_id"/>
               </div>
-              <div class="col-xs-12" t-if="doc.validity_date">
+              <div class="col-xs-12" t-if="doc.validity_date" style="padding-left: 0px;">
                   <span class="col-xs-5">Validity:</span>
                   <span class="address" t-field="doc.validity_date"/>
               </div>
@@ -122,6 +119,7 @@
               </div>
               <div t-if="doc.delivery_term" class="col-xs-12">
                   <span class="col-xs-5">Term of delivery:</span>
+                  <span t-field="doc.delivery_term"/>
               </div>
               <div t-if="not doc.delivery_term" class="col-xs-12">
                   <span class="col-xs-5">Term of delivery:</span>
@@ -155,13 +153,6 @@
         </tr>
       </xpath>
 
-<!--       <xpath expr="//div/h2" position="replace">
-                    <h4>
-                <span t-if="doc.state not in ['draft','sent']">Order # </span>
-                <span t-if="doc.state in ['draft','sent']">Quotation # </span>
-                <span t-field="doc.name"/>
-            </h4>
-      </xpath> -->
       <xpath expr="//p[@t-if='doc.payment_term_id.note']" position="replace">
         <p t-if="doc.payment_term_id.note">
           Payment term:
@@ -230,7 +221,7 @@
             </t>
           </td>
           <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
-            <span t-field="l.price_unit_discount" t-field-options='{"widget": "monetary"}'/>
+            <span t-field="l.price_unit_discount"/>
           </td>
           <td class="text-right">
             <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary"}'/>

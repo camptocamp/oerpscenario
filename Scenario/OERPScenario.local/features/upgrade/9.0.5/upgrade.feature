@@ -68,5 +68,10 @@ Feature: upgrade to 9.0.5
     | scenario.carrier_slx_take_away     | Abgeholt          | base.main_partner    |
     | scenario.carrier_slx_brought       | Überbracht        | base.main_partner    |
 
-  Scenario: upgrade
-    Given I set the version of the instance to "9.0.5"
+    @force_translations @slow
+    Scenario: Force lang translations
+      Given I update the module list
+      When I update the following languages
+           | lang  |
+           | de_DE |
+    Then I set the version of the instance to "9.0.5"
