@@ -77,4 +77,22 @@ Feature: upgrade to 9.0.5
            | de_DE |
            | fr_FR |
            | it_IT |
+
+    @update_reception_text_company
+    Scenario: set default company reception text
+      Given I execute the SQL commands
+      """;
+      update res_company set receipt_checklist = '
+      _____ Anleitung Deutsch
+      _____ Anleitung Franz.
+      _____ Anleitung Ital.
+      _____ Verpackung
+      _____ Lieferumfang
+      _____ Funktionstest
+
+      Technik:
+      Produktenews: JA / NEIN
+      Visum: ____________________________';
+      """
+
     Then I set the version of the instance to "9.0.5"
