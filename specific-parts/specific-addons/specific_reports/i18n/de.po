@@ -177,14 +177,11 @@ msgstr "<span class=\"col-xs-5\">Liefer-Datum:</span>"
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
 msgid "<span class=\"col-xs-5\">Delivery number:</span>"
 msgstr "<span class=\"col-xs-5\">Lieferschein-Nr.:</span>"
-<<<<<<< HEAD
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<span class=\"col-xs-5\">Payment Term:</span>"
 msgstr "<span class=\"col-xs-5\">Payment Term:</span>"
-=======
->>>>>>> Layout & Scenario & eev initial
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
@@ -359,12 +356,9 @@ msgid "Companies"
 msgstr "Unternehmen"
 
 #. module: specific_reports
-<<<<<<< HEAD
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
-=======
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
->>>>>>> Layout & Scenario & eev initial
 msgid "Contact:"
 msgstr "Besteller:"
 

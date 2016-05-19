@@ -340,11 +340,10 @@ msgid "Client number:"
 msgstr "No. de client :"
 
 #. module: specific_reports
-<<<<<<< HEAD
 #: model:ir.model.fields,field_description:specific_reports.field_sale_order_client_order_contact_type
 msgid "Description de la commande"
 msgstr ""
-=======
+
 #: model:ir.model.fields,field_description:specific_reports.field_account_invoice_client_order_descr
 #: model:ir.model.fields,field_description:specific_reports.field_sale_order_client_order_descr
 msgid "Client order description"
@@ -354,7 +353,6 @@ msgstr "Client order description"
 #: model:ir.model.fields,field_description:specific_reports.field_account_invoice_client_order_ref
 msgid "Client order reference"
 msgstr "Client order reference"
->>>>>>> add translations
 
 #. module: specific_reports
 #: model:ir.model,name:specific_reports.model_res_company
@@ -390,12 +388,9 @@ msgid "Description"
 msgstr "Descrizione"
 
 #. module: specific_reports
-<<<<<<< HEAD
 #: model:ir.model.fields,help:specific_reports.field_sale_order_client_order_contact_type
-=======
 #: model:ir.model.fields,help:specific_reports.field_account_invoice_client_order_descr
 #: model:ir.model.fields,help:specific_reports.field_sale_order_client_order_descr
->>>>>>> add translations
 msgid "Description of how the order was made"
 msgstr "Description of how the order was made"
 
