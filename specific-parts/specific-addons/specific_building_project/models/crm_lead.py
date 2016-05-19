@@ -40,14 +40,14 @@ class CRMLead(models.Model):
     def create(self, vals):
         rec = super(CRMLead, self).create(vals)
         if rec.building_project_id and rec.partner_id:
-            rec.building_project_id.contact_ids |= rec.partner_id
+            rec.building_project_id.add_role(rec.partner_id)
         return rec
 
     @api.multi
     def write(self, vals):
         res = super(CRMLead, self).write(vals)
         if self.building_project_id and self.partner_id:
-            self.building_project_id.contact_ids |= self.partner_id
+            self.building_project_id.add_role(self.partner_id)
         return res
 
     @api.multi
