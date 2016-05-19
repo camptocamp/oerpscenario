@@ -7,9 +7,9 @@ Feature: upgrade to 9.0.5
     Given I install the required modules with dependencies:
       | name                       |
       | specific_product           |
-<<<<<<< HEAD
       | specific_translations      |
       | specific_reports           |
+      | specific_buildings_project |
     Then my modules should have been installed and models reloaded
 
   Scenario Outline: Create a delivery method for postlogistics
