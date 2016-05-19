@@ -192,6 +192,7 @@ Feature: Parameter the new database
         | specific_stock                |
         | specific_timesheet            |
         | specific_timesheet_activities |
+        | specific_translations         |
 
   @force_translations
   Scenario: Force lang translations
