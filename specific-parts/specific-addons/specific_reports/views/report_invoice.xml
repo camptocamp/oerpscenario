@@ -130,9 +130,9 @@
               </div>
             </div>
             <div class="col-xs-6 lp-0">
-              <div t-if="o.date_invoice" class="col-xs-12">
+              <div t-if="o.create_date" class="col-xs-12">
                   <span class="col-xs-5">Date:</span>
-                  <span t-field="o.date_invoice" t-field-options='{"widget":"date"}'/>
+                  <span t-field="o.create_date" t-field-options='{"widget":"date"}'/>
               </div>
             </div>
 
@@ -194,7 +194,7 @@
             <span t-field="l.price_unit"/>
           </td>
           <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
-            <span t-field="l.project_discount"/>
+            <span t-field="l.project_discount"/><br/>
             <span t-field="l.public_discount"/>
           </td>
           <td>
