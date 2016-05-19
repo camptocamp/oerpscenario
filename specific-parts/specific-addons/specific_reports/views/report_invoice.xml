@@ -8,7 +8,8 @@
 
       <!-- Put address on left side for letter -->
       <xpath expr="//div[@class='row']/div/address[@t-field='o.partner_id']/.." position="replace">
-        <t t-if="not o.partner_id.eev_member or o.partner_id.eev_alarm">
+        <!-- 1 Address IF no eev_nr or eev_alarm for a company or contact in a company -->
+        <t t-if="not (o.partner_id.eev_member or o.partner_id.parent_id.eev_member) or (o.partner_id.eev_alarm or o.partner_id.parent_id.eev_alarm)">
           <div class="col-xs-6">
               <span t-field="o.partner_id.parent_id"/><br/>
               <span t-field="o.partner_id.name"/>
@@ -17,15 +18,18 @@
             <span t-if="o.partner_id.vat">TIN: <span t-field="o.partner_id.vat"/></span>
           </div>
         </t>
-        <t t-if="o.partner_id.eev_member and not o.partner_id.eev_alarm">
+        <!-- Address of eev & partner IF eev and not eev_alarm for company or contact in a company-->
+        <t t-if="(o.partner_id.eev_member or o.partner_id.parent_id.eev_member) and not (o.partner_id.eev_alarm or o.partner_id.parent_id.eev_alarm)">
           <div class="col-xs-6">
             <span t-field="o.env.ref('scenario.partner_90424').name"/><br/>
             <span t-field="o.env.ref('scenario.partner_90424').street"/><br/>
             <span t-field="o.env.ref('scenario.partner_90424').country_id.code"/>-<span t-field="o.env.ref('scenario.partner_90424').zip"/> <span t-field="o.env.ref('scenario.partner_90424').city"/><br/>
           </div>
           <div class="col-xs-5">
+              <span t-field="o.partner_id.parent_id"/><br/>
+              <span t-field="o.partner_id.name"/><br/>
               <address t-field="o.partner_id"
-                  t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+                  t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
               <span t-if="o.partner_id.vat">TIN: <span t-field="o.partner_id.vat"/></span>
           </div>
         </t>
