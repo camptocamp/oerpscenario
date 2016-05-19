@@ -8,7 +8,7 @@
                     .upright{
                         text-align: right !important;
                     }
-                    .address{
+                    .bold{
                         font-weight: bold;
                     }
                     .line{
@@ -35,16 +35,22 @@
                     #padding{
                       margin-bottom: 5px;
                     }
+                    .address{
+                      position: fixed;
+                      left: 186px;
+                    }
                 </style>
             </xpath>
             <!-- Throwing away unuseful table & Title -->
             <xpath expr="//h2" position="replace"> </xpath>
             <xpath expr="//table[@class='table table-condensed']" position="replace"> </xpath>
 
+            <xpath expr="//table[@class='table table-condensed mt48']" position="replace"> </xpath>
+
             <!-- Address on top of document -->
             <xpath expr="//div[@class='page']/div[@class='row'] " position="replace">
                 <t t-if="o.picking_type_id.code == 'incoming'">
-                    <div class="col-xs-6 address">
+                    <div class="col-xs-6 bold">
                         <span t-field="o.company_id.name"/>, <span t-field="o.company_id.zip"/> <span t-field="o.company_id.city"/>
                     </div>
                     <div class="col-xs-3">
@@ -52,16 +58,15 @@
                         Mitarbeiter :<br/>
                         RG/LS-Nr :<br/>
                         Lieferant :<br/>
-                        Seite : <br/>
                     </div>
                     <div class="col-xs-3">
-                        <span t-esc='time.strftime("%d/%m/%Y")'/><br/>
+                        <span t-esc='time.strftime("%d.%m.%Y")'/><br/>
                         ______________<br/>
                         ______________<br/>
                         <span t-esc="o.partner_id.name"/><br/>
                         <br/>
                     </div>
-                    <h2>
+                    <h2 class="mb16">
                         <span t-field="o.name"/>
                     </h2>
                 </t><!-- IF incoming-->
@@ -75,14 +80,13 @@
                                     Your client manager
                                   </strong> <span t-field="o.sale_id.user_id"/><br/>
                                   Tel:
-                                  <t t-if="o.sale_id.user_id.phone">
-                                    <span t-field="o.sale_id.user_id.phone"/>
+                                  <t t-if="o.get_employee_from_user()">
+                                    <span t-field="o.get_employee_from_user().work_phone"/><br/>
                                   </t>
                                   <t t-if="not o.sale_id.user_id.phone">
                                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<br/>
                                   </t>
-                                  <br/>
                                   <span t-field="o.sale_id.user_id.email"/><br/>
                                   <br/>
                                   <strong>
@@ -90,13 +94,12 @@
                                   </strong> <span t-field="o.env.user.name"/><br/>
                                   Tel:
                                   <t t-if="o.env.user.phone">
-                                    <span t-field="o.env.user.phone"/>
+                                    <span t-field="o.get_employee_from_user(o.env.user).work_phone"/><br/>
                                   </t>
                                   <t t-if="not o.env.user.phone">
                                     &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<br/>
                                   </t>
-                                  <br/>
                                   <span t-field="o.env.user.email"/><br/>
                                 </small>
                               </small>
@@ -105,33 +108,37 @@
                     </small>
                     <div class="row col-xs-6" id="addressout">
                         <div t-if="o.partner_id" name="partner_header">
+                            <span t-field="o.partner_id.parent_id.name"/><br/>
+                            <span t-field="o.partner_id.name"/>
                             <div t-field="o.partner_id"
-                               t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
+                               t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}'/>
                         </div>
                     </div>
-                    <div class="row col-xs-12"><br/><br/></div>
+                    <div class="row col-xs-12">
+                          <span> </span> <!-- Black line to ensure layout downside -->
+                    </div>
                     <div class="row mt32 mb32" id="informations">
                         <div t-if="o.sale_id.client_order_ref" class="col-xs-6" name="reference" id="padding">
                             <h2 t-if="o.name"><span t-field="o.name"/></h2>
-                            <strong>
-                              Your reference:
-                            </strong>
-                            <strong t-field="o.sale_id.client_order_ref"/>
+                            <span class="col-xs-5" style="padding-left: 0px;"><strong>Your reference:</strong></span>
+                            <t t-if="o.sale_id.client_order_ref">
+                              <strong class="address" t-field="o.sale_id.client_order_ref"/>
+                            </t>
                         </div>
                         <div class="col-xs-7"></div>
-                        <div class="col-xs-6" style="padding-left: 0px;">
-                          <div t-if="o.partner_id" class="col-xs-12">
-                              Contact:
+                        <div class="col-xs-6 pl-0" style="margin-left: 0px; padding-left: 0px;">
+                          <div t-if="o.partner_id" class="col-xs-12" style="padding-left: 0px;">
+                            <span class="col-xs-5">Contact:</span>
                               <span class="address" t-field="o.partner_id"/>
                           </div>
-                          <div t-if="o.sale_id.client_order_contact_type" class="col-xs-12">
-                              Your order:
-                              <span class="address">
-                                <span t-field="o.sale_id.client_order_contact_type"/><t t-if="o.sale_id.client_order_date">, <span t-field="o.sale_id.client_order_date"/></t>
+
+                          <div t-if="o.sale_id.client_order_contact_type" class="col-xs-12" style="padding-left: 0px;">
+                              <span class="col-xs-5 pl-0">Your order:</span>
+                                <span class="address" t-field="o.sale_id.client_order_contact_type"/><t t-if="o.sale_id.client_order_date">, <span class="address" t-field="o.sale_id.client_order_date"/></t>
                               </span>
                           </div>
-                          <div class="col-xs-12">
-                              Client number:
+                          <div class="col-xs-12" style="padding-left: 0px;">
+                              <span class="col-xs-5">Client number:</span>
                               <span class="address" t-field="o.partner_id.ref"/>
                           </div>
                         </div>
@@ -142,7 +149,7 @@
                           </div>
                           <div t-if="o.carrier_id" class="col-xs-12">
                               <span class="col-xs-5">Carrier:</span>
-                              <span t-field="o.carrier_id" t-field-options='{"widget":"date"}'/>
+                              <span t-field="o.carrier_id"/>
                           </div>
                           <div t-if="not o.carrier_id" class="col-xs-12">
                               <span class="col-xs-5">Carrier:</span>
@@ -164,7 +171,6 @@
                                     Art.Date</th>
                                 <th>Bezeichnung Liferantenbezeichnung Inhalt</th>
                                 <th>Bestellmenge<br/>
-                                    Gelifert<br/>
                                     Liefermenge<br/>
                                     Rückstand
                                 </th>
@@ -183,25 +189,19 @@
                                     <span t-field="pack_operation.product_id.e_nr"/>
                                     </td>
                                     <td>
-                                        <span t-field="pack_operation.product_id.name"/><br/>
-                                        Logistik:<br/>
-                                        ____ Anleitung Deutsch<br/>
-                                        ____ Anleitung Franz.<br/>
-                                        ____ Anleitung Ital.<br/>
-                                        <t t-if="pack_operation.product_id.manual_code">
-                                        ____ Manual-Code: <span t-field="pack_operation.product_id.manual_code"/><br/>
+                                        <span t-field="pack_operation.product_id.name"/>
+                                        <t t-if="pack_operation.product_id.description_sale">
+                                          <span t-field="pack_operation.product_id.description_sale"/>
                                         </t>
-                                        ____ Verpackung<br/>
-                                        ____ Lieferumfang<br/>
-                                        ____ Funktiontest<br/>
                                         <br/>
-                                        Technik:<br/>
-                                        Produktenew: JA / NEIN<br/>
-                                        Visum: ________________<br/>
+                                        Logistik:<br/>
+                                        <t t-if="pack_operation.product_id.product_tmpl_id.manual_code">
+                                        _____ Manual-Code: <span t-field="pack_operation.product_id.product_tmpl_id.manual_code"/><br/>
+                                        </t>
+                                        <span t-field="o.company_id.receipt_checklist"/><br/>
                                     </td>
                                     <td>
-                                        <span t-field="pack_operation.product_qty"/><span t-field="pack_operation.product_uom"/><br/>
-                                    0.00<br/>
+                                        <span t-field="pack_operation.product_qty"/> <span t-field="pack_operation.product_uom"/><br/>
                                     <br/>
                                     ________<br/>
                                     ________<br/>
@@ -221,24 +221,18 @@
                                     </td>
                                     <td>
                                         <span t-field="pack_operation.product_id.name"/><br/>
-                                        Logistik:<br/>
-                                        ____ Anleitung Deutsch<br/>
-                                        ____ Anleitung Franz.<br/>
-                                        ____ Anleitung Ital.<br/>
-                                        <t t-if="pack_operation.product_id.manual_code">
-                                        ____ Manual-Code:<span t-field="pack_operation.product_id.manual_code"/><br/>
+                                        <t t-if="pack_operation.product_id.description_sale">
+                                          <span t-field="pack_operation.product_id.description_sale"/>
                                         </t>
-                                        ____ Verpackung<br/>
-                                        ____ Lieferumfang<br/>
-                                        ____ Funktiontest<br/>
                                         <br/>
-                                        Technik:<br/>
-                                        Produktenew: JA / NEIN<br/>
-                                        Visum: ________________<br/>
+                                        Logistik:<br/>
+                                        <t t-if="pack_operation.product_id.product_tmpl_id.manual_code">
+                                        _____ Manual-Code: <span t-field="pack_operation.product_id.product_tmpl_id.manual_code"/><br/>
+                                        </t>
+                                        <span t-field="o.company_id.receipt_checklist"/><br/>
                                     </td>
                                     <td>
-                                        <span t-field="pack_operation.product_qty"/><span t-field="pack_operation.product_uom"/><br/>
-                                    0.00<br/>
+                                        <span t-field="pack_operation.product_qty"/> <span t-field="pack_operation.product_uom"/><br/>
                                     <br/>
                                     ________<br/>
                                     ________<br/>
@@ -269,10 +263,13 @@
                             </td>
 
                             <td>
-                                <t t-if="m.product_uom_qty">
-                                    <span t-field="m.product_uom_qty"/>
-                                    <span t-field="m.product_uom"/>
+                                <t t-if="m.product_uom_qty == o.env.ref('product.product_uom_unit')">
+                                  <span t-raw="int(m.product_uom_qty or 0)"/>
                                 </t>
+                                <t t-if="m.product_uom_qty != o.env.ref('product.product_uom_unit')">
+                                  <span t-raw="round(m.product_uom_qty, 2)"/>
+                                </t>
+                                <span t-field="m.product_uom"/>
                             </td>
                             <td>
                                 <t t-if="m.product_id.e_nr">
@@ -292,6 +289,10 @@
                                 </t>
                                 <t t-if="not m.product_id">
                                   <span  t-field="m.name"/>
+                                </t>
+                                <t t-if="m.product_id.description_sale">
+                                  <br/>
+                                  <span t-field="m.product_id.description_sale"/>
                                 </t>
                             </td>
                         </tr>

@@ -8,5 +8,6 @@ Feature: upgrade to 9.0.5
       | name                       |
       | specific_product           |
       | specific_translations      |
+      | specific_reports           |
     Then my modules should have been installed and models reloaded
     Then I set the version of the instance to "9.0.5"
