@@ -9,7 +9,7 @@ Feature: upgrade to 9.0.5
       | specific_product           |
       | specific_translations      |
       | specific_reports           |
-      | specific_buildings_project |
+      | specific_building_project |
     Then my modules should have been installed and models reloaded
 
   Scenario Outline: Create a delivery method for postlogistics
