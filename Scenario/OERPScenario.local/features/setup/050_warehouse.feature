@@ -68,7 +68,6 @@ Feature: Configure Warehouse and Logistic processes
     Given I execute the SQL commands
     """;
     update res_company set receipt_checklist = '
-    Logistik:
     _____ Anleitung Deutsch
     _____ Anleitung Franz.
     _____ Anleitung Ital.
