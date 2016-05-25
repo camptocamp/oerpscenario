@@ -14,10 +14,28 @@
         <xpath expr="//div[@name='carrier_selection']" position="after">
           <field name="delivery_term"/>
         </xpath>
-<!--         <xpath expr="//div[@name='discount']" position="after">
-            <field name="project_discount" groups="sale.group_disount_per_so_line"/>
-            <field name="public_discount" groups="sale.group_disount_per_so_line"/>
-        </xpath> --> <!-- TOTO Add the discount fields in base view -->
+         <!-- In Form view Remove label "discount"-->
+        <xpath expr="//label[@for='discount']" position="replace">
+        </xpath>
+        <!-- In form view -->
+        <xpath expr="//div[@name='discount']" position="replace">
+          <field name="discount" class="oe_inline" invisible="1"/>
+          <label for="project_discount" groups="sale.group_discount_per_so_line"/>
+          <div name="project_discount" groups="sale.group_discount_per_so_line">
+            <field name="project_discount" class="oe_inline"/> %%
+          </div>
+
+          <label for="public_discount" groups="sale.group_discount_per_so_line"/>
+          <div name="public_discount" groups="sale.group_discount_per_so_line">
+            <field name="public_discount" class="oe_inline"/> %%
+          </div>
+        </xpath>
+        <!-- Tree view of order_lines used in SO -->
+        <xpath expr="//tree/field[@name='discount']" position="replace">
+          <field name="discount" groups="sale.group_discount_per_so_line" invisible="1"/>
+          <field name="project_discount" groups="sale.group_discount_per_so_line"/>
+          <field name="public_discount" groups="sale.group_discount_per_so_line"/>
+        </xpath>
       </field>
     </record>
 
