@@ -54,7 +54,7 @@ class SaleOrderLine(models.Model):
     )
 
     project_discount = fields.Float(compute='compute_discount',
-                                    string='Public Discount')
+                                    string='Project Discount')
     public_discount = fields.Float(compute='compute_discount',
                                    string='Public Discount')
 
