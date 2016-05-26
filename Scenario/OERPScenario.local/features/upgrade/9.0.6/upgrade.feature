@@ -6,9 +6,9 @@ Feature: upgrade to 9.0.6
     Given I update the module list
     Given I install the required modules with dependencies:
       | name                                          |
+      | specific_product                              |
       | product_dimension                             |
       | account_operation_rule_early_payment_discount |
-      | specific_product                              |
     Then my modules should have been installed and models reloaded
 
   @slow @product_category
