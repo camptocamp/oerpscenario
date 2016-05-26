@@ -6,5 +6,6 @@ Feature: upgrade to 9.0.6
     Given I update the module list
     Given I install the required modules with dependencies:
       | name                       |
+      | product_dimension          |
     Then my modules should have been installed and models reloaded
     Then I set the version of the instance to "9.0.6"
