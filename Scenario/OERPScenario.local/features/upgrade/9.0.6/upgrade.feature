@@ -8,7 +8,17 @@ Feature: upgrade to 9.0.6
       | name                                          |
       | product_dimension                             |
       | account_operation_rule_early_payment_discount |
+      | specific_product                              |
     Then my modules should have been installed and models reloaded
+
+  @slow @product_category
+  Scenario: setup tmp corr for product category
+    Given "product.category" is imported from CSV "setup/product.category.csv" using delimiter ","
+
+  @slow @product_product
+  Scenario: setup new fields on existing product
+    Given "product.product" is imported from CSV "setup/product.product.csv" using delimiter ","
+
     Then I set the version of the instance to "9.0.6"
 
   Scenario: update payment term
