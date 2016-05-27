@@ -36,7 +36,7 @@ class ProductTemplate(models.Model):
         string='Manual Code'
     )
 
-    export_to_pim = fields.Boolean( # après "Can be purchased" => ajouter dans csv
+    export_to_pim = fields.Boolean(
         default=False,
         string='PIM',
     )
