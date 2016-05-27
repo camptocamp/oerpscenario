@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 id,name,parent_id/id,property_stock_valuation_account_id,property_account_income_categ_id,property_account_expense_categ_id,property_stock_account_input_categ_id,property_stock_account_output_categ_id
 scenario.product_category_R0,Rabattgruppe 000,product.product_category_1,1200,3001,4200,4200,4200
 scenario.product_category_R201,Rabattgruppe 201,product.product_category_1,1200,3001,4200,4200,4200
