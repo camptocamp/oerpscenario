@@ -2,9 +2,46 @@
 <odoo>
   <!-- remove 'Confirmation' from purchase order subject -->
   <template id="report_purchaseorder_document" inherit_id="purchase.report_purchaseorder_document">
+
+    <xpath expr="//div[@class='page']" position="attributes">
+      <attribute name="style">margin-left: 60px !important;</attribute>
+    </xpath>
+
     <xpath expr="//h2[contains(@t-if, 'o.state != ')]" position="replace">
       <h2 t-if="o.state != 'draft'">Purchase Order #<span t-field="o.name"/></h2>
     </xpath>
+
+    <!-- Address small top right -->
+    <xpath expr="//div[@class='page']/div[@class='row'][1]" position="before">
+      <style type="text/css">
+        .page{
+          margin-right: 25px !important;
+        }
+      </style>
+      <small>
+        <div class="row">
+          <div class="col-xs-12" style="text-align: right;">
+            <small>
+              <small>
+                <strong>
+                  Person of contact
+                </strong><span t-field="o.env.user.name"/><br/>
+                Phone: mettre no tel<br/>
+                <span t-field="o.env.user.email"/><br/>
+              </small>
+            </small>
+          </div>
+        </div>
+        <div class="col-xs-12" style="text-decoration: underline; padding-left: 0px;">
+          <span t-field="o.company_id.name"/> <span t-field="o.company_id.street"/>, <span t-field="o.company_id.zip"/> <span t-field="o.company_id.city"/>
+          <br/>
+          <br/>
+        </div>
+      </small>
+    </xpath>
+
+    <!-- Address -->
+
   </template>
 </odoo>
 
