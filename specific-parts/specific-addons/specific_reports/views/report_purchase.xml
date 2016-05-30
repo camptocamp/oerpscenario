@@ -17,6 +17,10 @@
         .page{
           margin-right: 25px !important;
         }
+        h2{
+          font-weight: bold;
+          font-size: 18px;
+        }
       </style>
       <small>
         <div class="row">
@@ -41,6 +45,18 @@
     </xpath>
 
     <!-- Address -->
+    <xpath expr="//div[@class='page']/div[@class='row'][1]" position="replace">
+      <div class="row" id="address">
+        <div class="col-xs-6">
+          <span t-field="o.partner_id.parent_id"/><br/>
+          <span t-field="o.partner_id.name"/><br/>
+          <span t-field="o.partner_id.street"/><br/>
+          <span t-field="o.partner_id.zip"/> <span t-field="o.partner_id.city"/><br/>
+          <!-- <span t-field="o.partner_id.country_id.code"> <span t-field="o.partner_id.city"/> -->
+          <span t-if="o.partner_id.vat">TIN: <span t-field="o.partner_id.vat"/></span>
+        </div>
+      </div>
+    </xpath>
 
   </template>
 </odoo>
