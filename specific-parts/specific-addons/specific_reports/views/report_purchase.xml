@@ -21,6 +21,17 @@
           font-weight: bold;
           font-size: 18px;
         }
+        .address{
+          position: fixed;
+          left: 190px;
+        }
+        .pl-0{
+            padding-left: 0px;
+        }
+        #informations{
+              padding-bottom: 12px;
+              margin-bottom: 12px;
+        }
       </style>
       <small>
         <div class="row">
@@ -52,8 +63,42 @@
           <span t-field="o.partner_id.name"/><br/>
           <span t-field="o.partner_id.street"/><br/>
           <span t-field="o.partner_id.zip"/> <span t-field="o.partner_id.city"/><br/>
-          <!-- <span t-field="o.partner_id.country_id.code"> <span t-field="o.partner_id.city"/> -->
           <span t-if="o.partner_id.vat">TIN: <span t-field="o.partner_id.vat"/></span>
+        </div>
+      </div>
+    </xpath>
+
+    <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="replace">
+      <div class="row mt32 mb 32" id="informations">
+        <div class="col-xs-6 pl-0">
+          <div class="col-xs-12 pl-0">
+            <span class="col-xs-5">Delivery Date:</span>
+            <span class="address" t-field="o.date_planned"/>
+          </div>
+          <div class="col-xs-12 pl-0">
+            <span class="col-xs-5">Shipment by:</span>
+            <span class="address" t-field="o.incoterm_id"/>
+          </div>
+          <div class="col-xs-12 pl-0">
+            <span class="col-xs-5">Supplier Number:</span>
+            <span class="address" t-field="o.partner_id.ref"/>
+          </div>
+        </div>
+        <div class="col-xs-6 pl-0">
+          <div class="col-xs-12">
+            <span class="col-xs-5">Date:</span>
+            <span t-field="o.date_order" t-field-options='{"widget":"date"}'/>
+          </div>
+        </div>
+        <div class="col-xs-12 pl-0 mt8">
+          <span class="col-xs-5">Important:</span>
+          <span class="address">Please send us an order confirmation by fax or by E-Mail upon reception of the order!</span>
+        </div>
+        <div class="col-xs-12 pl-0">
+          <strong>
+            <span class="col-xs-5">Indication:</span>
+            <span class="address">Grosse Sendungen bitte ausschliesslich auf EURO-Paletten aliefern! (keine Wegwerf-Paletten)</span>
+          </strong>
         </div>
       </div>
     </xpath>
