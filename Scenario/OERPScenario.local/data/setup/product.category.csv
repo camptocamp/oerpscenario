@@ -1,4 +1,4 @@
-id,name,parent_id:id,property_stock_journal:id,property_stock_valuation_account_id,property_account_income_categ,property_account_expense_categ,property_stock_account_input_categ,property_stock_account_output_categ
+id,name,parent_id:id,property_stock_journal:id,property_stock_valuation_account_id,property_account_income_categ_id,property_account_expense_categ_id,property_stock_account_input_categ_id,property_stock_account_output_categ_id
 scenario.product_category_R0,Rabattgruppe 000,product.product_category_1,stock.stock_journal,1200,3001,4200,4200,4200
 scenario.product_category_R201,Rabattgruppe 201,product.product_category_1,stock.stock_journal,1200,3001,4200,4200,4200
 scenario.product_category_R202,Rabattgruppe 202,product.product_category_1,stock.stock_journal,1200,3001,4200,4200,4200
@@ -23,7 +23,7 @@ scenario.product_category_R0_035,Leistungsteil,scenario.product_category_R0,stoc
 scenario.product_category_R0_040,Einbaugehäuse,scenario.product_category_R0,stock.stock_journal,1200,3001,4200,4200,4200
 scenario.product_category_R0_050,Bus-Technik,scenario.product_category_R0,stock.stock_journal,1200,3001,4200,4200,4200
 scenario.product_category_R0_090,Reparaturwesen,scenario.product_category_R0,stock.stock_journal,1200,3001,4200,4200,4200
-scenario.product_category_R0_091,Muster/Werbematerial/Drucksachen,scenario.product_category_R0,stock.stock_journal,1233,3600,6511,6511,6511
+scenario.product_category_R0_091,Muster/Werbematerial/Drucksachen,scenario.product_category_R0,stock.stock_journal,1233,3600,4200,4200,4200
 scenario.product_category_R0_092,Schulungen/Veranstaltungen,scenario.product_category_R0,stock.stock_journal,1260,3002,6621,6621,6621
 scenario.product_category_R0_093,Dienstleistungen,scenario.product_category_R0,stock.stock_journal,1260,3002,5900,5900,5900
 scenario.product_category_R0_099,Lost & Found,scenario.product_category_R0,stock.stock_journal,1200,3001,4200,4200,4200
@@ -50,7 +50,7 @@ scenario.product_category_R201_034,Kabeleinführung,scenario.product_category_R2
 scenario.product_category_R201_037,Montage-Sockel,scenario.product_category_R201,stock.stock_journal,1200,3001,4200,4200,4200
 scenario.product_category_R201_038,Sensorkopf,scenario.product_category_R201,stock.stock_journal,1200,3001,4200,4200,4200
 scenario.product_category_R201_039,Verlängerungskabel,scenario.product_category_R201,stock.stock_journal,1200,3001,4200,4200,4200
-scenario.product_category_R201_091,Muster/Werbematerial/Drucksachen,scenario.product_category_R201,stock.stock_journal,1233,3600,6511,6511,6511
+scenario.product_category_R201_091,Muster/Werbematerial/Drucksachen,scenario.product_category_R201,stock.stock_journal,1233,3600,4200,4200,4200
 scenario.product_category_R202_003,Automatikstrahler,scenario.product_category_R202,stock.stock_journal,1200,3001,4200,4200,4200
 scenario.product_category_R202_004,Automatikleuchte,scenario.product_category_R202,stock.stock_journal,1200,3001,4200,4200,4200
 scenario.product_category_R202_006,Andere Leuchten,scenario.product_category_R202,stock.stock_journal,1200,3001,4200,4200,4200
@@ -70,4 +70,4 @@ scenario.product_category_R204_100,Intelligenter Lichtschalter,scenario.product_
 scenario.product_category_R205_005,Dämmerungsschalter,scenario.product_category_R205,stock.stock_journal,1200,3001,4200,4200,4200
 scenario.product_category_R206_001,Bewegungsmelder,scenario.product_category_R206,stock.stock_journal,1200,3001,4200,4200,4200
 scenario.product_category_sa_EKDIV,Einkauf Divers,scenario.product_category_all,stock.stock_journal,1510,6001,6001,6001,6001
-scenario.productcategory_drucksachen,temp,scenario.product_category_all,,,,,,
+scenario.productcategory_drucksachen,temp,scenario.product_category_all,stock.stock_journal,,,,,
