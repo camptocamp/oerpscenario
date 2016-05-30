@@ -147,8 +147,8 @@
           <th>Product Num.</th>
           <th>Description</th>
           <th class="text-right">Unit Price</th>
-          <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Disc.(%)</th>
-          <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Net</th>
+          <th class="text-right" groups="sale.group_discount_per_so_line">Disc.(%)</th>
+          <th class="text-right" groups="sale.group_discount_per_so_line">Net</th>
           <th class="text-right">Total</th>
         </tr>
       </xpath>
@@ -214,13 +214,13 @@
           <td class="text-right">
             <span t-field="l.price_unit"/>
           </td>
-          <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+          <td class="text-right" groups="sale.group_discount_per_so_line">
             <span t-field="l.public_discount"/><br/>
             <t t-if="l.order_id.project_pricelist_id">
               <span t-field="l.project_discount"/>
             </t>
           </td>
-          <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+          <td class="text-right" groups="sale.group_discount_per_so_line">
             <span t-field="l.price_unit_discount"/>
           </td>
           <td class="text-right">
@@ -238,12 +238,12 @@
           <th>Product Num.</th>
           <th>Description</th>
           <th class="text-right">Unit Price</th>
-          <th t-if="display_discount" groups="sale.group_discount_per_so_line" class="text-right">
+          <th groups="sale.group_discount_per_so_line" class="text-right">
             <span>
               Disc.(%)
             </span>
           </th>
-          <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Net</th>
+          <th class="text-right" groups="sale.group_discount_per_so_line">Net</th>
           <th class="text-right">Price</th>
         </tr>
       </xpath>
