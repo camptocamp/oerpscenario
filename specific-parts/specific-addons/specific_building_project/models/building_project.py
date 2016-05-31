@@ -195,7 +195,7 @@ class BuildingProject(models.Model):
             rec.sale_order_ids = self.env['sale.order'].search(
                 [('project_id', '=', rec.analytic_account_id.id)])
 
-    @api.depends('opportunity_ids')
+    @api.depends('sale_order_ids')
     def _sale_order_count(self):
         """ Count aggregated sale orders """
         for rec in self:
@@ -205,7 +205,7 @@ class BuildingProject(models.Model):
     def _opportunity_count(self):
         """ Count aggregated meeting from opportunities """
         for rec in self:
-            rec.opportunity_count = len(rec.opportunity_ids.ids)
+            rec.opportunity_count = len(rec.opportunity_ids)
 
     @api.depends('opportunity_ids.meeting_count')
     def _meeting_count(self):
