@@ -20,6 +20,13 @@ Feature: upgrade to 9.0.6
   Scenario: setup new fields on existing product
     Given "product.product" is imported from CSV "setup/product.product.csv" using delimiter ","
 
+  @force_translations @slow
+  Scenario: Force lang translations
+    Given I update the module list
+    When I update the following languages
+         | lang  |
+         | de_DE |
+
   @payment_term
   Scenario: update payment term
      Given I execute the SQL commands
