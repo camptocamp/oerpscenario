@@ -141,42 +141,44 @@ Feature: Parameter the new database
   @modules
   Scenario: install OCA modules
     Given I install the required modules with dependencies:
-        | name                                  |
+        | name                                          |
         # oca/account-financial-tools
-        #| account_credit_control               |
-        #| account_compute_tax_amount           |
+        #| account_credit_control                       |
+        #| account_compute_tax_amount                   |
         # oca/account-financial-reporting
-        #| account_financial_report_webkit      |
-        #| account_financial_report_webkit_xls  |
+        #| account_financial_report_webkit              |
+        #| account_financial_report_webkit_xls          |
+        # oca/bank-statement-reconcile
+        | account_operation_rule_early_payment_discount |
         # oca/bank-payment
-        | account_invoice_bank_selection        |
+        | account_invoice_bank_selection                |
         # oca/carrier-delivery
-        | delivery_carrier_label_postlogistics  |
+        | delivery_carrier_label_postlogistics          |
         # oca/department
-        | analytic_base_department              |
-        | analytic_department                   |
-        | project_department                    |
-        | project_task_department               |
+        | analytic_base_department                      |
+        | analytic_department                           |
+        | project_department                            |
+        | project_task_department                       |
         # oca/l10n-switzerland
-        | l10n_ch_bank                          |
-        #| l10n_ch_dta                          |
-        | l10n_ch_payment_slip                  |
-        | l10n_ch_states                        |
-        | l10n_ch_zip                           |
+        | l10n_ch_bank                                  |
+        #| l10n_ch_dta                                  |
+        | l10n_ch_payment_slip                          |
+        | l10n_ch_states                                |
+        | l10n_ch_zip                                   |
         # oca/partner-contact
-        | partner_firstname                     |
+        | partner_firstname                             |
         # oca/server-tools
-        #| disable_openerp_online               |
+        #| disable_openerp_online                       |
         # oca/web
-        #| web_dialog_size                      |
-        #| web_sheet_full_width                 |
-        #| web_shortcuts                        |
+        #| web_dialog_size                              |
+        #| web_sheet_full_width                         |
+        #| web_shortcuts                                |
         # oca/stock-logistics-warehouse
-        | stock_available_mrp                   |
+        | stock_available_mrp                           |
         # oca/stock-logistics-workflow
-        | stock_split_picking                   |
+        | stock_split_picking                           |
         # oca/manufacture
-        | mrp_bom_dismantling                   |
+        | mrp_bom_dismantling                           |
 
   @modules
   Scenario: install specific modules
