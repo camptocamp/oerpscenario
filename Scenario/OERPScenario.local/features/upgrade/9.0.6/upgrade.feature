@@ -15,7 +15,7 @@ Feature: upgrade to 9.0.6
   Scenario: setup tmp corr for product category
     Given "product.category" is imported from CSV "setup/product.category.csv" using delimiter ","
 
-  @slow @product_product
+  @slow @product
   Scenario: setup new fields on existing product
     Given "product.product" is imported from CSV "setup/product.product.csv" using delimiter ","
 
