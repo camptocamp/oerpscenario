@@ -115,11 +115,9 @@
             <strong>
               <th>Pos.</th>
               <th>Qty</th>
-              <th>No Supplier<br/>No Swisslux</th>
-              <th>Description<br/>Swisslux Article-No.<br/>Swisslux Description<br/>Reminder</th>
+              <th>E-nr</th>
+              <th>[Article-No.] Description<br/>Swisslux Description<br/>Reminder</th>
               <th>List</th>
-              <th>%</th>
-              <th>Price</th>
               <th>Amount</th>
             </strong>
           </tr>
@@ -131,8 +129,12 @@
               <span t-raw="line_counter"/>
             </td>
             <td>
-              <span t-field="line.product_qty"/>
-              <span t-field="line.product_uom.name" groups="product.group_uom"/>
+              <t t-if="line.product_uom == o.env.ref('product.product_uom_unit')">
+                <span t-raw="int(line.product_qty or 0)"/>
+              </t>
+              <t t-if="line.product_uom != o.env.ref('product.product_uom_unit')">
+                <span t-raw="round(line.product_qty, 2)"/>
+              </t>
             </td>
             <td>
               <t t-if="line.product_id.e_nr">
@@ -142,24 +144,13 @@
             </td>
             <td>
               <span t-field="line.name"/> <!-- Description -->
-              <t t-if="line.product_id.e_nr">
-               E-No. <span t-field="line.product_id.e_nr"/>
-              </t>
-              <span t-field="line.product_id.description_purchase"/>
             </td>
             <td>
                <span t-field="line.price_unit"/> <!-- List -->
             </td>
             <td>
-              Rabatt
-              <!-- <span t-field="line."/> --><!-- Rabatt -->
-            </td>
-            <td>
-              Price with rabatt
-              <!-- <span t-field=""/> --> <!-- Price with rabatt -->
-            </td>
-            <td>
-               <!-- <span t-field="line.price_subtotal" t-field-options='{"widget": monetary, "display_currency": "o.currency_id"}'/>--> <!-- Amount -->
+                <span t-field="line.price_subtotal"
+                  t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
             </td>
           </tr>
         </tbody>
