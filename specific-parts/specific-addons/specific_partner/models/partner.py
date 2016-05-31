@@ -37,7 +37,7 @@ class ResPartner(models.Model):
         ),
     }
 
-    ref = fields.Char('Code', default='New')
+    ref = fields.Char('Code', required=True, readonly=True)
     parent_category_id = fields.Many2one(
         relation='parent_id.category_id',
         string="Tags parent",
@@ -120,15 +120,19 @@ class ResPartner(models.Model):
 
     region_id = fields.Many2one('res.partner.region', "Verkaufsgebiet")
 
+    _sql_constraints = [
+        ('res_partner_unique_ref', 'unique(ref)', 'This code already exists')
+    ]
+
     @api.model
     def create(self, vals):
         """Define customer code"""
-        if vals.get('ref', 'New') == 'New':
+        if not vals.get('ref'):
             vals['ref'] = self.env['ir.sequence'].next_by_code(
-                'res.partner') or 'New'
+                'res.partner'
+            )
 
-        result = super(ResPartner, self).create(vals)
-        return result
+        return super(ResPartner, self).create(vals)
 
     @api.model
     def name_search(self, name, args=None, operator='ilike', limit=100):
