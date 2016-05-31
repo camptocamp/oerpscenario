@@ -32,6 +32,9 @@
               padding-bottom: 12px;
               margin-bottom: 12px;
         }
+        .al-top{
+          vertical-align: text-top;
+        }
       </style>
       <small>
         <div class="row">
@@ -68,6 +71,7 @@
       </div>
     </xpath>
 
+    <!-- Informations -->
     <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="replace">
       <div class="row mt32 mb 32" id="informations">
         <div class="col-xs-6 pl-0">
@@ -102,6 +106,66 @@
         </div>
       </div>
     </xpath>
+
+    <xpath expr="//div[@class='page']/table[@class='table table-condensed']" position="replace">
+      <t t-set="line_counter" t-value="0"/>
+      <table class="table table-condensed">
+        <thead>
+          <tr class="al-top">
+            <strong>
+              <th>Pos.</th>
+              <th>Qty</th>
+              <th>No Supplier<br/>No Swisslux</th>
+              <th>Description<br/>Swisslux Article-No.<br/>Swisslux Description<br/>Reminder</th>
+              <th>List</th>
+              <th>%</th>
+              <th>Price</th>
+              <th>Amount</th>
+            </strong>
+          </tr>
+        </thead>
+        <tbody>
+          <tr t-foreach="o.order_line" t-as="line">
+            <td>
+              <t t-set="line_counter" t-value="line_counter + 1"/>
+              <span t-raw="line_counter"/>
+            </td>
+            <td>
+              <span t-field="line.product_qty"/>
+              <span t-field="line.product_uom.name" groups="product.group_uom"/>
+            </td>
+            <td>
+              <t t-if="line.product_id.e_nr">
+                 <span t-field="line.product_id.e_nr"/> <!-- no swisslux-->
+              </t>
+              <span t-field="line.product_id.default_code"/>
+            </td>
+            <td>
+              <span t-field="line.name"/> <!-- Description -->
+              <t t-if="line.product_id.e_nr">
+               E-No. <span t-field="line.product_id.e_nr"/>
+              </t>
+              <span t-field="line.product_id.description_purchase"/>
+            </td>
+            <td>
+               <span t-field="line.price_unit"/> <!-- List -->
+            </td>
+            <td>
+              Rabatt
+              <!-- <span t-field="line."/> --><!-- Rabatt -->
+            </td>
+            <td>
+              Price with rabatt
+              <!-- <span t-field=""/> --> <!-- Price with rabatt -->
+            </td>
+            <td>
+               <!-- <span t-field="line.price_subtotal" t-field-options='{"widget": monetary, "display_currency": "o.currency_id"}'/>--> <!-- Amount -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </xpath>
+
 
   </template>
 </odoo>
