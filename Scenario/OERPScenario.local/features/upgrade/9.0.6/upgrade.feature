@@ -6,21 +6,20 @@ Feature: upgrade to 9.0.6
     Given I update the module list
     Given I install the required modules with dependencies:
       | name                                          |
-      | product_dimension                             |
       | specific_product                              |
+      | product_dimension                             |
       | account_operation_rule_early_payment_discount |
     Then my modules should have been installed and models reloaded
 
-  @slow @product_category
+  @product_category @slow
   Scenario: setup tmp corr for product category
     Given "product.category" is imported from CSV "setup/product.category.csv" using delimiter ","
 
-  @slow @product
+  @product @slow
   Scenario: setup new fields on existing product
     Given "product.product" is imported from CSV "setup/product.product.csv" using delimiter ","
 
-    Then I set the version of the instance to "9.0.6"
-
+  @payment_term
   Scenario: update payment term
      Given I execute the SQL commands
        """;
@@ -165,7 +164,7 @@ Feature: upgrade to 9.0.6
     ('it_IT', 'account_followup.followup.line,description', '6', 'translated', '
     Gentile %(partner_name)s,
 
-    Purtroppo i nostri richiami di pagamento sono rimasti senza esito. Né abbiamo riscontrato una reazione scritta da parte vostra. Vi preghiamo un''ultima volta di voler versare l''importo scoperto entro 5 giorni. 
+    Purtroppo i nostri richiami di pagamento sono rimasti senza esito. Né abbiamo riscontrato una reazione scritta da parte vostra. Vi preghiamo un''ultima volta di voler versare l''importo scoperto entro 5 giorni.
     Se entro questo termine il pagamento non verrà effettuato saremo purtroppo costretti ad adottare le necessarie misure giuridiche per il recupero della somma dovuta.
 
     Cordiali saluti,
