@@ -9,8 +9,8 @@ Feature: upgrade to 9.0.6
       | specific_product                              |
       | product_dimension                             |
       | account_operation_rule_early_payment_discount |
-      | specific_product           |
     Then my modules should have been installed and models reloaded
+
 
   @product_category @slow
   Scenario: setup tmp corr for product category
