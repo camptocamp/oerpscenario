@@ -21,13 +21,6 @@
         <field name="color_code"/>
         <field name="manual_code"/>
       </xpath>
-      <!-- Add pim field -->
-      <xpath expr="//field[@name='purchase_ok']/.." position="after">
-        <div>
-          <field name="export_to_pim" />
-          <label for="export_to_pim"/>
-        </div>
-      </xpath>
     </field>
   </record>
 
@@ -89,22 +82,7 @@
     </field>
   </record>
 
-<record id="product_normal_form_view" model="ir.ui.view">
-      <field name="name">product_normal_form_view</field>
-      <field name="model">product.product</field>
-      <field name="inherit_id" ref="product.product_normal_form_view" />
-      <field name="type">form</field>
-      <field eval="15" name="priority"/>
-      <field name="arch" type="xml">
-        <!-- Add pim field -->
-        <xpath expr="//field[@name='purchase_ok']/.." position="after">
-          <div>
-            <field name="export_to_pim" />
-            <label for="export_to_pim"/>
-          </div>
-        </xpath>
-      </field>
-</record>
+
 
 
 </odoo>
