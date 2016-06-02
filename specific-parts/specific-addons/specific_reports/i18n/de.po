@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-02 10:10+0000\n"
-"PO-Revision-Date: 2016-06-02 10:10+0000\n"
+"POT-Creation-Date: 2016-06-02 11:42+0000\n"
+"PO-Revision-Date: 2016-06-02 11:42+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -120,9 +120,9 @@ msgstr "<br/>\n"
 #: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
 #: model:ir.ui.view,arch_db:specific_reports.report_purchasequotation_document
 msgid "<br/>\n"
-"                Phone: mettre no tel<br/>"
+"                Phone:"
 msgstr "<br/>\n"
-"                Phone: mettre no tel<br/>"
+"                Tel:"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.external_layout_header
@@ -621,6 +621,11 @@ msgid "Public Discount"
 msgstr "Public Discount"
 
 #. module: specific_reports
+#: model:ir.model,name:specific_reports.model_purchase_order
+msgid "Purchase Order"
+msgstr "Beschaffungsauftrag"
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
 msgid "Purchase Order #"
 msgstr "Bestellung #"
@@ -658,6 +663,11 @@ msgstr "Reference for the client"
 #: model:ir.model.fields,field_description:specific_reports.field_res_company_report_logo
 msgid "Report logo"
 msgstr "Report logo"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "Request for Quotation #"
+msgstr "Bestellung #"
 
 #. module: specific_reports
 #: model:ir.model,name:specific_reports.model_sale_advance_payment_inv
