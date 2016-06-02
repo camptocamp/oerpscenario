@@ -176,7 +176,8 @@ def set_in_settings(ctx, option, value, menu):
     assert field
     Wiz = model(wiz_model)
     values = {}
-    if wiz_model == 'account.config.settings':
+    if (wiz_model == 'account.config.settings' and
+            ctx.conf['server'].release.major_version < '9.0'):
         # Special call to onchange in case of account config
         company = model('res.users').browse(1).company_id
         values.update(Wiz.onchange_company_id(None, company.id)['value'])
