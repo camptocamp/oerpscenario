@@ -11,7 +11,6 @@ Feature: upgrade to 9.0.6
       | account_operation_rule_early_payment_discount |
     Then my modules should have been installed and models reloaded
 
-
   @product_category @slow
   Scenario: setup tmp corr for product category
     Given "product.category" is imported from CSV "setup/product.category.csv" using delimiter ","
