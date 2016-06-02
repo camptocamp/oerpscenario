@@ -1,71 +1,73 @@
-id,name,parent_id:id,property_account_expense_categ_id,property_account_income_categ_id,property_stock_account_input_categ_id,property_stock_account_output_categ_id,property_stock_valuation_account_id
-scenario.product_category_R0,"Rabattgruppe 000",product.product_category_1,4200,3200,4200,4200,1200
-scenario.product_category_R201,"Rabattgruppe 201",product.product_category_1,4200,3200,4200,4200,1200
-scenario.product_category_R202,"Rabattgruppe 202",product.product_category_1,4200,3200,4200,4200,1200
-scenario.product_category_R203,"Rabattgruppe 203",product.product_category_1,4200,3200,4200,4200,1200
-scenario.product_category_R204,"Rabattgruppe 204",product.product_category_1,4200,3200,4200,4200,1200
-scenario.product_category_R205,"Rabattgruppe 205",product.product_category_1,4200,3200,4200,4200,1200
-scenario.product_category_R206,"Rabattgruppe 206",product.product_category_1,4200,3200,4200,4200,1200
-scenario.product_category_R0_001,"Bewegungsmelder",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_002,"Präsenzmelder",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_005,"Dämmerungsschalter",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_008,"Leuchtmittel",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_009,"IR-Fernbedienung",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_010,"Funk-Technik",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_019,"Montagezubehör",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_021,"AP-Gehäuse",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_026,"Abdeckclips",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_029,"Anschlussklemme",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_031,"Abdeckrahmen",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_032,"Befestigungsplatte",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_033,"Treppenhausautomat",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_035,"Leistungsteil",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_040,"Einbaugehäuse",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_050,"Bus-Technik",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_090,"Reparaturwesen",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_091,"Muster/Werbematerial/Drucksachen",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_092,"Schulungen/Veranstaltungen",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_093,"Dienstleistungen",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_099,"Lost & Found",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R0_101,"Intelligente Leuchte",scenario.product_category_R0,4200,3200,4200,4200,1200
-scenario.product_category_R201_001,"Bewegungsmelder",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_002,"Präsenzmelder",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_009,"IR-Fernbedienung",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_010,"Funk-Technik",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_013,"Minuterie",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_019,"Montagezubehör",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_020,"Adapter-Set",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_021,"AP-Gehäuse",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_022,"Eck-Sockel",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_023,"Schutzgitter",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_024,"Entstörkondensator",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_025,"Wandhalterung",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_026,"Abdeckclips",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_027,"Abdeck-Haube",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_028,"Abdeckkleber",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_029,"Anschlussklemme",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_031,"Abdeckrahmen",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_032,"Befestigungsplatte",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_034,"Kabeleinführung",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_037,"Montage-Sockel",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_038,"Sensorkopf",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_039,"Verlängerungskabel",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R201_091,"Muster/Werbematerial/Drucksachen",scenario.product_category_R201,4200,3200,4200,4200,1200
-scenario.product_category_R202_003,"Automatikstrahler",scenario.product_category_R202,4200,3200,4200,4200,1200
-scenario.product_category_R202_004,"Automatikleuchte",scenario.product_category_R202,4200,3200,4200,4200,1200
-scenario.product_category_R202_006,"Andere Leuchten",scenario.product_category_R202,4200,3200,4200,4200,1200
-scenario.product_category_R202_007,"Leuchtenglas",scenario.product_category_R202,4200,3200,4200,4200,1200
-scenario.product_category_R202_011,"Notleuchte",scenario.product_category_R202,4200,3200,4200,4200,1200
-scenario.product_category_R202_012,"Leuchten-Sockel",scenario.product_category_R202,4200,3200,4200,4200,1200
-scenario.product_category_R202_019,"Montagezubehör",scenario.product_category_R202,4200,3200,4200,4200,1200
-scenario.product_category_R202_022,"Eck-Sockel",scenario.product_category_R202,4200,3200,4200,4200,1200
-scenario.product_category_R202_023,"Schutzgitter",scenario.product_category_R202,4200,3200,4200,4200,1200
-scenario.product_category_R202_030,"Fassung R7S",scenario.product_category_R202,4200,3200,4200,4200,1200
-scenario.product_category_R202_036,"Montagebügel",scenario.product_category_R202,4200,3200,4200,4200,1200
-scenario.product_category_R203_001,"Bewegungsmelder",scenario.product_category_R203,4200,3200,4200,4200,1200
-scenario.product_category_R203_003,"Automatikstrahler",scenario.product_category_R203,4200,3200,4200,4200,1200
-scenario.product_category_R203_101,"Intelligente Leuchte",scenario.product_category_R203,4200,3200,4200,4200,1200
-scenario.product_category_R204_020,"Adapter-Set",scenario.product_category_R204,4200,3200,4200,4200,1200
-scenario.product_category_R204_100,"Intelligenter Lichtschalter",scenario.product_category_R204,4200,3200,4200,4200,1200
-scenario.product_category_R205_005,"Dämmerungsschalter",scenario.product_category_R205,4200,3200,4200,4200,1200
-scenario.product_category_R206_001,"Bewegungsmelder",scenario.product_category_R206,4200,3200,4200,4200,1200
+id,name,parent_id/id,property_stock_valuation_account_id,property_account_income_categ_id,property_account_expense_categ_id,property_stock_account_input_categ_id,property_stock_account_output_categ_id
+scenario.product_category_R0,Rabattgruppe 000,product.product_category_1,1200,3001,4200,4200,4200
+scenario.product_category_R201,Rabattgruppe 201,product.product_category_1,1200,3001,4200,4200,4200
+scenario.product_category_R202,Rabattgruppe 202,product.product_category_1,1200,3001,4200,4200,4200
+scenario.product_category_R203,Rabattgruppe 203,product.product_category_1,1200,3001,4200,4200,4200
+scenario.product_category_R204,Rabattgruppe 204,product.product_category_1,1200,3001,4200,4200,4200
+scenario.product_category_R205,Rabattgruppe 205,product.product_category_1,1200,3001,4200,4200,4200
+scenario.product_category_R206,Rabattgruppe 206,product.product_category_1,1200,3001,4200,4200,4200
+scenario.product_category_R0_001,Bewegungsmelder,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_002,Präsenzmelder,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_005,Dämmerungsschalter,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_008,Leuchtmittel,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_009,IR-Fernbedienung,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_010,Funk-Technik,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_019,Montagezubehör,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_021,AP-Gehäuse,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_026,Abdeckclips,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_029,Anschlussklemme,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_031,Abdeckrahmen,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_032,Befestigungsplatte,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_033,Treppenhausautomat,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_035,Leistungsteil,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_040,Einbaugehäuse,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_050,Bus-Technik,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_090,Reparaturwesen,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_091,Muster/Werbematerial/Drucksachen,scenario.product_category_R0,1233,3600,4200,4200,4200
+scenario.product_category_R0_092,Schulungen/Veranstaltungen,scenario.product_category_R0,1260,3002,6621,6621,6621
+scenario.product_category_R0_093,Dienstleistungen,scenario.product_category_R0,1260,3002,5900,5900,5900
+scenario.product_category_R0_099,Lost & Found,scenario.product_category_R0,1200,3001,4200,4200,4200
+scenario.product_category_R0_101,Intelligente Leuchte,scenario.product_category_R0,1201,3000,4000,4000,4000
+scenario.product_category_R201_001,Bewegungsmelder,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_002,Präsenzmelder,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_009,IR-Fernbedienung,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_010,Funk-Technik,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_013,Minuterie,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_019,Montagezubehör,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_020,Adapter-Set,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_021,AP-Gehäuse,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_022,Eck-Sockel,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_023,Schutzgitter,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_024,Entstörkondensator,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_025,Wandhalterung,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_026,Abdeckclips,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_027,Abdeck-Haube,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_028,Abdeckkleber,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_029,Anschlussklemme,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_031,Abdeckrahmen,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_032,Befestigungsplatte,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_034,Kabeleinführung,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_037,Montage-Sockel,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_038,Sensorkopf,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_039,Verlängerungskabel,scenario.product_category_R201,1200,3001,4200,4200,4200
+scenario.product_category_R201_091,Muster/Werbematerial/Drucksachen,scenario.product_category_R201,1233,3600,4200,4200,4200
+scenario.product_category_R202_003,Automatikstrahler,scenario.product_category_R202,1200,3001,4200,4200,4200
+scenario.product_category_R202_004,Automatikleuchte,scenario.product_category_R202,1200,3001,4200,4200,4200
+scenario.product_category_R202_006,Andere Leuchten,scenario.product_category_R202,1200,3001,4200,4200,4200
+scenario.product_category_R202_007,Leuchtenglas,scenario.product_category_R202,1200,3001,4200,4200,4200
+scenario.product_category_R202_011,Notleuchte,scenario.product_category_R202,1200,3001,4200,4200,4200
+scenario.product_category_R202_012,Leuchten-Sockel,scenario.product_category_R202,1200,3001,4200,4200,4200
+scenario.product_category_R202_019,Montagezubehör,scenario.product_category_R202,1200,3001,4200,4200,4200
+scenario.product_category_R202_022,Eck-Sockel,scenario.product_category_R202,1200,3001,4200,4200,4200
+scenario.product_category_R202_023,Schutzgitter,scenario.product_category_R202,1200,3001,4200,4200,4200
+scenario.product_category_R202_030,Fassung R7S,scenario.product_category_R202,1200,3001,4200,4200,4200
+scenario.product_category_R202_036,Montagebügel,scenario.product_category_R202,1200,3001,4200,4200,4200
+scenario.product_category_R203_001,Bewegungsmelder,scenario.product_category_R203,1200,3001,4200,4200,4200
+scenario.product_category_R203_003,Automatikstrahler,scenario.product_category_R203,1200,3001,4200,4200,4200
+scenario.product_category_R203_101,Intelligente Leuchte,scenario.product_category_R203,1201,3000,4000,4000,4000
+scenario.product_category_R204_020,Adapter-Set,scenario.product_category_R204,1200,3001,4200,4200,4200
+scenario.product_category_R204_100,Intelligenter Lichtschalter,scenario.product_category_R204,1200,3001,4200,4200,4200
+scenario.product_category_R205_005,Dämmerungsschalter,scenario.product_category_R205,1200,3001,4200,4200,4200
+scenario.product_category_R206_001,Bewegungsmelder,scenario.product_category_R206,1200,3001,4200,4200,4200
+scenario.product_category_sa_EKDIV,Einkauf Divers,product.product_category_all,1510,6001,6001,6001,6001
+scenario.productcategory_drucksachen,temp,product.product_category_all,,,,,

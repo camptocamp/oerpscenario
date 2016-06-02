@@ -36,6 +36,11 @@ class ProductTemplate(models.Model):
         string='Manual Code'
     )
 
+    export_to_pim = fields.Boolean(
+        default=False,
+        string='PIM',
+    )
+
     _sql_constraints = [
         ('e_nr_unique', 'unique(e_nr)',
          'E-Nr should be unique'),
