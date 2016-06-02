@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-01 15:56+0000\n"
-"PO-Revision-Date: 2016-06-01 15:56+0000\n"
+"POT-Creation-Date: 2016-06-02 10:10+0000\n"
+"PO-Revision-Date: 2016-06-02 10:10+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -117,6 +117,14 @@ msgstr "<br/>\n"
 "                  Tel:"
 
 #. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+#: model:ir.ui.view,arch_db:specific_reports.report_purchasequotation_document
+msgid "<br/>\n"
+"                Phone: mettre no tel<br/>"
+msgstr "<br/>\n"
+"                Phone: mettre no tel<br/>"
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.external_layout_header
 msgid "<small>\n"
 "                  <small>\n"
@@ -182,13 +190,26 @@ msgstr "<span class=\"col-xs-5\">Datum:</span>"
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
 msgid "<span class=\"col-xs-5\">Date:</span>"
 msgstr "<span class=\"col-xs-5\">Datum:</span>"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "<span class=\"col-xs-5\">Delivery Date:</span>"
+msgstr "<span class=\"col-xs-5\">Lieferdatum:</span>"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<span class=\"col-xs-5\">Delivery Method:</span>"
 msgstr "<span class=\"col-xs-5\">Versandart:</span>"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "<span class=\"col-xs-5\">Important:</span>\n"
+"          <span class=\"address\">Please send us an order confirmation by fax or by E-Mail upon reception of the order!</span>"
+msgstr "<span class=\"col-xs-5\">Bestätigung:</span>\n"
+"          <span class=\"address\">Danke, dass Sie unsere Aufträge so schnell wie möglich per Fax oder E-Mail bestätigen!</span>"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
@@ -199,6 +220,16 @@ msgstr "<span class=\"col-xs-5\">Payment Term:</span>"
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<span class=\"col-xs-5\">Quotation Date:</span>"
 msgstr "<span class=\"col-xs-5\">Datum:</span>"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "<span class=\"col-xs-5\">Shipment by:</span>"
+msgstr "<span class=\"col-xs-5\">Versandart:</span>"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "<span class=\"col-xs-5\">Supplier Number:</span>"
+msgstr "<span class=\"col-xs-5\">Lieferanten-Nr.:</span>"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
@@ -265,6 +296,27 @@ msgstr "<strong>\n"
 "                </strong>"
 
 #. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+#: model:ir.ui.view,arch_db:specific_reports.report_purchasequotation_document
+msgid "<strong>\n"
+"                  Person of contact\n"
+"                </strong>"
+msgstr "<strong>\n"
+"                  Sachbearbeiter\n"
+"                </strong>"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "<strong>\n"
+"            <span class=\"col-xs-5\">Indication:</span>\n"
+"            <span class=\"address\">Grosse Sendungen bitte ausschliesslich auf EURO-Paletten aliefern! (keine Wegwerf-Paletten)</span>\n"
+"          </strong>"
+msgstr "<strong>\n"
+"            <span class=\"col-xs-5\">Hinweis:</span>\n"
+"            <span class=\"address\">Grosse Sendungen bitte ausschliesslich auf EURO-Paletten anliefern! (keine Wegwerf-Paletten)</span>\n"
+"          </strong>"
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_mrporder
 msgid "<strong>Consumed Products</strong>"
 msgstr "<strong>Konsumierte Produkte</strong>"
@@ -328,6 +380,11 @@ msgstr "<strong>Ursprungsort</strong>"
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
 msgid "<strong>Your Reference:</strong>"
 msgstr "Ihre Referenz"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "Amount"
+msgstr "Total"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
@@ -436,6 +493,11 @@ msgid "E-No.<br/>Artikel-Nr."
 msgstr "E-No.<br/>Artikel-Nr."
 
 #. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "E-nr"
+msgstr "E-nr"
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
 msgid "Fax:"
 msgstr "Fax:"
@@ -449,6 +511,11 @@ msgstr "Rechnung"
 #: model:ir.model,name:specific_reports.model_account_invoice_line
 msgid "Invoice Line"
 msgstr "Rechnungszeile"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "List"
+msgstr "List"
 
 #. module: specific_reports
 #: model:ir.model.fields,help:specific_reports.field_res_company_report_logo
@@ -512,6 +579,7 @@ msgstr "Persönlich"
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_layouted
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
 #: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Pos."
@@ -556,6 +624,11 @@ msgstr "Public Discount"
 #: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
 msgid "Purchase Order #"
 msgstr "Bestellung #"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "Qty"
+msgstr "Anz."
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_layouted
@@ -609,6 +682,8 @@ msgstr "Zwischensumme"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+#: model:ir.ui.view,arch_db:specific_reports.report_purchasequotation_document
 msgid "TIN:"
 msgstr "USt-ID-Nr."
 
@@ -650,6 +725,11 @@ msgstr "Stückpreis"
 #: model:ir.model.fields,help:specific_reports.field_sale_order_client_order_date
 msgid "When the order was made"
 msgstr "When the order was made"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "[Article-No.] Description<br/>Swisslux Description<br/>Reminder"
+msgstr "Bezeichnung"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
