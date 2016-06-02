@@ -11,6 +11,10 @@
       <h2 t-if="o.state != 'draft'">Purchase Order #<span t-field="o.name"/></h2>
     </xpath>
 
+    <xpath expr="//h2[contains(@t-if, 'o.state == ')]" position="replace">
+      <h2 t-if="o.state == 'draft'">Request for Quotation #<span t-field="o.name"/></h2>
+    </xpath>
+
     <!-- Address small top right -->
     <xpath expr="//div[@class='page']/div[@class='row'][1]" position="before">
       <style type="text/css">
@@ -44,7 +48,7 @@
                 <strong>
                   Person of contact
                 </strong><span t-field="o.env.user.name"/><br/>
-                Phone: mettre no tel<br/>
+                Phone: <span t-field="o.get_employee_from_user(o.env.user).work_phone"/><br/>
                 <span t-field="o.env.user.email"/><br/>
               </small>
             </small>
@@ -175,7 +179,8 @@
                 <strong>
                   Person of contact
                 </strong><span t-field="o.env.user.name"/><br/>
-                Phone: mettre no tel<br/>
+                Phone: <span t-field="o.get_employee_from_user(o.env.user).work_phone"/><br/>
+                <span t-field="o.env.user.email"/><br/>
                 <span t-field="o.env.user.email"/><br/>
               </small>
             </small>
