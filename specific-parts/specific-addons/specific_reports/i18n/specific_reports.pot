@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-17 13:44+0000\n"
-"PO-Revision-Date: 2016-05-17 13:44+0000\n"
+"POT-Creation-Date: 2016-06-02 10:30+0000\n"
+"PO-Revision-Date: 2016-06-02 10:30+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,42 +18,31 @@ msgstr ""
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 msgid "&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\n"
-"                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"
+"                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<br/>"
 msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\n"
-"                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"
+"                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<br/>"
 msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
-msgid ",\n"
+msgid ",&amp;nbsp;\n"
 "                  Tel:"
 msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 msgid "<br/>\n"
-"                                        Logistik:<br/>\n"
-"                                        ____ Anleitung Deutsch<br/>\n"
-"                                        ____ Anleitung Franz.<br/>\n"
-"                                        ____ Anleitung Ital.<br/>\n"
-"                                        ____ Verpackung<br/>\n"
-"                                        ____ Lieferumfang<br/>\n"
-"                                        ____ Funktiontest<br/>\n"
-"                                        <br/>\n"
-"                                        Technik:<br/>\n"
-"                                        Produktenew: JA / NEIN<br/>\n"
-"                                        Visum: ________________<br/>"
+"                                        Logistik:<br/>"
 msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 msgid "<br/>\n"
-"                                    0.00<br/>\n"
 "                                    <br/>\n"
 "                                    ________<br/>\n"
 "                                    ________<br/>"
@@ -82,7 +71,6 @@ msgid "<br/>\n"
 msgstr ""
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<br/>\n"
 "                  <br/>\n"
@@ -93,9 +81,24 @@ msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
+msgid "<br/>\n"
+"                  <strong>\n"
+"                    Official in charge\n"
+"                  </strong>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<br/>\n"
 "                  Tel:"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+#: model:ir.ui.view,arch_db:specific_reports.report_purchasequotation_document
+msgid "<br/>\n"
+"                Phone: mettre no tel<br/>"
 msgstr ""
 
 #. module: specific_reports
@@ -111,6 +114,21 @@ msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
+msgid "<span class=\"col-xs-5 pl-0\">Your order:</span>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
+msgid "<span class=\"col-xs-5\" style=\"padding-left: 0px;\"><strong>Your reference:</strong></span>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "<span class=\"col-xs-5\"><strong>Your Reference:</strong></span>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 msgid "<span class=\"col-xs-5\">Carrier:</span>"
 msgstr ""
 
@@ -121,6 +139,20 @@ msgid "<span class=\"col-xs-5\">Carrier:</span>\n"
 msgstr ""
 
 #. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
+#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "<span class=\"col-xs-5\">Client number:</span>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
+#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "<span class=\"col-xs-5\">Contact:</span>"
+msgstr ""
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<span class=\"col-xs-5\">Date Ordered:</span>"
 msgstr ""
@@ -128,7 +160,13 @@ msgstr ""
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
 msgid "<span class=\"col-xs-5\">Date:</span>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "<span class=\"col-xs-5\">Delivery Date:</span>"
 msgstr ""
 
 #. module: specific_reports
@@ -137,13 +175,14 @@ msgid "<span class=\"col-xs-5\">Delivery Method:</span>"
 msgstr ""
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
-msgid "<span class=\"col-xs-5\">Delivery date:</span>"
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "<span class=\"col-xs-5\">Important:</span>\n"
+"          <span class=\"address\">Please send us an order confirmation by fax or by E-Mail upon reception of the order!</span>"
 msgstr ""
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
-msgid "<span class=\"col-xs-5\">Delivery number:</span>"
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "<span class=\"col-xs-5\">Payment Term:</span>"
 msgstr ""
 
 #. module: specific_reports
@@ -152,16 +191,40 @@ msgid "<span class=\"col-xs-5\">Quotation Date:</span>"
 msgstr ""
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "<span class=\"col-xs-5\">Shipment by:</span>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "<span class=\"col-xs-5\">Supplier Number:</span>"
+msgstr ""
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<span class=\"col-xs-5\">Term of delivery:</span>"
 msgstr ""
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<span class=\"col-xs-5\">Term of delivery:</span>\n"
 "                  <span>nach Absprache</span>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
+msgid "<span class=\"col-xs-5\">VAT number:</span>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "<span class=\"col-xs-5\">Validity:</span>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "<span class=\"col-xs-5\">Your order:</span>"
 msgstr ""
 
 #. module: specific_reports
@@ -173,17 +236,16 @@ msgid "<span>\n"
 msgstr ""
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
-msgid "<strong>\n"
-"                                    Your client manager\n"
-"                                  </strong>"
+#: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
+msgid "<span>Page:</span>\n"
+"                    <span class=\"page\"/>/<span class=\"topage\"/>"
 msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 msgid "<strong>\n"
-"                              Your reference:\n"
-"                            </strong>"
+"                                    Your client manager\n"
+"                                  </strong>"
 msgstr ""
 
 #. module: specific_reports
@@ -195,11 +257,19 @@ msgid "<strong>\n"
 msgstr ""
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
-#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+#: model:ir.ui.view,arch_db:specific_reports.report_purchasequotation_document
 msgid "<strong>\n"
-"                  Your Reference:\n"
+"                  Person of contact\n"
 "                </strong>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "<strong>\n"
+"            <span class=\"col-xs-5\">Indication:</span>\n"
+"            <span class=\"address\">Grosse Sendungen bitte ausschliesslich auf EURO-Paletten aliefern! (keine Wegwerf-Paletten)</span>\n"
+"          </strong>"
 msgstr ""
 
 #. module: specific_reports
@@ -219,6 +289,11 @@ msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_mrporder
+msgid "<strong>Product:</strong><br/>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_mrporder
 msgid "<strong>Product</strong>"
 msgstr ""
 
@@ -234,12 +309,37 @@ msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_mrporder
+msgid "<strong>Quantity:</strong><br/>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_mrporder
 msgid "<strong>Quantity</strong>"
 msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_mrporder
+msgid "<strong>Routing:</strong><br/>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_mrporder
+msgid "<strong>Source Document:</strong><br/>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_mrporder
 msgid "<strong>Source Location</strong>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
+msgid "<strong>Your Reference:</strong>"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "Amount"
 msgstr ""
 
 #. module: specific_reports
@@ -258,7 +358,6 @@ msgstr ""
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 msgid "Bestellmenge<br/>\n"
-"                                    Gelifert<br/>\n"
 "                                    Liefermenge<br/>\n"
 "                                    Rückstand"
 msgstr ""
@@ -274,21 +373,25 @@ msgid "Bezeichnung Liferantenbezeichnung Inhalt"
 msgstr ""
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
-#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
-#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
-msgid "Client number:"
-msgstr ""
-
-#. module: specific_reports
-#: model:ir.model.fields,field_description:specific_reports.field_account_invoice_client_order_conact_type
+#: model:ir.model.fields,field_description:specific_reports.field_account_invoice_client_order_contact_type
 #: model:ir.model.fields,field_description:specific_reports.field_sale_order_client_order_contact_type
 msgid "Client order contact type"
 msgstr ""
 
 #. module: specific_reports
+#: model:ir.model.fields,field_description:specific_reports.field_account_invoice_client_order_date
+#: model:ir.model.fields,field_description:specific_reports.field_sale_order_client_order_date
+msgid "Client order date"
+msgstr ""
+
+#. module: specific_reports
 #: model:ir.model.fields,field_description:specific_reports.field_account_invoice_client_order_ref
 msgid "Client order reference"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_mrporder
+msgid "Color Code:"
 msgstr ""
 
 #. module: specific_reports
@@ -298,18 +401,10 @@ msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
-#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
-#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
-msgid "Contact:"
-msgstr ""
-
-#. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 msgid "Datum : <br/>\n"
 "                        Mitarbeiter :<br/>\n"
 "                        RG/LS-Nr :<br/>\n"
-"                        Lieferant :<br/>\n"
-"                        Seite : <br/>"
+"                        Lieferant :<br/>"
 msgstr ""
 
 #. module: specific_reports
@@ -346,6 +441,11 @@ msgid "E-No.<br/>Artikel-Nr."
 msgstr ""
 
 #. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "E-nr"
+msgstr ""
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
 msgid "Fax:"
 msgstr ""
@@ -361,6 +461,11 @@ msgid "Invoice Line"
 msgstr ""
 
 #. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "List"
+msgstr ""
+
+#. module: specific_reports
 #: model:ir.model.fields,help:specific_reports.field_res_company_report_logo
 msgid "Logo shown in reports"
 msgstr ""
@@ -368,6 +473,12 @@ msgstr ""
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 msgid "Menge"
+msgstr ""
+
+#. module: specific_reports
+#: selection:account.invoice,client_order_contact_type:0
+#: selection:sale.order,client_order_contact_type:0
+msgid "Messestand"
 msgstr ""
 
 #. module: specific_reports
@@ -384,19 +495,39 @@ msgid "Payment slip related to invoice %s"
 msgstr ""
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
-msgid "Payment Term:"
-msgstr ""
-
-#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Payment term:"
 msgstr ""
 
 #. module: specific_reports
+#: selection:account.invoice,client_order_contact_type:0
+#: selection:sale.order,client_order_contact_type:0
+msgid "Per E-Mail"
+msgstr ""
+
+#. module: specific_reports
+#: selection:account.invoice,client_order_contact_type:0
+#: selection:sale.order,client_order_contact_type:0
+msgid "Per Post"
+msgstr ""
+
+#. module: specific_reports
+#: selection:account.invoice,client_order_contact_type:0
+#: selection:sale.order,client_order_contact_type:0
+msgid "Per Telefon"
+msgstr ""
+
+#. module: specific_reports
+#: selection:account.invoice,client_order_contact_type:0
+#: selection:sale.order,client_order_contact_type:0
+msgid "Persönlich"
+msgstr ""
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_layouted
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
 #: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Pos."
@@ -426,8 +557,25 @@ msgid "Production Order # :"
 msgstr ""
 
 #. module: specific_reports
+#: model:ir.model.fields,field_description:specific_reports.field_sale_order_line_project_discount
+msgid "Project Discount"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.model.fields,field_description:specific_reports.field_account_invoice_line_project_discount
+#: model:ir.model.fields,field_description:specific_reports.field_account_invoice_line_public_discount
+#: model:ir.model.fields,field_description:specific_reports.field_sale_order_line_public_discount
+msgid "Public Discount"
+msgstr ""
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
 msgid "Purchase Order #"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "Qty"
 msgstr ""
 
 #. module: specific_reports
@@ -481,8 +629,15 @@ msgid "Subtotal"
 msgstr ""
 
 #. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+#: model:ir.ui.view,arch_db:specific_reports.report_purchasequotation_document
+msgid "TIN:"
+msgstr ""
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
-msgid "Technik-Hotline: 043 844 80 77,"
+msgid "Technik-Hotline: +41 43 844 80 77,"
 msgstr ""
 
 #. module: specific_reports
@@ -494,6 +649,11 @@ msgstr ""
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Total"
+msgstr ""
+
+#. module: specific_reports
+#: model:ir.model,name:specific_reports.model_stock_picking
+msgid "Transfer"
 msgstr ""
 
 #. module: specific_reports
@@ -509,18 +669,23 @@ msgid "Unit Price"
 msgstr ""
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
-msgid "VAT number:"
+#: model:ir.model.fields,help:specific_reports.field_account_invoice_client_order_date
+#: model:ir.model.fields,help:specific_reports.field_sale_order_client_order_date
+msgid "When the order was made"
 msgstr ""
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
-msgid "Validity:"
+#: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
+msgid "[Article-No.] Description<br/>Swisslux Description<br/>Reminder"
 msgstr ""
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
-#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
-#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
-msgid "Your order:"
+msgid "_____ Manual-Code:"
 msgstr ""
+
+#. module: specific_reports
+#: model:ir.model,name:specific_reports.model_l10n_ch_payment_slip
+msgid "l10n_ch.payment_slip"
+msgstr ""
+

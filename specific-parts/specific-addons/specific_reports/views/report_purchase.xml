@@ -1,10 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <!-- remove 'Confirmation' from purchase order subject -->
+
   <template id="report_purchaseorder_document" inherit_id="purchase.report_purchaseorder_document">
+
+    <xpath expr="//div[@class='page']" position="attributes">
+      <attribute name="style">margin-left: 60px !important;</attribute>
+    </xpath>
+    <!-- remove 'Confirmation' from purchase order subject -->
     <xpath expr="//h2[contains(@t-if, 'o.state != ')]" position="replace">
       <h2 t-if="o.state != 'draft'">Purchase Order #<span t-field="o.name"/></h2>
     </xpath>
+
+    <!-- Address small top right -->
+    <xpath expr="//div[@class='page']/div[@class='row'][1]" position="before">
+      <style type="text/css">
+        .page{
+          margin-right: 25px !important;
+        }
+        h2{
+          font-weight: bold;
+          font-size: 18px;
+        }
+        .address{
+          position: fixed;
+          left: 190px;
+        }
+        .pl-0{
+            padding-left: 0px;
+        }
+        #informations{
+              padding-bottom: 12px;
+              margin-bottom: 12px;
+        }
+        .al-top{
+          vertical-align: text-top;
+        }
+      </style>
+      <small>
+        <div class="row">
+          <div class="col-xs-12" style="text-align: right;">
+            <small>
+              <small>
+                <strong>
+                  Person of contact
+                </strong><span t-field="o.env.user.name"/><br/>
+                Phone: mettre no tel<br/>
+                <span t-field="o.env.user.email"/><br/>
+              </small>
+            </small>
+          </div>
+        </div>
+        <div class="col-xs-12" style="text-decoration: underline; padding-left: 0px;">
+          <span t-field="o.company_id.name"/> <span t-field="o.company_id.street"/>, <span t-field="o.company_id.zip"/> <span t-field="o.company_id.city"/>
+          <br/>
+          <br/>
+        </div>
+      </small>
+    </xpath>
+
+    <!-- Address -->
+    <xpath expr="//div[@class='page']/div[@class='row'][1]" position="replace">
+      <div class="row" id="address">
+        <div class="col-xs-6">
+          <span t-field="o.partner_id.parent_id"/><br/>
+          <span t-field="o.partner_id.name"/><br/>
+          <span t-field="o.partner_id.street"/><br/>
+          <span t-field="o.partner_id.zip"/> <span t-field="o.partner_id.city"/><br/>
+          <span t-if="o.partner_id.vat">TIN: <span t-field="o.partner_id.vat"/></span>
+        </div>
+      </div>
+    </xpath>
+
+    <!-- Informations -->
+    <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="replace">
+      <div class="row mt32 mb 32" id="informations">
+        <div class="col-xs-6 pl-0">
+          <div class="col-xs-12 pl-0">
+            <span class="col-xs-5">Delivery Date:</span>
+            <span class="address" t-field="o.date_planned"/>
+          </div>
+          <div class="col-xs-12 pl-0">
+            <span class="col-xs-5">Shipment by:</span>
+            <span class="address" t-field="o.incoterm_id"/>
+          </div>
+          <div class="col-xs-12 pl-0">
+            <span class="col-xs-5">Supplier Number:</span>
+            <span class="address" t-field="o.partner_id.ref"/>
+          </div>
+        </div>
+        <div class="col-xs-6 pl-0">
+          <div class="col-xs-12">
+            <span class="col-xs-5">Date:</span>
+            <span t-field="o.date_order" t-field-options='{"widget":"date"}'/>
+          </div>
+        </div>
+        <div class="col-xs-12 pl-0 mt8">
+          <span class="col-xs-5">Important:</span>
+          <span class="address">Please send us an order confirmation by fax or by E-Mail upon reception of the order!</span>
+        </div>
+        <div class="col-xs-12 pl-0">
+          <strong>
+            <span class="col-xs-5">Indication:</span>
+            <span class="address">Grosse Sendungen bitte ausschliesslich auf EURO-Paletten aliefern! (keine Wegwerf-Paletten)</span>
+          </strong>
+        </div>
+      </div>
+    </xpath>
+
+    <xpath expr="//div[@class='page']/table[@class='table table-condensed']" position="replace">
+      <t t-set="line_counter" t-value="0"/>
+      <table class="table table-condensed">
+        <thead>
+          <tr class="al-top">
+            <strong>
+              <th>Pos.</th>
+              <th>Qty</th>
+              <th>E-nr</th>
+              <th>[Article-No.] Description<br/>Swisslux Description<br/>Reminder</th>
+              <th>List</th>
+              <th>Amount</th>
+            </strong>
+          </tr>
+        </thead>
+        <tbody>
+          <tr t-foreach="o.order_line" t-as="line">
+            <td>
+              <t t-set="line_counter" t-value="line_counter + 1"/>
+              <span t-raw="line_counter"/>
+            </td>
+            <td>
+              <t t-if="line.product_uom == o.env.ref('product.product_uom_unit')">
+                <span t-raw="int(line.product_qty or 0)"/>
+              </t>
+              <t t-if="line.product_uom != o.env.ref('product.product_uom_unit')">
+                <span t-raw="round(line.product_qty, 2)"/>
+              </t>
+            </td>
+            <td>
+              <t t-if="line.product_id.e_nr">
+                 <span t-field="line.product_id.e_nr"/> <!-- no swisslux-->
+              </t>
+              <span t-field="line.product_id.default_code"/>
+            </td>
+            <td>
+              <span t-field="line.name"/> <!-- Description -->
+            </td>
+            <td>
+               <span t-field="line.price_unit"/> <!-- List -->
+            </td>
+            <td>
+                <span t-field="line.price_subtotal"
+                  t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </xpath>
+
   </template>
+
+  <!-- Purchase order quotation -->
+  <template id="report_purchasequotation_document" inherit_id="purchase.report_purchasequotation_document">
+    <xpath expr="//div[@class='page']" position="attributes">
+        <attribute name="style">margin-left: 60px !important;margin-right: 25px !important;</attribute>
+    </xpath>
+
+    <!-- Address of swisslux & vendor -->
+    <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="replace">
+      <small>
+        <div class="row">
+          <div class="col-xs-12" style="text-align: right;">
+            <small>
+              <small>
+                <strong>
+                  Person of contact
+                </strong><span t-field="o.env.user.name"/><br/>
+                Phone: mettre no tel<br/>
+                <span t-field="o.env.user.email"/><br/>
+              </small>
+            </small>
+          </div>
+        </div>
+        <div class="col-xs-12" style="text-decoration: underline; padding-left: 0px;">
+          <span t-field="o.company_id.name"/> <span t-field="o.company_id.street"/>, <span t-field="o.company_id.zip"/> <span t-field="o.company_id.city"/>
+          <br/>
+          <br/>
+        </div>
+      </small>
+
+      <div class="row" id="address">
+        <div class="col-xs-6">
+          <span t-field="o.partner_id.parent_id"/><br/>
+          <span t-field="o.partner_id.name"/><br/>
+          <span t-field="o.partner_id.street"/><br/>
+          <span t-field="o.partner_id.zip"/> <span t-field="o.partner_id.city"/><br/>
+          <span t-if="o.partner_id.vat">TIN: <span t-field="o.partner_id.vat"/></span>
+        </div>
+      </div>
+
+    </xpath>
+
+  </template>
+
 </odoo>
 
