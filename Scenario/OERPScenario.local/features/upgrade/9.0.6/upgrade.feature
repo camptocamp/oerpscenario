@@ -163,3 +163,17 @@ Feature: upgrade to 9.0.6
 
     """
     Then I set the version of the instance to "9.0.6"
+
+  @product_informations @slow
+  Scenario: Update supplierinfo
+    Given I execute the SQL commands
+      """;
+      delete from ir_model_data where model='product.supplierinfo';
+      """
+
+    Given I execute the SQL commands
+      """;
+      delete from product_supplierinfo;
+      """
+
+    Given "product.supplierinfo" is imported from CSV "setup/product.supplierinfo.csv" using delimiter ","
