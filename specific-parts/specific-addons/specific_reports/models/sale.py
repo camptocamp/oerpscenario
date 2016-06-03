@@ -27,9 +27,11 @@ class SaleOrder(models.Model):
 
     @api.multi
     def _prepare_invoice(self):
-        """ Propagate the transaction_id from the sale order to the invoice """
+        """ Propagate the client order contact type and client order date
+        from the sale order to the invoice """
         invoice_vals = super(SaleOrder, self)._prepare_invoice()
-        invoice_vals['client_order_contact_type'] = self.client_order_contact_type
+        invoice_vals['client_order_contact_type'] =\
+            self.client_order_contact_type
         invoice_vals['client_order_date'] = self.client_order_date
         return invoice_vals
 
