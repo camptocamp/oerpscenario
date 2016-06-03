@@ -26,14 +26,12 @@ class SaleOrder(models.Model):
     )
 
     @api.multi
-    def action_invoice_create(self, grouped=False, final=False):
-        invoice_ids = super(SaleOrder, self).action_invoice_create(
-            grouped=grouped, final=final)
-        invoices = self.env['account.invoice'].browse(invoice_ids)
-        for rec in invoices:
-            rec.client_order_contact_type = self.client_order_contact_type
-            rec.client_order_date = self.client_order_date
-        return invoice_ids
+    def _prepare_invoice(self):
+        """ Propagate the transaction_id from the sale order to the invoice """
+        invoice_vals = super(SaleOrder, self)._prepare_invoice()
+        invoice_vals['client_order_contact_type'] = self.client_order_contact_type
+        invoice_vals['client_order_date'] = self.client_order_date
+        return invoice_vals
 
     @api.multi
     def get_employee_from_user(self, user_id):
