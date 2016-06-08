@@ -78,16 +78,21 @@
                                 <small>
                                   <strong>
                                     Your client manager
-                                  </strong> <span t-field="o.sale_id.user_id"/><br/>
+                                  </strong> <span t-field="o.sale_id.user_id"/>
+                                  <span t-if="not o.sale_id" t-field="o.partner_id.user_id"/><br/>
                                   Tel:
                                   <t t-if="o.get_employee_from_user()">
                                     <span t-field="o.get_employee_from_user().work_phone"/><br/>
                                   </t>
-                                  <t t-if="not o.sale_id.user_id.phone">
-                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<br/>
+                                  <t t-if="o.sale_id">
+                                    <t t-if="not o.sale_id.user_id.phone">
+                                      &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                                      &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<br/>
+                                    </t>
                                   </t>
-                                  <span t-field="o.sale_id.user_id.email"/><br/>
+                                  <span t-if="o.sale_id" t-field="o.sale_id.user_id.email"/>
+                                  <span t-if="not o.sale_id" t-field="o.partner_id.user_id.email"/>
+                                  <br/>
                                   <br/>
                                   <strong>
                                     Official in charge
@@ -252,6 +257,7 @@
                           <th>Menge</th>
                           <th>E-No.<br/>Artikel-Nr.</th>
                           <th>Bezeichnung</th>
+                          <th>HS. Code</th>
                         </tr>
                         </thead>
                         <t t-set="line_counter" t-value="0"/>
@@ -293,6 +299,9 @@
                                   <br/>
                                   <span t-field="m.product_id.description_sale"/>
                                 </t>
+                            </td>
+                            <td>
+                              <span t-field="m.product_id.harmsys_code"/>
                             </td>
                         </tr>
 
