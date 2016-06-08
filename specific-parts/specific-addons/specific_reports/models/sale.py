@@ -36,7 +36,6 @@ class SaleOrder(models.Model):
 
     @api.multi
     def get_employee_from_user(self, user_id):
-        self.ensure_one()
         resource = self.env['resource.resource'].search(
             [('user_id', '=', user_id.id)])
         hr_employee = self.env['hr.employee'].search(
