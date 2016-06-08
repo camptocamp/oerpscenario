@@ -118,8 +118,8 @@
                           <span> </span> <!-- Black line to ensure layout downside -->
                     </div>
                     <div class="row mt32 mb32" id="informations">
-                        <div t-if="o.sale_id.client_order_ref" class="col-xs-6" name="reference" id="padding">
-                            <h2 t-if="o.name"><span t-field="o.name"/></h2>
+                        <div class="col-xs-6" name="reference" id="padding">
+                            <h2 t-if="o.name">Delivery Slip <span t-field="o.name"/></h2>
                             <span class="col-xs-5" style="padding-left: 0px;"><strong>Your reference:</strong></span>
                             <t t-if="o.sale_id.client_order_ref">
                               <strong class="address" t-field="o.sale_id.client_order_ref"/>
