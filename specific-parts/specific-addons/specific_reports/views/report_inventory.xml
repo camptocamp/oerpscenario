@@ -140,6 +140,10 @@
                               <span class="col-xs-5">Client number:</span>
                               <span class="address" t-field="o.partner_id.ref"/>
                           </div>
+                          <div t-if="not o.partner_id.country_id.code == 'CH'" class="col-xs-12" style="padding-left: 0px;">
+                              <span class="col-xs-5">EORI NR:</span>
+                              <span class="address" t-field="o.partner_id.eori_number"/>
+                          </div>
                         </div>
                         <div class="col-xs-6">
                           <div t-if="o.min_date" class="col-xs-12">
