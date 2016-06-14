@@ -12,17 +12,18 @@ class BuildingProject(models.Model):
     _rec_name = 'display_name'
 
     display_name = fields.Char(
-        compute='_compute_display_name'
+        compute='_compute_display_name',
+        store=True,
     )
 
-    @api.multi
     @api.depends('name', 'business_area')     # this definition is recursive
     def _compute_display_name(self):
-        if self.business_area:
-            business_area = self.business_area.upper()
-            self.display_name = ' - '.join([business_area, self.name])
-        else:
-            self.display_name = self.name
+        for record in self:
+            if record.business_area:
+                business_area = record.business_area.upper()
+                record.display_name = ' - '.join([business_area, record.name])
+            else:
+                record.display_name = record.name
 
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
@@ -165,11 +166,6 @@ class BuildingProject(models.Model):
         string="# Opportunity"
     )
 
-    phonecall_ids = fields.One2many(
-        compute='_aggregate_phonecall_meetings',
-        comodel_name='crm.phonecall',
-        string='Phonecalls'
-    )
     meeting_count = fields.Integer(
         compute='_meeting_count',
         string="# Meetings"
