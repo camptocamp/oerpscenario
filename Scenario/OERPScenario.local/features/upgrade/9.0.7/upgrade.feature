@@ -7,6 +7,7 @@ Feature: upgrade to 9.0.7
     Given I install the required modules with dependencies:
       | name                                          |
       | specific_reports                              |
+      | specific_product                              |
     Then my modules should have been installed and models reloaded
 
   @force_translations @slow
