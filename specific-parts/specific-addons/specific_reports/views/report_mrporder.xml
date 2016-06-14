@@ -13,6 +13,9 @@
                 </h2>
             </xpath>
 
+            <xpath expr="//div[@class='page']/div[@class='row mt32 mb32'][2]" position="replace">
+            </xpath>
+
             <!-- Change-->
             <xpath expr="//div[@class='page']/div[@class='row mt32 mb32'][1]" position="replace">
                 <div class="row mt32 mb32">
@@ -37,6 +40,24 @@
                         <t t-if="o.routing_id">
                             <span t-field="o.routing_id"/>
                         </t>
+                    </div>
+                </div>
+                <div class="row mt32 mb32">
+                    <div class="col-xs-3">
+                        <strong>Scheduled Date:</strong><br/>
+                        <span t-field="o.date_planned"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Printing date:</strong><br/>
+                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%m/%d/%Y %H:%M:%S')"/>
+                    </div>
+                    <div class="col-xs-3" t-if="'sale_ref' in o._columns.keys()">
+                        <strong>Partner Ref:</strong><br/>
+                        <span t-esc="'sale_ref' in o._columns.keys() and o.sale_ref"/>
+                    </div>
+                    <div class="col-xs-3" t-if="'sale_name' in o._columns.keys()">
+                        <strong>SO Number:</strong><br/>
+                        <span t-esc="'sale_name' in o._columns.keys() and o.sale_name"/>
                     </div>
                 </div>
             </xpath>
