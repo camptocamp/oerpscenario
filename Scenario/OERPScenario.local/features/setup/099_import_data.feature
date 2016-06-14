@@ -11,7 +11,7 @@ Feature: import master data
   Scenario: import specific regions
     Given "res.better.zip" is imported from CSV "setup/res.better.zip.csv" using delimiter ","
 
-  @csv @product_categories
+  @csv @product_categories @slow
   Scenario: import product categories
     Given "product.category" is imported from CSV "setup/product.category.csv" using delimiter ","
 
@@ -59,11 +59,11 @@ Feature: import master data
   Scenario: import specific supplierinfo
     Given "product.supplierinfo" is imported from CSV "setup/product.supplierinfo.csv" using delimiter ","
 
-  @csv @pricelists
+  @csv @pricelists @slow
   Scenario: import specific pricelist
     Given "product.pricelist" is imported from CSV "setup/product.pricelist.csv" using delimiter ","
 
-  @csv @pricelist_items
+  @csv @pricelist_items @slow
   Scenario: import specific pricelist items
     Given "product.pricelist.item" is imported from CSV "setup/product.pricelist.item.csv" using delimiter ","
 
