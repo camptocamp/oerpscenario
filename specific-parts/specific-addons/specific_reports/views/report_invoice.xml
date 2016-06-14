@@ -194,8 +194,8 @@
             <span t-field="l.price_unit"/>
           </td>
           <td class="text-right" groups="sale.group_discount_per_so_line">
-            <span t-field="l.project_discount"/><br/>
-            <span t-field="l.public_discount"/>
+            <span t-field="l.public_discount"/><br/>
+            <span t-field="l.project_discount"/>
           </td>
           <td>
             <span t-field="l.price_unit_discount"/>

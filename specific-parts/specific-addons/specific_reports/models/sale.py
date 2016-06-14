@@ -54,9 +54,9 @@ class SaleOrderLine(models.Model):
     )
 
     project_discount = fields.Float(compute='compute_discount',
-                                    string='Project Discount')
+                                    string='Object Discount (%)')
     public_discount = fields.Float(compute='compute_discount',
-                                   string='Public Discount')
+                                   string='Discount (%)')
 
     @api.one
     @api.depends('price_unit', 'discount')

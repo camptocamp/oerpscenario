@@ -9,8 +9,8 @@
 
         <xpath expr="//tree/field[@name='discount']" position="replace">
           <field name="discount" groups="sale.group_discount_per_so_line" invisible="1"/>
-          <field name="project_discount" groups="sale.group_discount_per_so_line"/>
           <field name="public_discount" groups="sale.group_discount_per_so_line"/>
+          <field name="project_discount" groups="sale.group_discount_per_so_line"/>
         </xpath>
 
       </field>
@@ -23,8 +23,8 @@
       <field name="arch" type="xml">
 
         <xpath expr="//field[@name='discount']" position="after">
-          <field name="project_discount" groups="sale.group_discount_per_so_line"/>
           <field name="public_discount" groups="sale.group_discount_per_so_line"/>
+          <field name="project_discount" groups="sale.group_discount_per_so_line"/>
         </xpath>
 
       </field>
