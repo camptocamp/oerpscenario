@@ -37,7 +37,7 @@
               <span t-field="o.partner_id.name"/><br/>
             </t>
               <address t-field="o.partner_id"
-                  t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />address widget
+                  t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
               <span t-if="o.partner_id.vat">TIN: <span t-field="o.partner_id.vat"/></span>
           </div>
         </t>
