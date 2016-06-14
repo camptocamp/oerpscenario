@@ -7,8 +7,17 @@
         <attribute name="style">margin-left: 60px !important;</attribute>
       </xpath>
       <xpath expr="//div[@class='row']/div" position="replace"/>
-      <xpath expr="//div[@class='row']/div/div[@t-field='doc.partner_id']/.." position="attributes">
-        <attribute name="class">col-xs-6</attribute>
+      <xpath expr="//div[@class='row']/div/div[@t-field='doc.partner_id']/.." position="replace">
+        <div class="col-xs-6">
+          <t t-if="doc.partner_id.parent_id">
+            <span t-field="doc.partner_id.parent_id"/><br/>
+          </t>
+          <t t-if="not doc.partner_id.parent_id">
+            <span t-field="doc.partner_id"/>
+          </t>
+          <address t-field="doc.partner_id"
+            t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
+        </div>
       </xpath>
 
       <xpath expr="//div[@class='row']" position="before">
@@ -73,6 +82,7 @@
         </small>
       </xpath>
 
+
       <!-- Partner Informations -->
       <xpath expr="//div[@id='informations']" position="replace">
         <div class="row mt32 mb32" id="informations">
@@ -84,9 +94,9 @@
             </div>
             <div class="col-xs-7"></div>
             <div class="col-xs-6" style="padding-left: 0px; margin-left: 0px">
-              <div t-if="doc.customer_contact_id" class="col-xs-12" style="padding-left: 0px;">
+              <div t-if="not doc.partner_id.is_company" class="col-xs-12" style="padding-left: 0px;">
                   <span class="col-xs-5">Contact:</span>
-                  <span class="address" t-field="doc.customer_contact_id.name"/>
+                  <span class="address" t-field="doc.partner_id.name"/>
               </div>
               <div t-if="doc.client_order_contact_type" class="col-xs-12" style="padding-left: 0px;">
                   <span class="col-xs-5">Your order:</span>

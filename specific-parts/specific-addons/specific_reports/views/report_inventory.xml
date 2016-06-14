@@ -113,8 +113,12 @@
                     </small>
                     <div class="row col-xs-6" id="addressout">
                         <div t-if="o.partner_id" name="partner_header">
-                            <span t-field="o.partner_id.parent_id.name"/><br/>
+                          <t t-if="o.partner_id.parent_id">
+                            <span t-field="o.partner_id.parent_id.name"/>
+                          </t>
+                          <t t-if="not o.partner_id.parent_id">
                             <span t-field="o.partner_id.name"/>
+                          </t>
                             <div t-field="o.partner_id"
                                t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}'/>
                         </div>
@@ -130,16 +134,21 @@
                               <strong class="address" t-field="o.sale_id.client_order_ref"/>
                             </t>
                         </div>
+                        <div t-if="not o.sale_id.client_order_ref" class="col-xs-6" name="reference" id="padding">
+                            <br/>
+                            <br/>
+                        </div>
                         <div class="col-xs-7"></div>
                         <div class="col-xs-6 pl-0" style="margin-left: 0px; padding-left: 0px;">
-                          <div t-if="o.partner_id" class="col-xs-12" style="padding-left: 0px;">
+                          <div t-if="o.partner_id.parent_id" class="col-xs-12" style="padding-left: 0px;">
                             <span class="col-xs-5">Contact:</span>
-                              <span class="address" t-field="o.partner_id"/>
+                              <span class="address" t-field="o.partner_id.name"/>
                           </div>
 
                           <div t-if="o.sale_id.client_order_contact_type" class="col-xs-12" style="padding-left: 0px;">
                               <span class="col-xs-5 pl-0">Your order:</span>
-                                <span class="address" t-field="o.sale_id.client_order_contact_type"/><t t-if="o.sale_id.client_order_date">, <span class="address" t-field="o.sale_id.client_order_date"/></t>
+                              <span class="address"><span t-field="o.sale_id.client_order_contact_type"/><t t-if="o.sale_id.client_order_date">, <span t-field="o.sale_id.client_order_date"/></t>
+                              </span>
                           </div>
                           <div class="col-xs-12" style="padding-left: 0px;">
                               <span class="col-xs-5">Client number:</span>
