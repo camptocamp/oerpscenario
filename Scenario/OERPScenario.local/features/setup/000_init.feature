@@ -142,12 +142,6 @@ Feature: Parameter the new database
   Scenario: install OCA modules
     Given I install the required modules with dependencies:
         | name                                          |
-        # oca/account-financial-tools
-        #| account_credit_control                       |
-        #| account_compute_tax_amount                   |
-        # oca/account-financial-reporting
-        #| account_financial_report_webkit              |
-        #| account_financial_report_webkit_xls          |
         # oca/bank-statement-reconcile
         | account_operation_rule_early_payment_discount |
         # oca/bank-payment
@@ -167,12 +161,6 @@ Feature: Parameter the new database
         | l10n_ch_zip                                   |
         # oca/partner-contact
         | partner_firstname                             |
-        # oca/server-tools
-        #| disable_openerp_online                       |
-        # oca/web
-        #| web_dialog_size                              |
-        #| web_sheet_full_width                         |
-        #| web_shortcuts                                |
         # oca/stock-logistics-warehouse
         | stock_available_mrp                           |
         # oca/stock-logistics-workflow
