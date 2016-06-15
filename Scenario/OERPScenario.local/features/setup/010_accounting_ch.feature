@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-@swisslux @setup @init @accounting
+@swisslux @setup @accounting
 
 Feature: Configure accounting
 
