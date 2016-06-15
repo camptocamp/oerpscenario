@@ -67,6 +67,10 @@ Feature: upgrade to 9.0.7
 
   @force_translations @slow
   Scenario: Force lang translations
+    Given I execute the SQL commands
+      """;
+        delete from ir_translation where value ilike '%partner_name),%';
+      """
     Given I update the module list
     When I update the following languages
          | lang  |
