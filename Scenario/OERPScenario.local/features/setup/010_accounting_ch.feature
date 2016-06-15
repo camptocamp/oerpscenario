@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-@swisslux @setup @accounting
+@swisslux @setup @init @accounting
 
 Feature: Configure accounting
 
@@ -21,10 +21,9 @@ Feature: Configure accounting
   Scenario: Configure multicurrency
     Given I enable "Allow multi currencies" in "Accounting" settings menu
 
-  @account_chart_ch
-  Scenario: Generate account chart for Swisslux AG
-    Given I have the module account installed
-    Then accounts should be available for company "Swisslux AG"
+  @account_chart_extended
+  Scenario: Generate extended account chart for Swisslux AG
+    Given "account.account" is imported from CSV "setup/account.account.csv" using delimiter ","
 
   @banks_del
   Scenario: Remove default Bank and Cash accounts
