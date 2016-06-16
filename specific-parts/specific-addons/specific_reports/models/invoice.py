@@ -17,6 +17,7 @@ class AccountInvoice(models.Model):
          ('in_person', 'Persönlich'),
          ('post', 'Per Post'),
          ('tel', 'Per Telefon'),
+         ('fax', 'Per Fax'),
          ('stand', 'Messestand')],
         "Client order contact type",
         help="Description of how the order was made"
