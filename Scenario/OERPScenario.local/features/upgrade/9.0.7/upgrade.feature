@@ -8,6 +8,7 @@ Feature: upgrade to 9.0.7
       | name                                          |
       | specific_reports                              |
       | specific_product                              |
+      | specific_building_project                     |
     Then my modules should have been installed and models reloaded
 
   @account_chart_extended
