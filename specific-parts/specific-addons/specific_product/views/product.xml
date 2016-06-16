@@ -13,6 +13,7 @@
 
       <!-- Add product class and harmsys code fields-->
       <field name="categ_id" position="after">
+        <field name="state"/>
         <field name="product_class"/>
         <field name="harmsys_code"/>
       </field>
