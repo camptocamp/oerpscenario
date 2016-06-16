@@ -11,8 +11,12 @@
         <!-- 1 Address IF no eev_nr or eev_alarm for a company or contact in a company -->
         <t t-if="not (o.partner_id.eev_member or o.partner_id.parent_id.eev_member) or (o.partner_id.eev_alarm or o.partner_id.parent_id.eev_alarm)">
           <div class="col-xs-6">
-              <span t-field="o.partner_id.parent_id"/><br/>
-              <span t-field="o.partner_id.name"/>
+              <t t-if="o.partner_id.parent_id">
+                <span t-field="o.partner_id.parent_id"/><br/>
+              </t>
+              <t t-if="not o.partner_id.parent_id">
+                <span t-field="o.partner_id.name"/>
+              </t>
             <address t-field="o.partner_id"
                 t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
             <span t-if="o.partner_id.vat">TIN: <span t-field="o.partner_id.vat"/></span>
@@ -26,8 +30,12 @@
             <span t-field="o.env.ref('scenario.partner_90424').country_id.code"/>-<span t-field="o.env.ref('scenario.partner_90424').zip"/> <span t-field="o.env.ref('scenario.partner_90424').city"/><br/>
           </div>
           <div class="col-xs-5">
+            <t t-if="o.partner_id.parent_id">
               <span t-field="o.partner_id.parent_id"/><br/>
+            </t>
+            <t t-if="not o.partner_id.parent_id">
               <span t-field="o.partner_id.name"/><br/>
+            </t>
               <address t-field="o.partner_id"
                   t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
               <span t-if="o.partner_id.vat">TIN: <span t-field="o.partner_id.vat"/></span>
@@ -110,9 +118,9 @@
             </div>
             <div class="col-xs-7"></div>
             <div class="col-xs-6 lp-0">
-              <div t-if="o.partner_id" class="col-xs-12 lp-0">
+              <div t-if="o.partner_id.parent_id" class="col-xs-12" style="padding-left: 0px;">
                   <span class="col-xs-5">Contact:</span>
-                  <span class="address" t-field="o.partner_id"/>
+                  <span class="address" t-field="o.partner_id.name"/>
               </div>
               <div t-if="o.client_order_contact_type" class="col-xs-12 lp-0">
                   <span class="col-xs-5">Your order:</span>
