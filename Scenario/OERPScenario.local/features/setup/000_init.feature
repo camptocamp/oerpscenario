@@ -210,6 +210,13 @@ Feature: Parameter the new database
     %(country_code)s-%(zip)s %(city)s' where code like 'CH';
     """
 
+  @decimal_precision
+  Scenario: adjust decimal precision for product uom
+    Given I need an "decimal.precision" with oid: product.decimal_product_uom
+    And having:
+      | key     | value |
+      | digits  | 1     |
+
   @version
   Scenario: setup application version
     Given I set the version of the instance to "1.0.0"    
