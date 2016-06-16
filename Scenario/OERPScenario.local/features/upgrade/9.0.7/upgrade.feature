@@ -9,6 +9,7 @@ Feature: upgrade to 9.0.7
       | specific_reports                              |
       | specific_product                              |
       | specific_building_project                     |
+      | mrp_bom_dismantling                           |
     Then my modules should have been installed and models reloaded
 
   @account_chart_extended
