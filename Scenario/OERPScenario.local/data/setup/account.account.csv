@@ -5,7 +5,7 @@ scenario.account_1004,base.HKD,False,1004,base.main_company,,False,,Kasse HKD,,a
 scenario.account_1010,,False,1010,base.main_company,,False,,CCP 84-001285-1,,account.data_account_type_liquidity
 scenario.account_1020,,False,1020,base.main_company,,False,,ZKB CH7400700115500086877,,account.data_account_type_liquidity
 scenario.account_1021,,False,1021,base.main_company,,False,,ZKB CH2300700115500179557,,account.data_account_type_liquidity
-scenario.account_1024,,False,1024,base.main_company,,False,,AFEX,,account.data_account_type_liquidity
+scenario.account_1024,,False,1024,base.main_company,,False,,AFEX EURO,,account.data_account_type_liquidity
 scenario.account_1090,,True,1090,base.main_company,,False,,Geld-Transferkonto,,account.data_account_type_current_assets
 scenario.account_1091,,False,1191,base.main_company,,False,,Kautionen Miete/ZAZ,,account.data_account_type_current_assets
 scenario.account_1092,,False,1192,base.main_company,,False,,Vorauszahlungen an Lieferanten,,account.data_account_type_current_assets
@@ -124,10 +124,12 @@ scenario.account_6004,,False,6004,base.main_company,,False,,Raumaufwand Technik/
 scenario.account_6005,,False,6005,base.main_company,,False,,Kleininvestitionen Technik/Produktion,,account.data_account_type_expenses
 scenario.account_6006,,False,6006,base.main_company,,False,,Raumaufwand Garage-/Parkplätze,,account.data_account_type_expenses
 scenario.account_6007,,False,6007,base.main_company,,False,,Kleininvestitionen Garage-/Parkplätze,,account.data_account_type_expenses
+scenario.account_6009,,False,6009,base.main_company,,False,,Kleininvestitionen Divers,,account.data_account_type_expenses
 scenario.account_6040,,False,6040,base.main_company,,False,,Reinigung/Reinigungsmaterial,,account.data_account_type_expenses
+scenario.account_6101,,False,6101,base.main_company,,False,,URE Lager,,account.data_account_type_expenses
 scenario.account_6102,,False,6102,base.main_company,,False,,URE Büro,,account.data_account_type_expenses
-scenario.account_6103,,False,6103,base.main_company,,False,,URE Lager,,account.data_account_type_expenses
-scenario.account_6104,,False,6104,base.main_company,,False,,URE Technik/Produktion,,account.data_account_type_expenses
+scenario.account_6103,,False,6103,base.main_company,,False,,URE Technik/Produktion,,account.data_account_type_expenses
+scenario.account_6104,,False,6104,base.main_company,,False,,URE Produktmanagement,,account.data_account_type_expenses
 scenario.account_6109,,False,6109,base.main_company,,False,,URE divers,,account.data_account_type_expenses
 scenario.account_6210,,False,6210,base.main_company,,False,,Treibstoff,,account.data_account_type_expenses
 scenario.account_6220,,False,6220,base.main_company,,False,,Versicherungen,,account.data_account_type_expenses
