@@ -9,6 +9,10 @@ Feature: upgrade to 9.0.7
       | specific_reports                              |
     Then my modules should have been installed and models reloaded
 
+  @account_chart_extended
+  Scenario: Generate extended account chart for Swisslux AG
+    Given "account.account" is imported from CSV "setup/account.account.csv" using delimiter ","
+
   @force_translations @slow
   Scenario: Force lang translations
     Given I update the module list
@@ -16,4 +20,4 @@ Feature: upgrade to 9.0.7
          | lang  |
          | de_DE |
 
-    Then I set the version of the instance to "9.0.6"
+    Then I set the version of the instance to "9.0.7"

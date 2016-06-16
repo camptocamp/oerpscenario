@@ -1,0 +1,243 @@
+id,currency_id/id,reconcile,code,company_id/id,tax_ids/id,deprecated,note,name,tag_ids/id,user_type_id/id
+scenario.account_1000,,False,1000,base.main_company,,False,,Kasse CHF,,account.data_account_type_liquidity
+scenario.account_1003,base.EUR,False,1003,base.main_company,,False,,Kasse EUR,,account.data_account_type_liquidity
+scenario.account_1004,base.HKD,False,1004,base.main_company,,False,,Kasse HKD,,account.data_account_type_liquidity
+scenario.account_1010,,False,1010,base.main_company,,False,,CCP 84-001285-1,,account.data_account_type_liquidity
+scenario.account_1020,,False,1020,base.main_company,,False,,ZKB CH7400700115500086877,,account.data_account_type_liquidity
+scenario.account_1021,,False,1021,base.main_company,,False,,ZKB CH2300700115500179557,,account.data_account_type_liquidity
+scenario.account_1024,,False,1024,base.main_company,,False,,AFEX EURO,,account.data_account_type_liquidity
+scenario.account_1090,,True,1090,base.main_company,,False,,Geld-Transferkonto,,account.data_account_type_current_assets
+scenario.account_1091,,False,1191,base.main_company,,False,,Kautionen Miete/ZAZ,,account.data_account_type_current_assets
+scenario.account_1092,,False,1192,base.main_company,,False,,Vorauszahlungen an Lieferanten,,account.data_account_type_current_assets
+scenario.account_1093,,False,1193,base.main_company,,False,,Verrechn.kto. Vorauszahlungen an Lief.,,account.data_account_type_current_assets
+scenario.account_1094,,False,1194,base.main_company,,False,,BVG Arbeitgeberbeitragsreserve,,account.data_account_type_current_assets
+scenario.account_1201,,False,1201,base.main_company,,False,,Vorräte Sortiment LEUCHTEN,,account.data_account_type_current_assets
+scenario.account_1208,,False,1208,base.main_company,,False,,Anzahlungen für  Handelswaren,,account.data_account_type_current_assets
+scenario.account_1209,,False,1209,base.main_company,,False,,WB  Vorräte Handelswaren (Warenreserve),,account.data_account_type_current_assets
+scenario.account_1218,,False,1218,base.main_company,,False,,Anzahlungen für  Rohstoffe,,account.data_account_type_current_assets
+scenario.account_1219,,False,1219,base.main_company,,False,,WB Vorräte Rohstoffe (Warenreserve),,account.data_account_type_current_assets
+scenario.account_1223,,False,1223,base.main_company,,False,,Vorrat Zubehör Leuchten,,account.data_account_type_current_assets
+scenario.account_1229,,False,1229,base.main_company,,False,,WB Vorräte Werkstoffe (Warenreserve),,account.data_account_type_current_assets
+scenario.account_1231,,False,1231,base.main_company,,False,,Vorräte Verbrauchsmaterial,,account.data_account_type_current_assets
+scenario.account_1232,,False,1232,base.main_company,,False,,Vorräte Verpackungsmaterial,,account.data_account_type_current_assets
+scenario.account_1233,,False,1233,base.main_company,,False,,Vorräte Werbematerial und Reklameartikel,,account.data_account_type_current_assets
+scenario.account_1238,,False,1238,base.main_company,,False,,Anzahlung für Hilfs- und Verbrauchsmat.,,account.data_account_type_current_assets
+scenario.account_1239,,False,1239,base.main_company,,False,,WB Vorräte Hilfs- und Verbrauchsmaterial,,account.data_account_type_current_assets
+scenario.account_1241,,False,1241,base.main_company,,False,,Handelswaren in Transit BEG,,account.data_account_type_current_assets
+scenario.account_1242,,False,1242,base.main_company,,False,,Handelswaren in Transit - Luftfracht BEG,,account.data_account_type_current_assets
+scenario.account_1243,,False,1243,base.main_company,,False,,Handelswaren in Transit - Seefracht BEG,,account.data_account_type_current_assets
+scenario.account_1244,,False,1244,base.main_company,,False,,Handelswaren in Transit LEUCHTEN,,account.data_account_type_current_assets
+scenario.account_1460,,False,1460,base.main_company,,False,,Darlehensforderungen gg. Aktionären,,account.data_account_type_current_assets
+scenario.account_1461,,False,1461,base.main_company,,False,,Aktivhypotheken gegenüber Aktionär EGL,,account.data_account_type_current_assets
+scenario.account_1462,,False,1462,base.main_company,,False,,Aktivhypotheken gegenüber Aktionär PGL,,account.data_account_type_current_assets
+scenario.account_1463,,False,1463,base.main_company,,False,,Aktivhypotheken gegenüber Aktionär RGL,,account.data_account_type_current_assets
+scenario.account_1464,,False,1464,base.main_company,,False,,Aktivhypotheken gegenüber Aktionär MGL,,account.data_account_type_current_assets
+scenario.account_1469,,False,1469,base.main_company,,False,,WB langfr. Forderungen gg. Aktionären,,account.data_account_type_current_assets
+scenario.account_1521,,False,1521,base.main_company,,False,,Software,,account.data_account_type_current_assets
+scenario.account_1522,,False,1522,base.main_company,,False,,Netzwerk,,account.data_account_type_current_assets
+scenario.account_1524,,False,1524,base.main_company,,False,,Sicherheitseinrichtungen,,account.data_account_type_current_assets
+scenario.account_1550,,False,1550,base.main_company,,False,,Lagereinrichtung,,account.data_account_type_current_assets
+scenario.account_1551,,False,1551,base.main_company,,False,,Hochlagerregal,,account.data_account_type_current_assets
+scenario.account_1559,,False,1559,base.main_company,,False,,Wertberichtigungen für Lagereinrichtungen,,account.data_account_type_current_assets
+scenario.account_1590,,False,1590,base.main_company,,False,,Wäsche und Berufskleidung,,account.data_account_type_current_assets
+scenario.account_1591,,False,1591,base.main_company,,False,,Formen und Modelle,,account.data_account_type_current_assets
+scenario.account_1599,,False,1599,base.main_company,,False,,WB für übrige mobile Sachanlagen,,account.data_account_type_current_assets
+scenario.account_1601,,False,1601,base.main_company,,False,,Mieterausbau Geschäftsliegenschaften,,account.data_account_type_current_assets
+scenario.account_1630,,False,1630,base.main_company,,False,,Lagergebäude,,account.data_account_type_current_assets
+scenario.account_1633,,False,1633,base.main_company,,False,,Mieterausbau Lagerräume,,account.data_account_type_current_assets
+scenario.account_1639,,False,1639,base.main_company,,False,,Wertberichtigung Lagergebäude,,account.data_account_type_current_assets
+scenario.account_1750,,False,1750,base.main_company,,False,,Forschungsaufwand,,account.data_account_type_current_assets
+scenario.account_1751,,False,1751,base.main_company,,False,,Entwicklungsaufwand,,account.data_account_type_current_assets
+scenario.account_1759,,False,1759,base.main_company,,False,,WB Forschungs- u. Entwicklungsaufwand,,account.data_account_type_current_assets
+scenario.account_2130,,False,2130,base.main_company,,False,,Kurzfr. Finanzverb. gg. Angestellten,,account.data_account_type_current_liabilities
+scenario.account_2160,,False,2160,base.main_company,,False,,Kurzfr. Finanzverb. gg. Aktionären,,account.data_account_type_current_liabilities
+scenario.account_2205,,False,2205,base.main_company,,False,,Vorgezogene Recyclinggebühr,,account.data_account_type_current_liabilities
+scenario.account_2271,,False,2271,base.main_company,,False,,Kurzfr. Finanzverb. gg. AHV/ALV,,account.data_account_type_current_liabilities
+scenario.account_2272,,False,2272,base.main_company,,False,,Kurzfr. Finanzverb. gg. Familenausgleichskasse,,account.data_account_type_current_liabilities
+scenario.account_2273,,False,2273,base.main_company,,False,,Kurzfr. Finanzverb. gg. Unfallversicherung,,account.data_account_type_current_liabilities
+scenario.account_2274,,False,2274,base.main_company,,False,,Kurzfr. Finanzverb. gg. Krankenversicherung,,account.data_account_type_current_liabilities
+scenario.account_2290,,False,2290,base.main_company,,False,,Gratifikationen / Erfolgsbeteiligungen,,account.data_account_type_current_liabilities
+scenario.account_2630,,False,2630,base.main_company,,False,,Rückstellungen für Garantiearbeiten,,account.data_account_type_current_liabilities
+scenario.account_2999,,False,2999,base.main_company,,False,,Import WinOffice Durchlaufskonti,,account.data_account_type_equity
+scenario.account_3801,,False,3801,base.main_company,,False,,Rabatte u. Preisnachl.,,account.data_account_type_revenue
+scenario.account_3802,,False,3802,base.main_company,,False,,Umsatzrückvergütungen,,account.data_account_type_revenue
+scenario.account_3803,,False,3803,base.main_company,,False,,Provision an Dritte,,account.data_account_type_revenue
+scenario.account_3804,,False,3804,base.main_company,,False,,Inkassospesen,,account.data_account_type_revenue
+scenario.account_3806,,False,3806,base.main_company,,False,,Kursausgleichskonto,,account.data_account_type_revenue
+scenario.account_3807,,False,3807,base.main_company,,False,,Frachten u. Porti,,account.data_account_type_revenue
+scenario.account_3808,,False,3808,base.main_company,,False,,Garantieleistungen,,account.data_account_type_revenue
+scenario.account_4008,,False,4008,base.main_company,,False,,Einkauf von Hilfsmaterial,,account.data_account_type_expenses
+scenario.account_4015,,False,4015,base.main_company,,False,,Einkauf von Verpackungsmaterial,,account.data_account_type_expenses
+scenario.account_4016,,False,4016,base.main_company,,False,,"Einkauf von Beschriftungsmaterial, Ettiketen",,account.data_account_type_expenses
+scenario.account_4017,,False,4017,base.main_company,,False,,Einkaufspesen,,account.data_account_type_expenses
+scenario.account_4070,,False,4070,base.main_company,,False,,Eingangsfrachten,,account.data_account_type_expenses
+scenario.account_4071,,False,4071,base.main_company,,False,,Einfuhrzölle,,account.data_account_type_expenses
+scenario.account_4072,,False,4072,base.main_company,,False,,Eingangsspedition,,account.data_account_type_expenses
+scenario.account_4073,,False,4073,base.main_company,,False,,Eingangsfrachten Flugzeug,,account.data_account_type_expenses
+scenario.account_4074,,False,4074,base.main_company,,False,,Eingangsfrachten Schiff,,account.data_account_type_expenses
+scenario.account_4080,,False,4080,base.main_company,,False,,Bestandsveränderung,,account.data_account_type_expenses
+scenario.account_4086,,False,4086,base.main_company,,False,,Materialverlust,,account.data_account_type_expenses
+scenario.account_4090,,False,4090,base.main_company,,False,,Skonti,,account.data_account_type_expenses
+scenario.account_4091,,False,4091,base.main_company,,False,,Rabatte u. Preisnachl.,,account.data_account_type_expenses
+scenario.account_4092,,False,4092,base.main_company,,False,,Umsatzrückvergütungen,,account.data_account_type_expenses
+scenario.account_4096,,False,4096,base.main_company,,False,,Kursdifferenzen,,account.data_account_type_expenses
+scenario.account_4208,,False,4208,base.main_company,,False,,Einkauf von Hilfsmaterial,,account.data_account_type_expenses
+scenario.account_4215,,False,4215,base.main_company,,False,,Einkauf von Verpackungsmaterial,,account.data_account_type_expenses
+scenario.account_4216,,False,4216,base.main_company,,False,,"Einkauf von Beschriftungsmaterial, Ettiketen",,account.data_account_type_expenses
+scenario.account_4217,,False,4217,base.main_company,,False,,Einkaufspesen,,account.data_account_type_expenses
+scenario.account_4270,,False,4270,base.main_company,,False,,Eingangsfrachten,,account.data_account_type_expenses
+scenario.account_4271,,False,4271,base.main_company,,False,,Einfuhrzölle,,account.data_account_type_expenses
+scenario.account_4272,,False,4272,base.main_company,,False,,Eingangsspedition,,account.data_account_type_expenses
+scenario.account_4273,,False,4273,base.main_company,,False,,Eingangsfrachten Flugzeug,,account.data_account_type_expenses
+scenario.account_4274,,False,4274,base.main_company,,False,,Eingangsfrachten Schiff,,account.data_account_type_expenses
+scenario.account_4280,,False,4280,base.main_company,,False,,Bestandsveränderung,,account.data_account_type_expenses
+scenario.account_4286,,False,4286,base.main_company,,False,,Materialverlust,,account.data_account_type_expenses
+scenario.account_4290,,False,4290,base.main_company,,False,,Skonti,,account.data_account_type_expenses
+scenario.account_4291,,False,4291,base.main_company,,False,,Rabatte u. Preisnachl.,,account.data_account_type_expenses
+scenario.account_4292,,False,4292,base.main_company,,False,,Umsatzrückvergütungen,,account.data_account_type_expenses
+scenario.account_4296,,False,4296,base.main_company,,False,,Kursdifferenzen,,account.data_account_type_expenses
+scenario.account_5001,,False,5001,base.main_company,,False,,Zulagen,,account.data_account_type_expenses
+scenario.account_5002,,False,5002,base.main_company,,False,,Erfolgsbeteiligungen,,account.data_account_type_expenses
+scenario.account_5003,,False,5003,base.main_company,,False,,Provisionen,,account.data_account_type_expenses
+scenario.account_5005,,False,5005,base.main_company,,False,,Leistungen von Sozialversicherungen,,account.data_account_type_expenses
+scenario.account_5009,,False,5009,base.main_company,,False,,Leistungen Dritter (temporär),,account.data_account_type_expenses
+scenario.account_5070,,False,5070,base.main_company,,False,,"AHV,IV,EO,ALV-Beiträge",,account.data_account_type_expenses
+scenario.account_5071,,False,5071,base.main_company,,False,,Familienausgleichskasse,,account.data_account_type_expenses
+scenario.account_5072,,False,5072,base.main_company,,False,,Berufliche Vorsorge,,account.data_account_type_expenses
+scenario.account_5073,,False,5073,base.main_company,,False,,Unfallversicherung,,account.data_account_type_expenses
+scenario.account_5074,,False,5074,base.main_company,,False,,Krankentaggeldversicherung,,account.data_account_type_expenses
+scenario.account_5079,,False,5079,base.main_company,,False,,Quellensteuern,,account.data_account_type_expenses
+scenario.account_5081,,False,5081,base.main_company,,False,,Aus- und Weiterbildung / Seminare,,account.data_account_type_expenses
+scenario.account_5082,,False,5082,base.main_company,,False,,Reisespesen,,account.data_account_type_expenses
+scenario.account_5083,,False,5083,base.main_company,,False,,Verpflegungspesen,,account.data_account_type_expenses
+scenario.account_5084,,False,5084,base.main_company,,False,,Übernachtungspesen,,account.data_account_type_expenses
+scenario.account_5085,,False,5085,base.main_company,,False,,Spesenentschädigung pauschal,,account.data_account_type_expenses
+scenario.account_5086,,False,5086,base.main_company,,False,,Beteiligung Mietkosten HomeOffice MA,,account.data_account_type_expenses
+scenario.account_5087,,False,5087,base.main_company,,False,,Beteiligung Telgebühren MA,,account.data_account_type_expenses
+scenario.account_5088,,False,5088,base.main_company,,False,,Sonstiger Personalaufwand,,account.data_account_type_expenses
+scenario.account_5089,,False,5089,base.main_company,,False,,Fahrzeugnutzung Privatanteil,,account.data_account_type_expenses
+scenario.account_5880,,False,5880,base.main_company,,False,,Events für Mitarbeiter,,account.data_account_type_expenses
+scenario.account_6001,,False,6001,base.main_company,,False,,Kleininvestitionen Büro- und Verwaltung,,account.data_account_type_expenses
+scenario.account_6002,,False,6002,base.main_company,,False,,Raumaufwand Lager,,account.data_account_type_expenses
+scenario.account_6003,,False,6003,base.main_company,,False,,Kleininvestitionen Lager,,account.data_account_type_expenses
+scenario.account_6004,,False,6004,base.main_company,,False,,Raumaufwand Technik/Produktion,,account.data_account_type_expenses
+scenario.account_6005,,False,6005,base.main_company,,False,,Kleininvestitionen Technik/Produktion,,account.data_account_type_expenses
+scenario.account_6006,,False,6006,base.main_company,,False,,Raumaufwand Garage-/Parkplätze,,account.data_account_type_expenses
+scenario.account_6007,,False,6007,base.main_company,,False,,Kleininvestitionen Garage-/Parkplätze,,account.data_account_type_expenses
+scenario.account_6009,,False,6009,base.main_company,,False,,Kleininvestitionen Divers,,account.data_account_type_expenses
+scenario.account_6040,,False,6040,base.main_company,,False,,Reinigung/Reinigungsmaterial,,account.data_account_type_expenses
+scenario.account_6101,,False,6101,base.main_company,,False,,URE Lager,,account.data_account_type_expenses
+scenario.account_6102,,False,6102,base.main_company,,False,,URE Büro,,account.data_account_type_expenses
+scenario.account_6103,,False,6103,base.main_company,,False,,URE Technik/Produktion,,account.data_account_type_expenses
+scenario.account_6104,,False,6104,base.main_company,,False,,URE Produktmanagement,,account.data_account_type_expenses
+scenario.account_6109,,False,6109,base.main_company,,False,,URE divers,,account.data_account_type_expenses
+scenario.account_6210,,False,6210,base.main_company,,False,,Treibstoff,,account.data_account_type_expenses
+scenario.account_6220,,False,6220,base.main_company,,False,,Versicherungen,,account.data_account_type_expenses
+scenario.account_6230,,False,6230,base.main_company,,False,,"Verkehrsabgaben, -gebühren, -steuern",,account.data_account_type_expenses
+scenario.account_6270,,False,6270,base.main_company,,False,,Privatanteil Fahrzeuge,,account.data_account_type_expenses
+scenario.account_6280,,False,6280,base.main_company,,False,,"Ausgangs-Frachtkosten, Spedition, Cargo Domizil",,account.data_account_type_expenses
+scenario.account_6281,,False,6281,base.main_company,,False,,"Eingangs-Frachtkosten, Spedition, Cargo Domizil",,account.data_account_type_expenses
+scenario.account_6301,,False,6301,base.main_company,,False,,Glasbruchversicherung,,account.data_account_type_expenses
+scenario.account_6302,,False,6302,base.main_company,,False,,Einbruchdiebstahlversicherung,,account.data_account_type_expenses
+scenario.account_6303,,False,6303,base.main_company,,False,,Transportversicherung,,account.data_account_type_expenses
+scenario.account_6310,,False,6310,base.main_company,,False,,Betriebshaftpflichtversicherung,,account.data_account_type_expenses
+scenario.account_6311,,False,6311,base.main_company,,False,,Garantieversicherung,,account.data_account_type_expenses
+scenario.account_6312,,False,6312,base.main_company,,False,,Rechtschutzversicherung,,account.data_account_type_expenses
+scenario.account_6320,,False,6320,base.main_company,,False,,Betriebsunterbrechungsversicherung,,account.data_account_type_expenses
+scenario.account_6360,,False,6360,base.main_company,,False,,Abgaben,,account.data_account_type_expenses
+scenario.account_6361,,False,6361,base.main_company,,False,,Steuern,,account.data_account_type_expenses
+scenario.account_6370,,False,6370,base.main_company,,False,,Bewilligungen,,account.data_account_type_expenses
+scenario.account_6371,,False,6371,base.main_company,,False,,Patente,,account.data_account_type_expenses
+scenario.account_6421,,False,6421,base.main_company,,False,,Wärmestrom,,account.data_account_type_expenses
+scenario.account_6422,,False,6422,base.main_company,,False,,Lichtstrom,,account.data_account_type_expenses
+scenario.account_6430,,False,6430,base.main_company,,False,,Wasser,,account.data_account_type_expenses
+scenario.account_6460,,False,6460,base.main_company,,False,,Kehrichtabfuhr,,account.data_account_type_expenses
+scenario.account_6461,,False,6461,base.main_company,,False,,Sondermüllabfuhr,,account.data_account_type_expenses
+scenario.account_6462,,False,6462,base.main_company,,False,,Abwasser,,account.data_account_type_expenses
+scenario.account_6501,,False,6501,base.main_company,,False,,Drucksachen,,account.data_account_type_expenses
+scenario.account_6502,,False,6502,base.main_company,,False,,Ausdrucke / Fotokopien,,account.data_account_type_expenses
+scenario.account_6503,,False,6503,base.main_company,,False,,Fachliteratur,,account.data_account_type_expenses
+scenario.account_6510,,False,6510,base.main_company,,False,,Telefon,,account.data_account_type_expenses
+scenario.account_6512,,False,6512,base.main_company,,False,,Internet,,account.data_account_type_expenses
+scenario.account_6513,,False,6513,base.main_company,,False,,Porti,,account.data_account_type_expenses
+scenario.account_6520,,False,6520,base.main_company,,False,,Beiträge,,account.data_account_type_expenses
+scenario.account_6521,,False,6521,base.main_company,,False,,Spenden und Geschenke,,account.data_account_type_expenses
+scenario.account_6522,,False,6522,base.main_company,,False,,Trinkgelder,,account.data_account_type_expenses
+scenario.account_6523,,False,6523,base.main_company,,False,,Übriger Büro- und Verwaltungsaufwand,,account.data_account_type_expenses
+scenario.account_6530,,False,6530,base.main_company,,False,,Buchführung,,account.data_account_type_expenses
+scenario.account_6531,,False,6531,base.main_company,,False,,Unternehmensberatung,,account.data_account_type_expenses
+scenario.account_6532,,False,6532,base.main_company,,False,,Rechtsberatung,,account.data_account_type_expenses
+scenario.account_6540,,False,6540,base.main_company,,False,,Aufwand Verwaltungsrat,,account.data_account_type_expenses
+scenario.account_6541,,False,6541,base.main_company,,False,,Aufwand Generalversammlung,,account.data_account_type_expenses
+scenario.account_6542,,False,6542,base.main_company,,False,,Aufwand Revisionsstelle,,account.data_account_type_expenses
+scenario.account_6543,,False,6543,base.main_company,,False,,Sitzungsgelder,,account.data_account_type_expenses
+scenario.account_6560,,False,6560,base.main_company,,False,,Leasing Hardware,,account.data_account_type_expenses
+scenario.account_6561,,False,6561,base.main_company,,False,,Leasing Software,,account.data_account_type_expenses
+scenario.account_6562,,False,6562,base.main_company,,False,,Miete Hardware,,account.data_account_type_expenses
+scenario.account_6563,,False,6563,base.main_company,,False,,Miete Software,,account.data_account_type_expenses
+scenario.account_6564,,False,6564,base.main_company,,False,,Hosting,,account.data_account_type_expenses
+scenario.account_6571,,False,6571,base.main_company,,False,,Wartung/Support Hardware,,account.data_account_type_expenses
+scenario.account_6572,,False,6572,base.main_company,,False,,Wartung/Support Software,,account.data_account_type_expenses
+scenario.account_6573,,False,6573,base.main_company,,False,,"CD, Tape, Verbrauchsmaterial",,account.data_account_type_expenses
+scenario.account_6574,,False,6574,base.main_company,,False,,Kleininvestitionen,,account.data_account_type_expenses
+scenario.account_6575,,False,6575,base.main_company,,False,,Standleitungsgebühren,,account.data_account_type_expenses
+scenario.account_6580,,False,6580,base.main_company,,False,,Beratung,,account.data_account_type_expenses
+scenario.account_6581,,False,6581,base.main_company,,False,,Individual-Entwicklung,,account.data_account_type_expenses
+scenario.account_6582,,False,6582,base.main_company,,False,,Schulungs-/Einführungsaufwand,,account.data_account_type_expenses
+scenario.account_6601,,False,6601,base.main_company,,False,,Publikationen in Fachzeitschriften,,account.data_account_type_expenses
+scenario.account_6610,,False,6610,base.main_company,,False,,"Werbedrucksachen, Werbematerial",,account.data_account_type_expenses
+scenario.account_6611,,False,6611,base.main_company,,False,,"Reklameartikel, Muster",,account.data_account_type_expenses
+scenario.account_6612,,False,6612,base.main_company,,False,,Versand- und Verpackungsspesen für Werbeversände,,account.data_account_type_expenses
+scenario.account_6613,,False,6613,base.main_company,,False,,Übersetzungen,,account.data_account_type_expenses
+scenario.account_6620,,False,6620,base.main_company,,False,,"Fachmessen, Ausstellungen",,account.data_account_type_expenses
+scenario.account_6621,,False,6621,base.main_company,,False,,Schulungs- und Ausbildungsmaterial,,account.data_account_type_expenses
+scenario.account_6641,,False,6641,base.main_company,,False,,Kundenbetreuung,,account.data_account_type_expenses
+scenario.account_6642,,False,6642,base.main_company,,False,,Kundengeschenke,,account.data_account_type_expenses
+scenario.account_6660,,False,6660,base.main_company,,False,,Werbeeinträge,,account.data_account_type_expenses
+scenario.account_6661,,False,6661,base.main_company,,False,,Sponsoring,,account.data_account_type_expenses
+scenario.account_6662,,False,6662,base.main_company,,False,,Datenbank-Mitgliedschaften,,account.data_account_type_expenses
+scenario.account_6663,,False,6663,base.main_company,,False,,Marketing-Mitgliedschaften,,account.data_account_type_expenses
+scenario.account_6670,,False,6670,base.main_company,,False,,Kundenanlässe,,account.data_account_type_expenses
+scenario.account_6671,,False,6671,base.main_company,,False,,Medienkontakte,,account.data_account_type_expenses
+scenario.account_6672,,False,6672,base.main_company,,False,,Firmenjubiläen,,account.data_account_type_expenses
+scenario.account_6680,,False,6680,base.main_company,,False,,Werbeberatung,,account.data_account_type_expenses
+scenario.account_6681,,False,6681,base.main_company,,False,,Marktanalysen,,account.data_account_type_expenses
+scenario.account_6701,,False,6701,base.main_company,,False,,Betreibungen,,account.data_account_type_expenses
+scenario.account_6710,,False,6710,base.main_company,,False,,Betriebssicherheit,,account.data_account_type_expenses
+scenario.account_6711,,False,6711,base.main_company,,False,,Bewachung,,account.data_account_type_expenses
+scenario.account_6720,,False,6720,base.main_company,,False,,Eigenentwicklungen Sortiment LEUCHTEN,,account.data_account_type_expenses
+scenario.account_6721,,False,6721,base.main_company,,False,,Eigenentwicklungen Sortiment BEG,,account.data_account_type_expenses
+scenario.account_6801,,False,6801,base.main_company,,False,,Abschr. auf andere Finanzanlagen,,account.data_account_type_expenses
+scenario.account_6810,,False,6810,base.main_company,,False,,Abschreibungen Warenvorrat,,account.data_account_type_expenses
+scenario.account_6811,,False,6811,base.main_company,,False,,Abschreibungen Delkrede,,account.data_account_type_expenses
+scenario.account_6820,,False,6820,base.main_company,,False,,Abschr. auf Maschinen u. Apparaten (Prod.),,account.data_account_type_expenses
+scenario.account_6821,,False,6821,base.main_company,,False,,Abschr. auf Mobiliar u. Einrichtungen,,account.data_account_type_expenses
+scenario.account_6822,,False,6822,base.main_company,,False,,Abschr. auf Büromaschinen u. EDV,,account.data_account_type_expenses
+scenario.account_6823,,False,6823,base.main_company,,False,,Abschr. auf Fahrzeugen,,account.data_account_type_expenses
+scenario.account_6830,,False,6830,base.main_company,,False,,Abschr. auf Geschäftsliegenschaften,,account.data_account_type_expenses
+scenario.account_6831,,False,6831,base.main_company,,False,,Abschr. auf Fabrikgebäude,,account.data_account_type_expenses
+scenario.account_6840,,False,6840,base.main_company,,False,,"Abschr. auf Patente, Know-how, Rezepten",,account.data_account_type_expenses
+scenario.account_6841,,False,6841,base.main_company,,False,,"Abschr. auf Marken, Muster, Modelle, Pläne",,account.data_account_type_expenses
+scenario.account_6847,,False,6847,base.main_company,,False,,Abschr. auf Goodwill,,account.data_account_type_expenses
+scenario.account_6849,,False,6849,base.main_company,,False,,Abschr. auf sonst. Immat. Vermögenswerte,,account.data_account_type_expenses
+scenario.account_6850,,False,6850,base.main_company,,False,,Abschr. auf Gründungsaufwand,,account.data_account_type_expenses
+scenario.account_6851,,False,6851,base.main_company,,False,,Abschr. auf Forschungs- u. Entwicklungsaufwand,,account.data_account_type_expenses
+scenario.account_6901,,False,6901,base.main_company,,False,,Darlehnszinsaufwand,,account.data_account_type_expenses
+scenario.account_6902,,False,6902,base.main_company,,False,,Hypothekarzinsaufwand,,account.data_account_type_expenses
+scenario.account_6903,,False,6903,base.main_company,,False,,Verzugszinsaufwand,,account.data_account_type_expenses
+scenario.account_6904,,False,6904,base.main_company,,False,,Zinsaufwand für Vorauszahlungen von Kunden,,account.data_account_type_expenses
+scenario.account_6910,,False,6910,base.main_company,,False,,Zinsaufwand Kontokorrent Tochtergesellschaft A,,account.data_account_type_expenses
+scenario.account_6911,,False,6911,base.main_company,,False,,Zinsaufwand Darlehen Tochtergesellschaft B,,account.data_account_type_expenses
+scenario.account_6920,,False,6920,base.main_company,,False,,Zinsaufwand Kontokorrent Aktionär A,,account.data_account_type_expenses
+scenario.account_6921,,False,6921,base.main_company,,False,,Zinsaufwand Darlehen Aktionär B,,account.data_account_type_expenses
+scenario.account_6930,,False,6930,base.main_company,,False,,Zinsaufwand Darlehen Personalvorsorgestiftung,,account.data_account_type_expenses
+scenario.account_6940,,False,6940,base.main_company,,False,,"Bank-, PC-Spesen",,account.data_account_type_expenses
+scenario.account_6941,,False,6941,base.main_company,,False,,Depotgebühren,,account.data_account_type_expenses
+scenario.account_6942,,False,6942,base.main_company,,False,,Kursverluste fl. Mittel und Wertschriften,,account.data_account_type_expenses
+scenario.account_6943,,False,6943,base.main_company,,False,,Kursverluste Finanzanlagen,,account.data_account_type_expenses
+scenario.account_6944,,False,6944,base.main_company,,False,,Kursverluste Finanzverbindlichkeiten,,account.data_account_type_expenses
+scenario.account_6945,,False,6945,base.main_company,,False,,Kundenskonti,,account.data_account_type_expenses
+scenario.account_6960,,False,6960,base.main_company,,False,,Erträge aus Wertpapieren,,account.data_account_type_expenses
+scenario.account_6970,,False,6970,base.main_company,,False,,Erträge aus Finanzanlagen gegenüber Tochtergesellschaften,,account.data_account_type_expenses
+scenario.account_6980,,False,6980,base.main_company,,False,,Erträge aus Finanzanlagen gegenüber Aktionären,,account.data_account_type_expenses
+scenario.account_6990,,False,6990,base.main_company,,False,,Andere Finanzerträge,,account.data_account_type_expenses
