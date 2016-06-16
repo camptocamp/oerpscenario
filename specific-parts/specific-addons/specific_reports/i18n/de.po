@@ -682,7 +682,7 @@ msgstr "Anz."
 #: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Quantity"
-msgstr "Anzahl"
+msgstr "Menge"
 
 #. module: specific_reports
 #: model:ir.model.fields,field_description:specific_reports.field_product_template_receipt_checklist
@@ -753,7 +753,7 @@ msgstr "Lieferfrist"
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Total"
-msgstr "Gesamtbetrag"
+msgstr "Total"
 
 #. module: specific_reports
 #: model:ir.model,name:specific_reports.model_stock_picking
@@ -770,7 +770,7 @@ msgstr "UOM"
 #: model:ir.ui.view,arch_db:specific_reports.report_sale_layouted
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "Unit Price"
-msgstr "Stückpreis"
+msgstr "Brutto"
 
 #. module: specific_reports
 #: model:ir.model.fields,help:specific_reports.field_account_invoice_client_order_date

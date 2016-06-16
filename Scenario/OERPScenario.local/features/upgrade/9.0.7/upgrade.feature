@@ -24,5 +24,7 @@ Feature: upgrade to 9.0.7
     When I update the following languages
          | lang  |
          | de_DE |
+         | fr_FR |
+         | it_IT |
 
     Then I set the version of the instance to "9.0.7"
