@@ -13,7 +13,7 @@ Feature: upgrade to 9.0.7
   Scenario: Generate extended account chart for Swisslux AG
     Given "account.account" is imported from CSV "setup/account.account.csv" using delimiter ","
 
-  @product_category @slow
+  @product_category
   Scenario: setup tmp corr for product category
     Given "product.category" is imported from CSV "setup/product.category.csv" using delimiter ","
 
