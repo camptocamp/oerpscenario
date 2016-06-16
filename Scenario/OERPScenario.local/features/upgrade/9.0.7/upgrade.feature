@@ -9,6 +9,20 @@ Feature: upgrade to 9.0.7
       | specific_reports                              |
     Then my modules should have been installed and models reloaded
 
+   @currencies
+   Scenario: Add currencies
+   Scenario: Configure multicurrency and add currencies
+   Given I enable "Allow multi currencies" in "Accounting" settings menu
+   Given I find an inactive "res.currency" with name: HKD
+     And having:
+       | key    | value |
+       | active | True  |
+ 
+ 
+  @account_chart_extended
+  Scenario: Generate extended account chart for Swisslux AG
+    Given "account.account" is imported from CSV "setup/account.account.csv" using delimiter ","
+
   @force_translations @slow
   Scenario: Force lang translations
     Given I update the module list
