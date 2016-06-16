@@ -57,6 +57,13 @@ Feature: upgrade to 9.0.7
       | location_id     | by oid: scenario.location_vendor_poltera  |
       | active          | True                                      |
 
+  @decimal_precision
+  Scenario: adjust decimal precision for product uom
+    Given I need an "decimal.precision" with oid: product.decimal_product_uom
+    And having:
+      | key     | value |
+      | digits  | 1     |
+
   @force_translations @slow
   Scenario: Force lang translations
     Given I update the module list
