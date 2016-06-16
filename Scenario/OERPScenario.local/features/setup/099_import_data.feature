@@ -59,11 +59,11 @@ Feature: import master data
   Scenario: import specific supplierinfo
     Given "product.supplierinfo" is imported from CSV "setup/product.supplierinfo.csv" using delimiter ","
 
-  @csv @pricelists @slow
+  @csv @pricelists
   Scenario: import specific pricelist
     Given "product.pricelist" is imported from CSV "setup/product.pricelist.csv" using delimiter ","
 
-  @csv @pricelist_items @slow
+  @csv @pricelist_items
   Scenario: import specific pricelist items
     Given "product.pricelist.item" is imported from CSV "setup/product.pricelist.item.csv" using delimiter ","
 
