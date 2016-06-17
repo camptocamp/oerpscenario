@@ -67,11 +67,15 @@ Feature: upgrade to 9.0.8
   Scenario: Activate time tracking on task
     Given I set "Time on Tasks" to "Manage time estimation on tasks" in "Project" settings menu
 
+  Scenario: remove modules
+    Given I uninstall the following modules:
+      | name                      |
+      | specific_customer_contact |
+
   @force_translations @slow
   Scenario: Force lang translations
     Given I update the module list
     When I update the following languages
          | lang  |
          | de_DE |
-
     Then I set the version of the instance to "9.0.8"
