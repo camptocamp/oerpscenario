@@ -22,10 +22,11 @@ class ResPartnerRole(models.Model):
         required=True,
     )
     role = fields.Selection(
-        [('builder', "Bauherr"),
-         ('eletrician', "Elektroinstallateur"),
-         ('engineer', "Planer"),
-         ('wholesaler', "Vertriedspartner")],
+        [('architect', "Architekt"),
+         ('builder', "Bauherr"),
+         ('eletrician', "Installateur"),
+         ('engineer', "Elektroplaner"),
+         ('wholesaler', "Vertriebspartner")],
         string="Role"
     )
     # related fields for contact kanban view
