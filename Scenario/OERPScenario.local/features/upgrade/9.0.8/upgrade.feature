@@ -8,12 +8,12 @@ Feature: upgrade to 9.0.8
       | name                                          |
       | specific_project                              |
       | specific_building_project                     |
+      | specific_product                              |
     Then my modules should have been installed and models reloaded
 
   @product @slow
   Scenario: adapt account on product
     Given "product.product" is imported from CSV "setup/product.product.csv" using delimiter ","
-
 
   @update_reception_text_company
   Scenario: set default company reception text
