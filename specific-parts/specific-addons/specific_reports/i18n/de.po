@@ -180,7 +180,7 @@ msgstr "<span class=\"col-xs-5\">Versandart:</span>\n"
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<span class=\"col-xs-5\">Client number:</span>"
-msgstr "<span class=\"col-xs-5\">Lieferschein-Nr.:</span>"
+msgstr "<span class=\"col-xs-5\">Kundennummer:</span>"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
