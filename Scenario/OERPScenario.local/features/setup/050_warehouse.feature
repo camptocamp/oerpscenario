@@ -75,6 +75,8 @@ Feature: Configure Warehouse and Logistic processes
     _____ Lieferumfang
     _____ Funktionstest
 
+    Charge: __________________________ 
+    
     Technik:
     Produktenews: JA / NEIN
     Visum: ____________________________';
