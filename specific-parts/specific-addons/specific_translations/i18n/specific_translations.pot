@@ -30,3 +30,16 @@ msgstr ""
 #: model:product.uom,name:product.product_uom_unit
 msgid "Unit(s)"
 msgstr ""
+
+#. module: stock
+#: code:addons/stock/product.py:209
+#: code:addons/stock/product.py:382
+#, python-format
+msgid " On Hand"
+msgstr ""
+
+#. module: stock
+#: model:ir.ui.view,arch_db:stock.product_form_view_procurement_button
+#: model:ir.ui.view,arch_db:stock.product_template_form_view_procurement_button
+msgid "On Hand"
+msgstr ""

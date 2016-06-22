@@ -11,6 +11,7 @@ Feature: upgrade to 9.0.8
       | specific_product                              |
       | l10n_ch_pain_credit_transfer                  |
       | account_reports_followup                      |
+      | specific_translations                         |
     Then my modules should have been installed and models reloaded
 
   @csv @product @slow
@@ -114,6 +115,6 @@ Feature: upgrade to 9.0.8
   Scenario: Force lang translations
     Given I update the module list
     When I update the following languages
-         | lang  |
-         | de_DE |
+      | lang  |
+      | de_DE |
     Then I set the version of the instance to "9.0.8"
