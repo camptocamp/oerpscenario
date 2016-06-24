@@ -148,9 +148,9 @@
         <t t-set="line_counter" t-value="0"/>
       </xpath>
 
-            <!-- Payment term at the end of the document -->
+      <!-- Payment term at the end of the document -->			
       <xpath expr="//p[@t-if='o.payment_term_id']" position="replace">
-        <p t-if="o.payment_term_id.note">
+        <p t-if="o.payment_term_id">
           Payment term:
           <span t-field="o.payment_term_id.note" string="Payment term:"/>
         </p>
