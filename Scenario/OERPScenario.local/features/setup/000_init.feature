@@ -155,8 +155,8 @@ Feature: Parameter the new database
         | project_task_department                       |
         # oca/l10n-switzerland
         | l10n_ch_bank                                  |
-        #| l10n_ch_dta                                  |
         | l10n_ch_payment_slip                          |
+        | l10n_ch_sepa                                  |
         | l10n_ch_states                                |
         | l10n_ch_zip                                   |
         # oca/partner-contact
