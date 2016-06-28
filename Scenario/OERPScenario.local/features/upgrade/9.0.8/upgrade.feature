@@ -35,6 +35,10 @@ Feature: upgrade to 9.0.8
     Visum: ____________________________';
     """
 
+  @configure_project
+  Scenario: Activate time tracking on task
+    Given I set "Time on Tasks" to "Manage time estimation on tasks" in "Project" settings menu
+
   @force_translations @slow
   Scenario: Force lang translations
     Given I update the module list
@@ -43,7 +47,3 @@ Feature: upgrade to 9.0.8
          | de_DE |
 
     Then I set the version of the instance to "9.0.8"
-
-  @configure_project
-  Scenario: Activate time tracking on task
-    Given I set "Time on Tasks" to "Manage time estimation on tasks" in "Project" settings menu
