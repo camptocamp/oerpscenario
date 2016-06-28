@@ -9,6 +9,7 @@ Feature: upgrade to 9.0.8
       | specific_project                              |
       | specific_building_project                     |
       | specific_product                              |
+      | l10n_ch_sepa                                  |
     Then my modules should have been installed and models reloaded
 
   @product @slow
