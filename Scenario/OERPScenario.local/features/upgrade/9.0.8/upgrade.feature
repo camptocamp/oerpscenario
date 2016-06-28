@@ -9,11 +9,29 @@ Feature: upgrade to 9.0.8
       | specific_project                              |
       | specific_building_project                     |
     Then my modules should have been installed and models reloaded
-    
-    
+
   @product @slow
   Scenario: adapt account on product
     Given "product.product" is imported from CSV "setup/product.product.csv" using delimiter ","
-    
-    
+
+
+  @update_reception_text_company
+  Scenario: set default company reception text
+    Given I execute the SQL commands
+    """;
+    update res_company set receipt_checklist = '
+    _____ Anleitung Deutsch
+    _____ Anleitung Franz.
+    _____ Anleitung Ital.
+    _____ Verpackung
+    _____ Lieferumfang
+    _____ Funktionstest
+
+    Charge:  __________________________
+
+    Technik:
+    Produktenews: JA / NEIN
+    Visum: ____________________________';
+    """
+
     Then I set the version of the instance to "9.0.8"
