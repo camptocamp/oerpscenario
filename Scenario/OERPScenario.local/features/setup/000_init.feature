@@ -161,6 +161,8 @@ Feature: Parameter the new database
         | l10n_ch_zip                                   |
         # oca/partner-contact
         | partner_firstname                             |
+        # oca/product-attribute
+        | product_dimension                             |
         # oca/stock-logistics-warehouse
         | stock_available_mrp                           |
         # oca/stock-logistics-workflow
