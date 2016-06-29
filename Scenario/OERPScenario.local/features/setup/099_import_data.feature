@@ -98,3 +98,7 @@ Feature: import master data
   @csv @phonecalls @slow
   Scenario: import specific meetings
     Given "calendar.event" is imported from CSV "setup/crm.phonecall.csv" using delimiter ","
+    
+  @csv @projects
+  Scenario: import specific projects
+    Given "project.project" is imported from CSV "setup/project.csv" using delimiter ","

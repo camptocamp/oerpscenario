@@ -16,6 +16,10 @@ Feature: upgrade to 9.0.8
   Scenario: adapt account on product
     Given "product.product" is imported from CSV "setup/product.product.csv" using delimiter ","
 
+  @csv @projects
+  Scenario: import specific projects
+    Given "project.project" is imported from CSV "setup/project.csv" using delimiter ","
+
   @update_reception_text_company
   Scenario: set default company reception text
     Given I execute the SQL commands
