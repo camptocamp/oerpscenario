@@ -20,29 +20,29 @@ scenario.hr_timesheet_activity_18,True,scenario.hr_department_it,IT - Dienstleis
 scenario.hr_timesheet_activity_19,True,scenario.hr_department_it,IT - Netzwerk
 scenario.hr_timesheet_activity_20,True,scenario.hr_department_it,Nst - Beschaffung
 scenario.hr_timesheet_activity_21,True,scenario.hr_department_it,Nst - Dienstleistung
-scenario.hr_timesheet_activity_22,True,scenario.hr_department_marketing,Gestaltung Bild (Recherchen
-scenario.hr_timesheet_activity_23,True,scenario.hr_department_marketing,Medienplan-Administration
+scenario.hr_timesheet_activity_22,True,scenario.hr_department_marketing,"Gestaltung Bild (Recherchen, Montagen, Evaluation)"
+scenario.hr_timesheet_activity_23,True,scenario.hr_department_marketing,"Medienplan-Administration, Überwachung, Qualität"
 scenario.hr_timesheet_activity_24,True,scenario.hr_department_marketing,Übersetzungen Fremdsprachen
-scenario.hr_timesheet_activity_25,True,scenario.hr_department_marketing,Illustrationen (CAD
+scenario.hr_timesheet_activity_25,True,scenario.hr_department_marketing,"Illustrationen (CAD, Technische Zeichnungen)"
 scenario.hr_timesheet_activity_26,True,scenario.hr_department_marketing,Format-/Medienausleitungen
 scenario.hr_timesheet_activity_27,True,scenario.hr_department_marketing,Druckvorstufe/Datenübergabe/GzD
 scenario.hr_timesheet_activity_28,True,scenario.hr_department_marketing,Fotografie
-scenario.hr_timesheet_activity_29,True,scenario.hr_department_marketing,Werbedrucksachen
+scenario.hr_timesheet_activity_29,True,scenario.hr_department_marketing,"Werbedrucksachen, Messebeschriftungen"
 scenario.hr_timesheet_activity_30,True,scenario.hr_department_marketing,Redaktionelle Bearbeitungen (Optimierung/Durchgängigkeit)
 scenario.hr_timesheet_activity_31,True,scenario.hr_department_marketing,Korrektur-/Kontrollarbeiten
-scenario.hr_timesheet_activity_32,True,scenario.hr_department_marketing,Stammdatenpflege Bild (Produktfotos
+scenario.hr_timesheet_activity_32,True,scenario.hr_department_marketing,"Stammdatenpflege Bild (Produktfotos, Abbildungen, Logos)"
 scenario.hr_timesheet_activity_33,True,scenario.hr_department_marketing,Prozess Design
 scenario.hr_timesheet_activity_34,True,scenario.hr_department_marketing,Kundengeschenke/Reklameartikel
-scenario.hr_timesheet_activity_35,True,scenario.hr_department_marketing,Verschiedene Apparate für Produktion (Fotostudio
+scenario.hr_timesheet_activity_35,True,scenario.hr_department_marketing,"Verschiedene Apparate für Produktion (Fotostudio, OS Hilfsmittel, …)"
 scenario.hr_timesheet_activity_36,True,scenario.hr_department_produkt,Pflichtenhefter
 scenario.hr_timesheet_activity_37,True,scenario.hr_department_produkt,Qualitätssicherung
 scenario.hr_timesheet_activity_38,True,scenario.hr_department_produkt,Retourenbearbeitung
 scenario.hr_timesheet_activity_39,True,scenario.hr_department_produkt,Testverfahren
-scenario.hr_timesheet_activity_40,True,scenario.hr_department_produkt,Redaktion
+scenario.hr_timesheet_activity_40,True,scenario.hr_department_produkt,"Redaktion, Stammdatenpflege"
 scenario.hr_timesheet_activity_41,True,scenario.hr_department_produkt,Interne Produktschulungen
-scenario.hr_timesheet_activity_42,True,scenario.hr_department_verkauf,Extern: Kontaktaufbau und -pflege
+scenario.hr_timesheet_activity_42,True,scenario.hr_department_verkauf,"Extern: Kontaktaufbau und -pflege, Termin"
 scenario.hr_timesheet_activity_43,True,scenario.hr_department_verkauf,Extern: Beratung & Inbetriebnahmen
 scenario.hr_timesheet_activity_44,True,scenario.hr_department_verkauf,Extern: techn. Support
 scenario.hr_timesheet_activity_45,True,scenario.hr_department_verkauf,Initiative Aktivitäten
-scenario.hr_timesheet_activity_46,True,scenario.hr_department_verkauf,Beratung (Konzepte
+scenario.hr_timesheet_activity_46,True,scenario.hr_department_verkauf,"Beratung (Konzepte, Planungsberatungen, Fehlersuche, Abklärungen)"
 scenario.hr_timesheet_activity_99,True,"scenario.hr_department_slx,scenario.hr_department_hr,scenario.hr_department_finanz,scenario.hr_department_produkt,scenario.hr_department_marketing,scenario.hr_department_verkauf,scenario.hr_department_logistik,scenario.hr_department_support,scenario.hr_department_it",n/a
