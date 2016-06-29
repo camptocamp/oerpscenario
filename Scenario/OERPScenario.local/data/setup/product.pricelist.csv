@@ -1,22 +1,59 @@
-id,currency_id:id,name,active,company_id:id,discount_policy
-product.list0,base.CHF,Public Pricelist,TRUE,,without_discount
-purchase.list0,base.CHF,Default Purchase Pricelist,TRUE,,without_discount
-scenario.productpricelist_netto_28,base.CHF,netto (28%),TRUE,base.main_company,without_discount
-scenario.productpricelist_gh_28_35,base.CHF,Grosshandel (28+35%),TRUE,base.main_company,without_discount
-scenario.productpricelist_schulen_28_50,base.CHF,Schulen (28+50%),TRUE,base.main_company,without_discount
-scenario.productpricelist_eigen_28_50,base.CHF,Eigenverbrauch (28+50%),TRUE,base.main_company,without_discount
-scenario.productpricelist_gh_28_33,base.CHF,Grosshandel (28+33%),TRUE,base.main_company,without_discount
-scenario.productpricelist_gh_28_30,base.CHF,Grosshandel (28+30%),TRUE,base.main_company,without_discount
-scenario.productpricelist_leuchten_28_25,base.CHF,Leuchtenhersteller (28+25%),TRUE,base.main_company,without_discount
-scenario.productpricelist_netto_28_15,base.CHF,netto-netto (28+15%),TRUE,base.main_company,without_discount
-scenario.productpricelist_netto_28_20,base.CHF,netto-netto (28+20%),TRUE,base.main_company,without_discount
-scenario.productpricelist_netto_28_10,base.CHF,netto-netto (28+10%),TRUE,base.main_company,without_discount
-scenario.productpricelist_netto_28_5,base.CHF,netto-netto (28+5%),TRUE,base.main_company,without_discount
-scenario.productpricelist_burkhalter_28_20,base.CHF,Burkhalter (28+20%),TRUE,base.main_company,without_discount
-scenario.productpricelist_eltop_28_15,base.CHF,Eltop EKZ (28+15%),TRUE,base.main_company,without_discount
-scenario.productpricelist_etavis_28_20,base.CHF,Etavis (28+20%),TRUE,base.main_company,without_discount
-scenario.productpricelist_oberholzer_28_20,base.CHF,Oberholzer (28+20% spezial),TRUE,base.main_company,without_discount
-scenario.productpricelist_ek_hugewin,base.USD,Einkauf von HugeWin,TRUE,base.main_company,without_discount
-scenario.productpricelist_vk_hugewin,base.USD,Verkauf an HugeWin,TRUE,base.main_company,without_discount
-scenario.productpricelist_ek_beg,base.EUR,Einkauf von BEG,TRUE,base.main_company,without_discount
-scenario.productpricelist_vk_beg,base.EUR,Verkauf an BEG,TRUE,base.main_company,without_discount
+id,active,name,company_id/id,currency_id/id,discount_policy
+scenario.productpricelist_all_brutto,True,Standard-Preisliste (Brutto),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_all_netto,True,Standard-Preisliste (Netto),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_all_gh_eldas,True,Eldas-Grossisten (gesamtes Sortiment),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_all_gh_div1,True,Grossisten Stufe 2 (gesamtes Sortiment),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_all_gh_div2,True,Grossisten Stufe 3 (gesamtes Sortiment),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_digitalstrom,True,Digitalstrom,base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_beg_leuchtenhst,True,Leuchtenhersteller (BEG),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_beg_handeldiv,True,Handel Divers (BEG),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_led_aastra,True,AstraLED (LED-Leuchten),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_led_handel1,True,Leuchtenhandel 1 (LED-Leuchten),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_led_handel2,True,Leuchtenhandel 2 (LED-Leuchten),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_led_handel3,True,Leuchtenhandel 3 (LED-Leuchten),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_led_leuchtenhst1,True,Leuchtenhersteller 1 (LED-Leuchten und BEG),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_led_leuchtenhst2,True,Leuchtenhersteller 2 (LED-Leuchten und BEG),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_led_leuchtenhst3,True,Leuchtenhersteller 3 (LED-Leuchten und BEG),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_led_bauherr1,True,Bauherr 1 (LED-Leuchten),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_led_bauherr2,True,Bauherr 2 (LED-Leuchten),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_led_bauherr3,True,Bauherr 3 (LED-Leuchten),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_led_bauherr4,True,Bauherr 4 (LED-Leuchten),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_all_eigenbedarf,True,Eigenbedarf (gesamtes Sortiment),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_all_ausbildung,True,Schulungs-/Ausbildungsmaterial (gesamtes Sortiment),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_all_muster,True,Musterlieferung kostenlos (gesamtes Sortiment),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_all_return,True,Ersatzlieferung kostenlos (gesamtes Sortiment),base.main_company,base.CHF,Show discount in the sale order
+scenario.productpricelist_all_free,True,Kostenlose Materiallieferung,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_01,True,Auftragsrabatt 1%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_02,True,Auftragsrabatt 2%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_03,True,Auftragsrabatt 3%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_04,True,Auftragsrabatt 4%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_05,True,Auftragsrabatt 5%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_06,True,Auftragsrabatt 6%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_07,True,Auftragsrabatt 7%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_08,True,Auftragsrabatt 8%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_09,True,Auftragsrabatt 9%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_10,True,Auftragsrabatt 10%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_11,True,Auftragsrabatt 11%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_12,True,Auftragsrabatt 12%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_13,True,Auftragsrabatt 13%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_14,True,Auftragsrabatt 14%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_15,True,Auftragsrabatt 15%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_16,True,Auftragsrabatt 16%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_17,True,Auftragsrabatt 17%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_18,True,Auftragsrabatt 18%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_19,True,Auftragsrabatt 19%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_20,True,Auftragsrabatt 20%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_25,True,Auftragsrabatt 25%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_30,True,Auftragsrabatt 30%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_35,True,Auftragsrabatt 35%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_40,True,Auftragsrabatt 40%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_45,True,Auftragsrabatt 45%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_47,True,Auftragsrabatt 47%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_49,True,Auftragsrabatt 49%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_50,True,Auftragsrabatt 50%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_51,True,Auftragsrabatt 51%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_52,True,Auftragsrabatt 52%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_53,True,Auftragsrabatt 53%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_54,True,Auftragsrabatt 54%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_55,True,Auftragsrabatt 55%,base.main_company,base.CHF,Show discount in the sale order
+scenario.buildingprojectpricelist_56,True,Auftragsrabatt 56%,base.main_company,base.CHF,Show discount in the sale order

@@ -1,142 +1,198 @@
-id,price_round,price_discount,price_max_margin,product_id:id,categ_id:id,base_pricelist_id:id,sequence,company_id:id,name,base,min_quantity,applied_on
-scenario.productpricelistitem_burkhalter_28_20_R0,0.05,-0,0,,scenario.product_category_R0,scenario.productpricelist_netto_28,0,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_burkhalter_28_20_R201,0.05,-0.2,0,,scenario.product_category_R201,scenario.productpricelist_netto_28,201,base.main_company,RG 201,pricelist,0,2_product_category
-scenario.productpricelistitem_burkhalter_28_20_R202,0.05,-0.2,0,,scenario.product_category_R202,scenario.productpricelist_netto_28,202,base.main_company,RG 202,pricelist,0,2_product_category
-scenario.productpricelistitem_burkhalter_28_20_R203,0.05,-0.15,0,,scenario.product_category_R203,scenario.productpricelist_netto_28,203,base.main_company,RG 203,pricelist,0,2_product_category
-scenario.productpricelistitem_burkhalter_28_20_R204,0.05,-0.15,0,,scenario.product_category_R204,scenario.productpricelist_netto_28,204,base.main_company,RG 204,pricelist,0,2_product_category
-scenario.productpricelistitem_burkhalter_28_20_R205,0.05,-0.2,0,,scenario.product_category_R205,scenario.productpricelist_netto_28,205,base.main_company,RG 205,pricelist,0,2_product_category
-scenario.productpricelistitem_eltop_28_15_R0,0.05,-0,0,,scenario.product_category_R0,scenario.productpricelist_netto_28,0,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_eltop_28_15_R201,0.05,-0.15,0,,scenario.product_category_R201,scenario.productpricelist_netto_28,201,base.main_company,RG 201,pricelist,0,2_product_category
-scenario.productpricelistitem_eltop_28_15_R202,0.05,-0.15,0,,scenario.product_category_R202,scenario.productpricelist_netto_28,202,base.main_company,RG 202,pricelist,0,2_product_category
-scenario.productpricelistitem_eltop_28_15_R203,0.05,-0.1,0,,scenario.product_category_R203,scenario.productpricelist_netto_28,203,base.main_company,RG 203,pricelist,0,2_product_category
-scenario.productpricelistitem_eltop_28_15_R204,0.05,-0.1,0,,scenario.product_category_R204,scenario.productpricelist_netto_28,204,base.main_company,RG 204,pricelist,0,2_product_category
-scenario.productpricelistitem_eltop_28_15_R205,0.05,-0.15,0,,scenario.product_category_R205,scenario.productpricelist_netto_28,205,base.main_company,RG 205,pricelist,0,2_product_category
-scenario.productpricelistitem_etavis_28_20_R0,0.05,-0,0,,scenario.product_category_R0,scenario.productpricelist_netto_28,0,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_etavis_28_20_R201,0.05,-0.2,0,,scenario.product_category_R201,scenario.productpricelist_netto_28,201,base.main_company,RG 201,pricelist,0,2_product_category
-scenario.productpricelistitem_etavis_28_20_R202,0.05,-0.2,0,,scenario.product_category_R202,scenario.productpricelist_netto_28,202,base.main_company,RG 202,pricelist,0,2_product_category
-scenario.productpricelistitem_etavis_28_20_R203,0.05,-0.15,0,,scenario.product_category_R203,scenario.productpricelist_netto_28,203,base.main_company,RG 203,pricelist,0,2_product_category
-scenario.productpricelistitem_etavis_28_20_R204,0.05,-0.15,0,,scenario.product_category_R204,scenario.productpricelist_netto_28,204,base.main_company,RG 204,pricelist,0,2_product_category
-scenario.productpricelistitem_etavis_28_20_R205,0.05,-0.2,0,,scenario.product_category_R205,scenario.productpricelist_netto_28,205,base.main_company,RG 205,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_30_R0,0.05,-0,0,,scenario.product_category_R0,scenario.productpricelist_netto_28,0,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_30_R201,0.05,-0.3,0,,scenario.product_category_R201,scenario.productpricelist_netto_28,201,base.main_company,RG 201,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_30_R202,0.05,-0.3,0,,scenario.product_category_R202,scenario.productpricelist_netto_28,202,base.main_company,RG 202,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_30_R203,0.05,-0.25,0,,scenario.product_category_R203,scenario.productpricelist_netto_28,203,base.main_company,RG 203,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_30_R204,0.05,-0.25,0,,scenario.product_category_R204,scenario.productpricelist_netto_28,204,base.main_company,RG 204,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_30_R205,0.05,-0.3,0,,scenario.product_category_R205,scenario.productpricelist_netto_28,205,base.main_company,RG 205,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_33_R0,0.05,-0,0,,scenario.product_category_R0,scenario.productpricelist_netto_28,0,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_33_R201,0.05,-0.33,0,,scenario.product_category_R201,scenario.productpricelist_netto_28,201,base.main_company,RG 201,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_33_R202,0.05,-0.33,0,,scenario.product_category_R202,scenario.productpricelist_netto_28,202,base.main_company,RG 202,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_33_R203,0.05,-0.28,0,,scenario.product_category_R203,scenario.productpricelist_netto_28,203,base.main_company,RG 203,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_33_R204,0.05,-0.28,0,,scenario.product_category_R204,scenario.productpricelist_netto_28,204,base.main_company,RG 204,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_33_R205,0.05,-0.33,0,,scenario.product_category_R205,scenario.productpricelist_netto_28,205,base.main_company,RG 205,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_35_R0,0.05,-0,0,,scenario.product_category_R0,scenario.productpricelist_netto_28,0,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_35_R201,0.05,-0.35,0,,scenario.product_category_R201,scenario.productpricelist_netto_28,201,base.main_company,RG 201,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_35_R202,0.05,-0.35,0,,scenario.product_category_R202,scenario.productpricelist_netto_28,202,base.main_company,RG 202,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_35_R203,0.05,-0.3,0,,scenario.product_category_R203,scenario.productpricelist_netto_28,203,base.main_company,RG 203,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_35_R204,0.05,-0.3,0,,scenario.product_category_R204,scenario.productpricelist_netto_28,204,base.main_company,RG 204,pricelist,0,2_product_category
-scenario.productpricelistitem_gh_28_35_R205,0.05,-0.35,0,,scenario.product_category_R205,scenario.productpricelist_netto_28,205,base.main_company,RG 205,pricelist,0,2_product_category
-scenario.productpricelistitem_leuchten_28_25_R0,0.05,-0,0,,scenario.product_category_R0,scenario.productpricelist_netto_28,0,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_leuchten_28_25_R201,0.05,-0.25,0,,scenario.product_category_R201,scenario.productpricelist_netto_28,201,base.main_company,RG 201,pricelist,0,2_product_category
-scenario.productpricelistitem_leuchten_28_25_R202,0.05,-0.25,0,,scenario.product_category_R202,scenario.productpricelist_netto_28,202,base.main_company,RG 202,pricelist,0,2_product_category
-scenario.productpricelistitem_leuchten_28_25_R203,0.05,-0.2,0,,scenario.product_category_R203,scenario.productpricelist_netto_28,203,base.main_company,RG 203,pricelist,0,2_product_category
-scenario.productpricelistitem_leuchten_28_25_R204,0.05,-0.2,0,,scenario.product_category_R204,scenario.productpricelist_netto_28,204,base.main_company,RG 204,pricelist,0,2_product_category
-scenario.productpricelistitem_leuchten_28_25_R205,0.05,-0.25,0,,scenario.product_category_R205,scenario.productpricelist_netto_28,205,base.main_company,RG 205,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_10_R0,0.05,-0,0,,scenario.product_category_R0,scenario.productpricelist_netto_28,0,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_10_R201,0.05,-0.1,0,,scenario.product_category_R201,scenario.productpricelist_netto_28,201,base.main_company,RG 201,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_10_R202,0.05,-0.1,0,,scenario.product_category_R202,scenario.productpricelist_netto_28,202,base.main_company,RG 202,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_10_R203,0.05,-0.05,0,,scenario.product_category_R203,scenario.productpricelist_netto_28,203,base.main_company,RG 203,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_10_R204,0.05,-0.05,0,,scenario.product_category_R204,scenario.productpricelist_netto_28,204,base.main_company,RG 204,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_10_R205,0.05,-0.1,0,,scenario.product_category_R205,scenario.productpricelist_netto_28,205,base.main_company,RG 205,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_15_R0,0.05,-0,0,,scenario.product_category_R0,scenario.productpricelist_netto_28,0,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_15_R201,0.05,-0.15,0,,scenario.product_category_R201,scenario.productpricelist_netto_28,201,base.main_company,RG 201,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_15_R202,0.05,-0.15,0,,scenario.product_category_R202,scenario.productpricelist_netto_28,202,base.main_company,RG 202,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_15_R203,0.05,-0.1,0,,scenario.product_category_R203,scenario.productpricelist_netto_28,203,base.main_company,RG 203,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_15_R204,0.05,-0.1,0,,scenario.product_category_R204,scenario.productpricelist_netto_28,204,base.main_company,RG 204,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_15_R205,0.05,-0.15,0,,scenario.product_category_R205,scenario.productpricelist_netto_28,205,base.main_company,RG 205,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_20_R0,0.05,-0,0,,scenario.product_category_R0,scenario.productpricelist_netto_28,0,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_20_R201,0.05,-0.2,0,,scenario.product_category_R201,scenario.productpricelist_netto_28,201,base.main_company,RG 201,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_20_R202,0.05,-0.2,0,,scenario.product_category_R202,scenario.productpricelist_netto_28,202,base.main_company,RG 202,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_20_R203,0.05,-0.15,0,,scenario.product_category_R203,scenario.productpricelist_netto_28,203,base.main_company,RG 203,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_20_R204,0.05,-0.15,0,,scenario.product_category_R204,scenario.productpricelist_netto_28,204,base.main_company,RG 204,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_20_R205,0.05,-0.2,0,,scenario.product_category_R205,scenario.productpricelist_netto_28,205,base.main_company,RG 205,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_5_R0,0.05,-0,0,,scenario.product_category_R0,scenario.productpricelist_netto_28,0,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_5_R201,0.05,-0.05,0,,scenario.product_category_R201,scenario.productpricelist_netto_28,201,base.main_company,RG 201,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_5_R202,0.05,-0.05,0,,scenario.product_category_R202,scenario.productpricelist_netto_28,202,base.main_company,RG 202,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_5_R203,0.05,-0,0,,scenario.product_category_R203,scenario.productpricelist_netto_28,203,base.main_company,RG 203,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_5_R204,0.05,-0,0,,scenario.product_category_R204,scenario.productpricelist_netto_28,204,base.main_company,RG 204,pricelist,0,2_product_category
-scenario.productpricelistitem_netto_28_5_R205,0.05,-0.05,0,,scenario.product_category_R205,scenario.productpricelist_netto_28,205,base.main_company,RG 205,pricelist,0,2_product_category
-scenario.productpricelistitem_oberholzer_28_20_R0,0.05,-0,0,,scenario.product_category_R0,scenario.productpricelist_netto_28,0,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_oberholzer_28_20_R201,0.05,-0.2,0,,scenario.product_category_R201,scenario.productpricelist_netto_28,201,base.main_company,RG 201,pricelist,0,2_product_category
-scenario.productpricelistitem_oberholzer_28_20_R202,0.05,-0.2,0,,scenario.product_category_R202,scenario.productpricelist_netto_28,202,base.main_company,RG 202,pricelist,0,2_product_category
-scenario.productpricelistitem_oberholzer_28_20_R203,0.05,-0.15,0,,scenario.product_category_R203,scenario.productpricelist_netto_28,203,base.main_company,RG 203,pricelist,0,2_product_category
-scenario.productpricelistitem_oberholzer_28_20_R204,0.05,-0.15,0,,scenario.product_category_R204,scenario.productpricelist_netto_28,204,base.main_company,RG 204,pricelist,0,2_product_category
-scenario.productpricelistitem_oberholzer_28_20_R205,0.05,-0.2,0,,scenario.product_category_R205,scenario.productpricelist_netto_28,205,base.main_company,RG 205,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_1,0.05,-0.28,0,,scenario.product_category_R0_001,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_10,0.05,-0.28,0,,scenario.product_category_R0_010,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_101,0.05,-0.28,0,,scenario.product_category_R0_021,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_107,0.05,-0.28,0,,scenario.product_category_R0_026,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_110,0.05,-0.28,0,,scenario.product_category_R0_029,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_112,0.05,-0.28,0,,scenario.product_category_R0_031,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_113,0.05,-0.28,0,,scenario.product_category_R0_032,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_114,0.05,-0.28,0,,scenario.product_category_R0_033,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_116,0.05,-0.28,0,,scenario.product_category_R0_035,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_123,0.05,-0.28,0,,scenario.product_category_R0_040,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_125,0.05,-0,0,,scenario.product_category_R0_093,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_126,0.05,-0.28,0,,scenario.product_category_R0_101,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_19,0.05,-0.28,0,,scenario.product_category_R0_019,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_2,0.05,-0.28,0,,scenario.product_category_R0_002,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_5,0.05,-0.28,0,,scenario.product_category_R0_005,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_50,0.05,-0.2,0,,scenario.product_category_R0_050,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_8,0.05,-0.28,0,,scenario.product_category_R0_008,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_9,0.05,-0.28,0,,scenario.product_category_R0_009,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_90,0.05,-0,0,,scenario.product_category_R0_090,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_91,0.05,-0,0,,scenario.product_category_R0_091,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_92,0.05,-0,0,,scenario.product_category_R0_092,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R0_99,0.05,-0,0,,scenario.product_category_R0_099,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_1,0.05,-0.28,0,,scenario.product_category_R201_001,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_10,0.05,-0.28,0,,scenario.product_category_R201_010,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_100,0.05,-0.28,0,,scenario.product_category_R201_020,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_101,0.05,-0.28,0,,scenario.product_category_R201_021,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_102,0.05,-0.28,0,,scenario.product_category_R201_022,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_103,0.05,-0.28,0,,scenario.product_category_R201_023,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_104,0.05,-0.28,0,,scenario.product_category_R201_024,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_106,0.05,-0.28,0,,scenario.product_category_R201_025,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_107,0.05,-0.28,0,,scenario.product_category_R201_026,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_108,0.05,-0.28,0,,scenario.product_category_R201_027,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_109,0.05,-0.28,0,,scenario.product_category_R201_028,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_110,0.05,-0.28,0,,scenario.product_category_R201_029,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_112,0.05,-0.28,0,,scenario.product_category_R201_031,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_113,0.05,-0.28,0,,scenario.product_category_R201_032,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_115,0.05,-0.28,0,,scenario.product_category_R201_034,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_118,0.05,-0.28,0,,scenario.product_category_R201_037,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_119,0.05,-0.28,0,,scenario.product_category_R201_038,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_120,0.05,-0.28,0,,scenario.product_category_R201_039,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_122,0.05,-0.28,0,,scenario.product_category_R201_013,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_19,0.05,-0.28,0,,scenario.product_category_R201_019,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_2,0.05,-0.28,0,,scenario.product_category_R201_002,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_9,0.05,-0.28,0,,scenario.product_category_R201_009,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R201_91,0.05,-0,0,,scenario.product_category_R201_091,product.list0,1,base.main_company,RG 201,pricelist,0,2_product_category
-productpricelistitem_product.list0_R202_102,0.05,-0.28,0,,scenario.product_category_R202_022,product.list0,1,base.main_company,RG 202,pricelist,0,2_product_category
-productpricelistitem_product.list0_R202_103,0.05,-0.28,0,,scenario.product_category_R202_023,product.list0,1,base.main_company,RG 202,pricelist,0,2_product_category
-productpricelistitem_product.list0_R202_105,0.05,-0.28,0,,scenario.product_category_R202_011,product.list0,1,base.main_company,RG 202,pricelist,0,2_product_category
-productpricelistitem_product.list0_R202_111,0.05,-0.28,0,,scenario.product_category_R202_030,product.list0,1,base.main_company,RG 202,pricelist,0,2_product_category
-productpricelistitem_product.list0_R202_117,0.05,-0.28,0,,scenario.product_category_R202_036,product.list0,1,base.main_company,RG 202,pricelist,0,2_product_category
-productpricelistitem_product.list0_R202_121,0.05,-0.28,0,,scenario.product_category_R202_012,product.list0,1,base.main_company,RG 202,pricelist,0,2_product_category
-productpricelistitem_product.list0_R202_19,0.05,-0.28,0,,scenario.product_category_R202_019,product.list0,1,base.main_company,RG 202,pricelist,0,2_product_category
-productpricelistitem_product.list0_R202_3,0.05,-0.28,0,,scenario.product_category_R202_003,product.list0,1,base.main_company,RG 202,pricelist,0,2_product_category
-productpricelistitem_product.list0_R202_4,0.05,-0.28,0,,scenario.product_category_R202_004,product.list0,1,base.main_company,RG 202,pricelist,0,2_product_category
-productpricelistitem_product.list0_R202_6,0.05,-0.28,0,,scenario.product_category_R202_006,product.list0,1,base.main_company,RG 202,pricelist,0,2_product_category
-productpricelistitem_product.list0_R202_7,0.05,-0.28,0,,scenario.product_category_R202_007,product.list0,1,base.main_company,RG 202,pricelist,0,2_product_category
-productpricelistitem_product.list0_R203_1,0.05,-0.28,0,,scenario.product_category_R203_001,product.list0,1,base.main_company,RG 203,pricelist,0,2_product_category
-productpricelistitem_product.list0_R203_126,0.05,-0.28,0,,scenario.product_category_R203_101,product.list0,1,base.main_company,RG 203,pricelist,0,2_product_category
-productpricelistitem_product.list0_R203_3,0.05,-0.28,0,,scenario.product_category_R203_003,product.list0,1,base.main_company,RG 203,pricelist,0,2_product_category
-productpricelistitem_product.list0_R204_100,0.05,-0.28,0,,scenario.product_category_R204_020,product.list0,1,base.main_company,RG 204,pricelist,0,2_product_category
-productpricelistitem_product.list0_R204_124,0.05,-0.28,0,,scenario.product_category_R204_100,product.list0,1,base.main_company,RG 204,pricelist,0,2_product_category
-productpricelistitem_product.list0_R205_5,0.05,-0.28,0,,scenario.product_category_R205_005,product.list0,1,base.main_company,RG 205,pricelist,0,2_product_category
-productpricelistitem_product.list0_R206_1,0.05,-0.28,0,,scenario.product_category_R206_001,product.list0,1,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_schulen_28_50_R0,0.05,-0,0,,scenario.product_category_R0,scenario.productpricelist_netto_28,0,base.main_company,RG 000,pricelist,0,2_product_category
-scenario.productpricelistitem_schulen_28_50_R201,0.05,-0.5,0,,scenario.product_category_R201,scenario.productpricelist_netto_28,201,base.main_company,RG 201,pricelist,0,2_product_category
-scenario.productpricelistitem_schulen_28_50_R202,0.05,-0.5,0,,scenario.product_category_R202,scenario.productpricelist_netto_28,202,base.main_company,RG 202,pricelist,0,2_product_category
-scenario.productpricelistitem_schulen_28_50_R203,0.05,-0.45,0,,scenario.product_category_R203,scenario.productpricelist_netto_28,203,base.main_company,RG 203,pricelist,0,2_product_category
-scenario.productpricelistitem_schulen_28_50_R204,0.05,-0.45,0,,scenario.product_category_R204,scenario.productpricelist_netto_28,204,base.main_company,RG 204,pricelist,0,2_product_category
-scenario.productpricelistitem_schulen_28_50_R205,0.05,-0.5,0,,scenario.product_category_R205,scenario.productpricelist_netto_28,205,base.main_company,RG 205,pricelist,0,2_product_category
+id,pricelist_id/id,sequence,applied_on,compute_price,fixed_price,base,base_pricelist_id:id,min_quantity,percent_price,price_discount,price_round,categ_id:id,product_tmpl_id:id
+scenario.productpricelistitem_all_brutto,scenario.productpricelist_all_brutto,0,3_global,formula,,list_price,,1,,0,0.05,,
+scenario.productpricelistitem_all_netto,scenario.productpricelist_all_netto,0,3_global,formula,,pricelist,scenario.productpricelist_all_brutto,1,,28,0.05,,
+scenario.productpricelistitem_all_gh_eldas1,scenario.productpricelist_all_gh_eldas,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_all_gh_div1,scenario.productpricelist_all_gh_div1,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_all_gh_div2,scenario.productpricelist_all_gh_div2,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_digitalstrom,scenario.productpricelist_digitalstrom,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_beg_leuchtenhst,scenario.productpricelist_beg_leuchtenhst,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_beg_handeldiv,scenario.productpricelist_beg_handeldiv,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_led_aastra,scenario.productpricelist_led_aastra,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_led_handel1,scenario.productpricelist_led_handel1,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_led_handel2,scenario.productpricelist_led_handel2,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_led_handel3,scenario.productpricelist_led_handel3,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_led_leuchtenhst1,scenario.productpricelist_led_leuchtenhst1,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_led_leuchtenhst2,scenario.productpricelist_led_leuchtenhst2,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_led_leuchtenhst3,scenario.productpricelist_led_leuchtenhst3,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_led_bauherr1,scenario.productpricelist_led_bauherr1,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_led_bauherr2,scenario.productpricelist_led_bauherr2,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_led_bauherr3,scenario.productpricelist_led_bauherr3,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_led_bauherr4,scenario.productpricelist_led_bauherr4,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_all_eigenbedarf,scenario.productpricelist_all_eigenbedarf,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_all_ausbildung,scenario.productpricelist_all_ausbildung,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_all_muster,scenario.productpricelist_all_muster,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_all_return,scenario.productpricelist_all_return,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_all_free,scenario.productpricelist_all_free,999,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,product.product_category_all,
+scenario.productpricelistitem_all_gh_eldas_R0,scenario.productpricelist_all_gh_eldas,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_all_gh_eldas_R201,scenario.productpricelist_all_gh_eldas,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,35,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_all_gh_eldas_R202,scenario.productpricelist_all_gh_eldas,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,35,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_all_gh_eldas_R203,scenario.productpricelist_all_gh_eldas,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,35,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_all_gh_eldas_R204,scenario.productpricelist_all_gh_eldas,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,30,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_all_gh_eldas_R205,scenario.productpricelist_all_gh_eldas,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,35,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_all_gh_eldas_R206,scenario.productpricelist_all_gh_eldas,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,25,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_all_gh_div1_R0,scenario.productpricelist_all_gh_div1,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_all_gh_div1_R201,scenario.productpricelist_all_gh_div1,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,33,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_all_gh_div1_R202,scenario.productpricelist_all_gh_div1,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,33,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_all_gh_div1_R203,scenario.productpricelist_all_gh_div1,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,30,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_all_gh_div1_R204,scenario.productpricelist_all_gh_div1,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,28,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_all_gh_div1_R205,scenario.productpricelist_all_gh_div1,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,33,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_all_gh_div1_R206,scenario.productpricelist_all_gh_div1,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,23,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_all_gh_div2_R0,scenario.productpricelist_all_gh_div2,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_all_gh_div2_R201,scenario.productpricelist_all_gh_div2,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,30,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_all_gh_div2_R202,scenario.productpricelist_all_gh_div2,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,30,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_all_gh_div2_R203,scenario.productpricelist_all_gh_div2,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,25,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_all_gh_div2_R204,scenario.productpricelist_all_gh_div2,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,25,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_all_gh_div2_R205,scenario.productpricelist_all_gh_div2,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,30,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_all_gh_div2_R206,scenario.productpricelist_all_gh_div2,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,20,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_digitalstrom_R0,scenario.productpricelist_digitalstrom,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_digitalstrom_R201,scenario.productpricelist_digitalstrom,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_digitalstrom_R202,scenario.productpricelist_digitalstrom,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_digitalstrom_R203,scenario.productpricelist_digitalstrom,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_digitalstrom_R204,scenario.productpricelist_digitalstrom,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_digitalstrom_R205,scenario.productpricelist_digitalstrom,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_digitalstrom_R206,scenario.productpricelist_digitalstrom,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,20,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_beg_leuchtenhst_R0,scenario.productpricelist_beg_leuchtenhst,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_beg_leuchtenhst_R201,scenario.productpricelist_beg_leuchtenhst,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,25,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_beg_leuchtenhst_R202,scenario.productpricelist_beg_leuchtenhst,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_beg_leuchtenhst_R203,scenario.productpricelist_beg_leuchtenhst,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_beg_leuchtenhst_R204,scenario.productpricelist_beg_leuchtenhst,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_beg_leuchtenhst_R205,scenario.productpricelist_beg_leuchtenhst,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_beg_leuchtenhst_R206,scenario.productpricelist_beg_leuchtenhst,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_beg_handeldiv_R0,scenario.productpricelist_beg_handeldiv,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_beg_handeldiv_R201,scenario.productpricelist_beg_handeldiv,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,30,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_beg_handeldiv_R202,scenario.productpricelist_beg_handeldiv,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,30,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_beg_handeldiv_R203,scenario.productpricelist_beg_handeldiv,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_beg_handeldiv_R204,scenario.productpricelist_beg_handeldiv,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,25,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_beg_handeldiv_R205,scenario.productpricelist_beg_handeldiv,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,30,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_beg_handeldiv_R206,scenario.productpricelist_beg_handeldiv,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,20,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_led_aastra_R0,scenario.productpricelist_led_aastra,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_led_aastra_R201,scenario.productpricelist_led_aastra,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_led_aastra_R202,scenario.productpricelist_led_aastra,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_led_aastra_R203,scenario.productpricelist_led_aastra,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,45,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_led_aastra_R204,scenario.productpricelist_led_aastra,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_led_aastra_R205,scenario.productpricelist_led_aastra,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_led_aastra_R206,scenario.productpricelist_led_aastra,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_led_handel1_R0,scenario.productpricelist_led_handel1,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_led_handel1_R201,scenario.productpricelist_led_handel1,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_led_handel1_R202,scenario.productpricelist_led_handel1,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_led_handel1_R203,scenario.productpricelist_led_handel1,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,30,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_led_handel1_R204,scenario.productpricelist_led_handel1,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_led_handel1_R205,scenario.productpricelist_led_handel1,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_led_handel1_R206,scenario.productpricelist_led_handel1,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_led_handel2_R0,scenario.productpricelist_led_handel2,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_led_handel2_R201,scenario.productpricelist_led_handel2,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_led_handel2_R202,scenario.productpricelist_led_handel2,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_led_handel2_R203,scenario.productpricelist_led_handel2,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,25,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_led_handel2_R204,scenario.productpricelist_led_handel2,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_led_handel2_R205,scenario.productpricelist_led_handel2,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_led_handel2_R206,scenario.productpricelist_led_handel2,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_led_handel3_R0,scenario.productpricelist_led_handel3,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_led_handel3_R201,scenario.productpricelist_led_handel3,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_led_handel3_R202,scenario.productpricelist_led_handel3,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_led_handel3_R203,scenario.productpricelist_led_handel3,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,20,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_led_handel3_R204,scenario.productpricelist_led_handel3,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_led_handel3_R205,scenario.productpricelist_led_handel3,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_led_handel3_R206,scenario.productpricelist_led_handel3,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_led_leuchtenhst1_R0,scenario.productpricelist_led_leuchtenhst1,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_led_leuchtenhst1_R201,scenario.productpricelist_led_leuchtenhst1,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_led_leuchtenhst1_R202,scenario.productpricelist_led_leuchtenhst1,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_led_leuchtenhst1_R203,scenario.productpricelist_led_leuchtenhst1,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,25,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_led_leuchtenhst1_R204,scenario.productpricelist_led_leuchtenhst1,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_led_leuchtenhst1_R205,scenario.productpricelist_led_leuchtenhst1,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_led_leuchtenhst1_R206,scenario.productpricelist_led_leuchtenhst1,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_led_leuchtenhst2_R0,scenario.productpricelist_led_leuchtenhst2,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_led_leuchtenhst2_R201,scenario.productpricelist_led_leuchtenhst2,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_led_leuchtenhst2_R202,scenario.productpricelist_led_leuchtenhst2,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_led_leuchtenhst2_R203,scenario.productpricelist_led_leuchtenhst2,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,20,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_led_leuchtenhst2_R204,scenario.productpricelist_led_leuchtenhst2,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_led_leuchtenhst2_R205,scenario.productpricelist_led_leuchtenhst2,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_led_leuchtenhst2_R206,scenario.productpricelist_led_leuchtenhst2,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_led_leuchtenhst3_R0,scenario.productpricelist_led_leuchtenhst3,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_led_leuchtenhst3_R201,scenario.productpricelist_led_leuchtenhst3,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_led_leuchtenhst3_R202,scenario.productpricelist_led_leuchtenhst3,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_led_leuchtenhst3_R203,scenario.productpricelist_led_leuchtenhst3,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,15,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_led_leuchtenhst3_R204,scenario.productpricelist_led_leuchtenhst3,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_led_leuchtenhst3_R205,scenario.productpricelist_led_leuchtenhst3,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_led_leuchtenhst3_R206,scenario.productpricelist_led_leuchtenhst3,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_led_bauherr1_R0,scenario.productpricelist_led_bauherr1,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_led_bauherr1_R201,scenario.productpricelist_led_bauherr1,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_led_bauherr1_R202,scenario.productpricelist_led_bauherr1,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_led_bauherr1_R203,scenario.productpricelist_led_bauherr1,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,20,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_led_bauherr1_R204,scenario.productpricelist_led_bauherr1,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_led_bauherr1_R205,scenario.productpricelist_led_bauherr1,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_led_bauherr1_R206,scenario.productpricelist_led_bauherr1,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_led_bauherr2_R0,scenario.productpricelist_led_bauherr2,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_led_bauherr2_R201,scenario.productpricelist_led_bauherr2,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_led_bauherr2_R202,scenario.productpricelist_led_bauherr2,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_led_bauherr2_R203,scenario.productpricelist_led_bauherr2,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,15,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_led_bauherr2_R204,scenario.productpricelist_led_bauherr2,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_led_bauherr2_R205,scenario.productpricelist_led_bauherr2,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_led_bauherr2_R206,scenario.productpricelist_led_bauherr2,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_led_bauherr3_R0,scenario.productpricelist_led_bauherr3,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_led_bauherr3_R201,scenario.productpricelist_led_bauherr3,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_led_bauherr3_R202,scenario.productpricelist_led_bauherr3,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_led_bauherr3_R203,scenario.productpricelist_led_bauherr3,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,10,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_led_bauherr3_R204,scenario.productpricelist_led_bauherr3,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_led_bauherr3_R205,scenario.productpricelist_led_bauherr3,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_led_bauherr3_R206,scenario.productpricelist_led_bauherr3,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_led_bauherr4_R0,scenario.productpricelist_led_bauherr4,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_led_bauherr4_R201,scenario.productpricelist_led_bauherr4,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_led_bauherr4_R202,scenario.productpricelist_led_bauherr4,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_led_bauherr4_R203,scenario.productpricelist_led_bauherr4,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,5,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_led_bauherr4_R204,scenario.productpricelist_led_bauherr4,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_led_bauherr4_R205,scenario.productpricelist_led_bauherr4,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_led_bauherr4_R206,scenario.productpricelist_led_bauherr4,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,0,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_all_eigenbedarf_R0,scenario.productpricelist_all_eigenbedarf,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_all_eigenbedarf_R201,scenario.productpricelist_all_eigenbedarf,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,50,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_all_eigenbedarf_R202,scenario.productpricelist_all_eigenbedarf,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,50,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_all_eigenbedarf_R203,scenario.productpricelist_all_eigenbedarf,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,45,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_all_eigenbedarf_R204,scenario.productpricelist_all_eigenbedarf,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,45,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_all_eigenbedarf_R205,scenario.productpricelist_all_eigenbedarf,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,50,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_all_eigenbedarf_R206,scenario.productpricelist_all_eigenbedarf,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,40,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_all_ausbildung_R0,scenario.productpricelist_all_ausbildung,0,2_product_category,formula,,pricelist,scenario.productpricelist_all_brutto,1,,0,0.05,scenario.product_category_R0,
+scenario.productpricelistitem_all_ausbildung_R201,scenario.productpricelist_all_ausbildung,201,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,50,0.05,scenario.product_category_R201,
+scenario.productpricelistitem_all_ausbildung_R202,scenario.productpricelist_all_ausbildung,202,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,50,0.05,scenario.product_category_R202,
+scenario.productpricelistitem_all_ausbildung_R203,scenario.productpricelist_all_ausbildung,203,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,45,0.05,scenario.product_category_R203,
+scenario.productpricelistitem_all_ausbildung_R204,scenario.productpricelist_all_ausbildung,204,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,45,0.05,scenario.product_category_R204,
+scenario.productpricelistitem_all_ausbildung_R205,scenario.productpricelist_all_ausbildung,205,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,50,0.05,scenario.product_category_R205,
+scenario.productpricelistitem_all_ausbildung_R206,scenario.productpricelist_all_ausbildung,206,2_product_category,formula,,pricelist,scenario.productpricelist_all_netto,1,,40,0.05,scenario.product_category_R206,
+scenario.productpricelistitem_all_ausbildung_141680,scenario.productpricelist_all_ausbildung,0,1_product,fixed,35,list_price,,1,,,,,scenario.product_141680_product_template
+scenario.productpricelistitem_all_ausbildung_141683,scenario.productpricelist_all_ausbildung,0,1_product,fixed,45,list_price,,1,,,,,scenario.product_141683_product_template
+scenario.productpricelistitem_all_ausbildung_141266,scenario.productpricelist_all_ausbildung,0,1_product,fixed,10,list_price,,1,,,,,scenario.product_141266_product_template
+scenario.productpricelistitem_all_muster_100,scenario.productpricelist_all_muster,0,3_global,formula,,pricelist,scenario.productpricelist_all_netto,1,,100,0.05,,
+scenario.productpricelistitem_all_return_100,scenario.productpricelist_all_return,0,3_global,formula,,pricelist,scenario.productpricelist_all_netto,1,,100,0.05,,
+scenario.productpricelistitem_all_free_100,scenario.productpricelist_all_free,0,3_global,formula,,pricelist,scenario.productpricelist_all_netto,1,,100,0.05,,
+scenario.buildingprojectpricelistitem_01,scenario.buildingprojectpricelist_01,0,3_global,percentage,,list_price,,1,1,,0.05,,
+scenario.buildingprojectpricelistitem_02,scenario.buildingprojectpricelist_02,1,3_global,percentage,,list_price,,1,2,,0.05,,
+scenario.buildingprojectpricelistitem_03,scenario.buildingprojectpricelist_03,2,3_global,percentage,,list_price,,1,3,,0.05,,
+scenario.buildingprojectpricelistitem_04,scenario.buildingprojectpricelist_04,3,3_global,percentage,,list_price,,1,4,,0.05,,
+scenario.buildingprojectpricelistitem_05,scenario.buildingprojectpricelist_05,4,3_global,percentage,,list_price,,1,5,,0.05,,
+scenario.buildingprojectpricelistitem_06,scenario.buildingprojectpricelist_06,5,3_global,percentage,,list_price,,1,6,,0.05,,
+scenario.buildingprojectpricelistitem_07,scenario.buildingprojectpricelist_07,6,3_global,percentage,,list_price,,1,7,,0.05,,
+scenario.buildingprojectpricelistitem_08,scenario.buildingprojectpricelist_08,7,3_global,percentage,,list_price,,1,8,,0.05,,
+scenario.buildingprojectpricelistitem_09,scenario.buildingprojectpricelist_09,8,3_global,percentage,,list_price,,1,9,,0.05,,
+scenario.buildingprojectpricelistitem_10,scenario.buildingprojectpricelist_10,9,3_global,percentage,,list_price,,1,10,,0.05,,
+scenario.buildingprojectpricelistitem_11,scenario.buildingprojectpricelist_11,10,3_global,percentage,,list_price,,1,11,,0.05,,
+scenario.buildingprojectpricelistitem_12,scenario.buildingprojectpricelist_12,11,3_global,percentage,,list_price,,1,12,,0.05,,
+scenario.buildingprojectpricelistitem_13,scenario.buildingprojectpricelist_13,12,3_global,percentage,,list_price,,1,13,,0.05,,
+scenario.buildingprojectpricelistitem_14,scenario.buildingprojectpricelist_14,13,3_global,percentage,,list_price,,1,14,,0.05,,
+scenario.buildingprojectpricelistitem_15,scenario.buildingprojectpricelist_15,14,3_global,percentage,,list_price,,1,15,,0.05,,
+scenario.buildingprojectpricelistitem_16,scenario.buildingprojectpricelist_16,15,3_global,percentage,,list_price,,1,16,,0.05,,
+scenario.buildingprojectpricelistitem_17,scenario.buildingprojectpricelist_17,16,3_global,percentage,,list_price,,1,17,,0.05,,
+scenario.buildingprojectpricelistitem_18,scenario.buildingprojectpricelist_18,17,3_global,percentage,,list_price,,1,18,,0.05,,
+scenario.buildingprojectpricelistitem_19,scenario.buildingprojectpricelist_19,18,3_global,percentage,,list_price,,1,19,,0.05,,
+scenario.buildingprojectpricelistitem_20,scenario.buildingprojectpricelist_20,19,3_global,percentage,,list_price,,1,20,,0.05,,
+scenario.buildingprojectpricelistitem_25,scenario.buildingprojectpricelist_25,20,3_global,percentage,,list_price,,1,25,,0.05,,
+scenario.buildingprojectpricelistitem_30,scenario.buildingprojectpricelist_30,21,3_global,percentage,,list_price,,1,30,,0.05,,
+scenario.buildingprojectpricelistitem_35,scenario.buildingprojectpricelist_35,22,3_global,percentage,,list_price,,1,35,,0.05,,
+scenario.buildingprojectpricelistitem_40,scenario.buildingprojectpricelist_40,23,3_global,percentage,,list_price,,1,40,,0.05,,
+scenario.buildingprojectpricelistitem_45,scenario.buildingprojectpricelist_45,24,3_global,percentage,,list_price,,1,45,,0.05,,
+scenario.buildingprojectpricelistitem_47,scenario.buildingprojectpricelist_47,25,3_global,percentage,,list_price,,1,47,,0.05,,
+scenario.buildingprojectpricelistitem_49,scenario.buildingprojectpricelist_49,26,3_global,percentage,,list_price,,1,49,,0.05,,
+scenario.buildingprojectpricelistitem_50,scenario.buildingprojectpricelist_50,27,3_global,percentage,,list_price,,1,50,,0.05,,
+scenario.buildingprojectpricelistitem_51,scenario.buildingprojectpricelist_51,28,3_global,percentage,,list_price,,1,51,,0.05,,
+scenario.buildingprojectpricelistitem_52,scenario.buildingprojectpricelist_52,29,3_global,percentage,,list_price,,1,52,,0.05,,
+scenario.buildingprojectpricelistitem_53,scenario.buildingprojectpricelist_53,30,3_global,percentage,,list_price,,1,53,,0.05,,
+scenario.buildingprojectpricelistitem_54,scenario.buildingprojectpricelist_54,31,3_global,percentage,,list_price,,1,54,,0.05,,
+scenario.buildingprojectpricelistitem_55,scenario.buildingprojectpricelist_55,32,3_global,percentage,,list_price,,1,55,,0.05,,
+scenario.buildingprojectpricelistitem_56,scenario.buildingprojectpricelist_56,33,3_global,percentage,,list_price,,1,56,,0.05,,
