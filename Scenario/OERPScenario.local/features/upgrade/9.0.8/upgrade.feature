@@ -23,6 +23,14 @@ Feature: upgrade to 9.0.8
   @ts_activity
   Scenario: setup timesheet activities
     Given "hr.timesheet.sheet.activity" is imported from CSV "setup/hr_timesheet_activity.csv" using delimiter ","
+  
+  @payment_term
+  Scenario: update payment term
+    Given I execute the SQL commands
+       """;
+         delete from account_payment_term_line;
+       """
+    Given "account.payment.term" is imported from CSV "setup/payment_term.csv" using delimiter ","
     
   @update_reception_text_company
   Scenario: set default company reception text
