@@ -18,7 +18,14 @@ Feature: import master data
   @csv @product_expenses
   Scenario: import products for expenses
     Given "product.product" is imported from CSV "setup/product_expenses.csv" using delimiter ","
-
+  
+  @product_informations
+  Scenario: setup new fields for product
+    Given "product.class" is imported from CSV "setup/product.class.csv" using delimiter ","
+    Given "product.color.code" is imported from CSV "setup/product.colorcode.csv" using delimiter ","
+    Given "product.harmsys.code" is imported from CSV "setup/product.harmsyscode.csv" using delimiter ","
+    Given "product.manual.code" is imported from CSV "setup/product.manualcode.csv" using delimiter ","
+    
   @csv @products @slow
   Scenario: import products
     Given "product.product" is imported from CSV "setup/product.product.csv" using delimiter ","
