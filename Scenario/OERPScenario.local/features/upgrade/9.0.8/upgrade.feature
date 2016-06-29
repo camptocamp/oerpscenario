@@ -19,7 +19,11 @@ Feature: upgrade to 9.0.8
   @csv @projects
   Scenario: import specific projects
     Given "project.project" is imported from CSV "setup/project.csv" using delimiter ","
-
+  
+  @ts_activity
+  Scenario: setup timesheet activities
+    Given "hr.timesheet.sheet.activity" is imported from CSV "setup/hr_timesheet_activity.csv" using delimiter ","
+    
   @update_reception_text_company
   Scenario: set default company reception text
     Given I execute the SQL commands
