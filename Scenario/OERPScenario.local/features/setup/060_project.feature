@@ -9,3 +9,7 @@ Feature: Cleanup project from example data
     And having:
       | name   | value |
       | active | False |
+
+  @configure_project
+  Scenario: Activate time tracking on task
+    Given I set "Time on Tasks" to "Manage time estimation on tasks" in "Project" settings menu
