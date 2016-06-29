@@ -24,7 +24,6 @@
         "specific_partner",
     ],
     "data": [
-        "data/calendar_event_type.xml",
         "data/building_project_tag.xml",
         "data/building_project_type.xml",
         "data/building_project_stage.xml",

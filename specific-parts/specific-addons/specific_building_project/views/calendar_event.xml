@@ -8,8 +8,33 @@
     <field name="arch" type="xml">
       <xpath expr="//field[@name='user_id']" position="after">
         <field name="building_project_id"/>
-        <filter name="phonecall" string="Phonecalls" domain="[('categ_ids', 'in', [%(specific_building_project.event_type_phonecall)d])]"/>
       </xpath>
+      <xpath expr="//group" position="inside">
+        <filter name='event_type' string="Type" domain="[]" context="{'group_by':'event_type'}"/>
+      </xpath>
+    </field>
+  </record>
+
+  <!-- Add event_type in tree view -->
+  <record model="ir.ui.view" id="view_calendar_event_tree">
+    <field name="model">calendar.event</field>
+    <field name="inherit_id" ref="calendar.view_calendar_event_tree"/>
+    <field name="arch" type="xml">
+      <field name="name" position="after">
+        <field name="event_type"/>
+      </field>
+    </field>
+  </record>
+
+  <!-- Add event_type in form view -->
+  <record model="ir.ui.view" id="view_calendar_event_form">
+    <field name="model">calendar.event</field>
+    <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <field name="start_date" position="before">
+          <field name="event_type"/>
+      </field>
     </field>
   </record>
 
