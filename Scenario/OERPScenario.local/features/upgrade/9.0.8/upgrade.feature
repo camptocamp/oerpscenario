@@ -39,6 +39,10 @@ Feature: upgrade to 9.0.8
   @csv @pricelist_items
   Scenario: import specific pricelist items
     Given "product.pricelist.item" is imported from CSV "setup/product.pricelist.item.csv" using delimiter ","
+    
+  @csv @partner @slow
+  Scenario: import partner
+    Given "res.partner" is imported from CSV "setup/res.partner.csv" using delimiter ","
 
   @update_reception_text_company
   Scenario: set default company reception text
