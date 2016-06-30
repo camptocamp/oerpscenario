@@ -36,7 +36,7 @@ Feature: upgrade to 9.0.8
   Scenario: import specific pricelist
     Given "product.pricelist" is imported from CSV "setup/product.pricelist.csv" using delimiter ","
 
-  @csv @pricelist_items
+  @csv @pricelist_items @slow
   Scenario: import specific pricelist items
     Given "product.pricelist.item" is imported from CSV "setup/product.pricelist.item.csv" using delimiter ","
     
