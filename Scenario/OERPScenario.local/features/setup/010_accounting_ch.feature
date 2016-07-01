@@ -170,3 +170,33 @@ Feature: Configure accounting
       | MISC            | True          |
       | EXCH            | True          |
       | STJ             | True          |
+      
+  @configure_sepa
+  Scenario: modify pain value for Switzerland
+    Given I find a "account.payment.method" with oid: account_banking_sepa_credit_transfer.sepa_credit_transfer
+    And having:
+      | key             | value                 |
+      | pain_version    | pain.001.001.03.ch.02 |
+      
+    Given I need a "account.payment.mode" with oid: scenario.account_payment_mode_1
+    And having:
+      | key                         | value                         |
+      | name                        | SEPA (ZKB)                    |
+      | active                      | True                          |
+      | no_debit_before_maturity    | False                         |
+      | fixed_journal_id            | by oid: scenario.journal_ZKB1 |
+      | generate_move               | True                          |
+      | group_lines                 | True                          |
+      | default_journal_ids         | add all by oid: scenario.expense_journal  |
+      | default_journal_ids         | add all by oid: scenario.wage_journal     |
+      | default_journal_ids         | add all by name: Vendor Bills             |
+      | bank_account_link           | fixed                         |   
+      | default_invoice             | False                         |
+      | move_option                 | date                          |
+      | offsetting_account          | bank_account                  |  
+      | payment_method_id           | by oid: account_banking_sepa_credit_transfer.sepa_credit_transfer |
+      | default_payment_mode        | same                          |
+      | payment_order_ok            | True                          |
+      | default_target_move         | posted                        |
+      | default_date_type           | due                           |
+  
