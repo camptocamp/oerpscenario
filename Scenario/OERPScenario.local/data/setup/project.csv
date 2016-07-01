@@ -1,32 +1,76 @@
-id,name,department_id/id,account_type,use_tasks,use_timesheets,user_id/id
-scenario.project_it_001,IS - ERP,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
-scenario.project_it_002,IS - PIM,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
-scenario.project_it_003,IS - RTS,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
-scenario.project_it_004,IS - MS Office-Tools,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
-scenario.project_it_005,IS - Internet,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
-scenario.project_it_006,IT - Telefonie,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
-scenario.project_it_007,IT - Arbeitsplatz,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
-scenario.project_it_008,IT - Basisinfrastruktur,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
-scenario.project_it_009,IT - Security,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
-scenario.project_it_010,Nst - Spezialanwendungen,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
-scenario.project_it_011,Nst - Spezialzubehör,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
-scenario.project_it_012,Nst - Mobile-Computing,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
-scenario.project_it_013,Nst - Technologie-Überwachung,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl
-scenario.project_os_001,A - Bedienungsanleitungen I,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
-scenario.project_os_002,A - Bedienungsanleitungen II,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
-scenario.project_os_003,"A - Kampagnen (Inserate und feste PDFs, PRs)",scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
-scenario.project_os_004,A - Pressebeiträge,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
-scenario.project_os_005,A - Taschenkatalog,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
-scenario.project_os_006,A - Prospekte,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
-scenario.project_os_007,A - Flyer,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
-scenario.project_os_008,"A - Standarddrucksachen (Briefschaften, Mailings, Verkaufsunterlagen)",scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
-scenario.project_os_009,"A - Spezialprojekte (Give-Aways, Werbetechnik, Unterlagen)",scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
-scenario.project_os_010,B - Internetauftritt,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
-scenario.project_os_011,B - Automatisierte Erzeugnisse,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
-scenario.project_os_012,C - Administration OS,scenario.hr_department_support,Active,True,True,scenario.res_users_mgl
-scenario.project_slx_001,SLX - ERP,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl
-scenario.project_slx_002,SLX - PIM,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl
-scenario.project_slx_003,SLX - TRS,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl
-scenario.project_slx_004,SLX - Ausbau Büro/Lager,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl
-scenario.project_slx_005,SLX - VOIP 2017,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl
-scenario.project_slx_006,SLX - Rechenzentrum 2018,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl
+id,name,department_id/id,account_type,use_tasks,use_timesheets,user_id/id,privacy_visibility
+scenario.project_slx_001,STP/SLX/001: Mitarbeiter:  Ferien,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl,employees
+scenario.project_slx_002,STP/SLX/002: Mitarbeiter:  Krankheit,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl,employees
+scenario.project_slx_003,STP/SLX/003: Mitarbeiter:  Unfall,scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl,employees
+scenario.project_slx_004,"STP/SLX/004: Mitarbeiter:  Militär, Zivildienst",scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl,employees
+scenario.project_slx_005,"STP/SLX/005: Mitarbeiter:  Weiterbildung, Ausbildung, Kompetenzentwicklung",scenario.hr_department_slx,Active,True,True,scenario.res_users_pgl,employees
+scenario.project_logistik_001,STP/LOG/001: B.E.G.,scenario.hr_department_logistik,Active,True,True,scenario.res_users_mwy,employees
+scenario.project_logistik_002,STP/LOG/002: Swisslux AG Leuchten,scenario.hr_department_logistik,Active,True,True,scenario.res_users_mwy,employees
+scenario.project_logistik_003,STP/LOG/003: Versand Werbematerial,scenario.hr_department_logistik,Active,True,True,scenario.res_users_mwy,employees
+scenario.project_logistik_004,STP/LOG/004: Präsentations&Schulungsboards,scenario.hr_department_logistik,Active,True,True,scenario.res_users_mwy,employees
+scenario.project_logistik_005,STP/LOG/005: Analyse Optimierung,scenario.hr_department_logistik,Active,True,True,scenario.res_users_mwy,employees
+scenario.project_logistik_006,STP/LOG/006: Qualitätsverbesserung,scenario.hr_department_logistik,Active,True,True,scenario.res_users_mwy,employees
+scenario.project_logistik_007,STP/LOG/007: Probleme,scenario.hr_department_logistik,Active,True,True,scenario.res_users_mwy,employees
+scenario.project_logistik_008,SPP/LOG/001: Ausbau Büro/Lager,scenario.hr_department_logistik,Active,True,True,scenario.res_users_mwy,followers
+scenario.project_finanz_001,STP/FIN/001: Buchhaltung: Debitoren,scenario.hr_department_finanz,Active,True,True,scenario.res_users_sgl,employees
+scenario.project_finanz_002,STP/FIN/002: Buchhaltung: Kreditoren,scenario.hr_department_finanz,Active,True,True,scenario.res_users_sgl,employees
+scenario.project_finanz_003,STP/FIN/003: Buchhaltung: Finanzen,scenario.hr_department_finanz,Active,True,True,scenario.res_users_sgl,employees
+scenario.project_hr_001,STP/HR/001: Rekrutierung ,scenario.hr_department_hr,Active,True,True,scenario.res_users_cfr,employees
+scenario.project_hr_002,STP/HR/002: Ein- und Austritt,scenario.hr_department_hr,Active,True,True,scenario.res_users_cfr,employees
+scenario.project_hr_003,STP/HR/003: Absenzen,scenario.hr_department_hr,Active,True,True,scenario.res_users_cfr,employees
+scenario.project_hr_004,STP/HR/004: Sozialversicherungen,scenario.hr_department_hr,Active,True,True,scenario.res_users_cfr,employees
+scenario.project_hr_005,STP/HR/005: Lohnwesen,scenario.hr_department_hr,Active,True,True,scenario.res_users_cfr,employees
+scenario.project_hr_006,STP/HR/006: Sozial,scenario.hr_department_hr,Active,True,True,scenario.res_users_cfr,employees
+scenario.project_hr_007,STP/HR/007: Sekretariat,scenario.hr_department_hr,Active,True,True,scenario.res_users_cfr,employees
+scenario.project_it_001,STP/IS/001: ERP,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_002,STP/IS/002: PIM,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_003,STP/IS/003: RTS,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_004,STP/IS/004: MS Office-Tools,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_005,STP/IS/005: Internet,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_006,STP/IS/006: Automatisierte Erzeugnisse,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_007,STP/IT/001: Telefonie,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_008,STP/IT/002: Arbeitsplatz,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_009,STP/IT/003: Basisinfrastruktur,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_010,STP/IT/004: Security,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_011,STP/Nst/001: Spezialanwendungen,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_012,STP/Nst/002: Spezialzubehör,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_013,STP/Nst/003: Mobile-Computing,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_014,STP/Nst/004: Technologie-Überwachung,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,employees
+scenario.project_it_015,SPP/IT/001: ERP ODOO,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,followers
+scenario.project_it_016,SPP/IT/002: PIM Anteros,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,followers
+scenario.project_it_017,SPP/IT/003: TRS,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,followers
+scenario.project_it_018,SPP/IT/004: VOIP 2017 Asterisk,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,followers
+scenario.project_it_019,SPP/IT/005: Rechenzentrum 2018,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,followers
+scenario.project_it_020,SPP/IT/006: Bilddatenverwalung,scenario.hr_department_it,Active,True,True,scenario.res_users_rgl,followers
+scenario.project_marketing_001,STP/MA/001: Bedienungsanleitungen I,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_002,STP/MA/001: Bedienungsanleitungen II,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_003,"STP/MA/000: Template Kampagnen (Inserate und feste PDFs, PRs)",scenario.hr_department_marketing,Archived,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_004,STP/MA/001: Pressebeiträge,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_005,STP/MA/001: Taschenkatalog,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_006,STP/MA/001: Prospekte,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_007,STP/MA/001: Flyer,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_008,"STP/MA/000: Template Standarddrucksachen (Briefschaften, Mailings, Verkaufsunterlagen)",scenario.hr_department_marketing,Archived,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_009,STP/MA/001: Autobeschriftung,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_010,STP/MA/001: Fotografie,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_011,STP/MA/001: Inserate Standard und Spezial,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_012,STP/MA/001: Kampagnen,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_013,STP/MA/001: Produktlabels und Etiketten,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_014,STP/MA/001: Übersetzungen,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_015,STP/MA/001: Veranstaltungskalender,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_016,STP/MA/001: Visitenkarte,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_017,STP/MA/001: Werbematerial,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_018,"STP/MA/000: Spezialaufgaben (Give-Aways, Werbetechnik, Unterlagen)",scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,employees
+scenario.project_marketing_019,SPP/MA/001: Wörterbuch PIM,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,followers
+scenario.project_marketing_020,SPP/MA/002: Mitarbeiter-Schulung MSOffice-Tools,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,followers
+scenario.project_marketing_021,SPP/MA/003: Neues Corporate Design Swisslux,scenario.hr_department_marketing,Active,True,True,scenario.res_users_bsc,followers
+scenario.project_produkt_001,STP/PM/001: Intelligente Leuchten Hardware,scenario.hr_department_produkt,Active,True,True,scenario.res_users_rmo,employees
+scenario.project_produkt_002,STP/PM/002: Intelligente Leuchten Software,scenario.hr_department_produkt,Active,True,True,scenario.res_users_rmo,employees
+scenario.project_produkt_003,STP/PM/003: Produkte BEG,scenario.hr_department_produkt,Active,True,True,scenario.res_users_rmo,employees
+scenario.project_produkt_004,STP/PM/004: Prozess Entwicklung PM,scenario.hr_department_produkt,Active,True,True,scenario.res_users_rmo,employees
+scenario.project_produkt_005,SPP/PM/001: Einführung Handelsleuchte Bernina,scenario.hr_department_produkt,Active,True,True,scenario.res_users_rmo,followers
+scenario.project_verkauf_001,STP/VK/001: Pre Sale,scenario.hr_department_verkauf,Active,True,True,scenario.res_users_fbo,employees
+scenario.project_verkauf_002,STP/VK/002: After Sale,scenario.hr_department_verkauf,Active,True,True,scenario.res_users_fbo,employees
+scenario.project_verkauf_003,"STP/VK/003: Schulungen, Präsenationen",scenario.hr_department_verkauf,Active,True,True,scenario.res_users_fbo,employees
+scenario.project_verkauf_004,"STP/VK/004: Ausstellungen, Kundenevents",scenario.hr_department_verkauf,Active,True,True,scenario.res_users_fbo,employees
+scenario.project_verkauf_005,STP/VK/005: Zentrale Kundenkommunikation (Newsletter/Versände etc),scenario.hr_department_verkauf,Active,True,True,scenario.res_users_fbo,employees
+scenario.project_verkauf_006,STP/VK/006: Hilfsmittel Verkauf,scenario.hr_department_verkauf,Active,True,True,scenario.res_users_fbo,employees

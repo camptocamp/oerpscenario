@@ -18,7 +18,14 @@ Feature: import master data
   @csv @product_expenses
   Scenario: import products for expenses
     Given "product.product" is imported from CSV "setup/product_expenses.csv" using delimiter ","
-
+  
+  @product_informations
+  Scenario: setup new fields for product
+    Given "product.class" is imported from CSV "setup/product.class.csv" using delimiter ","
+    Given "product.color.code" is imported from CSV "setup/product.colorcode.csv" using delimiter ","
+    Given "product.harmsys.code" is imported from CSV "setup/product.harmsyscode.csv" using delimiter ","
+    Given "product.manual.code" is imported from CSV "setup/product.manualcode.csv" using delimiter ","
+    
   @csv @products @slow
   Scenario: import products
     Given "product.product" is imported from CSV "setup/product.product.csv" using delimiter ","
@@ -47,9 +54,17 @@ Feature: import master data
         | key  | value     |
         | name | Department |
 
-  @csv @suppliers
-  Scenario: import specific suppliers
-    Given "res.partner" is imported from CSV "setup/suppliers.csv" using delimiter ","
+  @csv @pricelists
+  Scenario: import specific pricelist
+    Given "product.pricelist" is imported from CSV "setup/product.pricelist.csv" using delimiter ","
+
+  @csv @pricelist_items @slow
+  Scenario: import specific pricelist items
+    Given "product.pricelist.item" is imported from CSV "setup/product.pricelist.item.csv" using delimiter ","
+
+  @csv @partner @slow
+  Scenario: import partner
+    Given "res.partner" is imported from CSV "setup/res.partner.csv" using delimiter ","
 
   @csv @suppliers_contacts @slow
   Scenario: import specific suppliers contacts
@@ -58,15 +73,7 @@ Feature: import master data
   @csv @supplierinfo @slow
   Scenario: import specific supplierinfo
     Given "product.supplierinfo" is imported from CSV "setup/product.supplierinfo.csv" using delimiter ","
-
-  @csv @pricelists
-  Scenario: import specific pricelist
-    Given "product.pricelist" is imported from CSV "setup/product.pricelist.csv" using delimiter ","
-
-  @csv @pricelist_items
-  Scenario: import specific pricelist items
-    Given "product.pricelist.item" is imported from CSV "setup/product.pricelist.item.csv" using delimiter ","
-
+  
   @csv @orderpoint @slow
   Scenario: import specific orderpoint
     Given "stock.warehouse.orderpoint" is imported from CSV "setup/stock.warehouse.orderpoint.csv" using delimiter ","
@@ -98,3 +105,7 @@ Feature: import master data
   @csv @phonecalls @slow
   Scenario: import specific meetings
     Given "calendar.event" is imported from CSV "setup/crm.phonecall.csv" using delimiter ","
+    
+  @csv @projects
+  Scenario: import specific projects
+    Given "project.project" is imported from CSV "setup/project.csv" using delimiter ","

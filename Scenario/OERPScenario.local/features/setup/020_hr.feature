@@ -49,6 +49,10 @@ Feature: configure users, departments and employees
   Scenario: import departments manager
     Given "hr.department" is imported from CSV "setup/hr_department_mgr.csv" using delimiter ","  
 
+  @ts_activity
+  Scenario: setup timesheet activities
+    Given "hr.timesheet.sheet.activity" is imported from CSV "setup/hr_timesheet_activity.csv" using delimiter ","
+    
   @employee_picture
   Scenario: set the picture to employee (and related user)
   
