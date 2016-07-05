@@ -97,6 +97,14 @@ Feature: upgrade to 9.0.8
       | default_target_move         | posted                        |
       | default_date_type           | due                           |
   
+  @remove_default_accounts_on_product
+  Scenario: Remove the default account on product
+  Given I execute the SQL commands
+      """
+      DELETE FROM ir_property WHERE name='property_account_expense_id' AND res_id IS NULL;
+      DELETE FROM ir_property WHERE name='property_account_income_id' AND res_id IS NULL;
+      """
+  
   @force_translations @slow
   Scenario: Force lang translations
     Given I update the module list

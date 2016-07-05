@@ -139,6 +139,12 @@ Feature: Configure accounting
       | property_stock_valuation_account_id  | product.category |         1260 |
       | property_stock_account_input         | product.template |         1260 |
       | property_stock_account_output        | product.template |         1260 |
+    
+    Given I execute the SQL commands
+      """
+      DELETE FROM ir_property WHERE name='property_account_expense_id' AND res_id IS NULL;
+      DELETE FROM ir_property WHERE name='property_account_income_id' AND res_id IS NULL;
+      """
 
   @bvr
   Scenario: Configure the BVR on the company
