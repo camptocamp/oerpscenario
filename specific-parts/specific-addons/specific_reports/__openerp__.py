@@ -32,6 +32,7 @@
              'delivery',
              'specific_product',
              'mrp_bom_dismantling',
+             'l10n_ch_payment_slip',
              ],
  'website': 'http://www.camptocamp.com',
  'data': [
