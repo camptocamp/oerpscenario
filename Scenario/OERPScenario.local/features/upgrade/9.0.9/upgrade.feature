@@ -7,5 +7,7 @@ Feature: upgrade to 9.0.9
     Given I install the required modules with dependencies:
       | name                                          |
       | specific_partner                              |
+      | project_timesheet                             |
+      | specific_timesheet_activities                 |
     Then my modules should have been installed and models reloaded
     Then I set the version of the instance to "9.0.9"

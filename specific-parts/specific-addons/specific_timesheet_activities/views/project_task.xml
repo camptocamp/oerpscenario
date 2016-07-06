@@ -1,0 +1,14 @@
+<odoo>
+    <!-- Add activity on project task timesheet -->
+    <record model="ir.ui.view" id="view_task_form2_inherited_activity">
+        <field name="name">project.task.form.inherited</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project_timesheet.view_task_form2_inherited"/>
+        <field name="arch" type="xml">
+            <field name="unit_amount" position="after">
+                <field name="user_department_id" invisible="1"/>
+                <field name="activity_id" domain="[('department_ids.id', '=', user_department_id)]" options="{'no_create': True}"/>
+            </field>
+        </field>
+    </record>
+</odoo>
