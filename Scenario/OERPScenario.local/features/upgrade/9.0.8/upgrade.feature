@@ -6,6 +6,7 @@ Feature: upgrade to 9.0.8
     Given I update the module list
     Given I install the required modules with dependencies:
       | name                                          |
+      | account_payment_partner                       |
       | specific_project                              |
       | specific_building_project                     |
       | specific_product                              |
