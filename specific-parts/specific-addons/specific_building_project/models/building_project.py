@@ -9,6 +9,7 @@ class BuildingProject(models.Model):
 
     _name = 'building.project'
     _inherits = {'account.analytic.account': "analytic_account_id"}
+    _inherit = ['mail.thread']
     _rec_name = 'display_name'
 
     display_name = fields.Char(
