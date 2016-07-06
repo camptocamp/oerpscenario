@@ -68,6 +68,43 @@ Feature: upgrade to 9.0.8
   Scenario: Activate time tracking on task
     Given I set "Time on Tasks" to "Manage time estimation on tasks" in "Project" settings menu
 
+  @configure_sepa
+  Scenario: modify pain value for Switzerland
+    Given I find a "account.payment.method" with oid: account_banking_sepa_credit_transfer.sepa_credit_transfer
+    And having:
+      | key             | value                 |
+      | pain_version    | pain.001.001.03.ch.02 |
+
+    Given I need a "account.payment.mode" with oid: scenario.account_payment_mode_1
+    And having:
+      | key                         | value                         |
+      | name                        | SEPA (ZKB)                    |
+      | active                      | True                          |
+      | no_debit_before_maturity    | False                         |
+      | fixed_journal_id            | by oid: scenario.journal_ZKB1 |
+      | generate_move               | True                          |
+      | group_lines                 | True                          |
+      | default_journal_ids         | add all by oid: scenario.expense_journal  |
+      | default_journal_ids         | add all by oid: scenario.wage_journal     |
+      | default_journal_ids         | add all by name: Vendor Bills             |
+      | bank_account_link           | fixed                         |   
+      | default_invoice             | False                         |
+      | move_option                 | date                          |
+      | offsetting_account          | bank_account                  |  
+      | payment_method_id           | by oid: account_banking_sepa_credit_transfer.sepa_credit_transfer |
+      | default_payment_mode        | same                          |
+      | payment_order_ok            | True                          |
+      | default_target_move         | posted                        |
+      | default_date_type           | due                           |
+
+  @remove_default_accounts_on_product
+  Scenario: Remove the default account on product
+  Given I execute the SQL commands
+      """
+      DELETE FROM ir_property WHERE name='property_account_expense_id' AND res_id IS NULL;
+      DELETE FROM ir_property WHERE name='property_account_income_id' AND res_id IS NULL;
+      """
+
   Scenario: remove modules
     Given I uninstall the following modules:
       | name                      |
