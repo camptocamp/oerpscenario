@@ -167,14 +167,13 @@ class BuildingProject(models.Model):
         string="# Opportunity"
     )
 
-    meeting_count = fields.Integer(
-        compute='_meeting_count',
-        string="# Meetings"
+    meeting_ids = fields.One2many(
+        comodel_name='calendar.event',
+        inverse_name='building_project_id'
     )
 
-    phonecall_count = fields.Integer(
-        compute='_phonecall_count',
-        string="# Phonecalls",
+    meeting_count = fields.Integer(
+        compute='_compute_meeting_count',
     )
 
     doc_count = fields.Integer(
@@ -204,21 +203,11 @@ class BuildingProject(models.Model):
         for rec in self:
             rec.opportunity_count = len(rec.opportunity_ids)
 
-    @api.depends('opportunity_ids.meeting_count')
-    def _meeting_count(self):
+    @api.depends('meeting_ids')
+    def _compute_meeting_count(self):
         """ Count aggregated meeting from opportunities """
-        for rec in self:
-            rec.meeting_count = sum(
-                rec.opportunity_ids.mapped('meeting_count')
-            )
-
-    @api.depends('opportunity_ids.phonecall_count')
-    def _phonecall_count(self):
-        """ Count aggregated phonecall from opportunities """
-        for rec in self:
-            rec.phonecall_count = sum(
-                rec.opportunity_ids.mapped('phonecall_count')
-            )
+        for record in self:
+            record.meeting_count = len(record.meeting_ids)
 
     @api.onchange('zip_id')
     def onchange_zip_id(self):
@@ -280,40 +269,28 @@ class BuildingProject(models.Model):
 
     @api.multi
     def action_schedule_meeting(self):
-        """
-        Open meeting's calendar view to schedule meeting on current opportunity
-        :return dict: dictionary value for created Meeting view
+        """ Open meeting's tree view to schedule meeting on current
+        building project
+
+        :return: dictionary value for created Meeting view
+        :rtype: dict
         """
         res = self.env['ir.actions.act_window'].for_xml_id(
-            'calendar', 'action_calendar_event')
+            'calendar', 'action_calendar_event'
+        )
+
+        res['display_name'] = _('Activities')
 
         res['context'] = {
             'search_default_building_project_id': self.id,
+            'default_building_project_id': self.id,
         }
         cal_view = self.env.ref(
-            'specific_building_project.view_calendar_event_calendar')
-        res['view_id'] = cal_view.id
-        res['views'] = [(cal_view.id, 'calendar')]
-        return res
-
-    @api.multi
-    def action_schedule_phonecall(self):
-        """
-        Open meeting's calendar view to schedule meeting on current opportunity
-        filter on event of type phonecall
-        :return dict: dictionary value for created Meeting view
-        """
-        res = self.env['ir.actions.act_window'].for_xml_id(
-            'calendar', 'action_calendar_event')
-
-        res['context'] = {
-            'search_default_building_project_id': self.id,
-            'search_default_phonecall': True,
-        }
-        cal_view = self.env.ref(
-            'specific_building_project.view_calendar_event_calendar')
-        res['view_id'] = cal_view.id
-        res['views'] = [(cal_view.id, 'calendar')]
+            'specific_building_project.view_calendar_event_calendar'
+        )
+        res['views'] = [
+            (False, 'tree'), (cal_view.id, 'calendar'), (False, 'form')
+        ]
         return res
 
     @api.multi
@@ -335,18 +312,19 @@ class BuildingProject(models.Model):
 
     @api.multi
     def action_opportunities(self):
-        """
-        Open opportunities view
-        :return dict: dictionary value for created opportunity view
+        """ Open opportunities view filtered on this project opportunities.
+        :rtype: dict
         """
         res = self.env['ir.actions.act_window'].for_xml_id(
-            'crm', 'crm_lead_opportunities')
+            'crm', 'crm_lead_opportunities'
+        )
 
         res['context'] = {
             'search_default_building_project_id': self.id,
-            'default_project_id': self.id,
+            'default_building_project_id': self.id,
+            'default_type': 'opportunity',
         }
-        res['domain'] = []
+        res['domain'] = [('type', '=', 'opportunity')]
         return res
 
     @api.multi

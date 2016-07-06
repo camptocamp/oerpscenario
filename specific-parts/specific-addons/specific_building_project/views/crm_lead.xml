@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+  <!-- crm.lead form view -->
   <record model="ir.ui.view" id="crm_case_form_view_oppor">
     <field name="name">Opportunities</field>
     <field name="model">crm.lead</field>
@@ -35,21 +36,19 @@
                       'default_team_id': team_id}"/>
       </xpath>
 
-      <button name="action_schedule_meeting" position="after">
-        <button class="oe_stat_button" type="object"
-          name="action_schedule_phonecall" icon="fa-phone">
-          <div class="o_stat_info">
-            <field name="phonecall_count" class="o_stat_value"/>
-            <span class="o_stat_text" attrs="{'invisible': [('phonecall_count', '&lt;', 2)]}"> Phonecalls</span>
-            <span class="o_stat_text" attrs="{'invisible': [('phonecall_count', '&gt;', 1)]}"> Phonecall</span>
-          </div>
-        </button>
-      </button>
-
       <field name="partner_id" position="before">
         <field name="building_project_id"/>
         <field name="project_id" invisible="True"/>
       </field>
+
+      <!-- Change Meeting button name -->
+      <xpath expr="//field[@name='meeting_count']/parent::div" position="replace">
+        <div class="o_stat_info">
+          <field name="meeting_count" class="o_stat_value"/>
+          <span class="o_stat_text" attrs="{'invisible': [('meeting_count', '&lt;', 2)]}">Activities</span>
+          <span class="o_stat_text" attrs="{'invisible': [('meeting_count', '&gt;', 1)]}">Activity</span>
+        </div>
+      </xpath>
     </field>
   </record>
 
