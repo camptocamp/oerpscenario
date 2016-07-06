@@ -10,6 +10,7 @@ Feature: upgrade to 9.0.8
       | specific_building_project                     |
       | specific_product                              |
       | l10n_ch_pain_credit_transfer                  |
+      | account_reports_followup                      |
     Then my modules should have been installed and models reloaded
 
   @csv @product @slow
