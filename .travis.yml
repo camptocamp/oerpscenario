@@ -44,4 +44,4 @@ install:
 script:
   - if [ "$LINT_CHECK" == "1" ] ; then flake8 ${ADDONS_DIR} --exclude=__init__.py ; fi
   - if [ "$SCENARIO" == "1" ] ; then bin/oerpscenario -t swisslux -t setup -t ~slow ; fi
-  - if [ "$SCENARIO" == "1" ] ; then bin/oerpscenario -t upgrade_from_9.0.7 -t ~slow ; fi
+  - if [ "$SCENARIO" == "1" ] ; then bin/oerpscenario -t upgrade_from_9.0.8 -t ~slow ; fi
