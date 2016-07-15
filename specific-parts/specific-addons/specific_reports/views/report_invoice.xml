@@ -148,7 +148,7 @@
         <t t-set="line_counter" t-value="0"/>
       </xpath>
 
-      <!-- Payment term at the end of the document -->			
+      <!-- Payment term at the end of the document -->
       <xpath expr="//p[@t-if='o.payment_term_id']" position="replace">
         <p t-if="o.payment_term_id">
           Payment term:
@@ -194,8 +194,8 @@
             <span t-field="l.price_unit"/>
           </td>
           <td class="text-right" groups="sale.group_discount_per_so_line">
-            <span t-field="l.public_discount"/><br/>
-            <span t-field="l.project_discount"/>
+            <span t-esc="round(l.public_discount, 1)"/><br/>
+            <span t-esc="round(l.project_discount, 1)"/>
           </td>
           <td>
             <span t-field="l.price_unit_discount"/>
