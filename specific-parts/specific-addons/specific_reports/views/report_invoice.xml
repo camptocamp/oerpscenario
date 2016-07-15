@@ -33,9 +33,11 @@
           </div>
           <div class="col-xs-5">
             <t t-if="o.partner_id.parent_id">
+              <b>Rechnung für: EEV-Nr. <span t-esc="o.partner_id.parent_id.eev_number.zfill(8)"/></b><br/>
               <span t-field="o.partner_id.parent_id"/><br/>
             </t>
             <t t-if="not o.partner_id.parent_id">
+              <b>Rechnung für: EEV-Nr. <span t-esc="o.partner_id.eev_number.zfill(8)"/></b><br/>
               <span t-field="o.partner_id.name"/><br/>
             </t>
               <address t-field="o.partner_id"
