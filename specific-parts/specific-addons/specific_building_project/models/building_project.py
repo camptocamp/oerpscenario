@@ -223,10 +223,9 @@ class BuildingProject(models.Model):
     def _get_attached_docs(self):
         attachment_model = self.env['ir.attachment']
         for rec in self:
-            project_attachments = attachment_model.search_count(
-                [('res_model', '=', 'building.project'),
-                 ('res_id', '=', rec.id)])
-            rec.doc_count = project_attachments
+            rec.doc_count = attachment_model.search_count(
+                rec.get_attachment_domain()
+            )
 
     @api.multi
     def _read_group_stage_ids(self, domain, read_group_order=None,
@@ -328,13 +327,35 @@ class BuildingProject(models.Model):
         return res
 
     @api.multi
+    def get_attachment_domain(self):
+        """ Return the domain for searching all attachments for this project
+        includings opportunities attachments.
+        """
+        self.ensure_one()
+        if self.opportunity_ids:
+            search_domain = [
+                '|',
+                '&',
+                ('res_model', '=', 'building.project'),
+                ('res_id', '=', self.id),
+                '&',
+                ('res_model', '=', 'crm.lead'),
+                ('res_id', 'in', [op.id for op in self.opportunity_ids]),
+            ]
+        else:
+            search_domain = [
+                ('res_model', '=', 'building.project'),
+                ('res_id', '=', self.id),
+            ]
+        return search_domain
+
+    @api.multi
     def attachment_tree_view(self):
         self.ensure_one()
-        domain = [('res_model', '=', 'building.project'),
-                  ('res_id', 'in', self.ids)]
+
         return {
             'name': _('Attachments'),
-            'domain': domain,
+            'domain': self.get_attachment_domain(),
             'res_model': 'ir.attachment',
             'type': 'ir.actions.act_window',
             'view_id': False,
