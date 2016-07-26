@@ -12,6 +12,7 @@ Feature: upgrade to 9.0.9
       | project_timesheet                             |
       | specific_timesheet_activities                 |
       | specific_stock                                |
+      | specific_timesheet                            |
     Then my modules should have been installed and models reloaded
     
   @transit_location
