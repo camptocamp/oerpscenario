@@ -20,7 +20,7 @@ class SaleOrder(models.Model):
             partner = self.partner_id.parent_id
         if partner:
             if partner.partner_invoicing_id:
-                values['partner_invoicing_id'] = partner.partner_invoicing_id
+                values['partner_invoice_id'] = partner.partner_invoicing_id
             if partner.partner_shipping_id:
                 values['partner_shipping_id'] = partner.partner_shipping_id
         if values:
