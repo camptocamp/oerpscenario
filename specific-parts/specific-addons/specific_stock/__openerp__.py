@@ -10,7 +10,7 @@
     'website': 'http://www.swisslux.ch',
     'images': [],
     'depends': [
-        'stock'
+        'delivery'
     ],
     'data': [
         'report/stock_inventory.xml',
