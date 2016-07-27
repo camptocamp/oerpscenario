@@ -118,11 +118,14 @@ Feature: Configure accounting
       | company_id                  | by oid: base.main_company |
       | currency_id                 | <currency>                |
       | update_posted               | True                      |
+      | show_on_dashboard           | True                      |
 
     Examples: Financial Journals
-      | journal_oid             | journal_name  | journal_code  | journal_type  | currency |
-      | scenario.expense_journal| Expenses      | EXP           | purchase      | false    |
-      | scenario.wage_journal   | Wage          | WAGE          | purchase      | false    |
+      | journal_oid             | journal_name  | journal_code  | journal_type  | currency          |
+      | scenario.expense_journal| Expenses      | EXP           | purchase      | false             |
+      | scenario.wage_journal   | Wage          | WAGE          | purchase      | false             |
+      | scenario.vendor_usd     | Vendor USD    | VUSD          | purchase      | by oid: base.USD  |
+      | scenario.vendor_eur     | Vendor EUR    | VEUR          | purchase      | by oid: base.EUR  |
 
 
   @default_accounts
