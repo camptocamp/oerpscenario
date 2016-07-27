@@ -3,6 +3,7 @@
 Feature: upgrade to 9.0.9
 
   Scenario: upgrade
+    Given I update the module list
     Given I install the required modules with dependencies:
       | name                                          |
       | specific_reports                              |
