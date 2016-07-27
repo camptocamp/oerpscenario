@@ -6,10 +6,10 @@ Feature: upgrade to 9.0.9
     Given I update the module list
     Given I install the required modules with dependencies:
       | name                                          |
-      | specific_partner                              |
       | project_timesheet                             |
-      | specific_timesheet_activities                 |
+      | specific_partner                              |
       | specific_stock                                |
+      | specific_timesheet_activities                 |      
     Then my modules should have been installed and models reloaded
     
   @transit_location
