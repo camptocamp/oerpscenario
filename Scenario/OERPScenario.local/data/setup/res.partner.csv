@@ -2445,7 +2445,7 @@ scenario.partner_90000,warning,"UPS Sendung nach HW Kundennr: WW6849
 
 
 
-",FALSE,40 Shek Pai Wan Road,true,Hong Kong,rgl,Aberdeen,,,base.cn,Swisslux AG,,contact,hugewin@netvigator.com,TRUE,,en_US,+852 28141914,,+852 28730305,90000,true,Europe/Zurich,true,0,,false,always,scenario.account_payment_term_30dn,scenario.account_payment_term_00dnvz,,1100,2000,Import/Export,,scenario.location_transit_cn,,,FALSE,,FALSE,,,,,,,1,0,,Huge Win Company Limited,,,,,USD
+",FALSE,40 Shek Pai Wan Road,true,Hong Kong,rgl,Aberdeen,,,base.cn,Swisslux AG,,contact,hugewin@netvigator.com,TRUE,,en_US,+852 28141914,,+852 28730305,90000,true,Europe/Zurich,true,0,,false,always,scenario.account_payment_term_30dn,scenario.account_payment_term_00dnvz,,1100,2000,Import/Export,,stock.stock_location_suppliers,,,FALSE,,FALSE,,,,,,,1,0,,Huge Win Company Limited,,,,,USD
 scenario.partner_90001,warning,"{\rtf1\ansi\ansicpg1252\deff0\deflang2055
 \viewkind4\uc1\f0\fs20
 
