@@ -34,7 +34,7 @@ Feature: upgrade to 9.0.9
       | key                         | value     |
       | propagate                   | True      |
       | group_propagation_option    | propagate |
-      
+
   @journal
   Scenario Outline: create new financial journal
     Given I need a "account.journal" with oid: <journal_oid>
@@ -47,11 +47,14 @@ Feature: upgrade to 9.0.9
       | currency_id                 | <currency>                |
       | update_posted               | True                      |
       | show_on_dashboard           | True                      |
+      | default_debit_account_id    | <acc_code>                |
+      | default_credit_account_id   | <acc_code>                |      
 
     Examples: Financial Journals
       | journal_oid             | journal_name  | journal_code  | journal_type  | currency          |
-      | scenario.vendor_usd     | Vendor USD    | VUSD          | purchase      | by oid: base.USD  |
-      | scenario.vendor_eur     | Vendor EUR    | VEUR          | purchase      | by oid: base.EUR  |
-    
+      | scenario.vendor_usd     | Vendor USD    | VUSD          | purchase      | by oid: base.USD  | false         |
+      | scenario.vendor_eur     | Vendor EUR    | VEUR          | purchase      | by oid: base.EUR  | false         |
+      | scenario.afex           | AFEX          | AFEX          | bank          | false             | by code: 1024 |
+  
     
     Then I set the version of the instance to "9.0.9"
