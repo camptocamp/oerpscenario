@@ -18,10 +18,6 @@ Feature: Configure accounting
       | key    | value |
       | active | True  |
 
-  @account_chart_extended
-  Scenario: Generate extended account chart for Swisslux AG
-    Given "account.account" is imported from CSV "setup/account.account.csv" using delimiter ","
-
   @banks_del
   Scenario: Remove default Bank and Cash accounts
     Given I find a "account.account" with name: Bank
@@ -35,6 +31,10 @@ Feature: Configure accounting
     And I delete it
     Given I find a "account.journal" with name: Cash
     And I delete it
+
+  @account_chart_extended
+  Scenario: Generate extended account chart for Swisslux AG
+    Given "account.account" is imported from CSV "setup/account.account.csv" using delimiter ","
 
   @bank_account
   Scenario Outline: Create account for Swisslux bank

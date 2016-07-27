@@ -6,16 +6,10 @@ scenario.account_1010,,False,1010,base.main_company,,False,,CCP 84-001285-1,,acc
 scenario.account_1020,,False,1020,base.main_company,,False,,ZKB CH7400700115500086877,,account.data_account_type_liquidity
 scenario.account_1021,,False,1021,base.main_company,,False,,ZKB CH2300700115500179557,,account.data_account_type_liquidity
 scenario.account_1024,,False,1024,base.main_company,,False,,AFEX EURO,,account.data_account_type_liquidity
-scenario.account_1090,,True,1090,base.main_company,,False,,Geld-Transferkonto,,account.data_account_type_current_assets
-scenario.account_1091,,False,1191,base.main_company,,False,,Kautionen Miete/ZAZ,,account.data_account_type_current_assets
 scenario.account_1092,,False,1192,base.main_company,,False,,Vorauszahlungen an Lieferanten,,account.data_account_type_current_assets
 scenario.account_1093,,False,1193,base.main_company,,False,,Verrechn.kto. Vorauszahlungen an Lief.,,account.data_account_type_current_assets
 scenario.account_1094,,False,1194,base.main_company,,False,,BVG Arbeitgeberbeitragsreserve,,account.data_account_type_current_assets
 scenario.account_1201,,False,1201,base.main_company,,False,,Vorräte Sortiment LEUCHTEN,,account.data_account_type_current_assets
-scenario.account_1208,,False,1208,base.main_company,,False,,Anzahlungen für  Handelswaren,,account.data_account_type_current_assets
-scenario.account_1209,,False,1209,base.main_company,,False,,WB  Vorräte Handelswaren (Warenreserve),,account.data_account_type_current_assets
-scenario.account_1218,,False,1218,base.main_company,,False,,Anzahlungen für  Rohstoffe,,account.data_account_type_current_assets
-scenario.account_1219,,False,1219,base.main_company,,False,,WB Vorräte Rohstoffe (Warenreserve),,account.data_account_type_current_assets
 scenario.account_1223,,False,1223,base.main_company,,False,,Vorrat Zubehör Leuchten,,account.data_account_type_current_assets
 scenario.account_1229,,False,1229,base.main_company,,False,,WB Vorräte Werkstoffe (Warenreserve),,account.data_account_type_current_assets
 scenario.account_1231,,False,1231,base.main_company,,False,,Vorräte Verbrauchsmaterial,,account.data_account_type_current_assets
@@ -36,12 +30,8 @@ scenario.account_1469,,False,1469,base.main_company,,False,,WB langfr. Forderung
 scenario.account_1521,,False,1521,base.main_company,,False,,Software,,account.data_account_type_current_assets
 scenario.account_1522,,False,1522,base.main_company,,False,,Netzwerk,,account.data_account_type_current_assets
 scenario.account_1524,,False,1524,base.main_company,,False,,Sicherheitseinrichtungen,,account.data_account_type_current_assets
-scenario.account_1550,,False,1550,base.main_company,,False,,Lagereinrichtung,,account.data_account_type_current_assets
 scenario.account_1551,,False,1551,base.main_company,,False,,Hochlagerregal,,account.data_account_type_current_assets
-scenario.account_1559,,False,1559,base.main_company,,False,,Wertberichtigungen für Lagereinrichtungen,,account.data_account_type_current_assets
-scenario.account_1590,,False,1590,base.main_company,,False,,Wäsche und Berufskleidung,,account.data_account_type_current_assets
 scenario.account_1591,,False,1591,base.main_company,,False,,Formen und Modelle,,account.data_account_type_current_assets
-scenario.account_1599,,False,1599,base.main_company,,False,,WB für übrige mobile Sachanlagen,,account.data_account_type_current_assets
 scenario.account_1601,,False,1601,base.main_company,,False,,Mieterausbau Geschäftsliegenschaften,,account.data_account_type_current_assets
 scenario.account_1630,,False,1630,base.main_company,,False,,Lagergebäude,,account.data_account_type_current_assets
 scenario.account_1633,,False,1633,base.main_company,,False,,Mieterausbau Lagerräume,,account.data_account_type_current_assets
@@ -50,7 +40,6 @@ scenario.account_1750,,False,1750,base.main_company,,False,,Forschungsaufwand,,a
 scenario.account_1751,,False,1751,base.main_company,,False,,Entwicklungsaufwand,,account.data_account_type_current_assets
 scenario.account_1759,,False,1759,base.main_company,,False,,WB Forschungs- u. Entwicklungsaufwand,,account.data_account_type_current_assets
 scenario.account_2130,,False,2130,base.main_company,,False,,Kurzfr. Finanzverb. gg. Angestellten,,account.data_account_type_current_liabilities
-scenario.account_2160,,False,2160,base.main_company,,False,,Kurzfr. Finanzverb. gg. Aktionären,,account.data_account_type_current_liabilities
 scenario.account_2205,,False,2205,base.main_company,,False,,Vorgezogene Recyclinggebühr,,account.data_account_type_current_liabilities
 scenario.account_2271,,False,2271,base.main_company,,False,,Kurzfr. Finanzverb. gg. AHV/ALV,,account.data_account_type_current_liabilities
 scenario.account_2272,,False,2272,base.main_company,,False,,Kurzfr. Finanzverb. gg. Familenausgleichskasse,,account.data_account_type_current_liabilities
@@ -59,24 +48,12 @@ scenario.account_2274,,False,2274,base.main_company,,False,,Kurzfr. Finanzverb. 
 scenario.account_2290,,False,2290,base.main_company,,False,,Gratifikationen / Erfolgsbeteiligungen,,account.data_account_type_current_liabilities
 scenario.account_2630,,False,2630,base.main_company,,False,,Rückstellungen für Garantiearbeiten,,account.data_account_type_current_liabilities
 scenario.account_2999,,False,2999,base.main_company,,False,,Import WinOffice Durchlaufskonti,,account.data_account_type_equity
-scenario.account_3801,,False,3801,base.main_company,,False,,Rabatte u. Preisnachl.,,account.data_account_type_revenue
-scenario.account_3802,,False,3802,base.main_company,,False,,Umsatzrückvergütungen,,account.data_account_type_revenue
-scenario.account_3803,,False,3803,base.main_company,,False,,Provision an Dritte,,account.data_account_type_revenue
-scenario.account_3804,,False,3804,base.main_company,,False,,Inkassospesen,,account.data_account_type_revenue
-scenario.account_3806,,False,3806,base.main_company,,False,,Kursausgleichskonto,,account.data_account_type_revenue
-scenario.account_3807,,False,3807,base.main_company,,False,,Frachten u. Porti,,account.data_account_type_revenue
 scenario.account_3808,,False,3808,base.main_company,,False,,Garantieleistungen,,account.data_account_type_revenue
-scenario.account_4008,,False,4008,base.main_company,,False,,Einkauf von Hilfsmaterial,,account.data_account_type_expenses
 scenario.account_4015,,False,4015,base.main_company,,False,,Einkauf von Verpackungsmaterial,,account.data_account_type_expenses
 scenario.account_4016,,False,4016,base.main_company,,False,,"Einkauf von Beschriftungsmaterial, Ettiketen",,account.data_account_type_expenses
 scenario.account_4017,,False,4017,base.main_company,,False,,Einkaufspesen,,account.data_account_type_expenses
-scenario.account_4070,,False,4070,base.main_company,,False,,Eingangsfrachten,,account.data_account_type_expenses
-scenario.account_4071,,False,4071,base.main_company,,False,,Einfuhrzölle,,account.data_account_type_expenses
-scenario.account_4072,,False,4072,base.main_company,,False,,Eingangsspedition,,account.data_account_type_expenses
 scenario.account_4073,,False,4073,base.main_company,,False,,Eingangsfrachten Flugzeug,,account.data_account_type_expenses
 scenario.account_4074,,False,4074,base.main_company,,False,,Eingangsfrachten Schiff,,account.data_account_type_expenses
-scenario.account_4080,,False,4080,base.main_company,,False,,Bestandsveränderung,,account.data_account_type_expenses
-scenario.account_4086,,False,4086,base.main_company,,False,,Materialverlust,,account.data_account_type_expenses
 scenario.account_4090,,False,4090,base.main_company,,False,,Skonti,,account.data_account_type_expenses
 scenario.account_4091,,False,4091,base.main_company,,False,,Rabatte u. Preisnachl.,,account.data_account_type_expenses
 scenario.account_4092,,False,4092,base.main_company,,False,,Umsatzrückvergütungen,,account.data_account_type_expenses
