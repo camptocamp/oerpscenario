@@ -8,8 +8,9 @@
 
       <!-- Put address on left side for letter -->
       <xpath expr="//div[@class='row']/div/address[@t-field='o.partner_id']/.." position="replace">
-        <!-- 1 Address IF no eev_nr or eev_alarm for a company or contact in a company -->
-        <t t-if="not (o.partner_id.eev_member or o.partner_id.parent_id.eev_member) or (o.partner_id.eev_alarm or o.partner_id.parent_id.eev_alarm)">
+        <!-- 1 Address IF no eev_nr or eev_alarm for a company or contact in a company AND
+        payment term not to the EEV -->
+        <t t-if="not (o.partner_id.eev_member or o.partner_id.parent_id.eev_member) or (o.partner_id.eev_alarm or o.partner_id.parent_id.eev_alarm) or not (o.payment_term_id == o.env.ref('scenario.account_payment_term_eev'))">
           <div class="col-xs-6">
               <t t-if="o.partner_id.parent_id">
                 <span t-field="o.partner_id.parent_id"/><br/>
@@ -22,8 +23,9 @@
             <span t-if="o.partner_id.vat">TIN: <span t-field="o.partner_id.vat"/></span>
           </div>
         </t>
-        <!-- Address of eev & partner IF eev and not eev_alarm for company or contact in a company-->
-        <t t-if="(o.partner_id.eev_member or o.partner_id.parent_id.eev_member) and not (o.partner_id.eev_alarm or o.partner_id.parent_id.eev_alarm)">
+        <!-- Address of eev & partner IF eev and not eev_alarm for company or contact in a company AND
+          payment term is EEV -->
+        <t t-if="(o.partner_id.eev_member or o.partner_id.parent_id.eev_member) and not (o.partner_id.eev_alarm or o.partner_id.parent_id.eev_alarm) and (o.payment_term_id == o.env.ref('scenario.account_payment_term_eev'))">
           <div class="col-xs-6">
             <span t-field="o.env.ref('scenario.partner_90424').name"/><br/>
             <span t-field="o.env.ref('scenario.partner_90424').street"/><br/>
@@ -31,9 +33,11 @@
           </div>
           <div class="col-xs-5">
             <t t-if="o.partner_id.parent_id">
+              <b>Rechnung für: EEV-Nr. <span t-esc="o.partner_id.parent_id.eev_number.zfill(8)"/></b><br/>
               <span t-field="o.partner_id.parent_id"/><br/>
             </t>
             <t t-if="not o.partner_id.parent_id">
+              <b>Rechnung für: EEV-Nr. <span t-esc="o.partner_id.eev_number.zfill(8)"/></b><br/>
               <span t-field="o.partner_id.name"/><br/>
             </t>
               <address t-field="o.partner_id"
@@ -148,7 +152,7 @@
         <t t-set="line_counter" t-value="0"/>
       </xpath>
 
-      <!-- Payment term at the end of the document -->			
+      <!-- Payment term at the end of the document -->
       <xpath expr="//p[@t-if='o.payment_term_id']" position="replace">
         <p t-if="o.payment_term_id">
           Payment term:
@@ -194,8 +198,8 @@
             <span t-field="l.price_unit"/>
           </td>
           <td class="text-right" groups="sale.group_discount_per_so_line">
-            <span t-field="l.public_discount"/><br/>
-            <span t-field="l.project_discount"/>
+            <span t-esc="round(l.public_discount, 1)"/><br/>
+            <span t-esc="round(l.project_discount, 1)"/>
           </td>
           <td>
             <span t-field="l.price_unit_discount"/>

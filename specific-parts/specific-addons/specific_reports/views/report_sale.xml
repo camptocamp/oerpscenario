@@ -216,9 +216,9 @@
             <span t-field="l.price_unit"/>
           </td>
           <td class="text-right" groups="sale.group_discount_per_so_line">
-            <span t-field="l.public_discount"/><br/>
+            <span t-esc="round(l.public_discount, 1)"/><br/>
             <t t-if="l.order_id.project_pricelist_id">
-              <span t-field="l.project_discount"/>
+              <span t-esc="round(l.project_discount, 1)"/>
             </t>
           </td>
           <td class="text-right" groups="sale.group_discount_per_so_line">
