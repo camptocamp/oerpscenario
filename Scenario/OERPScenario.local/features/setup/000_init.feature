@@ -175,6 +175,7 @@ Feature: Parameter the new database
     Given I install the required modules with dependencies:
         | name                          |
         # specific-addons
+        | specific_account              |              
         | specific_building_project     |
         | specific_hr                   |
         | specific_invoice              |
