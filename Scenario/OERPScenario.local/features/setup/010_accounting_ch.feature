@@ -118,12 +118,17 @@ Feature: Configure accounting
       | company_id                  | by oid: base.main_company |
       | currency_id                 | <currency>                |
       | update_posted               | True                      |
+      | show_on_dashboard           | True                      |
+      | default_debit_account_id    | <acc_code>                |
+      | default_credit_account_id   | <acc_code>                |
 
     Examples: Financial Journals
-      | journal_oid             | journal_name  | journal_code  | journal_type  | currency |
-      | scenario.expense_journal| Expenses      | EXP           | purchase      | false    |
-      | scenario.wage_journal   | Wage          | WAGE          | purchase      | false    |
-
+      | journal_oid             | journal_name  | journal_code  | journal_type  | currency          | acc_code      |
+      | scenario.expense_journal| Expenses      | EXP           | purchase      | false             | false         |
+      | scenario.wage_journal   | Wage          | WAGE          | purchase      | false             | false         |      
+      | scenario.vendor_usd     | Vendor USD    | VUSD          | purchase      | by oid: base.USD  | false         |
+      | scenario.vendor_eur     | Vendor EUR    | VEUR          | purchase      | by oid: base.EUR  | false         |
+      | scenario.afex           | AFEX          | AFEX          | bank          | false             | by code: 1024 |
 
   @default_accounts
   Scenario Outline: Define default accounts via properties
