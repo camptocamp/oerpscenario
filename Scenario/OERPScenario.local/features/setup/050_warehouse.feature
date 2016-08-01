@@ -31,7 +31,7 @@ Feature: Configure Warehouse and Logistic processes
     Given I need an "stock.location" with oid: scenario.location_transit_cn
     And having:
       | key             | value                                     |
-      | name            | Swisslux AG: Transit from China           |
+      | name            | Swisslux AG: Departure from China         |
       | usage           | transit                                   |
       | location_id     | by oid: stock.stock_location_locations    |
       | active          | True                                      |
@@ -61,7 +61,15 @@ Feature: Configure Warehouse and Logistic processes
       | location_dest_id    | by oid: stock.stock_location_company  |
       | auto                | manual                                |
       | picking_type_id     | by oid: stock.picking_type_in         |
-      | delay               | 60                                    |
+      | delay               | 0                                     |
+  
+  @procurement_rule
+  Scenario: Configure the propagation of procurement order on "buy" rule
+    Given I find an "procurement.rule" with name: Swisslux AG:  Buy
+    And having:
+      | key                         | value     |
+      | propagate                   | True      |
+      | group_propagation_option    | propagate |
 
   @reception_text_company
   Scenario: set default company reception text
