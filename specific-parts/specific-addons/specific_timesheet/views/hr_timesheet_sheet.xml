@@ -1,4 +1,11 @@
 <odoo>
+    <!-- Add custom javascruot -->
+    <template id="assets_backend" name="specific_timesheet assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/specific_timesheet/static/src/js/timesheet_readonly.js"></script>
+        </xpath>
+    </template>
+
     <!-- Add use_timesheets domain to account_id -->
     <record id="hr_timesheet_sheet_form" model="ir.ui.view">
         <field name="model">hr_timesheet_sheet.sheet</field>
@@ -9,6 +16,11 @@
             </xpath>
             <xpath expr="//field[@name='timesheet_ids']/form//field[@name='account_id']" position="attributes">
                 <attribute name="domain">[('use_timesheets', '=', True)]</attribute>
+            </xpath>
+
+            <!-- Make summary widge readonly -->
+            <xpath expr="//widget[@type='weekly_timesheet']" position="attributes">
+                <attribute name="readonly">1</attribute>
             </xpath>
         </field>
     </record>

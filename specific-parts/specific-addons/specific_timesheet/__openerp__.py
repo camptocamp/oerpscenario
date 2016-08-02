@@ -14,6 +14,7 @@
         'hr_timesheet_sheet',
     ],
     'data': [
+        'views/account_analytic_account.xml',
         'views/account_analytic_line.xml',
         'views/hr_timesheet_sheet.xml',
         'views/project_project.xml',
