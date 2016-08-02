@@ -3,6 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp import api, fields, models
 
+import openerp.addons.decimal_precision as dp
+
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
@@ -48,8 +50,8 @@ class SaleOrder(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
-    price_unit_discount = fields.Monetary(
-        compute='_compute_price_discount', string='Subtotal',
+    price_unit_discount = fields.Float(
+        compute='_compute_price_discount', digits=dp.get_precision('Product Price'), string='Subtotal',
         readonly=True
     )
 
