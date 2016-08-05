@@ -27,5 +27,12 @@ Feature: upgrade to 9.0.10
       | scenario.stage_02   | in Bearbeitung    | 2         |
       | scenario.stage_03   | zurückgestellt    | 3         |
       | scenario.stage_04   | abgeschlossen     | 4         |
+      
+    Given I find a "project.task.type" with name: Advanced
+    And I delete it
+    Given I find a "project.task.type" with name: Basic
+    And I delete it
+    Given I find a "project.task.type" with name: New
+    And I delete it
         
     Then I set the version of the instance to "9.0.10"
