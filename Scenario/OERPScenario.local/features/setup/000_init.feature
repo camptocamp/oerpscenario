@@ -163,6 +163,8 @@ Feature: Parameter the new database
         | partner_firstname                             |
         # oca/product-attribute
         | product_dimension                             |
+        # oca/project
+        | project_task_default_stage                    |
         # oca/stock-logistics-warehouse
         | stock_available_mrp                           |
         # oca/stock-logistics-workflow

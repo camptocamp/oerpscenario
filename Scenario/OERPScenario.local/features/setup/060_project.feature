@@ -14,23 +14,26 @@ Feature: Cleanup project from example data
   Scenario: Activate time tracking on task
     Given I set "Time on Tasks" to "Manage time estimation on tasks" in "Project" settings menu
     
+  @del_task_stages
+  Scenario: Delete all pre-defined task stages
+    Given I execute the SQL commands
+    """
+    DELETE FROM ir_translation WHERE name='project.task.type,name';    
+    DELETE FROM ir_model_data WHERE model='project.task.type';
+    DELETE FROM project_task_type;
+    """
+    
   @task_stages
   Scenario Outline: Define default stages for Swisslux tasks
   
-    Given I find a "project.task.type" with name: Advanced
-    And I delete it
-    Given I find a "project.task.type" with name: Basic
-    And I delete it
-    Given I find a "project.task.type" with name: New1
-    And I delete it
-
     Given I need a "project.task.type" with oid: <stage_oid>
     And having:
-      | key         | value         |
-      | name        | <stage_name>  |
-      | sequence    | <sequence>    |
-      | fold        | False         |
-      | closed      | False         |
+      | key             | value         |
+      | name            | <stage_name>  |
+      | sequence        | <sequence>    |
+      | fold            | False         |
+      | closed          | False         |
+      | case_default    | True          |
 
     Examples: Task Stages
       | stage_oid           | stage_name        | sequence  |
