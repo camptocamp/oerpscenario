@@ -13,4 +13,7 @@
     ],
     'installable': True,
     'auto_install': False,
+    "data": [
+        "views/task.xml",
+    ],
 }
