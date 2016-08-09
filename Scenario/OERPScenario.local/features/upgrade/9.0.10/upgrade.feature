@@ -15,7 +15,7 @@ Feature: upgrade to 9.0.10
   @del_task_stages
   Scenario: Delete all pre-defined task stages
     Given I execute the SQL commands
-    """
+    """;
     DELETE FROM ir_translation WHERE name='project.task.type,name';    
     DELETE FROM ir_model_data WHERE model='project.task.type';
     DELETE FROM project_task_type;
@@ -23,7 +23,6 @@ Feature: upgrade to 9.0.10
     
   @task_stages
   Scenario Outline: Define default stages for Swisslux tasks
-  
     Given I need a "project.task.type" with oid: <stage_oid>
     And having:
       | key             | value         |
@@ -47,3 +46,6 @@ Feature: upgrade to 9.0.10
     Given I set the context to "{'lang':'it_IT'}"
     Given "project.task.type" is imported from CSV "setup/project_task_stages_it.csv" using delimiter ","
     Given I set the context to "{'lang':'en_US'}"  
+
+    Then I set the version of the instance to "9.0.10"
+
