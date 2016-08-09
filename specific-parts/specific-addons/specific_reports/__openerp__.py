@@ -33,6 +33,7 @@
              'specific_product',
              'mrp_bom_dismantling',
              'l10n_ch_payment_slip',
+             'account_reports',
              ],
  'website': 'http://www.camptocamp.com',
  'data': [
@@ -49,6 +50,7 @@
      'views/report_picking.xml',
      'views/report_purchase.xml',
      'views/report_sale.xml',
+     'views/report_followup.xml',
      ],
  'demo_xml': [],
  'test': [],

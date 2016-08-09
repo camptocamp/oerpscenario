@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <template id="fix_address_report_followup_letter_body" inherit_id="account_reports.report_followup_letter_body">
+    <xpath expr="//div[@class='row']" position="before">
+      <style type="text/css">
+        .head{
+          margin-left: 0px !important;
+        }
+        .address{
+          padding-top: 110px;
+        }
+        body > div{
+          margin-left: 68px !important;
+        }
+      </style>
+    </xpath>
+
+    <xpath expr="//p[@style]" position="replace">
+    </xpath>
+
+    <xpath expr="//table" position="attributes">
+      <attribute name="width">90%</attribute>
+    </xpath>
+
+    <xpath expr="//div[@class='row']" position="replace">
+        <div class="row head">
+            <div class="address">
+                <div t-field="context.partner_id"
+                    t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
+                <span t-field="context.partner_id.vat"/>
+            </div>
+        </div>
+        <div class="row head">
+          <p style='margin-top: 35px;'>
+            Document: Customer account statement<br/>
+            Date: <span t-esc="today"/><br/>
+            Customer ref: <span t-field="context.partner_id.ref"/>
+          </p>
+        </div>
+    </xpath>
+
+  </template>
+
+</odoo>
