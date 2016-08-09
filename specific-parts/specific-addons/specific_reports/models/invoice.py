@@ -47,7 +47,9 @@ class InvoiceOrderLine(models.Model):
     _inherit = 'account.invoice.line'
 
     price_unit_discount = fields.Float(
-        compute='_compute_price_discount', digits=dp.get_precision('Product Price'), string='Subtotal', readonly=True
+        compute='_compute_price_discount',
+        digits=dp.get_precision('Product Price'),
+        string='Subtotal', readonly=True
     )
     project_discount = fields.Float(string='Object Discount (%)')
     public_discount = fields.Float(string='Discount (%)')

@@ -51,7 +51,9 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     price_unit_discount = fields.Float(
-        compute='_compute_price_discount', digits=dp.get_precision('Product Price'), string='Subtotal',
+        compute='_compute_price_discount',
+        digits=dp.get_precision('Product Price'),
+        string='Subtotal',
         readonly=True
     )
 
