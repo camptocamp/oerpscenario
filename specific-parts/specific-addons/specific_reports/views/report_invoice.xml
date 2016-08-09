@@ -201,11 +201,14 @@
             <span t-esc="round(l.public_discount, 1)"/><br/>
             <span t-esc="round(l.project_discount, 1)"/>
           </td>
-          <td>
+          <td class="text-right">
             <span t-field="l.price_unit_discount"/>
           </td>
+		  <td class="text-right">
+            <span t-esc="', '.join(map(lambda x: (x.description or x.name), l.invoice_line_tax_ids))"/>
+          </td>
           <td class="text-right">
-            <span t-field="l.price_subtotal" t-field-options='{"widget": "False"}'/>
+            <span t-field="l.price_subtotal"/>
           </td>
         </tr>
       </xpath>
@@ -224,7 +227,8 @@
             </span>
           </th>
           <th class="text-right" groups="sale.group_discount_per_so_line">Net</th>
-          <th class="text-right">Price</th>
+          <th class="text-right">Taxes</th>
+		  <th class="text-right">Price</th>
         </tr>
       </xpath>
 

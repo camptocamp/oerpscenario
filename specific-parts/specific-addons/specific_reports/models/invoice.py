@@ -3,6 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp import api, fields, models
 
+import openerp.addons.decimal_precision as dp
+
 
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
@@ -44,8 +46,10 @@ class AccountInvoice(models.Model):
 class InvoiceOrderLine(models.Model):
     _inherit = 'account.invoice.line'
 
-    price_unit_discount = fields.Monetary(
-        compute='_compute_price_discount', string='Subtotal', readonly=True
+    price_unit_discount = fields.Float(
+        compute='_compute_price_discount',
+        digits=dp.get_precision('Product Price'),
+        string='Subtotal', readonly=True
     )
     project_discount = fields.Float(string='Object Discount (%)')
     public_discount = fields.Float(string='Discount (%)')
