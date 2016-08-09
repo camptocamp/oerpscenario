@@ -1,0 +1,5 @@
+id,name
+scenario.stage_01,Nouveau
+scenario.stage_02,En cours
+scenario.stage_03,Reporté
+scenario.stage_04,Terminé
