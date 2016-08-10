@@ -27,7 +27,7 @@
         <div class="row head">
             <div class="address">
                 <div t-field="context.partner_id"
-                    t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
+                    t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
                 <span t-field="context.partner_id.vat"/>
             </div>
         </div>
