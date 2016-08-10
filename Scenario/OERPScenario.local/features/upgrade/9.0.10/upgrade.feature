@@ -9,6 +9,7 @@ Feature: upgrade to 9.0.10
       | specific_reports                              |
       | project_task_default_stage                    |
       | specific_project                              |
+      | specific_building_project                     |
     Then my modules should have been installed and models reloaded
   
   
