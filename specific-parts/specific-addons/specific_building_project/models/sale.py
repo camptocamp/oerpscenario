@@ -78,7 +78,7 @@ class SaleOrder(models.Model):
             if not project_pl:
                 self.env['building.project.pricelist'].create({
                     'building_project_id': build_project.id,
-                    'partner_id': self.business_provider_id.id})
+                    'partner_id': business_provider_id})
 
     @api.model
     def create(self, vals):
@@ -93,7 +93,7 @@ class SaleOrder(models.Model):
         project_id = vals.get('project_id') or self.project_id.id
         partner_id = vals.get('partner_id') or self.partner_id.id
         business_provider_id = vals.get(
-            'business_provider_id') or self.business_provider_id
+            'business_provider_id') or self.business_provider_id.id
         self._update_build_project_discounts(
             project_id, partner_id,
             vals.get('project_pricelist_id'), business_provider_id)
