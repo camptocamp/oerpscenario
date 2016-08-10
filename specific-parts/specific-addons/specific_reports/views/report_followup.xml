@@ -13,12 +13,16 @@
         body > div{
           margin-left: 68px !important;
         }
+        .o_account_reports_summary{
+          padding-right: 100px;
+        }
       </style>
     </xpath>
 
     <xpath expr="//p[@style]" position="replace">
     </xpath>
 
+    <!-- To have the full table into the page -->
     <xpath expr="//table" position="attributes">
       <attribute name="width">90%</attribute>
     </xpath>
