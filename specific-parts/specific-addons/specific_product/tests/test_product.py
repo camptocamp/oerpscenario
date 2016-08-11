@@ -14,7 +14,21 @@ class TestProduct(TransactionCase):
         self.loc_stock = self.browse_ref('stock.stock_location_stock')
         self.loc_input = self.browse_ref('stock.stock_location_company')
         self.loc_suppliers = self.browse_ref('stock.stock_location_suppliers')
-        self.loc_transit = self.browse_ref('scenario.location_transit_cn')
+
+        # Create transit location like scenario
+        self.loc_transit = self.env['stock.location'].create({
+            'name': 'Unittest transit location',
+            'usage': 'transit',
+            'location_id': self.ref('stock.stock_location_locations')
+        })
+        self.loc_transit._parent_store_compute()
+
+        self.env['ir.model.data'].create({
+            'model': 'stock.location',
+            'module': 'scenario',
+            'name': 'location_transit_cn',
+            'res_id': self.loc_transit.id,
+        })
 
     def test_name_search(self):
 
