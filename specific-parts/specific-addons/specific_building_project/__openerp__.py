@@ -32,6 +32,7 @@
         "views/sale_order.xml",
         "views/partner.xml",
         "views/task.xml",
+        "views/project_project.xml",
         "views/building_project.xml",
         'views/building_project_template.xml',
         "wizards/create_opportunity_quotation_view.xml",

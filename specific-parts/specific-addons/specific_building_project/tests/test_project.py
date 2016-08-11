@@ -21,7 +21,6 @@ class TestProject(TransactionCase):
         })
 
     def test_department_id(self):
-
         project = self.env['project.project'].create({
             'name': 'Unittest project',
         })
@@ -30,3 +29,6 @@ class TestProject(TransactionCase):
 
         project.onchange_user_id()
         self.assertEqual(self.department, project.department_id)
+        self.assertEqual(
+            self.department, project.analytic_account_id.department_id
+        )

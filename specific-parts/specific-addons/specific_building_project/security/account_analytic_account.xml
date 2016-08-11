@@ -10,11 +10,11 @@
     <field name="perm_unlink" eval="1" />
     <field name="perm_write" eval="0" />
   </record>
-  <record model="ir.rule" id="rule_department_project_only">
+  <record model="ir.rule" id="rule_department_project_task_only">
     <field name="active" eval="1" />
-    <field name="domain_force">['|', '|', ('department_id', '=', False), ('department_id', 'child_of', [user.department_id.id]), ('department_id', 'parent_of', [user.department_id.id])]</field>
-    <field name="model_id" ref="analytic.model_account_analytic_account" />
-    <field name="name">Users can see only projects of their department</field>
+    <field name="domain_force">['|', ('department_id', 'child_of', [user.department_id.id]), ('department_id', 'parent_of', [user.department_id.id])]</field>
+    <field name="model_id" ref="project.model_project_task" />
+    <field name="name">Users can see only project tasks of their department</field>
     <field name="perm_create" eval="1" />
     <field name="perm_read" eval="1" />
     <field name="perm_unlink" eval="1" />
