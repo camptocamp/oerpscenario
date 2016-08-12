@@ -6,3 +6,4 @@ from . import test_building_project
 from . import test_sale_project_pricelist
 from . import test_copy_sale_project_pricelist_to_project
 from . import test_new_quotation
+from . import test_project

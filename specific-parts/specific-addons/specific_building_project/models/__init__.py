@@ -13,3 +13,4 @@ from . import sale
 from . import product
 from . import partner_role
 from . import partner
+from . import project_project

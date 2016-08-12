@@ -183,7 +183,6 @@ Feature: Parameter the new database
         | specific_invoice              |
         | specific_partner              |
         | specific_product              |
-        | specific_project              |
         | specific_reports              |
         | specific_stock                |
         | specific_timesheet            |
