@@ -50,7 +50,8 @@ class SaleOrder(models.Model):
 
     @api.model
     def _update_build_project_discounts(self, project_id, partner_id,
-                                        project_pricelist_id):
+                                        project_pricelist_id,
+                                        business_provider_id):
         """ If a pricelist is set we check if a pricelist for the customer for
         this project is defined. If it doesn't exist, create one.
         Otherwise do nothing.
@@ -66,21 +67,36 @@ class SaleOrder(models.Model):
                     'building_project_id': build_project.id,
                     'partner_id': partner_id,
                     'pricelist_id': project_pricelist_id})
+        if project_id and business_provider_id:
+            build_project = self.env['building.project'].search(
+                [('analytic_account_id', '=', project_id)])
+            project_pl = self.env['building.project.pricelist'].search(
+                [('building_project_id', '=', build_project.id),
+                 ('partner_id', '=', business_provider_id),
+                 ('pricelist_id', '=', False)])
+            project_pl.write({'partner_id': business_provider_id})
+            if not project_pl:
+                self.env['building.project.pricelist'].create({
+                    'building_project_id': build_project.id,
+                    'partner_id': business_provider_id})
 
     @api.model
     def create(self, vals):
         self._update_build_project_discounts(
             vals.get('project_id'), vals.get('partner_id'),
-            vals.get('project_pricelist_id'))
+            vals.get('project_pricelist_id'),
+            vals.get('business_provider_id'))
         return super(SaleOrder, self).create(vals)
 
     @api.multi
     def write(self, vals):
         project_id = vals.get('project_id') or self.project_id.id
         partner_id = vals.get('partner_id') or self.partner_id.id
+        business_provider_id = vals.get(
+            'business_provider_id') or self.business_provider_id.id
         self._update_build_project_discounts(
             project_id, partner_id,
-            vals.get('project_pricelist_id'))
+            vals.get('project_pricelist_id'), business_provider_id)
 
         return super(SaleOrder, self).write(vals)
 
