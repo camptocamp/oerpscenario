@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-@upgrade_from_9.0.11
+@upgrade_from_9.0.10
 Feature: upgrade to 9.0.11
 
   Scenario: upgrade
