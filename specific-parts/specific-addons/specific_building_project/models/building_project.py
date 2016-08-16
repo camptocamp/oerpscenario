@@ -179,6 +179,28 @@ class BuildingProject(models.Model):
 
     color = fields.Integer('Color Index')
 
+    @api.model
+    def create(self, vals):
+        """ When creating a building project, we have to copy the tasks of
+        the project.project which is marked as building_template.
+        """
+        building_project = super(BuildingProject, self).create(vals)
+        if not building_project.task_ids:
+            template = self.env['project.project'].search([
+                ('building_template', '=', True)
+            ], limit=1)
+            if template and template.task_ids:
+                for task in template.task_ids:
+                    copy = task.copy()
+                    copy.write({
+                        # Remove the (copy) part of the name
+                        'name': task.name,
+                        'project_id': building_project.project_id.id
+                    })
+                building_project.refresh()
+
+        return building_project
+
     @api.depends('analytic_account_id')
     def _get_sale_orders(self):
         """ List all sale order linked to this project.

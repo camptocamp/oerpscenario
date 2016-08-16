@@ -10,6 +10,8 @@ from lxml import etree
 class ProjectProject(models.Model):
     _inherit = 'project.project'
 
+    building_template = fields.Boolean(default=False)
+
     department_id = fields.Many2one(
         comodel_name='hr.department',
         default=lambda self: self.user_id.department_id
@@ -28,6 +30,19 @@ class ProjectProject(models.Model):
                 [('project_id', '=', record.id)],
                 limit=1
             )[:1]
+
+    def init(self, cr):
+        cr.execute(
+            'SELECT indexname FROM pg_indexes WHERE indexname = %s',
+            ('project_project_idx_unique_building_template',)
+        )
+        if not cr.fetchone():
+            cr.execute(
+                'CREATE UNIQUE INDEX '
+                'project_project_idx_unique_building_template '
+                'ON project_project (building_template) '
+                'WHERE building_template'
+            )
 
     @api.onchange('user_id')
     def onchange_user_id(self):
