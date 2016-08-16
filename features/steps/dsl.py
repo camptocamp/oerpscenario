@@ -40,9 +40,11 @@ def impl(ctx, oe_context_string):
 
 
 
-@step(u'I find a{n:optional}{active_text:optional} "{model_name}" with {domain}')
-def impl(ctx, n, active_text, model_name, domain):
-    # n is there for the english grammar, but not used
+@step(u'I find a{word1:optional}{word2:optional}{word3:optional} "{model_name}" with {domain}')
+def impl(ctx, word1, word2, word3, model_name, domain):
+    # n is counted as word there for the english grammar, but not used
+    # words can be 'possibly' of 'possibly inactive'
+    active_text = ' '.join(w for w in (word1, word2, word3) if w and w != 'n')
     assert active_text in ('', 'inactive', 'active', 'possibly inactive')
     Model = model(model_name)
     ctx.search_model_name = model_name
@@ -66,9 +68,10 @@ def impl(ctx, n, active_text, model_name, domain):
             ctx.found_item = None
 
 
-@step(u'I need a{n:optional}{active_text:optional} "{model_name}" with {domain}')
-def impl(ctx, n, active_text, model_name, domain):
+@step(u'I need a{word1:optional}{word2:optional}{word3:optional} "{model_name}" with {domain}')
+def impl(ctx, word1, word2, word3, model_name, domain):
     # n is there for the english grammar, but not used
+    active_text = ' '.join(w for w in (word1, word2, word3) if w and w != 'n')
     assert active_text in ('', 'inactive', 'active', 'possibly inactive')
     Model = model(model_name)
     ctx.search_model_name = model_name
