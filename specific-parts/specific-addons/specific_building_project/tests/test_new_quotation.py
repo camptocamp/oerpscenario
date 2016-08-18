@@ -25,7 +25,9 @@ class TestNewQuotation(common.TransactionCase):
     def setUp(self):
         super(TestNewQuotation, self).setUp()
 
-        self.partner = self.env.ref('base.res_partner_12')
+        self.partner = self.env['res.partner'].create({
+            'name': 'Unittest partner'
+        })
         self.project = self.env['building.project'].create({
             'name': 'Building Project',
         })

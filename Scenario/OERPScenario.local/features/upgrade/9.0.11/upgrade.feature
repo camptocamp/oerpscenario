@@ -6,6 +6,12 @@ Feature: upgrade to 9.0.11
     Given I update the module list
     Given I install the required modules with dependencies:
       | name                                          |
+      | specific_building_project                     |
     Then my modules should have been installed and models reloaded
+
+  Scenario: remove modules
+    Given I uninstall the following modules:
+      | name                      |
+      | specific_project          |
 
     Then I set the version of the instance to "9.0.11"

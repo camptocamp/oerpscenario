@@ -14,7 +14,7 @@ class TestSalePricelist(common.TransactionCase):
         self.sale.pricelist_id = self.pricelist40
         self.sale.button_update_unit_prices()
         self.assertAlmostEqual(
-            self.sale.order_line.price_unit,
+            self.sale.order_line.price_subtotal,
             self.listprice * 0.6,
         )
 
@@ -22,37 +22,42 @@ class TestSalePricelist(common.TransactionCase):
         self.sale.project_id = self.project.analytic_account_id
         self.sale.button_update_unit_prices()
         self.assertAlmostEqual(
-            self.sale.order_line.price_unit,
+            self.sale.order_line.price_subtotal,
             self.listprice,
         )
 
     def test_project_discount_pricelist(self):
-        self.project_pl.pricelist_id = self.pricelist50
-        self.sale.project_id = self.project.analytic_account_id
+        self.sale.project_pricelist_id = self.pricelist50
         self.sale.button_update_unit_prices()
         self.assertAlmostEqual(
-            self.sale.order_line.price_unit,
+            self.sale.order_line.price_subtotal,
             self.listprice * 0.5,
         )
 
     def test_both_discount_pricelist(self):
-        self.project_pl.pricelist_id = self.pricelist50
+        self.sale.project_pricelist_id = self.pricelist50
         self.sale.pricelist_id = self.pricelist40
-        self.sale.project_id = self.project.analytic_account_id
         self.sale.button_update_unit_prices()
         self.assertAlmostEqual(
-            self.sale.order_line.price_unit,
+            self.sale.order_line.price_subtotal,
             self.listprice * 0.5 * 0.6,
         )
 
     def setUp(self):
         super(TestSalePricelist, self).setUp()
 
-        product = self.env.ref('product.product_product_57')
+        product = self.env['product.product'].create({
+            'name': 'Unittest product',
+            'list_price': 23500,
+        })
         self.listprice = product.list_price
-        self.partner_id = self.ref('base.res_partner_12')
+
+        self.partner = self.env['res.partner'].create({
+            'name': 'Unittest partner'
+        })
+
         self.sale = self.env['sale.order'].create({
-            'partner_id': self.partner_id,
+            'partner_id': self.partner.id,
             'order_line': [(0, 0, {
                 'product_id': product.id,
                 'product_uom': product.uom_id.id,
@@ -80,5 +85,5 @@ class TestSalePricelist(common.TransactionCase):
         })
         self.project_pl = self.env['building.project.pricelist'].create({
             'building_project_id': self.project.id,
-            'partner_id': self.partner_id,
+            'partner_id': self.partner.id,
         })

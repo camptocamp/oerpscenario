@@ -60,9 +60,16 @@ class TestCopySalePricelistToProject(common.TransactionCase):
     def setUp(self):
         super(TestCopySalePricelistToProject, self).setUp()
 
-        self.product = self.env.ref('product.product_product_57')
+        self.product = self.env['product.product'].create({
+            'name': 'Unittest product',
+            'list_price': 23500,
+        })
         self.listprice = self.product.list_price
-        self.partner = self.env.ref('base.res_partner_12')
+
+        self.partner = self.env['res.partner'].create({
+            'name': 'Unittest partner'
+        })
+
         self.project = self.env['building.project'].create({
             'name': 'Building Project',
         })
