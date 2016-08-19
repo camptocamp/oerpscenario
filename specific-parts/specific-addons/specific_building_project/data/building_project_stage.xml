@@ -12,22 +12,30 @@
     <field name="name">Offerte</field>
     <field name="sequence">3</field>
   </record>
+  <record model="building.project.stage" id="stage_postponed">
+    <field name="name">Zurückgestellt</field>
+    <field name="sequence">4</field>
+  </record>
   <record model="building.project.stage" id="stage_won_realisation">
     <field name="name">Realisation Positiv</field>
-    <field name="sequence">4</field>
+    <field name="sequence">5</field>
   </record>
   <record model="building.project.stage" id="stage_won_completed">
     <field name="name">Aftersales</field>
-    <field name="sequence">5</field>
+    <field name="sequence">6</field>
   </record>
   <record model="building.project.stage" id="stage_closed">
     <field name="name">abgeschlossen</field>
     <field name="fold">True</field>
-    <field name="sequence">6</field>
+    <field name="sequence">7</field>
   </record>
   <record model="building.project.stage" id="stage_lost">
     <field name="name">Auftrag verloren</field>
     <field name="fold">True</field>
-    <field name="sequence">7</field>
+    <field name="sequence">8</field>
+  </record>
+  <record model="building.project.stage" id="stage_other">
+    <field name="name">andere Status</field>
+    <field name="sequence">9</field>
   </record>
 </odoo>
