@@ -8,6 +8,7 @@ Feature: upgrade to 9.0.11
       | name                                          |
       | base_technical_features                       |
       | specific_building_project                     |
+      | specific_pad                                  |
     Then my modules should have been installed and models reloaded
 
   Scenario: remove modules
