@@ -171,6 +171,8 @@ Feature: Parameter the new database
         | stock_split_picking                           |
         # oca/manufacture
         | mrp_bom_dismantling                           |
+        # oca/server-tools
+        | base_technical_features                       |
 
   @modules
   Scenario: install specific modules
