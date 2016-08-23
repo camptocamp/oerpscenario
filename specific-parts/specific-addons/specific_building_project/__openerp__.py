@@ -35,6 +35,7 @@
         "views/project_project.xml",
         "views/building_project.xml",
         'views/building_project_template.xml',
+        'views/project_project.xml',
         "wizards/create_opportunity_quotation_view.xml",
         "security/ir.model.access.csv",
         "security/account_analytic_account.xml"

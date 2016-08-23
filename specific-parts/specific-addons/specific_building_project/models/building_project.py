@@ -8,7 +8,7 @@ from openerp import api, fields, models, _
 class BuildingProject(models.Model):
 
     _name = 'building.project'
-    _inherits = {'account.analytic.account': "analytic_account_id"}
+    _inherits = {'project.project': "project_id"}
     _inherit = ['mail.thread']
     _rec_name = 'display_name'
 
@@ -26,9 +26,10 @@ class BuildingProject(models.Model):
             else:
                 record.display_name = record.name
 
-    analytic_account_id = fields.Many2one(
-        'account.analytic.account',
-        required=True
+    project_id = fields.Many2one(
+        'project.project',
+        required=True,
+        ondelete='cascade',
     )
     date_start = fields.Date(
         'erwarteter Lieferstart'
@@ -37,10 +38,6 @@ class BuildingProject(models.Model):
         'erwartetes Lieferende',
         index=True,
         track_visibility='onchange'
-    )
-    user_id = fields.Many2one(
-        'res.users',
-        'Project Manager'
     )
 
     expected_amount = fields.Float(
