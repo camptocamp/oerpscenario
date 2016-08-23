@@ -22,6 +22,14 @@ Feature: upgrade to 9.0.11
     DELETE FROM building_project;
     """
 
+  @building_project_template
+  Scenario: Create a template project for building project
+    Given I need a "project.project" with oid: scenario.project_building_template
+    And having:
+      | key               | value                         |
+      | name              | Template for building project |
+      | building_template | True                          |
+
   Scenario: remove modules
     Given I uninstall the following modules:
       | name                      |

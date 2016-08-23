@@ -48,3 +48,11 @@ Feature: Cleanup project from example data
     Given I set the context to "{'lang':'it_IT'}"
     Given "project.task.type" is imported from CSV "setup/project_task_stages_it.csv" using delimiter ","
     Given I set the context to "{'lang':'en_US'}"  
+
+  @building_project_template
+  Scenario: Create a template project for building project
+    Given I need a "project.project" with oid: scenario.project_building_template
+    And having:
+      | key               | value                         |
+      | name              | Template for building project |
+      | building_template | True                          |
