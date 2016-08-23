@@ -11,6 +11,17 @@ Feature: upgrade to 9.0.11
       | specific_pad                                  |
     Then my modules should have been installed and models reloaded
 
+  @remove_building_projects
+  Scenario: Remove all building projects
+    Given I execute the SQL commands
+    """;
+    DELETE FROM calendar_event WHERE building_project_id IS NOT NULL OR opportunity_id IN (SELECT id FROM crm_lead WHERE building_project_id IS NOT NULL);
+    DELETE FROM crm_lead WHERE building_project_id IS NOT NULL;
+    DELETE FROM res_partner_role WHERE building_project_id IS NOT NULL;
+    DELETE FROM building_project_pricelist;
+    DELETE FROM building_project;
+    """
+
   Scenario: remove modules
     Given I uninstall the following modules:
       | name                      |

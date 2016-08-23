@@ -28,4 +28,17 @@
             </p>
         </field>
     </record>
+
+    <record id="edit_project" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <p attrs="{'invisible': [('building_project_id', '=', False)]}" groups="base.group_sale_manager">
+                    Go to the related building project:
+                    <field name="building_project_id" readonly="1" required="0" class="oe_inline"/>
+                </p>
+            </field>
+        </field>
+    </record>
 </odoo>

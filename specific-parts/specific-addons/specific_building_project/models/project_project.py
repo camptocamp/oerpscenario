@@ -2,13 +2,32 @@
 # © 2016 Cyril Gaudin (Camptocamp)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, models
+from openerp import api, fields, models
 
 from lxml import etree
 
 
 class ProjectProject(models.Model):
     _inherit = 'project.project'
+
+    department_id = fields.Many2one(
+        comodel_name='hr.department',
+        default=lambda self: self.user_id.department_id
+    )
+
+    building_project_id = fields.Many2one(
+        comodel_name='building.project',
+        compute='_compute_building_project_id'
+    )
+
+    @api.multi
+    def _compute_building_project_id(self):
+        building_obj = self.env['building.project']
+        for record in self:
+            record.building_project_id = building_obj.search(
+                [('project_id', '=', record.id)],
+                limit=1
+            )[:1]
 
     @api.onchange('user_id')
     def onchange_user_id(self):

@@ -51,6 +51,9 @@
               <label for="project_type_id"/>
               <field name="project_type_id"/>
             </div>
+            <div>
+              <p>Go to the related project: <field name="project_id" readonly="1" required="0" class="oe_inline"/>.</p>
+            </div>
           </div>
           <div name="project"/>
           <group name="main">
