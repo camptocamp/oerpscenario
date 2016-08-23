@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-14 14:53+0000\n"
-"PO-Revision-Date: 2016-06-14 14:53+0000\n"
+"POT-Creation-Date: 2016-08-23 13:49+0000\n"
+"PO-Revision-Date: 2016-08-23 13:49+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -132,6 +132,18 @@ msgstr "<br/>\n"
 "                Phone:"
 
 #. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.fix_address_report_followup_letter_body
+msgid "<br/>\n"
+"            Customer ref:"
+msgstr "<br/>\n"
+"            Rif. cliente:"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "<br/><span>Shipping address:</span>"
+msgstr "<br/><span>Indirizzo di spedizione:</span>"
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.external_layout_header
 msgid "<small>\n"
 "                  <small>\n"
@@ -246,14 +258,13 @@ msgstr "<span class=\"col-xs-5\">Supplier Number:</span>"
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<span class=\"col-xs-5\">Term of delivery:</span>"
-msgstr "<span class=\"col-xs-5\">Term of delivery:</span>"
+msgstr "<span class=\"col-xs-5\">Data di consegna:</span>"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
 msgid "<span class=\"col-xs-5\">Term of delivery:</span>\n"
 "                  <span>nach Absprache</span>"
-msgstr "<span class=\"col-xs-5\">Term of delivery:</span>\n"
-"                  <span>nach Absprache</span>"
+msgstr "<span class=\"col-xs-5\">Data di consegna:</span>"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
@@ -419,6 +430,11 @@ msgid "Amount"
 msgstr "Importo"
 
 #. module: specific_reports
+#: model:ir.model.fields,field_description:specific_reports.field_sale_order_line_project_id
+msgid "Analytic Account"
+msgstr "Conto analitico"
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 msgid "Art-Nr.<br/>\n"
 "                                    E-No.<br/>\n"
@@ -492,11 +508,6 @@ msgstr "Datum : <br/>\n"
 "                        Lieferant :<br/>"
 
 #. module: specific_reports
-#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
-msgid "Delivery Address:"
-msgstr "Delivery Address:"
-
-#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 msgid "Delivery Slip"
 msgstr "Bolletino di consegna"
@@ -531,6 +542,13 @@ msgid "Dismantling Order # :"
 msgstr "Dismantling Order # :"
 
 #. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.fix_address_report_followup_letter_body
+msgid "Document: Customer account statement<br/>\n"
+"            Date:"
+msgstr "Documento: Report conto cliente<br/>\n"
+"            Data:"
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
 msgid "E-No.<br/>Artikel-Nr."
 msgstr "E-No.<br/>Artikel-Nr."
@@ -539,6 +557,11 @@ msgstr "E-No.<br/>Artikel-Nr."
 #: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
 msgid "E-nr"
 msgstr "E-nr"
+
+#. module: specific_reports
+#: model:ir.model,name:specific_reports.model_mail_template
+msgid "Email Templates"
+msgstr "Modelli di Email"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
@@ -559,6 +582,16 @@ msgstr "Fattura"
 #: model:ir.model,name:specific_reports.model_account_invoice_line
 msgid "Invoice Line"
 msgstr "Riga fattura"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Invoicing address:"
+msgstr "Indirizzo di fatturazione:"
+
+#. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
+msgid "Invoicing and shipping address:"
+msgstr "Indirizzo di fatturazione e spedizione:"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_purchaseorder_document
@@ -611,6 +644,12 @@ msgstr "Condizioni:"
 #: selection:sale.order,client_order_contact_type:0
 msgid "Per E-Mail"
 msgstr "Per E-Mail"
+
+#. module: specific_reports
+#: selection:account.invoice,client_order_contact_type:0
+#: selection:sale.order,client_order_contact_type:0
+msgid "Per Fax"
+msgstr "Per Fax"
 
 #. module: specific_reports
 #: selection:account.invoice,client_order_contact_type:0
@@ -697,9 +736,19 @@ msgid "Reception"
 msgstr "Reception"
 
 #. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_invoice_document
+msgid "Rechnung für: EEV-Nr."
+msgstr "Rechnung für: EEV-Nr."
+
+#. module: specific_reports
 #: model:ir.model.fields,help:specific_reports.field_account_invoice_client_order_ref
 msgid "Reference for the client"
 msgstr "Reference for the client"
+
+#. module: specific_reports
+#: model:ir.model,name:specific_reports.model_report
+msgid "Report"
+msgstr "Report"
 
 #. module: specific_reports
 #: model:ir.model.fields,field_description:specific_reports.field_res_company_report_logo
@@ -740,6 +789,11 @@ msgid "TIN:"
 msgstr "P.IVA:"
 
 #. module: specific_reports
+#: model:ir.ui.view,arch_db:specific_reports.report_invoice_layouted
+msgid "Taxes"
+msgstr "Imposte"
+
+#. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
 msgid "Technik-Hotline: +41 43 844 80 77,"
 msgstr "Technik-Hotline: +41 43 844 80 77,"
@@ -749,6 +803,11 @@ msgstr "Technik-Hotline: +41 43 844 80 77,"
 #: model:ir.model.fields,field_description:specific_reports.field_sale_order_delivery_term
 msgid "Term of delivery"
 msgstr "Term. consegna"
+
+#. module: specific_reports
+#: model:ir.model.fields,help:specific_reports.field_sale_order_line_project_id
+msgid "The analytic account related to a sales order."
+msgstr "Il conto analitico legato all'ordine di vendita."
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_saleorder_document
