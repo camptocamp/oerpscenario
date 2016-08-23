@@ -1,0 +1,31 @@
+<odoo>
+    <record id="view_project_project_filter" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <filter name="department" string="My department"
+                        domain="['|', ('department_id', 'child_of', [8]), ('department_id', 'parent_of', [8])]"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="project.open_view_project_all" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="res_model">project.project</field>
+        <field name="view_type">form</field>
+        <field name="domain">[]</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="search_view_id" ref="view_project_project_filter"/>
+        <field name="context">{'search_default_Current': 1, 'search_default_department': 1}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create a new project.
+            </p>
+            <p>
+                Organize your activities (plan tasks, track issues, invoice timesheets) for internal, personal or
+                customer projects.
+            </p>
+        </field>
+    </record>
+</odoo>
