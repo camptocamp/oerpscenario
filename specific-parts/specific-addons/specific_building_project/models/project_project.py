@@ -12,11 +12,6 @@ class ProjectProject(models.Model):
 
     building_template = fields.Boolean(default=False)
 
-    department_id = fields.Many2one(
-        comodel_name='hr.department',
-        default=lambda self: self.user_id.department_id
-    )
-
     building_project_id = fields.Many2one(
         comodel_name='building.project',
         compute='_compute_building_project_id'
