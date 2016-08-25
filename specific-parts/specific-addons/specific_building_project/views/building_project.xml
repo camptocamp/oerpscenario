@@ -43,17 +43,16 @@
             <h1>
               <field name="name" class="oe_inline" placeholder="e.g. Building Project XYZ"/>
             </h1>
-            <div>
-              <label for="business_area"/>
-              <field name="business_area"/>
-            </div>
-            <div>
-              <label for="project_type_id"/>
-              <field name="project_type_id"/>
-            </div>
-            <div>
-              <p>Go to the related project: <field name="project_id" readonly="1" required="0" class="oe_inline"/>.</p>
-            </div>
+          </div>
+          <div>
+            <p>Go to the related project:<field name="project_id" readonly="1" required="0" class="oe_inline"/>.
+            </p>
+            <group>
+              <group>
+                <field name="business_area"/>
+                <field name="project_type_id"/>
+              </group>
+            </group>
           </div>
           <div name="project"/>
           <group name="main">
