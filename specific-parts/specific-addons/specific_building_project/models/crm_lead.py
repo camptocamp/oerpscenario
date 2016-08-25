@@ -48,26 +48,26 @@ class CRMLead(models.Model):
         return res
 
     @api.multi
-    def quotation_new_wholesaler(self):
-        wiz_ctx = self.env.context.copy()
-        wiz_ctx.update({
-            'active_model': self._name,
-            'active_ids': self.ids,
-            'active_id': self.id,
-        })
+    def create_new_quotation(self):
+        act_dict = self.env['ir.actions.act_window'].for_xml_id(
+            'sale_crm', 'sale_action_quotations_new'
+        )
+        act_dict['context'] = self.env.context.copy()
 
-        wiz_model = self.env['create.opportunity.quotation']
-        wiz = wiz_model.with_context(wiz_ctx).create({})
-        return {
-            'name': _('New Quotation'),
-            'type': 'ir.actions.act_window',
-            'view_type': 'form',
-            'view_mode': 'form',
-            'res_model': 'create.opportunity.quotation',
-            'target': 'new',
-            'res_id': wiz.id,
-            'context': self.env.context
-        }
+        lead_partner_id = self.env.context.get('default_partner_id')
+        # get aa of building project as it is what SO expects in project_id
+        building_project_id = self.env.context.get(
+            'default_building_project_id'
+        )
+        building_project = self.env['building.project'].browse(
+            building_project_id
+        )
+        act_dict['context'].update({
+            'default_business_provider_id': lead_partner_id,
+            'default_partner_id': self.partner_id.id,
+            'default_project_id': building_project.analytic_account_id.id,
+        })
+        return act_dict
 
     @api.multi
     def action_schedule_meeting(self):
