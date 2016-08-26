@@ -7,5 +7,6 @@ Feature: upgrade to 9.0.12
     Given I install the required modules with dependencies:
       | name                                          |
       | specific_building_project                     |
+      | specific_reports                              |
     Then my modules should have been installed and models reloaded
     Then I set the version of the instance to "9.0.12"

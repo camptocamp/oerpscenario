@@ -92,20 +92,6 @@
                                   </t>
                                   <span t-if="o.sale_id" t-field="o.sale_id.user_id.email"/>
                                   <span t-if="not o.sale_id" t-field="o.partner_id.user_id.email"/>
-                                  <br/>
-                                  <br/>
-                                  <strong>
-                                    Official in charge
-                                  </strong> <span t-field="o.env.user.name"/><br/>
-                                  Tel:
-                                  <t t-if="o.env.user.phone">
-                                    <span t-field="o.get_employee_from_user(o.env.user).work_phone"/><br/>
-                                  </t>
-                                  <t t-if="not o.env.user.phone">
-                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<br/>
-                                  </t>
-                                  <span t-field="o.env.user.email"/><br/>
                                 </small>
                               </small>
                             </div>
