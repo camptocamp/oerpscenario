@@ -46,3 +46,9 @@ class CalendarEvent(models.Model):
             else:
                 vals['building_project_id'] = False
         return super(CalendarEvent, self).write(vals)
+
+    @api.multi
+    def create_attendees(self):
+        return super(
+            CalendarEvent, self.with_context(no_email=True)
+        ).create_attendees()
