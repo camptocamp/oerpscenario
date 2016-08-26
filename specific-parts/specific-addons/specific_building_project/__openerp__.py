@@ -16,7 +16,7 @@
         "bin": [],
     },
     "depends": [
-        "analytic",
+        "project_department",
         "hr",
         "crm",
         "sale",

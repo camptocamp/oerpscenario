@@ -14,6 +14,13 @@ class TestProject(TransactionCase):
             'name': 'Test department',
         })
 
+        # Delete existing employees for our user.
+        employees = self.env['hr.employee'].search([
+            ('user_id', '=', self.env.user.id)]
+        )
+        for employee in employees:
+            employee.unlink()
+
         self.env['hr.employee'].create({
             'name': 'Test employee',
             'user_id': self.env.user.id,
