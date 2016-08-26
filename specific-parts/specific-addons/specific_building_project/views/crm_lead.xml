@@ -24,12 +24,12 @@
          <attribute name="attrs">{'invisible': ['|', ('probability', '>', 0), ('building_project_id', '!=', False)]}</attribute>
       </xpath>
       <xpath expr="//button[@name='%(sale_crm.sale_action_quotations_new)d']" position="after">
-        <button attrs="{'invisible': ['|', ('probability', '=', 0), ('building_project_id', '=', False)]}" string="New Quotation" name="quotation_new_wholesaler" type="object" class="oe_highlight"
+        <button attrs="{'invisible': ['|', ('probability', '=', 0), ('building_project_id', '=', False)]}" string="New Quotation" name="create_new_quotation" type="object" class="oe_highlight"
             context="{'search_default_partner_id': partner_id,
                       'default_partner_id': partner_id,
                       'default_building_project_id': building_project_id,
                       'default_team_id': team_id}"/>
-        <button attrs="{'invisible': ['|', ('probability', '>', 0), ('building_project_id', '=', False)]}" string="New Quotation" name="quotation_new_wholesaler" type="object"
+        <button attrs="{'invisible': ['|', ('probability', '>', 0), ('building_project_id', '=', False)]}" string="New Quotation" name="create_new_quotation" type="object"
             context="{'search_default_partner_id': partner_id,
                       'default_partner_id': partner_id,
                       'default_building_project_id': building_project_id,
