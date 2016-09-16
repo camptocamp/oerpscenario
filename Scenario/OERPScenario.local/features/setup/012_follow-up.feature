@@ -30,7 +30,7 @@ Feature: Initial setup of the payment term
     Given I need an "account_followup.followup.line" with oid: scenario.followup_1_line_1
     And having:
       | key         | value                                    |
-      | name        | Frist: 20 Tage nach Fälligkeit, per Post |
+      | name        | 1. Mahnung                               |
       | followup_id | by oid: scenario.followup_1              |
       | sequence    | 1                                        |
       | delay       | 20                                       |
@@ -38,7 +38,7 @@ Feature: Initial setup of the payment term
     Given I need an "account_followup.followup.line" with oid: scenario.followup_1_line_2
     And having:
       | key         | value                                    |
-      | name        | Frist: 15 Tage nach Fälligkeit, per Post |
+      | name        | 2. Mahnung                               |
       | followup_id | by oid: scenario.followup_1              |
       | sequence    | 2                                        |
       | delay       | 15                                       |
@@ -47,7 +47,7 @@ Feature: Initial setup of the payment term
     Given I need an "account_followup.followup.line" with oid: scenario.followup_1_line_3
     And having:
       | key         | value                                    |
-      | name        | Frist: 10 Tage nach Fälligkeit, per Post |
+      | name        | 3. Mahnung                               |
       | followup_id | by oid: scenario.followup_1              |
       | sequence    | 3                                        |
       | delay       | 10                                       |
