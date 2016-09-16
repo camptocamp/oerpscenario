@@ -39,7 +39,7 @@
           <p style='margin-top: 35px;'>
             Document: Customer account statement<br/>
             Date: <span t-esc="today"/><br/>
-            Customer ref: <span t-field="context.partner_id.ref"/>
+            Client number: <span t-field="context.partner_id.ref"/>
           </p>
         </div>
     </xpath>
