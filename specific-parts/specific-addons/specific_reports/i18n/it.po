@@ -489,7 +489,7 @@ msgstr "Client order reference"
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_mrporder
 msgid "Color Code:"
-msgstr "Color Code:"
+msgstr "Codice di colore:"
 
 #. module: specific_reports
 #: model:ir.model,name:specific_reports.model_res_company
