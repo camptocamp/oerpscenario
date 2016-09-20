@@ -288,12 +288,7 @@
                                 </t>
                             </td>
                             <td>
-                                <t t-if="m.product_id">
-                                  <span  t-field="m.product_id.name"/>
-                                </t>
-                                <t t-if="not m.product_id">
-                                  <span  t-field="m.name"/>
-                                </t>
+                                <span  t-field="m.name"/>
                                 <t t-if="m.product_id.description_sale">
                                   <br/>
                                   <span t-field="m.product_id.description_sale"/>
