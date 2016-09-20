@@ -297,7 +297,7 @@ msgstr "<span>\n"
 #: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
 msgid "<span>Page:</span>\n"
 "                    <span class=\"page\"/>/<span class=\"topage\"/>"
-msgstr "<span>Page:</span>\n"
+msgstr "<span>Seite:</span>\n"
 "                    <span class=\"page\"/>/<span class=\"topage\"/>"
 
 #. module: specific_reports

@@ -296,7 +296,7 @@ msgstr "<span>\n"
 #: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
 msgid "<span>Page:</span>\n"
 "                    <span class=\"page\"/>/<span class=\"topage\"/>"
-msgstr "<span>Page:</span>\n"
+msgstr "<span>Pagina:</span>\n"
 "                    <span class=\"page\"/>/<span class=\"topage\"/>"
 
 #. module: specific_reports
@@ -325,7 +325,7 @@ msgid "<strong>\n"
 "                  Person of contact\n"
 "                </strong>"
 msgstr "<strong>\n"
-"                  Person of contact\n"
+"                  Persona di contatto\n"
 "                </strong>"
 
 #. module: specific_reports
@@ -448,7 +448,7 @@ msgstr "Art-Nr.<br/>\n"
 msgid "Bemerkungen<br/>\n"
 "                                    Zu veranlassen"
 msgstr "Bemerkungen<br/>\n"
-"                                    Zu veranlassen"
+"                                    Per indurre"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
@@ -456,8 +456,8 @@ msgid "Bestellmenge<br/>\n"
 "                                    Liefermenge<br/>\n"
 "                                    Rückstand"
 msgstr "Bestellmenge<br/>\n"
-"                                    Liefermenge<br/>\n"
-"                                    Rückstand"
+"                                    Quantità consegnato<br/>\n"
+"                                    Residui"
 
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_delivery_document_in_out
