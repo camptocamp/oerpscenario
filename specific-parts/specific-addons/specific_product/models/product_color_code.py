@@ -10,4 +10,4 @@ class ProductColorCode(models.Model):
 
     name = fields.Char(string="Color Name", required=True)
     code = fields.Char("NCS/RAL Code", required=True)
-    feller_name = fields.Char("Color Name Feller", required=True)
+    feller_name = fields.Char("Color Name Feller")
