@@ -546,7 +546,7 @@ msgstr "Dismantling Order # :"
 #: model:ir.ui.view,arch_db:specific_reports.fix_address_report_followup_letter_body
 msgid "Document: Customer account statement<br/>\n"
 "            Date:"
-msgstr "Dokument: Kundenauszug<br/>\n"
+msgstr "Dokument: Zahlungserinnerung<br/>\n"
 "Datum:"
 
 #. module: specific_reports
