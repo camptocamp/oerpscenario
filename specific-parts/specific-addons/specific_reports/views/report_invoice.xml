@@ -64,9 +64,6 @@
               position: fixed;
               left: 186px;
           }
-          .lp-0{
-            padding-left: 0px;
-          }
         </style>
         <!-- Informations contact on top of page -->
         <small>
@@ -76,39 +73,23 @@
                 <small>
                   <strong>
                     Your client manager
-                  </strong> <span t-field="o.user_id"/><br/>
+                  </strong> <span t-field="o.user_id.partner_id"/><br/>
                   Tel:
                   <t t-if="o.user_id">
                     <span t-field="o.get_employee_from_user(o.user_id).work_phone"/><br/>
-                    <!-- <span t-field="o.get_eev(scenario.partner_90424)"/> -->
-                  </t>
-                  <t t-if="not o.user_id">
-                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<br/>
-                  </t>
+                  </t>                  
                   <span t-field="o.user_id.email"/><br/>
-                  <strong>
-                    Official in charge
-                  </strong> <span t-field="o.env.user.name"/><br/>
-                  Tel:
-                  <t t-if="o.env.user">
-                    <span t-field="o.get_employee_from_user(o.env.user).work_phone"/><br/>
-                  </t>
-                  <t t-if="not o.env.user">
-                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<br/>
-                  </t>
-                  <span t-field="o.env.user.email"/><br/>
                 </small>
               </small>
             </div>
           </div>
-          <!-- Underline address of swisslux -->
           <div class="col-xs-12" style="text-decoration: underline; padding-left: 0px;">
+            <br/><br/><br/>
             <span t-field="o.company_id.name"/>, <span t-field="o.company_id.street"/>, <span t-field="o.company_id.zip"/> <span t-field="o.company_id.city"/>
             <br/>
             <br/>
           </div>
+
         </small>
       </xpath>
 
