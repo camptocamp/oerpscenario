@@ -78,7 +78,7 @@
                                 <small>
                                   <strong>
                                     Your client manager
-                                  </strong> <span t-field="o.sale_id.user_id"/>
+                                  </strong><span t-if="o.sale_id" t-field="o.sale_id.user_id"/>
                                   <span t-if="not o.sale_id" t-field="o.partner_id.user_id"/><br/>
                                   Tel:
                                   <t t-if="o.get_employee_from_user()">
