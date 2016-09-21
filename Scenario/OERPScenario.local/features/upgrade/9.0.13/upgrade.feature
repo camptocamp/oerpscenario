@@ -7,5 +7,6 @@ Feature: upgrade to 9.0.13
     Given I install the required modules with dependencies:
       | name                                          |
       | specific_product                              |
+      | mrp_bom_dismantling                           |
     Then my modules should have been installed and models reloaded
     Then I set the version of the instance to "9.0.13"
