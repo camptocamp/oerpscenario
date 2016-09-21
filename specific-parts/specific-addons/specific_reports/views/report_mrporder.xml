@@ -23,14 +23,15 @@
                         <strong>Source Document:</strong><br/>
                         <span t-field="o.origin"/>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-4">
                         <strong>Product:</strong><br/>
                         <span t-esc="o.product_id.name_get()[0][1]"/><br/>
                         <t t-if="o.product_id.product_tmpl_id.color_code">
-                            Color Code: <span t-field="o.product_id.product_tmpl_id.color_code"/>
+                            Color Code: <span t-field="o.product_id.product_tmpl_id.color_code.code"/>, 
+							<span t-field="o.product_id.product_tmpl_id.color_code.name"/>
                         </t>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-2">
                         <strong>Quantity:</strong><br/>
                         <span t-field="o.product_qty"/>
                         <span t-field="o.product_uom.name" groups="product.group_uom"/>

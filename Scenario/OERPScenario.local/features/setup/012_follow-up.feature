@@ -30,7 +30,7 @@ Feature: Initial setup of the payment term
     Given I need an "account_followup.followup.line" with oid: scenario.followup_1_line_1
     And having:
       | key         | value                                    |
-      | name        | Frist: 20 Tage nach Fälligkeit, per Post |
+      | name        | 1. Mahnung                               |
       | followup_id | by oid: scenario.followup_1              |
       | sequence    | 1                                        |
       | delay       | 20                                       |
@@ -38,7 +38,7 @@ Feature: Initial setup of the payment term
     Given I need an "account_followup.followup.line" with oid: scenario.followup_1_line_2
     And having:
       | key         | value                                    |
-      | name        | Frist: 15 Tage nach Fälligkeit, per Post |
+      | name        | 2. Mahnung                               |
       | followup_id | by oid: scenario.followup_1              |
       | sequence    | 2                                        |
       | delay       | 15                                       |
@@ -47,7 +47,7 @@ Feature: Initial setup of the payment term
     Given I need an "account_followup.followup.line" with oid: scenario.followup_1_line_3
     And having:
       | key         | value                                    |
-      | name        | Frist: 10 Tage nach Fälligkeit, per Post |
+      | name        | 3. Mahnung                               |
       | followup_id | by oid: scenario.followup_1              |
       | sequence    | 3                                        |
       | delay       | 10                                       |
@@ -66,15 +66,15 @@ Feature: Initial setup of the payment term
     (lang, name, res_id, state, value, type)
     VALUES
     ('de_DE', 'account_followup.followup.line,description', '4', 'translated', '
-    Sehr geehrte(r) %(partner_name),
-
+    Sehr geehrte Damen und Herren,
+    
     Wir haben festgestellt, dass die zur Zahlung fälligen Rechnungen noch nicht ausgeglichen wurden. Bitte begleichen Sie die aufgeführten Positionen in den nächsten Tagen.
     Haben Sie die Zahlung bereits veranlasst, so vergessen Sie bitte dieses Schreiben.
 
-    Mit freundlichen Grüßen
+    Mit freundlichen Grüssen
     ', 'model'),
     ('fr_FR', 'account_followup.followup.line,description', '4', 'translated', '
-    Cher %(partner_name)s,
+    Madame, Monsieur,
 
     Nous avons remarqué que les factures citées ci-dessous ne sont pas encore réglées, cela vous a certainement échappé.
     Nous vous serions très reconnaissants de bien vouloir régler ces factures dans un délai de dix jours.
@@ -83,7 +83,7 @@ Feature: Initial setup of the payment term
     Veuillez agréer nos salutations distinguées,
     ', 'model'),
     ('it_IT', 'account_followup.followup.line,description', '4', 'translated', '
-    Gentile %(partner_name)s,
+    Signori e signore,
 
     Durante un controllo della contabilità abbiamo constatato che le fatture sotto elencate non sono ancora state onorate.
     Vi preghiamo gentilmente di voler pagare l''importo sottoccitato entro 10 giorni.
@@ -92,15 +92,16 @@ Feature: Initial setup of the payment term
     Cordiali saluti,
     ', 'model'),
     ('de_DE', 'account_followup.followup.line,description', '5', 'translated', '
-    Sehr geehrte(r) %(partner_name),
+    Sehr geehrte Damen und Herren,
+    
     Die mit "2" gekennzeichneten Positionen sind überfällig.
 
     Da Sie auf unsere Zahlungserinnerung bis heute nicht reagiert haben, bitten wir Sie noch einmal höflich, den ausstehenden Betrag innert den nächsten Tagen zu begleichen.
 
-    Mit freundlichen Grüßen
+    Mit freundlichen Grüssen
     ', 'model'),
     ('fr_FR', 'account_followup.followup.line,description', '5', 'translated', '
-    Cher %(partner_name)s,
+    Madame, Monsieur,
 
     Nous vous rappelons que nous avons déjà repoussé l''échéance de vos  factures. De ce fait le règlement devient très urgent.
     Nous vous prions de bien vouloir vous acquitter du montant global dans un délai de dix jours.
@@ -108,20 +109,21 @@ Feature: Initial setup of the payment term
     Veuillez agréer nos salutations distinguées,
     ', 'model'),
     ('it_IT', 'account_followup.followup.line,description', '5', 'translated', '
-    Gentile %(partner_name)s,
+    Signori e signore,
 
     Le posizioni contrassegnate con il numero 2 sono scadute da parecchio tempo. Nonostante il nostro precedente richiamo non abbiamo riscontrato alcuna reazione. Vi preghiamo perciò gentilmente di voler pagare l''importo scoperto entro il termine di 10 giorni.
 
     Cordiali saluti,
     ', 'model'),
     ('de_DE', 'account_followup.followup.line,description', '6', 'translated', '
-    Sehr geehrte(r) %(partner_name),
+    Sehr geehrte Damen und Herren,
+    
     Unsere Zahlungsaufforderungen sind leider bis heute unbeachtet geblieben. Sollte die Zahlung des fälligen Betrages nicht innerhalb von 5 Tagen erfolgen, müssten wir rechtliche Schritte gegen Sie einleiten.
 
-    Mit freundlichen Grüßen
+    Mit freundlichen Grüssen
     ', 'model'),
     ('fr_FR', 'account_followup.followup.line,description', '6', 'translated', '
-    Cher %(partner_name)s,
+    Madame, Monsieur,
 
     Malgré nos nombreuses sommations, aucun paiement ni correspondance de votre part ne nous est parvenu avant l''échéance.
     Nous vous prions une dernière fois de bien vouloir nous verser le montant dû dans un ultime délai de 5 jours.
@@ -130,7 +132,7 @@ Feature: Initial setup of the payment term
     Veuillez agréer nos salutations distinguées,
     ', 'model'),
     ('it_IT', 'account_followup.followup.line,description', '6', 'translated', '
-    Gentile %(partner_name)s,
+    Signori e signore,
 
     Purtroppo i nostri richiami di pagamento sono rimasti senza esito. Né abbiamo riscontrato una reazione scritta da parte vostra. Vi preghiamo un''ultima volta di voler versare l''importo scoperto entro 5 giorni. 
     Se entro questo termine il pagamento non verrà effettuato saremo purtroppo costretti ad adottare le necessarie misure giuridiche per il recupero della somma dovuta.

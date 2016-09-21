@@ -25,9 +25,9 @@ Feature: Configure the deliveries
       | sequence   | <sequence>                |
 
     Examples:
-      | sequence | name      | number   | oid                             |
-      | 1        | License 1 | 42133507 | scenario.postlogistics_license1 |
-      | 2        | License 2 | 60004890 | scenario.postlogistics_license2 |
+      | sequence | name                 | number   | oid                             |
+      | 1        | Versand von Paketen  | 42133507 | scenario.postlogistics_license1 |
+      | 2        | Promo Sendungen      | 60004890 | scenario.postlogistics_license2 |
 
   @postlogistics_options_update
   Scenario: I update postlogistics services (It will take 1 minute)

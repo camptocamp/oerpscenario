@@ -297,7 +297,7 @@ msgstr "<span>\n"
 #: model:ir.ui.view,arch_db:specific_reports.external_layout_footer
 msgid "<span>Page:</span>\n"
 "                    <span class=\"page\"/>/<span class=\"topage\"/>"
-msgstr "<span>Page:</span>\n"
+msgstr "<span>Seite:</span>\n"
 "                    <span class=\"page\"/>/<span class=\"topage\"/>"
 
 #. module: specific_reports
@@ -490,7 +490,7 @@ msgstr "Client order reference"
 #. module: specific_reports
 #: model:ir.ui.view,arch_db:specific_reports.report_mrporder
 msgid "Color Code:"
-msgstr "Kolor Code:"
+msgstr "Farbcode:"
 
 #. module: specific_reports
 #: model:ir.model,name:specific_reports.model_res_company
@@ -546,7 +546,7 @@ msgstr "Dismantling Order # :"
 #: model:ir.ui.view,arch_db:specific_reports.fix_address_report_followup_letter_body
 msgid "Document: Customer account statement<br/>\n"
 "            Date:"
-msgstr "Dokument: Kundenauszug<br/>\n"
+msgstr "Dokument: Zahlungserinnerung<br/>\n"
 "Datum:"
 
 #. module: specific_reports
