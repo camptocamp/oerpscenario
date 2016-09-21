@@ -26,7 +26,6 @@ class SaleOrder(models.Model):
     business_provider_id = fields.Many2one(
         string="Business provider",
         comodel_name='res.partner',
-        domain=[('is_company', '=', True)],
     )
 
     @api.onchange('project_id')

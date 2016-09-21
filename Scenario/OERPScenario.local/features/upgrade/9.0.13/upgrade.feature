@@ -9,5 +9,6 @@ Feature: upgrade to 9.0.13
       | specific_product                              |
       | mrp_bom_dismantling                           |
       | specific_reports                              |
+      | specific_building_project                     |
     Then my modules should have been installed and models reloaded
     Then I set the version of the instance to "9.0.13"
