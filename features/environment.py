@@ -8,7 +8,7 @@ from support import tools, behave_better
 
 __all__ = []
 OPENERP_ARGS = [
-    '-c', 'etc/openerp.cfg',
+    '-c', os.environ.get('OERPSCENARIO_ODOO_CONFIG') or 'etc/openerp.cfg',
     '--logfile=var/log/behave-stdout.log',
     ]
 
